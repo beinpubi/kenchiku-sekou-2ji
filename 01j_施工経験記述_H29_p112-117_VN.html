@@ -1,0 +1,1687 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="color-scheme" content="dark light">
+<title>平成29年度 施工経験記述｜Book 112-116</title>
+
+<style>
+/* =========================================================
+   FIXED DESIGN TOKENS
+   Do not redesign these values per lesson.
+   ========================================================= */
+
+:root {
+  --font-vi: Arial, Helvetica, sans-serif;
+  --font-ja: "Hiragino Sans", "Yu Gothic", "Yu Gothic UI", Meiryo, sans-serif;
+  --base-font-size: 16px;
+  --content-width: 1320px;
+  --control-size: 38px;
+  --control-gap: 4px;
+}
+
+html[data-theme="dark"] {
+  --bg: #101318;
+  --surface: #171B22;
+  --surface-alt: #1D232C;
+  --text: #E3E7ED;
+  --text-muted: #9DA8B5;
+  --focus-muted: #68717D;
+  --heading: #F4F7FA;
+  --border: #323A46;
+  --link: #7CC4FF;
+  --original-bg: #15181E;
+  --translation-bg: #16202A;
+  --note-bg: #1C2028;
+  --memory-bg: #20231C;
+  --keyword: #74D7FF;
+  --keyword-bg: rgba(75, 190, 255, .10);
+  --critical-bg: #594613;
+  --critical-text: #FFE39A;
+  --trap: #FF8585;
+  --trap-underline: #FF5F5F;
+  --relation-bg: rgba(139, 126, 255, .12);
+  --relation-border: #8F86FF;
+  --shadow: rgba(0, 0, 0, .28);
+  --dock-bg: rgba(23, 27, 34, .94);
+  --overlay: rgba(0, 0, 0, .46);
+}
+
+html[data-theme="light"] {
+  --bg: #F4F6F8;
+  --surface: #FFFFFF;
+  --surface-alt: #EEF1F5;
+  --text: #20242A;
+  --text-muted: #626B77;
+  --focus-muted: #A0A7B0;
+  --heading: #111418;
+  --border: #CCD2DA;
+  --link: #0068B5;
+  --original-bg: #F8FAFC;
+  --translation-bg: #EDF7FC;
+  --note-bg: #F2F4F7;
+  --memory-bg: #F6F7E9;
+  --keyword: #006B9F;
+  --keyword-bg: #E4F4FC;
+  --critical-bg: #FFF0B8;
+  --critical-text: #654900;
+  --trap: #B42318;
+  --trap-underline: #D92D20;
+  --relation-bg: #EEEBFF;
+  --relation-border: #6C5CE7;
+  --shadow: rgba(31, 38, 49, .12);
+  --dock-bg: rgba(255, 255, 255, .94);
+  --overlay: rgba(20, 24, 30, .32);
+}
+
+/* =========================================================
+   BASE
+   ========================================================= */
+
+* { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  font-size: var(--base-font-size);
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-vi);
+  font-size: 1rem;
+  line-height: 1.72;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+:lang(vi) {
+  font-family: var(--font-vi);
+}
+
+:lang(ja) {
+  font-family: var(--font-ja);
+}
+
+a {
+  color: var(--link);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
+a:hover {
+  text-decoration-thickness: 2px;
+}
+
+button {
+  font: inherit;
+}
+
+h1, h2, h3, h4 {
+  color: var(--heading);
+  line-height: 1.35;
+}
+
+h1 {
+  margin: 0 0 .35rem;
+  font-size: clamp(1.75rem, 4vw, 2.7rem);
+}
+
+h2 {
+  margin: 2.5rem 0 1rem;
+  padding-bottom: .42rem;
+  border-bottom: 1px solid var(--border);
+  font-size: clamp(1.42rem, 3vw, 2rem);
+}
+
+h3 {
+  margin: 1.9rem 0 .75rem;
+  font-size: clamp(1.16rem, 2.4vw, 1.5rem);
+}
+
+h4 {
+  margin: 1.2rem 0 .45rem;
+  font-size: 1rem;
+}
+
+p {
+  margin: .58rem 0;
+}
+
+ul, ol {
+  padding-left: 1.45rem;
+}
+
+li {
+  margin: .3rem 0;
+}
+
+[id] {
+  scroll-margin-top: 18px;
+}
+
+/* =========================================================
+   PAGE LAYOUT
+   ========================================================= */
+
+.page-shell {
+  width: min(var(--content-width), calc(100% - 28px));
+  margin: 0 auto;
+  padding: 18px 0 112px;
+}
+
+.hero,
+.toc-card,
+.study-section,
+.aggregate-section {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  box-shadow: 0 8px 28px var(--shadow);
+}
+
+.hero {
+  margin-bottom: 22px;
+  padding: clamp(22px, 3vw, 40px);
+}
+
+.hero-subtitle {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 1.06rem;
+}
+
+.meta-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(195px, 1fr));
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.meta-item {
+  padding: 10px 12px;
+  background: var(--surface-alt);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+
+.meta-label {
+  display: block;
+  margin-bottom: 2px;
+  color: var(--text-muted);
+  font-size: .8rem;
+}
+
+.study-section,
+.aggregate-section {
+  margin: 22px 0;
+  padding: clamp(18px, 2.6vw, 30px);
+}
+
+.section-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 16px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border);
+}
+
+.section-head h2,
+.section-head h3 {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.source-ref {
+  color: var(--text-muted);
+  font-size: .84rem;
+  white-space: nowrap;
+}
+
+.subsection {
+  margin: 26px 0 32px;
+}
+
+.subsection:first-child {
+  margin-top: 0;
+}
+
+.study-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 14px;
+  align-items: start;
+}
+
+.study-card {
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+
+.study-card.original {
+  background: var(--original-bg);
+}
+
+.study-card.translation {
+  background: var(--translation-bg);
+}
+
+.card-title {
+  padding: 9px 13px;
+  background: var(--surface-alt);
+  border-bottom: 1px solid var(--border);
+  color: var(--heading);
+  font-weight: 800;
+  letter-spacing: .02em;
+}
+
+.recall-source {
+  padding: 14px 16px 16px;
+  transition: color .15s ease;
+}
+
+.recall-source > :first-child {
+  margin-top: 0;
+}
+
+.recall-source > :last-child {
+  margin-bottom: 0;
+}
+
+/* =========================================================
+   CONTENT COMPONENTS
+   ========================================================= */
+
+.table-wrap {
+  overflow-x: auto;
+  margin: 12px 0 18px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  -webkit-overflow-scrolling: touch;
+}
+
+table {
+  width: 100%;
+  min-width: 640px;
+  border-collapse: collapse;
+  background: var(--surface);
+}
+
+th,
+td {
+  padding: 9px 11px;
+  border-right: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+  text-align: left;
+}
+
+th:last-child,
+td:last-child {
+  border-right: 0;
+}
+
+tr:last-child td {
+  border-bottom: 0;
+}
+
+th {
+  background: var(--surface-alt);
+  color: var(--heading);
+  font-weight: 800;
+}
+
+caption {
+  padding: 9px 11px;
+  background: var(--surface-alt);
+  color: var(--heading);
+  font-weight: 800;
+  text-align: left;
+  caption-side: top;
+}
+
+.summary-box,
+.note-box,
+.memory-box,
+.warning-box,
+.figure-box,
+.formula-box,
+.comparison-box {
+  margin: 14px 0;
+  padding: 13px 15px;
+  background: var(--note-bg);
+  border: 1px solid var(--border);
+  border-left-width: 4px;
+  border-radius: 10px;
+}
+
+.summary-box,
+.note-box {
+  border-left-color: var(--link);
+}
+
+.memory-box {
+  background: var(--memory-bg);
+  border-left-color: var(--critical-text);
+}
+
+.warning-box {
+  border-left-color: var(--trap);
+}
+
+.figure-box,
+.formula-box,
+.comparison-box {
+  border-left-color: var(--relation-border);
+}
+
+.figure-card {
+  margin: 15px 0 20px;
+  overflow: hidden;
+  background: var(--surface-alt);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+
+.figure-card img {
+  display: block;
+  width: 100%;
+  height: auto;
+  background: #fff;
+}
+
+.figure-card figcaption {
+  padding: 10px 13px 12px;
+  color: var(--text-muted);
+  font-size: .9rem;
+}
+
+.figure-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 12px;
+  margin: 15px 0 20px;
+}
+
+.figure-grid .figure-card {
+  margin: 0;
+}
+
+.item-block {
+  margin-top: 11px;
+  padding-top: 11px;
+  border-top: 1px dashed var(--border);
+}
+
+.item-block:first-child {
+  margin-top: 0;
+  padding-top: 0;
+  border-top: 0;
+}
+
+.item-label {
+  margin-right: .3em;
+  color: var(--heading);
+  font-weight: 800;
+}
+
+.formula-line {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+}
+
+.flow-node {
+  padding: 5px 8px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  font-weight: 700;
+}
+
+.flow-arrow {
+  color: var(--text-muted);
+  font-weight: 800;
+}
+
+/* =========================================================
+   SEMANTIC HIGHLIGHTING
+   ========================================================= */
+
+.kw {
+  padding: .02em .16em;
+  background: var(--keyword-bg);
+  color: var(--keyword);
+  border-radius: .2em;
+  font-weight: 750;
+}
+
+.critical {
+  padding: .04em .22em;
+  background: var(--critical-bg);
+  color: var(--critical-text);
+  border-radius: .22em;
+  font-weight: 750;
+}
+
+.trap {
+  color: var(--trap);
+  font-weight: 700;
+  text-decoration-line: underline;
+  text-decoration-color: var(--trap-underline);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+}
+
+.relation {
+  padding: .02em .14em;
+  background: var(--relation-bg);
+  color: var(--text);
+  border-bottom: 2px solid var(--relation-border);
+  font-weight: 650;
+}
+
+/* Only recall-source is dimmed in Keywords mode. */
+body.keyword-focus .recall-source {
+  color: var(--focus-muted);
+}
+
+body.keyword-focus .recall-source .kw {
+  color: var(--keyword);
+  background: var(--keyword-bg);
+}
+
+body.keyword-focus .recall-source .critical {
+  color: var(--critical-text);
+  background: var(--critical-bg);
+}
+
+body.keyword-focus .recall-source .trap {
+  color: var(--trap);
+}
+
+body.keyword-focus .recall-source .relation {
+  color: var(--text);
+  background: var(--relation-bg);
+}
+
+body.keyword-focus .recall-source th,
+body.keyword-focus .recall-source .item-label {
+  color: var(--heading);
+}
+
+/* =========================================================
+   TOC DRAWER
+   ========================================================= */
+
+.toc-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1990;
+  visibility: hidden;
+  opacity: 0;
+  background: var(--overlay);
+  transition: opacity .18s ease, visibility .18s ease;
+}
+
+.toc-drawer {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 2000;
+  width: min(78vw, 360px);
+  padding: max(14px, env(safe-area-inset-top)) 14px
+           max(18px, env(safe-area-inset-bottom))
+           max(14px, env(safe-area-inset-left));
+  overflow-y: auto;
+  background: var(--surface);
+  border-right: 1px solid var(--border);
+  box-shadow: 14px 0 36px var(--shadow);
+  transform: translateX(-103%);
+  transition: transform .2s ease;
+  -webkit-overflow-scrolling: touch;
+}
+
+body.toc-open .toc-overlay {
+  visibility: visible;
+  opacity: 1;
+}
+
+body.toc-open .toc-drawer {
+  transform: translateX(0);
+}
+
+.toc-drawer-head {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 4px 0 10px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+}
+
+.toc-drawer-head h2 {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 1.2rem;
+}
+
+.toc-close {
+  width: 34px;
+  height: 34px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface-alt);
+  color: var(--text);
+  cursor: pointer;
+}
+
+.toc-list {
+  margin: 12px 0 0;
+  padding-left: 1.2rem;
+}
+
+.toc-list ol {
+  margin-top: 4px;
+}
+
+/* =========================================================
+   COMPACT CONTROLS
+   Left: vertical TOC / Back / Next
+   Right: horizontal display controls
+   ========================================================= */
+
+.nav-dock-left,
+.settings-dock-right {
+  position: fixed;
+  bottom: max(14px, env(safe-area-inset-bottom));
+  z-index: 1900;
+  padding: 5px;
+  background: var(--dock-bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  box-shadow: 0 8px 24px var(--shadow);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  user-select: none;
+}
+
+.nav-dock-left {
+  left: max(10px, env(safe-area-inset-left));
+  display: flex;
+  flex-direction: column;
+  gap: var(--control-gap);
+}
+
+.settings-dock-right {
+  right: max(10px, env(safe-area-inset-right));
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--control-gap);
+}
+
+.nav-dock-left button,
+.settings-dock-right button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--control-size);
+  height: var(--control-size);
+  min-width: var(--control-size);
+  min-height: var(--control-size);
+  padding: 0;
+  background: var(--surface-alt);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-family: var(--font-vi);
+  font-size: .96rem;
+  font-weight: 700;
+  line-height: 1;
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.nav-dock-left button:hover,
+.settings-dock-right button:hover {
+  border-color: var(--link);
+}
+
+.nav-dock-left button:active,
+.settings-dock-right button:active {
+  transform: translateY(1px);
+}
+
+.nav-dock-left button:disabled {
+  opacity: .38;
+  cursor: default;
+}
+
+.settings-dock-right .font-reset {
+  font-size: .66rem;
+  letter-spacing: -.03em;
+}
+
+.settings-dock-right .mode-toggle {
+  font-size: 1.02rem;
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 900px) {
+  .study-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .page-shell {
+    width: min(100% - 18px, 760px);
+  }
+
+  .section-head {
+    display: block;
+  }
+
+  .source-ref {
+    display: block;
+    margin-top: 6px;
+    white-space: normal;
+  }
+}
+
+@media (max-width: 560px) {
+  body {
+    font-size: .96rem;
+  }
+
+  .hero,
+  .study-section,
+  .aggregate-section {
+    border-radius: 12px;
+  }
+
+  .recall-source {
+    padding: 12px 13px 14px;
+  }
+
+  :root {
+    --control-size: 36px;
+  }
+
+  .settings-dock-right {
+    right: max(7px, env(safe-area-inset-right));
+  }
+
+  .nav-dock-left {
+    left: max(7px, env(safe-area-inset-left));
+  }
+}
+
+@media (orientation: landscape) and (pointer: coarse) {
+  .nav-dock-left {
+    left: max(14px, env(safe-area-inset-left));
+  }
+
+  .settings-dock-right {
+    right: max(14px, env(safe-area-inset-right));
+  }
+}
+
+/* =========================================================
+   PRINT
+   ========================================================= */
+
+@media print {
+  html,
+  html[data-theme="dark"],
+  html[data-theme="light"] {
+    --bg: #FFFFFF;
+    --surface: #FFFFFF;
+    --surface-alt: #F1F3F5;
+    --text: #111111;
+    --text-muted: #555555;
+    --heading: #000000;
+    --border: #B8BEC6;
+    --original-bg: #FFFFFF;
+    --translation-bg: #F7FBFD;
+    --note-bg: #F7F7F7;
+    --memory-bg: #FAFAF0;
+    --keyword: #005A86;
+    --keyword-bg: #E4F4FC;
+    --critical-bg: #FFF0B8;
+    --critical-text: #4A3600;
+    --trap: #9E1B12;
+    --trap-underline: #9E1B12;
+    --relation-bg: #F0EDFF;
+    --relation-border: #5B4FD6;
+  }
+
+  body {
+    background: #fff;
+    color: #111;
+    font-size: 11pt;
+  }
+
+  .page-shell {
+    width: 100%;
+    padding: 0;
+  }
+
+  .nav-dock-left,
+  .settings-dock-right,
+  .toc-drawer,
+  .toc-overlay {
+    display: none !important;
+  }
+
+  .hero,
+  .study-card,
+  .summary-box,
+  .note-box,
+  .memory-box,
+  .warning-box,
+  .figure-card {
+    break-inside: avoid;
+  }
+
+  a {
+    color: #000;
+    text-decoration: none;
+  }
+}
+</style>
+
+<script>
+/* Apply saved theme before body paint to reduce flashing. */
+(function () {
+  try {
+    const saved = localStorage.getItem("study-theme");
+    const systemDark = window.matchMedia &&
+      window.matchMedia("(prefers-color-scheme: dark)").matches;
+    document.documentElement.dataset.theme =
+      saved || (systemDark ? "dark" : "light");
+  } catch (e) {
+    document.documentElement.dataset.theme = "dark";
+  }
+
+  try {
+    const savedScale = Number(localStorage.getItem("study-font-scale")) || 100;
+    const clampedScale = Math.max(80, Math.min(140, savedScale));
+    document.documentElement.style.setProperty(
+      "--base-font-size",
+      `${16 * clampedScale / 100}px`
+    );
+  } catch (e) {}
+})();
+</script>
+</head>
+
+<body>
+
+<!-- =======================================================
+     TOC DRAWER
+     Replace only the list contents.
+     ======================================================= -->
+<div class="toc-overlay" id="toc-overlay" aria-hidden="true"></div>
+
+<aside class="toc-drawer" id="toc-drawer" aria-label="Mục lục">
+  <div class="toc-drawer-head">
+    <h2>Mục lục</h2>
+    <button class="toc-close" id="toc-close" type="button" aria-label="Đóng mục lục">×</button>
+  </div>
+
+  <!-- TOC_ITEMS_START -->
+  <ol class="toc-list">
+    <li><a href="#sec-question">平成29年度 問題1 施工経験記述</a>
+      <ol>
+        <li><a href="#sub-question-overview">工事概要・設問1・設問2</a></li>
+      </ol>
+    </li>
+    <li><a href="#sec-answer1">解答例① 躯体工事</a>
+      <ol>
+        <li><a href="#sub-answer1-formwork">型枠工事</a></li>
+        <li><a href="#sub-answer1-rebar">鉄筋工事</a></li>
+        <li><a href="#sub-answer1-waste">ユニットバス</a></li>
+      </ol>
+    </li>
+    <li><a href="#sec-answer2">解答例② 仕上げ工事</a>
+      <ol>
+        <li><a href="#sub-answer2-joinery">建具工事</a></li>
+        <li><a href="#sub-answer2-stone">石工事</a></li>
+        <li><a href="#sub-answer2-waste">ALCパネル</a></li>
+      </ol>
+    </li>
+    <li><a href="#sec-rationalization">施工の合理化</a>
+      <ol>
+        <li><a href="#sub-rationalization-core">核となる考え方</a></li>
+        <li><a href="#sub-rationalization-table">参考例一覧</a></li>
+      </ol>
+    </li>
+    <li><a href="#sec-waste">建設資材廃棄物の発生抑制</a>
+      <ol>
+        <li><a href="#sub-waste-three">3つの視点</a></li>
+        <li><a href="#sub-waste-table">施工方法の例</a></li>
+      </ol>
+    </li>
+    <li><a href="#terms">Thuật ngữ chuyên môn</a></li>
+    <li><a href="#background">Kiến thức nền cần biết</a></li>
+    <li><a href="#memory">Điểm cần nhớ và mẹo nhớ</a></li>
+  </ol>
+  <!-- TOC_ITEMS_END -->
+</aside>
+
+<!-- =======================================================
+     FIXED NAVIGATION CONTROLS
+     Left bottom: vertical.
+     Do not add a Top button.
+     ======================================================= -->
+<nav class="nav-dock-left" aria-label="Điều hướng học tập">
+  <button id="toc-toggle" type="button" aria-label="Mục lục" title="Mục lục"
+          aria-controls="toc-drawer" aria-expanded="false">☰</button>
+  <button id="section-prev" type="button" aria-label="Mục trước" title="Back">‹</button>
+  <button id="section-next" type="button" aria-label="Mục tiếp theo" title="Next">›</button>
+</nav>
+
+<!-- =======================================================
+     FIXED DISPLAY CONTROLS
+     Right bottom: horizontal.
+     ======================================================= -->
+<nav class="settings-dock-right" aria-label="Thiết lập hiển thị">
+  <button id="theme-toggle" type="button" aria-label="Đổi Dark/Light"
+          title="Đổi Dark/Light" aria-pressed="false">☀</button>
+  <button id="mode-toggle" class="mode-toggle" type="button"
+          aria-label="Đổi Full/Keywords" title="Đổi Full/Keywords"
+          aria-pressed="false">🎯</button>
+  <button id="font-reset" class="font-reset" type="button"
+          aria-label="Đặt lại cỡ chữ 100%" title="Đặt lại cỡ chữ 100%">100%</button>
+  <button id="font-down" type="button" aria-label="Giảm cỡ chữ"
+          title="Giảm cỡ chữ">A−</button>
+  <button id="font-up" type="button" aria-label="Tăng cỡ chữ"
+          title="Tăng cỡ chữ">A+</button>
+</nav>
+
+<div class="page-shell">
+
+  <!-- =====================================================
+       DOCUMENT HEADER
+       Replace title/subtitle/meta values only.
+       ===================================================== -->
+  <header class="hero" id="top">
+    <h1>平成29年度 施工経験記述｜Book 112-116</h1>
+    <p class="hero-subtitle">施工の合理化・工程短縮・省力化・建設資材廃棄物の発生抑制</p>
+
+    <div class="meta-grid">
+      <div class="meta-item">
+        <span class="meta-label">PDF nguồn</span>
+        01j_施工経験記述_H29_p112-117.pdf
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">File ID</span>
+        F017
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Phạm vi</span>
+        Book page 112-116
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Chế độ</span>
+        Song ngữ Nhật-Việt / Dark-Light / Full-Keywords / Font 80-140%
+      </div>
+    </div>
+  </header>
+
+  <!-- =====================================================
+       CONTENT_START
+       AI may freely repeat/reorder approved content components.
+       Global CSS/JS/control structure must not be redesigned.
+       ===================================================== -->
+  <main id="lesson">
+
+    <section class="study-section" id="sec-question">
+      <div class="section-head">
+        <h2>平成29年度 問題1 施工経験記述</h2>
+        <span class="source-ref">Nguồn: Book page 112</span>
+      </div>
+
+      <section class="subsection" id="sub-question-overview">
+        <h3>工事概要・設問1・設問2</h3>
+        <div class="study-grid">
+          <article class="study-card original">
+            <div class="card-title">原文</div>
+            <div class="recall-source" lang="ja">
+              <p>今後、建設業において、高齢化等により技能労働者が大量に離職し、労働力人口が総じて減少するために、建設現場の<strong class="kw">生産性の向上</strong>がなお一層求められている。</p>
+              <p>あなたが経験した建築工事のうち、<strong class="kw">生産性向上</strong>をめざして、<strong class="kw">品質を確保したうえで施工の合理化</strong>を行った工事を1つ選び、工事概要を具体的に記入したうえで、次の設問1と設問2に答えなさい。</p>
+              <p>なお、建築工事とは、建築基準法に定める建築物に係る工事とし、<span class="trap">建築設備工事を除く</span>ものとする。</p>
+              <h4>〔工事概要〕</h4>
+              <ul>
+                <li>（イ）工事名</li>
+                <li>（ロ）工事場所</li>
+                <li>（ハ）工事の内容<br>新築等の場合：建物用途、構造、階数、延べ面積（又は施工数量）、主な外部仕上げ、主要室の内部仕上げ<br>改修等の場合：建物用途、主な改修内容、施工数量（又は建物規模）</li>
+                <li>（ニ）工期（年号又は西暦で年月まで記入）</li>
+                <li>（ホ）あなたの立場</li>
+              </ul>
+              <h4>設問1</h4>
+              <p>工事概要であげた工事において、あなたが計画した<strong class="kw">施工の合理化の事例</strong>を<mark class="critical">2つ</mark>あげ、それぞれの事例について、次の①から④を具体的に記述しなさい。</p>
+              <p>ただし、2つの事例の②から④の内容は、<span class="trap">それぞれ異なる内容の記述</span>とする。</p>
+              <ol>
+                <li>工種又は部位等</li>
+                <li><strong class="kw">施工の合理化が必要となった原因</strong>と実施した内容</li>
+                <li><strong class="kw">確保しようとした品質</strong>と留意事項</li>
+                <li>実施したことにより<strong class="kw">施工の合理化ができたと考えられる理由</strong></li>
+              </ol>
+              <h4>設問2</h4>
+              <p>工事概要であげた工事にかかわらず、あなたの今日までの工事経験に照らして、<strong class="kw">品質を確保したうえで行う施工の合理化</strong>の方法であって、<strong class="kw">建設資材廃棄物の発生抑制</strong>に効果があると考えられるものについて、次の①から②を具体的に記述しなさい。</p>
+              <p>ただし、<span class="trap">設問1の②から④と同じ内容の記述は不可</span>とする。</p>
+              <ol><li>施工方法</li><li>そう考える理由</li></ol>
+              <p>本テキストに示す解答例はすべて、考え方を示すもので、その要点だけを記述したものである。実際には解答用紙のスペース（行数等）に応じた字数で記述すること。</p>
+            </div>
+          </article>
+
+          <article class="study-card translation">
+            <div class="card-title">Bản dịch tiếng Việt</div>
+            <div class="recall-source" lang="vi">
+              <p>Trong thời gian tới, do tình trạng già hóa dân số và các nguyên nhân khác khiến một lượng lớn lao động kỹ năng rời khỏi ngành xây dựng, đồng thời dân số trong độ tuổi lao động nói chung giảm xuống, việc <strong class="kw">nâng cao năng suất tại công trường xây dựng</strong> ngày càng được yêu cầu mạnh mẽ hơn.</p>
+              <p>Trong các công trình xây dựng mà thí sinh đã có kinh nghiệm, hãy chọn <strong class="kw">một công trình đã thực hiện hợp lý hóa thi công trên cơ sở vẫn bảo đảm chất lượng nhằm nâng cao năng suất</strong>, ghi cụ thể tổng quan công trình, sau đó trả lời Câu 1 và Câu 2 dưới đây.</p>
+              <p>Ở đây, "công trình xây dựng" là công trình liên quan đến công trình kiến trúc theo Luật Tiêu chuẩn Xây dựng, <span class="trap">không bao gồm công tác thiết bị công trình</span>.</p>
+              <h4>〔Tổng quan công trình〕</h4>
+              <ul>
+                <li>(a) Tên công trình</li>
+                <li>(b) Địa điểm công trình</li>
+                <li>(c) Nội dung công trình<br>Trường hợp xây mới: công năng công trình, kết cấu, số tầng, tổng diện tích sàn hoặc khối lượng thi công, hoàn thiện ngoại thất chính, hoàn thiện nội thất các phòng chính.<br>Trường hợp cải tạo: công năng công trình, nội dung cải tạo chính, khối lượng thi công hoặc quy mô công trình.</li>
+                <li>(d) Thời gian thi công, ghi đến tháng theo niên hiệu Nhật hoặc dương lịch.</li>
+                <li>(e) Vị trí/chức trách của thí sinh.</li>
+              </ul>
+              <h4>Câu 1</h4>
+              <p>Đối với công trình nêu trong tổng quan, hãy đưa ra <mark class="critical">2 ví dụ</mark> về <strong class="kw">hợp lý hóa thi công đã được lập kế hoạch</strong>, và đối với từng ví dụ hãy mô tả cụ thể:</p>
+              <p>Đối với hai ví dụ, nội dung từ ② đến ④ <span class="trap">phải khác nhau</span>.</p>
+              <ol>
+                <li>Loại công tác hoặc bộ phận công trình.</li>
+                <li><strong class="kw">Nguyên nhân khiến việc hợp lý hóa thi công trở nên cần thiết</strong> và nội dung đã thực hiện.</li>
+                <li><strong class="kw">Chất lượng cần bảo đảm</strong> khi thực hiện và các điểm cần lưu ý.</li>
+                <li><strong class="kw">Lý do cho rằng biện pháp đã thực hiện giúp hợp lý hóa thi công</strong>.</li>
+              </ol>
+              <h4>Câu 2</h4>
+              <p>Không giới hạn trong công trình đã ghi ở phần tổng quan. Dựa trên kinh nghiệm thi công cho đến nay, hãy trình bày một phương pháp <strong class="kw">hợp lý hóa thi công nhưng vẫn bảo đảm chất lượng</strong>, đồng thời có hiệu quả trong việc <strong class="kw">hạn chế phát sinh chất thải vật liệu xây dựng</strong>.</p>
+              <p><span class="trap">Không được sử dụng cùng nội dung với các mục ② đến ④ của Câu 1</span>.</p>
+              <ol><li>Phương pháp thi công.</li><li>Lý do cho rằng phương pháp đó có hiệu quả.</li></ol>
+              <p>Các ví dụ đáp án trong giáo trình chỉ nhằm thể hiện cách tư duy và chỉ ghi các ý chính. Khi thi thực tế, cần viết với lượng chữ phù hợp với không gian và số dòng trên phiếu trả lời.</p>
+            </div>
+          </article>
+        </div>
+      </section>
+    </section>
+
+    <section class="study-section" id="sec-answer1">
+      <div class="section-head">
+        <h2>平成29年度 問題1 施工経験記述 解答例①</h2>
+        <span class="source-ref">Nguồn: Book page 113</span>
+      </div>
+
+      <section class="subsection" id="sub-answer1-overview">
+        <h3>工事概要</h3>
+        <div class="study-grid">
+          <article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja">
+            <div class="table-wrap"><table><tbody>
+              <tr><th>工事名</th><td>板橋区役所出張所増築・改修工事</td></tr>
+              <tr><th>工事場所</th><td>東京都板橋区旭町3丁目3-10</td></tr>
+              <tr><th>工事の内容</th><td>役所、RC造8階建、屋上防水改修面積309m²、増築面積290m²、外壁タイル改修面積490m²</td></tr>
+              <tr><th>工期</th><td>平成28年11月～平成29年10月</td></tr>
+              <tr><th>あなたの立場</th><td>工事主任</td></tr>
+            </tbody></table></div>
+          </div></article>
+          <article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi">
+            <div class="table-wrap"><table><tbody>
+              <tr><th>Tên công trình</th><td>Công trình mở rộng và cải tạo chi nhánh hành chính quận Itabashi</td></tr>
+              <tr><th>Địa điểm</th><td>3-3-10 Asahicho, quận Itabashi, Tokyo</td></tr>
+              <tr><th>Nội dung</th><td>Trụ sở hành chính, kết cấu RC, 8 tầng; diện tích cải tạo chống thấm mái 309 m²; diện tích mở rộng 290 m²; diện tích cải tạo gạch ốp tường ngoài 490 m²</td></tr>
+              <tr><th>Thời gian</th><td>11/2016 đến 10/2017</td></tr>
+              <tr><th>Chức trách</th><td>Chủ nhiệm công trình（工事主任）</td></tr>
+            </tbody></table></div>
+          </div></article>
+        </div>
+      </section>
+
+      <section class="subsection" id="sub-answer1-formwork">
+        <h3>事例1：型枠工事の工程管理（躯体工事）</h3>
+        <div class="study-grid">
+          <article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja">
+            <p>① 工種又は部位等：<strong class="kw">型枠工事</strong></p>
+            <p>② 施工の合理化が必要となった原因と実施した内容：<strong class="kw">長雨による基礎工事の遅れ</strong>を回復するため、<span class="relation">スラブ型枠を捨て型枠に変更</span>することで、工程を短縮した。</p>
+            <p>③ 実施する際に確保しようとした品質と留意事項：<strong class="kw">コンクリートスラブの品質</strong>を確保するため、防風措置を行って乾燥を防ぐことに留意し、<span class="relation">コンクリート面を湿潤養生</span>した。</p>
+            <p>④ 実施したことにより施工の合理化ができたと考えられる理由：コンクリートスラブの振動による品質低下を防ぎ、<span class="relation">型枠撤去作業を省力化</span>できたため。</p>
+          </div></article>
+          <article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi">
+            <p>① Công tác: <strong class="kw">Công tác ván khuôn</strong>.</p>
+            <p>② Nguyên nhân và biện pháp: Để khắc phục <strong class="kw">việc công tác móng bị chậm do mưa kéo dài</strong>, <span class="relation">thay ván khuôn sàn thông thường bằng ván khuôn để lại, không tháo dỡ（捨て型枠）</span>, qua đó rút ngắn tiến độ.</p>
+            <p>③ Chất lượng cần bảo đảm và lưu ý: Để bảo đảm <strong class="kw">chất lượng sàn bê tông</strong>, thực hiện biện pháp chắn gió nhằm tránh khô bề mặt, đồng thời <span class="relation">thực hiện bảo dưỡng ẩm（湿潤養生）cho bề mặt bê tông</span>.</p>
+            <p>④ Lý do đạt được hợp lý hóa: Có thể ngăn suy giảm chất lượng bê tông sàn do rung động, đồng thời <span class="relation">giảm công việc tháo dỡ ván khuôn</span>.</p>
+          </div></article>
+        </div>
+      </section>
+
+      <section class="subsection" id="sub-answer1-rebar">
+        <h3>事例2：鉄筋工事の工程管理（躯体工事）</h3>
+        <div class="study-grid">
+          <article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja">
+            <p>① 工種又は部位等：<strong class="kw">鉄筋工事</strong></p>
+            <p>② 施工の合理化が必要となった原因と実施した内容：<strong class="kw">天候不順が続き、工程が遅れた</strong>ため、<span class="trap">悪天候下では作業できない鉄筋ガス圧接</span>を<span class="relation">機械式継手に変更</span>し、工程を短縮した。</p>
+            <p>③ 実施する際に確保しようとした品質と留意事項：<strong class="kw">継手部分の品質</strong>を確保するため、機械式継手の締付けについて、<span class="relation">全数目視確認</span>することに留意した。</p>
+            <p>④ 実施したことにより施工の合理化ができたと考えられる理由：<strong class="kw">機械式継手</strong>は、<span class="relation">天候に左右されずに均一な品質が得られ、悪天候下でも作業ができた</span>ため。</p>
+          </div></article>
+          <article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi">
+            <p>① Công tác: <strong class="kw">Công tác cốt thép</strong>.</p>
+            <p>② Nguyên nhân và biện pháp: <strong class="kw">Do thời tiết xấu kéo dài làm chậm tiến độ</strong>, thay <span class="trap">phương pháp nối ép khí gas cốt thép（鉄筋ガス圧接）, vốn không thể thi công trong thời tiết xấu</span> bằng <span class="relation">mối nối cơ khí（機械式継手）</span>, qua đó rút ngắn tiến độ.</p>
+            <p>③ Chất lượng cần bảo đảm và lưu ý: Để bảo đảm <strong class="kw">chất lượng phần nối</strong>, chú ý <span class="relation">kiểm tra trực quan toàn bộ các vị trí</span> về trạng thái siết chặt của mối nối cơ khí.</p>
+            <p>④ Lý do đạt được hợp lý hóa: <strong class="kw">Mối nối cơ khí</strong> <span class="relation">không bị chi phối bởi thời tiết, cho chất lượng đồng đều và vẫn có thể thi công khi thời tiết xấu</span>.</p>
+          </div></article>
+        </div>
+      </section>
+
+      <section class="subsection" id="sub-answer1-waste">
+        <h3>設問2：建設資材廃棄物の発生抑制</h3>
+        <div class="study-grid">
+          <article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja">
+            <p>① 施工方法：浴室の施工方法を、<span class="relation">在来工法からユニットバスに変更</span>すること。</p>
+            <p>② そう考える理由：<strong class="kw">高品質な工場製品</strong>が、組立・完成された状態で搬入されるので、<span class="relation">現場での作業が省力化でき、廃棄物の発生量も少ない</span>ため。</p>
+          </div></article>
+          <article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi">
+            <p>① Phương pháp thi công: <span class="relation">Thay phòng tắm thi công theo phương pháp truyền thống（在来工法）bằng unit bath（ユニットバス）</span>.</p>
+            <p>② Lý do: <strong class="kw">Sản phẩm chất lượng cao được sản xuất tại nhà máy</strong>, lắp ráp và hoàn thiện trước khi đưa tới công trường, vì vậy <span class="relation">có thể giảm công việc tại hiện trường và giảm lượng chất thải phát sinh</span>.</p>
+          </div></article>
+        </div>
+        <div class="note-box"><strong>記述上のポイント / Điểm khi viết</strong><p>Phải nêu rõ nguyên nhân cần rút ngắn tiến độ, phương pháp thay đổi, chất lượng cần bảo đảm, biện pháp để giữ chất lượng và lý do cho thấy đã đạt được hợp lý hóa. Với 設問2, phương án phải đồng thời có hiệu quả về chất lượng, hợp lý hóa thi công và hạn chế chất thải.</p></div>
+      </section>
+    </section>
+
+    <section class="study-section" id="sec-answer2">
+      <div class="section-head">
+        <h2>平成29年度 問題1 施工経験記述 解答例②</h2>
+        <span class="source-ref">Nguồn: Book page 114</span>
+      </div>
+
+      <section class="subsection" id="sub-answer2-overview">
+        <h3>工事概要</h3>
+        <div class="study-grid">
+          <article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja"><div class="table-wrap"><table><tbody>
+            <tr><th>工事名</th><td>GETビル改修工事</td></tr><tr><th>工事場所</th><td>東京都豊島区西池袋3丁目1-2</td></tr><tr><th>工事の内容</th><td>事務所、RC造8階建／地下1階、改修面積980m²、外壁窓420m²、外壁石張り330m²</td></tr><tr><th>工期</th><td>平成28年3月～平成29年5月</td></tr><tr><th>あなたの立場</th><td>現場主任</td></tr>
+          </tbody></table></div></div></article>
+          <article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi"><div class="table-wrap"><table><tbody>
+            <tr><th>Công trình</th><td>Cải tạo tòa nhà GET</td></tr><tr><th>Địa điểm</th><td>3-1-2 Nishi-Ikebukuro, quận Toshima, Tokyo</td></tr><tr><th>Nội dung</th><td>Văn phòng, RC 8 tầng + 1 tầng hầm; diện tích cải tạo 980 m²; cửa sổ tường ngoài 420 m²; diện tích ốp đá tường ngoài 330 m²</td></tr><tr><th>Thời gian</th><td>3/2016 đến 5/2017</td></tr><tr><th>Chức trách</th><td>Chủ nhiệm hiện trường（現場主任）</td></tr>
+          </tbody></table></div></div></article>
+        </div>
+      </section>
+
+      <section class="subsection" id="sub-answer2-joinery">
+        <h3>事例1：建具工事の工程管理（仕上げ工事）</h3>
+        <div class="study-grid">
+          <article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja">
+            <p>① 工種又は部位等：<strong class="kw">建具工事</strong></p>
+            <p>② 施工の合理化が必要となった原因と実施した内容：<strong class="kw">窓の改修工法の決定が遅れた</strong>ため、<span class="relation">アルミニウム建具を用いたかぶせ工法を採用</span>し、工程を短縮した。</p>
+            <p>③ 実施する際に確保しようとした品質と留意事項：<strong class="kw">アルミニウム建具の仕上り精度</strong>を確保するため、<span class="relation">既存の鋼製建具への防錆措置</span>に留意した。</p>
+            <p>④ 実施したことにより施工の合理化ができたと考えられる理由：アルミニウム建具は見栄えが良い上、<span class="relation">既存の鋼製建具の撤去作業を省力化</span>できたため。</p>
+          </div></article>
+          <article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi">
+            <p>① Công tác: <strong class="kw">Công tác cửa（建具工事）</strong>.</p>
+            <p>② Nguyên nhân và biện pháp: <strong class="kw">Do việc quyết định công pháp cải tạo cửa sổ bị chậm</strong>, <span class="relation">áp dụng công pháp bọc chồng（かぶせ工法）bằng cửa nhôm</span>, qua đó rút ngắn tiến độ.</p>
+            <p>③ Chất lượng và lưu ý: Để bảo đảm <strong class="kw">độ chính xác hoàn thiện của cửa nhôm</strong>, chú ý <span class="relation">thực hiện biện pháp chống gỉ đối với cửa thép hiện hữu</span>.</p>
+            <p>④ Lý do hợp lý hóa: Cửa nhôm có tính thẩm mỹ tốt, đồng thời <span class="relation">có thể giảm công việc tháo bỏ cửa thép hiện hữu</span>.</p>
+          </div></article>
+        </div>
+      </section>
+
+      <section class="subsection" id="sub-answer2-stone">
+        <h3>事例2：石工事の工程管理（仕上げ工事）</h3>
+        <div class="study-grid">
+          <article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja">
+            <p>① 工種又は部位等：<strong class="kw">石工事</strong></p>
+            <p>② 施工の合理化が必要となった原因と実施した内容：<strong class="kw">雨天の日が多く</strong>、<span class="trap">当初予定していた湿式石張り工法が採用できなかった</span>ので、<span class="relation">乾式石張り工法に変更</span>し、工程を確保した。</p>
+            <p>③ 実施する際に確保しようとした品質と留意事項：養生期間の短い乾式石張り工法においても<strong class="kw">スチフナーの精度</strong>を確保するため、<span class="relation">ボルトの締付け</span>に留意した。</p>
+            <p>④ 実施したことにより施工の合理化ができたと考えられる理由：乾式石張り工法は、<span class="relation">白華を抑制できるため高品質</span>で、<span class="relation">モルタルの養生を省力化</span>できたため。</p>
+          </div></article>
+          <article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi">
+            <p>① Công tác: <strong class="kw">Công tác đá</strong>.</p>
+            <p>② Nguyên nhân và biện pháp: <strong class="kw">Do có nhiều ngày mưa</strong> nên <span class="trap">không thể áp dụng công pháp ốp đá ướt（湿式石張り工法）theo kế hoạch ban đầu</span>. Vì vậy <span class="relation">chuyển sang công pháp ốp đá khô（乾式石張り工法）</span> để bảo đảm tiến độ.</p>
+            <p>③ Chất lượng và lưu ý: Ngay cả với công pháp ốp đá khô có thời gian dưỡng hộ ngắn, để bảo đảm <strong class="kw">độ chính xác của stiffener（スチフナー）</strong>, chú ý đến <span class="relation">việc siết chặt bu lông</span>.</p>
+            <p>④ Lý do hợp lý hóa: Công pháp ốp đá khô <span class="relation">có thể hạn chế hiện tượng muối trắng/efflorescence（白華）, nhờ đó đạt chất lượng cao</span>, đồng thời <span class="relation">có thể loại bỏ hoặc giảm công tác dưỡng hộ vữa</span>.</p>
+          </div></article>
+        </div>
+      </section>
+
+      <section class="subsection" id="sub-answer2-waste">
+        <h3>設問2：ALCパネルへの変更</h3>
+        <div class="study-grid">
+          <article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja">
+            <p>① 施工方法：<span class="relation">現場打ち間仕切り工事を、ALCパネル工事に変更</span>すること。</p>
+            <p>② そう考える理由：<strong class="kw">ALCパネルは、均一で高品質の工場製品</strong>であり、<span class="relation">コンクリートの養生を省力化でき、現場において廃棄物が発生しない</span>ため。</p>
+          </div></article>
+          <article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi">
+            <p>① Phương pháp thi công: <span class="relation">Thay vách ngăn đổ bê tông tại công trường bằng tấm ALC</span>.</p>
+            <p>② Lý do: <strong class="kw">Tấm ALC là sản phẩm nhà máy có chất lượng cao và đồng đều</strong>, <span class="relation">có thể giảm công tác dưỡng hộ bê tông và không làm phát sinh chất thải tại công trường theo ví dụ của tài liệu</span>.</p>
+          </div></article>
+        </div>
+      </section>
+    </section>
+
+    <section class="study-section" id="sec-rationalization">
+      <div class="section-head">
+        <h2>施工の合理化</h2>
+        <span class="source-ref">Nguồn: Book page 115</span>
+      </div>
+
+      <section class="subsection" id="sub-rationalization-core">
+        <h3>施工の合理化について記述するときの核となる考え方</h3>
+        <div class="study-grid">
+          <article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja">
+            <p>施工の合理化についての経験記述では、<strong class="kw">工程短縮</strong>と<strong class="kw">省力化</strong>を取り上げる必要がある。その要点として、<span class="relation">作業手順・使用材料・工法・使用機械などを変更</span>することで、変更前の工程・作業時間に比べて、変更後の工程・作業時間を短縮・減少させたことを示さなければならない。</p>
+            <p>また、この変更によって<span class="trap">品質が低下してはならない</span>ので、工程短縮や省力化によっても、<strong class="kw">変更前と同等かそれ以上の品質を確保できる理由</strong>を明確にしておくことが重要である。</p>
+            <p>施工の合理化について記述するときの核となる考え方は、下表の通りである。経験記述では、このようなキーワードを押さえておくことが大切である。実務的に考えると、躯体工事・仕上げ工事のどちらにおいても、施工の合理化の方法は多数あるので、あなたが担当した工種における<strong class="kw">工程短縮の方法・省力化の方法</strong>を示す必要がある。</p>
+          </div></article>
+          <article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi">
+            <p>Trong bài viết kinh nghiệm về hợp lý hóa thi công, cần đề cập đến hai hướng chính: <strong class="kw">rút ngắn tiến độ（工程短縮）</strong> và <strong class="kw">giảm công sức lao động（省力化）</strong>. Điểm cốt lõi là phải cho thấy rằng bằng cách <span class="relation">thay đổi trình tự công việc, vật liệu sử dụng, công pháp, máy móc sử dụng...</span>, thời gian tiến độ hoặc thời gian thao tác sau thay đổi đã được rút ngắn hoặc giảm xuống so với trước khi thay đổi.</p>
+            <p>Tuy nhiên, sự thay đổi đó <span class="trap">không được làm giảm chất lượng</span>. Vì vậy, ngay cả khi rút ngắn tiến độ hoặc giảm lao động, cần giải thích rõ vì sao vẫn có thể bảo đảm <strong class="kw">chất lượng bằng hoặc cao hơn trước khi thay đổi</strong>.</p>
+            <p>Bảng dưới đây trình bày tư duy cốt lõi khi viết về hợp lý hóa thi công. Trong thực tế, cả phần kết cấu và phần hoàn thiện đều có nhiều phương pháp hợp lý hóa, vì vậy cần trình bày <strong class="kw">phương pháp rút ngắn tiến độ hoặc giảm công sức</strong> phù hợp với công tác mà người viết thực tế phụ trách.</p>
+          </div></article>
+        </div>
+      </section>
+
+      <section class="subsection" id="sub-rationalization-table">
+        <h3>参考例一覧</h3>
+        <div class="study-grid">
+          <article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja"><div class="table-wrap"><table>
+            <thead><tr><th>工種または部位等</th><th>合理化すべき作業項目</th><th>変更前の作業内容</th><th>変更後の作業内容</th><th>変更前と同等以上の品質を確保できる理由</th><th>施工の合理化ができたと考えられる理由</th></tr></thead>
+            <tbody>
+              <tr><td><strong class="kw">基礎工事</strong></td><td>山留め作業</td><td>水平切梁工法</td><td><span class="relation">地盤アンカー工法</span></td><td>作業空間が広いため、精度が向上する</td><td>作業空間が広いため、作業を短縮できる</td></tr>
+              <tr><td><strong class="kw">鉄筋工事</strong></td><td>鉄筋組立作業</td><td>現場組立作業</td><td><span class="relation">先組鉄筋吊込み作業</span></td><td>鉄筋組立精度が高い</td><td>一括で吊り込めるため、作業を短縮できる</td></tr>
+              <tr><td><strong class="kw">型枠工事</strong></td><td>型枠作業</td><td>金属製型枠を使用</td><td><span class="relation">捨型枠を使用</span></td><td>型枠撤去作業時の振動を受けない</td><td>型枠撤去作業を省力化できる</td></tr>
+              <tr><td><strong class="kw">コンクリート工事</strong></td><td>コンクリート運搬作業</td><td>1台のコンクリートポンプ</td><td><span class="relation">2台のコンクリートポンプ</span></td><td>1台の時と同等の品質を確保できる</td><td>単位時間あたりの打込み作業量を増大できる</td></tr>
+              <tr><td><strong class="kw">鉄骨工事</strong></td><td>鉄骨の建込み作業</td><td>建逃げ方式</td><td><span class="relation">積上げ方式</span></td><td>安定した環境が得られ、継手品質が向上する</td><td>後続工程と並行作業して工程を短縮できる</td></tr>
+              <tr><td><strong class="kw">防水工事</strong></td><td>防水作業</td><td>アスファルト防水工法</td><td><span class="relation">ルーフィングシート防水工法</span></td><td>工数が少なく、品質が均一である</td><td>工数を削減できるので、工程を短縮できる</td></tr>
+              <tr><td><strong class="kw">石工事</strong></td><td>外壁石張り作業</td><td>湿式工法</td><td><span class="relation">乾式工法</span></td><td>耐震性に優れ、白華現象が起こりにくい</td><td>モルタル養生を省力化できる</td></tr>
+              <tr><td><strong class="kw">タイル工事</strong></td><td>外壁タイル張り作業</td><td>タイル後張り</td><td><span class="relation">タイル先付けプレキャストコンクリート工法</span></td><td>接着力が大きいため、タイルが剥離しにくい</td><td>タイル張付け作業を省力化できる</td></tr>
+              <tr><td><strong class="kw">ガラス工事</strong></td><td>ガラスはめ込み作業</td><td>ガラス現場取付け</td><td><span class="relation">ガラス工場取付け</span></td><td>取付け精度が高くなる</td><td>ガラス取付け作業を省力化できる</td></tr>
+            </tbody>
+          </table></div></div></article>
+          <article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi"><div class="table-wrap"><table>
+            <thead><tr><th>Công tác</th><th>Công việc cần hợp lý hóa</th><th>Trước khi thay đổi</th><th>Sau khi thay đổi</th><th>Lý do vẫn bảo đảm chất lượng bằng hoặc cao hơn</th><th>Lý do đạt được hợp lý hóa</th></tr></thead>
+            <tbody>
+              <tr><td><strong class="kw">Công tác móng</strong></td><td>Chống giữ hố đào</td><td>Hệ thanh chống ngang（水平切梁工法）</td><td><span class="relation">Hệ neo đất（地盤アンカー工法）</span></td><td>Không gian thao tác rộng hơn nên độ chính xác được nâng cao</td><td>Không gian thao tác rộng nên có thể rút ngắn công việc</td></tr>
+              <tr><td><strong class="kw">Cốt thép</strong></td><td>Lắp ráp cốt thép</td><td>Lắp ráp tại hiện trường</td><td><span class="relation">Lắp ráp trước rồi cẩu vào</span></td><td>Độ chính xác lắp ráp cốt thép cao</td><td>Có thể cẩu cả cụm vào một lần nên rút ngắn công việc</td></tr>
+              <tr><td><strong class="kw">Ván khuôn</strong></td><td>Công tác ván khuôn</td><td>Dùng ván khuôn kim loại</td><td><span class="relation">Dùng ván khuôn để lại</span></td><td>Không chịu rung động khi tháo ván khuôn</td><td>Có thể loại bỏ/giảm công việc tháo khuôn</td></tr>
+              <tr><td><strong class="kw">Bê tông</strong></td><td>Vận chuyển bê tông</td><td>1 xe bơm bê tông</td><td><span class="relation">2 xe bơm bê tông</span></td><td>Có thể bảo đảm chất lượng tương đương khi dùng 1 xe</td><td>Tăng lượng bê tông đổ được trong một đơn vị thời gian</td></tr>
+              <tr><td><strong class="kw">Kết cấu thép</strong></td><td>Lắp dựng kết cấu thép</td><td>Phương thức 建逃げ</td><td><span class="relation">Phương thức 積上げ</span></td><td>Có được môi trường ổn định, nâng cao chất lượng mối nối</td><td>Có thể thi công song song với công đoạn tiếp theo, rút ngắn tiến độ</td></tr>
+              <tr><td><strong class="kw">Chống thấm</strong></td><td>Công tác chống thấm</td><td>Chống thấm asphalt</td><td><span class="relation">Chống thấm bằng tấm roofing</span></td><td>Ít công đoạn, chất lượng đồng đều</td><td>Giảm số công đoạn nên rút ngắn tiến độ</td></tr>
+              <tr><td><strong class="kw">Đá</strong></td><td>Ốp đá ngoại thất</td><td>Công pháp ướt</td><td><span class="relation">Công pháp khô</span></td><td>Khả năng chịu động đất tốt và khó xuất hiện hiện tượng muối trắng</td><td>Giảm công tác dưỡng hộ vữa</td></tr>
+              <tr><td><strong class="kw">Gạch ốp</strong></td><td>Ốp gạch tường ngoài</td><td>Ốp gạch sau</td><td><span class="relation">Gắn gạch trước vào cấu kiện bê tông đúc sẵn</span></td><td>Lực bám dính lớn, gạch khó bong</td><td>Giảm công tác dán gạch tại hiện trường</td></tr>
+              <tr><td><strong class="kw">Kính</strong></td><td>Lắp kính</td><td>Lắp kính tại hiện trường</td><td><span class="relation">Lắp kính tại nhà máy</span></td><td>Độ chính xác lắp đặt cao hơn</td><td>Giảm công việc lắp kính tại hiện trường</td></tr>
+            </tbody>
+          </table></div></div></article>
+        </div>
+        <div class="note-box"><strong>Ý nghĩa của bảng</strong><p>Mỗi ví dụ phải chứng minh đồng thời hai việc: công pháp mới giúp rút ngắn tiến độ hoặc giảm lao động, và chất lượng vẫn bằng hoặc cao hơn trước khi thay đổi.</p></div>
+      </section>
+    </section>
+
+    <section class="study-section" id="sec-waste">
+      <div class="section-head">
+        <h2>建設資材廃棄物の発生抑制</h2>
+        <span class="source-ref">Nguồn: Book page 116</span>
+      </div>
+
+      <section class="subsection" id="sub-waste-three">
+        <h3>3つの視点</h3>
+        <div class="study-grid">
+          <article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja">
+            <p>施工の合理化の一環として、建設資材廃棄物の発生抑制に効果がある施工方法を記述するときは、下表のような視点から考えるとよい。この設問では、<strong class="kw">品質の確保・施工の合理化・建設資材廃棄物の発生抑制</strong>の<span class="relation">すべてに効果があった施工方法</span>を記述しなければならない。</p>
+            <h4>(1)</h4><p>間仕切壁・階段・浴室・先付けタイル・家具・建具・フリーアクセスフロア・ベランダなどの工法を変更することで、<strong class="kw">純粋に廃棄物の発生量を減らす方法</strong></p>
+            <ol><li><span class="relation">工場生産化（PC化・ユニット化・プレハブ化・プレキャスト化などの採用）</span></li><li>型枠の合理化（システム型枠・打込み型枠の採用など）</li><li>梱包の簡略化</li></ol>
+            <h4>(2)</h4><p>足場・型枠などの仮設用材料に、<strong class="kw">転用可能回数が多い耐久材料</strong>を使用し、その<span class="relation">再使用</span>を行うことで、間接的に廃棄物の発生量を減らす方法</p>
+            <ol><li>足場などの使用済み材料の転用または再生利用</li><li>建設発生土の現場内再利用または他現場再利用</li></ol>
+            <h4>(3)</h4><p>建具工事・防水工事・改修工事などにおいて、<strong class="kw">既存の部位（建設資材）を再使用</strong>することで、既存の部位を廃棄物にしない方法</p>
+            <ol><li><span class="relation">既存部位を撤去せず、その上からかぶせて施工するかぶせ工法</span>の採用</li><li><span class="relation">既存部位をエポキシ樹脂などで補修して再生利用</span></li></ol>
+          </div></article>
+          <article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi">
+            <p>Khi trình bày một phương pháp thi công có hiệu quả trong việc hạn chế phát sinh chất thải vật liệu xây dựng như một phần của hợp lý hóa thi công, có thể tư duy theo các hướng trong bảng dưới đây. Đối với câu hỏi này, phương pháp được chọn phải đồng thời có hiệu quả đối với <strong class="kw">bảo đảm chất lượng, hợp lý hóa thi công và hạn chế phát sinh chất thải vật liệu xây dựng</strong>, tức là <span class="relation">cả ba yếu tố đều phải được đáp ứng</span>.</p>
+            <h4>(1) Thay đổi công pháp để trực tiếp giảm lượng chất thải</h4><p>Đối tượng có thể gồm vách ngăn, cầu thang, phòng tắm, gạch gắn trước, đồ nội thất, cửa, sàn access floor, ban công...</p>
+            <ol><li><span class="relation">Chuyển sang sản xuất tại nhà máy, ví dụ PC hóa, module hóa, prefab hóa, precast hóa</span>.</li><li>Hợp lý hóa ván khuôn, ví dụ sử dụng ván khuôn hệ thống hoặc ván khuôn để lại trong bê tông.</li><li>Đơn giản hóa bao bì đóng gói.</li></ol>
+            <h4>(2) Tái sử dụng vật liệu tạm có độ bền cao</h4><p>Đối với vật liệu tạm như giàn giáo và ván khuôn, sử dụng <strong class="kw">vật liệu bền có thể luân chuyển nhiều lần</strong>, rồi <span class="relation">tái sử dụng</span> để gián tiếp giảm chất thải.</p>
+            <ol><li>Luân chuyển hoặc tái sử dụng vật liệu giàn giáo đã qua sử dụng.</li><li>Tái sử dụng đất phát sinh từ xây dựng（建設発生土）tại chính công trường hoặc tại công trường khác.</li></ol>
+            <h4>(3) Giữ lại và tái sử dụng bộ phận hiện hữu</h4><p>Trong công tác cửa, chống thấm, cải tạo..., <strong class="kw">tái sử dụng cấu kiện hoặc vật liệu hiện hữu</strong> để không biến chúng thành chất thải.</p>
+            <ol><li><span class="relation">Không tháo cấu kiện hiện hữu, áp dụng công pháp bọc chồng（かぶせ工法）lên phía trên</span>.</li><li><span class="relation">Sửa chữa cấu kiện hiện hữu bằng nhựa epoxy hoặc vật liệu tương tự rồi tái sử dụng</span>.</li></ol>
+          </div></article>
+        </div>
+      </section>
+
+      <section class="subsection" id="sub-waste-table">
+        <h3>建設資材廃棄物の発生抑制に効果がある施工方法を記述するときの視点</h3>
+        <div class="study-grid">
+          <article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja"><div class="table-wrap"><table>
+            <thead><tr><th>工種または部位等</th><th>具体的な作業項目</th><th>建設資材廃棄物の発生抑制および施工の合理化の効果がある施工方法</th><th>発生抑制に効果があると考える理由</th></tr></thead>
+            <tbody>
+              <tr><td><strong class="kw">地業工事</strong></td><td>杭作業</td><td><span class="relation">場所打ち杭を埋込み杭に変更</span></td><td>汚泥の発生がない</td></tr>
+              <tr><td><strong class="kw">型枠工事</strong></td><td>型枠作業</td><td><span class="relation">合板型枠を捨て型枠に変更</span></td><td>型枠が廃棄物にならない</td></tr>
+              <tr><td><strong class="kw">間仕切り工法</strong></td><td>間仕切り作業</td><td><span class="relation">現場打ちの間仕切りをALC板に変更</span></td><td>コンクリートくずや木くずが生じない</td></tr>
+              <tr><td><strong class="kw">鉄骨工事</strong></td><td>鉄骨建方作業</td><td><span class="relation">鉄骨のユニット化</span></td><td>鉄くずの発生量が少なくなる</td></tr>
+              <tr><td><strong class="kw">鉄筋工事</strong></td><td>鉄筋組立作業</td><td><span class="relation">鉄筋の組立のユニット化</span></td><td>鉄筋くずの発生量が少なくなる</td></tr>
+              <tr><td><strong class="kw">浴室工事</strong></td><td>浴室作業</td><td><span class="relation">現場施工浴室をユニットバスに変更</span></td><td>コンクリートくずや陶器くず等が生じない</td></tr>
+              <tr><td><strong class="kw">タイル工事</strong></td><td>タイル張り作業</td><td><span class="relation">タイル型枠先付け工法を採用</span></td><td>陶器くずが生じない</td></tr>
+              <tr><td><strong class="kw">建具工事</strong></td><td>建具改修</td><td><span class="relation">既存の建具の上から改修するかぶせ工法</span></td><td>既存建具が廃棄物にならない</td></tr>
+              <tr><td><strong class="kw">ガラス工事</strong></td><td>ガラス取付け作業</td><td><span class="relation">現場取付けを工場取付けに変更</span></td><td>ガラスくずが生じない</td></tr>
+              <tr><td><strong class="kw">内装工事</strong></td><td>石膏ボード張り作業</td><td><span class="relation">長尺ボードによる継目のない工法を採用</span></td><td>石膏ボードくずが少なくなる</td></tr>
+              <tr><td><strong class="kw">防水工事</strong></td><td>屋上防水改修作業</td><td><span class="relation">増張りして既存の防水層を再使用</span></td><td>既存防水層が廃棄物にならない</td></tr>
+            </tbody>
+          </table></div></div></article>
+          <article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi"><div class="table-wrap"><table>
+            <thead><tr><th>Công tác</th><th>Công việc</th><th>Phương pháp vừa giảm chất thải vừa hợp lý hóa</th><th>Lý do giảm chất thải</th></tr></thead>
+            <tbody>
+              <tr><td><strong class="kw">Công tác địa nghiệp/móng</strong></td><td>Thi công cọc</td><td><span class="relation">Đổi cọc đổ tại chỗ sang cọc thi công theo phương pháp chôn/ép đặt（埋込み杭）</span></td><td>Không phát sinh bùn khoan</td></tr>
+              <tr><td><strong class="kw">Ván khuôn</strong></td><td>Ván khuôn</td><td><span class="relation">Đổi ván khuôn plywood sang ván khuôn để lại</span></td><td>Ván khuôn không trở thành chất thải sau tháo dỡ</td></tr>
+              <tr><td><strong class="kw">Vách ngăn</strong></td><td>Thi công vách</td><td><span class="relation">Đổi vách đổ tại hiện trường sang tấm ALC</span></td><td>Không phát sinh vụn bê tông và gỗ</td></tr>
+              <tr><td><strong class="kw">Kết cấu thép</strong></td><td>Lắp dựng thép</td><td><span class="relation">Module hóa kết cấu thép</span></td><td>Giảm lượng thép vụn phát sinh</td></tr>
+              <tr><td><strong class="kw">Cốt thép</strong></td><td>Lắp ráp cốt thép</td><td><span class="relation">Module hóa/lắp cụm cốt thép</span></td><td>Giảm lượng cốt thép vụn</td></tr>
+              <tr><td><strong class="kw">Phòng tắm</strong></td><td>Thi công phòng tắm</td><td><span class="relation">Đổi phòng tắm thi công tại chỗ sang unit bath</span></td><td>Không phát sinh vụn bê tông, gốm sứ...</td></tr>
+              <tr><td><strong class="kw">Gạch ốp</strong></td><td>Ốp gạch</td><td><span class="relation">Dùng công pháp gắn gạch trước vào ván khuôn</span></td><td>Không phát sinh vụn gạch/gốm</td></tr>
+              <tr><td><strong class="kw">Cửa</strong></td><td>Cải tạo cửa</td><td><span class="relation">Giữ cửa hiện hữu và áp dụng công pháp bọc chồng</span></td><td>Cửa hiện hữu không trở thành chất thải</td></tr>
+              <tr><td><strong class="kw">Kính</strong></td><td>Lắp kính</td><td><span class="relation">Chuyển từ lắp tại công trường sang lắp tại nhà máy</span></td><td>Không phát sinh kính vụn tại công trường</td></tr>
+              <tr><td><strong class="kw">Nội thất</strong></td><td>Ốp tấm thạch cao</td><td><span class="relation">Dùng tấm dài để áp dụng công pháp không có mối nối</span></td><td>Giảm lượng phế thải tấm thạch cao</td></tr>
+              <tr><td><strong class="kw">Chống thấm</strong></td><td>Cải tạo chống thấm mái</td><td><span class="relation">Thi công bổ sung lớp mới và tái sử dụng lớp chống thấm hiện hữu</span></td><td>Lớp chống thấm hiện hữu không trở thành chất thải</td></tr>
+            </tbody>
+          </table></div></div></article>
+        </div>
+      </section>
+    </section>
+
+  </main>
+  <!-- CONTENT_END -->
+
+  <!-- =====================================================
+       NON-DIMMED STUDY SUPPORT SECTIONS
+       These sections stay normally readable in Keywords mode.
+       ===================================================== -->
+
+  <section class="aggregate-section" id="terms">
+    <div class="section-head">
+      <h2>Thuật ngữ chuyên môn</h2>
+    </div>
+    <div class="table-wrap"><table>
+      <thead><tr><th>日本語</th><th>読み方</th><th>Tiếng Việt</th><th>Giải thích</th><th>Liên quan</th></tr></thead>
+      <tbody>
+        <tr><td>施工の合理化</td><td>せこうのごうりか</td><td>Hợp lý hóa thi công</td><td>Thay đổi trình tự, vật liệu, công pháp hoặc thiết bị nhằm giảm thời gian/công sức mà vẫn bảo đảm chất lượng.</td><td>工程短縮, 省力化</td></tr>
+        <tr><td>工程短縮</td><td>こうていたんしゅく</td><td>Rút ngắn tiến độ</td><td>Giảm thời gian cần thiết cho công việc hoặc toàn bộ tiến độ.</td><td>施工の合理化</td></tr>
+        <tr><td>省力化</td><td>しょうりょくか</td><td>Giảm công sức / giảm nhân công</td><td>Giảm lượng thao tác hoặc lao động cần thiết tại công trường.</td><td>施工の合理化</td></tr>
+        <tr><td>建設資材廃棄物</td><td>けんせつしざいはいきぶつ</td><td>Chất thải vật liệu xây dựng</td><td>Chất thải phát sinh từ vật liệu sử dụng trong hoạt động xây dựng.</td><td>発生抑制</td></tr>
+        <tr><td>発生抑制</td><td>はっせいよくせい</td><td>Hạn chế phát sinh</td><td>Ngăn hoặc giảm lượng chất thải ngay từ nguồn phát sinh.</td><td>再使用, 再生利用</td></tr>
+        <tr><td>捨て型枠</td><td>すてかたわく</td><td>Ván khuôn để lại</td><td>Ván khuôn không tháo sau khi đổ bê tông, nhờ đó giảm công tác tháo khuôn.</td><td>型枠工事</td></tr>
+        <tr><td>湿潤養生</td><td>しつじゅんようじょう</td><td>Bảo dưỡng ẩm</td><td>Duy trì độ ẩm bê tông trong giai đoạn đóng rắn.</td><td>コンクリート</td></tr>
+        <tr><td>ガス圧接</td><td>ガスあっせつ</td><td>Nối ép khí gas</td><td>Gia nhiệt và ép hai đầu cốt thép để tạo mối nối.</td><td>鉄筋継手</td></tr>
+        <tr><td>機械式継手</td><td>きかいしきつぎて</td><td>Mối nối cơ khí</td><td>Nối cốt thép bằng sleeve/coupler hoặc cơ cấu cơ khí.</td><td>鉄筋工事</td></tr>
+        <tr><td>全数目視確認</td><td>ぜんすうもくしかくにん</td><td>Kiểm tra trực quan 100%</td><td>Kiểm tra bằng mắt toàn bộ các vị trí, không lấy mẫu.</td><td>機械式継手</td></tr>
+        <tr><td>在来工法</td><td>ざいらいこうほう</td><td>Công pháp truyền thống</td><td>Thi công các thành phần chủ yếu trực tiếp tại công trường.</td><td>ユニットバス</td></tr>
+        <tr><td>ユニットバス</td><td>ユニットバス</td><td>Phòng tắm module</td><td>Cụm phòng tắm được sản xuất theo module tại nhà máy.</td><td>工場生産化</td></tr>
+        <tr><td>かぶせ工法</td><td>かぶせこうほう</td><td>Công pháp bọc chồng</td><td>Giữ lại bộ phận hiện hữu và lắp cấu kiện mới phủ/chồng lên.</td><td>建具改修</td></tr>
+        <tr><td>防錆措置</td><td>ぼうせいそち</td><td>Biện pháp chống gỉ</td><td>Xử lý bảo vệ thép hiện hữu khỏi ăn mòn.</td><td>建具工事</td></tr>
+        <tr><td>湿式石張り工法</td><td>しっしきいしばりこうほう</td><td>Công pháp ốp đá ướt</td><td>Sử dụng vữa trong quá trình cố định đá.</td><td>石工事</td></tr>
+        <tr><td>乾式石張り工法</td><td>かんしきいしばりこうほう</td><td>Công pháp ốp đá khô</td><td>Cố định đá chủ yếu bằng chi tiết cơ khí.</td><td>石工事</td></tr>
+        <tr><td>白華</td><td>はっか</td><td>Hiện tượng muối trắng</td><td>Các muối kết tinh trắng xuất hiện trên bề mặt vật liệu.</td><td>石張り</td></tr>
+        <tr><td>スチフナー</td><td>スチフナー</td><td>Stiffener / bản tăng cứng</td><td>Chi tiết gia cường cục bộ cho cấu kiện.</td><td>乾式石張り</td></tr>
+        <tr><td>ALCパネル</td><td>エーエルシーパネル</td><td>Tấm bê tông khí chưng áp</td><td>Cấu kiện nhẹ sản xuất tại nhà máy.</td><td>間仕切り</td></tr>
+        <tr><td>工場生産化</td><td>こうじょうせいさんか</td><td>Chuyển sang sản xuất tại nhà máy</td><td>Đưa một phần công việc từ công trường vào môi trường sản xuất công nghiệp.</td><td>PC化, ユニット化, プレハブ化</td></tr>
+        <tr><td>転用</td><td>てんよう</td><td>Luân chuyển tái sử dụng</td><td>Sử dụng lại vật liệu tạm cho vị trí hoặc công trình khác.</td><td>仮設材料</td></tr>
+        <tr><td>建設発生土</td><td>けんせつはっせいど</td><td>Đất phát sinh từ xây dựng</td><td>Đất đào phát sinh trong quá trình thi công.</td><td>再利用</td></tr>
+        <tr><td>場所打ち杭</td><td>ばしょうちぐい</td><td>Cọc đổ tại chỗ</td><td>Cọc được tạo bằng cách thi công bê tông tại vị trí cọc.</td><td>埋込み杭</td></tr>
+        <tr><td>埋込み杭</td><td>うめこみぐい</td><td>Cọc theo phương pháp chôn đặt</td><td>Cọc chế tạo sẵn được đưa vào lỗ hoặc nền đất theo công pháp tương ứng.</td><td>地業工事</td></tr>
+        <tr><td>増張り</td><td>ましばり</td><td>Thi công phủ/bổ sung lớp mới</td><td>Thi công thêm lớp mới mà vẫn giữ lại lớp hiện hữu.</td><td>防水改修</td></tr>
+      </tbody>
+    </table></div>
+  </section>
+
+  <section class="aggregate-section" id="background">
+    <div class="section-head">
+      <h2>Kiến thức nền cần biết</h2>
+    </div>
+    <div class="note-box"><strong>Quan hệ giữa hợp lý hóa và chất lượng</strong><p>Trong nội dung này, “hợp lý hóa” không được hiểu đơn thuần là làm nhanh hơn. Cấu trúc lập luận của tài liệu là: thay đổi phương pháp thi công hoặc tổ chức công việc → giảm thời gian/công sức → nhưng phải nêu riêng căn cứ cho thấy chất lượng vẫn bằng hoặc cao hơn trước khi thay đổi.</p></div>
+    <div class="note-box"><strong>Ba hướng hạn chế chất thải</strong><p>Book page 116 gom các biện pháp thành ba nhóm: chuyển công việc sang sản xuất công nghiệp tại nhà máy; tăng số lần tái sử dụng vật liệu; giữ lại và tái sử dụng cấu kiện hiện hữu thay vì tháo bỏ.</p></div>
+  </section>
+
+  <section class="aggregate-section" id="memory">
+    <div class="section-head">
+      <h2>Điểm cần nhớ và mẹo nhớ</h2>
+    </div>
+    <div class="memory-box"><strong>Khung trả lời 設問1</strong><p><strong>Nguyên nhân cần hợp lý hóa → biện pháp thực hiện → chất lượng phải giữ → lưu ý để giữ chất lượng → lý do đạt được hợp lý hóa.</strong></p></div>
+    <div class="memory-box"><strong>Khung trả lời 設問2</strong><p><strong>Bảo đảm chất lượng + hợp lý hóa thi công + giảm phát sinh chất thải.</strong> Thiếu một trong ba yếu tố thì ví dụ không đáp ứng đúng yêu cầu của đề.</p></div>
+    <div class="formula-box"><div class="formula-line"><span class="flow-node">Mưa kéo dài / tiến độ chậm</span><span class="flow-arrow">→</span><span class="flow-node">捨て型枠</span><span class="flow-arrow">→</span><span class="flow-node">Giảm tháo khuôn / rút ngắn tiến độ</span></div></div>
+    <div class="formula-box"><div class="formula-line"><span class="flow-node">Thời tiết xấu</span><span class="flow-arrow">→</span><span class="flow-node">ガス圧接 → 機械式継手</span><span class="flow-arrow">→</span><span class="flow-node">Không phụ thuộc thời tiết</span></div></div>
+    <div class="formula-box"><div class="formula-line"><span class="flow-node">Quyết định cải tạo cửa bị chậm</span><span class="flow-arrow">→</span><span class="flow-node">かぶせ工法</span><span class="flow-arrow">→</span><span class="flow-node">Không tháo cửa cũ / giảm công việc</span></div></div>
+    <div class="formula-box"><div class="formula-line"><span class="flow-node">Nhiều ngày mưa</span><span class="flow-arrow">→</span><span class="flow-node">湿式 → 乾式石張り</span><span class="flow-arrow">→</span><span class="flow-node">Giảm dưỡng hộ vữa / giữ tiến độ</span></div></div>
+  </section>
+
+</div>
+
+<!-- =======================================================
+     APPROVED COMPONENT LIBRARY
+     Hidden. AI may copy/repeat these components into CONTENT.
+     Do not create a new visual system unless strictly necessary.
+     ======================================================= -->
+<template id="component-library">
+
+  <!-- FIGURE -->
+  <figure class="figure-card">
+    <img src="{{IMAGE_SOURCE}}" alt="{{IMAGE_ALT}}">
+    <figcaption>{{FIGURE_CAPTION}}</figcaption>
+  </figure>
+
+  <!-- MULTIPLE FIGURES -->
+  <div class="figure-grid">
+    <figure class="figure-card">
+      <img src="{{IMAGE_SOURCE_1}}" alt="{{IMAGE_ALT_1}}">
+      <figcaption>{{FIGURE_CAPTION_1}}</figcaption>
+    </figure>
+    <figure class="figure-card">
+      <img src="{{IMAGE_SOURCE_2}}" alt="{{IMAGE_ALT_2}}">
+      <figcaption>{{FIGURE_CAPTION_2}}</figcaption>
+    </figure>
+  </div>
+
+  <!-- TABLE -->
+  <div class="table-wrap">
+    <table>
+      <caption>{{TABLE_CAPTION}}</caption>
+      <thead>
+        <tr><th>{{HEADER_1}}</th><th>{{HEADER_2}}</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong class="kw">{{ROW_SUBJECT}}</strong></td>
+          <td><span class="relation">{{ROW_RECALL_CUE}}</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- NOTE -->
+  <div class="note-box">
+    <strong>{{NOTE_TITLE}}</strong>
+    <p>{{NOTE_CONTENT}}</p>
+  </div>
+
+  <!-- WARNING -->
+  <div class="warning-box">
+    <strong>{{WARNING_TITLE}}</strong>
+    <p>{{WARNING_CONTENT}}</p>
+  </div>
+
+  <!-- MEMORY -->
+  <div class="memory-box">
+    <strong>{{MEMORY_TITLE}}</strong>
+    <p>{{MEMORY_CONTENT}}</p>
+  </div>
+
+  <!-- FORMULA / FLOW -->
+  <div class="formula-box">
+    <div class="formula-line">
+      <span class="flow-node">{{NODE_1}}</span>
+      <span class="flow-arrow">→</span>
+      <span class="flow-node">{{NODE_2}}</span>
+      <span class="flow-arrow">→</span>
+      <span class="flow-node">{{NODE_3}}</span>
+    </div>
+  </div>
+
+</template>
+
+<script>
+(() => {
+  "use strict";
+
+  const root = document.documentElement;
+  const body = document.body;
+
+  const themeToggle = document.getElementById("theme-toggle");
+  const modeToggle = document.getElementById("mode-toggle");
+  const fontDown = document.getElementById("font-down");
+  const fontReset = document.getElementById("font-reset");
+  const fontUp = document.getElementById("font-up");
+
+  const tocToggle = document.getElementById("toc-toggle");
+  const tocClose = document.getElementById("toc-close");
+  const tocOverlay = document.getElementById("toc-overlay");
+  const tocDrawer = document.getElementById("toc-drawer");
+
+  const prevButton = document.getElementById("section-prev");
+  const nextButton = document.getElementById("section-next");
+
+  const FONT_LEVELS = [80, 90, 100, 110, 120, 130, 140];
+
+  function safeGet(key, fallback = null) {
+    try {
+      const value = localStorage.getItem(key);
+      return value === null ? fallback : value;
+    } catch (e) {
+      return fallback;
+    }
+  }
+
+  function safeSet(key, value) {
+    try {
+      localStorage.setItem(key, value);
+    } catch (e) {}
+  }
+
+  /* ---------- Theme ---------- */
+
+  function applyTheme(theme) {
+    const next = theme === "light" ? "light" : "dark";
+    root.dataset.theme = next;
+
+    if (themeToggle) {
+      const dark = next === "dark";
+      themeToggle.textContent = dark ? "☀" : "☾";
+      themeToggle.title = dark ? "Chuyển sang Light" : "Chuyển sang Dark";
+      themeToggle.setAttribute("aria-pressed", String(!dark));
+    }
+
+    safeSet("study-theme", next);
+  }
+
+  const initialTheme =
+    safeGet("study-theme") ||
+    (window.matchMedia &&
+     window.matchMedia("(prefers-color-scheme: dark)").matches
+      ? "dark"
+      : "light");
+
+  applyTheme(initialTheme);
+
+  themeToggle?.addEventListener("click", () => {
+    applyTheme(root.dataset.theme === "dark" ? "light" : "dark");
+  });
+
+  /* ---------- Full / Keywords ---------- */
+
+  function applyMode(mode) {
+    const keywords = mode === "keywords";
+    body.classList.toggle("keyword-focus", keywords);
+
+    if (modeToggle) {
+      modeToggle.textContent = keywords ? "📖" : "🎯";
+      modeToggle.title = keywords ? "Chuyển sang Full" : "Chuyển sang Keywords";
+      modeToggle.setAttribute("aria-pressed", String(keywords));
+    }
+
+    safeSet("study-mode", keywords ? "keywords" : "full");
+  }
+
+  applyMode(safeGet("study-mode", "full"));
+
+  modeToggle?.addEventListener("click", () => {
+    applyMode(body.classList.contains("keyword-focus") ? "full" : "keywords");
+  });
+
+  /* ---------- Font scale ---------- */
+
+  let fontScale = Number(safeGet("study-font-scale", "100"));
+  if (!FONT_LEVELS.includes(fontScale)) {
+    fontScale = 100;
+  }
+
+  function applyFontScale(scale) {
+    fontScale = FONT_LEVELS.includes(scale) ? scale : 100;
+
+    root.style.setProperty(
+      "--base-font-size",
+      `${16 * fontScale / 100}px`
+    );
+
+    if (fontReset) {
+      fontReset.textContent = `${fontScale}%`;
+      fontReset.title =
+        fontScale === 100
+          ? "Cỡ chữ hiện tại 100%"
+          : `Cỡ chữ hiện tại ${fontScale}%, bấm để về 100%`;
+    }
+
+    if (fontDown) {
+      fontDown.disabled = fontScale === FONT_LEVELS[0];
+    }
+
+    if (fontUp) {
+      fontUp.disabled = fontScale === FONT_LEVELS[FONT_LEVELS.length - 1];
+    }
+
+    safeSet("study-font-scale", String(fontScale));
+  }
+
+  applyFontScale(fontScale);
+
+  fontDown?.addEventListener("click", () => {
+    const index = FONT_LEVELS.indexOf(fontScale);
+    if (index > 0) {
+      applyFontScale(FONT_LEVELS[index - 1]);
+    }
+  });
+
+  fontUp?.addEventListener("click", () => {
+    const index = FONT_LEVELS.indexOf(fontScale);
+    if (index >= 0 && index < FONT_LEVELS.length - 1) {
+      applyFontScale(FONT_LEVELS[index + 1]);
+    }
+  });
+
+  fontReset?.addEventListener("click", () => {
+    applyFontScale(100);
+  });
+
+  /* ---------- TOC drawer ---------- */
+
+  function setToc(open) {
+    body.classList.toggle("toc-open", open);
+    tocToggle?.setAttribute("aria-expanded", String(open));
+    tocOverlay?.setAttribute("aria-hidden", String(!open));
+
+    if (open) {
+      requestAnimationFrame(() => tocClose?.focus());
+    }
+  }
+
+  tocToggle?.addEventListener("click", () => {
+    setToc(!body.classList.contains("toc-open"));
+  });
+
+  tocClose?.addEventListener("click", () => setToc(false));
+  tocOverlay?.addEventListener("click", () => setToc(false));
+
+  tocDrawer?.querySelectorAll("a[href^='#']").forEach(link => {
+    link.addEventListener("click", () => setToc(false));
+  });
+
+  document.addEventListener("keydown", event => {
+    if (event.key === "Escape" && body.classList.contains("toc-open")) {
+      setToc(false);
+      tocToggle?.focus();
+    }
+  });
+
+  /* ---------- Back / Next section ---------- */
+
+  const studySections = Array.from(
+    document.querySelectorAll("main .study-section[id]")
+  );
+
+  function currentSectionIndex() {
+    if (!studySections.length) return -1;
+
+    const referenceY = window.scrollY + Math.min(window.innerHeight * 0.32, 220);
+    let index = 0;
+
+    for (let i = 0; i < studySections.length; i++) {
+      if (studySections[i].offsetTop <= referenceY) {
+        index = i;
+      } else {
+        break;
+      }
+    }
+    return index;
+  }
+
+  function updateNavState() {
+    if (!studySections.length) {
+      if (prevButton) prevButton.disabled = true;
+      if (nextButton) nextButton.disabled = true;
+      return;
+    }
+
+    const index = currentSectionIndex();
+    if (prevButton) prevButton.disabled = index <= 0;
+    if (nextButton) nextButton.disabled = index >= studySections.length - 1;
+  }
+
+  function moveSection(delta) {
+    const index = currentSectionIndex();
+    const targetIndex = Math.max(
+      0,
+      Math.min(studySections.length - 1, index + delta)
+    );
+
+    studySections[targetIndex]?.scrollIntoView({
+      behavior: "smooth",
+      block: "start"
+    });
+  }
+
+  prevButton?.addEventListener("click", () => moveSection(-1));
+  nextButton?.addEventListener("click", () => moveSection(1));
+
+  let ticking = false;
+  window.addEventListener("scroll", () => {
+    if (!ticking) {
+      requestAnimationFrame(() => {
+        updateNavState();
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }, { passive: true });
+
+  window.addEventListener("resize", updateNavState);
+  updateNavState();
+})();
+</script>
+
+</body>
+</html>

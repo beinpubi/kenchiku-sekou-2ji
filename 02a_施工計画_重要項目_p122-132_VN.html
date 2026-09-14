@@ -1,0 +1,1692 @@
+<!DOCTYPE html>
+
+<html data-study-mode="full" data-theme="dark" lang="vi">
+<head>
+<meta charset="UTF-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<meta content="dark light" name="color-scheme"/>
+<title>施工計画 重要項目｜Book page 123-132｜Bản dịch tiếng Việt</title>
+
+<style>
+:root {
+  --font-vi: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  --font-ja: "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic UI", "Yu Gothic", Meiryo, sans-serif;
+  --base-font-size: 16px;
+  color-scheme: dark;
+}
+
+html[data-theme="dark"] {
+  --bg: #101318;
+  --surface: #171B22;
+  --surface-alt: #1D232C;
+  --text: #E3E7ED;
+  --text-muted: #9DA8B5;
+  --focus-muted: #68717D;
+  --heading: #F4F7FA;
+  --border: #323A46;
+  --link: #7CC4FF;
+  --original-bg: #15181E;
+  --translation-bg: #16202A;
+  --note-bg: #1C2028;
+  --memory-bg: #20231C;
+  --keyword: #74D7FF;
+  --keyword-bg: rgba(75, 190, 255, 0.10);
+  --critical-bg: #594613;
+  --critical-text: #FFE39A;
+  --trap: #FF8585;
+  --trap-underline: #FF5F5F;
+  --relation-bg: rgba(139, 126, 255, 0.12);
+  --relation-border: #8F86FF;
+  --shadow: rgba(0, 0, 0, .28);
+  --dock-bg: rgba(23, 27, 34, .94);
+  --overlay: rgba(0, 0, 0, .48);
+  color-scheme: dark;
+}
+
+html[data-theme="light"] {
+  --bg: #F4F6F8;
+  --surface: #FFFFFF;
+  --surface-alt: #EEF1F5;
+  --text: #20242A;
+  --text-muted: #626B77;
+  --focus-muted: #A0A7B0;
+  --heading: #111418;
+  --border: #CCD2DA;
+  --link: #0068B5;
+  --original-bg: #F8FAFC;
+  --translation-bg: #EDF7FC;
+  --note-bg: #F2F4F7;
+  --memory-bg: #F6F7E9;
+  --keyword: #006B9F;
+  --keyword-bg: #E4F4FC;
+  --critical-bg: #FFF0B8;
+  --critical-text: #654900;
+  --trap: #B42318;
+  --trap-underline: #D92D20;
+  --relation-bg: #EEEBFF;
+  --relation-border: #6C5CE7;
+  --shadow: rgba(31, 38, 49, .12);
+  --dock-bg: rgba(255, 255, 255, .94);
+  --overlay: rgba(19, 26, 35, .28);
+  color-scheme: light;
+}
+
+* { box-sizing: border-box; }
+html {
+  scroll-behavior: smooth;
+  font-size: var(--base-font-size);
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-vi);
+  font-size: 1rem;
+  line-height: 1.72;
+  padding-bottom: 11rem;
+}
+:lang(vi), .translation, .translation-cell, .vn-topic, .vn-answer { font-family: var(--font-vi); }
+:lang(ja), .original, .original-cell, .jp-topic, .jp-answer { font-family: var(--font-ja); }
+strong, b { font-weight: 700; }
+a { color: var(--link); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+a:hover { text-decoration-thickness: 2px; }
+h1, h2, h3, h4 { color: var(--heading); line-height: 1.35; }
+h1 { font-size: clamp(1.8rem, 4vw, 2.8rem); margin: 0 0 .55rem; }
+h2 { font-size: clamp(1.38rem, 2.8vw, 2rem); margin: 0; }
+h3 { font-size: clamp(1.12rem, 2vw, 1.48rem); }
+h4 { font-size: 1.02rem; }
+[id] { scroll-margin-top: 22px; }
+p { margin: .62rem 0; }
+ul, ol { padding-left: 1.5rem; }
+li { margin: .34rem 0; }
+
+body > main,
+body > .page-shell {
+  width: min(1320px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 26px 0 70px;
+}
+body > .page-shell > main { width: 100%; margin: 0; padding: 0; }
+
+.hero {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  box-shadow: 0 8px 28px var(--shadow);
+  padding: clamp(22px, 4vw, 42px);
+  margin: 0 0 24px;
+}
+.eyebrow, .hero-subtitle, .subtitle, .meta-line, .source-ref, .mini-label, .small, .meta-label {
+  color: var(--text-muted);
+}
+.eyebrow { font-size: .82rem; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; }
+.hero-subtitle, .subtitle { font-size: 1.08rem; }
+.source-ref, .mini-label, .small, .meta-label { font-size: .86rem; }
+
+.summary-grid, .meta-grid, .mini-grid, .coverage {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: .72rem;
+  margin-top: 1rem;
+}
+.summary-card, .summary-item, .meta-item, .mini-card, .coverage > div {
+  background: var(--surface-alt);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: .75rem .85rem;
+}
+.summary-item b, .summary-card strong { color: var(--heading); }
+.source-list { color: var(--text-muted); }
+
+body > main > section:not(#toc),
+body > .page-shell > section:not(#toc),
+body > .page-shell > main > section,
+.topic,
+.aggregate-section {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  box-shadow: 0 7px 22px var(--shadow);
+  padding: clamp(18px, 3vw, 30px);
+  margin: 22px 0;
+}
+.subsection { margin: 1.7rem 0 2.1rem; }
+.subsection-title, .section-head {
+  border-bottom: 1px solid var(--border);
+  padding-bottom: .65rem;
+  margin-bottom: 1rem;
+}
+.section-head { display: flex; gap: 12px; align-items: baseline; justify-content: space-between; }
+
+.study-grid, .lang-grid, .bilingual-note {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 1rem;
+  align-items: start;
+}
+.study-card, .lang-card, .note-pane {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  min-width: 0;
+  background: var(--surface-alt);
+}
+.study-card.original, .lang-card.original, .original-cell, .jp-topic, .jp-answer { background: var(--original-bg); }
+.study-card.translation, .lang-card.translation, .translation-cell, .vn-topic, .vn-answer { background: var(--translation-bg); }
+.card-title {
+  padding: .62rem .85rem;
+  background: var(--surface-alt);
+  border-bottom: 1px solid var(--border);
+  color: var(--heading);
+  font-weight: 700;
+  letter-spacing: .02em;
+}
+.card-body, .recall-source { padding: .9rem 1rem; }
+.card-body.recall-source { padding: 1rem 1.05rem; }
+.item-block { border-top: 1px dashed var(--border); padding-top: .72rem; margin-top: .72rem; }
+.item-block:first-child { border-top: 0; padding-top: 0; margin-top: 0; }
+.item-label { font-weight: 700; color: var(--heading); margin-right: .35em; }
+
+.table-wrap { overflow-x: auto; margin: .9rem 0; border: 1px solid var(--border); border-radius: 10px; }
+table { width: 100%; border-collapse: collapse; min-width: 650px; background: var(--surface); }
+th, td { border: 1px solid var(--border); padding: .62rem .7rem; vertical-align: top; text-align: left; }
+th { background: var(--surface-alt); color: var(--heading); font-weight: 700; }
+caption { text-align: left; font-weight: 700; color: var(--heading); padding: .58rem .7rem; background: var(--surface-alt); caption-side: top; }
+.compact th, .compact td { padding: .48rem .55rem; }
+.study-table { min-width: 1040px; }
+.study-table .meta { white-space: nowrap; text-align: center; background: var(--surface-alt); }
+.glossary-table { min-width: 920px; }
+.memory-table, .number-table, .num-table { min-width: 760px; }
+
+.summary-box, .note-box, .note, .info-box, .background-box, .exam-note, .memory-box, .warning-box, .warning, .figure-box, .figure-card {
+  border: 1px solid var(--border);
+  border-left-width: 4px;
+  border-radius: 10px;
+  padding: .9rem 1rem;
+  margin: 1rem 0;
+  background: var(--note-bg);
+}
+.summary-box, .note-box, .note, .info-box, .background-box { border-left-color: var(--link); }
+.memory-box, .exam-note { background: var(--memory-bg); border-left-color: var(--critical-text); }
+.warning-box, .warning { border-left-color: var(--trap); }
+.figure-box, .figure-card { border-left-color: var(--relation-border); }
+.figure-card { overflow: hidden; padding: 0; }
+.figure-card img { display: block; width: 100%; height: auto; background: #fff; }
+.figure-card figcaption, .figure-explain { padding: .8rem 1rem; }
+
+.formula, .formula-line {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .45rem;
+  align-items: center;
+  padding: .75rem;
+  background: var(--surface-alt);
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  margin: .75rem 0;
+}
+.flow-node { border: 1px solid var(--border); border-radius: 7px; padding: .35rem .55rem; background: var(--surface); font-weight: 700; }
+.flow-arrow { color: var(--text-muted); font-weight: 700; }
+
+.kw {
+  font-weight: 700;
+  color: var(--keyword);
+  background: var(--keyword-bg);
+  padding: .02em .16em;
+  border-radius: .2em;
+}
+.critical {
+  font-weight: 700;
+  color: var(--critical-text);
+  background: var(--critical-bg);
+  padding: .04em .22em;
+  border-radius: .22em;
+}
+.trap {
+  font-weight: 700;
+  color: var(--trap);
+  text-decoration-line: underline;
+  text-decoration-color: var(--trap-underline);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+}
+.relation {
+  font-weight: 600;
+  color: var(--text);
+  background: var(--relation-bg);
+  border-bottom: 2px solid var(--relation-border);
+  padding: .02em .14em;
+}
+
+html[data-study-mode="keywords"] .recall-source { color: var(--focus-muted); }
+html[data-study-mode="keywords"] .recall-source .kw { color: var(--keyword); background: var(--keyword-bg); }
+html[data-study-mode="keywords"] .recall-source .critical { color: var(--critical-text); background: var(--critical-bg); }
+html[data-study-mode="keywords"] .recall-source .trap { color: var(--trap); }
+html[data-study-mode="keywords"] .recall-source .relation { color: var(--text); background: var(--relation-bg); }
+html[data-study-mode="keywords"] .recall-source th,
+html[data-study-mode="keywords"] .recall-source .card-title,
+html[data-study-mode="keywords"] .recall-source .item-label { color: var(--heading); }
+
+.backlink, .back-toc, .back { display: inline-block; margin-top: .8rem; font-size: .9rem; }
+
+/* Compact study controls */
+.nav-dock-left,
+.settings-dock-right {
+  position: fixed;
+  bottom: max(14px, env(safe-area-inset-bottom));
+  z-index: 1900;
+  padding: 5px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--dock-bg);
+  box-shadow: 0 8px 24px var(--shadow);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  user-select: none;
+}
+
+.nav-dock-left {
+  left: max(10px, env(safe-area-inset-left));
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.settings-dock-right {
+  right: max(10px, env(safe-area-inset-right));
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 4px;
+}
+
+.nav-dock-left button,
+.nav-dock-left a,
+.settings-dock-right button,
+.settings-dock-right a {
+  width: 38px;
+  height: 38px;
+  min-width: 38px;
+  min-height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface-alt);
+  color: var(--text);
+  font-family: var(--font-vi);
+  font-size: .96rem;
+  font-weight: 700;
+  line-height: 1;
+  text-decoration: none;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+.nav-dock-left button:active,
+.nav-dock-left a:active,
+.settings-dock-right button:active,
+.settings-dock-right a:active {
+  transform: translateY(1px);
+}
+
+.nav-dock-left button:hover,
+.nav-dock-left a:hover,
+.settings-dock-right button:hover,
+.settings-dock-right a:hover {
+  border-color: var(--link);
+}
+
+.settings-dock-right .font-reset {
+  font-size: .66rem;
+  letter-spacing: -.03em;
+}
+
+.settings-dock-right .mode-toggle {
+  font-size: 1.02rem;
+}
+
+@media (pointer: coarse) {
+  .nav-dock-left button,
+  .settings-dock-right button {
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+/* TOC drawer */
+#toc {
+  position: fixed !important;
+  left: 0 !important;
+  top: 0 !important;
+  bottom: 0 !important;
+  z-index: 2100 !important;
+  width: min(82vw, 390px) !important;
+  max-height: 100dvh !important;
+  overflow-y: auto !important;
+  margin: 0 !important;
+  padding: 74px 20px 28px !important;
+  background: var(--surface) !important;
+  border: 0 !important;
+  border-right: 1px solid var(--border) !important;
+  border-radius: 0 16px 16px 0 !important;
+  box-shadow: 10px 0 30px var(--shadow) !important;
+  transform: translateX(-105%);
+  transition: transform .2s ease;
+}
+body.toc-open #toc { transform: translateX(0); }
+#toc .toc-grid { columns: 1 !important; display: block !important; }
+#toc ol { margin-top: .35rem; }
+.toc-drawer-head {
+  position: sticky;
+  top: -74px;
+  margin: -74px -20px 18px;
+  padding: 13px 14px;
+  min-height: 58px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  z-index: 2;
+}
+.toc-drawer-head strong { color: var(--heading); }
+.toc-close {
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  background: var(--surface-alt);
+  color: var(--text);
+  font: 700 1.25rem var(--font-vi);
+  cursor: pointer;
+}
+.toc-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  background: var(--overlay);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .2s ease;
+}
+body.toc-open .toc-overlay { opacity: 1; pointer-events: auto; }
+body.toc-open { overflow: hidden; }
+
+@media (max-width: 900px) {
+  .study-grid, .lang-grid, .bilingual-note { grid-template-columns: 1fr; }
+  body > main, body > .page-shell { width: min(100% - 20px, 780px); padding-top: 14px; }
+  .section-head { display: block; }
+  .source-ref { display: block; margin-top: .45rem; }
+  table { min-width: 620px; }
+}
+
+@media (max-width: 560px) {
+  body { font-size: 1rem; }
+  body > main, body > .page-shell { width: calc(100% - 14px); }
+  .hero { padding: 1rem; border-radius: 12px; }
+  body > main > section:not(#toc),
+  body > .page-shell > section:not(#toc),
+  body > .page-shell > main > section,
+  .topic, .aggregate-section { padding: 1rem; border-radius: 12px; }
+  .study-dock { grid-template-columns: repeat(3, 44px); }
+  .study-dock button, .study-dock a { width: 44px; height: 44px; }
+}
+
+@media (orientation: landscape) and (pointer: coarse) {
+  .study-dock {
+    left: max(20px, env(safe-area-inset-left));
+    bottom: max(20px, env(safe-area-inset-bottom));
+  }
+}
+
+@media print {
+  .nav-dock-left, .settings-dock-right { display: none !important; }
+  :root,
+  html[data-theme="dark"],
+  html[data-theme="light"] {
+    --bg: #FFFFFF;
+    --surface: #FFFFFF;
+    --surface-alt: #F1F3F5;
+    --text: #111111;
+    --text-muted: #555555;
+    --heading: #000000;
+    --border: #B8BEC6;
+    --original-bg: #FFFFFF;
+    --translation-bg: #F7FBFD;
+    --note-bg: #F7F7F7;
+    --memory-bg: #FAFAF0;
+    --keyword: #005A86;
+    --keyword-bg: #E4F4FC;
+    --critical-bg: #FFF0B8;
+    --critical-text: #4A3600;
+    --trap: #9E1B12;
+    --trap-underline: #9E1B12;
+    --relation-bg: #F0EDFF;
+    --relation-border: #5B4FD6;
+    --shadow: transparent;
+  }
+  body { background: #fff; color: #111; font-size: 11pt; padding-bottom: 0; }
+  .study-dock, .toc-overlay, .toc-drawer-head { display: none !important; }
+  #toc {
+    position: static !important;
+    transform: none !important;
+    width: auto !important;
+    max-height: none !important;
+    padding: 1rem !important;
+    border: 1px solid var(--border) !important;
+    border-radius: 10px !important;
+    box-shadow: none !important;
+    margin: 1rem 0 !important;
+  }
+  body > main, body > .page-shell { width: 100%; padding: 0; }
+  .hero, .study-card, .lang-card, .summary-box, .note-box, .note, .memory-box, .warning-box, .figure-box, .figure-card { break-inside: avoid; }
+  a { color: #000; text-decoration: none; }
+  .backlink, .back-toc, .back { display: none; }
+}
+</style><script>
+(function () {
+  const root = document.documentElement;
+  try {
+    const savedTheme = localStorage.getItem('study-theme');
+    const systemDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    root.dataset.theme = savedTheme || (systemDark ? 'dark' : 'light');
+
+    const savedMode = localStorage.getItem('study-mode');
+    root.dataset.studyMode = savedMode === 'keywords' ? 'keywords' : 'full';
+
+    const savedScale = Number(localStorage.getItem('study-font-scale'));
+    const valid = [80, 90, 100, 110, 120, 130, 140];
+    const scale = valid.includes(savedScale) ? savedScale : 100;
+    root.style.setProperty('--base-font-size', (16 * scale / 100) + 'px');
+  } catch (e) {
+    root.dataset.theme = 'dark';
+    root.dataset.studyMode = 'full';
+  }
+})();
+</script></head>
+<body><nav aria-label="Điều hướng học tập" class="nav-dock-left">
+<button aria-controls="toc" aria-expanded="false" aria-label="Mục lục" id="toc-toggle" title="Mục lục" type="button">☰</button>
+<button aria-label="Mục trước" id="section-prev" title="Back" type="button">‹</button>
+<button aria-label="Mục tiếp theo" id="section-next" title="Next" type="button">›</button>
+</nav>
+<nav aria-label="Thiết lập hiển thị" class="settings-dock-right">
+<button aria-label="Đổi Dark/Light" aria-pressed="false" id="theme-toggle" title="Đổi Dark/Light" type="button">☀</button>
+<button aria-label="Đổi Full/Keywords" aria-pressed="false" class="mode-toggle" id="mode-toggle" title="Đổi Full/Keywords" type="button">🎯</button>
+<button aria-label="Đặt lại cỡ chữ 100%" class="font-reset" id="font-reset" title="Đặt lại cỡ chữ 100%" type="button">100%</button>
+<button aria-label="Giảm cỡ chữ" id="font-down" title="Giảm cỡ chữ" type="button">A−</button>
+<button aria-label="Tăng cỡ chữ" id="font-up" title="Tăng cỡ chữ" type="button">A+</button>
+</nav><div aria-hidden="true" class="toc-overlay" id="toc-overlay"></div>
+
+<div class="page-shell">
+<header class="hero" id="top">
+<h1>施工計画 技術検定試験 重要項目集</h1>
+<p class="hero-subtitle">Bản học song ngữ Nhật-Việt, Book page 123-132</p>
+<div class="meta-grid">
+<div class="meta-item"><span class="meta-label">PDF nguồn</span>02a_施工計画_重要項目_p122-132.pdf</div>
+<div class="meta-item"><span class="meta-label">File ID</span>F019</div>
+<div class="meta-item"><span class="meta-label">Phạm vi xuất</span>Book page 123-132 / PDF P2-P11</div>
+<div class="meta-item"><span class="meta-label">Chế độ</span>Song ngữ, Dark/Light, Full/Keywords, offline</div>
+</div>
+</header>
+<nav aria-label="Mục lục" class="toc" id="toc"><div class="toc-drawer-head"><strong>Mục lục</strong><button aria-label="Đóng mục lục" class="toc-close" id="toc-close" type="button">×</button></div>
+<h2>Mục lục</h2>
+<ol>
+<li><a href="#trend-10y">Xu hướng 10 năm gần nhất</a></li>
+<li><a href="#sec-2-1-1">2.1.1 仮設設置計画の留意点</a>
+<ol>
+<li><a href="#sec-yamadome-wall">山留め壁の特徴</a></li>
+<li><a href="#sec-yamadome-support">山留め支保工の選定・特徴</a></li>
+<li><a href="#sec-yamadome-check">山留め支保工設置と組立時の点検</a></li>
+<li><a href="#sec-noriire">乗入れ構台</a></li>
+<li><a href="#sec-niuke">荷受け構台</a></li>
+<li><a href="#sec-gate">ゲート（車両の出入口）</a></li>
+<li><a href="#sec-temp-electric">仮設電気設備</a></li>
+<li><a href="#sec-temp-road">仮設道路</a></li>
+<li><a href="#sec-temp-office">仮設事務所</a></li>
+<li><a href="#sec-hoarding">仮囲い</a></li>
+<li><a href="#sec-lifting">固定式クレーン・建設用リフト等</a></li>
+<li><a href="#sec-scaffolds">外部足場・つり足場</a></li>
+<li><a href="#sec-wedge-scaffold">くさび緊結式足場</a></li>
+<li><a href="#sec-mobile-crane">移動式クレーン</a></li>
+</ol>
+</li>
+<li><a href="#sec-2-1-2">2.1.2 現場労働者の災害防止対策</a>
+<ol>
+<li><a href="#sec-fall">足場等からの墜落災害防止</a></li>
+<li><a href="#sec-frame-collapse">外部枠組足場の倒壊防止</a></li>
+<li><a href="#sec-flying-falling">飛来・落下</a></li>
+<li><a href="#sec-collapse-topple">崩壊・倒壊・転倒</a></li>
+<li><a href="#sec-arc-weld">交流アーク溶接機による感電</a></li>
+<li><a href="#sec-third-party">第三者災害</a></li>
+<li><a href="#sec-heavy-equipment">重機関連災害</a></li>
+</ol>
+</li>
+<li><a href="#sec-2-1-3">2.1.3 作業開始前の安全点検事項</a>
+<ol>
+<li><a href="#sec-prestart-machinery">機械の点検事項</a></li>
+<li><a href="#sec-welding-diagram">交流アーク溶接機の構成</a></li>
+<li><a href="#sec-prestart-equipment">設備の点検事項</a></li>
+</ol>
+</li>
+<li><a href="#terms">Thuật ngữ chuyên môn</a></li>
+<li><a href="#background">Kiến thức nền cần biết</a></li>
+<li><a href="#memory">Điểm cần nhớ và mẹo nhớ</a></li>
+</ol>
+</nav>
+<section aria-label="Phạm vi nguồn" class="summary-box">
+<h3>Phạm vi nội dung</h3>
+<div class="coverage">
+<div><strong>Book 123</strong><br/>Xu hướng và định hướng ôn tập.</div>
+<div><strong>Book 124-128</strong><br/>Kế hoạch bố trí và an toàn công trình tạm.</div>
+<div><strong>Book 129-131</strong><br/>Biện pháp phòng ngừa tai nạn lao động.</div>
+<div><strong>Book 132</strong><br/>Kiểm tra an toàn trước khi làm việc.</div>
+</div>
+</section>
+<main id="lesson">
+<section id="trend-10y">
+<h2>最新10年間の施工計画の傾向と対策</h2>
+<p class="source-ref">Nguồn: Book page 123</p>
+<div class="study-grid">
+<article class="study-card original" lang="ja">
+<h3 class="card-title">原文</h3>
+<div class="recall-source" lang="ja">
+<h4>施工計画分野の問題と傾向</h4>
+<div class="table-wrap">
+<table class="compact">
+<caption>最新10年間の施工計画分野の問題</caption>
+<thead><tr><th>年度</th><th>出題内容</th></tr></thead>
+<tbody>
+<tr><td>令和7年度</td><td><strong class="kw">仮設物の設置計画</strong>（検討事項とその理由）<br/><span class="relation">①仮設ゴンドラ　②起伏式（ジブ）タワークレーン　③枠組足場を用いた棚足場</span></td></tr>
+<tr><td>令和6年度</td><td><strong class="kw">設備・機械の安全な使用方法</strong><br/><span class="relation">①バックホウ　②仮設電力設備　③高所作業車</span></td></tr>
+<tr><td>令和5年度</td><td><strong class="kw">仮設物の設置計画</strong>（留意事項と検討事項）<br/><span class="relation">①くさび緊結式足場　②建設用リフト　③場内仮設道路</span></td></tr>
+<tr><td>令和4年度</td><td><strong class="kw">状況・作業内容と災害防止対策</strong><br/><span class="relation">①墜落・転落による災害　②崩壊・倒壊による災害　③移動式クレーンによる災害</span></td></tr>
+<tr><td>令和3年度</td><td><strong class="kw">仮設物の設置計画</strong>（留意事項と検討事項）<br/><span class="relation">①仮設ゴンドラ　②場内仮設事務所　③工事ゲート（車両出入口）</span></td></tr>
+<tr><td>令和2年度</td><td><strong class="kw">設備・機械の安全な使用方法</strong><br/><span class="relation">①外部枠組足場　②コンクリートポンプ車　③建設用リフト</span></td></tr>
+<tr><td>令和元年度</td><td><strong class="kw">仮設物の設置計画の作成</strong><br/><span class="relation">①荷受け構台　②鋼板製仮囲い　③工事用エレベーター</span></td></tr>
+<tr><td>平成30年度</td><td><strong class="kw">作業内容・状況と災害防止対策</strong><br/><span class="relation">①墜落・転落による災害　②電気による災害　③車両系建設機械による災害</span></td></tr>
+<tr><td>平成29年度</td><td><strong class="kw">設置計画の作成</strong><br/><span class="relation">①つり足場　②起伏式（ジブ）タワークレーン　③仮設ゴンドラ</span></td></tr>
+<tr><td>平成28年度</td><td><strong class="kw">設備・機械の安全な使用方法</strong><br/><span class="relation">①ロングスパンエレベーター　②高所作業車　③バックホウ</span></td></tr>
+</tbody>
+</table>
+</div>
+<p>最新10年間の施工計画分野の出題内容は、いずれも、足場・型枠・構台・山留め・仮囲い・仮設道路・仮設電気設備・クレーン・ゴンドラなどの<strong class="kw">仮設物の設置計画上の留意事項・検討事項</strong>（検討を要する理由を含む場合もある）か、<strong class="kw">仮設物の組立・解体時の安全管理</strong>か、<strong class="kw">災害発生のおそれがある状況や作業内容の労働災害防止対策</strong>である。施工計画分野における年度別の主要テーマ（出題内容）を示すと、下表のようになる（概ね一定の規則に従っている）。</p>
+<div class="table-wrap">
+<table class="compact">
+<caption>最新10年間の施工計画分野の主要テーマ</caption>
+<thead><tr><th>分野＼年度</th><th>R7</th><th>R6</th><th>R5</th><th>R4</th><th>R3</th><th>R2</th><th>R元</th><th>H30</th><th>H29</th><th>H28</th><th>合計</th></tr></thead>
+<tbody>
+<tr><td><strong class="kw">仮設物の設置計画</strong></td><td>●</td><td></td><td>●</td><td></td><td>●</td><td></td><td>●</td><td></td><td>●</td><td></td><td>5</td></tr>
+<tr><td><strong class="kw">労働災害防止対策</strong></td><td></td><td></td><td></td><td>●</td><td></td><td></td><td></td><td>●</td><td></td><td></td><td>2</td></tr>
+<tr><td><strong class="kw">仮設物の安全管理</strong></td><td></td><td>●</td><td></td><td></td><td></td><td>●</td><td></td><td></td><td></td><td>●</td><td>3</td></tr>
+</tbody>
+</table>
+</div>
+<p>本年度は、<strong class="kw">労働災害防止対策</strong>のテーマについて、<span class="relation">災害が発生するおそれのある作業内容とその災害防止対策</span>を記述できるように整理しておく必要がある。また、<strong class="kw">仮設物の安全管理</strong>のテーマについて、各種の設備や機械を安全に使用するための留意事項（可能であれば留意を要する理由を含む）を記述できるように整理しておく必要がある。すなわち、<strong class="kw">令和4年度と平成30年度の過去問題</strong>については、特に重点的に学習しておく必要があると思われる。</p>
+</div>
+</article>
+<article class="study-card translation" lang="vi">
+<h3 class="card-title">Bản dịch tiếng Việt</h3>
+<div class="recall-source">
+<h4>Dạng câu hỏi và xu hướng của lĩnh vực Kế hoạch thi công</h4>
+<div class="table-wrap">
+<table class="compact">
+<caption>Các câu hỏi thuộc lĩnh vực Kế hoạch thi công trong 10 năm gần nhất</caption>
+<thead><tr><th>Năm</th><th>Nội dung ra đề</th></tr></thead>
+<tbody>
+<tr><td>Reiwa 7, 2025</td><td><strong class="kw">Kế hoạch bố trí công trình tạm</strong> (hạng mục cần xem xét và lý do)<br/><span class="relation">① Gondola tạm　② Cẩu tháp cần nâng hạ kiểu jib　③ Giàn giáo sàn sử dụng giàn giáo khung</span></td></tr>
+<tr><td>Reiwa 6, 2024</td><td><strong class="kw">Phương pháp sử dụng thiết bị, máy móc an toàn</strong><br/><span class="relation">① Máy đào gầu nghịch　② Thiết bị điện tạm　③ Xe làm việc trên cao</span></td></tr>
+<tr><td>Reiwa 5, 2023</td><td><strong class="kw">Kế hoạch bố trí công trình tạm</strong> (điểm cần lưu ý và hạng mục cần xem xét)<br/><span class="relation">① Giàn giáo liên kết kiểu nêm　② Vận thăng xây dựng　③ Đường tạm trong công trường</span></td></tr>
+<tr><td>Reiwa 4, 2022</td><td><strong class="kw">Tình trạng/nội dung công việc và biện pháp phòng ngừa tai nạn</strong><br/><span class="relation">① Tai nạn rơi ngã　② Tai nạn sụp đổ, đổ sập　③ Tai nạn do cẩu di động</span></td></tr>
+<tr><td>Reiwa 3, 2021</td><td><strong class="kw">Kế hoạch bố trí công trình tạm</strong> (điểm cần lưu ý và hạng mục cần xem xét)<br/><span class="relation">① Gondola tạm　② Văn phòng tạm trong công trường　③ Cổng công trường dành cho xe ra vào</span></td></tr>
+<tr><td>Reiwa 2, 2020</td><td><strong class="kw">Phương pháp sử dụng thiết bị, máy móc an toàn</strong><br/><span class="relation">① Giàn giáo khung bên ngoài　② Xe bơm bê tông　③ Vận thăng xây dựng</span></td></tr>
+<tr><td>Reiwa 1, 2019</td><td><strong class="kw">Lập kế hoạch bố trí công trình tạm</strong><br/><span class="relation">① Sàn tiếp nhận vật liệu　② Hàng rào tạm bằng tấm thép　③ Thang máy công trường</span></td></tr>
+<tr><td>Heisei 30, 2018</td><td><strong class="kw">Nội dung/tình trạng công việc và biện pháp phòng ngừa tai nạn</strong><br/><span class="relation">① Tai nạn rơi ngã　② Tai nạn do điện　③ Tai nạn do máy xây dựng dạng xe</span></td></tr>
+<tr><td>Heisei 29, 2017</td><td><strong class="kw">Lập kế hoạch bố trí</strong><br/><span class="relation">① Giàn giáo treo　② Cẩu tháp cần nâng hạ kiểu jib　③ Gondola tạm</span></td></tr>
+<tr><td>Heisei 28, 2016</td><td><strong class="kw">Phương pháp sử dụng thiết bị, máy móc an toàn</strong><br/><span class="relation">① Long-span elevator　② Xe làm việc trên cao　③ Máy đào gầu nghịch</span></td></tr>
+</tbody>
+</table>
+</div>
+<p>Nội dung ra đề của lĩnh vực Kế hoạch thi công trong 10 năm gần nhất đều thuộc một trong ba nhóm: <strong class="kw">điểm cần lưu ý và hạng mục cần xem xét trong kế hoạch bố trí công trình tạm</strong>, <strong class="kw">quản lý an toàn khi lắp dựng hoặc tháo dỡ công trình tạm</strong>, hoặc <strong class="kw">biện pháp phòng ngừa tai nạn lao động đối với tình trạng và công việc có nguy cơ</strong>.</p>
+<div class="table-wrap">
+<table class="compact">
+<caption>Các chủ đề chính trong 10 năm gần nhất</caption>
+<thead><tr><th>Lĩnh vực＼Năm</th><th>R7</th><th>R6</th><th>R5</th><th>R4</th><th>R3</th><th>R2</th><th>R1</th><th>H30</th><th>H29</th><th>H28</th><th>Tổng</th></tr></thead>
+<tbody>
+<tr><td><strong class="kw">Kế hoạch bố trí công trình tạm</strong></td><td>●</td><td></td><td>●</td><td></td><td>●</td><td></td><td>●</td><td></td><td>●</td><td></td><td>5</td></tr>
+<tr><td><strong class="kw">Biện pháp phòng ngừa tai nạn lao động</strong></td><td></td><td></td><td></td><td>●</td><td></td><td></td><td></td><td>●</td><td></td><td></td><td>2</td></tr>
+<tr><td><strong class="kw">Quản lý an toàn công trình tạm</strong></td><td></td><td>●</td><td></td><td></td><td></td><td>●</td><td></td><td></td><td></td><td>●</td><td>3</td></tr>
+</tbody>
+</table>
+</div>
+<p>Đối với năm thi hiện tại, cần hệ thống chủ đề <strong class="kw">biện pháp phòng ngừa tai nạn lao động</strong> sao cho có thể trình bày được <span class="relation">nội dung công việc có nguy cơ và biện pháp phòng ngừa tương ứng</span>. Đối với <strong class="kw">quản lý an toàn công trình tạm</strong>, cần trình bày được các điểm cần lưu ý khi sử dụng thiết bị, máy móc và, nếu có thể, cả lý do. Sách nhận định cần tập trung đặc biệt vào <strong class="kw">đề Reiwa 4 và Heisei 30</strong>.</p>
+</div>
+</article>
+</div>
+<div class="figure-box">
+<strong>Ý nghĩa bảng xu hướng:</strong> các chủ đề được luân phiên theo quy luật tương đối ổn định. Tác giả dùng quy luật đó để chỉ định hai nhóm cần chuẩn bị: 労働災害防止対策 và 仮設物の安全管理, trong đó đề R4 và H30 được nêu là trọng điểm.
+        </div>
+<a class="backlink" href="#toc">↑ Mục lục</a>
+</section>
+<section id="sec-2-1-1">
+<h2>2.1.1 仮設設置計画の留意点</h2>
+<p class="source-ref">Nguồn: Book page 124-128</p>
+<div class="study-grid">
+<article class="study-card original" lang="ja"><h3 class="card-title">原文</h3><div class="recall-source" lang="ja"><p>仮設には、<strong class="kw">山留め、乗入れ構台、足場、仮設事務所、ゲート、揚重機、移動式クレーン</strong>などがあり、これらの仮設の設置計画上の留意点は、次のようである。</p></div></article>
+<article class="study-card translation" lang="vi"><h3 class="card-title">Bản dịch tiếng Việt</h3><div class="recall-source"><p>Công trình tạm bao gồm <strong class="kw">hệ chống giữ đất, sàn cho xe đi vào, giàn giáo, văn phòng tạm, cổng công trường, thiết bị nâng hạ và cẩu di động</strong> v.v. Các điểm cần lưu ý khi lập kế hoạch bố trí được trình bày dưới đây.</p></div></article>
+</div>
+</section>
+<section id="sec-yamadome-wall">
+<h3>(1) 山留め壁の特徴</h3>
+<p class="source-ref">Nguồn: Book page 124</p>
+<div class="study-grid">
+<article class="study-card original" lang="ja">
+<h4 class="card-title">原文</h4>
+<div class="recall-source" lang="ja">
+<p><strong class="kw">鋼矢板、親杭横矢板</strong>のように、既製の矢板を用いる山留め壁工法は、通常、<strong class="kw">根切り深さ</strong><mark class="critical">5m以内</mark>の場合に用いられる。特に<strong class="kw">親杭横矢板</strong>は、<span class="trap">ヒービングやボイリングを防止することができない</span>。<strong class="kw">鋼矢板</strong>はヒービング、ボイリングを防止できるが、<span class="trap">変位が大きく</span>、鋼矢板、切梁、腹起し等の応力や変位を測定管理する必要がある。</p>
+<p>鋼矢板と比較して、<strong class="kw">場所打ち柱列壁やソイルセメント柱列壁</strong>は、通常、<strong class="kw">根切深さ</strong><mark class="critical">5m以上</mark>に用いられ、いずれも、ヒービング、ボイリングを防止することができ、剛性も大きいことから鋼矢板のような大きな変形は生じない。</p>
+<div class="table-wrap">
+<table>
+<caption>山留め壁の特徴</caption>
+<thead><tr><th>山留め壁の種類</th><th>山留め壁の特徴</th></tr></thead>
+<tbody>
+<tr><td><strong class="kw">親杭横矢板</strong></td><td><span class="relation">地下水のない礫・岩層に適する</span>が、<span class="trap">ヒービング、ボイリングが防止できない</span>。一般に、地盤を必要量切削し木製の横矢板を切削面に合わせ親杭間にはめ込んで裏込めする。</td></tr>
+<tr><td><strong class="kw">鋼矢板</strong></td><td><span class="relation">地下水のある軟弱地盤に適する</span>が、<span class="trap">硬質地盤では鋼矢板が打込めない</span>。バイブロハンマ等で最初に打込む。ヒービングやボイリングを防止できる。<span class="trap">変形が大きい欠点</span>がある。</td></tr>
+<tr><td><strong class="kw">ソイルセメント柱列壁</strong></td><td>セメント系注入材を原位置土と混合・かく拌しながら、オーバーラップして構築し、掘削孔にしん材（H形鋼）を挿入し柱列壁としたもので、<span class="relation">止水性が高く、剛性も高い</span>。</td></tr>
+<tr><td><strong class="kw">場所打ちRC山留め壁</strong></td><td>場所打ち杭の削孔と同様に、安定液を用いて削孔し、スライム処理した後、組立鉄筋を挿入し、コンクリートを打込みRC壁を構築するもので、<span class="relation">剛性も高く止水性も高い</span>。地下の躯体の一部として利用することもある。</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+</article>
+<article class="study-card translation" lang="vi">
+<h4 class="card-title">Bản dịch tiếng Việt</h4>
+<div class="recall-source">
+<p>Các công pháp tường chống giữ đất dùng cừ chế tạo sẵn, như <strong class="kw">cừ thép và hệ cọc H kết hợp ván ngang</strong>, thường được sử dụng khi <strong class="kw">chiều sâu đào</strong> <mark class="critical">không quá 5 m</mark>. Đặc biệt, <strong class="kw">hệ cọc H kết hợp ván ngang</strong> <span class="trap">không thể ngăn ngừa heaving và boiling</span>. <strong class="kw">Cừ thép</strong> có thể ngăn ngừa hai hiện tượng này nhưng <span class="trap">biến dạng lớn</span>, vì vậy phải đo và quản lý ứng suất, biến dạng của cừ thép, thanh chống ngang và waler.</p>
+<p>So với cừ thép, <strong class="kw">tường cọc đổ tại chỗ dạng hàng và tường cọc soil-cement dạng hàng</strong> thường dùng khi <strong class="kw">chiều sâu đào</strong> <mark class="critical">từ 5 m trở lên</mark>. Cả hai có thể ngăn ngừa heaving, boiling và có độ cứng lớn, nên không phát sinh biến dạng lớn như cừ thép.</p>
+<div class="table-wrap">
+<table>
+<caption>Đặc điểm của tường chống giữ đất</caption>
+<thead><tr><th>Loại tường</th><th>Đặc điểm</th></tr></thead>
+<tbody>
+<tr><td><strong class="kw">Hệ cọc H kết hợp ván ngang</strong></td><td><span class="relation">Phù hợp với lớp sỏi hoặc đá không có nước ngầm</span>, nhưng <span class="trap">không thể ngăn ngừa heaving và boiling</span>. Đất được đào theo lượng cần thiết, ván gỗ ngang được lắp giữa các cọc chính theo bề mặt đào rồi chèn lấp phía sau.</td></tr>
+<tr><td><strong class="kw">Cừ thép</strong></td><td><span class="relation">Phù hợp với nền đất yếu có nước ngầm</span>, nhưng <span class="trap">không đóng được vào nền đất cứng</span>. Cừ được đóng bằng búa rung v.v.; có thể ngăn ngừa heaving và boiling, nhưng <span class="trap">có nhược điểm biến dạng lớn</span>.</td></tr>
+<tr><td><strong class="kw">Tường cọc soil-cement dạng hàng</strong></td><td>Vật liệu phun gốc xi măng được trộn và khuấy với đất tại chỗ, các cọc được thi công chồng lấn; lõi thép H được đưa vào lỗ đào để tạo tường cọc. <span class="relation">Khả năng chắn nước cao và độ cứng lớn</span>.</td></tr>
+<tr><td><strong class="kw">Tường RC chống giữ đất đổ tại chỗ</strong></td><td>Khoan bằng dung dịch ổn định thành lỗ tương tự cọc đổ tại chỗ; sau khi xử lý slime thì đặt lồng thép và đổ bê tông. <span class="relation">Độ cứng lớn và khả năng chắn nước cao</span>; đôi khi được dùng làm một phần kết cấu ngầm vĩnh viễn.</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+</article>
+</div>
+<div class="note-box"><strong>Kiến thức nền:</strong> heaving là hiện tượng đáy hố đào trồi lên do mất ổn định nền; boiling là hiện tượng dòng thấm hướng lên làm đất đáy hố mất ổn định như đang “sôi”.</div>
+<a class="backlink" href="#toc">↑ Mục lục</a>
+</section>
+<section id="sec-yamadome-support">
+<h3>(2) 山留め支保工の選定・特徴</h3>
+<p class="source-ref">Nguồn: Book page 124-125</p>
+<div class="study-grid">
+<article class="study-card original" lang="ja">
+<h4 class="card-title">原文</h4>
+<div class="recall-source" lang="ja">
+<p><strong class="kw">山留め支保工</strong>は、山留め壁に作用する土圧を支える部材で一般に、<strong class="kw">水平切梁方式、アンカー方式、逆打ち方式</strong>などに分類される。</p>
+<div class="table-wrap">
+<table>
+<caption>山留め支保工の特徴</caption>
+<thead><tr><th>山留め支保工</th><th>工法</th><th>支保工の特徴</th></tr></thead>
+<tbody>
+<tr><td rowspan="2"><strong class="kw">水平切梁方式</strong></td><td><strong class="kw">鋼製支保工</strong></td><td>山留め壁をH形鋼の腹起し、切梁、火打梁を用いて支持する最も一般的な支保工である。鋼矢板工法、親杭横矢板工法の支保工として用いる。</td></tr>
+<tr><td><strong class="kw">鉄筋コンクリート支保工</strong></td><td><span class="trap">鋼製支保工のように転用がきかない</span>欠点があるが、断面形は根切りの形状にかかわらず、継手部分を持たないため大スパンに用いられる。しかし、<span class="trap">養生期間が必要で取壊しに時間がかかる</span>。</td></tr>
+<tr><td><strong class="kw">アンカー方式</strong></td><td><strong class="kw">地盤アンカー支保工</strong></td><td>山留め壁の土圧を地盤アンカーで支持するため、<span class="relation">切梁を有さず、広い作業空間を確保し工期を短縮できる</span>。欠点として、<span class="trap">隣地が使用できないときは利用できない</span>。</td></tr>
+<tr><td><strong class="kw">逆打ち方式</strong></td><td><strong class="kw">逆打ち工法</strong></td><td>地下構造体は、根切りと並行して梁、スラブを施工し、これを支保工として、順次下部掘削と上部構造体を同時に構築するため、<span class="relation">乗入れ構台の設置の必要がなく、上部躯体と地下躯体を並行して工期を短縮できる</span>。</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+</article>
+<article class="study-card translation" lang="vi">
+<h4 class="card-title">Bản dịch tiếng Việt</h4>
+<div class="recall-source">
+<p><strong class="kw">Hệ chống đỡ tường giữ đất</strong> là các cấu kiện chịu áp lực đất tác dụng lên tường và thường được phân thành <strong class="kw">phương thức thanh chống ngang, phương thức neo và phương thức top-down</strong>.</p>
+<div class="table-wrap">
+<table>
+<caption>Đặc điểm của hệ chống đỡ tường giữ đất</caption>
+<thead><tr><th>Phương thức</th><th>Công pháp</th><th>Đặc điểm</th></tr></thead>
+<tbody>
+<tr><td rowspan="2"><strong class="kw">Thanh chống ngang</strong></td><td><strong class="kw">Hệ chống bằng thép</strong></td><td>Loại phổ biến nhất; dùng waler thép H, thanh chống ngang và thanh giằng chéo góc để đỡ tường. Dùng cho công pháp cừ thép và cọc H kết hợp ván ngang.</td></tr>
+<tr><td><strong class="kw">Hệ chống bê tông cốt thép</strong></td><td><span class="trap">Không thể tái sử dụng như hệ chống thép</span>, nhưng không có mối nối nên dùng được cho nhịp lớn. Tuy nhiên, <span class="trap">cần thời gian dưỡng hộ và phá dỡ lâu</span>.</td></tr>
+<tr><td><strong class="kw">Phương thức neo</strong></td><td><strong class="kw">Hệ chống neo đất</strong></td><td>Do dùng neo đất chịu áp lực đất, <span class="relation">không có thanh chống ngang, bảo đảm không gian thi công rộng và rút ngắn tiến độ</span>. Nhược điểm: <span class="trap">không áp dụng được nếu không thể sử dụng đất liền kề</span>.</td></tr>
+<tr><td><strong class="kw">Phương thức top-down</strong></td><td><strong class="kw">Công pháp top-down</strong></td><td>Thi công dầm và sàn tầng hầm đồng thời với đào đất, dùng chúng làm hệ chống, rồi vừa đào xuống vừa xây phần trên. Vì vậy <span class="relation">không cần sàn cho xe đi vào và có thể thi công song song phần ngầm/phần thân để rút ngắn tiến độ</span>.</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+</article>
+</div>
+<a class="backlink" href="#toc">↑ Mục lục</a>
+</section>
+<section id="sec-yamadome-check">
+<h3>(3) 山留め支保工設置と組立時の点検</h3>
+<p class="source-ref">Nguồn: Book page 125</p>
+<div class="study-grid">
+<article class="study-card original" lang="ja"><h4 class="card-title">原文</h4><div class="recall-source" lang="ja"><ol>
+<li><span class="relation"><strong class="kw">地下水のない礫や岩の地盤</strong>には<strong class="kw">親杭横矢板工法</strong>を選定する</span>。</li>
+<li><span class="relation"><strong class="kw">地下水が高い軟弱地盤</strong>には<strong class="kw">鋼矢板工法</strong>を選定する</span>。</li>
+<li><span class="relation"><strong class="kw">傾斜地で水平切梁方式が用いられないとき</strong><strong class="kw">アンカー方式</strong>を選定する</span>。</li>
+<li><span class="relation"><strong class="kw">高層建築で深い地下を有し、地下躯体と上部躯体を同時並行して工期を短縮するとき</strong><strong class="kw">逆打ち工法</strong>を選定する</span>。</li>
+<li>施工にあたり、<strong class="kw">地下埋設物を事前に調査</strong>し必要により移設等の措置をする。</li>
+<li>敷地上空の電線等は<strong class="kw">移設</strong>又は電線に<strong class="kw">絶縁用防護具を装着</strong>するか囲いを設ける。</li>
+<li>隣接する建物や工作物の<strong class="kw">基礎の構造や地盤の支持状態</strong>など調べる。</li>
+<li>隣接する住宅の壁の現状を調査し<strong class="kw">写真等で施工前の状態を記録</strong>しておく。</li>
+<li><strong class="kw">振動などの影響を受けやすい施設</strong>を事前に把握しておく。</li>
+<li><strong class="kw">山留めの点検</strong>は、<span class="relation">悪天候の後及び<mark class="critical">7日以内ごと</mark>に作業を開始する前</span>に行う。</li>
+</ol></div></article>
+<article class="study-card translation" lang="vi"><h4 class="card-title">Bản dịch tiếng Việt</h4><div class="recall-source"><ol>
+<li><span class="relation"><strong class="kw">Nền sỏi hoặc đá không có nước ngầm</strong>: chọn <strong class="kw">cọc H kết hợp ván ngang</strong></span>.</li>
+<li><span class="relation"><strong class="kw">Nền đất yếu có mực nước ngầm cao</strong>: chọn <strong class="kw">cừ thép</strong></span>.</li>
+<li><span class="relation"><strong class="kw">Địa hình dốc, không dùng được thanh chống ngang</strong>: chọn <strong class="kw">phương thức neo</strong></span>.</li>
+<li><span class="relation"><strong class="kw">Nhà cao tầng có tầng hầm sâu, cần thi công phần ngầm và phần thân song song để rút ngắn tiến độ</strong>: chọn <strong class="kw">top-down</strong></span>.</li>
+<li><strong class="kw">Khảo sát trước công trình ngầm hiện hữu</strong>; khi cần phải di dời hoặc có biện pháp thích hợp.</li>
+<li>Đối với dây điện trên không: <strong class="kw">di dời</strong>, lắp <strong class="kw">bảo vệ cách điện</strong> hoặc bố trí rào chắn.</li>
+<li>Khảo sát <strong class="kw">kết cấu móng công trình lân cận và trạng thái chịu lực của nền</strong>.</li>
+<li>Khảo sát tường nhà lân cận và <strong class="kw">lưu lại hiện trạng trước thi công bằng ảnh</strong>.</li>
+<li>Xác định trước <strong class="kw">cơ sở dễ bị ảnh hưởng bởi rung động</strong>.</li>
+<li><strong class="kw">Kiểm tra hệ chống giữ đất</strong> <span class="relation">sau thời tiết xấu và trước khi làm việc, theo chu kỳ không quá <mark class="critical">7 ngày</mark></span>.</li>
+</ol></div></article>
+</div>
+<a class="backlink" href="#toc">↑ Mục lục</a>
+</section>
+<section id="sec-noriire">
+<h3>(4) 乗入れ構台の設置と組立時の点検</h3>
+<p class="source-ref">Nguồn: Book page 125-126</p>
+<div class="study-grid">
+<article class="study-card original" lang="ja"><h4 class="card-title">原文</h4><div class="recall-source" lang="ja"><ol>
+<li>構台に作用する風荷重や車両荷重などのうち、<strong class="kw">最大荷重</strong>に対して十分な耐力を有することを確認する。</li>
+<li>構台の鉛直荷重に対して安全な<strong class="kw">根入れ深さ</strong>を確保したり、必要により脚部に<strong class="kw">敷板</strong>を用いる。</li>
+<li>構台の作業床には墜落防止用の<mark class="critical">高さ85cm以上</mark>の<strong class="kw">手すり</strong>などを設置する。</li>
+<li>構台の支柱は相互に<strong class="kw">水平つなぎ材及びブレース（交差筋かい）</strong>を用いて組み立て、緊結金具を用いて堅固に固定する。</li>
+<li><strong class="kw">構台の支柱</strong>と山留めの中間支柱と<span class="trap">兼用していない</span>ことを確認する。</li>
+<li>構台の<strong class="kw">水平・鉛直面の各精度</strong>を確認する。</li>
+<li>構台作業が終了次第<strong class="kw">すみやかに撤去し現場から搬出</strong>する。</li>
+</ol></div></article>
+<article class="study-card translation" lang="vi"><h4 class="card-title">Bản dịch tiếng Việt</h4><div class="recall-source"><ol>
+<li>Xác nhận cấu đài có đủ khả năng chịu <strong class="kw">tải trọng lớn nhất</strong> trong các tải trọng gió, tải trọng xe v.v.</li>
+<li>Bảo đảm <strong class="kw">chiều sâu chôn chân an toàn</strong> đối với tải đứng; khi cần dùng <strong class="kw">tấm kê</strong> tại chân.</li>
+<li>Trên sàn công tác phải lắp <strong class="kw">tay vịn</strong> <mark class="critical">cao từ 85 cm trở lên</mark> để phòng ngừa rơi ngã.</li>
+<li>Các cột phải được liên kết bằng <strong class="kw">thanh giằng ngang và brace/giằng chéo chữ X</strong>, rồi cố định chắc bằng phụ kiện liên kết.</li>
+<li><strong class="kw">Cột của cấu đài</strong> <span class="trap">không được dùng chung</span> với cột trung gian của hệ chống giữ đất.</li>
+<li>Kiểm tra <strong class="kw">độ chính xác theo phương ngang và phương đứng</strong>.</li>
+<li>Sau khi kết thúc công việc phải <strong class="kw">tháo dỡ nhanh và vận chuyển khỏi công trường</strong>.</li>
+</ol></div></article>
+</div>
+<a class="backlink" href="#toc">↑ Mục lục</a>
+</section>
+<section id="sec-niuke">
+<h3>(5) 荷受け構台の設置計画上の留意点</h3>
+<p class="source-ref">Nguồn: Book page 126</p>
+<div class="study-grid">
+<article class="study-card original" lang="ja"><h4 class="card-title">原文</h4><div class="recall-source" lang="ja"><ol>
+<li><strong class="kw">荷受け構台</strong>は、<mark class="critical">2階～3階ごと</mark>に設置されるもので、揚重された材料等が飛散・落下しないよう、<strong class="kw">手すり・幅木</strong>を設けるなどの措置を講じる。</li>
+<li>荷受け構台は、<strong class="kw">最大の荷重</strong>に対して十分な耐力を有することを確認する。</li>
+<li>荷受け構台の配置は、揚重された材料を<strong class="kw">作業場に搬入し易い位置</strong>とする。</li>
+<li>荷受け構台の広さや形状は、<strong class="kw">荷揚げされる材料等により適切</strong>なものとする。</li>
+<li>荷受け台を用いる作業を終了したときは、<strong class="kw">すみやかに撤去して、必要な階で再使用</strong>する。</li>
+</ol></div></article>
+<article class="study-card translation" lang="vi"><h4 class="card-title">Bản dịch tiếng Việt</h4><div class="recall-source"><ol>
+<li><strong class="kw">Sàn tiếp nhận vật liệu</strong> được bố trí khoảng <mark class="critical">mỗi 2 đến 3 tầng</mark>. Để vật liệu nâng lên không bay hoặc rơi, phải lắp <strong class="kw">tay vịn và ván chắn chân</strong> v.v.</li>
+<li>Xác nhận sàn có đủ khả năng chịu <strong class="kw">tải trọng lớn nhất</strong>.</li>
+<li>Bố trí tại <strong class="kw">vị trí thuận tiện đưa vật liệu vào khu vực làm việc</strong>.</li>
+<li>Diện tích và hình dạng phải <strong class="kw">phù hợp với loại vật liệu được nâng</strong>.</li>
+<li>Khi kết thúc sử dụng, <strong class="kw">tháo dỡ nhanh và tái sử dụng tại tầng cần thiết</strong>.</li>
+</ol></div></article>
+</div>
+<a class="backlink" href="#toc">↑ Mục lục</a>
+</section>
+<section id="sec-gate">
+<h3>(6) ゲート（車両の出入口）の設置計画の留意点</h3>
+<p class="source-ref">Nguồn: Book page 126</p>
+<div class="study-grid">
+<article class="study-card original" lang="ja"><h4 class="card-title">原文</h4><div class="recall-source" lang="ja"><ol>
+<li>ゲートは、最大寸法の荷物を有する車両（レミコン車の空車両等）が円滑に通行できるよう、<strong class="kw">幅、高さ</strong>などを定める。</li>
+<li>工事車両と歩行者や一般車両との接触事故を防止するため、<strong class="kw">カーブミラーや誘導員</strong>の配置を行う。</li>
+<li>ゲートは盗難防止のため、<strong class="kw">施錠できる</strong>ようにする。</li>
+<li>ゲートの扉は、<span class="relation"><strong class="kw">引戸又は内開き</strong></span>とする。</li>
+<li>ゲートの位置は、<span class="relation">交通量の多い道路を避け、交通量の少ない入出の容易な所</span>に設ける。</li>
+</ol></div></article>
+<article class="study-card translation" lang="vi"><h4 class="card-title">Bản dịch tiếng Việt</h4><div class="recall-source"><ol>
+<li>Xác định <strong class="kw">chiều rộng và chiều cao</strong> để xe có kích thước lớn, như xe bê tông tươi khi không tải, đi qua thuận lợi.</li>
+<li>Để tránh va chạm giữa xe công trường với người đi bộ hoặc xe thông thường, bố trí <strong class="kw">gương cầu và người hướng dẫn giao thông</strong>.</li>
+<li>Cổng phải <strong class="kw">khóa được</strong> để chống trộm.</li>
+<li>Cánh cổng phải là <span class="relation"><strong class="kw">cửa trượt hoặc mở vào trong</strong></span>.</li>
+<li>Vị trí cổng: <span class="relation">tránh đường có lưu lượng lớn, chọn nơi lưu lượng thấp và thuận tiện ra vào</span>.</li>
+</ol></div></article>
+</div>
+<a class="backlink" href="#toc">↑ Mục lục</a>
+</section>
+<section id="sec-temp-electric">
+<h3>(7) 仮設電気設備の設置計画の留意点</h3>
+<p class="source-ref">Nguồn: Book page 126</p>
+<div class="study-grid">
+<article class="study-card original" lang="ja"><h4 class="card-title">原文</h4><div class="recall-source" lang="ja"><ol>
+<li>各工程ごとの電気設備の<strong class="kw">負荷設備容量</strong>を求め、工程ごとに<strong class="kw">山積し、そして山崩して</strong>、<span class="relation">使用電力量を定める</span>。</li>
+<li><strong class="kw">溶接機のように大電流の必要な機器</strong>は、<strong class="kw">発電機等の予備電源</strong>の使用により、<span class="relation">電力会社との契約電力の低下</span>を検討する。</li>
+<li>工程ごとの幹線の配線計画、負荷設備の配線計画は、<strong class="kw">現場中央でできるだけ盛替えの少ない位置</strong>に配置するように定める。</li>
+<li><strong class="kw">放送・通信・警報設備</strong>の配線計画を定める。</li>
+<li><span class="relation"><strong class="kw">仮設電力</strong>から<strong class="kw">本設電力</strong>への切替え計画</span>を定める。</li>
+</ol></div></article>
+<article class="study-card translation" lang="vi"><h4 class="card-title">Bản dịch tiếng Việt</h4><div class="recall-source"><ol>
+<li>Tính <strong class="kw">công suất phụ tải thiết bị</strong> của từng giai đoạn, thực hiện <strong class="kw">cộng dồn tải rồi san bằng tải</strong> để <span class="relation">xác định lượng điện sử dụng</span>.</li>
+<li>Với <strong class="kw">thiết bị cần dòng lớn như máy hàn</strong>, dùng <strong class="kw">nguồn dự phòng như máy phát</strong> để xem xét <span class="relation">giảm công suất điện hợp đồng</span>.</li>
+<li>Bố trí tuyến cáp trục chính và tuyến cấp phụ tải <strong class="kw">gần trung tâm công trường, ở vị trí ít phải đấu chuyển nhất</strong>.</li>
+<li>Lập kế hoạch dây cho <strong class="kw">phát thanh, thông tin liên lạc và báo động</strong>.</li>
+<li>Lập kế hoạch <span class="relation"><strong class="kw">chuyển từ điện tạm</strong> sang <strong class="kw">điện chính thức</strong></span>.</li>
+</ol></div></article>
+</div>
+<div class="note-box"><strong>Logic phụ tải điện:</strong> 山積み là cộng nhu cầu điện theo từng thời điểm để thấy đỉnh tải; 山崩し là điều chỉnh lịch sử dụng thiết bị để giảm đỉnh tải và xác định công suất cấp điện hợp lý.</div>
+<a class="backlink" href="#toc">↑ Mục lục</a>
+</section>
+<section id="sec-temp-road">
+<h3>(8) 仮設道路の設置計画上の留意点</h3>
+<p class="source-ref">Nguồn: Book page 127</p>
+<div class="study-grid">
+<article class="study-card original" lang="ja"><h4 class="card-title">原文</h4><div class="recall-source" lang="ja"><ol>
+<li><span class="relation"><strong class="kw">仮設道路位置</strong>は、ゲートの位置と、揚重設備及び資材置場と円滑な動線上</span>に設ける。</li>
+<li><strong class="kw">仮設道路の幅</strong>は、搬出入時の荷物の最大値に余裕を見込んだものとする。</li>
+<li><strong class="kw">仮設道路</strong>はできるだけ、<span class="relation">労働者が歩行する動線と交差しない</span>ように配置する。</li>
+<li><strong class="kw">仮設道路の耐力</strong>は、搬入される荷物を積載した重量に安全であるように断面及び材料を定める。</li>
+<li>仮設道路の構築材料に、<strong class="kw">再生資源の活用</strong>を検討する。</li>
+</ol></div></article>
+<article class="study-card translation" lang="vi"><h4 class="card-title">Bản dịch tiếng Việt</h4><div class="recall-source"><ol>
+<li><span class="relation"><strong class="kw">Vị trí đường tạm</strong> phải tạo tuyến lưu thông thuận lợi giữa cổng, thiết bị nâng và bãi vật liệu</span>.</li>
+<li><strong class="kw">Chiều rộng đường tạm</strong> phải có khoảng dư so với kích thước lớn nhất của hàng hóa khi vận chuyển ra vào.</li>
+<li><strong class="kw">Đường tạm</strong> nên bố trí <span class="relation">không giao cắt với tuyến đi bộ của người lao động</span>.</li>
+<li><strong class="kw">Khả năng chịu lực của đường</strong> phải đủ an toàn cho phương tiện chở đầy vật liệu; xác định tiết diện và vật liệu tương ứng.</li>
+<li>Xem xét dùng <strong class="kw">tài nguyên tái chế</strong> làm vật liệu cấu tạo đường.</li>
+</ol></div></article>
+</div>
+<a class="backlink" href="#toc">↑ Mục lục</a>
+</section>
+<section id="sec-temp-office">
+<h3>(9) 仮設事務所の設置計画上の留意点</h3>
+<p class="source-ref">Nguồn: Book page 127</p>
+<div class="study-grid">
+<article class="study-card original" lang="ja"><h4 class="card-title">原文</h4><div class="recall-source" lang="ja"><ol>
+<li><strong class="kw">仮設事務所</strong>はゲートの近くで搬出入の機材、人の動きが管理しやすく、<strong class="kw">できるだけ盛替えの必要がない位置</strong>とする。</li>
+<li>仮設事務所には、<strong class="kw">監理事務所、工事事務所</strong>とがあり、その規模はそれぞれに必要最小限の広さとし、職員が会議するスペースを確保できる広さとする。</li>
+<li>仮設事務所の設計は<strong class="kw">建築士の設計</strong>により窓の制限など<strong class="kw">建築基準法を遵守</strong>したものとする。</li>
+<li><strong class="kw">給水、排水、電力</strong>などの供給が容易な位置に配置する。</li>
+</ol></div></article>
+<article class="study-card translation" lang="vi"><h4 class="card-title">Bản dịch tiếng Việt</h4><div class="recall-source"><ol>
+<li><strong class="kw">Văn phòng tạm</strong> đặt gần cổng để dễ quản lý thiết bị, vật tư và dòng người ra vào, đồng thời ở <strong class="kw">vị trí hạn chế tối đa việc phải di chuyển</strong>.</li>
+<li>Văn phòng tạm gồm <strong class="kw">văn phòng giám sát và văn phòng thi công</strong>; diện tích ở mức tối thiểu cần thiết nhưng phải đủ không gian họp.</li>
+<li>Phải do <strong class="kw">kiến trúc sư thiết kế</strong> và <strong class="kw">tuân thủ Luật Tiêu chuẩn Xây dựng</strong>, gồm cả giới hạn về cửa sổ.</li>
+<li>Bố trí tại nơi thuận lợi cấp <strong class="kw">nước, thoát nước và điện</strong>.</li>
+</ol></div></article>
+</div>
+<a class="backlink" href="#toc">↑ Mục lục</a>
+</section>
+<section id="sec-hoarding">
+<h3>(10) 仮囲いの設置計画上の留意点</h3>
+<p class="source-ref">Nguồn: Book page 127</p>
+<div class="study-grid">
+<article class="study-card original" lang="ja"><h4 class="card-title">原文</h4><div class="recall-source" lang="ja"><ol>
+<li><strong class="kw">仮囲いの高さ</strong>が<mark class="critical">1.8m以上（通常3.0m）</mark>の鋼製板を用いることが多い。</li>
+<li><strong class="kw">ゲート近くの仮囲い</strong>は、接触事故を抑制するため<strong class="kw">透明のアクリル板等</strong>を検討する。</li>
+<li><strong class="kw">対風対策</strong>として、仮囲いの一部を<strong class="kw">メッシュ枠</strong>を用いた仮囲いを検討する。</li>
+<li>対風対策として、仮囲いの<strong class="kw">ボルトの緊結及び横地材、建地材との緊結</strong>を確認する。</li>
+<li><strong class="kw">斜材、ころばし、建地材、横地材</strong>とは相互にクランプで緊結する。</li>
+<li>転倒しないように、<strong class="kw">埋込み材の根入れ深さ</strong>は地盤に応じて<span class="relation">引抜きの生じない長さ</span>とする。</li>
+</ol></div></article>
+<article class="study-card translation" lang="vi"><h4 class="card-title">Bản dịch tiếng Việt</h4><div class="recall-source"><ol>
+<li><strong class="kw">Chiều cao hàng rào tạm</strong> thường dùng tấm thép <mark class="critical">từ 1,8 m trở lên, thông thường 3,0 m</mark>.</li>
+<li><strong class="kw">Phần hàng rào gần cổng</strong> nên dùng <strong class="kw">tấm acrylic trong suốt</strong> để giảm nguy cơ va chạm.</li>
+<li>Để <strong class="kw">chống gió</strong>, xem xét dùng <strong class="kw">khung lưới</strong> cho một phần hàng rào.</li>
+<li>Kiểm tra <strong class="kw">siết bu lông và liên kết với thanh ngang, cột đứng</strong>.</li>
+<li><strong class="kw">Thanh chéo, thanh nằm, cột đứng và thanh ngang</strong> phải được kẹp liên kết với nhau.</li>
+<li><strong class="kw">Chiều sâu chôn cấu kiện neo</strong> phải xác định theo nền đất, đủ <span class="relation">để không bị nhổ bật</span>.</li>
+</ol></div></article>
+</div>
+<a class="backlink" href="#toc">↑ Mục lục</a>
+</section>
+<section id="sec-lifting">
+<h3>(11) 固定式クレーン・建設用リフトなどの揚重施設の設置と組立時の点検</h3>
+<p class="source-ref">Nguồn: Book page 127-128</p>
+<div class="study-grid">
+<article class="study-card original" lang="ja"><h4 class="card-title">原文</h4><div class="recall-source" lang="ja"><ol>
+<li><span class="relation"><strong class="kw">鉄骨造の高層建築物</strong>の施工では<strong class="kw">固定式クレーン</strong>を、<strong class="kw">鉄骨造の細長い建築物</strong>の施工では<strong class="kw">移動式クレーン</strong>を選定する</span>。</li>
+<li>鉄骨の建込みと、鉄骨以外の重量物の揚重を計画するときは、重量物と鉄骨のうち、<strong class="kw">重い方を基準とした揚重能力</strong>を持つ機種を選定する。</li>
+<li><strong class="kw">揚重施設の基礎</strong>は、その天端を水平とし、アンカーボルトを正確に埋め込み、揚重荷重の大きさに対して十分に安全な剛性を有するようにする。</li>
+<li>揚重施設の設置位置は、<span class="relation">ゲートからの動線に近く、搬入が容易で、揚重後も作業場までの運搬が容易</span>な場所とする。</li>
+<li>揚重量を増大させるために、<strong class="kw">複数の揚重施設</strong>を計画し、揚重物の種類によって使い分けて施工能力を高めることを検討する。</li>
+<li><strong class="kw">建設用リフト</strong>は、荷物の専用揚重機であり、<span class="trap">人を運んではならない</span>。</li>
+<li>建設用リフトを使用するときは、搬器や荷物の墜落災害を防止するため、<strong class="kw">立入禁止柵</strong>を設ける。</li>
+<li>建設用リフトの搬器と各階の出入口との境は、使用時以外は<strong class="kw">金網などで覆っておく</strong>。</li>
+</ol></div></article>
+<article class="study-card translation" lang="vi"><h4 class="card-title">Bản dịch tiếng Việt</h4><div class="recall-source"><ol>
+<li><span class="relation"><strong class="kw">Nhà cao tầng kết cấu thép</strong>: chọn <strong class="kw">cẩu cố định</strong>; <strong class="kw">nhà kết cấu thép dài và hẹp</strong>: chọn <strong class="kw">cẩu di động</strong></span>.</li>
+<li>Khi vừa dựng thép vừa nâng vật nặng khác, chọn máy theo <strong class="kw">đối tượng nặng hơn làm cơ sở năng lực nâng</strong>.</li>
+<li><strong class="kw">Móng thiết bị nâng</strong>: mặt trên phải ngang, bu lông neo chôn chính xác và có độ cứng đủ an toàn với tải nâng.</li>
+<li>Vị trí thiết bị phải <span class="relation">gần tuyến từ cổng, dễ đưa vật liệu vào và thuận tiện vận chuyển đến nơi làm việc sau khi nâng</span>.</li>
+<li>Xem xét bố trí <strong class="kw">nhiều thiết bị nâng</strong>, phân công theo loại vật nâng để tăng năng lực thi công.</li>
+<li><strong class="kw">Vận thăng xây dựng</strong> chỉ dùng cho hàng hóa, <span class="trap">không được vận chuyển người</span>.</li>
+<li>Phải bố trí <strong class="kw">hàng rào cấm vào</strong> để ngăn tai nạn do buồng vận chuyển hoặc hàng rơi.</li>
+<li>Ranh giới giữa buồng vận chuyển và cửa ra vào từng tầng phải <strong class="kw">che bằng lưới thép khi không sử dụng</strong>.</li>
+</ol></div></article>
+</div>
+<a class="backlink" href="#toc">↑ Mục lục</a>
+</section>
+<section id="sec-scaffolds">
+<h3>(12) 外部足場・つり足場の設置と組立時の点検</h3>
+<p class="source-ref">Nguồn: Book page 128</p>
+<div class="study-grid">
+<article class="study-card original" lang="ja"><h4 class="card-title">原文</h4><div class="recall-source" lang="ja"><ol>
+<li>敷地の地盤の高低差、隣地境界など<strong class="kw">設置スペースと外部への危険防止</strong>に留意する。</li>
+<li>足場上での作業内容から、作業性、安全性から<strong class="kw">足場の形状構造寸法</strong>など現場に適合するものを選定するよう留意する。</li>
+<li>平面形状、立面形状など、<strong class="kw">構造外壁の形状に適合</strong>するよう形状を検討する。</li>
+<li><strong class="kw">足場の平面割付、作業床と外壁の間隔、手すり、安全ネット</strong>の取付けを検討する。</li>
+<li><strong class="kw">施工計画の届出</strong>は、<mark class="critical">高さ10m以上の足場、つり足場、張出し足場</mark>の設置にあたり労働基準監督署長に届け出る。<strong class="kw">作業主任者</strong>は<mark class="critical">高さ5m以上</mark>で選任する。</li>
+<li>つり足場の足場板下部の全面に、<strong class="kw">水平養生網または安全ネット</strong>を取り付ける。</li>
+<li>つり足場は、施工性を考慮して、<strong class="kw">梁下端から足場板までの垂直距離</strong>を<mark class="critical">500mm程度</mark>とする。</li>
+</ol></div></article>
+<article class="study-card translation" lang="vi"><h4 class="card-title">Bản dịch tiếng Việt</h4><div class="recall-source"><ol>
+<li>Lưu ý <strong class="kw">không gian bố trí và phòng nguy hiểm ra bên ngoài</strong>, xét chênh cao nền và ranh giới khu đất.</li>
+<li>Theo nội dung công việc, chọn <strong class="kw">hình dạng, kết cấu và kích thước giàn giáo</strong> phù hợp xét về thi công và an toàn.</li>
+<li>Hình dạng giàn giáo phải <strong class="kw">phù hợp mặt bằng, mặt đứng và mặt ngoài kết cấu</strong>.</li>
+<li>Xem xét <strong class="kw">phân chia mặt bằng, khoảng cách sàn-tường ngoài, tay vịn và lưới an toàn</strong>.</li>
+<li><strong class="kw">Nộp kế hoạch thi công</strong> khi lắp <mark class="critical">giàn giáo cao từ 10 m, giàn giáo treo hoặc giàn giáo công xôn</mark>. Chỉ định <strong class="kw">người phụ trách công việc</strong> khi cao <mark class="critical">từ 5 m</mark>.</li>
+<li>Toàn bộ mặt dưới ván sàn giàn giáo treo phải có <strong class="kw">lưới bảo vệ ngang hoặc lưới an toàn</strong>.</li>
+<li><strong class="kw">Khoảng cách đứng từ mép dưới dầm đến ván sàn</strong> khoảng <mark class="critical">500 mm</mark>.</li>
+</ol></div></article>
+</div>
+<a class="backlink" href="#toc">↑ Mục lục</a>
+</section>
+<section id="sec-wedge-scaffold">
+<h3>(13) くさび緊結式足場の設置計画の留意点</h3>
+<p class="source-ref">Nguồn: Book page 128</p>
+<div class="study-grid">
+<article class="study-card original" lang="ja"><h4 class="card-title">原文</h4><div class="recall-source" lang="ja"><ol>
+<li><strong class="kw">くさび緊結式足場の設置高さ</strong>が<mark class="critical">45m以下</mark>になるときにのみ使用する。</li>
+<li>足場の脚部には、沈下・滑動の防止のため、<strong class="kw">ねじ管式ジャッキ型ベース金具</strong>を使用する。この金具は、敷板などの不等沈下しない堅固な物の上に設けて、<strong class="kw">根がらみ</strong>を取り付ける。</li>
+<li><strong class="kw">地上第一の布</strong>は、地上からの高さを<mark class="critical">2m以下</mark>とする。</li>
+<li><strong class="kw">作業床</strong>は、床付布枠または緊結部付布枠とし、<strong class="kw">幅</strong><mark class="critical">40cm以上</mark>、<strong class="kw">隙間</strong><mark class="critical">3cm以下</mark>とする。</li>
+<li>作業床には、<strong class="kw">手すり高さ</strong><mark class="critical">90cm以上</mark>、<strong class="kw">中桟高さ</strong><mark class="critical">35cm以上50cm未満</mark>を設ける。</li>
+<li>物体が落下するおそれがある場合は、<strong class="kw">幅木高さ</strong><mark class="critical">10cm以上</mark>とする。</li>
+<li><strong class="kw">緊結部付支柱の間隔</strong>は、桁行方向<mark class="critical">1.85m以下</mark>、梁間方向<mark class="critical">1.5m以下</mark>とする。</li>
+<li><strong class="kw">壁つなぎの間隔</strong>は、垂直方向<mark class="critical">5.0m以下</mark>、水平方向<mark class="critical">5.5m以下</mark>とする。</li>
+</ol></div></article>
+<article class="study-card translation" lang="vi"><h4 class="card-title">Bản dịch tiếng Việt</h4><div class="recall-source"><ol>
+<li>Chỉ dùng <strong class="kw">giàn giáo liên kết kiểu nêm</strong> khi <strong class="kw">chiều cao lắp dựng</strong> <mark class="critical">không quá 45 m</mark>.</li>
+<li>Chân giàn giáo dùng <strong class="kw">đế kích ren ống</strong> chống lún, trượt; đặt trên nền/tấm kê chắc không lún lệch và lắp <strong class="kw">giằng chân</strong>.</li>
+<li><strong class="kw">Thanh ngang thấp nhất phía trên mặt đất</strong> cao <mark class="critical">không quá 2 m</mark>.</li>
+<li><strong class="kw">Sàn công tác</strong>: <strong class="kw">rộng</strong> <mark class="critical">từ 40 cm trở lên</mark>, <strong class="kw">khe hở</strong> <mark class="critical">không quá 3 cm</mark>.</li>
+<li><strong class="kw">Tay vịn</strong> cao <mark class="critical">từ 90 cm trở lên</mark>; <strong class="kw">thanh giữa</strong> cao <mark class="critical">từ 35 cm đến dưới 50 cm</mark>.</li>
+<li>Khi có nguy cơ vật rơi, <strong class="kw">ván chắn chân</strong> cao <mark class="critical">từ 10 cm trở lên</mark>.</li>
+<li><strong class="kw">Khoảng cách cột</strong>: phương dọc <mark class="critical">≤ 1,85 m</mark>, phương ngang <mark class="critical">≤ 1,5 m</mark>.</li>
+<li><strong class="kw">Khoảng cách giằng tường</strong>: phương đứng <mark class="critical">≤ 5,0 m</mark>, phương ngang <mark class="critical">≤ 5,5 m</mark>.</li>
+</ol></div></article>
+</div>
+<a class="backlink" href="#toc">↑ Mục lục</a>
+</section>
+<section id="sec-mobile-crane">
+<h3>(14) 移動式クレーンの設置と作業前の点検の留意点</h3>
+<p class="source-ref">Nguồn: Book page 128-129</p>
+<div class="study-grid">
+<article class="study-card original" lang="ja"><h4 class="card-title">原文</h4><div class="recall-source" lang="ja"><ol>
+<li>移動式クレーンの選定に際し、<strong class="kw">作業半径、吊り上げ荷重、性能曲線</strong>で十分な能力を有するものを選定する。</li>
+<li>送配電線近くの作業では、<strong class="kw">絶縁用防護措置</strong>を確認するか<strong class="kw">安全離隔距離</strong>を守る。</li>
+<li><strong class="kw">作業半径内の障害物</strong>がないことを確認する。</li>
+<li>据付け地盤には、<strong class="kw">鉄板等により地盤反力を確保</strong>できるよう補強する。</li>
+<li>作業者は、<strong class="kw">免許、技能講習、特別教育等の資格</strong>を確認する。</li>
+<li><strong class="kw">合図者</strong>は<mark class="critical">一人</mark>に定め、オペレータと連絡を密にし誘導させる。</li>
+<li><strong class="kw">作業開始前の安全点検</strong>は、<span class="relation">ブレーキ、クラッチ、警報装置、巻過防止装置、コントローラ</span>について行う。</li>
+<li><strong class="kw">吊り荷の移動範囲内</strong>を<span class="trap">立入禁止</span>とする。</li>
+</ol></div></article>
+<article class="study-card translation" lang="vi"><h4 class="card-title">Bản dịch tiếng Việt</h4><div class="recall-source"><ol>
+<li>Chọn cẩu đủ năng lực theo <strong class="kw">bán kính làm việc, tải trọng nâng và đường cong đặc tính</strong>.</li>
+<li>Khi làm gần đường dây điện, xác nhận <strong class="kw">biện pháp bảo vệ cách điện</strong> hoặc giữ <strong class="kw">khoảng cách an toàn</strong>.</li>
+<li>Xác nhận <strong class="kw">không có vật cản trong bán kính làm việc</strong>.</li>
+<li>Gia cường nền bằng <strong class="kw">tấm thép v.v. để bảo đảm phản lực nền</strong>.</li>
+<li>Kiểm tra <strong class="kw">giấy phép, đào tạo kỹ năng và đào tạo đặc biệt</strong> của người thực hiện.</li>
+<li>Chỉ định <strong class="kw">người ra tín hiệu</strong> duy nhất <mark class="critical">một người</mark>, liên lạc chặt với người vận hành.</li>
+<li><strong class="kw">Kiểm tra trước khi làm việc</strong>: <span class="relation">phanh, ly hợp, cảnh báo, chống cuốn quá hành trình và bộ điều khiển</span>.</li>
+<li><strong class="kw">Phạm vi di chuyển của tải treo</strong>: <span class="trap">cấm người đi vào</span>.</li>
+</ol></div></article>
+</div>
+<a class="backlink" href="#toc">↑ Mục lục</a>
+</section>
+<section id="sec-2-1-2">
+<h2>2.1.2 現場労働者の災害防止対策</h2>
+<p class="source-ref">Nguồn: Book page 129-131</p>
+<div class="study-grid">
+<article class="study-card original" lang="ja"><h3 class="card-title">原文</h3><div class="recall-source" lang="ja"><p>足場の作業床からの墜落災害の防止、乗入れ構台、建設用リフト、型枠支保工などの倒壊、崩壊事故の防止など、仮設備の使用に伴う<strong class="kw">墜落・飛来・落下などの労働災害や事故を防止する対策</strong>には、次のようなものがある。</p></div></article>
+<article class="study-card translation" lang="vi"><h3 class="card-title">Bản dịch tiếng Việt</h3><div class="recall-source"><p>Các biện pháp dưới đây nhằm phòng ngừa <strong class="kw">rơi ngã, vật bay tới, vật rơi, sập đổ và các tai nạn khác khi sử dụng thiết bị tạm</strong>, gồm giàn giáo, sàn cho xe đi vào, vận thăng xây dựng và hệ chống ván khuôn.</p></div></article>
+</div>
+</section>
+<section id="sec-fall">
+<h3>(1) 足場等からの墜落災害防止対策</h3>
+<p class="source-ref">Nguồn: Book page 129-130</p>
+<div class="study-grid">
+<article class="study-card original" lang="ja"><h4 class="card-title">原文</h4><div class="recall-source" lang="ja">
+<p>① 足場の組立は、<strong class="kw">事業者の作成した組立図（施工図）</strong>により組み立てる。</p>
+<p>② 足場の組立・解体・変更の作業中には次の点に留意する。</p>
+<ol type="a">
+<li><strong class="kw">時期・範囲及び順序</strong>を労働者に周知する。</li>
+<li>作業範囲内に、<strong class="kw">関係労働者以外</strong>の<span class="trap">立入を禁止</span>する。</li>
+<li>悪天候で危険が予想されるときは、<span class="trap">作業を中止する</span>。</li>
+<li>足場の緊結、取り外し、受渡し作業にあたって、<strong class="kw">足場板の幅</strong><mark class="critical">40cm以上</mark>を用いる。</li>
+</ol>
+<p>③ 足場、仮設通路上での作業中に生じる墜落災害の防止対策</p>
+<ol type="a">
+<li>つまずき、すべり、踏抜きのないよう、<strong class="kw">作業床面を整備</strong>する。</li>
+<li>通路・作業床には、<strong class="kw">手すり</strong><mark class="critical">高さ85cm以上</mark>、<strong class="kw">中さん</strong><mark class="critical">35～50cm</mark>、<strong class="kw">幅木</strong><mark class="critical">10cm以上</mark>を設ける。</li>
+<li>手すりを取り外して作業を行わせるときは、<strong class="kw">防網</strong>を張り<strong class="kw">要求性能墜落制止用器具（安全帯）</strong>を使用させる。</li>
+<li><strong class="kw">足場の点検</strong>は、取付け部のゆるみ、掛け渡し、脚部の沈下・滑動について、<span class="relation">悪天候の後、中震以上の震度の後、一部解体・変更した後等、作業開始前</span>に行う。</li>
+<li>スレート屋根上での作業には<strong class="kw">防網</strong>を張り、<strong class="kw">歩み板の幅</strong><mark class="critical">30cm以上</mark>を用いる。</li>
+<li>作業に必要な<strong class="kw">照度</strong>を確保する。</li>
+<li><strong class="kw">高さ又は深さ</strong><mark class="critical">1.5mを超える</mark>箇所での作業には、安全に昇降できる<strong class="kw">昇降設備</strong>を設ける。</li>
+</ol>
+<p>④ 移動式足場の安全対策</p>
+<ol type="a">
+<li><strong class="kw">移動式足場の作業床</strong>は、<strong class="kw">手すり</strong><mark class="critical">90cm以上</mark>、<strong class="kw">幅木</strong><mark class="critical">10cm以上</mark>を設ける。</li>
+<li><strong class="kw">最大積載荷重</strong>以下となるように移動式足場の見やすい箇所に表示する。</li>
+<li><strong class="kw">移動足場に労働者を乗せて</strong><span class="trap">移動しない</span>。</li>
+<li>作業開始前点検として<strong class="kw">脚輪のブレーキ</strong>の作動を確認し、<strong class="kw">控え枠の取付け状態、接地状態</strong>の異常のないことを確認する。</li>
+<li>移動式足場の上で、<span class="trap">はしご、脚立は使用しない</span>。</li>
+</ol>
+</div></article>
+<article class="study-card translation" lang="vi"><h4 class="card-title">Bản dịch tiếng Việt</h4><div class="recall-source">
+<p>① Giàn giáo phải được lắp theo <strong class="kw">bản vẽ lắp dựng/bản vẽ thi công do đơn vị sử dụng lao động lập</strong>.</p>
+<p>② Khi lắp dựng, tháo dỡ hoặc thay đổi giàn giáo:</p>
+<ol type="a">
+<li>Thông báo cho người lao động về <strong class="kw">thời điểm, phạm vi và trình tự</strong>.</li>
+<li><strong class="kw">Người không liên quan</strong>: <span class="trap">cấm đi vào</span> phạm vi công việc.</li>
+<li>Khi dự báo nguy hiểm do thời tiết xấu, <span class="trap">phải dừng công việc</span>.</li>
+<li>Dùng <strong class="kw">ván giàn giáo rộng</strong> <mark class="critical">từ 40 cm trở lên</mark> khi liên kết, tháo và chuyển giao cấu kiện.</li>
+</ol>
+<p>③ Phòng ngừa rơi ngã khi làm việc trên giàn giáo và lối đi tạm:</p>
+<ol type="a">
+<li><strong class="kw">Duy trì bề mặt sàn</strong> để không vấp, trượt hoặc giẫm thủng.</li>
+<li>Lắp <strong class="kw">tay vịn</strong> <mark class="critical">cao từ 85 cm</mark>, <strong class="kw">thanh giữa</strong> <mark class="critical">35-50 cm</mark>, <strong class="kw">ván chắn chân</strong> <mark class="critical">cao từ 10 cm</mark>.</li>
+<li>Khi tháo tay vịn để làm việc, căng <strong class="kw">lưới phòng rơi</strong> và dùng <strong class="kw">dụng cụ chống rơi đạt tính năng yêu cầu</strong>.</li>
+<li><strong class="kw">Kiểm tra giàn giáo</strong> về chỗ lỏng, tình trạng gác nối, lún/trượt chân <span class="relation">sau thời tiết xấu, động đất từ mức trung chấn, sau tháo đổi một phần và trước khi làm việc</span>.</li>
+<li>Trên mái slate, căng <strong class="kw">lưới phòng rơi</strong> và dùng <strong class="kw">ván đi lại rộng</strong> <mark class="critical">từ 30 cm trở lên</mark>.</li>
+<li>Bảo đảm <strong class="kw">độ chiếu sáng</strong> cần thiết.</li>
+<li>Khi làm việc ở <strong class="kw">chiều cao hoặc chiều sâu</strong> <mark class="critical">trên 1,5 m</mark>, bố trí <strong class="kw">thiết bị lên xuống an toàn</strong>.</li>
+</ol>
+<p>④ An toàn giàn giáo di động:</p>
+<ol type="a">
+<li><strong class="kw">Sàn giàn giáo di động</strong> có <strong class="kw">tay vịn</strong> <mark class="critical">cao từ 90 cm</mark> và <strong class="kw">ván chắn chân</strong> <mark class="critical">cao từ 10 cm</mark>.</li>
+<li>Hiển thị <strong class="kw">tải trọng chất lên tối đa</strong> tại vị trí dễ nhìn.</li>
+<li><strong class="kw">Giàn giáo khi có người ở trên</strong>: <span class="trap">không được di chuyển</span>.</li>
+<li>Trước khi làm việc, kiểm tra <strong class="kw">phanh bánh xe</strong>, <strong class="kw">khung chống và trạng thái tiếp xúc nền</strong>.</li>
+<li><span class="trap">Không dùng thang tựa hoặc thang chữ A trên giàn giáo di động</span>.</li>
+</ol>
+</div></article>
+</div>
+<a class="backlink" href="#toc">↑ Mục lục</a>
+</section>
+<section id="sec-frame-collapse">
+<h3>(2) 外部枠組足場の倒壊防止対策</h3>
+<p class="source-ref">Nguồn: Book page 130</p>
+<div class="study-grid">
+<article class="study-card original" lang="ja"><h4 class="card-title">原文</h4><div class="recall-source" lang="ja"><ol>
+<li><strong class="kw">壁つなぎのアンカーボルト</strong>は躯体に堅固に取り付ける。</li>
+<li><strong class="kw">壁つなぎの間隔</strong>は水平<mark class="critical">8m以下</mark>、鉛直<mark class="critical">9m以下</mark>とする。</li>
+<li>脚部には<strong class="kw">敷板</strong>を敷き、<strong class="kw">ベース金具</strong>を用いて堅固に取り付け<strong class="kw">根がらみ</strong>を設ける。</li>
+<li>最上階及び<mark class="critical">5層以内ごと</mark>に<strong class="kw">水平材</strong>を取り付ける。</li>
+<li>強風時には<strong class="kw">メッシュシートなどを取り除く</strong>。</li>
+<li><strong class="kw">高さ20mを超える足場</strong>では、<strong class="kw">主枠の高さ</strong><mark class="critical">2m以下</mark>、<strong class="kw">主枠間隔</strong><mark class="critical">1.85m以下</mark>とする。</li>
+</ol></div></article>
+<article class="study-card translation" lang="vi"><h4 class="card-title">Bản dịch tiếng Việt</h4><div class="recall-source"><ol>
+<li><strong class="kw">Bu lông neo của giằng tường</strong> phải cố định chắc vào kết cấu chính.</li>
+<li><strong class="kw">Khoảng cách giằng tường</strong>: ngang <mark class="critical">≤ 8 m</mark>, đứng <mark class="critical">≤ 9 m</mark>.</li>
+<li>Chân giàn giáo phải có <strong class="kw">tấm kê, đế chân và giằng chân</strong>, cố định chắc.</li>
+<li>Lắp <strong class="kw">thanh ngang gia cường</strong> ở tầng trên cùng và <mark class="critical">trong phạm vi mỗi 5 tầng</mark>.</li>
+<li>Khi gió mạnh, <strong class="kw">tháo mesh sheet</strong> v.v.</li>
+<li>Với <strong class="kw">giàn giáo cao trên 20 m</strong>: <strong class="kw">khung chính cao</strong> <mark class="critical">≤ 2 m</mark>, <strong class="kw">khoảng khung</strong> <mark class="critical">≤ 1,85 m</mark>.</li>
+</ol></div></article>
+</div>
+<a class="backlink" href="#toc">↑ Mục lục</a>
+</section>
+<section id="sec-flying-falling">
+<h3>(3) 飛来・落下による災害防止対策</h3>
+<p class="source-ref">Nguồn: Book page 130</p>
+<div class="study-grid">
+<article class="study-card original" lang="ja"><h4 class="card-title">原文</h4><div class="recall-source" lang="ja"><ol>
+<li>足場上での<span class="trap">上下作業の工程を禁止</span>する。</li>
+<li>足場と躯体との空隙部に<strong class="kw">養生シートやネット</strong>を張り、端材等の飛来・落下を阻止する。</li>
+<li>作業床や通路上は常に<strong class="kw">整理・整頓</strong>し、端材や工具等が風で飛来・落下しないようにする。</li>
+<li>足場の外部に<strong class="kw">養生シートを全面に張る</strong>。</li>
+<li><strong class="kw">物体の投下高さ</strong><mark class="critical">3m以上</mark>では、投下設備として<strong class="kw">シュート</strong>を設ける。</li>
+<li>道路に面する足場には<strong class="kw">防護棚（朝顔）と養生シート</strong>を設け、端材や工具の飛来・落下を防止する。</li>
+</ol></div></article>
+<article class="study-card translation" lang="vi"><h4 class="card-title">Bản dịch tiếng Việt</h4><div class="recall-source"><ol>
+<li><span class="trap">Cấm bố trí công việc trên-dưới đồng thời</span> trên cùng vị trí giàn giáo.</li>
+<li>Căng <strong class="kw">tấm bảo vệ hoặc lưới</strong> tại khe giữa giàn giáo và kết cấu để chặn vật bay/rơi.</li>
+<li>Luôn <strong class="kw">sắp xếp, thu dọn</strong> sàn và lối đi để mẩu vật liệu, dụng cụ không bị gió cuốn hoặc rơi.</li>
+<li>Phủ toàn bộ phía ngoài giàn giáo bằng <strong class="kw">tấm bảo vệ</strong>.</li>
+<li>Khi thả vật từ <strong class="kw">độ cao</strong> <mark class="critical">từ 3 m trở lên</mark>, phải có <strong class="kw">máng thả</strong>.</li>
+<li>Giàn giáo giáp đường phải có <strong class="kw">mái che bảo vệ và tấm bảo vệ</strong> để chặn vật bay/rơi.</li>
+</ol></div></article>
+</div>
+<a class="backlink" href="#toc">↑ Mục lục</a>
+</section>
+<section id="sec-collapse-topple">
+<h3>(4) 崩壊・倒壊・転倒災害の防止対策</h3>
+<p class="source-ref">Nguồn: Book page 130</p>
+<div class="study-grid">
+<article class="study-card original" lang="ja"><h4 class="card-title">原文</h4><div class="recall-source" lang="ja"><ol>
+<li><span class="relation"><strong class="kw">根切り法面の降雨による崩壊</strong>を防止するため、法面勾配を緩くし、表面をシートで覆い、法面上部に排水溝を設ける</span>。</li>
+<li><span class="relation"><strong class="kw">杭打ち機や移動式揚重機の転倒</strong>を防止するため、据付け地盤の補強に敷鉄板を用い、アウトリガーを最大限に張り出す</span>。</li>
+<li><span class="relation"><strong class="kw">仮囲いの風による転倒</strong>を防止するには、仮囲いの一部にメッシュ枠を用い風圧を緩和し、かつ埋込み材を地盤に応じて深く埋め込む</span>。</li>
+<li><span class="relation"><strong class="kw">乗入れ構台の倒壊</strong>を防止するには、構台支柱の根入れを深くするか、脚部に敷板を用いる。水平材、ブレースを確実に取り付け、制限荷重を超えて載荷しないこと</span>。</li>
+<li><span class="relation"><strong class="kw">定置式クレーンの転倒</strong>を防止するには、クレーンの基礎が十分な引抜き耐力を有しており、水平精度を有するか確認し、十分なアンカーボルトの本数で固定する</span>。</li>
+<li><span class="relation"><strong class="kw">建設用リフトの倒壊</strong>を防止するため、<mark class="critical">風速30mを超える風</mark>が吹いた後、<strong class="kw">中震以上の地震</strong>の後、各部の異常の有無を点検して確認する</span>。</li>
+</ol></div></article>
+<article class="study-card translation" lang="vi"><h4 class="card-title">Bản dịch tiếng Việt</h4><div class="recall-source"><ol>
+<li><span class="relation"><strong class="kw">Sạt mái dốc hố đào do mưa</strong>: làm dốc thoải, phủ sheet và đặt rãnh thoát nước phía trên</span>.</li>
+<li><span class="relation"><strong class="kw">Máy đóng cọc/thiết bị nâng di động bị lật</strong>: gia cường nền bằng tấm thép và mở outrigger tối đa</span>.</li>
+<li><span class="relation"><strong class="kw">Hàng rào tạm bị gió lật</strong>: dùng khung lưới giảm áp lực gió và chôn cấu kiện neo sâu theo nền đất</span>.</li>
+<li><span class="relation"><strong class="kw">Sập sàn cho xe đi vào</strong>: tăng chiều sâu chôn cột hoặc kê chân, lắp chắc thanh ngang/brace và không vượt tải giới hạn</span>.</li>
+<li><span class="relation"><strong class="kw">Cẩu cố định bị lật</strong>: kiểm tra khả năng chống nhổ và độ ngang của móng, cố định đủ bu lông neo</span>.</li>
+<li><strong class="kw">Kiểm tra vận thăng xây dựng</strong> sau <span class="relation">gió có <mark class="critical">tốc độ vượt 30 m</mark> theo cách ghi của sách và động đất từ mức trung chấn trở lên</span>.</li>
+</ol></div></article>
+</div>
+<div class="warning-box">Tài liệu ghi “風速30mを超える風” nhưng không kèm đơn vị thời gian. Bản dịch giữ nguyên mức độ thông tin của sách, không tự bổ sung “m/s”.</div>
+<a class="backlink" href="#toc">↑ Mục lục</a>
+</section>
+<section id="sec-arc-weld">
+<h3>(5) 交流アーク溶接機による感電災害防止対策</h3>
+<p class="source-ref">Nguồn: Book page 131</p>
+<div class="study-grid">
+<article class="study-card original" lang="ja"><h4 class="card-title">原文</h4><div class="recall-source" lang="ja"><ol>
+<li><strong class="kw">溶接棒のホルダー</strong>は、<strong class="kw">JISに定めた規格を満たす絶縁性能</strong>を有するものを使用する。</li>
+<li><strong class="kw">高さ</strong><mark class="critical">2m以上</mark>の鉄骨上での作業は、<strong class="kw">溶接機用自動電撃防止装置</strong>を用いる。</li>
+<li><strong class="kw">交流アーク溶接機</strong>は確実に<strong class="kw">接地</strong>する。</li>
+</ol></div></article>
+<article class="study-card translation" lang="vi"><h4 class="card-title">Bản dịch tiếng Việt</h4><div class="recall-source"><ol>
+<li><strong class="kw">Kẹp giữ que hàn</strong> phải có <strong class="kw">khả năng cách điện đáp ứng tiêu chuẩn JIS</strong>.</li>
+<li>Khi làm việc trên kết cấu thép ở <strong class="kw">độ cao</strong> <mark class="critical">từ 2 m trở lên</mark>, dùng <strong class="kw">thiết bị tự động chống điện giật cho máy hàn</strong>.</li>
+<li><strong class="kw">Máy hàn hồ quang AC</strong> phải được <strong class="kw">nối đất chắc chắn</strong>.</li>
+</ol></div></article>
+</div>
+<a class="backlink" href="#toc">↑ Mục lục</a>
+</section>
+<section id="sec-third-party">
+<h3>(6) 第三者災害防止対策</h3>
+<p class="source-ref">Nguồn: Book page 131</p>
+<div class="study-grid">
+<article class="study-card original" lang="ja"><h4 class="card-title">原文</h4><div class="recall-source" lang="ja"><ol>
+<li>建築物の端材等が落下し、<span class="relation"><strong class="kw">第三者が被災しない</strong>ように、足場の道路面には<strong class="kw">防護棚（朝顔）</strong>を設け<strong class="kw">養生シート</strong>で覆う</span>。</li>
+<li>杭打ち機等が転倒して<span class="relation"><strong class="kw">第三者が被災しない</strong>ように、杭打ち機の地盤を補強するか<strong class="kw">敷鉄板</strong>を敷き、<strong class="kw">アウトリガー</strong>を最大限に張り出す</span>。</li>
+<li>ゲートの出入口で<span class="relation"><strong class="kw">第三者が工事用車両と接触しない</strong>よう、<strong class="kw">誘導員</strong>を配置したり、<strong class="kw">カーブミラー</strong>を設置し、ゲート近くの板囲いには<strong class="kw">透明のアクリル板</strong>を用いる</span>。</li>
+<li>根切りに伴い、<span class="relation"><strong class="kw">隣接する家屋の不同沈下</strong>を生じさせないため、ヒービング、ボイリングを防止できる<strong class="kw">山留め壁と支保工</strong>を選定する</span>。</li>
+</ol></div></article>
+<article class="study-card translation" lang="vi"><h4 class="card-title">Bản dịch tiếng Việt</h4><div class="recall-source"><ol>
+<li>Để mẩu vật liệu từ công trình không rơi xuống gây thương tích cho <span class="relation"><strong class="kw">bên thứ ba</strong>, phía giàn giáo giáp đường phải bố trí <strong class="kw">mái che bảo vệ</strong> và phủ bằng <strong class="kw">tấm bảo vệ</strong></span>.</li>
+<li>Để máy đóng cọc v.v. không bị lật gây tai nạn cho <span class="relation"><strong class="kw">bên thứ ba</strong>, phải gia cường nền hoặc trải <strong class="kw">tấm thép</strong> và mở <strong class="kw">outrigger</strong> đến mức lớn nhất</span>.</li>
+<li>Tại lối ra vào cổng, để <span class="relation"><strong class="kw">người bên ngoài không va chạm với xe công trường</strong>, bố trí <strong class="kw">người hướng dẫn</strong>, lắp <strong class="kw">gương cầu</strong> và dùng <strong class="kw">tấm acrylic trong suốt</strong> gần cổng</span>.</li>
+<li>Để không gây <span class="relation"><strong class="kw">lún không đều cho nhà lân cận</strong> khi đào đất, lựa chọn <strong class="kw">tường giữ đất và hệ chống</strong> có khả năng phòng ngừa heaving và boiling</span>.</li>
+</ol></div></article>
+</div>
+<a class="backlink" href="#toc">↑ Mục lục</a>
+</section>
+<section id="sec-heavy-equipment">
+<h3>(7) 重機関連災害防止対策</h3>
+<p class="source-ref">Nguồn: Book page 131</p>
+<div class="study-grid">
+<article class="study-card original" lang="ja"><h4 class="card-title">原文</h4><div class="recall-source" lang="ja"><ol>
+<li><strong class="kw">重機と労働者</strong>とが接触災害を生じないよう、重機に<strong class="kw">誘導員</strong>を配置する。</li>
+<li>重機が転落しないように誘導員を配置し、<strong class="kw">合図をして後進</strong>させる。</li>
+<li>杭打ち機の転倒を防止するために、杭の吊込みには<strong class="kw">専用の吊込みクレーン</strong>を用いる。</li>
+<li>ショベルで土砂をダンプカーに積み込むときは、<span class="relation">ダンプカーの運転席と反対側に旋回させ荷台後方から積み込む</span>。</li>
+<li><strong class="kw">最高速度</strong>が<mark class="critical">10km/hを超える</mark>建設機械を用いるときは、地形、地質に応じた適正な<strong class="kw">制限速度</strong>を定めて作業する。</li>
+<li><strong class="kw">パワーショベル</strong>による荷のつり上げ等、<span class="trap">主たる用途以外に原則として使用してはならない</span>。</li>
+<li>作業の開始前に、<strong class="kw">ブレーキ、クラッチ</strong>を点検する。</li>
+<li>移動式クレーンを使用するときは、作業の開始前に、<strong class="kw">ブレーキ・クラッチ・巻過防止装置・コントローラ</strong>などを点検する。</li>
+<li>作業場所において、必要な<strong class="kw">照度</strong>を確保するための措置を講じる。</li>
+<li><strong class="kw">重機の作業範囲内</strong>には、関係労働者以外の労働者・第三者の<span class="trap">立入を禁止</span>する措置を講じる。ここでいう「重機」とは、移動式クレーンなどの車両系建設機械のことである。</li>
+</ol></div></article>
+<article class="study-card translation" lang="vi"><h4 class="card-title">Bản dịch tiếng Việt</h4><div class="recall-source"><ol>
+<li>Để tránh <strong class="kw">va chạm máy-người</strong>, bố trí <strong class="kw">người hướng dẫn</strong> cho máy.</li>
+<li>Để máy không rơi khỏi mép, bố trí người hướng dẫn và <strong class="kw">cho lùi theo tín hiệu</strong>.</li>
+<li>Khi cẩu đưa cọc vào vị trí, dùng <strong class="kw">cẩu chuyên dụng cẩu cọc</strong> để tránh lật máy đóng cọc.</li>
+<li>Khi máy xúc nạp đất lên xe ben: <span class="relation">quay về phía đối diện cabin và nạp từ phía sau thùng</span>.</li>
+<li>Máy xây dựng có <strong class="kw">tốc độ tối đa</strong> <mark class="critical">trên 10 km/h</mark> phải đặt <strong class="kw">tốc độ giới hạn</strong> phù hợp địa hình, địa chất.</li>
+<li><strong class="kw">Power shovel</strong> về nguyên tắc <span class="trap">không được dùng ngoài công dụng chính, như cẩu nâng tải</span>.</li>
+<li>Trước khi làm việc, kiểm tra <strong class="kw">phanh và ly hợp</strong>.</li>
+<li>Cẩu di động: kiểm tra <strong class="kw">phanh, ly hợp, chống cuốn quá hành trình và bộ điều khiển</strong>.</li>
+<li>Bảo đảm <strong class="kw">độ chiếu sáng</strong> cần thiết.</li>
+<li>Trong <strong class="kw">phạm vi hoạt động của máy</strong>, <span class="trap">cấm người không liên quan và bên thứ ba đi vào</span>. “Máy hạng nặng” ở đây là máy xây dựng dạng xe như cẩu di động.</li>
+</ol></div></article>
+</div>
+<a class="backlink" href="#toc">↑ Mục lục</a>
+</section>
+<section id="sec-2-1-3">
+<h2>2.1.3 作業開始前の安全点検事項</h2>
+<p class="source-ref">Nguồn: Book page 132</p>
+<div class="study-grid">
+<article class="study-card original" lang="ja"><h3 class="card-title">原文</h3><div class="recall-source" lang="ja"><p>建築工事において、機械又は設備を使用して作業を行う場合、<strong class="kw">作業開始前の安全点検事項</strong>としては、次のような事項が定められている。</p></div></article>
+<article class="study-card translation" lang="vi"><h3 class="card-title">Bản dịch tiếng Việt</h3><div class="recall-source"><p>Trong công tác xây dựng, khi sử dụng máy móc hoặc thiết bị, phải thực hiện các <strong class="kw">hạng mục kiểm tra an toàn trước khi bắt đầu công việc</strong> như dưới đây.</p></div></article>
+</div>
+</section>
+<section id="sec-prestart-machinery">
+<h3>機械の作業開始前の点検事項</h3>
+<p class="source-ref">Nguồn: Book page 132</p>
+<div class="study-grid">
+<article class="study-card original" lang="ja"><h4 class="card-title">原文</h4><div class="recall-source" lang="ja"><div class="table-wrap"><table>
+<thead><tr><th>機械名</th><th>作業開始前の点検事項</th></tr></thead>
+<tbody>
+<tr><td><strong class="kw">車両系建設機械</strong></td><td><span class="relation">①ブレーキ・クラッチの機能　②地形・地質の状態　③労働者の立入禁止区域の設定の状態</span></td></tr>
+<tr><td><strong class="kw">移動式クレーン</strong></td><td><span class="relation">①ブレーキ・クラッチ・警報装置・コントローラの性能　②アウトリガの張出し状態、地盤の安定性　③旋回半径内の障害物の有無</span></td></tr>
+<tr><td><strong class="kw">交流アーク溶接機</strong></td><td><span class="relation">①交流アーク溶接機用自動電撃防止装置の作動状態　②溶接棒のホルダーの絶縁性能　③交流アーク溶接機の接地の状態</span></td></tr>
+</tbody>
+</table></div></div></article>
+<article class="study-card translation" lang="vi"><h4 class="card-title">Bản dịch tiếng Việt</h4><div class="recall-source"><div class="table-wrap"><table>
+<thead><tr><th>Máy móc</th><th>Nội dung kiểm tra trước khi làm việc</th></tr></thead>
+<tbody>
+<tr><td><strong class="kw">Máy xây dựng dạng xe</strong></td><td><span class="relation">① Chức năng phanh, ly hợp　② Địa hình, địa chất　③ Tình trạng thiết lập khu vực cấm người lao động đi vào</span></td></tr>
+<tr><td><strong class="kw">Cẩu di động</strong></td><td><span class="relation">① Phanh, ly hợp, cảnh báo, bộ điều khiển　② Trạng thái mở outrigger và độ ổn định nền　③ Vật cản trong bán kính quay</span></td></tr>
+<tr><td><strong class="kw">Máy hàn hồ quang AC</strong></td><td><span class="relation">① Hoạt động của thiết bị tự động chống điện giật　② Cách điện của kẹp que hàn　③ Trạng thái nối đất</span></td></tr>
+</tbody>
+</table></div></div></article>
+</div>
+<a class="backlink" href="#toc">↑ Mục lục</a>
+</section>
+<section id="sec-welding-diagram">
+<h3>交流アーク溶接機の構成</h3>
+<p class="source-ref">Nguồn: Book page 132</p>
+<div class="study-grid">
+<article class="study-card original" lang="ja"><h4 class="card-title">原文・図中表記</h4><div class="recall-source" lang="ja"><ul>
+<li><strong class="kw">溶接棒</strong></li>
+<li><strong class="kw">溶接</strong></li>
+<li><strong class="kw">母材</strong></li>
+<li><strong class="kw">溶接棒ホルダー</strong></li>
+<li><strong class="kw">二次側ケーブル</strong></li>
+<li><strong class="kw">アースクランプ</strong></li>
+<li><strong class="kw">交流アーク溶接機</strong></li>
+<li><strong class="kw">一次側ケーブル</strong></li>
+<li><strong class="kw">接地</strong></li>
+<li><strong class="kw">電源</strong></li>
+</ul></div></article>
+<article class="study-card translation" lang="vi"><h4 class="card-title">Bản dịch tiếng Việt</h4><div class="recall-source"><ul>
+<li><strong class="kw">Que hàn</strong></li>
+<li><strong class="kw">Vị trí hàn</strong></li>
+<li><strong class="kw">Vật liệu cơ bản</strong></li>
+<li><strong class="kw">Kẹp giữ que hàn</strong></li>
+<li><strong class="kw">Cáp phía thứ cấp</strong></li>
+<li><strong class="kw">Kẹp mass</strong></li>
+<li><strong class="kw">Máy hàn hồ quang AC</strong></li>
+<li><strong class="kw">Cáp phía sơ cấp</strong></li>
+<li><strong class="kw">Nối đất</strong></li>
+<li><strong class="kw">Nguồn điện</strong></li>
+</ul></div></article>
+</div>
+<div class="figure-box">
+<h4>Quan hệ cấu tạo trong sơ đồ</h4>
+<div aria-label="Luồng mạch máy hàn" class="formula-line">
+<span class="flow-node">電源 / Nguồn</span><span class="flow-arrow">→</span>
+<span class="flow-node">一次側ケーブル / Cáp sơ cấp</span><span class="flow-arrow">→</span>
+<span class="flow-node">交流アーク溶接機 / Máy hàn</span><span class="flow-arrow">→</span>
+<span class="flow-node">二次側ケーブル / Cáp thứ cấp</span><span class="flow-arrow">→</span>
+<span class="flow-node">溶接棒ホルダー / Kẹp que</span><span class="flow-arrow">→</span>
+<span class="flow-node">溶接棒 / Que hàn</span><span class="flow-arrow">→</span>
+<span class="flow-node">母材 / Vật liệu hàn</span>
+</div>
+<p>Mạch hồi được nối từ vật liệu hàn qua <strong>アースクランプ</strong> về máy; bản thân máy có đường <strong>接地</strong> xuống đất. Ba điểm an toàn cần kiểm tra là: thiết bị tự động chống điện giật, cách điện của holder và nối đất máy.</p>
+</div>
+<a class="backlink" href="#toc">↑ Mục lục</a>
+</section>
+<section id="sec-prestart-equipment">
+<h3>設備の作業開始前の点検事項</h3>
+<p class="source-ref">Nguồn: Book page 132</p>
+<div class="study-grid">
+<article class="study-card original" lang="ja"><h4 class="card-title">原文</h4><div class="recall-source" lang="ja"><div class="table-wrap"><table>
+<thead><tr><th>設備名</th><th>作業開始前の点検事項</th></tr></thead>
+<tbody>
+<tr><td><strong class="kw">足場</strong></td><td><span class="relation">①床材の損傷、取付け及び掛渡しの状態　②緊結部及び取付部のゆるみの状態　③脚部の沈下及び滑動の状態</span></td></tr>
+<tr><td><strong class="kw">移動式足場</strong></td><td><span class="relation">①脚輪のブレーキの作動状態　②手すりの緊結部のゆるみの状態　③積載最大荷重の明示の有無</span></td></tr>
+<tr><td><strong class="kw">型枠支保工</strong></td><td><span class="relation">①支柱脚部の固定、根がらみの状態　②鋼材交差部の金具の緊結状態　③支柱の継手の状態</span></td></tr>
+</tbody>
+</table></div></div></article>
+<article class="study-card translation" lang="vi"><h4 class="card-title">Bản dịch tiếng Việt</h4><div class="recall-source"><div class="table-wrap"><table>
+<thead><tr><th>Thiết bị</th><th>Nội dung kiểm tra trước khi làm việc</th></tr></thead>
+<tbody>
+<tr><td><strong class="kw">Giàn giáo</strong></td><td><span class="relation">① Hư hỏng, lắp đặt và gác nối vật liệu sàn　② Chỗ lỏng tại liên kết và vị trí lắp　③ Lún, trượt chân giàn giáo</span></td></tr>
+<tr><td><strong class="kw">Giàn giáo di động</strong></td><td><span class="relation">① Hoạt động phanh bánh xe　② Chỗ lỏng tại liên kết tay vịn　③ Có ghi rõ tải trọng chất lên tối đa hay không</span></td></tr>
+<tr><td><strong class="kw">Hệ chống ván khuôn</strong></td><td><span class="relation">① Cố định chân cột và giằng chân　② Siết phụ kiện tại chỗ giao cấu kiện thép　③ Trạng thái mối nối cột chống</span></td></tr>
+</tbody>
+</table></div></div></article>
+</div>
+<a class="backlink" href="#toc">↑ Mục lục</a>
+</section>
+</main>
+<section id="terms">
+<h2>Thuật ngữ chuyên môn</h2>
+<div class="table-wrap">
+<table class="glossary-table">
+<thead><tr><th>日本語</th><th>読み方</th><th>Tiếng Việt</th><th>Giải thích</th><th>Liên quan</th></tr></thead>
+<tbody>
+<tr><td>施工計画</td><td>せこうけいかく</td><td>Kế hoạch thi công</td><td>Kế hoạch về phương pháp, trình tự, bố trí công trường, thiết bị và an toàn.</td><td>仮設物、安全管理</td></tr>
+<tr><td>仮設物</td><td>かせつぶつ</td><td>Công trình/thiết bị tạm</td><td>Kết cấu hoặc thiết bị phục vụ thi công, không phải bộ phận vĩnh viễn của công trình.</td><td>足場、構台、仮囲い</td></tr>
+<tr><td>山留め</td><td>やまどめ</td><td>Hệ chống giữ đất tạm</td><td>Hệ kết cấu giữ ổn định thành hố đào.</td><td>山留め壁、支保工</td></tr>
+<tr><td>親杭横矢板</td><td>おやぐいよこやいた</td><td>Cọc chính + ván chắn ngang</td><td>Dùng cọc chính, thường là thép H, và ván gỗ lắp ngang giữa các cọc.</td><td>地下水なし、礫・岩層</td></tr>
+<tr><td>鋼矢板</td><td>こうやいた</td><td>Cừ thép</td><td>Các tấm thép liên kết tạo tường giữ đất và nước.</td><td>軟弱地盤、地下水</td></tr>
+<tr><td>根切り</td><td>ねぎり</td><td>Đào đất móng/hố đào</td><td>Công tác đào đất đến cao độ thiết kế.</td><td>法面、山留め</td></tr>
+<tr><td>ヒービング</td><td>ヒービング</td><td>Heaving</td><td>Đáy hố đào trồi lên do nền đất mất ổn định.</td><td>ボイリング</td></tr>
+<tr><td>ボイリング</td><td>ボイリング</td><td>Boiling</td><td>Dòng thấm hướng lên làm đất đáy hố mất ổn định như sôi.</td><td>地下水、止水</td></tr>
+<tr><td>腹起し</td><td>はらおこし</td><td>Waler/dầm phân phối</td><td>Dầm dọc tường giữ đất, truyền áp lực sang thanh chống.</td><td>切梁</td></tr>
+<tr><td>切梁</td><td>きりばり</td><td>Thanh chống ngang</td><td>Thanh chịu nén chống giữa các phía tường giữ đất.</td><td>水平切梁方式</td></tr>
+<tr><td>火打梁</td><td>ひうちばり</td><td>Giằng chéo góc</td><td>Thanh chéo ổn định hệ chống theo mặt bằng.</td><td>鋼製支保工</td></tr>
+<tr><td>ソイルセメント柱列壁</td><td>ソイルセメントちゅうれつへき</td><td>Tường cọc soil-cement dạng hàng</td><td>Cọc soil-cement chồng lấn, thường có lõi thép H.</td><td>止水性、剛性</td></tr>
+<tr><td>場所打ちRC山留め壁</td><td>ばしょうちRCやまどめへき</td><td>Tường RC giữ đất đổ tại chỗ</td><td>Khoan bằng dung dịch ổn định, đặt cốt thép và đổ bê tông tại chỗ.</td><td>地下躯体</td></tr>
+<tr><td>止水性</td><td>しすいせい</td><td>Khả năng chắn nước</td><td>Khả năng hạn chế nước thấm qua kết cấu.</td><td>山留め壁</td></tr>
+<tr><td>山留め支保工</td><td>やまどめしほこう</td><td>Hệ chống đỡ tường giữ đất</td><td>Cấu kiện chịu áp lực đất truyền từ tường giữ đất.</td><td>切梁、アンカー</td></tr>
+<tr><td>水平切梁方式</td><td>すいへいきりばりほうしき</td><td>Phương thức thanh chống ngang</td><td>Dùng thanh chống chịu nén giữa các tường giữ đất.</td><td>腹起し、火打梁</td></tr>
+<tr><td>地盤アンカー</td><td>じばんアンカー</td><td>Neo đất</td><td>Neo truyền lực từ tường vào vùng đất ổn định phía sau.</td><td>アンカー方式</td></tr>
+<tr><td>逆打ち工法</td><td>さかうちこうほう</td><td>Công pháp top-down</td><td>Thi công tầng hầm từ trên xuống đồng thời với kết cấu phía trên.</td><td>工期短縮</td></tr>
+<tr><td>地下埋設物</td><td>ちかまいせつぶつ</td><td>Công trình ngầm hiện hữu</td><td>Ống, cáp, kết cấu v.v. đã nằm dưới đất.</td><td>事前調査</td></tr>
+<tr><td>絶縁用防護具</td><td>ぜつえんようぼうごぐ</td><td>Dụng cụ bảo vệ cách điện</td><td>Vật bảo vệ ngăn tiếp xúc với phần mang điện.</td><td>送配電線</td></tr>
+<tr><td>乗入れ構台</td><td>のりいれこうだい</td><td>Sàn/giàn cho xe đi vào</td><td>Kết cấu tạm để xe, thiết bị tiếp cận khu vực hố đào.</td><td>風荷重、車両荷重</td></tr>
+<tr><td>荷受け構台</td><td>にうけこうだい</td><td>Sàn tiếp nhận vật liệu</td><td>Sàn tạm tiếp nhận vật tư được cẩu lên công trình.</td><td>揚重、幅木</td></tr>
+<tr><td>幅木</td><td>はばき</td><td>Ván chắn chân/toe board</td><td>Tấm chắn thấp ở mép sàn, ngăn vật rơi và hỗ trợ chống ngã.</td><td>手すり、中桟</td></tr>
+<tr><td>揚重</td><td>ようじゅう</td><td>Nâng hạ vật liệu</td><td>Nâng chuyển vật liệu bằng cẩu, vận thăng v.v.</td><td>揚重施設</td></tr>
+<tr><td>仮設電気設備</td><td>かせつでんきせつび</td><td>Thiết bị điện tạm</td><td>Hệ thống điện phục vụ giai đoạn thi công.</td><td>本設電力</td></tr>
+<tr><td>負荷設備容量</td><td>ふかせつびようりょう</td><td>Công suất phụ tải thiết bị</td><td>Tổng công suất của thiết bị sử dụng điện.</td><td>山積み、山崩し</td></tr>
+<tr><td>山積み</td><td>やまづみ</td><td>Cộng dồn tải</td><td>Cộng nhu cầu theo thời điểm để xác định đỉnh tải.</td><td>山崩し</td></tr>
+<tr><td>山崩し</td><td>やまくずし</td><td>San bằng tải</td><td>Điều chỉnh thời điểm sử dụng để giảm đỉnh phụ tải.</td><td>契約電力</td></tr>
+<tr><td>盛替え</td><td>もりかえ</td><td>Di chuyển/đấu chuyển</td><td>Thay đổi vị trí tuyến hoặc công trình tạm theo tiến độ.</td><td>仮設配線</td></tr>
+<tr><td>本設電力</td><td>ほんせつでんりょく</td><td>Nguồn điện chính thức</td><td>Hệ thống điện vĩnh viễn của công trình.</td><td>仮設電力</td></tr>
+<tr><td>仮設道路</td><td>かせつどうろ</td><td>Đường tạm công trường</td><td>Đường phục vụ phương tiện, vật tư, máy móc trong thi công.</td><td>ゲート、資材置場</td></tr>
+<tr><td>仮設事務所</td><td>かせつじむしょ</td><td>Văn phòng tạm</td><td>Văn phòng quản lý trong thời gian thi công.</td><td>監理事務所、工事事務所</td></tr>
+<tr><td>仮囲い</td><td>かりがこい</td><td>Hàng rào tạm</td><td>Ngăn cách công trường với khu vực bên ngoài.</td><td>メッシュ枠、建地材</td></tr>
+<tr><td>根入れ深さ</td><td>ねいれふかさ</td><td>Chiều sâu chôn</td><td>Chiều dài phần cấu kiện nằm trong đất.</td><td>引抜き耐力</td></tr>
+<tr><td>揚重施設</td><td>ようじゅうしせつ</td><td>Thiết bị/cơ sở nâng hạ</td><td>Cẩu, vận thăng và hệ thống phục vụ nâng chuyển.</td><td>揚重能力</td></tr>
+<tr><td>建設用リフト</td><td>けんせつようリフト</td><td>Vận thăng xây dựng</td><td>Trong tài liệu này, thiết bị nâng chuyên dùng cho hàng hóa.</td><td>搬器、立入禁止柵</td></tr>
+<tr><td>搬器</td><td>はんき</td><td>Buồng/sàn vận chuyển</td><td>Bộ phận mang hàng của vận thăng.</td><td>建設用リフト</td></tr>
+<tr><td>つり足場</td><td>つりあしば</td><td>Giàn giáo treo</td><td>Giàn giáo được treo từ kết cấu phía trên.</td><td>水平養生網</td></tr>
+<tr><td>張出し足場</td><td>はりだしあしば</td><td>Giàn giáo công xôn</td><td>Giàn giáo nhô ra từ kết cấu đỡ.</td><td>施工計画届出</td></tr>
+<tr><td>くさび緊結式足場</td><td>くさびきんけつしきあしば</td><td>Giàn giáo liên kết kiểu nêm</td><td>Giàn giáo ghép cấu kiện bằng đầu liên kết kiểu nêm.</td><td>壁つなぎ、根がらみ</td></tr>
+<tr><td>根がらみ</td><td>ねがらみ</td><td>Giằng chân</td><td>Thanh liên kết phần chân các cột giàn giáo hoặc cột chống.</td><td>ベース金具</td></tr>
+<tr><td>壁つなぎ</td><td>かべつなぎ</td><td>Giằng neo vào tường</td><td>Liên kết giàn giáo với kết cấu công trình.</td><td>アンカーボルト</td></tr>
+<tr><td>中桟</td><td>なかざん</td><td>Thanh giữa lan can</td><td>Thanh ngang trung gian của hệ lan can bảo vệ.</td><td>手すり、幅木</td></tr>
+<tr><td>合図者</td><td>あいずしゃ</td><td>Người ra tín hiệu</td><td>Người hướng dẫn và truyền tín hiệu cho người vận hành cẩu.</td><td>オペレータ</td></tr>
+<tr><td>巻過防止装置</td><td>まきすぎぼうしそうち</td><td>Thiết bị chống cuốn quá hành trình</td><td>Thiết bị an toàn của cơ cấu nâng.</td><td>移動式クレーン</td></tr>
+<tr><td>要求性能墜落制止用器具</td><td>ようきゅうせいのうついらくせいしようきぐ</td><td>Dụng cụ chống rơi đạt tính năng yêu cầu</td><td>Thiết bị bảo vệ người lao động khỏi rơi cao.</td><td>安全帯</td></tr>
+<tr><td>歩み板</td><td>あゆみいた</td><td>Ván đi lại</td><td>Tấm ván tạo lối đi an toàn trên mái hoặc vị trí tạm.</td><td>スレート屋根</td></tr>
+<tr><td>移動式足場</td><td>いどうしきあしば</td><td>Giàn giáo di động</td><td>Giàn giáo có bánh xe, có thể di chuyển vị trí.</td><td>脚輪</td></tr>
+<tr><td>外部枠組足場</td><td>がいぶわくぐみあしば</td><td>Giàn giáo khung ngoài nhà</td><td>Giàn giáo khung thép bố trí phía ngoài công trình.</td><td>主枠、壁つなぎ</td></tr>
+<tr><td>防護棚（朝顔）</td><td>ぼうごだな（あさがお）</td><td>Mái che bảo vệ</td><td>Kết cấu nhô ra để chắn vật rơi xuống bên dưới.</td><td>道路面、飛来・落下</td></tr>
+<tr><td>敷鉄板</td><td>しきてっぱん</td><td>Tấm thép kê nền</td><td>Phân phối tải lên nền đặt máy.</td><td>アウトリガ</td></tr>
+<tr><td>引抜き耐力</td><td>ひきぬきたいりょく</td><td>Khả năng chống nhổ</td><td>Khả năng chống lực kéo làm bật móng hoặc neo.</td><td>アンカーボルト</td></tr>
+<tr><td>交流アーク溶接機</td><td>こうりゅうアークようせつき</td><td>Máy hàn hồ quang AC</td><td>Máy hàn dùng dòng điện xoay chiều.</td><td>自動電撃防止装置、接地</td></tr>
+<tr><td>自動電撃防止装置</td><td>じどうでんげきぼうしそうち</td><td>Thiết bị tự động chống điện giật</td><td>Thiết bị an toàn dùng với máy hàn AC.</td><td>溶接棒ホルダー</td></tr>
+<tr><td>接地</td><td>せっち</td><td>Nối đất</td><td>Kết nối thiết bị điện với đất nhằm bảo đảm an toàn.</td><td>交流アーク溶接機</td></tr>
+<tr><td>第三者</td><td>だいさんしゃ</td><td>Bên thứ ba</td><td>Người bên ngoài hoặc không trực tiếp tham gia công việc.</td><td>第三者災害</td></tr>
+<tr><td>不同沈下</td><td>ふどうちんか</td><td>Lún không đều</td><td>Các phần công trình lún với lượng khác nhau.</td><td>隣接家屋</td></tr>
+<tr><td>車両系建設機械</td><td>しゃりょうけいけんせつきかい</td><td>Máy xây dựng dạng xe</td><td>Nhóm máy xây dựng tự di chuyển.</td><td>重機、バックホウ</td></tr>
+<tr><td>旋回半径</td><td>せんかいはんけい</td><td>Bán kính quay</td><td>Phạm vi quay của phần công tác của máy hoặc cẩu.</td><td>障害物、立入禁止</td></tr>
+<tr><td>アウトリガ</td><td>アウトリガ</td><td>Outrigger/chân chống</td><td>Chân chống mở rộng để tăng ổn định thiết bị.</td><td>移動式クレーン</td></tr>
+<tr><td>溶接棒ホルダー</td><td>ようせつぼうホルダー</td><td>Kẹp giữ que hàn</td><td>Bộ phận cầm và cấp điện cho que hàn.</td><td>絶縁性能</td></tr>
+<tr><td>母材</td><td>ぼざい</td><td>Vật liệu cơ bản</td><td>Vật liệu hoặc cấu kiện được hàn.</td><td>アースクランプ</td></tr>
+<tr><td>脚輪</td><td>きゃくりん</td><td>Bánh xe chân giàn giáo</td><td>Bánh xe của giàn giáo di động.</td><td>ブレーキ</td></tr>
+<tr><td>型枠支保工</td><td>かたわくしほこう</td><td>Hệ chống ván khuôn</td><td>Hệ cột, thanh chống đỡ ván khuôn và bê tông.</td><td>支柱、根がらみ</td></tr>
+</tbody>
+</table>
+</div>
+<a class="backlink" href="#toc">↑ Mục lục</a>
+</section>
+<section id="background">
+<h2>Kiến thức nền cần biết</h2>
+<section class="note-box" id="bg-question-types">
+<h3>Ba dạng tư duy của phần 施工計画</h3>
+<p><strong>仮設物の設置計画:</strong> công trình tạm nào, bố trí/cấu tạo ra sao, cần lưu ý gì và vì sao.</p>
+<p><strong>仮設物の安全管理:</strong> thiết bị nào, nguy cơ gì, sử dụng an toàn bằng biện pháp nào.</p>
+<p><strong>労働災害防止対策:</strong> tình trạng hoặc công việc có nguy cơ, tai nạn có thể phát sinh, biện pháp phòng ngừa tương ứng.</p>
+</section>
+<section class="note-box" id="bg-heaving-boiling">
+<h3>Heaving và boiling</h3>
+<p><strong>Heaving:</strong> đáy hố đào trồi lên do khối đất mất ổn định dưới tác dụng chênh lệch ứng suất và áp lực đất.</p>
+<p><strong>Boiling:</strong> dòng nước thấm hướng lên làm giảm ứng suất hữu hiệu, kéo theo hạt đất và khiến đáy hố có trạng thái như sôi.</p>
+<p>Trong chính nội dung sách: 親杭横矢板 không ngăn được cả hai; 鋼矢板 có thể ngăn nhưng biến dạng lớn; soil-cement và tường cọc đổ tại chỗ có độ cứng, khả năng chắn nước cao.</p>
+</section>
+<section class="note-box" id="bg-loadpath">
+<h3>Quan hệ 山留め壁, 腹起し và 切梁</h3>
+<p>Áp lực đất tác dụng lên <strong>山留め壁</strong>, được thu và phân phối dọc tường qua <strong>腹起し</strong>, rồi truyền sang <strong>切梁</strong> chịu nén. <strong>火打梁</strong> hỗ trợ ổn định hệ chống tại các góc.</p>
+</section>
+<section class="note-box" id="bg-loadplanning">
+<h3>山積み và 山崩し trong kế hoạch điện tạm</h3>
+<p><strong>山積み</strong> cộng nhu cầu phụ tải của các thiết bị theo từng giai đoạn để xác định đỉnh công suất. <strong>山崩し</strong> điều chỉnh thời điểm sử dụng các tải lớn để giảm đỉnh công suất. Logic này hỗ trợ xác định công suất cấp điện, công suất hợp đồng và phương án nguồn dự phòng.</p>
+</section>
+<section class="note-box" id="bg-welding">
+<h3>Ba lớp an toàn của máy hàn hồ quang AC</h3>
+<p><strong>Tự động chống điện giật</strong> kiểm soát nguy cơ điện áp không tải; <strong>cách điện holder</strong> bảo vệ tại vị trí người lao động trực tiếp cầm; <strong>nối đất</strong> bảo vệ vỏ máy và đường sự cố. Ba nội dung này cũng chính là ba hạng mục kiểm tra trước khi làm việc ở Book page 132.</p>
+</section>
+<a class="backlink" href="#toc">↑ Mục lục</a>
+</section>
+<section id="memory">
+<h2>Điểm cần nhớ và mẹo nhớ</h2>
+<section class="memory-box" id="mem-selection">
+<h3>Điều kiện lựa chọn công pháp</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Điều kiện</th><th>Lựa chọn</th><th>Điểm phân biệt</th></tr></thead>
+<tbody>
+<tr><td>Nền sỏi/đá, không có nước ngầm</td><td><strong class="kw">親杭横矢板</strong></td><td><span class="trap">Không ngăn được heaving, boiling</span></td></tr>
+<tr><td>Đất yếu, mực nước ngầm cao</td><td><strong class="kw">鋼矢板</strong></td><td>Ngăn được heaving/boiling nhưng <span class="trap">biến dạng lớn</span></td></tr>
+<tr><td>Địa hình dốc, khó dùng thanh chống ngang</td><td><strong class="kw">アンカー方式</strong></td><td><span class="trap">Không dùng được nếu không thể sử dụng đất liền kề</span></td></tr>
+<tr><td>Nhà cao tầng, tầng hầm sâu, cần rút ngắn tiến độ</td><td><strong class="kw">逆打ち工法</strong></td><td>Thi công phần ngầm và phần thân song song</td></tr>
+<tr><td>Nhà thép cao tầng</td><td><strong class="kw">固定式クレーン</strong></td><td>Chọn theo hình thái công trình</td></tr>
+<tr><td>Nhà thép dài, hẹp</td><td><strong class="kw">移動式クレーン</strong></td><td>Chọn theo hình thái công trình</td></tr>
+</tbody>
+</table></div>
+</section>
+<section class="memory-box" id="mem-numbers">
+<h3>Các trị số cần nhớ</h3>
+<div class="table-wrap"><table class="num-table">
+<thead><tr><th>Đối tượng/parameter</th><th>Giá trị</th><th>Ghi chú phân biệt</th></tr></thead>
+<tbody>
+<tr><td>Chiều sâu đào, cừ chế tạo sẵn</td><td><mark class="critical">≤ 5 m</mark></td><td>親杭横矢板・鋼矢板</td></tr>
+<tr><td>Chiều sâu đào, tường cọc đổ tại chỗ/soil-cement</td><td><mark class="critical">≥ 5 m</mark></td><td>Độ cứng lớn</td></tr>
+<tr><td>Chu kỳ kiểm tra 山留め</td><td><mark class="critical">≤ 7 ngày</mark></td><td>Sau thời tiết xấu, trước khi làm việc</td></tr>
+<tr><td>Tay vịn 乗入れ構台</td><td><mark class="critical">≥ 85 cm</mark></td><td>Book 126</td></tr>
+<tr><td>荷受け構台</td><td><mark class="critical">mỗi 2-3 tầng</mark></td><td>Tháo và tái sử dụng</td></tr>
+<tr><td>仮囲い</td><td><mark class="critical">≥ 1,8 m, thường 3,0 m</mark></td><td>Tấm thép</td></tr>
+<tr><td>Nộp kế hoạch giàn giáo</td><td><mark class="critical">cao ≥ 10 m</mark></td><td>Cùng với giàn giáo treo, công xôn</td></tr>
+<tr><td>Chỉ định 作業主任者</td><td><mark class="critical">cao ≥ 5 m</mark></td><td>Theo nội dung sách</td></tr>
+<tr><td>Giàn giáo treo: dầm dưới đến ván sàn</td><td><mark class="critical">≈ 500 mm</mark></td><td>Khoảng cách đứng</td></tr>
+<tr><td>くさび緊結式足場: chiều cao</td><td><mark class="critical">≤ 45 m</mark></td><td>Giới hạn sử dụng</td></tr>
+<tr><td>地上第一の布</td><td><mark class="critical">≤ 2 m</mark></td><td>Từ mặt đất</td></tr>
+<tr><td>Sàn công tác kiểu nêm</td><td><mark class="critical">rộng ≥ 40 cm, khe ≤ 3 cm</mark></td><td></td></tr>
+<tr><td>Tay vịn/middle rail/toe board kiểu nêm</td><td><mark class="critical">≥ 90 cm / 35-&lt;50 cm / ≥ 10 cm</mark></td><td></td></tr>
+<tr><td>Khoảng cột kiểu nêm</td><td><mark class="critical">1,85 m × 1,5 m</mark></td><td>桁行 × 梁間, đều là giới hạn trên</td></tr>
+<tr><td>壁つなぎ kiểu nêm</td><td><mark class="critical">đứng ≤ 5,0 m; ngang ≤ 5,5 m</mark></td><td>Không nhầm với 枠組足場</td></tr>
+<tr><td>Ván giàn giáo khi lắp/tháo</td><td><mark class="critical">rộng ≥ 40 cm</mark></td><td></td></tr>
+<tr><td>Lối đi/sàn thông thường</td><td><mark class="critical">tay vịn ≥ 85 cm; 中さん 35-50 cm; 幅木 ≥ 10 cm</mark></td><td></td></tr>
+<tr><td>Ván đi trên mái slate</td><td><mark class="critical">rộng ≥ 30 cm</mark></td><td>Kèm lưới phòng rơi</td></tr>
+<tr><td>Thiết bị lên xuống</td><td><mark class="critical">khi cao/sâu &gt; 1,5 m</mark></td><td></td></tr>
+<tr><td>Giàn giáo di động</td><td><mark class="critical">tay vịn ≥ 90 cm; 幅木 ≥ 10 cm</mark></td><td>Khác tay vịn thông thường 85 cm</td></tr>
+<tr><td>壁つなぎ của 外部枠組足場</td><td><mark class="critical">ngang ≤ 8 m; đứng ≤ 9 m</mark></td><td>Không nhầm với kiểu nêm</td></tr>
+<tr><td>水平材 của 枠組足場</td><td><mark class="critical">tầng trên cùng và mỗi ≤ 5 tầng</mark></td><td></td></tr>
+<tr><td>Giàn giáo khung cao &gt;20 m</td><td><mark class="critical">主枠 cao ≤ 2 m; khoảng ≤ 1,85 m</mark></td><td></td></tr>
+<tr><td>Thả vật</td><td><mark class="critical">từ ≥ 3 m phải có chute</mark></td><td></td></tr>
+<tr><td>Máy hàn trên kết cấu thép</td><td><mark class="critical">cao ≥ 2 m</mark></td><td>Dùng tự động chống điện giật</td></tr>
+<tr><td>Máy xây dựng có tốc độ tối đa</td><td><mark class="critical">&gt; 10 km/h</mark></td><td>Phải đặt tốc độ giới hạn</td></tr>
+</tbody>
+</table></div>
+</section>
+<section class="warning-box" id="mem-traps">
+<h3>Cấm, ngoại lệ và điểm dễ nhớ ngược</h3>
+<ul>
+<li><strong>親杭横矢板:</strong> <span class="trap">không ngăn được heaving và boiling</span>.</li>
+<li><strong>アンカー方式:</strong> <span class="trap">không dùng được nếu không thể sử dụng đất liền kề</span>.</li>
+<li><strong>建設用リフト:</strong> <span class="trap">không chở người</span>.</li>
+<li><strong>移動式足場:</strong> <span class="trap">không di chuyển khi có người ở trên; không dùng thang tựa hoặc thang chữ A trên sàn</span>.</li>
+<li><strong>吊り荷移動範囲・重機作業範囲:</strong> <span class="trap">cấm người đi vào</span>.</li>
+<li><strong>パワーショベル:</strong> <span class="trap">về nguyên tắc không dùng ngoài công dụng chính</span>.</li>
+<li><strong>構台支柱:</strong> <span class="trap">không dùng chung với cột trung gian của hệ chống giữ đất</span>.</li>
+</ul>
+</section>
+<section class="memory-box" id="mem-inspection">
+<h3>Mẫu ghi nhớ kiểm tra trước khi làm việc</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Đối tượng</th><th>Cụm kiểm tra</th></tr></thead>
+<tbody>
+<tr><td><strong class="kw">車両系建設機械</strong></td><td>Máy + nền + con người: phanh/ly hợp, địa hình/địa chất, khu vực cấm vào</td></tr>
+<tr><td><strong class="kw">移動式クレーン</strong></td><td>Máy + chân chống + vùng quay: phanh/ly hợp/cảnh báo/controller, outrigger/nền, vật cản</td></tr>
+<tr><td><strong class="kw">交流アーク溶接機</strong></td><td>Chống giật + cách điện + nối đất</td></tr>
+<tr><td><strong class="kw">足場</strong></td><td>Sàn + liên kết + chân: hư hỏng/gác nối, lỏng, lún/trượt</td></tr>
+<tr><td><strong class="kw">移動式足場</strong></td><td>Bánh + tay vịn + tải: phanh bánh, liên kết tay vịn, ghi tải tối đa</td></tr>
+<tr><td><strong class="kw">型枠支保工</strong></td><td>Chân + giao thép + mối nối: chân cột/giằng chân, phụ kiện giao nhau, mối nối cột</td></tr>
+</tbody>
+</table></div>
+</section>
+<section class="memory-box" id="mem-risk">
+<h3>Nguy cơ → Biện pháp</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Nguy cơ</th><th>Biện pháp cốt lõi</th></tr></thead>
+<tbody>
+<tr><td>Mái dốc hố đào sạt do mưa</td><td>Giảm dốc + phủ sheet + rãnh thoát nước phía trên</td></tr>
+<tr><td>Máy đóng cọc/cẩu di động bị lật</td><td>Tấm thép gia cường nền + mở outrigger tối đa</td></tr>
+<tr><td>Hàng rào tạm bị gió lật</td><td>Khung lưới giảm áp lực gió + tăng chiều sâu chôn</td></tr>
+<tr><td>Sập 乗入れ構台</td><td>Tăng chiều sâu chôn/kê chân + giằng ngang/brace + không quá tải</td></tr>
+<tr><td>Cẩu cố định bị lật</td><td>Khả năng chống nhổ + độ ngang móng + đủ bu lông neo</td></tr>
+<tr><td>Điện giật khi hàn AC</td><td>Tự động chống điện giật + holder cách điện + nối đất</td></tr>
+<tr><td>Người ngoài bị vật rơi</td><td>防護棚（朝顔）+ 養生シート</td></tr>
+<tr><td>Va chạm xe tại cổng</td><td>誘導員 + カーブミラー + tấm acrylic trong suốt</td></tr>
+</tbody>
+</table></div>
+</section>
+<a class="backlink" href="#toc">↑ Mục lục</a>
+</section>
+<footer class="small" style="margin-top:2rem; padding-top:1rem; border-top:1px solid var(--border);">
+      Tài liệu học song ngữ được tổng hợp theo cấu trúc nội dung của sách. Phạm vi: Book page 123-132.
+    </footer>
+</div>
+
+<script>
+(function () {
+  const root = document.documentElement;
+  const body = document.body;
+  const FONT_LEVELS = [80, 90, 100, 110, 120, 130, 140];
+
+  const q = id => document.getElementById(id);
+  const themeButton = q('theme-toggle');
+  const modeButton = q('mode-toggle');
+  const fontDown = q('font-down');
+  const fontUp = q('font-up');
+  const fontReset = q('font-reset');
+  const tocButton = q('toc-toggle');
+  const tocClose = q('toc-close');
+  const overlay = q('toc-overlay');
+  const prevButton = q('section-prev');
+  const nextButton = q('section-next');
+
+  function safeSet(key, value) {
+    try { localStorage.setItem(key, value); } catch (e) {}
+  }
+
+  function applyTheme(theme) {
+    theme = theme === 'light' ? 'light' : 'dark';
+    root.dataset.theme = theme;
+    safeSet('study-theme', theme);
+    if (themeButton) {
+      themeButton.textContent = theme === 'dark' ? '☀' : '☾';
+      themeButton.title = theme === 'dark' ? 'Chuyển sang Light theme' : 'Chuyển sang Dark theme';
+      themeButton.setAttribute('aria-label', themeButton.title);
+      themeButton.setAttribute('aria-pressed', theme === 'light' ? 'true' : 'false');
+    }
+  }
+
+  function applyMode(mode) {
+    mode = mode === 'keywords' ? 'keywords' : 'full';
+    root.dataset.studyMode = mode;
+    body.classList.toggle('keyword-focus', mode === 'keywords');
+    safeSet('study-mode', mode);
+    if (modeButton) {
+      modeButton.textContent = mode === 'full' ? '🎯' : '📖';
+      modeButton.title = mode === 'full' ? 'Chuyển sang Keywords mode' : 'Trở lại Full mode';
+      modeButton.setAttribute('aria-label', modeButton.title);
+      modeButton.setAttribute('aria-pressed', mode === 'keywords' ? 'true' : 'false');
+    }
+  }
+
+  function currentScale() {
+    try {
+      const saved = Number(localStorage.getItem('study-font-scale'));
+      return FONT_LEVELS.includes(saved) ? saved : 100;
+    } catch (e) { return 100; }
+  }
+
+  function applyFontScale(scale) {
+    if (!FONT_LEVELS.includes(scale)) scale = 100;
+    root.style.setProperty('--base-font-size', (16 * scale / 100) + 'px');
+    safeSet('study-font-scale', String(scale));
+    if (fontReset) {
+      fontReset.textContent = scale + '%';
+      fontReset.title = 'Cỡ chữ hiện tại ' + scale + '%. Chạm để về 100%';
+      fontReset.setAttribute('aria-label', fontReset.title);
+    }
+    if (fontDown) fontDown.disabled = scale === FONT_LEVELS[0];
+    if (fontUp) fontUp.disabled = scale === FONT_LEVELS[FONT_LEVELS.length - 1];
+  }
+
+  function openToc() {
+    body.classList.add('toc-open');
+    if (tocButton) tocButton.setAttribute('aria-expanded', 'true');
+  }
+  function closeToc() {
+    body.classList.remove('toc-open');
+    if (tocButton) tocButton.setAttribute('aria-expanded', 'false');
+  }
+
+  applyTheme(root.dataset.theme || 'dark');
+  applyMode(root.dataset.studyMode || 'full');
+  applyFontScale(currentScale());
+
+  if (themeButton) themeButton.addEventListener('click', () => applyTheme(root.dataset.theme === 'dark' ? 'light' : 'dark'));
+  if (modeButton) modeButton.addEventListener('click', () => applyMode(root.dataset.studyMode === 'keywords' ? 'full' : 'keywords'));
+  if (fontDown) fontDown.addEventListener('click', () => {
+    const i = FONT_LEVELS.indexOf(currentScale());
+    if (i > 0) applyFontScale(FONT_LEVELS[i - 1]);
+  });
+  if (fontUp) fontUp.addEventListener('click', () => {
+    const i = FONT_LEVELS.indexOf(currentScale());
+    if (i >= 0 && i < FONT_LEVELS.length - 1) applyFontScale(FONT_LEVELS[i + 1]);
+  });
+  if (fontReset) fontReset.addEventListener('click', () => applyFontScale(100));
+
+  if (tocButton) tocButton.addEventListener('click', openToc);
+  if (tocClose) tocClose.addEventListener('click', closeToc);
+  if (overlay) overlay.addEventListener('click', closeToc);
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeToc(); });
+
+  document.querySelectorAll('a[href="#toc"]').forEach(a => {
+    a.addEventListener('click', e => { e.preventDefault(); openToc(); });
+  });
+  document.querySelectorAll('#toc a[href^="#"]').forEach(a => a.addEventListener('click', () => setTimeout(closeToc, 0)));
+
+  const tocTargets = Array.from(document.querySelectorAll('#toc a[href^="#"]'))
+    .map(a => document.getElementById(decodeURIComponent(a.getAttribute('href').slice(1))))
+    .filter((el, i, arr) => el && el.id !== 'toc' && arr.indexOf(el) === i);
+
+  function currentSectionIndex() {
+    let idx = -1;
+    const threshold = 130;
+    tocTargets.forEach((el, i) => {
+      if (el.getBoundingClientRect().top <= threshold) idx = i;
+    });
+    return idx;
+  }
+  function goToIndex(i) {
+    if (!tocTargets.length) return;
+    i = Math.max(0, Math.min(tocTargets.length - 1, i));
+    tocTargets[i].scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+  if (prevButton) prevButton.addEventListener('click', () => goToIndex(Math.max(0, currentSectionIndex() - 1)));
+  if (nextButton) nextButton.addEventListener('click', () => goToIndex(Math.min(tocTargets.length - 1, currentSectionIndex() + 1)));
+})();
+</script></body>
+</html>

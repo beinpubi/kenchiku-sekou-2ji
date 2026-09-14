@@ -1,0 +1,2023 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="color-scheme" content="dark light">
+<title>仕上げ工事 最新問題解説 - 令和7年度 問題5</title>
+
+<style>
+/* =========================================================
+   FIXED DESIGN TOKENS
+   Do not redesign these values per lesson.
+   ========================================================= */
+
+:root {
+  --font-vi: Arial, Helvetica, sans-serif;
+  --font-ja: "Hiragino Sans", "Yu Gothic", "Yu Gothic UI", Meiryo, sans-serif;
+  --base-font-size: 16px;
+  --content-width: 1320px;
+  --control-size: 38px;
+  --control-gap: 4px;
+}
+
+html[data-theme="dark"] {
+  --bg: #101318;
+  --surface: #171B22;
+  --surface-alt: #1D232C;
+  --text: #E3E7ED;
+  --text-muted: #9DA8B5;
+  --focus-muted: #68717D;
+  --heading: #F4F7FA;
+  --border: #323A46;
+  --link: #7CC4FF;
+  --original-bg: #15181E;
+  --translation-bg: #16202A;
+  --note-bg: #1C2028;
+  --memory-bg: #20231C;
+  --keyword: #74D7FF;
+  --keyword-bg: rgba(75, 190, 255, .10);
+  --critical-bg: #594613;
+  --critical-text: #FFE39A;
+  --trap: #FF8585;
+  --trap-underline: #FF5F5F;
+  --relation-bg: rgba(139, 126, 255, .12);
+  --relation-border: #8F86FF;
+  --shadow: rgba(0, 0, 0, .28);
+  --dock-bg: rgba(23, 27, 34, .94);
+  --overlay: rgba(0, 0, 0, .46);
+}
+
+html[data-theme="light"] {
+  --bg: #F4F6F8;
+  --surface: #FFFFFF;
+  --surface-alt: #EEF1F5;
+  --text: #20242A;
+  --text-muted: #626B77;
+  --focus-muted: #A0A7B0;
+  --heading: #111418;
+  --border: #CCD2DA;
+  --link: #0068B5;
+  --original-bg: #F8FAFC;
+  --translation-bg: #EDF7FC;
+  --note-bg: #F2F4F7;
+  --memory-bg: #F6F7E9;
+  --keyword: #006B9F;
+  --keyword-bg: #E4F4FC;
+  --critical-bg: #FFF0B8;
+  --critical-text: #654900;
+  --trap: #B42318;
+  --trap-underline: #D92D20;
+  --relation-bg: #EEEBFF;
+  --relation-border: #6C5CE7;
+  --shadow: rgba(31, 38, 49, .12);
+  --dock-bg: rgba(255, 255, 255, .94);
+  --overlay: rgba(20, 24, 30, .32);
+}
+
+/* =========================================================
+   BASE
+   ========================================================= */
+
+* { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  font-size: var(--base-font-size);
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-vi);
+  font-size: 1rem;
+  line-height: 1.72;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+:lang(vi) {
+  font-family: var(--font-vi);
+}
+
+:lang(ja) {
+  font-family: var(--font-ja);
+}
+
+a {
+  color: var(--link);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
+a:hover {
+  text-decoration-thickness: 2px;
+}
+
+button {
+  font: inherit;
+}
+
+h1, h2, h3, h4 {
+  color: var(--heading);
+  line-height: 1.35;
+}
+
+h1 {
+  margin: 0 0 .35rem;
+  font-size: clamp(1.75rem, 4vw, 2.7rem);
+}
+
+h2 {
+  margin: 2.5rem 0 1rem;
+  padding-bottom: .42rem;
+  border-bottom: 1px solid var(--border);
+  font-size: clamp(1.42rem, 3vw, 2rem);
+}
+
+h3 {
+  margin: 1.9rem 0 .75rem;
+  font-size: clamp(1.16rem, 2.4vw, 1.5rem);
+}
+
+h4 {
+  margin: 1.2rem 0 .45rem;
+  font-size: 1rem;
+}
+
+p {
+  margin: .58rem 0;
+}
+
+ul, ol {
+  padding-left: 1.45rem;
+}
+
+li {
+  margin: .3rem 0;
+}
+
+[id] {
+  scroll-margin-top: 18px;
+}
+
+/* =========================================================
+   PAGE LAYOUT
+   ========================================================= */
+
+.page-shell {
+  width: min(var(--content-width), calc(100% - 28px));
+  margin: 0 auto;
+  padding: 18px 0 112px;
+}
+
+.hero,
+.toc-card,
+.study-section,
+.aggregate-section {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  box-shadow: 0 8px 28px var(--shadow);
+}
+
+.hero {
+  margin-bottom: 22px;
+  padding: clamp(22px, 3vw, 40px);
+}
+
+.hero-subtitle {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 1.06rem;
+}
+
+.meta-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(195px, 1fr));
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.meta-item {
+  padding: 10px 12px;
+  background: var(--surface-alt);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+
+.meta-label {
+  display: block;
+  margin-bottom: 2px;
+  color: var(--text-muted);
+  font-size: .8rem;
+}
+
+.study-section,
+.aggregate-section {
+  margin: 22px 0;
+  padding: clamp(18px, 2.6vw, 30px);
+}
+
+.section-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 16px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border);
+}
+
+.section-head h2,
+.section-head h3 {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.source-ref {
+  color: var(--text-muted);
+  font-size: .84rem;
+  white-space: nowrap;
+}
+
+.subsection {
+  margin: 26px 0 32px;
+}
+
+.subsection:first-child {
+  margin-top: 0;
+}
+
+.study-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 14px;
+  align-items: start;
+}
+
+.study-card {
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+
+.study-card.original {
+  background: var(--original-bg);
+}
+
+.study-card.translation {
+  background: var(--translation-bg);
+}
+
+.card-title {
+  padding: 9px 13px;
+  background: var(--surface-alt);
+  border-bottom: 1px solid var(--border);
+  color: var(--heading);
+  font-weight: 800;
+  letter-spacing: .02em;
+}
+
+.recall-source {
+  padding: 14px 16px 16px;
+  transition: color .15s ease;
+}
+
+.recall-source > :first-child {
+  margin-top: 0;
+}
+
+.recall-source > :last-child {
+  margin-bottom: 0;
+}
+
+/* =========================================================
+   CONTENT COMPONENTS
+   ========================================================= */
+
+.table-wrap {
+  overflow-x: auto;
+  margin: 12px 0 18px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  -webkit-overflow-scrolling: touch;
+}
+
+table {
+  width: 100%;
+  min-width: 640px;
+  border-collapse: collapse;
+  background: var(--surface);
+}
+
+th,
+td {
+  padding: 9px 11px;
+  border-right: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+  text-align: left;
+}
+
+th:last-child,
+td:last-child {
+  border-right: 0;
+}
+
+tr:last-child td {
+  border-bottom: 0;
+}
+
+th {
+  background: var(--surface-alt);
+  color: var(--heading);
+  font-weight: 800;
+}
+
+caption {
+  padding: 9px 11px;
+  background: var(--surface-alt);
+  color: var(--heading);
+  font-weight: 800;
+  text-align: left;
+  caption-side: top;
+}
+
+.summary-box,
+.note-box,
+.memory-box,
+.warning-box,
+.figure-box,
+.formula-box,
+.comparison-box {
+  margin: 14px 0;
+  padding: 13px 15px;
+  background: var(--note-bg);
+  border: 1px solid var(--border);
+  border-left-width: 4px;
+  border-radius: 10px;
+}
+
+.summary-box,
+.note-box {
+  border-left-color: var(--link);
+}
+
+.memory-box {
+  background: var(--memory-bg);
+  border-left-color: var(--critical-text);
+}
+
+.warning-box {
+  border-left-color: var(--trap);
+}
+
+.figure-box,
+.formula-box,
+.comparison-box {
+  border-left-color: var(--relation-border);
+}
+
+.figure-card {
+  margin: 15px 0 20px;
+  overflow: hidden;
+  background: var(--surface-alt);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+
+.figure-card img {
+  display: block;
+  width: 100%;
+  height: auto;
+  background: #fff;
+}
+
+.figure-card figcaption {
+  padding: 10px 13px 12px;
+  color: var(--text-muted);
+  font-size: .9rem;
+}
+
+.figure-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 12px;
+  margin: 15px 0 20px;
+}
+
+.figure-grid .figure-card {
+  margin: 0;
+}
+
+.item-block {
+  margin-top: 11px;
+  padding-top: 11px;
+  border-top: 1px dashed var(--border);
+}
+
+.item-block:first-child {
+  margin-top: 0;
+  padding-top: 0;
+  border-top: 0;
+}
+
+.item-label {
+  margin-right: .3em;
+  color: var(--heading);
+  font-weight: 800;
+}
+
+.formula-line {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+}
+
+.flow-node {
+  padding: 5px 8px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  font-weight: 700;
+}
+
+.flow-arrow {
+  color: var(--text-muted);
+  font-weight: 800;
+}
+
+/* =========================================================
+   SEMANTIC HIGHLIGHTING
+   ========================================================= */
+
+.kw {
+  padding: .02em .16em;
+  background: var(--keyword-bg);
+  color: var(--keyword);
+  border-radius: .2em;
+  font-weight: 750;
+}
+
+.critical {
+  padding: .04em .22em;
+  background: var(--critical-bg);
+  color: var(--critical-text);
+  border-radius: .22em;
+  font-weight: 750;
+}
+
+.trap {
+  color: var(--trap);
+  font-weight: 700;
+  text-decoration-line: underline;
+  text-decoration-color: var(--trap-underline);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+}
+
+.relation {
+  padding: .02em .14em;
+  background: var(--relation-bg);
+  color: var(--text);
+  border-bottom: 2px solid var(--relation-border);
+  font-weight: 650;
+}
+
+/* Only recall-source is dimmed in Keywords mode. */
+body.keyword-focus .recall-source {
+  color: var(--focus-muted);
+}
+
+body.keyword-focus .recall-source .kw {
+  color: var(--keyword);
+  background: var(--keyword-bg);
+}
+
+body.keyword-focus .recall-source .critical {
+  color: var(--critical-text);
+  background: var(--critical-bg);
+}
+
+body.keyword-focus .recall-source .trap {
+  color: var(--trap);
+}
+
+body.keyword-focus .recall-source .relation {
+  color: var(--text);
+  background: var(--relation-bg);
+}
+
+body.keyword-focus .recall-source th,
+body.keyword-focus .recall-source .item-label {
+  color: var(--heading);
+}
+
+/* =========================================================
+   TOC DRAWER
+   ========================================================= */
+
+.toc-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1990;
+  visibility: hidden;
+  opacity: 0;
+  background: var(--overlay);
+  transition: opacity .18s ease, visibility .18s ease;
+}
+
+.toc-drawer {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 2000;
+  width: min(78vw, 360px);
+  padding: max(14px, env(safe-area-inset-top)) 14px
+           max(18px, env(safe-area-inset-bottom))
+           max(14px, env(safe-area-inset-left));
+  overflow-y: auto;
+  background: var(--surface);
+  border-right: 1px solid var(--border);
+  box-shadow: 14px 0 36px var(--shadow);
+  transform: translateX(-103%);
+  transition: transform .2s ease;
+  -webkit-overflow-scrolling: touch;
+}
+
+body.toc-open .toc-overlay {
+  visibility: visible;
+  opacity: 1;
+}
+
+body.toc-open .toc-drawer {
+  transform: translateX(0);
+}
+
+.toc-drawer-head {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 4px 0 10px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+}
+
+.toc-drawer-head h2 {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 1.2rem;
+}
+
+.toc-close {
+  width: 34px;
+  height: 34px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface-alt);
+  color: var(--text);
+  cursor: pointer;
+}
+
+.toc-list {
+  margin: 12px 0 0;
+  padding-left: 1.2rem;
+}
+
+.toc-list ol {
+  margin-top: 4px;
+}
+
+/* =========================================================
+   COMPACT CONTROLS
+   Left: vertical TOC / Back / Next
+   Right: horizontal display controls
+   ========================================================= */
+
+.nav-dock-left,
+.settings-dock-right {
+  position: fixed;
+  bottom: max(14px, env(safe-area-inset-bottom));
+  z-index: 1900;
+  padding: 5px;
+  background: var(--dock-bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  box-shadow: 0 8px 24px var(--shadow);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  user-select: none;
+}
+
+.nav-dock-left {
+  left: max(10px, env(safe-area-inset-left));
+  display: flex;
+  flex-direction: column;
+  gap: var(--control-gap);
+}
+
+.settings-dock-right {
+  right: max(10px, env(safe-area-inset-right));
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--control-gap);
+}
+
+.nav-dock-left button,
+.settings-dock-right button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--control-size);
+  height: var(--control-size);
+  min-width: var(--control-size);
+  min-height: var(--control-size);
+  padding: 0;
+  background: var(--surface-alt);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-family: var(--font-vi);
+  font-size: .96rem;
+  font-weight: 700;
+  line-height: 1;
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.nav-dock-left button:hover,
+.settings-dock-right button:hover {
+  border-color: var(--link);
+}
+
+.nav-dock-left button:active,
+.settings-dock-right button:active {
+  transform: translateY(1px);
+}
+
+.nav-dock-left button:disabled {
+  opacity: .38;
+  cursor: default;
+}
+
+.settings-dock-right .font-reset {
+  font-size: .66rem;
+  letter-spacing: -.03em;
+}
+
+.settings-dock-right .mode-toggle {
+  font-size: 1.02rem;
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 900px) {
+  .study-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .page-shell {
+    width: min(100% - 18px, 760px);
+  }
+
+  .section-head {
+    display: block;
+  }
+
+  .source-ref {
+    display: block;
+    margin-top: 6px;
+    white-space: normal;
+  }
+}
+
+@media (max-width: 560px) {
+  body {
+    font-size: .96rem;
+  }
+
+  .hero,
+  .study-section,
+  .aggregate-section {
+    border-radius: 12px;
+  }
+
+  .recall-source {
+    padding: 12px 13px 14px;
+  }
+
+  :root {
+    --control-size: 36px;
+  }
+
+  .settings-dock-right {
+    right: max(7px, env(safe-area-inset-right));
+  }
+
+  .nav-dock-left {
+    left: max(7px, env(safe-area-inset-left));
+  }
+}
+
+@media (orientation: landscape) and (pointer: coarse) {
+  .nav-dock-left {
+    left: max(14px, env(safe-area-inset-left));
+  }
+
+  .settings-dock-right {
+    right: max(14px, env(safe-area-inset-right));
+  }
+}
+
+/* =========================================================
+   PRINT
+   ========================================================= */
+
+@media print {
+  html,
+  html[data-theme="dark"],
+  html[data-theme="light"] {
+    --bg: #FFFFFF;
+    --surface: #FFFFFF;
+    --surface-alt: #F1F3F5;
+    --text: #111111;
+    --text-muted: #555555;
+    --heading: #000000;
+    --border: #B8BEC6;
+    --original-bg: #FFFFFF;
+    --translation-bg: #F7FBFD;
+    --note-bg: #F7F7F7;
+    --memory-bg: #FAFAF0;
+    --keyword: #005A86;
+    --keyword-bg: #E4F4FC;
+    --critical-bg: #FFF0B8;
+    --critical-text: #4A3600;
+    --trap: #9E1B12;
+    --trap-underline: #9E1B12;
+    --relation-bg: #F0EDFF;
+    --relation-border: #5B4FD6;
+  }
+
+  body {
+    background: #fff;
+    color: #111;
+    font-size: 11pt;
+  }
+
+  .page-shell {
+    width: 100%;
+    padding: 0;
+  }
+
+  .nav-dock-left,
+  .settings-dock-right,
+  .toc-drawer,
+  .toc-overlay {
+    display: none !important;
+  }
+
+  .hero,
+  .study-card,
+  .summary-box,
+  .note-box,
+  .memory-box,
+  .warning-box,
+  .figure-card {
+    break-inside: avoid;
+  }
+
+  a {
+    color: #000;
+    text-decoration: none;
+  }
+}
+</style>
+
+<script>
+/* Apply saved theme before body paint to reduce flashing. */
+(function () {
+  try {
+    const saved = localStorage.getItem("study-theme");
+    const systemDark = window.matchMedia &&
+      window.matchMedia("(prefers-color-scheme: dark)").matches;
+    document.documentElement.dataset.theme =
+      saved || (systemDark ? "dark" : "light");
+  } catch (e) {
+    document.documentElement.dataset.theme = "dark";
+  }
+
+  try {
+    const savedScale = Number(localStorage.getItem("study-font-scale")) || 100;
+    const clampedScale = Math.max(80, Math.min(140, savedScale));
+    document.documentElement.style.setProperty(
+      "--base-font-size",
+      `${16 * clampedScale / 100}px`
+    );
+  } catch (e) {}
+})();
+</script>
+</head>
+
+<body>
+
+<!-- =======================================================
+     TOC DRAWER
+     Replace only the list contents.
+     ======================================================= -->
+<div class="toc-overlay" id="toc-overlay" aria-hidden="true"></div>
+
+<aside class="toc-drawer" id="toc-drawer" aria-label="Mục lục">
+  <div class="toc-drawer-head">
+    <h2>Mục lục</h2>
+    <button class="toc-close" id="toc-close" type="button" aria-label="Đóng mục lục">×</button>
+  </div>
+
+  <!-- TOC_ITEMS_START -->
+<span id="toc"></span>
+<ol class="toc-list">
+<li><a href="#sec-overview">令和7年度 問題5 仕上げ工事</a><ol><li><a href="#sub-overview">問題形式・解答一覧</a></li></ol></li>
+<li><a href="#sec-1-waterproof">記述1 防水工事</a><ol><li><a href="#sub-1-question">問題文と解答</a></li><li><a href="#sub-1-method">密着工法と増張り</a></li><li><a href="#sub-1-details">出隅・入隅・打継ぎ・PC継手</a></li></ol></li>
+<li><a href="#sec-2-tile">記述2 タイル工事</a><ol><li><a href="#sub-2-question">問題文と解答</a></li><li><a href="#sub-2-explain">剥落防止対策</a></li></ol></li>
+<li><a href="#sec-3-roof">記述3 屋根工事</a><ol><li><a href="#sub-3-overlap">重ね幅</a></li><li><a href="#sub-3-fix">仮留め間隔</a></li><li><a href="#sub-3-performance">止水・耐久性能</a></li></ol></li>
+<li><a href="#sec-4-lgs">記述4 軽量鉄骨天井下地</a><ol><li><a href="#sub-4-structure">構造・施工</a></li><li><a href="#sub-4-spacing">野縁の間隔</a></li></ol></li>
+<li><a href="#sec-5-coating">記述5 防水形複層塗材E</a><ol><li><a href="#sub-5-base">モルタル下地</a></li><li><a href="#sub-5-process">工法・施工手順</a></li></ol></li>
+<li><a href="#sec-6-shutter">記述6 防煙シャッター</a><ol><li><a href="#sub-6-terms">用語</a></li><li><a href="#sub-6-form">スラット形式</a></li><li><a href="#sub-6-mechanism">遮煙機構</a></li><li><a href="#sub-6-engagement">噛み合わせ長さ</a></li></ol></li>
+<li><a href="#sec-7-sanding">記述7 研磨紙ずり</a><ol><li><a href="#sub-7-purpose">目的</a></li><li><a href="#sub-7-notes">施工上の留意事項</a></li></ol></li>
+<li><a href="#sec-8-board">記述8 石膏ボードのねじ</a><ol><li><a href="#sub-8-length">余長</a></li><li><a href="#sub-8-pitch">留付け間隔</a></li><li><a href="#sub-8-head">締込み</a></li></ol></li>
+<li><a href="#terms">Thuật ngữ chuyên môn</a></li>
+<li><a href="#background">Kiến thức nền cần biết</a></li>
+<li><a href="#memory">Điểm cần nhớ và mẹo nhớ</a></li>
+</ol>
+<!-- TOC_ITEMS_END -->
+</aside>
+
+<!-- =======================================================
+     FIXED NAVIGATION CONTROLS
+     Left bottom: vertical.
+     Do not add a Top button.
+     ======================================================= -->
+<nav class="nav-dock-left" aria-label="Điều hướng học tập">
+  <button id="toc-toggle" type="button" aria-label="Mục lục" title="Mục lục"
+          aria-controls="toc-drawer" aria-expanded="false">☰</button>
+  <button id="section-prev" type="button" aria-label="Mục trước" title="Back">‹</button>
+  <button id="section-next" type="button" aria-label="Mục tiếp theo" title="Next">›</button>
+</nav>
+
+<!-- =======================================================
+     FIXED DISPLAY CONTROLS
+     Right bottom: horizontal.
+     ======================================================= -->
+<nav class="settings-dock-right" aria-label="Thiết lập hiển thị">
+  <button id="theme-toggle" type="button" aria-label="Đổi Dark/Light"
+          title="Đổi Dark/Light" aria-pressed="false">☀</button>
+  <button id="mode-toggle" class="mode-toggle" type="button"
+          aria-label="Đổi Full/Keywords" title="Đổi Full/Keywords"
+          aria-pressed="false">🎯</button>
+  <button id="font-reset" class="font-reset" type="button"
+          aria-label="Đặt lại cỡ chữ 100%" title="Đặt lại cỡ chữ 100%">100%</button>
+  <button id="font-down" type="button" aria-label="Giảm cỡ chữ"
+          title="Giảm cỡ chữ">A−</button>
+  <button id="font-up" type="button" aria-label="Tăng cỡ chữ"
+          title="Tăng cỡ chữ">A+</button>
+</nav>
+
+<div class="page-shell">
+
+  <!-- =====================================================
+       DOCUMENT HEADER
+       Replace title/subtitle/meta values only.
+       ===================================================== -->
+  <header class="hero" id="top">
+    <h1>仕上げ工事 最新問題解説 - 令和7年度 問題5</h1>
+    <p class="hero-subtitle">Công tác hoàn thiện - Bản học song ngữ Nhật-Việt, BOOK461-482</p>
+
+    <div class="meta-grid">
+      <div class="meta-item">
+        <span class="meta-label">PDF nguồn</span>
+        05b_仕上げ工事_R07_p461-483.pdf
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">File ID</span>
+        file_00000000693881f68206565383a17480
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Phạm vi</span>
+        BOOK461-482
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Chế độ</span>
+        Song ngữ Nhật-Việt / Dark-Light / Full-Keywords / Font 80-140%
+      </div>
+    </div>
+  </header>
+
+  <!-- =====================================================
+       CONTENT_START
+       AI may freely repeat/reorder approved content components.
+       Global CSS/JS/control structure must not be redesigned.
+       ===================================================== -->
+  <main id="lesson">
+<section class="study-section" id="sec-overview">
+  <div class="section-head">
+    <h2>令和7年度 問題5 仕上げ工事</h2>
+    <span class="source-ref">Nguồn: Book 461, 464</span>
+  </div>
+  <section class="subsection" id="sub-overview">
+  <h3>問題形式・解答一覧 / Dạng câu hỏi và bảng đáp án</h3>
+  <div class="study-grid">
+  <article class="study-card original">
+    <div class="card-title">原文</div>
+    <div class="recall-source" lang="ja">
+<p><strong class="kw">令和7年度 問題5 仕上げ工事</strong></p>
+<p>次の1.から8.の各記述において、□に当てはまる最も適当な語句又は数値の組合せを、下の枠内から1つ選びなさい。</p>
+<p>躯体工事または仕上げ工事に関する五肢択一式の問題は、令和3年度の試験では「不適当な語句又は数値とそれに替わる適当な語句又は数値の組合せ」を選択する方式として出題されていたが、令和4年度以降の試験では「空欄に当てはまる適当な語句又は数値の組合せ」を選択する方式として出題されている。今後も同方式で出題される可能性が高いと思われる。</p>
+<div class="table-wrap"><table><caption>令和7年度 問題5 の解答</caption><thead><tr><th>記述</th><th>正解</th><th>a</th><th>b</th><th>c</th></tr></thead><tbody>
+<tr><td><strong class="kw">記述1</strong></td><td>④</td><td><mark class="critical">300mm</mark></td><td><strong class="kw">絶縁</strong></td><td><mark class="critical">100mm</mark></td></tr>
+<tr><td><strong class="kw">記述2</strong></td><td>②</td><td><strong class="kw">小口平</strong></td><td><strong class="kw">ステンレス鋼</strong></td><td><mark class="critical">24時間</mark></td></tr>
+<tr><td><strong class="kw">記述3</strong></td><td>③</td><td><mark class="critical">200mm</mark></td><td><mark class="critical">300mm</mark></td><td><mark class="critical">900mm</mark></td></tr>
+<tr><td><strong class="kw">記述4</strong></td><td>③</td><td><mark class="critical">150mm</mark></td><td><mark class="critical">360mm</mark></td><td><mark class="critical">225mm</mark></td></tr>
+<tr><td><strong class="kw">記述5</strong></td><td>⑤</td><td><strong class="kw">金ごて</strong></td><td><mark class="critical">1.7kg/m²</mark></td><td><mark class="critical">2回</mark></td></tr>
+<tr><td><strong class="kw">記述6</strong></td><td>⑤</td><td><strong class="kw">オーバーラッピング</strong></td><td><strong class="kw">まぐさ</strong></td><td><mark class="critical">90mm</mark></td></tr>
+<tr><td><strong class="kw">記述7</strong></td><td>②</td><td><strong class="kw">平滑</strong></td><td><strong class="kw">付着性</strong></td><td><strong class="kw">下層</strong></td></tr>
+<tr><td><strong class="kw">記述8</strong></td><td>①</td><td><mark class="critical">10mm</mark></td><td><mark class="critical">200mm</mark></td><td><strong class="kw">表面より少しへこむ</strong></td></tr>
+</tbody></table></div>
+</div>
+  </article>
+  <article class="study-card translation">
+    <div class="card-title">Bản dịch tiếng Việt</div>
+    <div class="recall-source" lang="vi">
+<p><strong class="kw">Năm Reiwa 7, Câu 5: Công tác hoàn thiện</strong></p>
+<p>Trong mỗi nội dung từ 1 đến 8, hãy chọn một tổ hợp từ ngữ hoặc trị số thích hợp nhất để điền vào các ô trống.</p>
+<p>Đối với dạng câu hỏi trắc nghiệm chọn 1 trong 5 phương án về công tác phần thô hoặc công tác hoàn thiện, kỳ thi năm Reiwa 3 yêu cầu chọn tổ hợp gồm “từ ngữ hoặc trị số không thích hợp và từ ngữ hoặc trị số thích hợp để thay thế”. Từ Reiwa 4 trở đi, đề chuyển sang hình thức chọn “tổ hợp từ ngữ hoặc trị số thích hợp để điền vào ô trống”. Sách nhận định các kỳ thi tiếp theo nhiều khả năng vẫn dùng hình thức này.</p>
+<div class="table-wrap"><table><caption>Đáp án Câu 5 năm Reiwa 7</caption><thead><tr><th>Nội dung</th><th>Đáp án</th><th>a</th><th>b</th><th>c</th></tr></thead><tbody>
+<tr><td><strong class="kw">Nội dung 1</strong></td><td>④</td><td><mark class="critical">300 mm</mark></td><td><strong class="kw">cách ly</strong></td><td><mark class="critical">100 mm</mark></td></tr>
+<tr><td><strong class="kw">Nội dung 2</strong></td><td>②</td><td><strong class="kw">小口平</strong></td><td><strong class="kw">thép không gỉ</strong></td><td><mark class="critical">24 giờ</mark></td></tr>
+<tr><td><strong class="kw">Nội dung 3</strong></td><td>③</td><td><mark class="critical">200 mm</mark></td><td><mark class="critical">300 mm</mark></td><td><mark class="critical">900 mm</mark></td></tr>
+<tr><td><strong class="kw">Nội dung 4</strong></td><td>③</td><td><mark class="critical">150 mm</mark></td><td><mark class="critical">360 mm</mark></td><td><mark class="critical">225 mm</mark></td></tr>
+<tr><td><strong class="kw">Nội dung 5</strong></td><td>⑤</td><td><strong class="kw">bàn xoa thép</strong></td><td><mark class="critical">1,7 kg/m²</mark></td><td><mark class="critical">2 lượt</mark></td></tr>
+<tr><td><strong class="kw">Nội dung 6</strong></td><td>⑤</td><td><strong class="kw">overlapping</strong></td><td><strong class="kw">lanh tô</strong></td><td><mark class="critical">90 mm</mark></td></tr>
+<tr><td><strong class="kw">Nội dung 7</strong></td><td>②</td><td><strong class="kw">phẳng nhẵn</strong></td><td><strong class="kw">độ bám dính</strong></td><td><strong class="kw">lớp dưới</strong></td></tr>
+<tr><td><strong class="kw">Nội dung 8</strong></td><td>①</td><td><mark class="critical">10 mm</mark></td><td><mark class="critical">200 mm</mark></td><td><strong class="kw">hơi chìm dưới bề mặt</strong></td></tr>
+</tbody></table></div>
+</div>
+  </article>
+</div>
+  
+  <p><a href="#toc">↑ Mục lục</a></p>
+</section>
+</section><section class="study-section" id="sec-1-waterproof">
+  <div class="section-head">
+    <h2>記述1 防水工事：アスファルト防水（密着工法）の増張り</h2>
+    <span class="source-ref">Nguồn: Book 461, 464-467</span>
+  </div>
+  <section class="subsection" id="sub-1-question">
+  <h3>問題文と解答 / Đề bài và đáp án</h3>
+  <div class="study-grid">
+  <article class="study-card original">
+    <div class="card-title">原文</div>
+    <div class="recall-source" lang="ja">
+<p><strong class="kw">アスファルト防水の保護防水密着工法</strong>において、平場部と立上り部で構成する出隅部及び入隅部は、平場部のルーフィング類の張付けに先立ち、幅 <mark class="critical">[a] mm程度</mark> のストレッチルーフィングを増張りする。</p>
+<p>コンクリート打継ぎ部は、平場部のルーフィング類の張付けに先立ち、幅<mark class="critical">50mm程度</mark>の <strong class="kw">[b] 用テープ</strong> を張り付けた上に、幅 <mark class="critical">[a] mm程度</mark> のストレッチルーフィングを増張りする。</p>
+<p>プレキャストコンクリート部材の継手目地部は、平場部のルーフィング類の張付けに先立ち、ストレッチルーフィングを両側のプレキャストコンクリート部材にそれぞれ <mark class="critical">[c] mm程度</mark> 張り掛けて、<strong class="kw">[b] 増張り</strong>をする。</p>
+<div class="table-wrap"><table><thead><tr><th>選択肢</th><th>a</th><th>b</th><th>c</th></tr></thead><tbody>
+<tr><td>①</td><td>200</td><td>補強</td><td>50</td></tr><tr><td>②</td><td>300</td><td>補強</td><td>100</td></tr><tr><td>③</td><td>300</td><td>絶縁</td><td>50</td></tr><tr><td><strong class="kw">④</strong></td><td><mark class="critical">300</mark></td><td><strong class="kw">絶縁</strong></td><td><mark class="critical">100</mark></td></tr><tr><td>⑤</td><td>200</td><td>補強</td><td>100</td></tr>
+</tbody></table></div></div>
+  </article>
+  <article class="study-card translation">
+    <div class="card-title">Bản dịch tiếng Việt</div>
+    <div class="recall-source" lang="vi">
+<p>Trong <strong class="kw">công pháp chống thấm bảo vệ bám dính bằng asphalt</strong>, tại góc lồi và góc lõm được hình thành giữa phần mặt phẳng và phần đứng, trước khi dán roofing phần mặt phẳng phải dán tăng cường stretch roofing rộng khoảng <mark class="critical">[a] mm</mark>.</p>
+<p>Tại mạch ngừng bê tông, trước khi dán roofing phần mặt phẳng, dán băng dùng cho <strong class="kw">[b]</strong> rộng khoảng <mark class="critical">50 mm</mark>, sau đó dán tăng cường stretch roofing rộng khoảng <mark class="critical">[a] mm</mark>.</p>
+<p>Tại khe nối cấu kiện bê tông đúc sẵn, stretch roofing phải phủ sang mỗi cấu kiện ở hai phía khoảng <mark class="critical">[c] mm</mark>, sau đó thực hiện <strong class="kw">dán tăng cường kiểu [b]</strong>.</p>
+<div class="table-wrap"><table><thead><tr><th>Lựa chọn</th><th>a</th><th>b</th><th>c</th></tr></thead><tbody>
+<tr><td>①</td><td>200</td><td>gia cường</td><td>50</td></tr><tr><td>②</td><td>300</td><td>gia cường</td><td>100</td></tr><tr><td>③</td><td>300</td><td>cách ly</td><td>50</td></tr><tr><td><strong class="kw">④</strong></td><td><mark class="critical">300</mark></td><td><strong class="kw">cách ly</strong></td><td><mark class="critical">100</mark></td></tr><tr><td>⑤</td><td>200</td><td>gia cường</td><td>100</td></tr>
+</tbody></table></div></div>
+  </article>
+</div>
+  
+  <p><a href="#toc">↑ Mục lục</a></p>
+</section><section class="subsection" id="sub-1-method">
+  <h3>保護防水密着工法と増張りの目的 / Công pháp bám dính và mục đích dán tăng cường</h3>
+  <div class="study-grid">
+  <article class="study-card original">
+    <div class="card-title">原文</div>
+    <div class="recall-source" lang="ja">
+<h4>（1）アスファルト防水の保護防水密着工法</h4>
+<p>アスファルト防水の保護防水密着工法は、コンクリート下地に、溶融アスファルトとアスファルトルーフィング類（ルーフィング類）を交互に積層して施工する防水工事のうち、<strong class="kw">防水層を下地に密着させる</strong>（<span class="relation">防水層と下地との間に通気層を設けない</span>）工法である。</p>
+<h4>（2）アスファルト防水における増張りの目的</h4>
+<p>ルーフィング類の張付けを実施するときは、出隅部・入隅部・下地目地部などについて、一般部分（平場部など）の張付けを実施する前に、<strong class="kw">増張り</strong>を行わなければならない。この増張りの目的は、ルーフィング類（防水層）が傷つきやすい部分に、先行してストレッチルーフィングなどを張り付けておくことで、<span class="relation">防水層の部分的な破損を防止する</span>ことである。</p>
+<p>① 出隅・入隅は、直角になっているために、<strong class="kw">応力が集中しやすく</strong>、防水層が傷つきやすい。</p>
+<p>② 下地目地部は、<strong class="kw">躯体の伸縮</strong>による影響を受けて、防水層にひび割れが発生しやすい。</p>
+<p>※ストレッチルーフィングは、引き延ばされても切断されにくい防水材料であるため、出隅や入隅でも傷つきにくく、下地となる躯体の伸縮にも追従できる。</p>
+<p><strong class="kw">一般部分の重ね幅</strong>は、平場部のルーフィング類では縦横共に<mark class="critical">100mm程度</mark>、平場部と立上り部のルーフィング類との重ね幅は<mark class="critical">150mm程度</mark>とする。</p></div>
+  </article>
+  <article class="study-card translation">
+    <div class="card-title">Bản dịch tiếng Việt</div>
+    <div class="recall-source" lang="vi">
+<h4>(1) Công pháp chống thấm bảo vệ bám dính bằng asphalt</h4>
+<p>Đây là công pháp chống thấm trong đó trên nền bê tông, asphalt nóng chảy và các lớp asphalt roofing được thi công xen kẽ thành nhiều lớp. Đặc điểm là <strong class="kw">lớp chống thấm bám dính trực tiếp vào nền</strong>, tức <span class="relation">không bố trí lớp thông khí giữa lớp chống thấm và nền</span>.</p>
+<h4>(2) Mục đích của dán tăng cường</h4>
+<p>Trước khi dán roofing ở khu vực thông thường, tại góc lồi, góc lõm và khe/mạch của nền phải thực hiện <strong class="kw">dán tăng cường</strong>. Mục đích là dán trước stretch roofing tại vị trí lớp chống thấm dễ bị tổn thương để <span class="relation">ngăn hư hỏng cục bộ của lớp chống thấm</span>.</p>
+<p>① Góc lồi và góc lõm có dạng góc vuông nên <strong class="kw">ứng suất dễ tập trung</strong>, làm lớp chống thấm dễ hư hỏng.</p>
+<p>② Khe/mạch của nền chịu ảnh hưởng của <strong class="kw">co giãn kết cấu</strong>, do đó lớp chống thấm dễ phát sinh nứt.</p>
+<p>Stretch roofing khó bị đứt khi bị kéo giãn, nên ít bị hư hỏng tại góc và có khả năng đi theo biến dạng co giãn của kết cấu nền.</p>
+<p><strong class="kw">Chiều rộng chồng mí phần thông thường</strong>: roofing phần mặt phẳng chồng theo cả hai phương khoảng <mark class="critical">100 mm</mark>; phần mặt phẳng chồng với phần đứng khoảng <mark class="critical">150 mm</mark>.</p></div>
+  </article>
+</div>
+  <div class="figure-box"><strong>Giải thích hình / 図の要点</strong><p>BOOK465-467 minh họa chồng mí roofing phần mặt phẳng 100 mm, chồng phần mặt phẳng với phần đứng 150 mm, tăng cường góc 300 mm, mạch ngừng với băng cách ly 50 mm + stretch roofing 300 mm, và khe PC phủ 100 mm về mỗi phía.</p></div>
+  <p><a href="#toc">↑ Mục lục</a></p>
+</section><section class="subsection" id="sub-1-details">
+  <h3>出隅・入隅・打継ぎ・PC継手 / Góc, mạch ngừng và khe PC</h3>
+  <div class="study-grid">
+  <article class="study-card original">
+    <div class="card-title">原文</div>
+    <div class="recall-source" lang="ja">
+<h4>（3）出隅部および入隅部の増張り</h4>
+<p>平場部と立上り部で構成される出隅部および入隅部には、平場部のルーフィング類を張り付ける前に、<strong class="kw">ストレッチルーフィングまたは改質アスファルトシート</strong>を<mark class="critical">幅300mm程度</mark>（公共建築工事標準仕様書の基準では幅300mm以上）増張りしなければならない。</p>
+<p>※増張りの幅が<span class="trap">200mm程度しかない</span>と、防水層として必要な性能を確保できなくなり、上に張り付ける平場部のルーフィング類が剥がれたり傷ついたりしやすくなる。</p>
+<h4>（4）コンクリート打継ぎ部の増張り</h4>
+<p>防水上の不具合が生じやすいコンクリート打継ぎ部には、平場部のルーフィング類を張り付ける前に、<strong class="kw">幅50mm程度の絶縁用テープ</strong>を張り付けた上に、<strong class="kw">ストレッチルーフィング</strong>を<mark class="critical">幅300mm程度</mark>増張りする。</p>
+<p>※<span class="trap">補強用テープ</span>は、絶縁用テープとは異なり、コンクリート下地の伸縮による動きをルーフィング類に伝えなくする効果がない。</p>
+<p>※<strong class="kw">保護防水絶縁工法</strong>を採用する場合は、幅50mm程度の絶縁用テープを張り付けた後に、部分粘着層付改質アスファルトルーフィングシートを張り付けるか、砂付穴あきルーフィングを敷き込むことで増張りとする。</p>
+<h4>（5）プレキャストコンクリート部材の継手目地部の増張り</h4>
+<p>保護防水密着工法では、ストレッチルーフィングなどの増張り用シートを、両側のプレキャストコンクリート部材にそれぞれ<mark class="critical">100mm程度</mark>張り掛けて、<strong class="kw">絶縁増張り</strong>としなければならない。</p>
+<p>※保護防水絶縁工法を採用する場合は、上記の増張りの代わりに、<mark class="critical">幅50mm程度</mark>の絶縁用テープを張り付けることで増張りとする。</p></div>
+  </article>
+  <article class="study-card translation">
+    <div class="card-title">Bản dịch tiếng Việt</div>
+    <div class="recall-source" lang="vi">
+<h4>(3) Dán tăng cường tại góc lồi và góc lõm</h4>
+<p>Trước khi dán roofing phần mặt phẳng, phải dán tăng cường <strong class="kw">stretch roofing hoặc tấm asphalt cải tiến</strong> với <mark class="critical">chiều rộng khoảng 300 mm</mark>. Theo 公共建築工事標準仕様書, chiều rộng là từ 300 mm trở lên.</p>
+<p>Nếu lớp tăng cường <span class="trap">chỉ rộng khoảng 200 mm</span>, không bảo đảm được tính năng cần thiết của lớp chống thấm và roofing phía trên dễ bong hoặc hư hỏng.</p>
+<h4>(4) Dán tăng cường tại mạch ngừng bê tông</h4>
+<p>Tại mạch ngừng, trước khi dán roofing phần mặt phẳng, dán <strong class="kw">băng cách ly rộng khoảng 50 mm</strong>, rồi dán tăng cường <strong class="kw">stretch roofing</strong> rộng khoảng <mark class="critical">300 mm</mark>.</p>
+<p><span class="trap">Băng gia cường</span> không có tác dụng cách ly chuyển động co giãn của nền bê tông khỏi roofing như băng cách ly.</p>
+<p>Nếu dùng <strong class="kw">công pháp chống thấm bảo vệ kiểu cách ly</strong>, thay cấu tạo trên bằng băng cách ly 50 mm rồi dùng tấm modified asphalt roofing có lớp dính một phần hoặc roofing có lỗ phủ cát.</p>
+<h4>(5) Dán tăng cường tại khe nối cấu kiện bê tông đúc sẵn</h4>
+<p>Trong công pháp bám dính, tấm stretch roofing phải phủ sang mỗi cấu kiện PC ở hai bên khoảng <mark class="critical">100 mm</mark>, tạo thành <strong class="kw">dán tăng cường cách ly</strong>. Vì phủ 100 mm mỗi bên, hình minh họa cho thấy tấm có tổng chiều rộng khoảng 200 mm.</p>
+<p>Nếu dùng công pháp cách ly, thay bằng <mark class="critical">băng cách ly rộng khoảng 50 mm</mark> tại khe.</p></div>
+  </article>
+</div>
+  
+  <p><a href="#toc">↑ Mục lục</a></p>
+</section>
+</section><section class="study-section" id="sec-2-tile">
+  <div class="section-head">
+    <h2>記述2 タイル工事：剥落のおそれが大きい箇所のタイル張り</h2>
+    <span class="source-ref">Nguồn: Book 461, 467-468</span>
+  </div>
+  <section class="subsection" id="sub-2-question">
+  <h3>問題文と解答 / Đề bài và đáp án</h3>
+  <div class="study-grid">
+  <article class="study-card original">
+    <div class="card-title">原文</div>
+    <div class="recall-source" lang="ja">
+<p>セメントモルタルによるタイル張りにおいて、まぐさ、庇先端下部など剥落のおそれが大きい箇所に <strong class="kw">[a] タイル以上</strong>の大きさのタイルを張る場合、径が<mark class="critical">0.6mm以上</mark>のなまし <strong class="kw">[b] 線</strong>を剥落防止用引金物として張付けモルタルに塗り込む。</p><p>必要に応じて、受木を添えて <mark class="critical">[c] 時間以上</mark>支持する。</p>
+<div class="table-wrap"><table><thead><tr><th>選択肢</th><th>a</th><th>b</th><th>c</th></tr></thead><tbody><tr><td>①</td><td>小口平</td><td>ステンレス鋼</td><td>12</td></tr><tr><td><strong class="kw">②</strong></td><td><strong class="kw">小口平</strong></td><td><strong class="kw">ステンレス鋼</strong></td><td><mark class="critical">24</mark></td></tr><tr><td>③</td><td>50二丁</td><td>鉄</td><td>24</td></tr><tr><td>④</td><td>50二丁</td><td>ステンレス鋼</td><td>12</td></tr><tr><td>⑤</td><td>50二丁</td><td>鉄</td><td>12</td></tr></tbody></table></div></div>
+  </article>
+  <article class="study-card translation">
+    <div class="card-title">Bản dịch tiếng Việt</div>
+    <div class="recall-source" lang="vi">
+<p>Khi ốp gạch bằng vữa xi măng tại các vị trí có nguy cơ bong rơi cao như lanh tô và mặt dưới đầu mái đua, nếu dùng gạch có kích thước từ <strong class="kw">[a]</strong> trở lên thì dùng dây <strong class="kw">[b]</strong> đã ủ mềm, đường kính <mark class="critical">từ 0,6 mm trở lên</mark>, làm chi tiết neo chống bong rơi và chôn vào vữa dán gạch.</p><p>Khi cần thiết, bố trí thanh gỗ đỡ và giữ ít nhất <mark class="critical">[c] giờ</mark>.</p>
+<div class="table-wrap"><table><thead><tr><th>Lựa chọn</th><th>a</th><th>b</th><th>c</th></tr></thead><tbody><tr><td>①</td><td>小口平</td><td>thép không gỉ</td><td>12</td></tr><tr><td><strong class="kw">②</strong></td><td><strong class="kw">小口平</strong></td><td><strong class="kw">thép không gỉ</strong></td><td><mark class="critical">24</mark></td></tr><tr><td>③</td><td>50二丁</td><td>sắt</td><td>24</td></tr><tr><td>④</td><td>50二丁</td><td>thép không gỉ</td><td>12</td></tr><tr><td>⑤</td><td>50二丁</td><td>sắt</td><td>12</td></tr></tbody></table></div></div>
+  </article>
+</div>
+  
+  <p><a href="#toc">↑ Mục lục</a></p>
+</section><section class="subsection" id="sub-2-explain">
+  <h3>剥落防止対策 / Biện pháp chống bong rơi</h3>
+  <div class="study-grid">
+  <article class="study-card original">
+    <div class="card-title">原文</div>
+    <div class="recall-source" lang="ja">
+<h4>（1）セメントモルタルによるタイル張り</h4><p>セメントモルタルによる後張りでタイル張り仕上げを行う工事である。まぐさや庇先端下部などは、タイルの自重や温度変化による下地の伸縮などの影響により、タイルの剥落のおそれが大きい箇所となる。</p>
+<h4>（2）まぐさ・庇先端下部などにおける剥落防止対策</h4>
+<p><strong class="kw">小口平タイル以上</strong>の大きさのタイルを張る場合は、次の対策を講じる。</p>
+<ol><li>タイルの形状を<strong class="kw">L型</strong>とする。</li><li>湿式成形法のタイルには、引金物用の穴を開け、引金物をこの穴に通して固定する。</li><li>乾式成形法のタイルには、引金物用の穴を開けず、引金物を<strong class="kw">エポキシ樹脂</strong>で接着する。</li><li>引金物は、径が<mark class="critical">0.6mm以上</mark>の<strong class="kw">なましステンレス鋼線</strong>とする。</li><li>引金物の働き長さは<mark class="critical">200mm程度</mark>とし、張付けモルタルに塗り込む。</li><li>必要がある場合は、受木を添えて<mark class="critical">24時間以上</mark>支持する。</li></ol>
+<p>※小口平タイルは横幅<mark class="critical">108mm</mark>・縦幅<mark class="critical">60mm</mark>で大型かつ重いため引金物が必要である。50二丁タイルは横幅<mark class="critical">90mm</mark>・縦幅<mark class="critical">45mm</mark>で小型かつ軽いため、この引金物は不要である。</p>
+<p>※<span class="trap">なまし鉄線</span>は防錆性が劣り、錆びると剥落防止の役割を果たせなくなることがある。</p>
+<p>※支持時間を<span class="trap">12時間程度</span>にすると、張付けモルタルが十分に硬化する前に受木が取り外され、タイルが剥落しやすくなる。</p></div>
+  </article>
+  <article class="study-card translation">
+    <div class="card-title">Bản dịch tiếng Việt</div>
+    <div class="recall-source" lang="vi">
+<h4>(1) Ốp gạch bằng vữa xi măng</h4><p>Đây là công tác hoàn thiện bằng phương pháp ốp sau sử dụng vữa xi măng. Lanh tô và mặt dưới đầu mái đua là các vị trí có nguy cơ bong rơi cao do tự trọng của gạch và sự co giãn của nền do thay đổi nhiệt độ.</p>
+<h4>(2) Biện pháp chống bong rơi</h4>
+<p>Khi ốp gạch có kích thước từ <strong class="kw">小口平タイル trở lên</strong>, thực hiện các biện pháp sau.</p>
+<ol><li>Dùng gạch dạng <strong class="kw">chữ L</strong>.</li><li>Gạch tạo hình ướt: tạo lỗ cho neo và luồn neo qua lỗ để cố định.</li><li>Gạch tạo hình khô: không tạo lỗ, dán neo bằng <strong class="kw">nhựa epoxy</strong>.</li><li>Neo dùng <strong class="kw">dây thép không gỉ ủ mềm</strong>, đường kính <mark class="critical">≥ 0,6 mm</mark>.</li><li>Chiều dài làm việc của neo khoảng <mark class="critical">200 mm</mark>, chôn trong vữa dán.</li><li>Khi cần, dùng thanh đỡ ít nhất <mark class="critical">24 giờ</mark>.</li></ol>
+<p><strong class="kw">小口平タイル</strong> có kích thước <mark class="critical">108 × 60 mm</mark>, lớn và nặng nên cần neo. <strong class="kw">50二丁タイル</strong> có kích thước <mark class="critical">90 × 45 mm</mark>, nhỏ và nhẹ nên không cần loại neo này.</p>
+<p><span class="trap">Dây sắt ủ mềm</span> có khả năng chống gỉ kém hơn; khi gỉ có thể mất chức năng chống bong rơi.</p>
+<p>Nếu chỉ đỡ khoảng <span class="trap">12 giờ</span>, thanh đỡ có thể bị tháo trước khi vữa dán cứng và phát huy đủ lực dính, làm tăng nguy cơ bong rơi.</p></div>
+  </article>
+</div>
+  
+  <p><a href="#toc">↑ Mục lục</a></p>
+</section>
+</section><section class="study-section" id="sec-3-roof">
+  <div class="section-head">
+    <h2>記述3 屋根工事：下葺きの重ね幅と仮留め間隔</h2>
+    <span class="source-ref">Nguồn: Book 462, 469-471</span>
+  </div>
+  <section class="subsection" id="sub-3-question">
+  <h3>問題文と解答 / Đề bài và đáp án</h3>
+  <div class="study-grid">
+  <article class="study-card original">
+    <div class="card-title">原文</div>
+    <div class="recall-source" lang="ja">
+<p>金属板葺きによる屋根工事の下葺きに使用するアスファルトルーフィングは、軒先から水上側へ葺き進め、<strong class="kw">縦重ね</strong>は<mark class="critical">100mm以上</mark>、<strong class="kw">横重ね</strong>は <mark class="critical">[a] mm以上</mark>とする。</p>
+<p>仮留めを行う場合のステープルの打込み間隔は、<strong class="kw">下葺き材の重ね部分</strong>で <mark class="critical">[b] mm程度</mark>、<strong class="kw">その他の部分</strong>では <mark class="critical">[c] mm以内</mark>とし、ルーフィングのたるみやしわを生じないように葺く。</p>
+<div class="table-wrap"><table><thead><tr><th>選択肢</th><th>a</th><th>b</th><th>c</th></tr></thead><tbody><tr><td>①</td><td>200</td><td>450</td><td>900</td></tr><tr><td>②</td><td>100</td><td>300</td><td>600</td></tr><tr><td><strong class="kw">③</strong></td><td><mark class="critical">200</mark></td><td><mark class="critical">300</mark></td><td><mark class="critical">900</mark></td></tr><tr><td>④</td><td>100</td><td>450</td><td>900</td></tr><tr><td>⑤</td><td>200</td><td>300</td><td>600</td></tr></tbody></table></div></div>
+  </article>
+  <article class="study-card translation">
+    <div class="card-title">Bản dịch tiếng Việt</div>
+    <div class="recall-source" lang="vi">
+<p>Asphalt roofing dùng làm lớp lót mái kim loại được lợp từ mép mái về phía cao của mái. <strong class="kw">Chồng mí theo hướng nước chảy</strong> từ <mark class="critical">100 mm trở lên</mark>, còn <strong class="kw">chồng mí theo phương ngang/chiều dài</strong> từ <mark class="critical">[a] mm trở lên</mark>.</p>
+<p>Khi cố định tạm bằng staple, khoảng cách tại <strong class="kw">phần chồng mí</strong> khoảng <mark class="critical">[b] mm</mark>, tại <strong class="kw">phần khác</strong> không quá <mark class="critical">[c] mm</mark>. Roofing phải không võng, không nhăn.</p>
+<div class="table-wrap"><table><thead><tr><th>Lựa chọn</th><th>a</th><th>b</th><th>c</th></tr></thead><tbody><tr><td>①</td><td>200</td><td>450</td><td>900</td></tr><tr><td>②</td><td>100</td><td>300</td><td>600</td></tr><tr><td><strong class="kw">③</strong></td><td><mark class="critical">200</mark></td><td><mark class="critical">300</mark></td><td><mark class="critical">900</mark></td></tr><tr><td>④</td><td>100</td><td>450</td><td>900</td></tr><tr><td>⑤</td><td>200</td><td>300</td><td>600</td></tr></tbody></table></div></div>
+  </article>
+</div>
+  
+  <p><a href="#toc">↑ Mục lục</a></p>
+</section><section class="subsection" id="sub-3-overlap">
+  <h3>下葺きの重ね幅 / Chiều rộng chồng mí</h3>
+  <div class="study-grid">
+  <article class="study-card original">
+    <div class="card-title">原文</div>
+    <div class="recall-source" lang="ja">
+<h4>（1）下葺きの重ね幅</h4><ol><li>野地面上に軒先と平行に敷き込み、<strong class="kw">軒先から水上側（棟の方向）へ</strong>葺き進める。</li><li>上下（流れ方向）の<strong class="kw">縦重ね幅</strong>は<mark class="critical">100mm以上</mark>、左右（長手方向）の<strong class="kw">横重ね幅</strong>は<mark class="critical">200mm以上</mark>とする。</li><li>長手方向の継目は相互に重ならないようにずらす。</li></ol>
+<p>※アスファルト防水の平場部ではルーフィングの重ね幅が縦横共に100mm以上であり、<span class="trap">金属板葺きの下葺きと混同しない</span>。</p></div>
+  </article>
+  <article class="study-card translation">
+    <div class="card-title">Bản dịch tiếng Việt</div>
+    <div class="recall-source" lang="vi">
+<h4>(1) Chiều rộng chồng mí lớp lót</h4><ol><li>Trải roofing song song với mép mái và thi công <strong class="kw">từ mép mái lên phía cao, hướng về đỉnh mái</strong>.</li><li><strong class="kw">Theo hướng nước chảy</strong>: <mark class="critical">≥ 100 mm</mark>. <strong class="kw">Theo phương ngang/chiều dài</strong>: <mark class="critical">≥ 200 mm</mark>.</li><li>Các mối nối theo chiều dài phải bố trí so le, không tập trung gần nhau.</li></ol>
+<p>Đối với asphalt waterproofing ở phần mặt phẳng, chồng mí là 100 mm theo cả hai phương, vì vậy <span class="trap">không được nhầm với lớp lót mái kim loại</span>.</p></div>
+  </article>
+</div>
+  
+  <p><a href="#toc">↑ Mục lục</a></p>
+</section><section class="subsection" id="sub-3-fix">
+  <h3>仮留め間隔 / Khoảng cách cố định tạm</h3>
+  <div class="study-grid">
+  <article class="study-card original">
+    <div class="card-title">原文</div>
+    <div class="recall-source" lang="ja">
+<h4>（2）下葺きの仮留め間隔</h4>
+<p>アスファルトルーフィングは、ハンマー式タッカーなどを用い、ステープルまたは留付け用釘で野地板に固定する。</p>
+<p><strong class="kw">重ね合わせ部分</strong>の打込み間隔は<mark class="critical">300mm程度</mark>が望ましい。その他の部分は、必要に応じて<mark class="critical">900mm以内</mark>の間隔で留め付けることが望ましい。</p>
+<p>※重ね部分で<span class="trap">450mm程度</span>と広すぎると十分に固定されず隙間が生じ、作業効率や安定性が低下する。</p>
+<p>※重ね部分以外で<span class="trap">600mm以内</span>と狭すぎると、必要以上に孔が空き、防水性能が低下する。</p>
+<p>※<strong class="kw">改質アスファルトルーフィング下葺き材（粘着層付タイプ）</strong>は、ステープルや釘を用いず、裏面の剥離紙を剥がしながら下地に張り付けることができる。</p>
+<p>下葺き材は、<strong class="kw">たるみやしわを生じないように</strong>張り上げる。たるみやしわがあると雨水が溜まり、雨漏りが生じやすくなる。</p></div>
+  </article>
+  <article class="study-card translation">
+    <div class="card-title">Bản dịch tiếng Việt</div>
+    <div class="recall-source" lang="vi">
+<h4>(2) Khoảng cách cố định tạm</h4>
+<p>Asphalt roofing được cố định vào tấm nền mái bằng hammer tacker, staple hoặc đinh cố định.</p>
+<p>Tại <strong class="kw">phần chồng mí</strong>, khoảng cách đóng nên khoảng <mark class="critical">300 mm</mark>. Tại phần khác, khi cần thiết, khoảng cách nên không quá <mark class="critical">900 mm</mark>.</p>
+<p>Nếu phần chồng mí dùng khoảng <span class="trap">450 mm</span>, lớp lót có thể không được cố định đủ và sinh khe. Nếu phần khác dùng khoảng <span class="trap">600 mm hoặc nhỏ hơn</span>, sẽ tạo quá nhiều lỗ và làm giảm tính năng chống thấm.</p>
+<p>Với <strong class="kw">modified asphalt roofing loại có lớp tự dính</strong>, không dùng staple hoặc đinh; bóc giấy bảo vệ mặt sau và dán trực tiếp lên nền.</p>
+<p>Lớp lót phải được thi công <strong class="kw">không võng, không nhăn</strong>. Nếu võng hoặc nhăn, nước mưa dễ đọng và tăng nguy cơ rò nước.</p></div>
+  </article>
+</div>
+  
+  <p><a href="#toc">↑ Mục lục</a></p>
+</section><section class="subsection" id="sub-3-performance">
+  <h3>止水性能と耐久性能 / Tính năng ngăn nước và độ bền</h3>
+  <div class="study-grid">
+  <article class="study-card original">
+    <div class="card-title">原文</div>
+    <div class="recall-source" lang="ja">
+<h4>金属板葺きによる屋根工事に関する専門的事項</h4>
+<p>下葺きが持つべき性能には、<strong class="kw">止水性能</strong>と<strong class="kw">耐久性能</strong>がある。</p>
+<p>止水性能を確保するため、屋根葺き材の間隙から侵入した雨水が釘やステープル釘から雨漏りしないように処置し、ルーフィングの重ね幅とステープル釘の打込み間隔を適正にする必要がある。</p>
+<p>耐久性能を確保するため、屋根葺き材を通しての<strong class="kw">輻射熱</strong>や隙間から侵入する雨水の影響を考慮し、下葺き施工後の早期に屋根葺き材を施工するか、養生シートで覆う必要がある。</p>
+<p>JASS12では、短辺部<mark class="critical">200mm以上</mark>、長辺部<mark class="critical">100mm以上</mark>、重ね部の仮留め<mark class="critical">300mm程度</mark>、その他の部分<mark class="critical">900mm以内</mark>としている。</p></div>
+  </article>
+  <article class="study-card translation">
+    <div class="card-title">Bản dịch tiếng Việt</div>
+    <div class="recall-source" lang="vi">
+<h4>Các nội dung chuyên môn về mái lợp tấm kim loại</h4>
+<p>Lớp lót mái phải có <strong class="kw">tính năng ngăn nước</strong> và <strong class="kw">độ bền</strong>.</p>
+<p>Để bảo đảm ngăn nước, cần tránh rò tại vị trí đinh/staple và kiểm soát đúng chiều rộng chồng mí cùng khoảng cách đóng staple.</p>
+<p>Để bảo đảm độ bền, cần xét ảnh hưởng của <strong class="kw">nhiệt bức xạ</strong> truyền qua vật liệu lợp và nước mưa lọt qua khe. Sau khi làm lớp lót, cần sớm thi công vật liệu lợp hoặc che bằng tấm bảo vệ.</p>
+<p>Theo JASS12: cạnh ngắn <mark class="critical">≥ 200 mm</mark>, cạnh dài <mark class="critical">≥ 100 mm</mark>, staple tại mí <mark class="critical">khoảng 300 mm</mark>, phần khác <mark class="critical">≤ 900 mm</mark>.</p></div>
+  </article>
+</div>
+  
+  <p><a href="#toc">↑ Mục lục</a></p>
+</section>
+</section><section class="study-section" id="sec-4-lgs">
+  <div class="section-head">
+    <h2>記述4 金属工事：軽量鉄骨天井下地</h2>
+    <span class="source-ref">Nguồn: Book 462, 471-473</span>
+  </div>
+  <section class="subsection" id="sub-4-question">
+  <h3>問題文と解答 / Đề bài và đáp án</h3>
+  <div class="study-grid">
+  <article class="study-card original">
+    <div class="card-title">原文</div>
+    <div class="recall-source" lang="ja">
+<p>屋内の<strong class="kw">軽量鉄骨天井下地</strong>の吊りボルトの間隔は<mark class="critical">900mm程度</mark>とし、周辺部は端から <mark class="critical">[a] mm以内</mark>とする。</p><p>野縁の間隔は、<strong class="kw">下地張りのある場合</strong> <mark class="critical">[b] mm程度</mark>とし、<strong class="kw">ボードの一辺の長さが450mm程度以下の場合の直張り</strong>は <mark class="critical">[c] mm程度以下</mark>とする。</p>
+<div class="table-wrap"><table><thead><tr><th>選択肢</th><th>a</th><th>b</th><th>c</th></tr></thead><tbody><tr><td>①</td><td>200</td><td>300</td><td>150</td></tr><tr><td>②</td><td>150</td><td>360</td><td>150</td></tr><tr><td><strong class="kw">③</strong></td><td><mark class="critical">150</mark></td><td><mark class="critical">360</mark></td><td><mark class="critical">225</mark></td></tr><tr><td>④</td><td>150</td><td>300</td><td>225</td></tr><tr><td>⑤</td><td>200</td><td>300</td><td>225</td></tr></tbody></table></div></div>
+  </article>
+  <article class="study-card translation">
+    <div class="card-title">Bản dịch tiếng Việt</div>
+    <div class="recall-source" lang="vi">
+<p>Khoảng cách bu lông treo của <strong class="kw">khung trần thép nhẹ trong nhà</strong> lấy khoảng <mark class="critical">900 mm</mark>; tại chu vi, bu lông phải nằm trong phạm vi <mark class="critical">[a] mm từ mép</mark>.</p><p>Khoảng cách 野縁 khi <strong class="kw">có lớp tấm nền</strong> là khoảng <mark class="critical">[b] mm</mark>; khi <strong class="kw">gắn trực tiếp tấm có một cạnh ≤ khoảng 450 mm</strong>, khoảng cách phải ≤ <mark class="critical">[c] mm</mark>.</p>
+<div class="table-wrap"><table><thead><tr><th>Lựa chọn</th><th>a</th><th>b</th><th>c</th></tr></thead><tbody><tr><td>①</td><td>200</td><td>300</td><td>150</td></tr><tr><td>②</td><td>150</td><td>360</td><td>150</td></tr><tr><td><strong class="kw">③</strong></td><td><mark class="critical">150</mark></td><td><mark class="critical">360</mark></td><td><mark class="critical">225</mark></td></tr><tr><td>④</td><td>150</td><td>300</td><td>225</td></tr><tr><td>⑤</td><td>200</td><td>300</td><td>225</td></tr></tbody></table></div></div>
+  </article>
+</div>
+  
+  <p><a href="#toc">↑ Mục lục</a></p>
+</section><section class="subsection" id="sub-4-structure">
+  <h3>構造・施工・吊りボルト / Cấu tạo, thi công và bu lông treo</h3>
+  <div class="study-grid">
+  <article class="study-card original">
+    <div class="card-title">原文</div>
+    <div class="recall-source" lang="ja">
+<h4>（1）軽量鉄骨天井下地の構造と施工</h4><p>屋内の軽量鉄骨天井下地は、規格化された軽量の鉄骨（LGS / Light Gauge Steel）を用いた天井骨組みであり、比較的軽量で周辺環境からの悪影響を受けにくい。</p>
+<ol><li>所定長さの<strong class="kw">吊りボルト</strong>に<strong class="kw">野縁受けハンガー</strong>を取り付ける。</li><li>躯体（天井スラブ）の<strong class="kw">埋込みインサート</strong>に吊りボルトをねじ込んで固定する。</li><li>吊りボルト下部の野縁受けハンガーに<strong class="kw">野縁受け</strong>を取り付ける。</li><li>野縁受けに<strong class="kw">野縁</strong>をクリップで留め付けて吊り下げる。</li></ol>
+<h4>（2）吊りボルトの間隔</h4><p>吊りボルト・埋込みインサート・野縁受けの間隔は、中間部で<mark class="critical">900mm程度</mark>、周辺部で端から<mark class="critical">150mm以内</mark>とする。</p><p>※端部の吊りボルトが<span class="trap">200mmも離れている</span>と、天井端部を十分に支えられず垂れ下がるおそれがある。</p><p>※ダクトなどのため吊りボルト間隔が<mark class="critical">900mmを超える</mark>場合は補強が必要であり、水平つなぎ材を架構して中間から吊りボルトを下げる<strong class="kw">2段吊り</strong>などを行う。</p></div>
+  </article>
+  <article class="study-card translation">
+    <div class="card-title">Bản dịch tiếng Việt</div>
+    <div class="recall-source" lang="vi">
+<h4>(1) Cấu tạo và thi công khung trần thép nhẹ</h4><p>Hệ trần sử dụng LGS tiêu chuẩn hóa, có trọng lượng tương đối nhẹ và ít chịu tác động bất lợi từ môi trường xung quanh.</p>
+<ol><li>Lắp <strong class="kw">hanger đỡ 野縁受け</strong> vào <strong class="kw">bu lông treo</strong>.</li><li>Vặn bu lông treo vào <strong class="kw">insert chôn sẵn</strong> trong sàn trần.</li><li>Lắp <strong class="kw">野縁受け</strong> vào hanger ở đầu dưới bu lông.</li><li>Dùng clip cố định <strong class="kw">野縁</strong> vào 野縁受け.</li></ol>
+<h4>(2) Khoảng cách bu lông treo</h4><p>Khoảng cách bu lông treo, insert và 野縁受け ở phần giữa khoảng <mark class="critical">900 mm</mark>; tại chu vi phải ≤ <mark class="critical">150 mm từ mép</mark>.</p><p>Nếu bu lông ngoài cùng <span class="trap">cách mép đến 200 mm</span>, mép trần có thể không được đỡ chắc và võng xuống.</p><p>Nếu do duct làm khoảng cách bu lông <mark class="critical">vượt 900 mm</mark>, phải gia cường, ví dụ <strong class="kw">treo hai cấp</strong> bằng thanh liên kết ngang.</p></div>
+  </article>
+</div>
+  <div class="figure-box"><strong>Giải thích hình BOOK473</strong><p>Quan hệ truyền tải được thể hiện theo thứ tự: tấm trần → 野縁 → clip → 野縁受け → hanger → 吊りボルト → insert → kết cấu bê tông. Hình cũng ghi bước hệ treo khoảng 900 mm, khoảng cách mép 150 mm, bước 野縁 360 mm và khoảng 野縁 đôi 360 × 5 = 1.800 mm.</p></div>
+  <p><a href="#toc">↑ Mục lục</a></p>
+</section><section class="subsection" id="sub-4-spacing">
+  <h3>野縁の間隔 / Khoảng cách 野縁</h3>
+  <div class="study-grid">
+  <article class="study-card original">
+    <div class="card-title">原文</div>
+    <div class="recall-source" lang="ja">
+<h4>（3）軽量鉄骨天井下地の野縁の間隔</h4>
+<div class="table-wrap"><table><thead><tr><th>天井仕上げの種類</th><th>野縁の間隔</th><th>ダブル野縁の間隔</th></tr></thead><tbody>
+<tr><td><strong class="kw">下地張りのある場合</strong></td><td><mark class="critical">360mm程度</mark></td><td><mark class="critical">1800mm程度</mark></td></tr>
+<tr><td>仕上げ材料となるボードの直張り</td><td><mark class="critical">300mm程度</mark></td><td><mark class="critical">900mm程度</mark></td></tr>
+<tr><td>紙または塗装の下地となるボードの直張り</td><td><mark class="critical">300mm程度</mark></td><td><mark class="critical">900mm程度</mark></td></tr>
+<tr><td><strong class="kw">一辺の長さが450mm程度以下のボードの直張り</strong></td><td><mark class="critical">225mm程度以下</mark></td><td><mark class="critical">450mm程度以下</mark></td></tr>
+<tr><td>金属成形板張りの場合</td><td><mark class="critical">360mm程度</mark></td><td>配置は不要</td></tr>
+</tbody></table></div>
+<p>※野縁の間隔を300mm程度とするのは、下地張りのないボード直張りの場合である。</p><p>※一辺450mm程度以下の小さいボードでは、個々のボードを確実に支えるため野縁間隔を短くする必要がある。ただし<span class="trap">150mm程度以下など必要以上に短くする</span>と、材料費・工期が増え、天井も重くなる。</p></div>
+  </article>
+  <article class="study-card translation">
+    <div class="card-title">Bản dịch tiếng Việt</div>
+    <div class="recall-source" lang="vi">
+<h4>(3) Khoảng cách 野縁</h4>
+<div class="table-wrap"><table><thead><tr><th>Loại hoàn thiện trần</th><th>Khoảng cách 野縁</th><th>Khoảng cách 野縁 đôi</th></tr></thead><tbody>
+<tr><td><strong class="kw">Có lớp tấm nền</strong></td><td><mark class="critical">khoảng 360 mm</mark></td><td><mark class="critical">khoảng 1.800 mm</mark></td></tr>
+<tr><td>Tấm hoàn thiện gắn trực tiếp</td><td><mark class="critical">khoảng 300 mm</mark></td><td><mark class="critical">khoảng 900 mm</mark></td></tr>
+<tr><td>Tấm nền cho giấy dán hoặc sơn gắn trực tiếp</td><td><mark class="critical">khoảng 300 mm</mark></td><td><mark class="critical">khoảng 900 mm</mark></td></tr>
+<tr><td><strong class="kw">Tấm gắn trực tiếp có một cạnh ≤ khoảng 450 mm</strong></td><td><mark class="critical">≤ khoảng 225 mm</mark></td><td><mark class="critical">≤ khoảng 450 mm</mark></td></tr>
+<tr><td>Ốp tấm kim loại tạo hình</td><td><mark class="critical">khoảng 360 mm</mark></td><td>không cần bố trí</td></tr>
+</tbody></table></div>
+<p>Khoảng 300 mm áp dụng cho trường hợp không có lớp tấm nền, tức gắn board trực tiếp. Với board nhỏ ≤450 mm, cần giảm bước để đỡ chắc từng tấm. Tuy nhiên nếu <span class="trap">rút xuống khoảng 150 mm hoặc nhỏ hơn một cách không cần thiết</span>, vật liệu và thời gian thi công tăng, đồng thời trần nặng hơn.</p></div>
+  </article>
+</div>
+  
+  <p><a href="#toc">↑ Mục lục</a></p>
+</section>
+</section><section class="study-section" id="sec-5-coating">
+  <div class="section-head">
+    <h2>記述5 左官工事：防水形複層塗材E</h2>
+    <span class="source-ref">Nguồn: Book 462, 474-476</span>
+  </div>
+  <section class="subsection" id="sub-5-question">
+  <h3>問題文と解答 / Đề bài và đáp án</h3>
+  <div class="study-grid">
+  <article class="study-card original">
+    <div class="card-title">原文</div>
+    <div class="recall-source" lang="ja">
+<p><strong class="kw">防水形合成樹脂エマルション系複層仕上塗材（防水形複層塗材E）</strong>仕上げとする場合、下地のセメントモルタル面を <strong class="kw">[a] 仕上げ</strong>とする。</p>
+<p>主材の基層塗りは、<mark class="critical">2回塗り</mark>で <mark class="critical">[b] kg/m²</mark>とし、だれ、ピンホール及び塗残しのないように下地を覆うように塗り付ける。</p>
+<p>主材の模様塗りは、1回塗りで0.9kg/m²とし、見本と同様の模様で均一に仕上がるように塗り付ける。</p>
+<p>上塗材は、<mark class="critical">[c] 回塗り</mark>で0.3kg/m²とし、色むら、だれ、光沢むらの発生のないように均一に塗り付ける。</p>
+<div class="table-wrap"><table><thead><tr><th>選択肢</th><th>a</th><th>b</th><th>c</th></tr></thead><tbody><tr><td>①</td><td>木ごて</td><td>1.5</td><td>1</td></tr><tr><td>②</td><td>金ごて</td><td>1.7</td><td>1</td></tr><tr><td>③</td><td>木ごて</td><td>1.7</td><td>2</td></tr><tr><td>④</td><td>金ごて</td><td>1.5</td><td>2</td></tr><tr><td><strong class="kw">⑤</strong></td><td><strong class="kw">金ごて</strong></td><td><mark class="critical">1.7</mark></td><td><mark class="critical">2</mark></td></tr></tbody></table></div></div>
+  </article>
+  <article class="study-card translation">
+    <div class="card-title">Bản dịch tiếng Việt</div>
+    <div class="recall-source" lang="vi">
+<p>Khi hoàn thiện bằng <strong class="kw">防水形複層塗材E</strong>, bề mặt vữa xi măng của nền phải hoàn thiện bằng <strong class="kw">[a]</strong>.</p>
+<p>Lớp nền của vật liệu chính thi công <mark class="critical">2 lượt</mark>, lượng <mark class="critical">[b] kg/m²</mark>, phủ kín nền và không được chảy xệ, có lỗ kim hoặc bỏ sót.</p>
+<p>Lớp tạo hoa văn của vật liệu chính theo đề thi: 1 lượt, 0,9 kg/m², tạo hoa văn đồng đều như mẫu.</p>
+<p>Lớp phủ trên cùng thi công <mark class="critical">[c] lượt</mark>, 0,3 kg/m² theo đề, không để lệch màu, chảy xệ hoặc không đều độ bóng.</p>
+<div class="table-wrap"><table><thead><tr><th>Lựa chọn</th><th>a</th><th>b</th><th>c</th></tr></thead><tbody><tr><td>①</td><td>bàn xoa gỗ</td><td>1,5</td><td>1</td></tr><tr><td>②</td><td>bàn xoa thép</td><td>1,7</td><td>1</td></tr><tr><td>③</td><td>bàn xoa gỗ</td><td>1,7</td><td>2</td></tr><tr><td>④</td><td>bàn xoa thép</td><td>1,5</td><td>2</td></tr><tr><td><strong class="kw">⑤</strong></td><td><strong class="kw">bàn xoa thép</strong></td><td><mark class="critical">1,7</mark></td><td><mark class="critical">2</mark></td></tr></tbody></table></div></div>
+  </article>
+</div>
+  
+  <p><a href="#toc">↑ Mục lục</a></p>
+</section><section class="subsection" id="sub-5-base">
+  <h3>モルタル下地の仕上げ / Hoàn thiện nền vữa</h3>
+  <div class="study-grid">
+  <article class="study-card original">
+    <div class="card-title">原文</div>
+    <div class="recall-source" lang="ja">
+<h4>（1）建築用仕上塗材の種類に応じたモルタル下地の仕上げ</h4>
+<p>防水形複層塗材E仕上げとする場合は、下地のセメントモルタル面を<strong class="kw">金ごて仕上げ</strong>としなければならない。</p>
+<div class="table-wrap"><table><thead><tr><th>使用する建築用仕上塗材の種類</th><th>モルタル下地の仕上げ</th></tr></thead><tbody>
+<tr><td>外装厚塗材（Si,E）、内装厚塗材（Si,E）、複層塗材（CE,Si,E）、軽量骨材仕上塗材</td><td>金ごて、木ごて、刷毛引き</td></tr>
+<tr><td>外装薄塗材（Si,E,S）、内装薄塗材（Si,E,W）</td><td>金ごて、木ごて</td></tr>
+<tr><td>外装厚塗材（C）、内装厚塗材（C,L,G）</td><td>木ごて、刷毛引き</td></tr>
+<tr><td>内装薄塗材（C,L）</td><td>木ごて</td></tr>
+<tr><td><strong class="kw">防水形複層塗材（E,CE,RE）ほか</strong></td><td><strong class="kw">金ごて</strong></td></tr>
+</tbody></table></div>
+<p>防水形複層塗材では、防水性確保のため下地を平滑に仕上げることが特に重要である。<strong class="kw">金ごて仕上げ</strong>では下地が平滑になり、塗材厚さが均一になりやすい。<span class="trap">木ごて仕上げ</span>では凹凸が付くため塗材厚さが均一になりにくく、薄い箇所から水が侵入しやすい。</p></div>
+  </article>
+  <article class="study-card translation">
+    <div class="card-title">Bản dịch tiếng Việt</div>
+    <div class="recall-source" lang="vi">
+<h4>(1) Hoàn thiện nền vữa theo loại vật liệu phủ</h4>
+<p>Đối với 防水形複層塗材E, nền vữa xi măng phải dùng <strong class="kw">hoàn thiện bàn xoa thép</strong>.</p>
+<div class="table-wrap"><table><thead><tr><th>Loại vật liệu hoàn thiện</th><th>Hoàn thiện nền vữa</th></tr></thead><tbody>
+<tr><td>外装厚塗材（Si,E）, 内装厚塗材（Si,E）, 複層塗材（CE,Si,E）, 軽量骨材仕上塗材</td><td>bàn xoa thép, bàn xoa gỗ hoặc kéo chổi</td></tr>
+<tr><td>外装薄塗材（Si,E,S）, 内装薄塗材（Si,E,W）</td><td>bàn xoa thép hoặc bàn xoa gỗ</td></tr>
+<tr><td>外装厚塗材（C）, 内装厚塗材（C,L,G）</td><td>bàn xoa gỗ hoặc kéo chổi</td></tr>
+<tr><td>内装薄塗材（C,L）</td><td>bàn xoa gỗ</td></tr>
+<tr><td><strong class="kw">防水形複層塗材（E,CE,RE） và nhóm liên quan</strong></td><td><strong class="kw">bàn xoa thép</strong></td></tr>
+</tbody></table></div>
+<p>Để bảo đảm chống thấm, nền phải phẳng. <strong class="kw">Bàn xoa thép</strong> tạo nền phẳng và giúp chiều dày lớp phủ dễ đồng đều. <span class="trap">Bàn xoa gỗ</span> tạo lồi lõm, làm chiều dày khó đồng đều và nước có thể xâm nhập tại phần mỏng.</p></div>
+  </article>
+</div>
+  
+  <p><a href="#toc">↑ Mục lục</a></p>
+</section><section class="subsection" id="sub-5-process">
+  <h3>仕上げ形状・工法・施工手順 / Hình dạng, công pháp và trình tự</h3>
+  <div class="study-grid">
+  <article class="study-card original">
+    <div class="card-title">原文</div>
+    <div class="recall-source" lang="ja">
+<h4>（2）複層仕上塗材の種類に応じた仕上げの形状および工法</h4>
+<div class="table-wrap"><table><thead><tr><th>種類</th><th>仕上げ・工法</th><th>塗材</th><th>所要量</th><th>回数</th></tr></thead><tbody>
+<tr><td>複層塗材 CE・Si・E・RE</td><td>凸部処理・凹凸状 / 吹付け</td><td>下塗材</td><td>0.1以上</td><td>1</td></tr><tr><td>同上</td><td>同上</td><td>主材基層</td><td>0.7以上</td><td>1</td></tr><tr><td>同上</td><td>同上</td><td>主材模様</td><td>0.8以上</td><td>1</td></tr><tr><td>同上</td><td>同上</td><td>上塗材</td><td>0.25以上</td><td>2</td></tr>
+<tr><td>複層塗材 CE・Si・E・RE</td><td>ゆず肌状 / ローラー塗り</td><td>下塗材</td><td>0.1以上</td><td>1</td></tr><tr><td>同上</td><td>同上</td><td>主材</td><td>1.0以上</td><td>1～2</td></tr><tr><td>同上</td><td>同上</td><td>上塗材</td><td>0.25以上</td><td>2</td></tr>
+<tr><td>可とう形複層塗材CE</td><td>凸部処理・凹凸状 / 吹付け</td><td>下塗材</td><td>0.1以上</td><td>1</td></tr><tr><td>同上</td><td>同上</td><td>主材基層</td><td>1.0以上</td><td>1～2</td></tr><tr><td>同上</td><td>同上</td><td>主材模様</td><td>0.5以上</td><td>1</td></tr><tr><td>同上</td><td>同上</td><td>上塗材</td><td>0.25以上</td><td>2</td></tr>
+<tr><td>可とう形複層塗材CE</td><td>ゆず肌状 / ローラー塗り</td><td>下塗材</td><td>0.1以上</td><td>1</td></tr><tr><td>同上</td><td>同上</td><td>主材</td><td>1.0以上</td><td>1～2</td></tr><tr><td>同上</td><td>同上</td><td>上塗材</td><td>0.25以上</td><td>2</td></tr>
+<tr><td><strong class="kw">防水形複層塗材 CE・E・RE</strong></td><td>凸部処理・凹凸状 / ゆず肌状、吹付け / ローラー</td><td>下塗材</td><td><mark class="critical">0.1以上</mark></td><td>1</td></tr><tr><td>同上</td><td>同上</td><td>増塗材</td><td><mark class="critical">0.6以上</mark></td><td>1</td></tr><tr><td>同上</td><td>同上</td><td>主材基層</td><td><mark class="critical">1.7以上</mark></td><td><mark class="critical">2</mark></td></tr><tr><td>同上</td><td>同上</td><td>主材模様</td><td>※参照</td><td>1</td></tr><tr><td>同上</td><td>同上</td><td>上塗材</td><td><mark class="critical">0.25以上</mark></td><td><mark class="critical">2</mark></td></tr>
+</tbody></table></div>
+<p>主材模様は、防水形複層塗材CEの吹付けで1.0kg/m²以上、RE・Eの吹付けで0.7kg/m²以上、RE・Eのローラー塗りで0.6kg/m²以上。<span class="trap">CEのローラー塗りは規定なし（適用不可）</span>。</p>
+<h4>（3）防水形複層塗材Eによる仕上げの方法</h4>
+<p><span class="relation">①下塗り → ②増塗り → ③主材の基層塗り → ④主材の模様塗り → ⑤上塗り</span></p>
+<ol><li><strong class="kw">下塗り</strong>：下塗材<mark class="critical">0.1kg/m²以上・1回</mark>。だれ・塗残しがないよう均一に塗る。</li><li><strong class="kw">増塗り</strong>：増塗材<mark class="critical">0.6kg/m²以上・1回</mark>。出隅・入隅・目地部・開口部回りなどを刷毛またはローラーで、端部に段差がないよう塗る。試験問題作成時点（令和7年3月以前）の基準では<mark class="critical">0.9kg/m²以上</mark>。</li><li><strong class="kw">主材の基層塗り</strong>：<mark class="critical">1.7kg/m²以上・2回</mark>。だれ・ピンホール・塗残しがないよう下地を覆う。<span class="trap">1.5kg/m²程度では少なすぎる</span>。</li><li><strong class="kw">主材の模様塗り</strong>：<mark class="critical">0.6kg/m²以上</mark>（吹付け工法は<mark class="critical">0.7kg/m²以上</mark>）の主材による1回塗り。試験問題作成時点では<mark class="critical">0.9kg/m²以上</mark>。</li><li><strong class="kw">上塗り</strong>：上塗材<mark class="critical">0.25kg/m²以上・2回</mark>。色むら・だれ・光沢むらを生じないよう均一に塗る。<span class="trap">1回で厚く塗る</span>と厚さが不均一になり、防水性を確保できなくなる。</li></ol></div>
+  </article>
+  <article class="study-card translation">
+    <div class="card-title">Bản dịch tiếng Việt</div>
+    <div class="recall-source" lang="vi">
+<h4>(2) Hình dạng hoàn thiện và công pháp theo loại vật liệu</h4>
+<div class="table-wrap"><table><thead><tr><th>Loại</th><th>Hình dạng / công pháp</th><th>Lớp vật liệu</th><th>Lượng kg/m²</th><th>Lượt</th></tr></thead><tbody>
+<tr><td>複層塗材 CE・Si・E・RE</td><td>lồi lõm / phun</td><td>lót</td><td>≥0,1</td><td>1</td></tr><tr><td>như trên</td><td>như trên</td><td>nền vật liệu chính</td><td>≥0,7</td><td>1</td></tr><tr><td>như trên</td><td>như trên</td><td>hoa văn vật liệu chính</td><td>≥0,8</td><td>1</td></tr><tr><td>như trên</td><td>như trên</td><td>phủ trên</td><td>≥0,25</td><td>2</td></tr>
+<tr><td>複層塗材 CE・Si・E・RE</td><td>da yuzu / roller</td><td>lót</td><td>≥0,1</td><td>1</td></tr><tr><td>như trên</td><td>như trên</td><td>vật liệu chính</td><td>≥1,0</td><td>1-2</td></tr><tr><td>như trên</td><td>như trên</td><td>phủ trên</td><td>≥0,25</td><td>2</td></tr>
+<tr><td>可とう形複層塗材CE</td><td>lồi lõm / phun</td><td>lót</td><td>≥0,1</td><td>1</td></tr><tr><td>như trên</td><td>như trên</td><td>nền vật liệu chính</td><td>≥1,0</td><td>1-2</td></tr><tr><td>như trên</td><td>như trên</td><td>hoa văn vật liệu chính</td><td>≥0,5</td><td>1</td></tr><tr><td>như trên</td><td>như trên</td><td>phủ trên</td><td>≥0,25</td><td>2</td></tr>
+<tr><td>可とう形複層塗材CE</td><td>da yuzu / roller</td><td>lót</td><td>≥0,1</td><td>1</td></tr><tr><td>như trên</td><td>như trên</td><td>vật liệu chính</td><td>≥1,0</td><td>1-2</td></tr><tr><td>như trên</td><td>như trên</td><td>phủ trên</td><td>≥0,25</td><td>2</td></tr>
+<tr><td><strong class="kw">防水形複層塗材 CE・E・RE</strong></td><td>lồi lõm / da yuzu, phun / roller</td><td>lót</td><td><mark class="critical">≥0,1</mark></td><td>1</td></tr><tr><td>như trên</td><td>như trên</td><td>tăng cường</td><td><mark class="critical">≥0,6</mark></td><td>1</td></tr><tr><td>như trên</td><td>như trên</td><td>nền vật liệu chính</td><td><mark class="critical">≥1,7</mark></td><td><mark class="critical">2</mark></td></tr><tr><td>như trên</td><td>như trên</td><td>hoa văn vật liệu chính</td><td>xem chú thích</td><td>1</td></tr><tr><td>như trên</td><td>như trên</td><td>phủ trên</td><td><mark class="critical">≥0,25</mark></td><td><mark class="critical">2</mark></td></tr>
+</tbody></table></div>
+<p>Lớp hoa văn: CE + phun ≥1,0; RE/E + phun ≥0,7; RE/E + roller ≥0,6. <span class="trap">CE + roller không có quy định và không áp dụng</span>.</p>
+<h4>(3) Phương pháp hoàn thiện bằng 防水形複層塗材E</h4>
+<p><span class="relation">① lớp lót → ② lớp tăng cường → ③ lớp nền vật liệu chính → ④ lớp hoa văn → ⑤ lớp phủ trên</span></p>
+<ol><li><strong class="kw">Lớp lót</strong>: <mark class="critical">≥0,1 kg/m², 1 lượt</mark>, phủ đều, không chảy xệ hoặc bỏ sót.</li><li><strong class="kw">Lớp tăng cường</strong>: <mark class="critical">≥0,6 kg/m², 1 lượt</mark>, thi công tại góc, khe và quanh lỗ mở. Tại thời điểm lập đề trước tháng 3 Reiwa 7, tiêu chuẩn là <mark class="critical">≥0,9 kg/m²</mark>.</li><li><strong class="kw">Lớp nền vật liệu chính</strong>: <mark class="critical">≥1,7 kg/m², 2 lượt</mark>, phủ kín nền; <span class="trap">1,5 kg/m² là quá ít</span>.</li><li><strong class="kw">Lớp hoa văn</strong>: <mark class="critical">≥0,6 kg/m²</mark>, nếu phun <mark class="critical">≥0,7 kg/m²</mark>, 1 lượt. Tại thời điểm lập đề là <mark class="critical">≥0,9 kg/m²</mark>.</li><li><strong class="kw">Lớp phủ trên</strong>: <mark class="critical">≥0,25 kg/m², 2 lượt</mark>; <span class="trap">không phủ dày một lượt</span> vì dễ chảy, gây chiều dày không đều và giảm chống thấm.</li></ol></div>
+  </article>
+</div>
+  
+  <p><a href="#toc">↑ Mục lục</a></p>
+</section>
+</section><section class="study-section" id="sec-6-shutter">
+  <div class="section-head">
+    <h2>記述6 建具工事：防煙シャッター</h2>
+    <span class="source-ref">Nguồn: Book 463, 476-479</span>
+  </div>
+  <section class="subsection" id="sub-6-question">
+  <h3>問題文と解答 / Đề bài và đáp án</h3>
+  <div class="study-grid">
+  <article class="study-card original">
+    <div class="card-title">原文</div>
+    <div class="recall-source" lang="ja">
+<p>防火区画に用いる<strong class="kw">防煙シャッター</strong>は、表面がフラットでガイドレール内での遮煙性を確保できる <strong class="kw">[a] 形</strong>のスラットが用いられる。</p><p><strong class="kw">[b] の遮煙機構</strong>は、シャッターが閉鎖したときに漏煙を抑制する構造で、その材料は不燃材料、準不燃材料又は難燃材料とする。</p><p>スラットとガイドレールのかみ合わせ長さは、シャッターの内法寸法が<strong class="kw">3m以下</strong>の場合、左右のかみ合わせ長さの合計は <mark class="critical">[c] mm以上</mark>とする。</p>
+<div class="table-wrap"><table><thead><tr><th>選択肢</th><th>a</th><th>b</th><th>c</th></tr></thead><tbody><tr><td>①</td><td>オーバーラッピング</td><td>まぐさ</td><td>80</td></tr><tr><td>②</td><td>オーバーラッピング</td><td>方立</td><td>80</td></tr><tr><td>③</td><td>インターロッキング</td><td>まぐさ</td><td>90</td></tr><tr><td>④</td><td>インターロッキング</td><td>方立</td><td>80</td></tr><tr><td><strong class="kw">⑤</strong></td><td><strong class="kw">オーバーラッピング</strong></td><td><strong class="kw">まぐさ</strong></td><td><mark class="critical">90</mark></td></tr></tbody></table></div></div>
+  </article>
+  <article class="study-card translation">
+    <div class="card-title">Bản dịch tiếng Việt</div>
+    <div class="recall-source" lang="vi">
+<p><strong class="kw">Cửa cuốn ngăn khói</strong> dùng trong khoang ngăn cháy phải sử dụng slat dạng <strong class="kw">[a]</strong> có bề mặt phẳng, bảo đảm kín khói trong ray dẫn hướng.</p><p><strong class="kw">Cơ cấu ngăn khói tại [b]</strong> phải hạn chế khói rò khi cửa đóng; vật liệu thuộc nhóm không cháy, gần như không cháy hoặc khó cháy.</p><p>Khi chiều rộng thông thủy <strong class="kw">≤ 3 m</strong>, tổng chiều dài ăn khớp hai bên phải ≥ <mark class="critical">[c] mm</mark>.</p>
+<div class="table-wrap"><table><thead><tr><th>Lựa chọn</th><th>a</th><th>b</th><th>c</th></tr></thead><tbody><tr><td>①</td><td>overlapping</td><td>lanh tô</td><td>80</td></tr><tr><td>②</td><td>overlapping</td><td>đố đứng</td><td>80</td></tr><tr><td>③</td><td>interlocking</td><td>lanh tô</td><td>90</td></tr><tr><td>④</td><td>interlocking</td><td>đố đứng</td><td>80</td></tr><tr><td><strong class="kw">⑤</strong></td><td><strong class="kw">overlapping</strong></td><td><strong class="kw">lanh tô</strong></td><td><mark class="critical">90</mark></td></tr></tbody></table></div></div>
+  </article>
+</div>
+  
+  <p><a href="#toc">↑ Mục lục</a></p>
+</section><section class="subsection" id="sub-6-terms">
+  <h3>用語の定義 / Định nghĩa bộ phận</h3>
+  <div class="study-grid">
+  <article class="study-card original">
+    <div class="card-title">原文</div>
+    <div class="recall-source" lang="ja">
+<h4>（1）防煙シャッターに関する用語の定義</h4>
+<p>防煙シャッターは、建築物に使用する内法幅<mark class="critical">8.0m以下</mark>・内法高さ<mark class="critical">4.0m以下</mark>の重量シャッターのうち、所定の遮煙性能試験に合格するものである。階段室などの竪穴区画に配置され、煙感知器と連動してスラットを自動閉鎖し、手動閉鎖装置でも閉鎖できる。</p>
+<ol><li><strong class="kw">防煙シャッター</strong>：竪穴区画に設置し、煙感知器に連動して自動閉鎖するシャッター。</li><li><strong class="kw">スラット</strong>：鋼帯をロール成形した、シャッターカーテンを構成する部材。</li><li><strong class="kw">シャッターカーテン</strong>：連結したスラットと座板を組み合わせ、開口部を仕切るもの。</li><li><strong class="kw">ガイドレール</strong>：閉鎖時にカーテンを保持し、左右を案内するレール。</li><li><strong class="kw">まぐさ</strong>：天井面またはケース下面の開口部の見切り材。防煙シャッター用には遮煙機構が組み込まれる。</li><li><strong class="kw">座板</strong>：シャッターカーテン下端の部材。</li></ol></div>
+  </article>
+  <article class="study-card translation">
+    <div class="card-title">Bản dịch tiếng Việt</div>
+    <div class="recall-source" lang="vi">
+<h4>(1) Định nghĩa các bộ phận</h4>
+<p>Cửa cuốn ngăn khói thuộc nhóm cửa cuốn hạng nặng có chiều rộng thông thủy <mark class="critical">≤ 8,0 m</mark> và chiều cao <mark class="critical">≤ 4,0 m</mark>, đồng thời phải đạt thử nghiệm ngăn khói quy định. Cửa đặt tại khoang giếng đứng như buồng thang, liên động với đầu báo khói để tự đóng và cũng có thể đóng bằng thiết bị thủ công.</p>
+<ol><li><strong class="kw">防煙シャッター</strong>: cửa cuốn ngăn khói tại khoang giếng đứng.</li><li><strong class="kw">スラット</strong>: nan cửa cuốn được cán tạo hình từ dải thép.</li><li><strong class="kw">シャッターカーテン</strong>: thân/rèm cửa gồm các slat liên kết và thanh đáy.</li><li><strong class="kw">ガイドレール</strong>: ray hai bên giữ và dẫn hướng rèm cửa khi đóng.</li><li><strong class="kw">まぐさ</strong>: chi tiết kết thúc lỗ mở tại trần hoặc đáy hộp cửa, có tích hợp cơ cấu ngăn khói.</li><li><strong class="kw">座板</strong>: thanh đáy ở đầu dưới rèm cửa.</li></ol></div>
+  </article>
+</div>
+  
+  <p><a href="#toc">↑ Mục lục</a></p>
+</section><section class="subsection" id="sub-6-form">
+  <h3>スラットの形式 / Dạng slat</h3>
+  <div class="study-grid">
+  <article class="study-card original">
+    <div class="card-title">原文</div>
+    <div class="recall-source" lang="ja">
+<h4>（2）防煙シャッターのスラットの形式</h4><p>スラットはオーバーラッピング形とインターロッキング形に分類される。防煙シャッターでは、表面がフラットでガイドレール内の遮煙性を確保できる<strong class="kw">オーバーラッピング形</strong>とする。</p><p>両面の圧力差を<mark class="critical">2kg/m²</mark>とした場合の通気量が、面積1m²につき毎分<mark class="critical">0.2m³以下</mark>であるなどの条件を満たせば遮煙性能試験に合格すると判断される。</p>
+<p><strong class="kw">オーバーラッピング形</strong>は噛み合い部が平坦で、ガイドレールとスラットの間に隙間が生じないため遮煙性能を確保できる。<span class="trap">インターロッキング形</span>は噛み合い部が平坦でなく隙間が生じ、煙が漏れるため遮煙性能を確保できない。</p></div>
+  </article>
+  <article class="study-card translation">
+    <div class="card-title">Bản dịch tiếng Việt</div>
+    <div class="recall-source" lang="vi">
+<h4>(2) Dạng slat</h4><p>Slat gồm dạng overlapping và interlocking. Cửa ngăn khói phải dùng <strong class="kw">dạng overlapping</strong> vì bề mặt phẳng và có thể bảo đảm kín khói trong ray.</p><p>Một điều kiện thử nghiệm được sách nêu: khi chênh áp hai phía là <mark class="critical">2 kg/m²</mark>, lưu lượng khí phải ≤ <mark class="critical">0,2 m³/phút cho mỗi 1 m²</mark>, cùng các điều kiện quy định khác.</p>
+<p><strong class="kw">Overlapping</strong> có phần ăn khớp phẳng, không tạo khe giữa slat và ray nên giữ kín khói. <span class="trap">Interlocking</span> có phần ăn khớp không phẳng, tạo khe và để khói rò, nên không bảo đảm yêu cầu ngăn khói.</p></div>
+  </article>
+</div>
+  
+  <p><a href="#toc">↑ Mục lục</a></p>
+</section><section class="subsection" id="sub-6-mechanism">
+  <h3>まぐさの遮煙機構 / Cơ cấu ngăn khói tại まぐさ</h3>
+  <div class="study-grid">
+  <article class="study-card original">
+    <div class="card-title">原文</div>
+    <div class="recall-source" lang="ja">
+<h4>（3）防煙シャッターの部材の遮煙機構</h4><p><strong class="kw">まぐさ</strong>は、スラットが通過する天井面において天井材とスラットとの隙間を埋め、煙が上階に広がることを防ぐ部材である。その遮煙機構は、シャッター閉鎖時に漏煙を抑制できる構造とする。</p>
+<p>まぐさの材料は、不燃材料（火熱を受けても<mark class="critical">20分間</mark>損傷しない材料）、準不燃材料（<mark class="critical">10分間</mark>）、難燃材料（<mark class="critical">5分間</mark>）のいずれかとする。</p>
+<p>※<span class="trap">方立には「遮煙機構」は存在しない</span>。方立はシャッターそのものの部材ではなく、建築基準法上の主要構造部の一種である「柱」である。</p></div>
+  </article>
+  <article class="study-card translation">
+    <div class="card-title">Bản dịch tiếng Việt</div>
+    <div class="recall-source" lang="vi">
+<h4>(3) Cơ cấu ngăn khói</h4><p><strong class="kw">まぐさ</strong> bịt khe giữa trần và slat tại nơi slat đi qua, nhằm hạn chế khói lan qua trần lên tầng trên. Cơ cấu này phải hạn chế được khói rò khi cửa đóng.</p>
+<p>Vật liệu まぐさ có thể là vật liệu không cháy, gần như không cháy hoặc khó cháy. Theo giải thích trên trang: tương ứng <mark class="critical">20 phút</mark>, <mark class="critical">10 phút</mark> và <mark class="critical">5 phút</mark> không hư hỏng khi chịu nhiệt lửa.</p>
+<p><span class="trap">方立 không có “cơ cấu ngăn khói”</span>. 方立 là cột đứng và không phải bộ phận của chính cửa cuốn ngăn khói.</p></div>
+  </article>
+</div>
+  
+  <p><a href="#toc">↑ Mục lục</a></p>
+</section><section class="subsection" id="sub-6-engagement">
+  <h3>噛み合わせ長さ / Chiều dài ăn khớp</h3>
+  <div class="study-grid">
+  <article class="study-card original">
+    <div class="card-title">原文</div>
+    <div class="recall-source" lang="ja">
+<h4>（4）スラットとガイドレールとの噛み合わせ長さ</h4>
+<div class="table-wrap"><table><thead><tr><th>内法寸法</th><th>左右の噛み合わせ長さの合計</th></tr></thead><tbody><tr><td><strong class="kw">3m以下</strong></td><td><mark class="critical">90mm以上</mark></td></tr><tr><td><strong class="kw">3mを超え5m以下</strong></td><td><mark class="critical">100mm以上</mark></td></tr><tr><td><strong class="kw">5mを超え8m以下</strong></td><td><mark class="critical">120mm以上</mark></td></tr></tbody></table></div>
+<p>※<span class="trap">80mmなど短すぎる</span>と、開閉時にスラットがガイドレールから脱落するおそれがある。</p><p>噛み合わせ長さはガイドレールの深さの<mark class="critical">80％以上</mark>とし、スラットを左右いずれかの端に寄せたときでも、他端の有効な噛み合わせ長さが<mark class="critical">20mm以上</mark>となるようにする。</p></div>
+  </article>
+  <article class="study-card translation">
+    <div class="card-title">Bản dịch tiếng Việt</div>
+    <div class="recall-source" lang="vi">
+<h4>(4) Chiều dài ăn khớp giữa slat và ray</h4>
+<div class="table-wrap"><table><thead><tr><th>Chiều rộng thông thủy</th><th>Tổng chiều dài ăn khớp hai bên</th></tr></thead><tbody><tr><td><strong class="kw">≤ 3 m</strong></td><td><mark class="critical">≥ 90 mm</mark></td></tr><tr><td><strong class="kw">> 3 m và ≤ 5 m</strong></td><td><mark class="critical">≥ 100 mm</mark></td></tr><tr><td><strong class="kw">> 5 m và ≤ 8 m</strong></td><td><mark class="critical">≥ 120 mm</mark></td></tr></tbody></table></div>
+<p>Nếu <span class="trap">chỉ khoảng 80 mm</span>, slat có nguy cơ tuột khỏi ray khi đóng mở.</p><p>Chiều dài ăn khớp phải ≥ <mark class="critical">80% chiều sâu ray</mark>; khi dồn slat về một phía, phía còn lại vẫn phải có chiều dài ăn khớp hữu hiệu ≥ <mark class="critical">20 mm</mark>.</p></div>
+  </article>
+</div>
+  
+  <p><a href="#toc">↑ Mục lục</a></p>
+</section>
+</section><section class="study-section" id="sec-7-sanding">
+  <div class="section-head">
+    <h2>記述7 塗装工事：研磨紙ずり</h2>
+    <span class="source-ref">Nguồn: Book 463, 479-481</span>
+  </div>
+  <section class="subsection" id="sub-7-question">
+  <h3>問題文と解答 / Đề bài và đáp án</h3>
+  <div class="study-grid">
+  <article class="study-card original">
+    <div class="card-title">原文</div>
+    <div class="recall-source" lang="ja">
+<p>塗装工事における<strong class="kw">研磨紙ずり</strong>は、素地の汚れや錆、下地に付着している塵埃を取り除いて素地や下地の表面を清浄で <strong class="kw">[a] 状態</strong>とし、かつ、次工程で適用する塗装材料の <strong class="kw">[b]</strong> を確保するための足掛かりをつくり、仕上りを良くするために行う。</p><p>研磨紙ずりは、<strong class="kw">[c] 塗膜</strong>及びパテが十分乾燥した後に行い、塗膜を過度に研がないようにする。</p>
+<div class="table-wrap"><table><thead><tr><th>選択肢</th><th>a</th><th>b</th><th>c</th></tr></thead><tbody><tr><td>①</td><td>粗面</td><td>付着性</td><td>下層</td></tr><tr><td><strong class="kw">②</strong></td><td><strong class="kw">平滑</strong></td><td><strong class="kw">付着性</strong></td><td><strong class="kw">下層</strong></td></tr><tr><td>③</td><td>粗面</td><td>美装性</td><td>上層</td></tr><tr><td>④</td><td>平滑</td><td>付着性</td><td>上層</td></tr><tr><td>⑤</td><td>粗面</td><td>美装性</td><td>下層</td></tr></tbody></table></div></div>
+  </article>
+  <article class="study-card translation">
+    <div class="card-title">Bản dịch tiếng Việt</div>
+    <div class="recall-source" lang="vi">
+<p><strong class="kw">Chà giấy nhám</strong> nhằm loại bỏ bụi bẩn, rỉ và bụi bám, đưa bề mặt về trạng thái sạch và <strong class="kw">[a]</strong>, đồng thời tạo điều kiện để bảo đảm <strong class="kw">[b]</strong> của vật liệu sơn ở công đoạn tiếp theo và cải thiện chất lượng hoàn thiện.</p><p>Chà giấy nhám thực hiện sau khi <strong class="kw">màng sơn [c]</strong> và putty đã khô đầy đủ, đồng thời tránh chà quá mức.</p>
+<div class="table-wrap"><table><thead><tr><th>Lựa chọn</th><th>a</th><th>b</th><th>c</th></tr></thead><tbody><tr><td>①</td><td>thô</td><td>bám dính</td><td>lớp dưới</td></tr><tr><td><strong class="kw">②</strong></td><td><strong class="kw">phẳng nhẵn</strong></td><td><strong class="kw">độ bám dính</strong></td><td><strong class="kw">lớp dưới</strong></td></tr><tr><td>③</td><td>thô</td><td>thẩm mỹ</td><td>lớp trên</td></tr><tr><td>④</td><td>phẳng nhẵn</td><td>bám dính</td><td>lớp trên</td></tr><tr><td>⑤</td><td>thô</td><td>thẩm mỹ</td><td>lớp dưới</td></tr></tbody></table></div></div>
+  </article>
+</div>
+  
+  <p><a href="#toc">↑ Mục lục</a></p>
+</section><section class="subsection" id="sub-7-purpose">
+  <h3>研磨紙ずりの目的 / Mục đích chà giấy nhám</h3>
+  <div class="study-grid">
+  <article class="study-card original">
+    <div class="card-title">原文</div>
+    <div class="recall-source" lang="ja">
+<h4>（1）研磨紙ずりの目的</h4><p>研磨紙ずりとは、素地や下地の表面を研磨紙で磨き上げる作業である。</p>
+<ol><li>これから塗装する素地の汚れや錆を取り除く。</li><li>下地に付着している塵埃を取り除く。</li><li>素地や下地の表面を<strong class="kw">清浄かつ平滑</strong>な状態にする。粗面状態にしたい場合は、<span class="trap">研磨紙ずりではなく目荒らし</span>を行う。</li><li>次工程の塗装材料の<strong class="kw">付着性</strong>を確保するための足掛かりをつくる。美装性を確保したい場合は、<span class="trap">研磨紙ずりではなくパテ付け</span>を行う。</li><li>塗装の仕上がりを良くする。</li></ol>
+<p><span class="relation">素地調整 → 下塗り → 研磨紙ずり → 中塗り → 研磨紙ずり → 上塗り</span></p>
+<p>木部面の素地ごしらえでは研磨紙<mark class="critical">P120～P220</mark>を用いる例が示され、Pの数値が大きいほど目が細かい。</p>
+<p>パテの厚塗りによる石膏ボード面のパテ付けは表面を平滑にして美装性を確保する。ブラスト処理によるコンクリート面の目荒らしは表面を粗面にして塗料の付着性を確保する。</p></div>
+  </article>
+  <article class="study-card translation">
+    <div class="card-title">Bản dịch tiếng Việt</div>
+    <div class="recall-source" lang="vi">
+<h4>(1) Mục đích chà giấy nhám</h4><p>研磨紙ずり là công tác mài bề mặt vật liệu cơ sở hoặc lớp nền bằng giấy nhám.</p>
+<ol><li>Loại bỏ bụi bẩn và rỉ trên bề mặt vật liệu.</li><li>Loại bỏ bụi bám trên lớp nền.</li><li>Làm bề mặt <strong class="kw">sạch và phẳng nhẵn</strong>. Nếu muốn tạo bề mặt thô, <span class="trap">không dùng chà giấy nhám mà dùng tạo nhám</span>.</li><li>Tạo điều kiện cho <strong class="kw">độ bám dính</strong> của lớp sơn tiếp theo. Nếu mục tiêu là tăng thẩm mỹ, <span class="trap">dùng bả putty thay vì chà giấy nhám</span>.</li><li>Cải thiện chất lượng hoàn thiện.</li></ol>
+<p><span class="relation">Chuẩn bị bề mặt → sơn lót → chà nhám → sơn giữa → chà nhám → sơn phủ</span></p>
+<p>Ví dụ xử lý bề mặt gỗ dùng giấy nhám <mark class="critical">P120-P220</mark>; số P càng lớn thì hạt càng mịn.</p>
+<p>Bả putty dày trên tấm thạch cao nhằm tạo bề mặt phẳng và nâng thẩm mỹ. Blasting trên bê tông nhằm tạo bề mặt thô để tăng độ bám dính.</p></div>
+  </article>
+</div>
+  
+  <p><a href="#toc">↑ Mục lục</a></p>
+</section><section class="subsection" id="sub-7-notes">
+  <h3>施工上の留意事項 / Lưu ý thi công</h3>
+  <div class="study-grid">
+  <article class="study-card original">
+    <div class="card-title">原文</div>
+    <div class="recall-source" lang="ja">
+<h4>（2）研磨紙ずりの作業における施工上の留意事項</h4><p>使用する研磨紙などは、JIS R 6251「研磨布」およびJIS R 6252「研磨紙」の規格に適合したものとする。</p>
+<p>研磨紙ずりは、<strong class="kw">下層（素地または下地）の塗膜とパテ</strong>が十分に硬化して乾燥した後、対象となる層ごとに、素地または下地の長手方向に、<span class="relation">下層の塗膜を研ぎ去らないように</span>注意して研ぐ。</p>
+<p>※上層の塗膜やパテの塗付けは研磨紙ずり完了後に行うので、<span class="trap">「上層塗膜およびパテが十分乾燥した後に研磨紙ずりを行う」は成り立たない</span>。</p></div>
+  </article>
+  <article class="study-card translation">
+    <div class="card-title">Bản dịch tiếng Việt</div>
+    <div class="recall-source" lang="vi">
+<h4>(2) Lưu ý thi công</h4><p>Giấy/vải nhám phải phù hợp JIS R 6251 và JIS R 6252.</p>
+<p>Chỉ chà sau khi <strong class="kw">màng sơn lớp dưới và putty</strong> đã đóng rắn, khô đầy đủ. Chà theo phương chiều dài của bề mặt và <span class="relation">không được chà mất màng sơn lớp dưới</span>.</p>
+<p>Lớp sơn phía trên được thi công sau khi chà xong, vì vậy <span class="trap">câu “chà sau khi màng sơn lớp trên và putty đã khô” là không đúng</span>.</p></div>
+  </article>
+</div>
+  
+  <p><a href="#toc">↑ Mục lục</a></p>
+</section>
+</section><section class="study-section" id="sec-8-board">
+  <div class="section-head">
+    <h2>記述8 内装工事：石膏ボードのねじ</h2>
+    <span class="source-ref">Nguồn: Book 463, 481-482</span>
+  </div>
+  <section class="subsection" id="sub-8-question">
+  <h3>問題文と解答 / Đề bài và đáp án</h3>
+  <div class="study-grid">
+  <article class="study-card original">
+    <div class="card-title">原文</div>
+    <div class="recall-source" lang="ja">
+<p>内装工事において<strong class="kw">軽量鉄骨下地にせっこうボードを取り付ける</strong>場合、下地の裏面に <mark class="critical">[a] mm以上</mark>の余長が得られる長さのドリリングタッピンねじを用いる。</p>
+<p>その留付け間隔は、天井では周辺部<mark class="critical">150mm</mark>、中間部<mark class="critical">200mm</mark>、壁では周辺部 <mark class="critical">[b] mm</mark>、中間部<mark class="critical">300mm</mark>とし、いずれもボード周辺部から<mark class="critical">10mm程度内側</mark>の位置で留め付け、ねじの頭がボードの <strong class="kw">[c] ように</strong>確実に締め込む。</p>
+<div class="table-wrap"><table><thead><tr><th>選択肢</th><th>a</th><th>b</th><th>c</th></tr></thead><tbody><tr><td><strong class="kw">①</strong></td><td><mark class="critical">10</mark></td><td><mark class="critical">200</mark></td><td><strong class="kw">表面より少しへこむ</strong></td></tr><tr><td>②</td><td>5</td><td>250</td><td>表面と同面となる</td></tr><tr><td>③</td><td>5</td><td>200</td><td>表面より少しへこむ</td></tr><tr><td>④</td><td>10</td><td>200</td><td>表面と同面となる</td></tr><tr><td>⑤</td><td>10</td><td>250</td><td>表面より少しへこむ</td></tr></tbody></table></div></div>
+  </article>
+  <article class="study-card translation">
+    <div class="card-title">Bản dịch tiếng Việt</div>
+    <div class="recall-source" lang="vi">
+<p>Khi <strong class="kw">lắp tấm thạch cao lên khung thép nhẹ</strong>, dùng vít tự khoan tạo ren có chiều dài sao cho phần xuyên qua mặt sau khung còn ít nhất <mark class="critical">[a] mm</mark>.</p>
+<p>Khoảng cách bắt vít: trần chu vi <mark class="critical">150 mm</mark>, giữa <mark class="critical">200 mm</mark>; tường chu vi <mark class="critical">[b] mm</mark>, giữa <mark class="critical">300 mm</mark>. Vít chu vi đặt cách mép tấm khoảng <mark class="critical">10 mm vào trong</mark>. Đầu vít phải được siết sao cho <strong class="kw">[c]</strong>.</p>
+<div class="table-wrap"><table><thead><tr><th>Lựa chọn</th><th>a</th><th>b</th><th>c</th></tr></thead><tbody><tr><td><strong class="kw">①</strong></td><td><mark class="critical">10</mark></td><td><mark class="critical">200</mark></td><td><strong class="kw">hơi chìm dưới bề mặt</strong></td></tr><tr><td>②</td><td>5</td><td>250</td><td>ngang mặt</td></tr><tr><td>③</td><td>5</td><td>200</td><td>hơi chìm</td></tr><tr><td>④</td><td>10</td><td>200</td><td>ngang mặt</td></tr><tr><td>⑤</td><td>10</td><td>250</td><td>hơi chìm</td></tr></tbody></table></div></div>
+  </article>
+</div>
+  
+  <p><a href="#toc">↑ Mục lục</a></p>
+</section><section class="subsection" id="sub-8-length">
+  <h3>ねじの余長 / Chiều dài dư của vít</h3>
+  <div class="study-grid">
+  <article class="study-card original">
+    <div class="card-title">原文</div>
+    <div class="recall-source" lang="ja">
+<h4>（1）軽量鉄骨下地に取り付ける石膏ボードの余長</h4><p>軽量鉄骨天井下地や軽量鉄骨壁下地に石膏ボードを直接張り付ける場合、ドリリングタッピンねじは、<strong class="kw">軽量鉄骨下地の裏面</strong>に<mark class="critical">10mm以上の余長</mark>が得られる長さとする。</p><p>※余長が<span class="trap">5mmなど短すぎる</span>と、下地材から抜けてしまう。</p></div>
+  </article>
+  <article class="study-card translation">
+    <div class="card-title">Bản dịch tiếng Việt</div>
+    <div class="recall-source" lang="vi">
+<h4>(1) Chiều dài dư của vít</h4><p>Khi gắn trực tiếp tấm thạch cao lên khung trần hoặc tường thép nhẹ, vít phải có chiều dài sao cho phía <strong class="kw">mặt sau khung thép</strong> còn <mark class="critical">dư ≥ 10 mm</mark>.</p><p>Nếu chỉ còn <span class="trap">khoảng 5 mm</span>, vít có thể tuột khỏi vật liệu khung.</p></div>
+  </article>
+</div>
+  
+  <p><a href="#toc">↑ Mục lục</a></p>
+</section><section class="subsection" id="sub-8-pitch">
+  <h3>留付け間隔 / Khoảng cách bắt vít</h3>
+  <div class="study-grid">
+  <article class="study-card original">
+    <div class="card-title">原文</div>
+    <div class="recall-source" lang="ja">
+<h4>（2）石膏ボードの留付け間隔</h4>
+<div class="table-wrap"><table><thead><tr><th>下地</th><th>周辺部</th><th>中間部</th></tr></thead><tbody><tr><td><strong class="kw">軽量鉄骨天井下地</strong></td><td><mark class="critical">150mm程度</mark></td><td><mark class="critical">200mm程度</mark></td></tr><tr><td><strong class="kw">軽量鉄骨壁下地</strong></td><td><mark class="critical">200mm程度</mark></td><td><mark class="critical">300mm程度</mark></td></tr></tbody></table></div>
+<p>※壁周辺部を<span class="trap">250mmなど広すぎる間隔</span>とすると、ボードが下地から浮き上がったり、自重による応力が少数のねじに集中してひび割れが生じたりする。</p>
+<p>いずれも、ボード周辺部から<mark class="critical">10mm程度内側</mark>で留め付ける。近づけすぎると、ねじの応力でボードが破損することがある。</p></div>
+  </article>
+  <article class="study-card translation">
+    <div class="card-title">Bản dịch tiếng Việt</div>
+    <div class="recall-source" lang="vi">
+<h4>(2) Khoảng cách bắt vít</h4>
+<div class="table-wrap"><table><thead><tr><th>Khung</th><th>Chu vi</th><th>Phần giữa</th></tr></thead><tbody><tr><td><strong class="kw">Trần thép nhẹ</strong></td><td><mark class="critical">khoảng 150 mm</mark></td><td><mark class="critical">khoảng 200 mm</mark></td></tr><tr><td><strong class="kw">Tường thép nhẹ</strong></td><td><mark class="critical">khoảng 200 mm</mark></td><td><mark class="critical">khoảng 300 mm</mark></td></tr></tbody></table></div>
+<p>Nếu chu vi tường dùng <span class="trap">khoảng 250 mm, quá rộng</span>, board có thể nhô khỏi khung hoặc nứt do ứng suất tự trọng tập trung vào ít vít.</p>
+<p>Ở mọi trường hợp, vít chu vi đặt <mark class="critical">cách mép khoảng 10 mm vào trong</mark>. Nếu quá sát mép, board có thể bị phá hỏng bởi ứng suất của vít.</p></div>
+  </article>
+</div>
+  
+  <p><a href="#toc">↑ Mục lục</a></p>
+</section><section class="subsection" id="sub-8-head">
+  <h3>締込み方法 / Cách siết đầu vít</h3>
+  <div class="study-grid">
+  <article class="study-card original">
+    <div class="card-title">原文</div>
+    <div class="recall-source" lang="ja">
+<h4>（3）ドリリングタッピンねじの締込み</h4><p>ねじは、その頭が石膏ボードの<strong class="kw">表面より少しへこむように</strong>確実に締め込み、表面紙を破損しないようにする。</p><p>※仕上げ面の平坦さを優先して、ねじ頭を<span class="trap">石膏ボード表面と同面</span>にすると締付け不足となり、石膏ボードが脱落するおそれがある。</p></div>
+  </article>
+  <article class="study-card translation">
+    <div class="card-title">Bản dịch tiếng Việt</div>
+    <div class="recall-source" lang="vi">
+<h4>(3) Cách siết vít</h4><p>Đầu vít phải được siết chắc sao cho <strong class="kw">hơi chìm xuống dưới bề mặt tấm thạch cao</strong>, đồng thời không làm hỏng lớp giấy mặt.</p><p>Nếu chỉ siết <span class="trap">ngang bằng bề mặt tấm</span> để ưu tiên độ phẳng, lực siết có thể không đủ và tấm có nguy cơ rơi.</p></div>
+  </article>
+</div>
+  
+  <p><a href="#toc">↑ Mục lục</a></p>
+</section>
+</section>
+</main>
+  <!-- CONTENT_END -->
+
+  <!-- =====================================================
+       NON-DIMMED STUDY SUPPORT SECTIONS
+       These sections stay normally readable in Keywords mode.
+       ===================================================== -->
+
+  <section class="aggregate-section" id="terms">
+    <div class="section-head">
+      <h2>Thuật ngữ chuyên môn</h2>
+    </div>
+    <div class="table-wrap"><table><thead><tr><th>日本語</th><th>読み方</th><th>Tiếng Việt</th><th>Giải thích</th><th>Liên quan</th></tr></thead><tbody><tr><td>保護防水密着工法</td><td>ほごぼうすいみっちゃくこうほう</td><td>công pháp chống thấm bảo vệ bám dính</td><td>Lớp chống thấm bám trực tiếp vào nền, không có lớp thông khí.</td><td>密着工法・通気層</td></tr><tr><td>出隅</td><td>ですみ</td><td>góc lồi</td><td>Góc nhô ra ngoài của cấu kiện.</td><td>入隅・増張り</td></tr><tr><td>入隅</td><td>いりすみ</td><td>góc lõm</td><td>Góc phía trong nơi hai bề mặt giao nhau.</td><td>出隅・増張り</td></tr><tr><td>増張り</td><td>ましばり</td><td>dán tăng cường</td><td>Dán bổ sung lớp vật liệu chống thấm tại vị trí dễ hư hỏng trước lớp chung.</td><td>ストレッチルーフィング</td></tr><tr><td>打継ぎ部</td><td>うちつぎぶ</td><td>mạch ngừng bê tông</td><td>Vị trí tiếp giáp giữa hai đợt đổ bê tông.</td><td>絶縁用テープ</td></tr><tr><td>絶縁用テープ</td><td>ぜつえんようテープ</td><td>băng cách ly</td><td>Tách chuyển động của nền khỏi roofing.</td><td>補強用テープ</td></tr><tr><td>補強用テープ</td><td>ほきょうようテープ</td><td>băng gia cường</td><td>Không có chức năng cách ly chuyển vị như 絶縁用テープ.</td><td>絶縁用テープ</td></tr><tr><td>改質アスファルトシート</td><td>かいしつアスファルトシート</td><td>tấm asphalt cải tiến</td><td>Vật liệu chống thấm được bổ sung nhựa v.v. để nâng độ bền.</td><td>ストレッチルーフィング</td></tr><tr><td>保護防水絶縁工法</td><td>ほごぼうすいぜつえんこうほう</td><td>công pháp chống thấm bảo vệ kiểu cách ly</td><td>Công pháp có xử lý cách ly lớp chống thấm khỏi chuyển động của nền.</td><td>保護防水密着工法</td></tr><tr><td>プレキャストコンクリート部材</td><td>プレキャストコンクリートぶざい</td><td>cấu kiện bê tông đúc sẵn</td><td>Cấu kiện PC sản xuất trước.</td><td>継手目地部</td></tr><tr><td>継手目地部</td><td>つぎてめじぶ</td><td>khe nối cấu kiện</td><td>Khe tại chỗ tiếp giáp hai cấu kiện.</td><td>絶縁増張り</td></tr><tr><td>絶縁増張り</td><td>ぜつえんましばり</td><td>dán tăng cường cách ly</td><td>Lớp tăng cường đồng thời giảm truyền chuyển vị từ khe sang chống thấm.</td><td>継手目地部</td></tr><tr><td>溶融アスファルト</td><td>ようゆうアスファルト</td><td>asphalt nóng chảy</td><td>Asphalt nung chảy dùng liên kết các lớp chống thấm.</td><td>アスファルト防水</td></tr><tr><td>通気層</td><td>つうきそう</td><td>lớp thông khí</td><td>Khoảng/lớp thông khí giữa các lớp cấu tạo; không có trong 密着工法.</td><td>密着工法</td></tr><tr><td>応力集中</td><td>おうりょくしゅうちゅう</td><td>tập trung ứng suất</td><td>Ứng suất tập trung tại vị trí hình học bất liên tục như góc.</td><td>出隅・入隅</td></tr><tr><td>追従する</td><td>ついじゅうする</td><td>đi theo chuyển vị</td><td>Vật liệu biến dạng theo co giãn/chuyển động của nền.</td><td>ストレッチルーフィング</td></tr><tr><td>剥落</td><td>はくらく</td><td>bong rơi</td><td>Vật liệu hoàn thiện bong khỏi nền và rơi xuống.</td><td>引金物</td></tr><tr><td>引金物</td><td>ひきかなもの</td><td>chi tiết/dây neo giữ</td><td>Chi tiết kim loại chống bong rơi của gạch.</td><td>なましステンレス鋼線</td></tr><tr><td>なましステンレス鋼線</td><td>なましステンレスこうせん</td><td>dây thép không gỉ ủ mềm</td><td>Dây dùng làm 引金物 trong nội dung này.</td><td>防錆性</td></tr><tr><td>受木</td><td>うけぎ</td><td>thanh gỗ đỡ tạm</td><td>Cấu kiện đỡ tạm vật liệu sau khi thi công.</td><td>24時間以上</td></tr><tr><td>後張り</td><td>あとばり</td><td>ốp/lát sau</td><td>Thi công gạch sau khi nền/kết cấu đã hình thành.</td><td>セメントモルタル</td></tr><tr><td>湿式成形法</td><td>しっしきせいけいほう</td><td>phương pháp tạo hình ướt</td><td>Gạch loại này dùng lỗ để luồn và cố định 引金物.</td><td>乾式成形法</td></tr><tr><td>乾式成形法</td><td>かんしきせいけいほう</td><td>phương pháp tạo hình khô</td><td>Gạch loại này dán 引金物 bằng epoxy, không tạo lỗ.</td><td>湿式成形法</td></tr><tr><td>防錆性</td><td>ぼうせいせい</td><td>khả năng chống gỉ</td><td>Khả năng chống ăn mòn do rỉ.</td><td>ステンレス鋼</td></tr><tr><td>働き長さ</td><td>はたらきながさ</td><td>chiều dài làm việc</td><td>Chiều dài hữu hiệu của chi tiết neo.</td><td>引金物</td></tr><tr><td>張付けモルタル</td><td>はりつけモルタル</td><td>vữa dán gạch</td><td>Vữa dùng để dán và giữ gạch.</td><td>引金物</td></tr><tr><td>金属板葺き</td><td>きんぞくばんぶき</td><td>lợp mái bằng tấm kim loại</td><td>Công tác mái dùng tấm kim loại.</td><td>下葺き</td></tr><tr><td>下葺き</td><td>したぶき</td><td>lớp lót mái</td><td>Lớp vật liệu chống nước nằm dưới lớp hoàn thiện mái.</td><td>アスファルトルーフィング</td></tr><tr><td>縦重ね</td><td>たてがさね</td><td>chồng mí theo hướng nước chảy</td><td>Chồng mí trên-dưới theo dòng chảy mái.</td><td>横重ね</td></tr><tr><td>横重ね</td><td>よこがさね</td><td>chồng mí ngang/chiều dài</td><td>Chồng mí trái-phải theo phương dài.</td><td>縦重ね</td></tr><tr><td>軒先</td><td>のきさき</td><td>mép mái</td><td>Mép thấp của mái.</td><td>水上側・棟</td></tr><tr><td>水上側</td><td>みずかみがわ</td><td>phía cao của mái</td><td>Phía thượng lưu, hướng về đỉnh mái.</td><td>軒先</td></tr><tr><td>棟</td><td>むね</td><td>đỉnh mái</td><td>Đường đỉnh của mái.</td><td>水上側</td></tr><tr><td>野地面</td><td>のじめん</td><td>bề mặt nền mái</td><td>Bề mặt để trải lớp lót mái.</td><td>野地板</td></tr><tr><td>仮留め</td><td>かりどめ</td><td>cố định tạm</td><td>Giữ roofing tạm thời trước khi hoàn thiện lớp mái.</td><td>ステープル</td></tr><tr><td>ハンマー式タッカー</td><td>ハンマーしきタッカー</td><td>hammer tacker</td><td>Dụng cụ đóng staple bằng thao tác đập.</td><td>ステープル</td></tr><tr><td>ステープル</td><td>ステープル</td><td>ghim/đinh chữ U</td><td>Chi tiết cố định roofing vào nền mái.</td><td>仮留め</td></tr><tr><td>野地板</td><td>のじいた</td><td>tấm nền mái</td><td>Tấm nền để cố định lớp lót.</td><td>野地面</td></tr><tr><td>留付け用釘</td><td>とめつけようくぎ</td><td>đinh cố định</td><td>Đinh chuyên dùng để giữ lớp lót.</td><td>ステープル</td></tr><tr><td>粘着層付タイプ</td><td>ねんちゃくそうつきタイプ</td><td>loại có lớp tự dính</td><td>Dán trực tiếp sau khi bóc giấy bảo vệ.</td><td>剥離紙</td></tr><tr><td>剥離紙</td><td>はくりし</td><td>giấy bảo vệ lớp keo</td><td>Lớp giấy bóc ra trước khi dán vật liệu tự dính.</td><td>粘着層付タイプ</td></tr><tr><td>雨漏り</td><td>あまもり</td><td>rò/dột nước mưa</td><td>Nước mưa xâm nhập qua hệ mái.</td><td>止水性能</td></tr><tr><td>止水性能</td><td>しすいせいのう</td><td>tính năng ngăn nước</td><td>Khả năng ngăn nước xâm nhập qua hệ mái.</td><td>耐久性能</td></tr><tr><td>耐久性能</td><td>たいきゅうせいのう</td><td>độ bền</td><td>Khả năng duy trì tính năng lâu dài.</td><td>止水性能</td></tr><tr><td>輻射熱</td><td>ふくしゃねつ</td><td>nhiệt bức xạ</td><td>Nhiệt truyền qua vật liệu mái ảnh hưởng lớp lót.</td><td>耐久性能</td></tr><tr><td>養生シート</td><td>ようじょうシート</td><td>tấm che bảo vệ</td><td>Tấm che lớp lót trước khi lợp mái hoàn thiện.</td><td>下葺き</td></tr><tr><td>軽量鉄骨天井下地</td><td>けいりょうてっこつてんじょうしたじ</td><td>khung trần thép nhẹ</td><td>Hệ xương LGS đỡ tấm trần.</td><td>吊りボルト・野縁</td></tr><tr><td>吊りボルト</td><td>つりボルト</td><td>bu lông treo</td><td>Thanh ren treo hệ trần từ kết cấu phía trên.</td><td>埋込みインサート</td></tr><tr><td>野縁</td><td>のぶち</td><td>thanh xương trực tiếp đỡ tấm trần</td><td>Thanh đỡ tấm hoàn thiện trần.</td><td>野縁受け</td></tr><tr><td>野縁受けハンガー</td><td>のぶちうけハンガー</td><td>hanger đỡ 野縁受け</td><td>Chi tiết treo 野縁受け vào 吊りボルト.</td><td>野縁受け</td></tr><tr><td>埋込みインサート</td><td>うめこみインサート</td><td>insert chôn sẵn</td><td>Insert trong bê tông để liên kết bu lông treo.</td><td>吊りボルト</td></tr><tr><td>野縁受け</td><td>のぶちうけ</td><td>thanh đỡ 野縁</td><td>Thanh chính đỡ các 野縁.</td><td>野縁</td></tr><tr><td>クリップ</td><td>クリップ</td><td>clip liên kết</td><td>Liên kết 野縁 với 野縁受け.</td><td>野縁</td></tr><tr><td>2段吊り</td><td>にだんづり</td><td>treo hai cấp</td><td>Biện pháp gia cường khi khoảng treo vượt giới hạn.</td><td>水平つなぎ材</td></tr><tr><td>水平つなぎ材</td><td>すいへいつなぎざい</td><td>thanh liên kết ngang</td><td>Thanh ngang dùng trong cấu tạo treo hai cấp.</td><td>2段吊り</td></tr><tr><td>直張り</td><td>じかばり</td><td>gắn trực tiếp</td><td>Gắn board trực tiếp, không có lớp tấm nền.</td><td>下地張り</td></tr><tr><td>下地張り</td><td>したじばり</td><td>lớp tấm nền</td><td>Lớp board nền dưới lớp hoàn thiện.</td><td>直張り</td></tr><tr><td>防水形複層塗材E</td><td>ぼうすいがたふくそうぬりざいE</td><td>vật liệu phủ nhiều lớp loại chống thấm E</td><td>Loại vật liệu hoàn thiện nhiều lớp có tính chống thấm.</td><td>金ごて仕上げ</td></tr><tr><td>金ごて仕上げ</td><td>かなごてしあげ</td><td>hoàn thiện bàn xoa thép</td><td>Tạo nền phẳng, phù hợp 防水形複層塗材.</td><td>木ごて仕上げ</td></tr><tr><td>木ごて仕上げ</td><td>きごてしあげ</td><td>hoàn thiện bàn xoa gỗ</td><td>Tạo bề mặt có độ lồi lõm hơn bàn xoa thép.</td><td>金ごて仕上げ</td></tr><tr><td>刷毛引き</td><td>はけびき</td><td>hoàn thiện kéo chổi</td><td>Phương pháp tạo bề mặt bằng chổi.</td><td>左官工事</td></tr><tr><td>基層塗り</td><td>きそうぬり</td><td>phủ lớp nền vật liệu chính</td><td>Lớp nền của chủ材 trong hệ nhiều lớp.</td><td>模様塗り</td></tr><tr><td>模様塗り</td><td>もようぬり</td><td>phủ tạo hoa văn</td><td>Lớp tạo hình/hoa văn bề mặt.</td><td>基層塗り</td></tr><tr><td>上塗材</td><td>うわぬりざい</td><td>vật liệu phủ trên</td><td>Vật liệu lớp hoàn thiện trên cùng.</td><td>上塗り</td></tr><tr><td>ピンホール</td><td>ピンホール</td><td>lỗ kim</td><td>Khuyết tật lỗ nhỏ trên màng phủ.</td><td>塗残し</td></tr><tr><td>塗残し</td><td>ぬりのこし</td><td>chỗ bỏ sót</td><td>Vị trí không được phủ vật liệu.</td><td>ピンホール</td></tr><tr><td>複層仕上塗材</td><td>ふくそうしあげぬりざい</td><td>vật liệu hoàn thiện phủ nhiều lớp</td><td>Nhóm vật liệu hoàn thiện cấu tạo nhiều lớp.</td><td>防水形複層塗材</td></tr><tr><td>凹凸状</td><td>おうとつじょう</td><td>dạng lồi lõm</td><td>Dạng bề mặt hoàn thiện có lồi lõm.</td><td>ゆず肌状</td></tr><tr><td>ゆず肌状</td><td>ゆずはだじょう</td><td>dạng da quả yuzu</td><td>Dạng texture tương tự vỏ quả yuzu.</td><td>ローラー塗り</td></tr><tr><td>吹付け</td><td>ふきつけ</td><td>thi công phun</td><td>Thi công vật liệu bằng súng phun.</td><td>ローラー塗り</td></tr><tr><td>ローラー塗り</td><td>ローラーぬり</td><td>thi công bằng roller</td><td>Thi công vật liệu bằng con lăn.</td><td>吹付け</td></tr><tr><td>下塗材</td><td>したぬりざい</td><td>vật liệu lớp lót</td><td>Vật liệu dùng cho lớp đầu.</td><td>増塗材</td></tr><tr><td>増塗材</td><td>ましぬりざい</td><td>vật liệu phủ tăng cường</td><td>Vật liệu dùng tăng cường tại góc, khe và quanh lỗ mở.</td><td>下塗材</td></tr><tr><td>所要量</td><td>しょようりょう</td><td>lượng vật liệu yêu cầu</td><td>Khối lượng vật liệu trên đơn vị diện tích theo quy định.</td><td>kg/m²</td></tr><tr><td>防煙シャッター</td><td>ぼうえんシャッター</td><td>cửa cuốn ngăn khói</td><td>Cửa cuốn có yêu cầu hạn chế truyền khói.</td><td>遮煙性能</td></tr><tr><td>重量シャッター</td><td>じゅうりょうシャッター</td><td>cửa cuốn hạng nặng</td><td>Nhóm cửa cuốn theo JIS trong phạm vi kích thước nêu trong sách.</td><td>防煙シャッター</td></tr><tr><td>竪穴区画</td><td>たてあなくかく</td><td>khoang ngăn giếng đứng</td><td>Khu vực như buồng thang cần ngăn cháy/khói theo phương đứng.</td><td>防煙シャッター</td></tr><tr><td>煙感知器</td><td>けむりかんちき</td><td>đầu báo khói</td><td>Thiết bị phát hiện khói liên động đóng cửa.</td><td>防煙シャッター</td></tr><tr><td>スラット</td><td>スラット</td><td>nan cửa cuốn</td><td>Các nan thép ghép thành thân cửa.</td><td>シャッターカーテン</td></tr><tr><td>シャッターカーテン</td><td>シャッターカーテン</td><td>thân/rèm cửa cuốn</td><td>Tổ hợp các slat liên kết và thanh đáy.</td><td>スラット・座板</td></tr><tr><td>ガイドレール</td><td>ガイドレール</td><td>ray dẫn hướng</td><td>Ray hai bên dẫn và giữ thân cửa.</td><td>スラット</td></tr><tr><td>まぐさ</td><td>まぐさ</td><td>chi tiết đầu trên lỗ mở / lanh tô cửa cuốn</td><td>Chi tiết tại trần hoặc đáy hộp, có cơ cấu ngăn khói.</td><td>遮煙機構</td></tr><tr><td>方立</td><td>ほうだて</td><td>cột/đố đứng</td><td>Cột đứng hai bên hoặc giữa các cửa; không có cơ cấu ngăn khói.</td><td>主要構造部</td></tr><tr><td>座板</td><td>ざいた</td><td>thanh đáy cửa cuốn</td><td>Chi tiết tại đầu dưới rèm cửa cuốn.</td><td>シャッターカーテン</td></tr><tr><td>遮煙性能試験</td><td>しゃえんせいのうしけん</td><td>thử nghiệm tính năng ngăn khói</td><td>Thử nghiệm xác nhận khả năng hạn chế rò khói.</td><td>防煙シャッター</td></tr><tr><td>漏煙</td><td>ろうえん</td><td>rò khói</td><td>Khói lọt qua khe của cấu tạo.</td><td>遮煙機構</td></tr><tr><td>遮煙機構</td><td>しゃえんきこう</td><td>cơ cấu ngăn khói</td><td>Cơ cấu tại まぐさ nhằm hạn chế khói rò.</td><td>まぐさ</td></tr><tr><td>不燃材料</td><td>ふねんざいりょう</td><td>vật liệu không cháy</td><td>Trong giải thích trang: không hư hỏng 20 phút khi chịu nhiệt lửa.</td><td>準不燃材料</td></tr><tr><td>準不燃材料</td><td>じゅんふねんざいりょう</td><td>vật liệu gần như không cháy</td><td>Trong giải thích trang: không hư hỏng 10 phút.</td><td>不燃材料・難燃材料</td></tr><tr><td>難燃材料</td><td>なんねんざいりょう</td><td>vật liệu khó cháy</td><td>Trong giải thích trang: không hư hỏng 5 phút.</td><td>準不燃材料</td></tr><tr><td>主要構造部</td><td>しゅようこうぞうぶ</td><td>bộ phận kết cấu chính</td><td>Khái niệm theo 建築基準法; 方立 được giải thích là cột.</td><td>方立</td></tr><tr><td>噛み合わせ長さ</td><td>かみあわせながさ</td><td>chiều dài ăn khớp</td><td>Phần slat đi vào ray dẫn hướng.</td><td>ガイドレール</td></tr><tr><td>内法幅</td><td>うちのりはば</td><td>chiều rộng thông thủy</td><td>Chiều rộng hữu dụng bên trong lỗ mở.</td><td>噛み合わせ長さ</td></tr><tr><td>研磨紙ずり</td><td>けんましずり</td><td>chà giấy nhám</td><td>Xử lý bề mặt bằng giấy nhám trong công tác sơn.</td><td>平滑・付着性</td></tr><tr><td>平滑</td><td>へいかつ</td><td>phẳng nhẵn</td><td>Trạng thái bề mặt cần đạt khi chà giấy nhám.</td><td>粗面</td></tr><tr><td>付着性</td><td>ふちゃくせい</td><td>độ bám dính</td><td>Khả năng lớp sơn bám lên nền/lớp trước.</td><td>研磨紙ずり</td></tr><tr><td>美装性</td><td>びそうせい</td><td>tính thẩm mỹ bề mặt</td><td>Mục tiêu gắn với xử lý putty trong nội dung này.</td><td>パテ付け</td></tr><tr><td>目荒らし</td><td>めあらし</td><td>tạo nhám bề mặt</td><td>Tạo bề mặt thô để tăng bám dính.</td><td>ブラスト処理</td></tr><tr><td>パテ付け</td><td>パテづけ</td><td>bả putty</td><td>Làm phẳng bề mặt, đặc biệt khi yêu cầu thẩm mỹ.</td><td>美装性</td></tr><tr><td>ブラスト処理</td><td>ブラストしょり</td><td>xử lý blasting</td><td>Phun hạt tạo nhám bề mặt bê tông.</td><td>目荒らし</td></tr><tr><td>下層塗膜</td><td>かそうとまく</td><td>màng sơn lớp dưới</td><td>Lớp phải khô trước khi chà nhám.</td><td>上層塗膜</td></tr><tr><td>上層塗膜</td><td>じょうそうとまく</td><td>màng sơn lớp trên</td><td>Được thi công sau công đoạn chà đang xét.</td><td>下層塗膜</td></tr><tr><td>ドリリングタッピンねじ</td><td>ドリリングタッピンねじ</td><td>vít tự khoan tạo ren</td><td>Vít cố định tấm thạch cao vào khung thép nhẹ.</td><td>余長</td></tr><tr><td>余長</td><td>よちょう</td><td>chiều dài dư</td><td>Phần vít nhô qua mặt sau khung.</td><td>ドリリングタッピンねじ</td></tr><tr><td>軽量鉄骨壁下地</td><td>けいりょうてっこつかべしたじ</td><td>khung tường thép nhẹ</td><td>Khung LGS làm nền tường.</td><td>石膏ボード</td></tr><tr><td>留付け間隔</td><td>とめつけかんかく</td><td>khoảng cách bắt vít</td><td>Khoảng cách giữa các điểm cố định.</td><td>周辺部・中間部</td></tr><tr><td>周辺部</td><td>しゅうへんぶ</td><td>phần chu vi tấm</td><td>Vùng gần mép tấm, chịu lực lớn hơn trong giải thích của sách.</td><td>中間部</td></tr><tr><td>中間部</td><td>ちゅうかんぶ</td><td>phần giữa tấm</td><td>Vùng bên trong, xa mép.</td><td>周辺部</td></tr><tr><td>表面紙</td><td>ひょうめんし</td><td>lớp giấy mặt</td><td>Lớp giấy bề mặt tấm thạch cao, không được làm rách khi siết vít.</td><td>石膏ボード</td></tr><tr><td>締付け不足</td><td>しめつけぶそく</td><td>siết không đủ</td><td>Trạng thái giữ tấm không bảo đảm.</td><td>脱落</td></tr><tr><td>脱落</td><td>だつらく</td><td>rơi/tuột khỏi vị trí</td><td>Mất liên kết và rơi khỏi vị trí lắp đặt.</td><td>締付け不足</td></tr></tbody></table></div>
+  </section>
+
+  <section class="aggregate-section" id="background">
+    <div class="section-head">
+      <h2>Kiến thức nền cần biết</h2>
+    </div>
+    
+<div class="note-box"><strong>Phạm vi</strong><p>Phần này tổng hợp kiến thức nền đã được giải thích trong các bản dịch BOOK461-482; không phải một đoạn nguyên văn liên tục của sách.</p></div>
+<div class="comparison-box"><strong>1. Hai logic cách ly trong chống thấm</strong><p><strong>密着工法</strong> cho lớp chống thấm bám vào nền, nhưng tại mạch ngừng và khe PC vẫn cần xử lý <strong>絶縁</strong> cục bộ để giảm truyền chuyển vị của nền sang lớp chống thấm. <strong>絶縁用テープ</strong> vì vậy khác <strong>補強用テープ</strong>.</p></div>
+<div class="comparison-box"><strong>2. Chuỗi truyền tải của trần LGS</strong><p>Tấm trần → 野縁 → clip → 野縁受け → hanger → 吊りボルト → insert → kết cấu bê tông. Các giới hạn 900 mm, 150 mm, 360 mm và 225 mm gắn với các vị trí khác nhau trong chuỗi này.</p></div>
+<div class="comparison-box"><strong>3. Hệ phủ 防水形複層塗材E</strong><p>Trình tự gồm 5 công đoạn: 下塗り → 増塗り → 基層塗り → 模様塗り → 上塗り. Sách đồng thời chỉ rõ sự thay đổi trị số tiêu chuẩn trước và sau thời điểm lập đề; không được trộn hai thời điểm tiêu chuẩn.</p></div>
+<div class="comparison-box"><strong>4. Cửa cuốn ngăn khói</strong><p>Khả năng ngăn khói phụ thuộc hình dạng slat, khe với ray và cơ cấu tại まぐさ. Dạng overlapping giữ bề mặt tiếp xúc phẳng; まぐさ che khe tại trần; chiều dài ăn khớp giữ slat không tuột khỏi ray.</p></div>
+<div class="comparison-box"><strong>5. Phân biệt ba xử lý bề mặt sơn</strong><p>研磨紙ずり = phẳng + bám dính; 目荒らし = thô + bám dính; パテ付け = phẳng + thẩm mỹ.</p></div>
+
+  </section>
+
+  <section class="aggregate-section" id="memory">
+    <div class="section-head">
+      <h2>Điểm cần nhớ và mẹo nhớ</h2>
+    </div>
+    
+<div class="memory-box"><strong>防水工事</strong><div class="table-wrap"><table><thead><tr><th>Hạng mục</th><th>Giá trị / quy tắc</th></tr></thead><tbody><tr><td>出隅・入隅の増張り</td><td><mark class="critical">300 mm</mark></td></tr><tr><td>コンクリート打継ぎ部</td><td><mark class="critical">絶縁テープ 50 mm + stretch roofing 300 mm</mark></td></tr><tr><td>PC継手</td><td><mark class="critical">100 mm mỗi bên</mark>, 絶縁増張り</td></tr></tbody></table></div></div>
+<div class="memory-box"><strong>タイル工事</strong><p><strong>小口平 / SUS / 24時間</strong>. 小口平 108×60 mm; dây neo Ø≥0,6 mm; chiều dài làm việc khoảng 200 mm; đỡ ≥24 giờ.</p></div>
+<div class="memory-box"><strong>屋根工事</strong><p><strong>100 - 200 - 300 - 900</strong>: 縦重ね100 mm, 横重ね200 mm, staple tại mí 300 mm, phần khác 900 mm.</p></div>
+<div class="memory-box"><strong>軽量鉄骨天井下地</strong><p><strong>150 - 360 - 225</strong>: mép bu lông ≤150 mm; có 下地張り thì 野縁 360 mm; board cạnh ≤450 mm thì 野縁 ≤225 mm. Khoảng treo thông thường 900 mm.</p></div>
+<div class="memory-box"><strong>防水形複層塗材E</strong><p><strong>金ごて - 1.7 - 2</strong>. Trình tự: 下 → 増 → 基 → 模 → 上. 基層: ≥1,7 kg/m² × 2; 上塗: ≥0,25 kg/m² × 2. 増塗り hiện tại 0,6 kg/m²以上, nhưng thời điểm lập đề là 0,9 kg/m²以上.</p></div>
+<div class="memory-box"><strong>防煙シャッター</strong><p><strong>Overlapping = phẳng = kín khói</strong>. 遮煙機構 ở まぐさ, không ở 方立. Kích thước: ≤3 m → ≥90 mm; >3-5 m → ≥100 mm; >5-8 m → ≥120 mm; ăn khớp ≥80% chiều sâu ray; phía còn lại ≥20 mm.</p></div>
+<div class="memory-box"><strong>研磨紙ずり</strong><p><strong>平滑 + 付着性 + 下層塗膜</strong>. 目荒らし = 粗面 + 付着性; パテ付け = 平滑 + 美装性. P càng lớn thì giấy nhám càng mịn.</p></div>
+<div class="memory-box"><strong>石膏ボード</strong><p><strong>余長 10 mm以上</strong>. Trần 150/200 mm; tường 200/300 mm; vít chu vi cách mép khoảng 10 mm; đầu vít hơi chìm nhưng không làm rách giấy mặt.</p></div>
+
+  </section>
+
+</div>
+
+<!-- =======================================================
+     APPROVED COMPONENT LIBRARY
+     Hidden. AI may copy/repeat these components into CONTENT.
+     Do not create a new visual system unless strictly necessary.
+     ======================================================= -->
+<template id="component-library">
+
+  <!-- FIGURE -->
+  <figure class="figure-card">
+    <img src="{{IMAGE_SOURCE}}" alt="{{IMAGE_ALT}}">
+    <figcaption>{{FIGURE_CAPTION}}</figcaption>
+  </figure>
+
+  <!-- MULTIPLE FIGURES -->
+  <div class="figure-grid">
+    <figure class="figure-card">
+      <img src="{{IMAGE_SOURCE_1}}" alt="{{IMAGE_ALT_1}}">
+      <figcaption>{{FIGURE_CAPTION_1}}</figcaption>
+    </figure>
+    <figure class="figure-card">
+      <img src="{{IMAGE_SOURCE_2}}" alt="{{IMAGE_ALT_2}}">
+      <figcaption>{{FIGURE_CAPTION_2}}</figcaption>
+    </figure>
+  </div>
+
+  <!-- TABLE -->
+  <div class="table-wrap">
+    <table>
+      <caption>{{TABLE_CAPTION}}</caption>
+      <thead>
+        <tr><th>{{HEADER_1}}</th><th>{{HEADER_2}}</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong class="kw">{{ROW_SUBJECT}}</strong></td>
+          <td><span class="relation">{{ROW_RECALL_CUE}}</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- NOTE -->
+  <div class="note-box">
+    <strong>{{NOTE_TITLE}}</strong>
+    <p>{{NOTE_CONTENT}}</p>
+  </div>
+
+  <!-- WARNING -->
+  <div class="warning-box">
+    <strong>{{WARNING_TITLE}}</strong>
+    <p>{{WARNING_CONTENT}}</p>
+  </div>
+
+  <!-- MEMORY -->
+  <div class="memory-box">
+    <strong>{{MEMORY_TITLE}}</strong>
+    <p>
+<div class="memory-box"><strong>防水工事</strong><div class="table-wrap"><table><thead><tr><th>Hạng mục</th><th>Giá trị / quy tắc</th></tr></thead><tbody><tr><td>出隅・入隅の増張り</td><td><mark class="critical">300 mm</mark></td></tr><tr><td>コンクリート打継ぎ部</td><td><mark class="critical">絶縁テープ 50 mm + stretch roofing 300 mm</mark></td></tr><tr><td>PC継手</td><td><mark class="critical">100 mm mỗi bên</mark>, 絶縁増張り</td></tr></tbody></table></div></div>
+<div class="memory-box"><strong>タイル工事</strong><p><strong>小口平 / SUS / 24時間</strong>. 小口平 108×60 mm; dây neo Ø≥0,6 mm; chiều dài làm việc khoảng 200 mm; đỡ ≥24 giờ.</p></div>
+<div class="memory-box"><strong>屋根工事</strong><p><strong>100 - 200 - 300 - 900</strong>: 縦重ね100 mm, 横重ね200 mm, staple tại mí 300 mm, phần khác 900 mm.</p></div>
+<div class="memory-box"><strong>軽量鉄骨天井下地</strong><p><strong>150 - 360 - 225</strong>: mép bu lông ≤150 mm; có 下地張り thì 野縁 360 mm; board cạnh ≤450 mm thì 野縁 ≤225 mm. Khoảng treo thông thường 900 mm.</p></div>
+<div class="memory-box"><strong>防水形複層塗材E</strong><p><strong>金ごて - 1.7 - 2</strong>. Trình tự: 下 → 増 → 基 → 模 → 上. 基層: ≥1,7 kg/m² × 2; 上塗: ≥0,25 kg/m² × 2. 増塗り hiện tại 0,6 kg/m²以上, nhưng thời điểm lập đề là 0,9 kg/m²以上.</p></div>
+<div class="memory-box"><strong>防煙シャッター</strong><p><strong>Overlapping = phẳng = kín khói</strong>. 遮煙機構 ở まぐさ, không ở 方立. Kích thước: ≤3 m → ≥90 mm; >3-5 m → ≥100 mm; >5-8 m → ≥120 mm; ăn khớp ≥80% chiều sâu ray; phía còn lại ≥20 mm.</p></div>
+<div class="memory-box"><strong>研磨紙ずり</strong><p><strong>平滑 + 付着性 + 下層塗膜</strong>. 目荒らし = 粗面 + 付着性; パテ付け = 平滑 + 美装性. P càng lớn thì giấy nhám càng mịn.</p></div>
+<div class="memory-box"><strong>石膏ボード</strong><p><strong>余長 10 mm以上</strong>. Trần 150/200 mm; tường 200/300 mm; vít chu vi cách mép khoảng 10 mm; đầu vít hơi chìm nhưng không làm rách giấy mặt.</p></div>
+</p>
+  </div>
+
+  <!-- FORMULA / FLOW -->
+  <div class="formula-box">
+    <div class="formula-line">
+      <span class="flow-node">{{NODE_1}}</span>
+      <span class="flow-arrow">→</span>
+      <span class="flow-node">{{NODE_2}}</span>
+      <span class="flow-arrow">→</span>
+      <span class="flow-node">{{NODE_3}}</span>
+    </div>
+  </div>
+
+</template>
+
+<script>
+(() => {
+  "use strict";
+
+  const root = document.documentElement;
+  const body = document.body;
+
+  const themeToggle = document.getElementById("theme-toggle");
+  const modeToggle = document.getElementById("mode-toggle");
+  const fontDown = document.getElementById("font-down");
+  const fontReset = document.getElementById("font-reset");
+  const fontUp = document.getElementById("font-up");
+
+  const tocToggle = document.getElementById("toc-toggle");
+  const tocClose = document.getElementById("toc-close");
+  const tocOverlay = document.getElementById("toc-overlay");
+  const tocDrawer = document.getElementById("toc-drawer");
+
+  const prevButton = document.getElementById("section-prev");
+  const nextButton = document.getElementById("section-next");
+
+  const FONT_LEVELS = [80, 90, 100, 110, 120, 130, 140];
+
+  function safeGet(key, fallback = null) {
+    try {
+      const value = localStorage.getItem(key);
+      return value === null ? fallback : value;
+    } catch (e) {
+      return fallback;
+    }
+  }
+
+  function safeSet(key, value) {
+    try {
+      localStorage.setItem(key, value);
+    } catch (e) {}
+  }
+
+  /* ---------- Theme ---------- */
+
+  function applyTheme(theme) {
+    const next = theme === "light" ? "light" : "dark";
+    root.dataset.theme = next;
+
+    if (themeToggle) {
+      const dark = next === "dark";
+      themeToggle.textContent = dark ? "☀" : "☾";
+      themeToggle.title = dark ? "Chuyển sang Light" : "Chuyển sang Dark";
+      themeToggle.setAttribute("aria-pressed", String(!dark));
+    }
+
+    safeSet("study-theme", next);
+  }
+
+  const initialTheme =
+    safeGet("study-theme") ||
+    (window.matchMedia &&
+     window.matchMedia("(prefers-color-scheme: dark)").matches
+      ? "dark"
+      : "light");
+
+  applyTheme(initialTheme);
+
+  themeToggle?.addEventListener("click", () => {
+    applyTheme(root.dataset.theme === "dark" ? "light" : "dark");
+  });
+
+  /* ---------- Full / Keywords ---------- */
+
+  function applyMode(mode) {
+    const keywords = mode === "keywords";
+    body.classList.toggle("keyword-focus", keywords);
+
+    if (modeToggle) {
+      modeToggle.textContent = keywords ? "📖" : "🎯";
+      modeToggle.title = keywords ? "Chuyển sang Full" : "Chuyển sang Keywords";
+      modeToggle.setAttribute("aria-pressed", String(keywords));
+    }
+
+    safeSet("study-mode", keywords ? "keywords" : "full");
+  }
+
+  applyMode(safeGet("study-mode", "full"));
+
+  modeToggle?.addEventListener("click", () => {
+    applyMode(body.classList.contains("keyword-focus") ? "full" : "keywords");
+  });
+
+  /* ---------- Font scale ---------- */
+
+  let fontScale = Number(safeGet("study-font-scale", "100"));
+  if (!FONT_LEVELS.includes(fontScale)) {
+    fontScale = 100;
+  }
+
+  function applyFontScale(scale) {
+    fontScale = FONT_LEVELS.includes(scale) ? scale : 100;
+
+    root.style.setProperty(
+      "--base-font-size",
+      `${16 * fontScale / 100}px`
+    );
+
+    if (fontReset) {
+      fontReset.textContent = `${fontScale}%`;
+      fontReset.title =
+        fontScale === 100
+          ? "Cỡ chữ hiện tại 100%"
+          : `Cỡ chữ hiện tại ${fontScale}%, bấm để về 100%`;
+    }
+
+    if (fontDown) {
+      fontDown.disabled = fontScale === FONT_LEVELS[0];
+    }
+
+    if (fontUp) {
+      fontUp.disabled = fontScale === FONT_LEVELS[FONT_LEVELS.length - 1];
+    }
+
+    safeSet("study-font-scale", String(fontScale));
+  }
+
+  applyFontScale(fontScale);
+
+  fontDown?.addEventListener("click", () => {
+    const index = FONT_LEVELS.indexOf(fontScale);
+    if (index > 0) {
+      applyFontScale(FONT_LEVELS[index - 1]);
+    }
+  });
+
+  fontUp?.addEventListener("click", () => {
+    const index = FONT_LEVELS.indexOf(fontScale);
+    if (index >= 0 && index < FONT_LEVELS.length - 1) {
+      applyFontScale(FONT_LEVELS[index + 1]);
+    }
+  });
+
+  fontReset?.addEventListener("click", () => {
+    applyFontScale(100);
+  });
+
+  /* ---------- TOC drawer ---------- */
+
+  function setToc(open) {
+    body.classList.toggle("toc-open", open);
+    tocToggle?.setAttribute("aria-expanded", String(open));
+    tocOverlay?.setAttribute("aria-hidden", String(!open));
+
+    if (open) {
+      requestAnimationFrame(() => tocClose?.focus());
+    }
+  }
+
+  tocToggle?.addEventListener("click", () => {
+    setToc(!body.classList.contains("toc-open"));
+  });
+
+  tocClose?.addEventListener("click", () => setToc(false));
+  tocOverlay?.addEventListener("click", () => setToc(false));
+
+  tocDrawer?.querySelectorAll("a[href^='#']").forEach(link => {
+    link.addEventListener("click", () => setToc(false));
+  });
+
+  document.addEventListener("keydown", event => {
+    if (event.key === "Escape" && body.classList.contains("toc-open")) {
+      setToc(false);
+      tocToggle?.focus();
+    }
+  });
+
+  /* ---------- Back / Next section ---------- */
+
+  const studySections = Array.from(
+    document.querySelectorAll("main .study-section[id]")
+  );
+
+  function currentSectionIndex() {
+    if (!studySections.length) return -1;
+
+    const referenceY = window.scrollY + Math.min(window.innerHeight * 0.32, 220);
+    let index = 0;
+
+    for (let i = 0; i < studySections.length; i++) {
+      if (studySections[i].offsetTop <= referenceY) {
+        index = i;
+      } else {
+        break;
+      }
+    }
+    return index;
+  }
+
+  function updateNavState() {
+    if (!studySections.length) {
+      if (prevButton) prevButton.disabled = true;
+      if (nextButton) nextButton.disabled = true;
+      return;
+    }
+
+    const index = currentSectionIndex();
+    if (prevButton) prevButton.disabled = index <= 0;
+    if (nextButton) nextButton.disabled = index >= studySections.length - 1;
+  }
+
+  function moveSection(delta) {
+    const index = currentSectionIndex();
+    const targetIndex = Math.max(
+      0,
+      Math.min(studySections.length - 1, index + delta)
+    );
+
+    studySections[targetIndex]?.scrollIntoView({
+      behavior: "smooth",
+      block: "start"
+    });
+  }
+
+  prevButton?.addEventListener("click", () => moveSection(-1));
+  nextButton?.addEventListener("click", () => moveSection(1));
+
+  let ticking = false;
+  window.addEventListener("scroll", () => {
+    if (!ticking) {
+      requestAnimationFrame(() => {
+        updateNavState();
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }, { passive: true });
+
+  window.addEventListener("resize", updateNavState);
+  updateNavState();
+})();
+</script>
+
+</body>
+</html>

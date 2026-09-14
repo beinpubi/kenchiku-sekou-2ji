@@ -1,0 +1,1683 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="color-scheme" content="dark light">
+<title>仕上げ工事 H28｜Book 569-573</title>
+
+<style>
+/* =========================================================
+   FIXED DESIGN TOKENS
+   Do not redesign these values per lesson.
+   ========================================================= */
+
+:root {
+  --font-vi: Arial, Helvetica, sans-serif;
+  --font-ja: "Hiragino Sans", "Yu Gothic", "Yu Gothic UI", Meiryo, sans-serif;
+  --base-font-size: 16px;
+  --content-width: 1320px;
+  --control-size: 38px;
+  --control-gap: 4px;
+}
+
+html[data-theme="dark"] {
+  --bg: #101318;
+  --surface: #171B22;
+  --surface-alt: #1D232C;
+  --text: #E3E7ED;
+  --text-muted: #9DA8B5;
+  --focus-muted: #68717D;
+  --heading: #F4F7FA;
+  --border: #323A46;
+  --link: #7CC4FF;
+  --original-bg: #15181E;
+  --translation-bg: #16202A;
+  --note-bg: #1C2028;
+  --memory-bg: #20231C;
+  --keyword: #74D7FF;
+  --keyword-bg: rgba(75, 190, 255, .10);
+  --critical-bg: #594613;
+  --critical-text: #FFE39A;
+  --trap: #FF8585;
+  --trap-underline: #FF5F5F;
+  --relation-bg: rgba(139, 126, 255, .12);
+  --relation-border: #8F86FF;
+  --shadow: rgba(0, 0, 0, .28);
+  --dock-bg: rgba(23, 27, 34, .94);
+  --overlay: rgba(0, 0, 0, .46);
+}
+
+html[data-theme="light"] {
+  --bg: #F4F6F8;
+  --surface: #FFFFFF;
+  --surface-alt: #EEF1F5;
+  --text: #20242A;
+  --text-muted: #626B77;
+  --focus-muted: #A0A7B0;
+  --heading: #111418;
+  --border: #CCD2DA;
+  --link: #0068B5;
+  --original-bg: #F8FAFC;
+  --translation-bg: #EDF7FC;
+  --note-bg: #F2F4F7;
+  --memory-bg: #F6F7E9;
+  --keyword: #006B9F;
+  --keyword-bg: #E4F4FC;
+  --critical-bg: #FFF0B8;
+  --critical-text: #654900;
+  --trap: #B42318;
+  --trap-underline: #D92D20;
+  --relation-bg: #EEEBFF;
+  --relation-border: #6C5CE7;
+  --shadow: rgba(31, 38, 49, .12);
+  --dock-bg: rgba(255, 255, 255, .94);
+  --overlay: rgba(20, 24, 30, .32);
+}
+
+/* =========================================================
+   BASE
+   ========================================================= */
+
+* { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  font-size: var(--base-font-size);
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-vi);
+  font-size: 1rem;
+  line-height: 1.72;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+:lang(vi) {
+  font-family: var(--font-vi);
+}
+
+:lang(ja) {
+  font-family: var(--font-ja);
+}
+
+a {
+  color: var(--link);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
+a:hover {
+  text-decoration-thickness: 2px;
+}
+
+button {
+  font: inherit;
+}
+
+h1, h2, h3, h4 {
+  color: var(--heading);
+  line-height: 1.35;
+}
+
+h1 {
+  margin: 0 0 .35rem;
+  font-size: clamp(1.75rem, 4vw, 2.7rem);
+}
+
+h2 {
+  margin: 2.5rem 0 1rem;
+  padding-bottom: .42rem;
+  border-bottom: 1px solid var(--border);
+  font-size: clamp(1.42rem, 3vw, 2rem);
+}
+
+h3 {
+  margin: 1.9rem 0 .75rem;
+  font-size: clamp(1.16rem, 2.4vw, 1.5rem);
+}
+
+h4 {
+  margin: 1.2rem 0 .45rem;
+  font-size: 1rem;
+}
+
+p {
+  margin: .58rem 0;
+}
+
+ul, ol {
+  padding-left: 1.45rem;
+}
+
+li {
+  margin: .3rem 0;
+}
+
+[id] {
+  scroll-margin-top: 18px;
+}
+
+/* =========================================================
+   PAGE LAYOUT
+   ========================================================= */
+
+.page-shell {
+  width: min(var(--content-width), calc(100% - 28px));
+  margin: 0 auto;
+  padding: 18px 0 112px;
+}
+
+.hero,
+.toc-card,
+.study-section,
+.aggregate-section {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  box-shadow: 0 8px 28px var(--shadow);
+}
+
+.hero {
+  margin-bottom: 22px;
+  padding: clamp(22px, 3vw, 40px);
+}
+
+.hero-subtitle {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 1.06rem;
+}
+
+.meta-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(195px, 1fr));
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.meta-item {
+  padding: 10px 12px;
+  background: var(--surface-alt);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+
+.meta-label {
+  display: block;
+  margin-bottom: 2px;
+  color: var(--text-muted);
+  font-size: .8rem;
+}
+
+.study-section,
+.aggregate-section {
+  margin: 22px 0;
+  padding: clamp(18px, 2.6vw, 30px);
+}
+
+.section-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 16px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border);
+}
+
+.section-head h2,
+.section-head h3 {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.source-ref {
+  color: var(--text-muted);
+  font-size: .84rem;
+  white-space: nowrap;
+}
+
+.subsection {
+  margin: 26px 0 32px;
+}
+
+.subsection:first-child {
+  margin-top: 0;
+}
+
+.study-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 14px;
+  align-items: start;
+}
+
+.study-card {
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+
+.study-card.original {
+  background: var(--original-bg);
+}
+
+.study-card.translation {
+  background: var(--translation-bg);
+}
+
+.card-title {
+  padding: 9px 13px;
+  background: var(--surface-alt);
+  border-bottom: 1px solid var(--border);
+  color: var(--heading);
+  font-weight: 800;
+  letter-spacing: .02em;
+}
+
+.recall-source {
+  padding: 14px 16px 16px;
+  transition: color .15s ease;
+}
+
+.recall-source > :first-child {
+  margin-top: 0;
+}
+
+.recall-source > :last-child {
+  margin-bottom: 0;
+}
+
+/* =========================================================
+   CONTENT COMPONENTS
+   ========================================================= */
+
+.table-wrap {
+  overflow-x: auto;
+  margin: 12px 0 18px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  -webkit-overflow-scrolling: touch;
+}
+
+table {
+  width: 100%;
+  min-width: 640px;
+  border-collapse: collapse;
+  background: var(--surface);
+}
+
+th,
+td {
+  padding: 9px 11px;
+  border-right: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+  text-align: left;
+}
+
+th:last-child,
+td:last-child {
+  border-right: 0;
+}
+
+tr:last-child td {
+  border-bottom: 0;
+}
+
+th {
+  background: var(--surface-alt);
+  color: var(--heading);
+  font-weight: 800;
+}
+
+caption {
+  padding: 9px 11px;
+  background: var(--surface-alt);
+  color: var(--heading);
+  font-weight: 800;
+  text-align: left;
+  caption-side: top;
+}
+
+.summary-box,
+.note-box,
+.memory-box,
+.warning-box,
+.figure-box,
+.formula-box,
+.comparison-box {
+  margin: 14px 0;
+  padding: 13px 15px;
+  background: var(--note-bg);
+  border: 1px solid var(--border);
+  border-left-width: 4px;
+  border-radius: 10px;
+}
+
+.summary-box,
+.note-box {
+  border-left-color: var(--link);
+}
+
+.memory-box {
+  background: var(--memory-bg);
+  border-left-color: var(--critical-text);
+}
+
+.warning-box {
+  border-left-color: var(--trap);
+}
+
+.figure-box,
+.formula-box,
+.comparison-box {
+  border-left-color: var(--relation-border);
+}
+
+.figure-card {
+  margin: 15px 0 20px;
+  overflow: hidden;
+  background: var(--surface-alt);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+
+.figure-card img {
+  display: block;
+  width: 100%;
+  height: auto;
+  background: #fff;
+}
+
+.figure-card figcaption {
+  padding: 10px 13px 12px;
+  color: var(--text-muted);
+  font-size: .9rem;
+}
+
+.figure-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 12px;
+  margin: 15px 0 20px;
+}
+
+.figure-grid .figure-card {
+  margin: 0;
+}
+
+.item-block {
+  margin-top: 11px;
+  padding-top: 11px;
+  border-top: 1px dashed var(--border);
+}
+
+.item-block:first-child {
+  margin-top: 0;
+  padding-top: 0;
+  border-top: 0;
+}
+
+.item-label {
+  margin-right: .3em;
+  color: var(--heading);
+  font-weight: 800;
+}
+
+.formula-line {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+}
+
+.flow-node {
+  padding: 5px 8px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  font-weight: 700;
+}
+
+.flow-arrow {
+  color: var(--text-muted);
+  font-weight: 800;
+}
+
+/* =========================================================
+   SEMANTIC HIGHLIGHTING
+   ========================================================= */
+
+.kw {
+  padding: .02em .16em;
+  background: var(--keyword-bg);
+  color: var(--keyword);
+  border-radius: .2em;
+  font-weight: 750;
+}
+
+.critical {
+  padding: .04em .22em;
+  background: var(--critical-bg);
+  color: var(--critical-text);
+  border-radius: .22em;
+  font-weight: 750;
+}
+
+.trap {
+  color: var(--trap);
+  font-weight: 700;
+  text-decoration-line: underline;
+  text-decoration-color: var(--trap-underline);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+}
+
+.relation {
+  padding: .02em .14em;
+  background: var(--relation-bg);
+  color: var(--text);
+  border-bottom: 2px solid var(--relation-border);
+  font-weight: 650;
+}
+
+/* Only recall-source is dimmed in Keywords mode. */
+body.keyword-focus .recall-source {
+  color: var(--focus-muted);
+}
+
+body.keyword-focus .recall-source .kw {
+  color: var(--keyword);
+  background: var(--keyword-bg);
+}
+
+body.keyword-focus .recall-source .critical {
+  color: var(--critical-text);
+  background: var(--critical-bg);
+}
+
+body.keyword-focus .recall-source .trap {
+  color: var(--trap);
+}
+
+body.keyword-focus .recall-source .relation {
+  color: var(--text);
+  background: var(--relation-bg);
+}
+
+body.keyword-focus .recall-source th,
+body.keyword-focus .recall-source .item-label {
+  color: var(--heading);
+}
+
+/* =========================================================
+   TOC DRAWER
+   ========================================================= */
+
+.toc-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1990;
+  visibility: hidden;
+  opacity: 0;
+  background: var(--overlay);
+  transition: opacity .18s ease, visibility .18s ease;
+}
+
+.toc-drawer {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 2000;
+  width: min(78vw, 360px);
+  padding: max(14px, env(safe-area-inset-top)) 14px
+           max(18px, env(safe-area-inset-bottom))
+           max(14px, env(safe-area-inset-left));
+  overflow-y: auto;
+  background: var(--surface);
+  border-right: 1px solid var(--border);
+  box-shadow: 14px 0 36px var(--shadow);
+  transform: translateX(-103%);
+  transition: transform .2s ease;
+  -webkit-overflow-scrolling: touch;
+}
+
+body.toc-open .toc-overlay {
+  visibility: visible;
+  opacity: 1;
+}
+
+body.toc-open .toc-drawer {
+  transform: translateX(0);
+}
+
+.toc-drawer-head {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 4px 0 10px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+}
+
+.toc-drawer-head h2 {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 1.2rem;
+}
+
+.toc-close {
+  width: 34px;
+  height: 34px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface-alt);
+  color: var(--text);
+  cursor: pointer;
+}
+
+.toc-list {
+  margin: 12px 0 0;
+  padding-left: 1.2rem;
+}
+
+.toc-list ol {
+  margin-top: 4px;
+}
+
+/* =========================================================
+   COMPACT CONTROLS
+   Left: vertical TOC / Back / Next
+   Right: horizontal display controls
+   ========================================================= */
+
+.nav-dock-left,
+.settings-dock-right {
+  position: fixed;
+  bottom: max(14px, env(safe-area-inset-bottom));
+  z-index: 1900;
+  padding: 5px;
+  background: var(--dock-bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  box-shadow: 0 8px 24px var(--shadow);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  user-select: none;
+}
+
+.nav-dock-left {
+  left: max(10px, env(safe-area-inset-left));
+  display: flex;
+  flex-direction: column;
+  gap: var(--control-gap);
+}
+
+.settings-dock-right {
+  right: max(10px, env(safe-area-inset-right));
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--control-gap);
+}
+
+.nav-dock-left button,
+.settings-dock-right button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--control-size);
+  height: var(--control-size);
+  min-width: var(--control-size);
+  min-height: var(--control-size);
+  padding: 0;
+  background: var(--surface-alt);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-family: var(--font-vi);
+  font-size: .96rem;
+  font-weight: 700;
+  line-height: 1;
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.nav-dock-left button:hover,
+.settings-dock-right button:hover {
+  border-color: var(--link);
+}
+
+.nav-dock-left button:active,
+.settings-dock-right button:active {
+  transform: translateY(1px);
+}
+
+.nav-dock-left button:disabled {
+  opacity: .38;
+  cursor: default;
+}
+
+.settings-dock-right .font-reset {
+  font-size: .66rem;
+  letter-spacing: -.03em;
+}
+
+.settings-dock-right .mode-toggle {
+  font-size: 1.02rem;
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 900px) {
+  .study-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .page-shell {
+    width: min(100% - 18px, 760px);
+  }
+
+  .section-head {
+    display: block;
+  }
+
+  .source-ref {
+    display: block;
+    margin-top: 6px;
+    white-space: normal;
+  }
+}
+
+@media (max-width: 560px) {
+  body {
+    font-size: .96rem;
+  }
+
+  .hero,
+  .study-section,
+  .aggregate-section {
+    border-radius: 12px;
+  }
+
+  .recall-source {
+    padding: 12px 13px 14px;
+  }
+
+  :root {
+    --control-size: 36px;
+  }
+
+  .settings-dock-right {
+    right: max(7px, env(safe-area-inset-right));
+  }
+
+  .nav-dock-left {
+    left: max(7px, env(safe-area-inset-left));
+  }
+}
+
+@media (orientation: landscape) and (pointer: coarse) {
+  .nav-dock-left {
+    left: max(14px, env(safe-area-inset-left));
+  }
+
+  .settings-dock-right {
+    right: max(14px, env(safe-area-inset-right));
+  }
+}
+
+/* =========================================================
+   PRINT
+   ========================================================= */
+
+@media print {
+  html,
+  html[data-theme="dark"],
+  html[data-theme="light"] {
+    --bg: #FFFFFF;
+    --surface: #FFFFFF;
+    --surface-alt: #F1F3F5;
+    --text: #111111;
+    --text-muted: #555555;
+    --heading: #000000;
+    --border: #B8BEC6;
+    --original-bg: #FFFFFF;
+    --translation-bg: #F7FBFD;
+    --note-bg: #F7F7F7;
+    --memory-bg: #FAFAF0;
+    --keyword: #005A86;
+    --keyword-bg: #E4F4FC;
+    --critical-bg: #FFF0B8;
+    --critical-text: #4A3600;
+    --trap: #9E1B12;
+    --trap-underline: #9E1B12;
+    --relation-bg: #F0EDFF;
+    --relation-border: #5B4FD6;
+  }
+
+  body {
+    background: #fff;
+    color: #111;
+    font-size: 11pt;
+  }
+
+  .page-shell {
+    width: 100%;
+    padding: 0;
+  }
+
+  .nav-dock-left,
+  .settings-dock-right,
+  .toc-drawer,
+  .toc-overlay {
+    display: none !important;
+  }
+
+  .hero,
+  .study-card,
+  .summary-box,
+  .note-box,
+  .memory-box,
+  .warning-box,
+  .figure-card {
+    break-inside: avoid;
+  }
+
+  a {
+    color: #000;
+    text-decoration: none;
+  }
+}
+</style>
+
+<script>
+/* Apply saved theme before body paint to reduce flashing. */
+(function () {
+  try {
+    const saved = localStorage.getItem("study-theme");
+    const systemDark = window.matchMedia &&
+      window.matchMedia("(prefers-color-scheme: dark)").matches;
+    document.documentElement.dataset.theme =
+      saved || (systemDark ? "dark" : "light");
+  } catch (e) {
+    document.documentElement.dataset.theme = "dark";
+  }
+
+  try {
+    const savedScale = Number(localStorage.getItem("study-font-scale")) || 100;
+    const clampedScale = Math.max(80, Math.min(140, savedScale));
+    document.documentElement.style.setProperty(
+      "--base-font-size",
+      `${16 * clampedScale / 100}px`
+    );
+  } catch (e) {}
+})();
+</script>
+</head>
+
+<body>
+
+<!-- =======================================================
+     TOC DRAWER
+     Replace only the list contents.
+     ======================================================= -->
+<div class="toc-overlay" id="toc-overlay" aria-hidden="true"></div>
+
+<aside class="toc-drawer" id="toc-drawer" aria-label="Mục lục">
+  <div class="toc-drawer-head">
+    <h2>Mục lục</h2>
+    <button class="toc-close" id="toc-close" type="button" aria-label="Đóng mục lục">×</button>
+  </div>
+
+  <!-- TOC_ITEMS_START -->
+
+  <ol class="toc-list">
+    <li><a href="#sec-569">Book 569｜タイルカーペット・問題4導入</a>
+      <ol>
+        <li><a href="#sec-569-carpet">フリーアクセスフロア下地のタイルカーペット</a></li>
+        <li><a href="#sec-569-intro">平成28年度 問題4 共通条件</a></li>
+      </ol>
+    </li>
+    <li><a href="#sec-570">Book 570｜問題文と解答例</a></li>
+    <li><a href="#sec-q1">設問1｜屋上アスファルト防水保護層</a></li>
+    <li><a href="#sec-q2">設問2｜セルフレベリング材塗り</a></li>
+    <li><a href="#sec-q3">設問3｜有機系接着剤によるタイル後張り</a></li>
+    <li><a href="#sec-q4">設問4｜ロックウール化粧吸音板張り</a></li>
+    <li><a href="#terms">Thuật ngữ chuyên môn</a></li>
+    <li><a href="#background">Kiến thức nền cần biết</a></li>
+    <li><a href="#memory">Điểm cần nhớ và mẹo nhớ</a></li>
+  </ol>
+  <!-- TOC_ITEMS_END -->
+</aside>
+
+<!-- =======================================================
+     FIXED NAVIGATION CONTROLS
+     Left bottom: vertical.
+     Do not add a Top button.
+     ======================================================= -->
+<nav class="nav-dock-left" aria-label="Điều hướng học tập">
+  <button id="toc-toggle" type="button" aria-label="Mục lục" title="Mục lục"
+          aria-controls="toc-drawer" aria-expanded="false">☰</button>
+  <button id="section-prev" type="button" aria-label="Mục trước" title="Back">‹</button>
+  <button id="section-next" type="button" aria-label="Mục tiếp theo" title="Next">›</button>
+</nav>
+
+<!-- =======================================================
+     FIXED DISPLAY CONTROLS
+     Right bottom: horizontal.
+     ======================================================= -->
+<nav class="settings-dock-right" aria-label="Thiết lập hiển thị">
+  <button id="theme-toggle" type="button" aria-label="Đổi Dark/Light"
+          title="Đổi Dark/Light" aria-pressed="false">☀</button>
+  <button id="mode-toggle" class="mode-toggle" type="button"
+          aria-label="Đổi Full/Keywords" title="Đổi Full/Keywords"
+          aria-pressed="false">🎯</button>
+  <button id="font-reset" class="font-reset" type="button"
+          aria-label="Đặt lại cỡ chữ 100%" title="Đặt lại cỡ chữ 100%">100%</button>
+  <button id="font-down" type="button" aria-label="Giảm cỡ chữ"
+          title="Giảm cỡ chữ">A−</button>
+  <button id="font-up" type="button" aria-label="Tăng cỡ chữ"
+          title="Tăng cỡ chữ">A+</button>
+</nav>
+
+<div class="page-shell">
+
+  <!-- =====================================================
+       DOCUMENT HEADER
+       Replace title/subtitle/meta values only.
+       ===================================================== -->
+  <header class="hero" id="top">
+    <h1>仕上げ工事 H28｜Book 569-573</h1>
+    <p class="hero-subtitle">1級建築施工管理技術検定 第二次検定｜平成28年度 問題4・考え方／解き方</p>
+
+    <div class="meta-grid">
+      <div class="meta-item">
+        <span class="meta-label">PDF nguồn</span>
+        <span lang="ja">05k_仕上げ工事_H28_p569-573.pdf</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">File ID</span>
+        F062
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Phạm vi</span>
+        Book 569-573 / PDF P1-P5
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Chế độ</span>
+        Song ngữ Nhật-Việt / Dark-Light / Full-Keywords / Font 80-140%
+      </div>
+    </div>
+  </header>
+
+  <!-- =====================================================
+       CONTENT_START
+       AI may freely repeat/reorder approved content components.
+       Global CSS/JS/control structure must not be redesigned.
+       ===================================================== -->
+  
+  <main id="lesson">
+
+    <section class="study-section" id="sec-569">
+      <div class="section-head">
+        <h2>Book 569｜前頁からの続き・平成28年度 問題4 導入</h2>
+        <span class="source-ref">Nguồn: Book page 569 / PDF P1</span>
+      </div>
+
+      <section class="subsection" id="sec-569-carpet">
+        <h3>フリーアクセスフロア下地に施工するタイルカーペット</h3>
+        <div class="study-grid">
+          <article class="study-card original">
+            <div class="card-title">原文</div>
+            <div class="recall-source" lang="ja">
+              <p><strong class="kw">事務室用フリーアクセスフロア下地</strong>にタイルカーペットを施工する場合、<strong class="kw">床パネル相互間の段差と隙間</strong>を<mark class="critical">1mm以下</mark>に調整しなければならない。事務室用の床パネルの取付け精度は、隣接する床パネルの高低差について、<strong class="kw">調整式支持脚</strong>のときは<mark class="critical">0.5mm以下</mark>、<strong class="kw">調整なし支持脚</strong>のときでも<mark class="critical">1mm以下</mark>とする。また、支持脚の方式に関係なく、<strong class="kw">フリーアクセスフロアの仕上げ面の水平精度</strong>は、<mark class="critical">3mあたりの不陸5mm以内</mark>とする。</p>
+              <p><strong class="kw">フラットケーブル下地などとして使用するタイルカーペットの目地</strong>は、床パネルの目地とは<mark class="critical">100mm程度</mark>ずらし、細幅のタイルが端部とならないように割り付けなければならない。</p>
+              <p>タイルカーペットの張付けを行うときは、<strong class="kw">粘着剥離形の接着剤</strong>を、<strong class="kw">床パネル（下地）の全面</strong>に、均一に塗布しなければならない。接着剤の塗布は、指定のクシ目ごてを用いて行う。また、タイルカーペットは<strong class="kw">市松張りを原則</strong>とし、<strong class="kw">ピールアップ性能</strong>を確保するため、適切な<strong class="kw">オープンタイム</strong>をとらなければならない。</p>
+              <p>以上により、①と②は正しいが、③は<span class="trap">カーペット裏ではなく</span><strong class="kw">床パネル（下地）</strong>である。</p>
+            </div>
+          </article>
+
+          <article class="study-card translation">
+            <div class="card-title">Bản dịch tiếng Việt</div>
+            <div class="recall-source" lang="vi">
+              <p>Khi thi công carpet tile trên <strong class="kw">nền sàn nâng kỹ thuật dùng cho văn phòng</strong>, phải điều chỉnh <strong class="kw">độ chênh cao và khe hở giữa các panel sàn</strong> ở mức <mark class="critical">không quá 1 mm</mark>. Độ chính xác lắp đặt panel, xét theo chênh cao giữa hai panel liền kề, là <mark class="critical">không quá 0,5 mm</mark> với <strong class="kw">chân đỡ điều chỉnh được</strong> và <mark class="critical">không quá 1 mm</mark> với <strong class="kw">chân đỡ không điều chỉnh được</strong>. Không phụ thuộc loại chân đỡ, <strong class="kw">độ phẳng ngang của mặt hoàn thiện sàn nâng</strong> phải đạt <mark class="critical">độ không phẳng không quá 5 mm trên 3 m</mark>.</p>
+              <p><strong class="kw">Mạch carpet tile dùng trên nền cáp dẹt</strong> phải lệch khỏi mạch panel sàn khoảng <mark class="critical">100 mm</mark>, đồng thời phải chia tấm để không tạo dải tile quá hẹp tại mép.</p>
+              <p>Khi dán carpet tile, phải phủ đều <strong class="kw">keo loại có thể bóc tách</strong> trên <strong class="kw">toàn bộ bề mặt panel sàn, tức lớp nền</strong>, bằng bay răng cưa quy định. Carpet tile về nguyên tắc được lát <strong class="kw">kiểu ô bàn cờ</strong>; để bảo đảm <strong class="kw">tính năng peel-up</strong> phải lấy <strong class="kw">open time</strong> thích hợp.</p>
+              <p>Vì vậy, ① và ② đúng; ③ phải là <span class="trap">không phải mặt sau carpet</span> mà là <strong class="kw">panel sàn, tức lớp nền</strong>.</p>
+            </div>
+          </article>
+        </div>
+
+        <div class="note-box">
+          <strong>Giải thích hình trên Book 569</strong>
+          <p>Sơ đồ thể hiện hai panel sàn nâng liền kề đặt trên chân đỡ và sai lệch cao độ theo phương đứng. Giới hạn thể hiện trên hình là <strong>1 mm trở xuống</strong>. Cần phân biệt với trị số <strong>0,5 mm</strong> áp dụng cho chênh cao panel khi dùng chân đỡ điều chỉnh được và trị số <strong>5 mm/3 m</strong> cho độ không phẳng tổng thể của mặt sàn nâng.</p>
+        </div>
+      </section>
+
+      <section class="subsection" id="sec-569-intro">
+        <h3>平成28年度 問題4｜共通条件</h3>
+        <div class="study-grid">
+          <article class="study-card original">
+            <div class="card-title">原文</div>
+            <div class="recall-source" lang="ja">
+              <p>次の設問1から設問4の問いに答えなさい。</p>
+              <p>ただし、解答はそれぞれ異なる内容の記述とし、<span class="trap">材料の保管、気象条件等による作業の中止及び作業員の安全に関する記述は除く</span>ものとする。</p>
+            </div>
+          </article>
+          <article class="study-card translation">
+            <div class="card-title">Bản dịch tiếng Việt</div>
+            <div class="recall-source" lang="vi">
+              <p>Hãy trả lời từ Câu hỏi 1 đến Câu hỏi 4.</p>
+              <p>Các câu trả lời phải có nội dung khác nhau và <span class="trap">không sử dụng các nội dung về bảo quản vật liệu, ngừng thi công do điều kiện thời tiết v.v., hoặc an toàn của người lao động</span>.</p>
+            </div>
+          </article>
+        </div>
+      </section>
+    </section>
+
+    <section class="study-section" id="sec-570">
+      <div class="section-head">
+        <h2>Book 570｜問題文と解答例</h2>
+        <span class="source-ref">Nguồn: Book page 570 / PDF P2</span>
+      </div>
+
+      <section class="subsection" id="sec-570-questions">
+        <h3>設問1～4</h3>
+        <div class="study-grid">
+          <article class="study-card original">
+            <div class="card-title">原文</div>
+            <div class="recall-source" lang="ja">
+              <p><strong class="kw">設問1｜屋上アスファルト防水保護層の平場部</strong>の工事における施工上の留意事項を2つ、具体的に記述しなさい。ただし、<strong class="kw">保護層の仕上げ</strong>は<strong class="kw">コンクリート直均し仕上げ</strong>とする。</p>
+              <p><strong class="kw">設問2｜内装床の張物下地のセルフレベリング材塗り</strong>における施工上の留意事項を2つ、具体的に記述しなさい。ただし、セルフレベリング材は<strong class="kw">固定プラント式のスラリータイプ</strong>とし、<strong class="kw">専用車両で現場まで輸送供給</strong>されるものとする。</p>
+              <p><strong class="kw">設問3｜鉄筋コンクリート造の内壁モルタル下地面への有機系接着剤によるタイル後張り工法</strong>における施工上の留意事項を2つ、具体的に記述しなさい。ただし、<span class="trap">ユニットタイル張りに関する記述は除く</span>ものとする。</p>
+              <p><strong class="kw">設問4｜室内天井せっこうボード下地へのロックウール化粧吸音板張り工事</strong>における施工上の留意事項を2つ、具体的に記述しなさい。ただし、<span class="trap">下地材の調整、開口部補強及び張付け後の養生に関する記述は除く</span>ものとする。</p>
+            </div>
+          </article>
+          <article class="study-card translation">
+            <div class="card-title">Bản dịch tiếng Việt</div>
+            <div class="recall-source" lang="vi">
+              <p><strong class="kw">Câu 1｜Phần mặt bằng của lớp bảo vệ chống thấm asphalt trên mái</strong>: nêu 2 điểm cần lưu ý khi thi công. <strong class="kw">Lớp bảo vệ</strong> được hoàn thiện bằng <strong class="kw">bê tông cán phẳng trực tiếp</strong>.</p>
+              <p><strong class="kw">Câu 2｜Self-leveling làm nền cho vật liệu lát sàn nội thất</strong>: nêu 2 điểm cần lưu ý. Vật liệu là <strong class="kw">slurry sản xuất tại trạm cố định</strong> và <strong class="kw">vận chuyển đến công trường bằng xe chuyên dụng</strong>.</p>
+              <p><strong class="kw">Câu 3｜Ốp tile bằng keo hữu cơ lên nền vữa tường trong của kết cấu bê tông cốt thép</strong>: nêu 2 điểm cần lưu ý. <span class="trap">Không xét nội dung liên quan đến unit tile</span>.</p>
+              <p><strong class="kw">Câu 4｜Tấm tiêu âm trang trí rock wool trên nền tấm thạch cao trần trong nhà</strong>: nêu 2 điểm cần lưu ý. <span class="trap">Không xét điều chỉnh lớp nền, gia cường lỗ mở và bảo dưỡng sau khi dán</span>.</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="subsection" id="sec-570-answers">
+        <h3>平成28年度 問題4 の解答例</h3>
+        <div class="study-grid">
+          <article class="study-card original">
+            <div class="card-title">原文</div>
+            <div class="recall-source" lang="ja">
+              <h4>設問1</h4>
+              <p>① <strong class="kw">現場打ちコンクリート</strong>を用いる場合、<strong class="kw">溶接金網を挿入</strong>する。</p>
+              <p>② <strong class="kw">防水層の上面に絶縁シートを敷き</strong>、<strong class="kw">成形伸縮目地をコンクリート床版高まで立ち上げる</strong>。</p>
+              <h4>設問2</h4>
+              <p>① セルフレベリング材塗りの下地には、<strong class="kw">吸水調整材を塗り、十分に乾燥</strong>させる。</p>
+              <p>② セルフレベリング材が<strong class="kw">硬化するまで通風を防ぎ、自然乾燥状態</strong>にする。</p>
+              <h4>設問3</h4>
+              <p>① <strong class="kw">接着剤のホルムアルデヒド放散量基準</strong>は、特記がなければ<mark class="critical">F☆☆☆☆</mark>とする。</p>
+              <p>② <strong class="kw">メーカーによる指定厚さ</strong>となるよう、<strong class="kw">接着剤を下地面にすり込むように押さえる</strong>。</p>
+              <h4>設問4</h4>
+              <p>① <strong class="kw">ロックウール化粧吸音板の目地</strong>と<strong class="kw">下地面石膏ボードの目地</strong>とは、<span class="relation">相互にずらす</span>。</p>
+              <p>② ロックウール化粧吸音板は、<span class="relation">目違い・隙間・角欠けがないように張り付ける</span>。</p>
+            </div>
+          </article>
+          <article class="study-card translation">
+            <div class="card-title">Bản dịch tiếng Việt</div>
+            <div class="recall-source" lang="vi">
+              <h4>Câu 1</h4>
+              <p>① Khi dùng <strong class="kw">bê tông đổ tại chỗ</strong>, phải <strong class="kw">bố trí lưới thép hàn</strong>.</p>
+              <p>② <strong class="kw">Trải tấm cách ly trên mặt lớp chống thấm</strong> và <strong class="kw">đưa khe co giãn định hình lên tới cao độ bản sàn bê tông</strong>.</p>
+              <h4>Câu 2</h4>
+              <p>① Trên nền thi công self-leveling phải <strong class="kw">bôi chất điều chỉnh hút nước và để khô hoàn toàn</strong>.</p>
+              <p>② Cho đến khi self-leveling <strong class="kw">đông cứng phải ngăn gió lưu thông và để khô tự nhiên</strong>.</p>
+              <h4>Câu 3</h4>
+              <p>① Nếu không có chỉ định đặc biệt, <strong class="kw">tiêu chuẩn phát thải formaldehyde của keo</strong> phải là <mark class="critical">F☆☆☆☆</mark>.</p>
+              <p>② Phải ép keo vào bề mặt nền để đạt <strong class="kw">chiều dày do nhà sản xuất quy định</strong>.</p>
+              <h4>Câu 4</h4>
+              <p>① <strong class="kw">Mạch tấm tiêu âm rock wool</strong> và <strong class="kw">mạch tấm thạch cao nền</strong> phải <span class="relation">bố trí lệch nhau</span>.</p>
+              <p>② Dán tấm sao cho <span class="relation">không có lệch mặt/mạch, khe hở hoặc sứt góc</span>.</p>
+            </div>
+          </article>
+        </div>
+      </section>
+    </section>
+
+    <section class="study-section" id="sec-q1">
+      <div class="section-head">
+        <h2>設問1｜屋上アスファルト防水保護層の平場部</h2>
+        <span class="source-ref">Nguồn: Book page 571 / PDF P3</span>
+      </div>
+      <section class="subsection" id="sec-q1-detail">
+        <h3>考え方・解き方</h3>
+        <div class="study-grid">
+          <article class="study-card original">
+            <div class="card-title">原文</div>
+            <div class="recall-source" lang="ja">
+              <p>屋上アスファルト防水保護層の平場部の工事では、次のような点に留意する。</p>
+              <h4>(1) 保護層の仕上げをコンクリート直均し仕上げ（現場打ちコンクリート）とする場合</h4>
+              <p>① <strong class="kw">防水層の上面に絶縁シートを敷き</strong>、<strong class="kw">成形伸縮目地をコンクリート床版高まで立ち上げる</strong>。</p>
+              <p>② <strong class="kw">特記により指定された位置</strong>に<strong class="kw">溶接金網を挿入</strong>する。</p>
+              <h4>(2) 保護層の仕上げをコンクリート平板類とする場合</h4>
+              <p><strong class="kw">下地の乾燥が困難な場所</strong>では、<strong class="kw">防水層の膨れ</strong>が生じるおそれがあるので、<span class="relation">全面接着ではなく部分接着</span>とする。</p>
+              <h4>(3) 保護層の仕上げを断熱工法とする場合</h4>
+              <p>① <strong class="kw">断熱材</strong>は、ポリスチレンフォーム保温材などの<strong class="kw">吸水性が小さい材質</strong>とする。</p>
+              <p>② <strong class="kw">断熱材の厚さ</strong>は、<span class="relation">熱計算に基づいて決定</span>する。</p>
+              <h4>(4) 保護層の仕上げを砂利とする場合</h4>
+              <p>① <strong class="kw">使用する砂利の直径</strong>は<mark class="critical">20mm～40mm</mark>で、<strong class="kw">防水層を傷つけない丸みのあるもの</strong>とする。</p>
+              <p>② <strong class="kw">風の影響</strong>により砂利が転げ落ちないようにする。</p>
+              <p>③ <strong class="kw">砂利仕上げ</strong>は、<span class="trap">雪下ろしを行う必要がある屋根に適用してはならない</span>。</p>
+            </div>
+          </article>
+          <article class="study-card translation">
+            <div class="card-title">Bản dịch tiếng Việt</div>
+            <div class="recall-source" lang="vi">
+              <p>Đối với phần mặt bằng của lớp bảo vệ chống thấm asphalt mái, cần lưu ý các nội dung sau.</p>
+              <h4>(1) Khi lớp bảo vệ là bê tông cán phẳng trực tiếp, tức bê tông đổ tại chỗ</h4>
+              <p>① <strong class="kw">Trải tấm cách ly trên lớp chống thấm</strong> và <strong class="kw">đưa khe co giãn định hình lên đến cao độ bản sàn bê tông</strong>.</p>
+              <p>② <strong class="kw">Tại vị trí được chỉ định trong đặc chỉ</strong>, <strong class="kw">bố trí lưới thép hàn</strong>.</p>
+              <h4>(2) Khi lớp bảo vệ dùng tấm bê tông</h4>
+              <p>Tại <strong class="kw">nơi nền khó khô</strong>, có nguy cơ <strong class="kw">lớp chống thấm bị phồng</strong>, vì vậy dùng <span class="relation">dán cục bộ thay vì dán toàn bộ bề mặt</span>.</p>
+              <h4>(3) Khi lớp bảo vệ áp dụng công pháp cách nhiệt</h4>
+              <p>① <strong class="kw">Vật liệu cách nhiệt</strong> phải là loại có <strong class="kw">độ hút nước nhỏ</strong>, chẳng hạn polystyrene foam.</p>
+              <p>② <strong class="kw">Chiều dày vật liệu cách nhiệt</strong> được <span class="relation">quyết định theo tính toán nhiệt</span>.</p>
+              <h4>(4) Khi lớp bảo vệ dùng sỏi</h4>
+              <p>① <strong class="kw">Đường kính sỏi</strong> là <mark class="critical">20-40 mm</mark> và phải là loại <strong class="kw">tròn, không làm tổn thương lớp chống thấm</strong>.</p>
+              <p>② Phải ngăn sỏi lăn rơi do <strong class="kw">ảnh hưởng của gió</strong>.</p>
+              <p>③ <strong class="kw">Hoàn thiện bằng sỏi</strong> <span class="trap">không được áp dụng cho mái cần dọn tuyết</span>.</p>
+            </div>
+          </article>
+        </div>
+      </section>
+    </section>
+
+    <section class="study-section" id="sec-q2">
+      <div class="section-head">
+        <h2>設問2｜セルフレベリング材塗り</h2>
+        <span class="source-ref">Nguồn: Book page 571-572 / PDF P3-P4</span>
+      </div>
+      <section class="subsection" id="sec-q2-detail">
+        <h3>考え方・解き方</h3>
+        <div class="study-grid">
+          <article class="study-card original">
+            <div class="card-title">原文</div>
+            <div class="recall-source" lang="ja">
+              <h4>(1) 材料の搬入に関する留意事項</h4>
+              <p><strong class="kw">固定プラント式のスラリータイプのセルフレベリング材</strong>を専用車両で輸送するときは、<strong class="kw">可使用時間内に施工を完了</strong>させることができるよう、<span class="relation">工事現場までの交通事情を考慮して計画</span>を立案する。</p>
+              <h4>(2) 塗厚に関する留意事項</h4>
+              <p><strong class="kw">塗厚が厚すぎる</strong>と、<span class="relation">ひび割れが生じる</span>ので、<strong class="kw">セルフレベリング材の標準塗厚</strong>は<mark class="critical">10mm</mark>とする。局部的に塗厚が厚くなる場合、その部分はモルタルなどで補修する必要がある。</p>
+              <h4>(3) 下地処理に関する留意事項</h4>
+              <p><strong class="kw">下地コンクリートの仕上り平坦性</strong>は、<mark class="critical">3mにつき10mm以下</mark>を標準とする。また、<strong class="kw">コンクリート打込み後の乾燥期間</strong>は<mark class="critical">1ヶ月以上</mark>とする。</p>
+              <h4>(4) 吸水調整剤に関する留意事項</h4>
+              <p>下地コンクリートに塗る<strong class="kw">吸水調整剤</strong>は、<strong class="kw">水で希釈し、デッキブラシで十分にすり込む</strong>。セルフレベリング材塗りは、<strong class="kw">吸水調整剤が十分に乾燥してから</strong>行う。</p>
+              <h4>(5) 風避けに関する留意事項</h4>
+              <p><strong class="kw">硬化前に通風がある</strong>と、<span class="relation">表面にしわが生じる</span>ので、施工は<strong class="kw">通風がない場所で行い、自然乾燥状態</strong>とする。</p>
+              <h4>(6) 養生に関する留意事項</h4>
+              <p>施工後の養生期間についても、セルフレベリング材に<strong class="kw">風が当たらないようにする</strong>。<strong class="kw">養生期間</strong>は、標準塗厚であれば<mark class="critical">7日間以上</mark>、低温で乾燥が遅い冬季であれば<mark class="critical">14日間以上</mark>とする。ただし、<strong class="kw">養生期間が長すぎる</strong>と、<span class="relation">収縮や浮きが生じる</span>ので、<strong class="kw">養生終了・表面仕上げ</strong>は<mark class="critical">30日以内</mark>とする。</p>
+            </div>
+          </article>
+          <article class="study-card translation">
+            <div class="card-title">Bản dịch tiếng Việt</div>
+            <div class="recall-source" lang="vi">
+              <h4>(1) Vận chuyển vật liệu vào công trường</h4>
+              <p>Khi vận chuyển <strong class="kw">self-leveling dạng slurry từ trạm cố định</strong> bằng xe chuyên dụng, phải lập kế hoạch để <strong class="kw">hoàn thành thi công trong thời gian vật liệu còn sử dụng được</strong>, đồng thời <span class="relation">xét điều kiện giao thông tới công trường</span>.</p>
+              <h4>(2) Chiều dày lớp thi công</h4>
+              <p>Nếu <strong class="kw">lớp thi công quá dày</strong> sẽ <span class="relation">phát sinh nứt</span>, vì vậy <strong class="kw">chiều dày tiêu chuẩn của self-leveling</strong> là <mark class="critical">10 mm</mark>. Nếu cục bộ quá dày, cần sửa trước bằng vữa v.v.</p>
+              <h4>(3) Xử lý nền</h4>
+              <p><strong class="kw">Độ phẳng hoàn thiện của bê tông nền</strong> lấy tiêu chuẩn <mark class="critical">không quá 10 mm trên 3 m</mark>. Sau khi đổ bê tông, <strong class="kw">thời gian để nền bê tông khô</strong> là <mark class="critical">ít nhất 1 tháng</mark>.</p>
+              <h4>(4) Chất điều chỉnh hút nước</h4>
+              <p><strong class="kw">Chất điều chỉnh hút nước</strong> phải <strong class="kw">pha loãng bằng nước và dùng deck brush chà kỹ vào nền</strong>. Chỉ thi công self-leveling <strong class="kw">sau khi chất này đã khô hoàn toàn</strong>.</p>
+              <h4>(5) Tránh gió</h4>
+              <p>Nếu <strong class="kw">có gió lưu thông trước khi vật liệu đông cứng</strong>, <span class="relation">bề mặt sẽ phát sinh nếp nhăn</span>. Vì vậy thi công ở <strong class="kw">nơi không có gió lùa và để khô tự nhiên</strong>.</p>
+              <h4>(6) Bảo dưỡng</h4>
+              <p>Trong thời gian bảo dưỡng phải <strong class="kw">không để gió thổi vào self-leveling</strong>. <strong class="kw">Thời gian bảo dưỡng</strong> là <mark class="critical">ít nhất 7 ngày</mark> với chiều dày chuẩn và <mark class="critical">ít nhất 14 ngày</mark> vào mùa đông nhiệt độ thấp, khô chậm. Nếu <strong class="kw">bảo dưỡng quá lâu</strong> sẽ <span class="relation">phát sinh co ngót hoặc bong nổi</span>, vì vậy <strong class="kw">kết thúc bảo dưỡng và hoàn thiện bề mặt</strong> trong <mark class="critical">30 ngày</mark>.</p>
+            </div>
+          </article>
+        </div>
+      </section>
+    </section>
+
+    <section class="study-section" id="sec-q3">
+      <div class="section-head">
+        <h2>設問3｜有機系接着剤によるタイル後張り工法</h2>
+        <span class="source-ref">Nguồn: Book page 572-573 / PDF P4-P5</span>
+      </div>
+      <section class="subsection" id="sec-q3-detail">
+        <h3>考え方・解き方</h3>
+        <div class="study-grid">
+          <article class="study-card original">
+            <div class="card-title">原文</div>
+            <div class="recall-source" lang="ja">
+              <h4>(1) 接着剤の種類に関する留意事項</h4>
+              <p>内壁モルタル下地面への有機系接着剤によるタイル後張り工法では、<strong class="kw">JIS A 5548に定められた陶磁器質タイル用接着剤</strong>を使用する。使用する陶磁器質タイル用接着剤は、<strong class="kw">施工場所に応じたタイプ</strong>とする。</p>
+              <p>① <strong class="kw">タイプⅠ</strong>：<span class="relation">長期的に水や温水の影響を受ける場所</span>において使用する。</p>
+              <p>② <strong class="kw">タイプⅡ</strong>：<span class="relation">間欠的に水や温水の影響を受ける場所</span>において使用する。</p>
+              <p>③ <strong class="kw">タイプⅢ</strong>：<span class="relation">水や温水の影響を受けない場所</span>において使用する。</p>
+              <p>また、どのタイプを使用する場合においても、<strong class="kw">ホルムアルデヒド放散量基準</strong>が<mark class="critical">F☆☆☆☆</mark>の接着剤を使用しなければならない。ただし、特記がある場合を除く。</p>
+              <h4>(2) タイルの張付けに関する留意事項</h4>
+              <p>① <strong class="kw">接着剤の使用量</strong>は、<mark class="critical">1.5kg/m²～2.0kg/m²</mark>とする。</p>
+              <p>② <strong class="kw">接着剤の1回の塗布面積</strong>は、<mark class="critical">3m²以内</mark>かつ<strong class="kw">張り終える時間</strong>は<mark class="critical">30分以内</mark>とする。</p>
+              <p>③ 接着剤は、<strong class="kw">金ごてで平坦に塗布</strong>した後、<strong class="kw">所定のクシ目ごてでクシ目を立てる</strong>。</p>
+              <p>④ <strong class="kw">目地割りに基づいて水糸を引き通し、定規張り</strong>した後、<strong class="kw">縦目地・横目地の引き通し</strong>に注意して張り上げる。</p>
+              <p>⑤ 1枚張りとするときは、<strong class="kw">手でもみ込むように押さえつけて張り付ける</strong>。その際、<strong class="kw">メーカー指定厚さ</strong>となるよう、<strong class="kw">接着剤を下地面にすり込むように押さえる</strong>。</p>
+              <p>⑥ <strong class="kw">目地詰めが完了</strong>したら、<strong class="kw">タイル面を清掃</strong>する。</p>
+            </div>
+          </article>
+          <article class="study-card translation">
+            <div class="card-title">Bản dịch tiếng Việt</div>
+            <div class="recall-source" lang="vi">
+              <h4>(1) Loại keo</h4>
+              <p>Trong công pháp dán sau tile bằng keo hữu cơ lên nền vữa tường trong, phải dùng <strong class="kw">keo dùng cho tile gốm sứ theo JIS A 5548</strong>. Loại keo phải được chọn <strong class="kw">theo vị trí thi công</strong>.</p>
+              <p>① <strong class="kw">Type I</strong>: dùng tại <span class="relation">nơi chịu ảnh hưởng lâu dài của nước hoặc nước nóng</span>.</p>
+              <p>② <strong class="kw">Type II</strong>: dùng tại <span class="relation">nơi chịu ảnh hưởng gián đoạn của nước hoặc nước nóng</span>.</p>
+              <p>③ <strong class="kw">Type III</strong>: dùng tại <span class="relation">nơi không chịu ảnh hưởng của nước hoặc nước nóng</span>.</p>
+              <p>Bất kể type nào, <strong class="kw">tiêu chuẩn phát thải formaldehyde</strong> của keo phải là <mark class="critical">F☆☆☆☆</mark>, trừ trường hợp có chỉ định đặc biệt.</p>
+              <h4>(2) Dán tile</h4>
+              <p>① <strong class="kw">Lượng keo sử dụng</strong>: <mark class="critical">1,5-2,0 kg/m²</mark>.</p>
+              <p>② <strong class="kw">Diện tích bôi keo mỗi lần</strong>: <mark class="critical">không quá 3 m²</mark>, đồng thời <strong class="kw">thời gian hoàn thành dán</strong> là <mark class="critical">không quá 30 phút</mark>.</p>
+              <p>③ <strong class="kw">Trải phẳng keo bằng bay thép</strong>, sau đó <strong class="kw">dùng bay răng cưa quy định tạo rãnh keo</strong>.</p>
+              <p>④ <strong class="kw">Căng dây lấy chuẩn theo phương án chia mạch và dán lấy chuẩn</strong>, sau đó chú ý <strong class="kw">độ thẳng liên tục của mạch dọc và ngang</strong>.</p>
+              <p>⑤ Khi dán từng viên, <strong class="kw">dùng tay ấn và miết tile vào lớp keo</strong>. Đồng thời ép để đạt <strong class="kw">chiều dày do nhà sản xuất quy định</strong> và để keo được <strong class="kw">miết chắc vào bề mặt nền</strong>.</p>
+              <p>⑥ Sau khi <strong class="kw">chèn mạch xong</strong>, phải <strong class="kw">vệ sinh bề mặt tile</strong>.</p>
+            </div>
+          </article>
+        </div>
+      </section>
+    </section>
+
+    <section class="study-section" id="sec-q4">
+      <div class="section-head">
+        <h2>設問4｜ロックウール化粧吸音板張り工事</h2>
+        <span class="source-ref">Nguồn: Book page 573 / PDF P5</span>
+      </div>
+      <section class="subsection" id="sec-q4-detail">
+        <h3>考え方・解き方</h3>
+        <div class="study-grid">
+          <article class="study-card original">
+            <div class="card-title">原文</div>
+            <div class="recall-source" lang="ja">
+              <p>石膏ボード下地の上にロックウール化粧吸音板を張り付ける場合は、<strong class="kw">接着剤を主として用いる</strong>が、必要に応じて、<strong class="kw">小ねじ・タッカー・ステープルなどを併用</strong>する。</p>
+              <p><strong class="kw">ロックウール化粧吸音板の張付け</strong>は、<span class="relation">目通りよく、不陸や目違いなどがないように行う</span>。</p>
+              <p>ロックウール化粧吸音板の張付けに使用する<strong class="kw">接着剤</strong>は、特記がなければ、<strong class="kw">酢酸ビニル樹脂系エマルション形</strong>で、<strong class="kw">ホルムアルデヒド放散量基準</strong>が<mark class="critical">F☆☆☆☆</mark>のものとする。</p>
+              <p><strong class="kw">石膏ボード下地の目地</strong>と<strong class="kw">ロックウール化粧吸音板の目地</strong>が重ならないよう、<strong class="kw">相互の目地のずらし量</strong>は<mark class="critical">50mm以上</mark>とする。</p>
+            </div>
+          </article>
+          <article class="study-card translation">
+            <div class="card-title">Bản dịch tiếng Việt</div>
+            <div class="recall-source" lang="vi">
+              <p>Khi lắp tấm tiêu âm rock wool lên nền thạch cao, phương pháp chính là <strong class="kw">dùng keo</strong>; khi cần có thể <strong class="kw">kết hợp vít nhỏ, tacker hoặc staple</strong>.</p>
+              <p><strong class="kw">Việc lắp tấm tiêu âm rock wool</strong> phải bảo đảm <span class="relation">đường mạch thẳng, không có độ không phẳng hoặc lệch mặt/mạch</span>.</p>
+              <p>Nếu không có chỉ định đặc biệt, <strong class="kw">keo</strong> phải là <strong class="kw">loại nhũ tương nhựa vinyl acetate</strong> với <strong class="kw">tiêu chuẩn phát thải formaldehyde</strong> <mark class="critical">F☆☆☆☆</mark>.</p>
+              <p><strong class="kw">Mạch của nền tấm thạch cao</strong> và <strong class="kw">mạch của tấm tiêu âm rock wool</strong> không được trùng nhau; <strong class="kw">độ lệch giữa hai hệ mạch</strong> phải <mark class="critical">từ 50 mm trở lên</mark>.</p>
+            </div>
+          </article>
+        </div>
+      </section>
+    </section>
+
+  </main>
+
+  <!-- CONTENT_END -->
+
+  <!-- =====================================================
+       NON-DIMMED STUDY SUPPORT SECTIONS
+       These sections stay normally readable in Keywords mode.
+       ===================================================== -->
+
+  <section class="aggregate-section" id="terms">
+    <div class="section-head">
+      <h2>Thuật ngữ chuyên môn</h2>
+    </div>
+    
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>日本語</th><th>読み方</th><th>Tiếng Việt</th><th>Giải thích</th><th>Liên quan</th></tr></thead>
+        <tbody>
+          <tr><td>フリーアクセスフロア</td><td>フリーアクセスフロア</td><td>sàn nâng kỹ thuật</td><td>Sàn panel trên chân đỡ, tạo khoảng trống bên dưới.</td><td>床パネル</td></tr>
+          <tr><td>床パネル</td><td>ゆかパネル</td><td>panel sàn</td><td>Tấm cấu thành bề mặt sàn nâng.</td><td>調整式支持脚</td></tr>
+          <tr><td>不陸</td><td>ふりく</td><td>độ không phẳng</td><td>Sai lệch bề mặt so với mặt phẳng yêu cầu.</td><td>仕上り平坦性</td></tr>
+          <tr><td>市松張り</td><td>いちまつばり</td><td>lát kiểu ô bàn cờ</td><td>Cách bố trí carpet tile theo hướng xen kẽ.</td><td>タイルカーペット</td></tr>
+          <tr><td>粘着剥離形接着剤</td><td>ねんちゃくはくりがたせっちゃくざい</td><td>keo dính bóc tách được</td><td>Bảo đảm bám dính đồng thời cho phép bóc tách.</td><td>ピールアップ性能</td></tr>
+          <tr><td>オープンタイム</td><td>オープンタイム</td><td>open time</td><td>Thời gian từ khi bôi keo tới khi dán vật liệu.</td><td>接着剤</td></tr>
+          <tr><td>平場部</td><td>ひらばぶ</td><td>phần mặt bằng phẳng</td><td>Khu vực nằm ngang chính của mái.</td><td>防水保護層</td></tr>
+          <tr><td>コンクリート直均し仕上げ</td><td>コンクリートじかならししあげ</td><td>hoàn thiện bê tông cán phẳng trực tiếp</td><td>Hoàn thiện trực tiếp bề mặt bê tông đổ tại chỗ.</td><td>現場打ちコンクリート</td></tr>
+          <tr><td>溶接金網</td><td>ようせつかなあみ</td><td>lưới thép hàn</td><td>Lưới thép hàn tại các điểm giao nhau.</td><td>保護コンクリート</td></tr>
+          <tr><td>絶縁シート</td><td>ぜつえんシート</td><td>tấm cách ly</td><td>Lớp ngăn cách giữa các lớp cấu tạo.</td><td>成形伸縮目地</td></tr>
+          <tr><td>成形伸縮目地</td><td>せいけいしんしゅくめじ</td><td>khe co giãn định hình</td><td>Khe/vật liệu tạo sẵn cho phép biến dạng của lớp hoàn thiện.</td><td>防水保護層</td></tr>
+          <tr><td>セルフレベリング材</td><td>セルフレベリングざい</td><td>vật liệu tự san phẳng</td><td>Vật liệu dạng chảy dùng tạo nền sàn phẳng.</td><td>張物下地</td></tr>
+          <tr><td>可使用時間</td><td>かしようじかん</td><td>thời gian cho phép sử dụng</td><td>Khoảng thời gian vật liệu còn có thể thi công.</td><td>セルフレベリング材</td></tr>
+          <tr><td>吸水調整材／吸水調整剤</td><td>きゅうすいちょうせいざい</td><td>chất điều chỉnh hút nước</td><td>Điều chỉnh khả năng hút nước của nền trước khi thi công lớp kế tiếp.</td><td>下地処理</td></tr>
+          <tr><td>有機系接着剤</td><td>ゆうきけいせっちゃくざい</td><td>keo hữu cơ</td><td>Keo sử dụng để dán vật liệu hoàn thiện.</td><td>JIS A 5548</td></tr>
+          <tr><td>ホルムアルデヒド放散量基準</td><td>ホルムアルデヒドほうさんりょうきじゅん</td><td>tiêu chuẩn phát thải formaldehyde</td><td>Trong nội dung này yêu cầu F☆☆☆☆ khi không có đặc chỉ khác.</td><td>F☆☆☆☆</td></tr>
+          <tr><td>クシ目ごて</td><td>くしめごて</td><td>bay răng cưa</td><td>Dùng tạo các rãnh đều trên lớp keo.</td><td>金ごて</td></tr>
+          <tr><td>目地割り</td><td>めじわり</td><td>bố trí/chia mạch</td><td>Kế hoạch vị trí và đường mạch tile.</td><td>水糸・定規張り</td></tr>
+          <tr><td>目地詰め</td><td>めじづめ</td><td>chèn mạch</td><td>Điền vật liệu vào khe giữa các tile.</td><td>タイル面清掃</td></tr>
+          <tr><td>ロックウール化粧吸音板</td><td>ロックウールけしょうきゅうおんばん</td><td>tấm tiêu âm trang trí rock wool</td><td>Tấm hoàn thiện trần có chức năng hút âm.</td><td>石膏ボード下地</td></tr>
+          <tr><td>目違い</td><td>めちがい</td><td>lệch mặt/lệch mạch</td><td>Hai tấm liền kề không nằm đúng cùng mặt hoặc đường mạch.</td><td>不陸・目通り</td></tr>
+          <tr><td>酢酸ビニル樹脂系エマルション形</td><td>さくさんビニルじゅしけいエマルションがた</td><td>loại nhũ tương nhựa vinyl acetate</td><td>Loại keo được nêu cho tấm rock wool khi không có chỉ định đặc biệt.</td><td>F☆☆☆☆</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+  </section>
+
+  <section class="aggregate-section" id="background">
+    <div class="section-head">
+      <h2>Kiến thức nền cần biết</h2>
+    </div>
+    
+    <div class="comparison-box">
+      <h3>Quan hệ chất lượng của self-leveling</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Yếu tố</th><th>Quan hệ kỹ thuật trong sách</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Chiều dày</strong></td><td>Quá dày → nứt; tiêu chuẩn 10 mm.</td></tr>
+            <tr><td><strong>Độ phẳng nền</strong></td><td>Nền bê tông: không quá 10 mm/3 m.</td></tr>
+            <tr><td><strong>Độ khô nền</strong></td><td>Sau khi đổ bê tông: để khô ít nhất 1 tháng.</td></tr>
+            <tr><td><strong>Thông gió</strong></td><td>Có gió trước khi đông cứng → nhăn bề mặt.</td></tr>
+            <tr><td><strong>Bảo dưỡng</strong></td><td>7 ngày trở lên; mùa đông 14 ngày trở lên; kết thúc trong 30 ngày.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="comparison-box">
+      <h3>Phân loại keo tile theo ảnh hưởng của nước</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Type</th><th>Điều kiện sử dụng</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Ⅰ</strong></td><td>Chịu ảnh hưởng lâu dài của nước hoặc nước nóng.</td></tr>
+            <tr><td><strong>Ⅱ</strong></td><td>Chịu ảnh hưởng gián đoạn của nước hoặc nước nóng.</td></tr>
+            <tr><td><strong>Ⅲ</strong></td><td>Không chịu ảnh hưởng của nước hoặc nước nóng.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </section>
+
+  <section class="aggregate-section" id="memory">
+    <div class="section-head">
+      <h2>Điểm cần nhớ và mẹo nhớ</h2>
+    </div>
+    
+    <div class="memory-box">
+      <strong>Carpet tile trên sàn nâng</strong>
+      <p><strong>0,5 / 1 / 5-3 / 100</strong>: chân điều chỉnh 0,5 mm; chân không điều chỉnh 1 mm; độ không phẳng 5 mm trên 3 m; mạch carpet lệch mạch panel khoảng 100 mm. Keo bôi lên <strong>panel sàn/lớp nền</strong>, không bôi mặt sau carpet.</p>
+    </div>
+
+    <div class="memory-box">
+      <strong>Self-leveling: chuỗi số cần nhớ</strong>
+      <p><strong>10 → 10/3 → 1 tháng → 7 → 14 → 30</strong>: chiều dày chuẩn 10 mm; độ phẳng nền 10 mm/3 m; nền bê tông khô ≥ 1 tháng; bảo dưỡng thường ≥ 7 ngày; mùa đông ≥ 14 ngày; kết thúc bảo dưỡng và hoàn thiện bề mặt trong 30 ngày.</p>
+    </div>
+
+    <div class="memory-box">
+      <strong>Tile bằng keo hữu cơ</strong>
+      <p><strong>I = nước lâu dài; II = nước gián đoạn; III = không chịu nước.</strong> Lượng keo 1,5-2,0 kg/m²; mỗi lần bôi ≤ 3 m²; phải dán xong trong 30 phút; formaldehyde F☆☆☆☆.</p>
+    </div>
+
+    <div class="memory-box">
+      <strong>Rock wool trần</strong>
+      <p>Mạch nền thạch cao và mạch tấm rock wool phải lệch nhau <strong>≥ 50 mm</strong>. Keo khi không có đặc chỉ: <strong>酢酸ビニル樹脂系エマルション形 + F☆☆☆☆</strong>.</p>
+    </div>
+
+  </section>
+
+</div>
+
+<!-- =======================================================
+     APPROVED COMPONENT LIBRARY
+     Hidden. AI may copy/repeat these components into CONTENT.
+     Do not create a new visual system unless strictly necessary.
+     ======================================================= -->
+<template id="component-library">
+
+  <!-- FIGURE -->
+  <figure class="figure-card">
+    <img src="{{IMAGE_SOURCE}}" alt="{{IMAGE_ALT}}">
+    <figcaption>{{FIGURE_CAPTION}}</figcaption>
+  </figure>
+
+  <!-- MULTIPLE FIGURES -->
+  <div class="figure-grid">
+    <figure class="figure-card">
+      <img src="{{IMAGE_SOURCE_1}}" alt="{{IMAGE_ALT_1}}">
+      <figcaption>{{FIGURE_CAPTION_1}}</figcaption>
+    </figure>
+    <figure class="figure-card">
+      <img src="{{IMAGE_SOURCE_2}}" alt="{{IMAGE_ALT_2}}">
+      <figcaption>{{FIGURE_CAPTION_2}}</figcaption>
+    </figure>
+  </div>
+
+  <!-- TABLE -->
+  <div class="table-wrap">
+    <table>
+      <caption>{{TABLE_CAPTION}}</caption>
+      <thead>
+        <tr><th>{{HEADER_1}}</th><th>{{HEADER_2}}</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong class="kw">{{ROW_SUBJECT}}</strong></td>
+          <td><span class="relation">{{ROW_RECALL_CUE}}</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- NOTE -->
+  <div class="note-box">
+    <strong>{{NOTE_TITLE}}</strong>
+    <p>{{NOTE_CONTENT}}</p>
+  </div>
+
+  <!-- WARNING -->
+  <div class="warning-box">
+    <strong>{{WARNING_TITLE}}</strong>
+    <p>{{WARNING_CONTENT}}</p>
+  </div>
+
+  <!-- MEMORY -->
+  <div class="memory-box">
+    <strong>{{MEMORY_TITLE}}</strong>
+    <p>
+    <div class="memory-box">
+      <strong>Carpet tile trên sàn nâng</strong>
+      <p><strong>0,5 / 1 / 5-3 / 100</strong>: chân điều chỉnh 0,5 mm; chân không điều chỉnh 1 mm; độ không phẳng 5 mm trên 3 m; mạch carpet lệch mạch panel khoảng 100 mm. Keo bôi lên <strong>panel sàn/lớp nền</strong>, không bôi mặt sau carpet.</p>
+    </div>
+
+    <div class="memory-box">
+      <strong>Self-leveling: chuỗi số cần nhớ</strong>
+      <p><strong>10 → 10/3 → 1 tháng → 7 → 14 → 30</strong>: chiều dày chuẩn 10 mm; độ phẳng nền 10 mm/3 m; nền bê tông khô ≥ 1 tháng; bảo dưỡng thường ≥ 7 ngày; mùa đông ≥ 14 ngày; kết thúc bảo dưỡng và hoàn thiện bề mặt trong 30 ngày.</p>
+    </div>
+
+    <div class="memory-box">
+      <strong>Tile bằng keo hữu cơ</strong>
+      <p><strong>I = nước lâu dài; II = nước gián đoạn; III = không chịu nước.</strong> Lượng keo 1,5-2,0 kg/m²; mỗi lần bôi ≤ 3 m²; phải dán xong trong 30 phút; formaldehyde F☆☆☆☆.</p>
+    </div>
+
+    <div class="memory-box">
+      <strong>Rock wool trần</strong>
+      <p>Mạch nền thạch cao và mạch tấm rock wool phải lệch nhau <strong>≥ 50 mm</strong>. Keo khi không có đặc chỉ: <strong>酢酸ビニル樹脂系エマルション形 + F☆☆☆☆</strong>.</p>
+    </div>
+</p>
+  </div>
+
+  <!-- FORMULA / FLOW -->
+  <div class="formula-box">
+    <div class="formula-line">
+      <span class="flow-node">{{NODE_1}}</span>
+      <span class="flow-arrow">→</span>
+      <span class="flow-node">{{NODE_2}}</span>
+      <span class="flow-arrow">→</span>
+      <span class="flow-node">{{NODE_3}}</span>
+    </div>
+  </div>
+
+</template>
+
+<script>
+(() => {
+  "use strict";
+
+  const root = document.documentElement;
+  const body = document.body;
+
+  const themeToggle = document.getElementById("theme-toggle");
+  const modeToggle = document.getElementById("mode-toggle");
+  const fontDown = document.getElementById("font-down");
+  const fontReset = document.getElementById("font-reset");
+  const fontUp = document.getElementById("font-up");
+
+  const tocToggle = document.getElementById("toc-toggle");
+  const tocClose = document.getElementById("toc-close");
+  const tocOverlay = document.getElementById("toc-overlay");
+  const tocDrawer = document.getElementById("toc-drawer");
+
+  const prevButton = document.getElementById("section-prev");
+  const nextButton = document.getElementById("section-next");
+
+  const FONT_LEVELS = [80, 90, 100, 110, 120, 130, 140];
+
+  function safeGet(key, fallback = null) {
+    try {
+      const value = localStorage.getItem(key);
+      return value === null ? fallback : value;
+    } catch (e) {
+      return fallback;
+    }
+  }
+
+  function safeSet(key, value) {
+    try {
+      localStorage.setItem(key, value);
+    } catch (e) {}
+  }
+
+  /* ---------- Theme ---------- */
+
+  function applyTheme(theme) {
+    const next = theme === "light" ? "light" : "dark";
+    root.dataset.theme = next;
+
+    if (themeToggle) {
+      const dark = next === "dark";
+      themeToggle.textContent = dark ? "☀" : "☾";
+      themeToggle.title = dark ? "Chuyển sang Light" : "Chuyển sang Dark";
+      themeToggle.setAttribute("aria-pressed", String(!dark));
+    }
+
+    safeSet("study-theme", next);
+  }
+
+  const initialTheme =
+    safeGet("study-theme") ||
+    (window.matchMedia &&
+     window.matchMedia("(prefers-color-scheme: dark)").matches
+      ? "dark"
+      : "light");
+
+  applyTheme(initialTheme);
+
+  themeToggle?.addEventListener("click", () => {
+    applyTheme(root.dataset.theme === "dark" ? "light" : "dark");
+  });
+
+  /* ---------- Full / Keywords ---------- */
+
+  function applyMode(mode) {
+    const keywords = mode === "keywords";
+    body.classList.toggle("keyword-focus", keywords);
+
+    if (modeToggle) {
+      modeToggle.textContent = keywords ? "📖" : "🎯";
+      modeToggle.title = keywords ? "Chuyển sang Full" : "Chuyển sang Keywords";
+      modeToggle.setAttribute("aria-pressed", String(keywords));
+    }
+
+    safeSet("study-mode", keywords ? "keywords" : "full");
+  }
+
+  applyMode(safeGet("study-mode", "full"));
+
+  modeToggle?.addEventListener("click", () => {
+    applyMode(body.classList.contains("keyword-focus") ? "full" : "keywords");
+  });
+
+  /* ---------- Font scale ---------- */
+
+  let fontScale = Number(safeGet("study-font-scale", "100"));
+  if (!FONT_LEVELS.includes(fontScale)) {
+    fontScale = 100;
+  }
+
+  function applyFontScale(scale) {
+    fontScale = FONT_LEVELS.includes(scale) ? scale : 100;
+
+    root.style.setProperty(
+      "--base-font-size",
+      `${16 * fontScale / 100}px`
+    );
+
+    if (fontReset) {
+      fontReset.textContent = `${fontScale}%`;
+      fontReset.title =
+        fontScale === 100
+          ? "Cỡ chữ hiện tại 100%"
+          : `Cỡ chữ hiện tại ${fontScale}%, bấm để về 100%`;
+    }
+
+    if (fontDown) {
+      fontDown.disabled = fontScale === FONT_LEVELS[0];
+    }
+
+    if (fontUp) {
+      fontUp.disabled = fontScale === FONT_LEVELS[FONT_LEVELS.length - 1];
+    }
+
+    safeSet("study-font-scale", String(fontScale));
+  }
+
+  applyFontScale(fontScale);
+
+  fontDown?.addEventListener("click", () => {
+    const index = FONT_LEVELS.indexOf(fontScale);
+    if (index > 0) {
+      applyFontScale(FONT_LEVELS[index - 1]);
+    }
+  });
+
+  fontUp?.addEventListener("click", () => {
+    const index = FONT_LEVELS.indexOf(fontScale);
+    if (index >= 0 && index < FONT_LEVELS.length - 1) {
+      applyFontScale(FONT_LEVELS[index + 1]);
+    }
+  });
+
+  fontReset?.addEventListener("click", () => {
+    applyFontScale(100);
+  });
+
+  /* ---------- TOC drawer ---------- */
+
+  function setToc(open) {
+    body.classList.toggle("toc-open", open);
+    tocToggle?.setAttribute("aria-expanded", String(open));
+    tocOverlay?.setAttribute("aria-hidden", String(!open));
+
+    if (open) {
+      requestAnimationFrame(() => tocClose?.focus());
+    }
+  }
+
+  tocToggle?.addEventListener("click", () => {
+    setToc(!body.classList.contains("toc-open"));
+  });
+
+  tocClose?.addEventListener("click", () => setToc(false));
+  tocOverlay?.addEventListener("click", () => setToc(false));
+
+  tocDrawer?.querySelectorAll("a[href^='#']").forEach(link => {
+    link.addEventListener("click", () => setToc(false));
+  });
+
+  document.addEventListener("keydown", event => {
+    if (event.key === "Escape" && body.classList.contains("toc-open")) {
+      setToc(false);
+      tocToggle?.focus();
+    }
+  });
+
+  /* ---------- Back / Next section ---------- */
+
+  const studySections = Array.from(
+    document.querySelectorAll("main .study-section[id]")
+  );
+
+  function currentSectionIndex() {
+    if (!studySections.length) return -1;
+
+    const referenceY = window.scrollY + Math.min(window.innerHeight * 0.32, 220);
+    let index = 0;
+
+    for (let i = 0; i < studySections.length; i++) {
+      if (studySections[i].offsetTop <= referenceY) {
+        index = i;
+      } else {
+        break;
+      }
+    }
+    return index;
+  }
+
+  function updateNavState() {
+    if (!studySections.length) {
+      if (prevButton) prevButton.disabled = true;
+      if (nextButton) nextButton.disabled = true;
+      return;
+    }
+
+    const index = currentSectionIndex();
+    if (prevButton) prevButton.disabled = index <= 0;
+    if (nextButton) nextButton.disabled = index >= studySections.length - 1;
+  }
+
+  function moveSection(delta) {
+    const index = currentSectionIndex();
+    const targetIndex = Math.max(
+      0,
+      Math.min(studySections.length - 1, index + delta)
+    );
+
+    studySections[targetIndex]?.scrollIntoView({
+      behavior: "smooth",
+      block: "start"
+    });
+  }
+
+  prevButton?.addEventListener("click", () => moveSection(-1));
+  nextButton?.addEventListener("click", () => moveSection(1));
+
+  let ticking = false;
+  window.addEventListener("scroll", () => {
+    if (!ticking) {
+      requestAnimationFrame(() => {
+        updateNavState();
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }, { passive: true });
+
+  window.addEventListener("resize", updateNavState);
+  updateNavState();
+})();
+</script>
+
+</body>
+</html>

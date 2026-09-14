@@ -1,0 +1,1585 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="color-scheme" content="dark light">
+<title>1級建築施工管理技術検定 第二次検定｜虎の巻（精選模試）施工経験記述編</title>
+
+<style>
+/* =========================================================
+   FIXED DESIGN TOKENS
+   Do not redesign these values per lesson.
+   ========================================================= */
+
+:root {
+  --font-vi: Arial, Helvetica, sans-serif;
+  --font-ja: "Hiragino Sans", "Yu Gothic", "Yu Gothic UI", Meiryo, sans-serif;
+  --base-font-size: 16px;
+  --content-width: 1320px;
+  --control-size: 38px;
+  --control-gap: 4px;
+}
+
+html[data-theme="dark"] {
+  --bg: #101318;
+  --surface: #171B22;
+  --surface-alt: #1D232C;
+  --text: #E3E7ED;
+  --text-muted: #9DA8B5;
+  --focus-muted: #68717D;
+  --heading: #F4F7FA;
+  --border: #323A46;
+  --link: #7CC4FF;
+  --original-bg: #15181E;
+  --translation-bg: #16202A;
+  --note-bg: #1C2028;
+  --memory-bg: #20231C;
+  --keyword: #74D7FF;
+  --keyword-bg: rgba(75, 190, 255, .10);
+  --critical-bg: #594613;
+  --critical-text: #FFE39A;
+  --trap: #FF8585;
+  --trap-underline: #FF5F5F;
+  --relation-bg: rgba(139, 126, 255, .12);
+  --relation-border: #8F86FF;
+  --shadow: rgba(0, 0, 0, .28);
+  --dock-bg: rgba(23, 27, 34, .94);
+  --overlay: rgba(0, 0, 0, .46);
+}
+
+html[data-theme="light"] {
+  --bg: #F4F6F8;
+  --surface: #FFFFFF;
+  --surface-alt: #EEF1F5;
+  --text: #20242A;
+  --text-muted: #626B77;
+  --focus-muted: #A0A7B0;
+  --heading: #111418;
+  --border: #CCD2DA;
+  --link: #0068B5;
+  --original-bg: #F8FAFC;
+  --translation-bg: #EDF7FC;
+  --note-bg: #F2F4F7;
+  --memory-bg: #F6F7E9;
+  --keyword: #006B9F;
+  --keyword-bg: #E4F4FC;
+  --critical-bg: #FFF0B8;
+  --critical-text: #654900;
+  --trap: #B42318;
+  --trap-underline: #D92D20;
+  --relation-bg: #EEEBFF;
+  --relation-border: #6C5CE7;
+  --shadow: rgba(31, 38, 49, .12);
+  --dock-bg: rgba(255, 255, 255, .94);
+  --overlay: rgba(20, 24, 30, .32);
+}
+
+/* =========================================================
+   BASE
+   ========================================================= */
+
+* { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  font-size: var(--base-font-size);
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-vi);
+  font-size: 1rem;
+  line-height: 1.72;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+:lang(vi) {
+  font-family: var(--font-vi);
+}
+
+:lang(ja) {
+  font-family: var(--font-ja);
+}
+
+a {
+  color: var(--link);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
+a:hover {
+  text-decoration-thickness: 2px;
+}
+
+button {
+  font: inherit;
+}
+
+h1, h2, h3, h4 {
+  color: var(--heading);
+  line-height: 1.35;
+}
+
+h1 {
+  margin: 0 0 .35rem;
+  font-size: clamp(1.75rem, 4vw, 2.7rem);
+}
+
+h2 {
+  margin: 2.5rem 0 1rem;
+  padding-bottom: .42rem;
+  border-bottom: 1px solid var(--border);
+  font-size: clamp(1.42rem, 3vw, 2rem);
+}
+
+h3 {
+  margin: 1.9rem 0 .75rem;
+  font-size: clamp(1.16rem, 2.4vw, 1.5rem);
+}
+
+h4 {
+  margin: 1.2rem 0 .45rem;
+  font-size: 1rem;
+}
+
+p {
+  margin: .58rem 0;
+}
+
+ul, ol {
+  padding-left: 1.45rem;
+}
+
+li {
+  margin: .3rem 0;
+}
+
+[id] {
+  scroll-margin-top: 18px;
+}
+
+/* =========================================================
+   PAGE LAYOUT
+   ========================================================= */
+
+.page-shell {
+  width: min(var(--content-width), calc(100% - 28px));
+  margin: 0 auto;
+  padding: 18px 0 112px;
+}
+
+.hero,
+.toc-card,
+.study-section,
+.aggregate-section {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  box-shadow: 0 8px 28px var(--shadow);
+}
+
+.hero {
+  margin-bottom: 22px;
+  padding: clamp(22px, 3vw, 40px);
+}
+
+.hero-subtitle {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 1.06rem;
+}
+
+.meta-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(195px, 1fr));
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.meta-item {
+  padding: 10px 12px;
+  background: var(--surface-alt);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+
+.meta-label {
+  display: block;
+  margin-bottom: 2px;
+  color: var(--text-muted);
+  font-size: .8rem;
+}
+
+.study-section,
+.aggregate-section {
+  margin: 22px 0;
+  padding: clamp(18px, 2.6vw, 30px);
+}
+
+.section-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 16px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border);
+}
+
+.section-head h2,
+.section-head h3 {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.source-ref {
+  color: var(--text-muted);
+  font-size: .84rem;
+  white-space: nowrap;
+}
+
+.subsection {
+  margin: 26px 0 32px;
+}
+
+.subsection:first-child {
+  margin-top: 0;
+}
+
+.study-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 14px;
+  align-items: start;
+}
+
+.study-card {
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+
+.study-card.original {
+  background: var(--original-bg);
+}
+
+.study-card.translation {
+  background: var(--translation-bg);
+}
+
+.card-title {
+  padding: 9px 13px;
+  background: var(--surface-alt);
+  border-bottom: 1px solid var(--border);
+  color: var(--heading);
+  font-weight: 800;
+  letter-spacing: .02em;
+}
+
+.recall-source {
+  padding: 14px 16px 16px;
+  transition: color .15s ease;
+}
+
+.recall-source > :first-child {
+  margin-top: 0;
+}
+
+.recall-source > :last-child {
+  margin-bottom: 0;
+}
+
+/* =========================================================
+   CONTENT COMPONENTS
+   ========================================================= */
+
+.table-wrap {
+  overflow-x: auto;
+  margin: 12px 0 18px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  -webkit-overflow-scrolling: touch;
+}
+
+table {
+  width: 100%;
+  min-width: 640px;
+  border-collapse: collapse;
+  background: var(--surface);
+}
+
+th,
+td {
+  padding: 9px 11px;
+  border-right: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+  text-align: left;
+}
+
+th:last-child,
+td:last-child {
+  border-right: 0;
+}
+
+tr:last-child td {
+  border-bottom: 0;
+}
+
+th {
+  background: var(--surface-alt);
+  color: var(--heading);
+  font-weight: 800;
+}
+
+caption {
+  padding: 9px 11px;
+  background: var(--surface-alt);
+  color: var(--heading);
+  font-weight: 800;
+  text-align: left;
+  caption-side: top;
+}
+
+.summary-box,
+.note-box,
+.memory-box,
+.warning-box,
+.figure-box,
+.formula-box,
+.comparison-box {
+  margin: 14px 0;
+  padding: 13px 15px;
+  background: var(--note-bg);
+  border: 1px solid var(--border);
+  border-left-width: 4px;
+  border-radius: 10px;
+}
+
+.summary-box,
+.note-box {
+  border-left-color: var(--link);
+}
+
+.memory-box {
+  background: var(--memory-bg);
+  border-left-color: var(--critical-text);
+}
+
+.warning-box {
+  border-left-color: var(--trap);
+}
+
+.figure-box,
+.formula-box,
+.comparison-box {
+  border-left-color: var(--relation-border);
+}
+
+.figure-card {
+  margin: 15px 0 20px;
+  overflow: hidden;
+  background: var(--surface-alt);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+
+.figure-card img {
+  display: block;
+  width: 100%;
+  height: auto;
+  background: #fff;
+}
+
+.figure-card figcaption {
+  padding: 10px 13px 12px;
+  color: var(--text-muted);
+  font-size: .9rem;
+}
+
+.figure-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 12px;
+  margin: 15px 0 20px;
+}
+
+.figure-grid .figure-card {
+  margin: 0;
+}
+
+.item-block {
+  margin-top: 11px;
+  padding-top: 11px;
+  border-top: 1px dashed var(--border);
+}
+
+.item-block:first-child {
+  margin-top: 0;
+  padding-top: 0;
+  border-top: 0;
+}
+
+.item-label {
+  margin-right: .3em;
+  color: var(--heading);
+  font-weight: 800;
+}
+
+.formula-line {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+}
+
+.flow-node {
+  padding: 5px 8px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  font-weight: 700;
+}
+
+.flow-arrow {
+  color: var(--text-muted);
+  font-weight: 800;
+}
+
+/* =========================================================
+   SEMANTIC HIGHLIGHTING
+   ========================================================= */
+
+.kw {
+  padding: .02em .16em;
+  background: var(--keyword-bg);
+  color: var(--keyword);
+  border-radius: .2em;
+  font-weight: 750;
+}
+
+.critical {
+  padding: .04em .22em;
+  background: var(--critical-bg);
+  color: var(--critical-text);
+  border-radius: .22em;
+  font-weight: 750;
+}
+
+.trap {
+  color: var(--trap);
+  font-weight: 700;
+  text-decoration-line: underline;
+  text-decoration-color: var(--trap-underline);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+}
+
+.relation {
+  padding: .02em .14em;
+  background: var(--relation-bg);
+  color: var(--text);
+  border-bottom: 2px solid var(--relation-border);
+  font-weight: 650;
+}
+
+/* Only recall-source is dimmed in Keywords mode. */
+body.keyword-focus .recall-source {
+  color: var(--focus-muted);
+}
+
+body.keyword-focus .recall-source .kw {
+  color: var(--keyword);
+  background: var(--keyword-bg);
+}
+
+body.keyword-focus .recall-source .critical {
+  color: var(--critical-text);
+  background: var(--critical-bg);
+}
+
+body.keyword-focus .recall-source .trap {
+  color: var(--trap);
+}
+
+body.keyword-focus .recall-source .relation {
+  color: var(--text);
+  background: var(--relation-bg);
+}
+
+body.keyword-focus .recall-source th,
+body.keyword-focus .recall-source .item-label {
+  color: var(--heading);
+}
+
+/* =========================================================
+   TOC DRAWER
+   ========================================================= */
+
+.toc-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1990;
+  visibility: hidden;
+  opacity: 0;
+  background: var(--overlay);
+  transition: opacity .18s ease, visibility .18s ease;
+}
+
+.toc-drawer {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 2000;
+  width: min(78vw, 360px);
+  padding: max(14px, env(safe-area-inset-top)) 14px
+           max(18px, env(safe-area-inset-bottom))
+           max(14px, env(safe-area-inset-left));
+  overflow-y: auto;
+  background: var(--surface);
+  border-right: 1px solid var(--border);
+  box-shadow: 14px 0 36px var(--shadow);
+  transform: translateX(-103%);
+  transition: transform .2s ease;
+  -webkit-overflow-scrolling: touch;
+}
+
+body.toc-open .toc-overlay {
+  visibility: visible;
+  opacity: 1;
+}
+
+body.toc-open .toc-drawer {
+  transform: translateX(0);
+}
+
+.toc-drawer-head {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 4px 0 10px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+}
+
+.toc-drawer-head h2 {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 1.2rem;
+}
+
+.toc-close {
+  width: 34px;
+  height: 34px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface-alt);
+  color: var(--text);
+  cursor: pointer;
+}
+
+.toc-list {
+  margin: 12px 0 0;
+  padding-left: 1.2rem;
+}
+
+.toc-list ol {
+  margin-top: 4px;
+}
+
+/* =========================================================
+   COMPACT CONTROLS
+   Left: vertical TOC / Back / Next
+   Right: horizontal display controls
+   ========================================================= */
+
+.nav-dock-left,
+.settings-dock-right {
+  position: fixed;
+  bottom: max(14px, env(safe-area-inset-bottom));
+  z-index: 1900;
+  padding: 5px;
+  background: var(--dock-bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  box-shadow: 0 8px 24px var(--shadow);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  user-select: none;
+}
+
+.nav-dock-left {
+  left: max(10px, env(safe-area-inset-left));
+  display: flex;
+  flex-direction: column;
+  gap: var(--control-gap);
+}
+
+.settings-dock-right {
+  right: max(10px, env(safe-area-inset-right));
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--control-gap);
+}
+
+.nav-dock-left button,
+.settings-dock-right button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--control-size);
+  height: var(--control-size);
+  min-width: var(--control-size);
+  min-height: var(--control-size);
+  padding: 0;
+  background: var(--surface-alt);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-family: var(--font-vi);
+  font-size: .96rem;
+  font-weight: 700;
+  line-height: 1;
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.nav-dock-left button:hover,
+.settings-dock-right button:hover {
+  border-color: var(--link);
+}
+
+.nav-dock-left button:active,
+.settings-dock-right button:active {
+  transform: translateY(1px);
+}
+
+.nav-dock-left button:disabled {
+  opacity: .38;
+  cursor: default;
+}
+
+.settings-dock-right .font-reset {
+  font-size: .66rem;
+  letter-spacing: -.03em;
+}
+
+.settings-dock-right .mode-toggle {
+  font-size: 1.02rem;
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 900px) {
+  .study-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .page-shell {
+    width: min(100% - 18px, 760px);
+  }
+
+  .section-head {
+    display: block;
+  }
+
+  .source-ref {
+    display: block;
+    margin-top: 6px;
+    white-space: normal;
+  }
+}
+
+@media (max-width: 560px) {
+  body {
+    font-size: .96rem;
+  }
+
+  .hero,
+  .study-section,
+  .aggregate-section {
+    border-radius: 12px;
+  }
+
+  .recall-source {
+    padding: 12px 13px 14px;
+  }
+
+  :root {
+    --control-size: 36px;
+  }
+
+  .settings-dock-right {
+    right: max(7px, env(safe-area-inset-right));
+  }
+
+  .nav-dock-left {
+    left: max(7px, env(safe-area-inset-left));
+  }
+}
+
+@media (orientation: landscape) and (pointer: coarse) {
+  .nav-dock-left {
+    left: max(14px, env(safe-area-inset-left));
+  }
+
+  .settings-dock-right {
+    right: max(14px, env(safe-area-inset-right));
+  }
+}
+
+/* =========================================================
+   PRINT
+   ========================================================= */
+
+@media print {
+  html,
+  html[data-theme="dark"],
+  html[data-theme="light"] {
+    --bg: #FFFFFF;
+    --surface: #FFFFFF;
+    --surface-alt: #F1F3F5;
+    --text: #111111;
+    --text-muted: #555555;
+    --heading: #000000;
+    --border: #B8BEC6;
+    --original-bg: #FFFFFF;
+    --translation-bg: #F7FBFD;
+    --note-bg: #F7F7F7;
+    --memory-bg: #FAFAF0;
+    --keyword: #005A86;
+    --keyword-bg: #E4F4FC;
+    --critical-bg: #FFF0B8;
+    --critical-text: #4A3600;
+    --trap: #9E1B12;
+    --trap-underline: #9E1B12;
+    --relation-bg: #F0EDFF;
+    --relation-border: #5B4FD6;
+  }
+
+  body {
+    background: #fff;
+    color: #111;
+    font-size: 11pt;
+  }
+
+  .page-shell {
+    width: 100%;
+    padding: 0;
+  }
+
+  .nav-dock-left,
+  .settings-dock-right,
+  .toc-drawer,
+  .toc-overlay {
+    display: none !important;
+  }
+
+  .hero,
+  .study-card,
+  .summary-box,
+  .note-box,
+  .memory-box,
+  .warning-box,
+  .figure-card {
+    break-inside: avoid;
+  }
+
+  a {
+    color: #000;
+    text-decoration: none;
+  }
+}
+</style>
+
+<script>
+/* Apply saved theme before body paint to reduce flashing. */
+(function () {
+  try {
+    const saved = localStorage.getItem("study-theme");
+    const systemDark = window.matchMedia &&
+      window.matchMedia("(prefers-color-scheme: dark)").matches;
+    document.documentElement.dataset.theme =
+      saved || (systemDark ? "dark" : "light");
+  } catch (e) {
+    document.documentElement.dataset.theme = "dark";
+  }
+
+  try {
+    const savedScale = Number(localStorage.getItem("study-font-scale")) || 100;
+    const clampedScale = Math.max(80, Math.min(140, savedScale));
+    document.documentElement.style.setProperty(
+      "--base-font-size",
+      `${16 * clampedScale / 100}px`
+    );
+  } catch (e) {}
+})();
+</script>
+</head>
+
+<body>
+
+<!-- =======================================================
+     TOC DRAWER
+     Replace only the list contents.
+     ======================================================= -->
+<div class="toc-overlay" id="toc-overlay" aria-hidden="true"></div>
+
+<aside class="toc-drawer" id="toc-drawer" aria-label="Mục lục">
+  <div class="toc-drawer-head">
+    <h2>Mục lục</h2>
+    <button class="toc-close" id="toc-close" type="button" aria-label="Đóng mục lục">×</button>
+  </div>
+
+  <!-- TOC_ITEMS_START -->
+<ol class="toc-list" id="toc">
+  <li><a href="#sec-overview">Mở đầu và hướng dẫn thực hiện</a>
+    <ol><li><a href="#sub-cover">Trang mở đầu</a></li><li><a href="#sub-guidance">実施要項</a></li></ol>
+  </li>
+  <li><a href="#sec-schedule">施工経験記述（工程管理）</a>
+    <ol><li><a href="#sub-schedule-question">Đề bài</a></li><li><a href="#sub-schedule-sheet">Phiếu trả lời</a></li><li><a href="#sub-schedule-answer">Đáp án mẫu</a></li></ol>
+  </li>
+  <li><a href="#sec-quality">施工経験記述（品質管理）</a>
+    <ol><li><a href="#sub-quality-question">Đề bài</a></li><li><a href="#sub-quality-sheet">Phiếu trả lời</a></li><li><a href="#sub-quality-answer">Đáp án mẫu</a></li></ol>
+  </li>
+  <li><a href="#sec-byproducts">施工経験記述（建設副産物）</a>
+    <ol><li><a href="#sub-byproducts-question">Đề bài</a></li><li><a href="#sub-byproducts-sheet">Phiếu trả lời</a></li><li><a href="#sub-byproducts-answer">Đáp án mẫu</a></li></ol>
+  </li>
+  <li><a href="#sec-project">工事概要</a>
+    <ol><li><a href="#sub-project-basic">Thông tin cơ bản và kết cấu</a></li><li><a href="#sub-project-finishes">Hoàn thiện ngoài và trong</a></li></ol>
+  </li>
+  <li><a href="#terms">Thuật ngữ chuyên môn</a></li>
+  <li><a href="#background">Kiến thức nền cần biết</a></li>
+  <li><a href="#memory">Điểm cần nhớ và mẹo nhớ</a></li>
+</ol>
+  <!-- TOC_ITEMS_END -->
+</aside>
+
+<!-- =======================================================
+     FIXED NAVIGATION CONTROLS
+     Left bottom: vertical.
+     Do not add a Top button.
+     ======================================================= -->
+<nav class="nav-dock-left" aria-label="Điều hướng học tập">
+  <button id="toc-toggle" type="button" aria-label="Mục lục" title="Mục lục"
+          aria-controls="toc-drawer" aria-expanded="false">☰</button>
+  <button id="section-prev" type="button" aria-label="Mục trước" title="Back">‹</button>
+  <button id="section-next" type="button" aria-label="Mục tiếp theo" title="Next">›</button>
+</nav>
+
+<!-- =======================================================
+     FIXED DISPLAY CONTROLS
+     Right bottom: horizontal.
+     ======================================================= -->
+<nav class="settings-dock-right" aria-label="Thiết lập hiển thị">
+  <button id="theme-toggle" type="button" aria-label="Đổi Dark/Light"
+          title="Đổi Dark/Light" aria-pressed="false">☀</button>
+  <button id="mode-toggle" class="mode-toggle" type="button"
+          aria-label="Đổi Full/Keywords" title="Đổi Full/Keywords"
+          aria-pressed="false">🎯</button>
+  <button id="font-reset" class="font-reset" type="button"
+          aria-label="Đặt lại cỡ chữ 100%" title="Đặt lại cỡ chữ 100%">100%</button>
+  <button id="font-down" type="button" aria-label="Giảm cỡ chữ"
+          title="Giảm cỡ chữ">A−</button>
+  <button id="font-up" type="button" aria-label="Tăng cỡ chữ"
+          title="Tăng cỡ chữ">A+</button>
+</nav>
+
+<div class="page-shell">
+
+  <!-- =====================================================
+       DOCUMENT HEADER
+       Replace title/subtitle/meta values only.
+       ===================================================== -->
+  <header class="hero" id="top">
+    <h1>1級建築施工管理技術検定 第二次検定｜虎の巻（精選模試）施工経験記述編</h1>
+    <p class="hero-subtitle">令和8年度・攻略編｜施工経験記述：工程管理・品質管理・建設副産物</p>
+
+    <div class="meta-grid">
+      <div class="meta-item">
+        <span class="meta-label">PDF nguồn</span>
+        07a_攻略編_R08_施工経験記述編_p636-647.pdf
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">File ID</span>
+        F074
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Phạm vi</span>
+        Book page 636-647
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Chế độ</span>
+        Song ngữ Nhật-Việt / Dark-Light / Full-Keywords / Font 80-140%
+      </div>
+    </div>
+  </header>
+
+  <!-- =====================================================
+       CONTENT_START
+       AI may freely repeat/reorder approved content components.
+       Global CSS/JS/control structure must not be redesigned.
+       ===================================================== -->
+  <main id="lesson">
+
+<section class="study-section" id="sec-overview"><div class="section-head"><h2>Mở đầu và hướng dẫn thực hiện</h2><span class="source-ref">Nguồn: Book page 636-637</span></div>
+  <section class="subsection" id="sub-cover"><h3>Trang mở đầu: 虎の巻（精選模試）施工経験記述編</h3><div class="study-grid">
+      <article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja">
+<h4>攻略編</h4>
+<p><strong class="kw">1級建築施工管理技術検定試験 第二次検定</strong></p>
+<p><strong class="kw">虎の巻 精選模試</strong></p>
+<ol>
+<li>令和8年度　<strong class="kw">虎の巻（精選模試）施工経験記述編</strong></li>
+<li>令和8年度　虎の巻（精選模試）第一巻</li>
+<li>令和8年度　虎の巻（精選模試）第二巻</li>
+</ol>
+<h4>スマホ版無料動画コーナー</h4>
+<p>URL　https://get-supertext.com/</p>
+<p>（注意）スマートフォンでの長時間聴講は、Wi-Fi環境が整ったエリアで行いましょう。</p>
+<p>「虎の巻解説講習」の動画講習を、GET研究所ホームページからも視聴できます。</p>
+<p>https://get-ken.jp/</p>
+<p>GET研究所　検索 → 無料動画公開中 → 動画を選択</p>
+<p>※「虎の巻解説講習」では、「虎の巻（精選模試）第一巻」と「虎の巻（精選模試）第二巻」の解説を行っています。「虎の巻（精選模試）施工経験記述編」については、本書25ページで紹介している「施工経験記述の考え方・書き方講習」の動画をご覧ください。</p></div></article>
+      <article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi">
+<h4>Phần chiến lược ôn thi</h4>
+<p><strong class="kw">Kỳ thi kiểm định kỹ thuật Quản lý thi công xây dựng cấp 1, Kỳ thi lần hai</strong></p>
+<p><strong class="kw">虎の巻 (Tora no Maki), Đề thi thử được tuyển chọn</strong></p>
+<ol>
+<li>Năm Reiwa 8 (2026): <strong class="kw">虎の巻 (đề thi thử tuyển chọn), Phần viết kinh nghiệm thi công</strong></li>
+<li>Năm Reiwa 8 (2026): 虎の巻 (đề thi thử tuyển chọn), Quyển 1</li>
+<li>Năm Reiwa 8 (2026): 虎の巻 (đề thi thử tuyển chọn), Quyển 2</li>
+</ol>
+<h4>Góc video miễn phí dành cho smartphone</h4>
+<p>URL: https://get-supertext.com/</p>
+<p><strong>Chú ý:</strong> Khi xem bài giảng trong thời gian dài bằng smartphone, nên sử dụng tại khu vực có môi trường Wi-Fi đầy đủ.</p>
+<p>Có thể xem các bài giảng video của 「虎の巻解説講習」, khóa giảng giải Tora no Maki, trên trang chủ của GET研究所.</p>
+<p>https://get-ken.jp/</p>
+<p>Tìm kiếm GET研究所 → 無料動画公開中 (đang công khai video miễn phí) → chọn video.</p>
+<p>※ Trong khóa 「虎の巻解説講習」, tài liệu giải thích 「虎の巻（精選模試）第一巻」 và 「虎の巻（精選模試）第二巻」. Đối với 「虎の巻（精選模試）施工経験記述編」, hãy xem video 「施工経験記述の考え方・書き方講習」, khóa học về cách tư duy và cách viết phần mô tả kinh nghiệm thi công, được giới thiệu tại trang 25 của sách.</p></div></article>
+    </div><p class="back-to-toc"><a href="#toc">↑ Mục lục</a></p></section>
+  <section class="subsection" id="sub-guidance"><h3>実施要項 / Hướng dẫn thực hiện</h3><div class="study-grid">
+      <article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja">
+<h4>実施要項</h4>
+<p><strong class="kw">令和8年度 1級建築施工管理技術検定試験 第二次検定 虎の巻（精選模試）施工経験記述編</strong></p>
+<ul>
+<li>虎の巻（精選模試）施工経験記述編では、<strong class="kw">工程管理・品質管理・建設副産物</strong>の3項目すべてについて、施工経験記述を準備します。</li>
+<li><strong class="kw">試験時間</strong>は、1項目<mark class="critical">90分間</mark>として、合計<mark class="critical">270分間</mark>を目安にしてください。</li>
+<li>施工経験記述は、解答欄に記入してください。（本書673ページの施工経験記述添削講座をご利用の方は、本書679ページ～684ページの記入用紙に記入することもできます）</li>
+<li>記入された解答が指定欄をはみ出している場合、<span class="trap">その部分の評価は0点</span>となります。</li>
+<li>施工経験記述の解答方法・採点方法の詳細については、本書25ページで紹介している「施工経験記述の考え方・書き方講習」の動画をご覧ください。</li>
+<li>自らの施工経験記述が合格答案になっているか否かの確認をしたい方は、本書673ページの施工経験記述添削講座をご利用ください。</li>
+</ul></div></article>
+      <article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi">
+<h4>Hướng dẫn thực hiện</h4>
+<p><strong class="kw">Năm Reiwa 8 (2026), Kỳ thi kiểm định kỹ thuật Quản lý thi công xây dựng cấp 1, Kỳ thi lần hai, 虎の巻, Phần viết kinh nghiệm thi công</strong></p>
+<ul>
+<li>Trong phần 施工経験記述, cần chuẩn bị bài viết kinh nghiệm thi công cho <strong class="kw">cả 3 nội dung: quản lý tiến độ, quản lý chất lượng và sản phẩm phụ xây dựng</strong>.</li>
+<li><strong class="kw">Thời gian làm bài tham khảo</strong> là <mark class="critical">90 phút cho mỗi nội dung</mark>, tổng cộng <mark class="critical">270 phút</mark>.</li>
+<li>Bài mô tả kinh nghiệm thi công phải được viết vào ô trả lời. Người sử dụng khóa chấm và sửa bài mô tả kinh nghiệm thi công ở trang 673 có thể viết vào phiếu tại các trang 679 đến 684.</li>
+<li>Nếu phần trả lời viết vượt ra ngoài ô quy định, <span class="trap">phần vượt ra ngoài đó sẽ được đánh giá 0 điểm</span>.</li>
+<li>Chi tiết về phương pháp trả lời và phương pháp chấm điểm được trình bày trong video 「施工経験記述の考え方・書き方講習」 được giới thiệu tại trang 25.</li>
+<li>Người muốn kiểm tra bài viết kinh nghiệm thi công của bản thân có đạt mức bài thi đỗ hay không có thể sử dụng 施工経験記述添削講座 tại trang 673.</li>
+</ul></div></article>
+    </div><div class="table-wrap "><table><caption>自己評価・採点表 / Bảng tự đánh giá và chấm điểm</caption><thead><tr><th>項目 / Nội dung</th><th>工程管理 / Quản lý tiến độ</th><th>品質管理 / Quản lý chất lượng</th><th>建設副産物 / Sản phẩm phụ xây dựng</th></tr></thead><tbody><tr><td>配点 / Điểm tối đa</td><td>32</td><td>32</td><td>32</td></tr><tr><td>得点 / Điểm đạt được</td><td></td><td></td><td></td></tr></tbody></table></div><div class="memory-box"><strong>基準 / Tiêu chí</strong><p>各項目の得点がいずれも20点以上で合格。Mỗi nội dung phải đạt từ 20 điểm trở lên. ※配点はGET研究所の推定によるものです。</p></div><p class="back-to-toc"><a href="#toc">↑ Mục lục</a></p></section>
+</section>
+<section class="study-section" id="sec-schedule"><div class="section-head"><h2>施工経験記述（工程管理）</h2><span class="source-ref">Nguồn: Book page 638-639, 645</span></div>
+  <section class="subsection" id="sub-schedule-question"><h3>問題1・設問1/2 / Đề bài</h3><div class="study-grid">
+      <article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja">
+<p>今後、建設業において、高齢化等により技能労働者が大量に離職し、労働力人口が総じて減少するために、建設現場の<strong class="kw">生産性の向上</strong>がなお一層求められている。持続可能な建設業を目指して、<strong class="kw">働き方改革</strong>を推進すべく様々な取組が、官民一体となって続けられている昨今、建築工事の現場を管理していく上でのあなたの考えについて、次の設問1および設問2に答えなさい。</p>
+<h4>設問1</h4>
+<p>本書644ページに示す<strong class="kw">工事概要</strong>の建築工事において、あなたが建設現場における<strong class="kw">統括的な施工の技術的な管理を求められる立場</strong>として、機能・性能等の要求された品質を確保しながら、建築工事の施工を適正かつ合理的に進めるうえで、有効と考える<strong class="kw">現場作業の軽減策を3つ</strong>提案し、それぞれ次の①から③について具体的に記述しなさい。</p>
+<p>ただし、3つの提案の②及び③は、<span class="trap">すべて異なる内容</span>を記述するものとする。</p>
+<p>なお、次の記述は不可とする。また、工事概要に示す工事において、各作業は一般的な手順に従って施工されるものとする。</p>
+<ul>
+<li><span class="trap">工事概要に示す工事において施工上必要としない工事及び作業に関する内容</span></li>
+<li><span class="trap">計画変更確認申請が必要となる内容</span></li>
+<li><span class="trap">竣工引渡し時期の遅れに繋がる内容</span></li>
+<li><span class="trap">工程の短縮は図れるが現場作業の軽減には繋がらない内容</span></li>
+<li><span class="trap">建築設備工事に関する内容</span></li>
+</ul>
+<p>① 工種名又は作業名等<br>② <span class="relation">有効な現場作業の軽減策と、それが現場作業の軽減に繋がる理由</span><br>③ <span class="relation">②の実施に当たって確保すべき品質と、そのための軽減策における施工上の留意事項</span></p>
+<h4>設問2</h4>
+<p>建設業を取り巻く環境の変化は著しく、特に建設工事の担い手の確保に対する取組は、建設現場において日々直面する課題となり、重要度が一層増している。本書644ページに示す工事概要の建築工事に係わらず、あなたの今日までの建築工事の経験を踏まえて、建築工事での<strong class="kw">労働者の確保</strong>に関して、次の①及び②について具体的に記述しなさい。</p>
+<p>ただし、<span class="trap">労働者の賃金に関する内容及び設問1の②と同じ内容の記述は不可</span>とする。</p>
+<p>① 労働者の確保を困難にしている建設現場が直面している課題や問題点<br>② <span class="relation">①の対策として、効果があると考える建設現場での取組や工夫</span></p></div></article>
+      <article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi">
+<p>Trong thời gian tới, trong ngành xây dựng, do già hóa dân số và các nguyên nhân khác, một số lượng lớn lao động có kỹ năng sẽ rời khỏi ngành và dân số lao động nói chung sẽ giảm. Vì vậy, yêu cầu <strong class="kw">nâng cao năng suất tại công trường xây dựng</strong> ngày càng trở nên cấp thiết. Trong bối cảnh hiện nay, nhằm hướng tới một ngành xây dựng bền vững, nhiều biện pháp thúc đẩy <strong class="kw">cải cách phương thức làm việc</strong> đang tiếp tục được triển khai với sự phối hợp giữa khu vực công và khu vực tư. Hãy trả lời Câu hỏi 1 và Câu hỏi 2 dưới đây về quan điểm của bạn khi quản lý công trường xây dựng.</p>
+<h4>Câu hỏi 1</h4>
+<p>Đối với công trình xây dựng có <strong class="kw">tổng quan công trình</strong> trình bày tại trang 644, với tư cách là người ở vị trí được yêu cầu thực hiện <strong class="kw">quản lý kỹ thuật tổng hợp đối với hoạt động thi công tại công trường</strong>, hãy đề xuất <strong class="kw">3 biện pháp mà bạn cho là có hiệu quả để giảm nhẹ công việc tại hiện trường</strong>, trong khi vẫn bảo đảm chất lượng được yêu cầu về chức năng, tính năng v.v. và tiến hành thi công công trình xây dựng một cách thích hợp, hợp lý.</p>
+<p><span class="trap">Nội dung ② và ③ của cả ba đề xuất phải khác nhau hoàn toàn.</span></p>
+<p>Các nội dung sau đây không được sử dụng. Ngoài ra, đối với công trình nêu trong tổng quan công trình, giả định rằng mọi công việc đều được thi công theo trình tự thông thường.</p>
+<ul>
+<li><span class="trap">Nội dung liên quan đến công việc hoặc thao tác không cần thiết về mặt thi công đối với công trình nêu trong tổng quan công trình.</span></li>
+<li><span class="trap">Nội dung làm phát sinh yêu cầu phải thực hiện hồ sơ xin xác nhận thay đổi kế hoạch.</span></li>
+<li><span class="trap">Nội dung dẫn đến chậm thời điểm hoàn thành và bàn giao công trình.</span></li>
+<li><span class="trap">Nội dung có thể rút ngắn tiến độ nhưng không làm giảm công việc tại hiện trường.</span></li>
+<li><span class="trap">Nội dung liên quan đến công tác thiết bị kỹ thuật công trình.</span></li>
+</ul>
+<p>① Tên loại công tác hoặc tên công việc, v.v.<br>② <span class="relation">Biện pháp giảm nhẹ công việc tại hiện trường mà bạn cho là có hiệu quả và lý do tại sao biện pháp đó dẫn đến giảm công việc tại hiện trường.</span><br>③ <span class="relation">Chất lượng cần phải bảo đảm khi thực hiện biện pháp ở ② và các điểm cần lưu ý về thi công để bảo đảm chất lượng này.</span></p>
+<h4>Câu hỏi 2</h4>
+<p>Môi trường xung quanh ngành xây dựng đang thay đổi mạnh. Đặc biệt, các biện pháp nhằm <strong class="kw">bảo đảm nguồn nhân lực thực hiện công tác xây dựng</strong> đã trở thành vấn đề mà công trường phải đối mặt hàng ngày và ngày càng trở nên quan trọng. Không giới hạn ở công trình có tổng quan trình bày tại trang 644, dựa trên kinh nghiệm công tác xây dựng cho đến nay, hãy trình bày cụ thể ① và ② dưới đây liên quan đến <strong class="kw">việc bảo đảm lao động cho công tác xây dựng</strong>.</p>
+<p><span class="trap">Không được viết về tiền lương của người lao động, đồng thời không được sử dụng cùng nội dung với mục ② của Câu hỏi 1.</span></p>
+<p>① Các vấn đề hoặc khó khăn mà công trường đang đối mặt, khiến việc bảo đảm lao động trở nên khó khăn.<br>② <span class="relation">Các biện pháp hoặc sáng kiến tại công trường mà bạn cho rằng có hiệu quả để giải quyết vấn đề ở ①.</span></p></div></article>
+    </div><p class="back-to-toc"><a href="#toc">↑ Mục lục</a></p></section>
+  <section class="subsection" id="sub-schedule-sheet"><h3>解答欄 / Phiếu trả lời</h3><div class="study-grid">
+      <article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja"><div class="table-wrap "><table><thead><tr><th>作業軽減策</th><th>記述内容</th><th>配点</th></tr></thead><tbody><tr><td>作業軽減策1</td><td><strong class="kw">① 工種名・作業名等</strong></td><td>2</td></tr><tr><td></td><td><span class="relation">② 現場作業の軽減策とそれが軽減に繋がる理由</span></td><td>3</td></tr><tr><td></td><td><span class="relation">③ 実施に当たって確保すべき品質と施工上の留意事項</span></td><td>3</td></tr><tr><td>作業軽減策2</td><td><strong class="kw">① 工種名・作業名等</strong></td><td>2</td></tr><tr><td></td><td><span class="relation">② 現場作業の軽減策とそれが軽減に繋がる理由</span></td><td>3</td></tr><tr><td></td><td><span class="relation">③ 実施に当たって確保すべき品質と施工上の留意事項</span></td><td>3</td></tr><tr><td>作業軽減策3</td><td><strong class="kw">① 工種名・作業名等</strong></td><td>2</td></tr><tr><td></td><td><span class="relation">② 現場作業の軽減策とそれが軽減に繋がる理由</span></td><td>3</td></tr><tr><td></td><td><span class="relation">③ 実施に当たって確保すべき品質と施工上の留意事項</span></td><td>3</td></tr></tbody></table></div><div class="table-wrap "><table><thead><tr><th>設問2 記述内容</th><th>配点</th></tr></thead><tbody><tr><td><strong class="kw">① 労働者の確保を困難にしている課題や問題点</strong></td><td>4</td></tr><tr><td><span class="relation">② 対策として有効な建設現場での取組や工夫</span></td><td>4</td></tr></tbody></table></div></div></article>
+      <article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi"><div class="table-wrap "><table><thead><tr><th>Biện pháp</th><th>Nội dung phải trả lời</th><th>Điểm</th></tr></thead><tbody><tr><td>Biện pháp 1</td><td><strong class="kw">① Tên loại công tác / tên công việc, v.v.</strong></td><td>2</td></tr><tr><td></td><td><span class="relation">② Biện pháp giảm công việc tại hiện trường và lý do biện pháp đó dẫn đến giảm công việc</span></td><td>3</td></tr><tr><td></td><td><span class="relation">③ Chất lượng phải bảo đảm khi thực hiện và các điểm cần lưu ý về thi công</span></td><td>3</td></tr><tr><td>Biện pháp 2</td><td><strong class="kw">① Tên loại công tác / tên công việc, v.v.</strong></td><td>2</td></tr><tr><td></td><td><span class="relation">② Biện pháp giảm công việc tại hiện trường và lý do biện pháp đó dẫn đến giảm công việc</span></td><td>3</td></tr><tr><td></td><td><span class="relation">③ Chất lượng phải bảo đảm khi thực hiện và các điểm cần lưu ý về thi công</span></td><td>3</td></tr><tr><td>Biện pháp 3</td><td><strong class="kw">① Tên loại công tác / tên công việc, v.v.</strong></td><td>2</td></tr><tr><td></td><td><span class="relation">② Biện pháp giảm công việc tại hiện trường và lý do biện pháp đó dẫn đến giảm công việc</span></td><td>3</td></tr><tr><td></td><td><span class="relation">③ Chất lượng phải bảo đảm khi thực hiện và các điểm cần lưu ý về thi công</span></td><td>3</td></tr></tbody></table></div><div class="table-wrap "><table><thead><tr><th>Nội dung Câu hỏi 2</th><th>Điểm</th></tr></thead><tbody><tr><td><strong class="kw">① Vấn đề/khó khăn khiến việc bảo đảm lao động trở nên khó khăn</strong></td><td>4</td></tr><tr><td><span class="relation">② Biện pháp hoặc sáng kiến có hiệu quả tại công trường để đối phó với vấn đề trên</span></td><td>4</td></tr></tbody></table></div></div></article>
+    </div><p class="back-to-toc"><a href="#toc">↑ Mục lục</a></p></section>
+  <section class="subsection" id="sub-schedule-answer"><h3>工程管理の解答例 / Đáp án mẫu</h3><div class="study-grid">
+      <article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja">
+<h4>作業軽減策1</h4>
+<p><strong class="kw">① 工種名・作業名等：鉄筋工事</strong></p>
+<p>② 柱と梁の主筋の接合方法を、<strong class="kw">機械式継手による先組み工法</strong>に変更する。<span class="relation">機械式継手は、圧接のための加熱や冷却の作業が不要であり、少人数かつ短時間で施工できる</span>からである。</p>
+<p>③ <strong class="kw">モルタル充填継手</strong>を施工するときに、モルタルの充填量に不備がないようにする。その施工では、施工後に<strong class="kw">排出孔からモルタルの排出があることを確認</strong>する。</p>
+<h4>作業軽減策2</h4>
+<p><strong class="kw">① 工種名・作業名等：防水工事</strong></p>
+<p>② アスファルト露出断熱防水の工法を、<strong class="kw">改質アスファルトシート防水トーチ工法</strong>に変更する。<span class="relation">溶融釜や燃料を運び込む工程を省力化でき、均一な厚みの調整が不要になる</span>からである。</p>
+<p>③ シートの出隅・入隅・重ね部について、隙間からの漏水を防止できるようにする。その施工では、<strong class="kw">出隅・入隅の増張り幅</strong>を<mark class="critical">200mm</mark>とし、<strong class="kw">シートの重ね幅</strong>を<mark class="critical">100mm以上</mark>とする。</p>
+<h4>作業軽減策3</h4>
+<p><strong class="kw">① 工種名・作業名等：左官工事</strong></p>
+<p>② 居室の床仕上げの下地調整を、<strong class="kw">セルフレベリング仕上げ</strong>に変更する。<span class="relation">セルフレベリング材は、流し込むだけで自重により平滑に仕上がるので、金ごて押さえが必要ない</span>からである。</p>
+<p>③ セルフレベリング材に、低温による硬化不良や、通風による皺を発生させないようにする。その施工では、<strong class="kw">気温</strong>が<mark class="critical">5℃を超える</mark>ように採暖し、<strong class="kw">窓や開口部を閉鎖して通風をなくす</strong>。</p>
+<h4>設問2</h4>
+<p>① 工期に余裕がなく、プレキャスト製品などの新技術の導入に消極的であるために、<span class="relation">時間外労働の増長により長時間の肉体労働を強いられるので、若手の労働者が定着しない</span>こと。</p>
+<p>② <strong class="kw">準備期間や作業不能日を考慮した適正な工期設定</strong>に取り組むと共に、<strong class="kw">情報通信技術活用工事</strong>や、<strong class="kw">情報共有システムによる書類授受の省力化</strong>など、新工法や新技術を導入すること。</p></div></article>
+      <article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi">
+<h4>Biện pháp giảm công việc 1</h4>
+<p><strong class="kw">① Loại công tác / tên công việc: Công tác cốt thép</strong></p>
+<p>② Thay đổi phương pháp nối cốt thép chủ của cột và dầm sang <strong class="kw">phương pháp lắp ráp trước sử dụng mối nối cơ khí</strong>. <span class="relation">Khi sử dụng mối nối cơ khí, không cần công việc gia nhiệt và làm nguội phục vụ nối hàn áp lực, do đó có thể thi công với ít nhân lực hơn và trong thời gian ngắn hơn</span>.</p>
+<p>③ Khi thi công <strong class="kw">mối nối điền đầy mortar</strong>, phải bảo đảm lượng mortar nạp vào không bị thiếu hoặc không đầy đủ. Sau khi nạp mortar phải <strong class="kw">xác nhận mortar đã thoát ra từ lỗ thoát</strong>.</p>
+<h4>Biện pháp giảm công việc 2</h4>
+<p><strong class="kw">① Loại công tác / tên công việc: Công tác chống thấm</strong></p>
+<p>② Thay đổi công pháp chống thấm asphalt lộ thiên có cách nhiệt sang <strong class="kw">công pháp chống thấm tấm asphalt cải tiến bằng torch</strong>. <span class="relation">Có thể giảm công việc vận chuyển nồi nấu asphalt và nhiên liệu vào công trường, đồng thời không cần công việc điều chỉnh để tạo chiều dày đồng đều</span>.</p>
+<p>③ Tại góc lồi, góc lõm và vị trí chồng mí của tấm, phải bảo đảm ngăn nước rò lọt qua các khe hở. Khi thi công, <strong class="kw">bề rộng dán gia cường tại góc lồi và góc lõm</strong> là <mark class="critical">200 mm</mark>, và <strong class="kw">chiều rộng chồng mí của tấm</strong> phải <mark class="critical">từ 100 mm trở lên</mark>.</p>
+<h4>Biện pháp giảm công việc 3</h4>
+<p><strong class="kw">① Loại công tác / tên công việc: Công tác trát/láng</strong></p>
+<p>② Thay đổi việc điều chỉnh nền cho hoàn thiện sàn phòng ở sang <strong class="kw">hoàn thiện bằng vật liệu tự san phẳng</strong>. <span class="relation">Vật liệu tự san phẳng chỉ cần được đổ ra và sẽ tự tạo bề mặt phẳng nhờ tự trọng, vì vậy không cần công đoạn ép/láng bằng bay thép</span>.</p>
+<p>③ Phải tránh để vật liệu tự san phẳng đóng rắn không đạt do nhiệt độ thấp hoặc phát sinh nếp nhăn do thông gió. Khi thi công, sưởi ấm để <strong class="kw">nhiệt độ</strong> <mark class="critical">vượt quá 5°C</mark> và <strong class="kw">đóng cửa sổ cùng các lỗ mở để loại bỏ luồng gió</strong>.</p>
+<h4>Câu hỏi 2</h4>
+<p>① Do tiến độ không có đủ dư địa và công trường không tích cực áp dụng công nghệ mới như sản phẩm precast, nên <span class="relation">thời gian làm thêm tăng lên, người lao động bị buộc phải thực hiện lao động thể lực trong thời gian dài, dẫn tới lao động trẻ không gắn bó lâu dài</span>.</p>
+<p>② Thực hiện <strong class="kw">thiết lập thời hạn thi công thích hợp có xét đến thời gian chuẩn bị và các ngày không thể thi công</strong>. Đồng thời áp dụng <strong class="kw">công trình ứng dụng công nghệ thông tin và truyền thông</strong>, <strong class="kw">giảm công việc trao đổi, bàn giao hồ sơ bằng hệ thống chia sẻ thông tin</strong> và các công pháp, công nghệ mới.</p></div></article>
+    </div><p class="back-to-toc"><a href="#toc">↑ Mục lục</a></p></section>
+</section>
+<section class="study-section" id="sec-quality"><div class="section-head"><h2>施工経験記述（品質管理）</h2><span class="source-ref">Nguồn: Book page 640-641, 646</span></div>
+  <section class="subsection" id="sub-quality-question"><h3>問題1・設問1/2 / Đề bài</h3><div class="study-grid">
+      <article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja">
+<p>建築工事の品質は、工事目的物が使用されて初めてその品質を確認できることや、その品質が工事等の受注者の技術的能力に負うところが大きいことから、建築工事の施工者に対しては、建築物の施工品質の確保のために、<strong class="kw">品質管理を的確に行うこと</strong>が強く求められている。</p>
+<p>発注者や設計図書等により工事目的物に要求された品質を実現するために、<strong class="kw">品質計画に基づいて建築工事の現場を管理していく上でのあなたの考え</strong>について、次の設問1および設問2に答えなさい。</p>
+<h4>設問1</h4>
+<p>本書644ページに示す工事概要の建築工事において、あなたが建設現場における統括的な施工の技術的な管理を求められる立場として、建築物の施工品質の確保のために、品質計画に基づいて品質管理を実施することについて、有効と考える<strong class="kw">品質管理活動の内容を3つ提案</strong>し、それぞれ次の①から③について具体的に記述しなさい。</p>
+<p>ただし、3つの提案の①から③は、<span class="trap">すべて異なる内容</span>を記述するものとする。</p>
+<p>なお、次の記述は不可とする。また、工事概要に示す工事において、各作業は一般的な手順に従って施工されるものとする。</p>
+<ul><li><span class="trap">工事概要に示す工事において施工上必要としない工事及び作業に関する内容</span></li><li><span class="trap">建築物の施工品質は確保できるが竣工引渡し時期の遅れに繋がる内容</span></li><li><span class="trap">建築物の施工品質は確保できるが過大な費用がかかる内容</span></li><li><span class="trap">建築設備工事に関する内容</span></li></ul>
+<p>① <span class="relation">工種名又は作業名等と、そこで要求される品質と、特に重点を置くべき品質管理項目</span><br>② <span class="relation">①で設定する品質管理項目について重点を置くべきと考える理由</span><br>③ <span class="relation">①で設定する品質管理項目を管理していくうえで実施する内容</span></p>
+<h4>設問2</h4>
+<p>建設業では、元請負人と下請負人が協力して工事を進めることがあるため、<strong class="kw">品質管理の内容を協力業者等と共有することが重要</strong>である。本書644ページに示す工事概要の建築工事に係わらず、あなたの今日までの建築工事の経験を踏まえて、品質管理の内容を協力業者等と共有することに関して、次の①及び②について具体的に記述しなさい。</p>
+<p>ただし、<span class="trap">設問1の③と同じ内容の記述は不可</span>とする。</p>
+<p>① <span class="relation">品質管理の目標・管理項目・活動内容を、協力業者等に周知するための方法・手段</span><br>② <span class="relation">①の品質管理の内容に基づいて施工されていることを確認するための方法・手段</span></p></div></article>
+      <article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi">
+<p>Đối với chất lượng công trình xây dựng, có những trường hợp chỉ sau khi đối tượng công trình được đưa vào sử dụng mới có thể xác nhận được chất lượng của nó. Đồng thời, chất lượng đó phụ thuộc rất lớn vào năng lực kỹ thuật của nhà thầu nhận thi công công trình. Vì vậy, để bảo đảm chất lượng thi công của công trình xây dựng, người thi công công trình được yêu cầu rất cao phải <strong class="kw">thực hiện công tác quản lý chất lượng một cách chính xác và thích hợp</strong>.</p>
+<p>Để hiện thực hóa chất lượng mà chủ đầu tư, hồ sơ thiết kế v.v. yêu cầu đối với đối tượng công trình, hãy trả lời Câu hỏi 1 và Câu hỏi 2 về <strong class="kw">quan điểm khi quản lý công trường xây dựng dựa trên kế hoạch chất lượng</strong>.</p>
+<h4>Câu hỏi 1</h4>
+<p>Đối với công trình xây dựng có tổng quan công trình tại trang 644, với tư cách là người ở vị trí được yêu cầu thực hiện quản lý kỹ thuật tổng hợp về thi công tại công trường, nhằm bảo đảm chất lượng thi công của công trình, hãy đề xuất <strong class="kw">3 nội dung hoạt động quản lý chất lượng mà bạn cho là có hiệu quả khi thực hiện quản lý chất lượng dựa trên kế hoạch chất lượng</strong>.</p>
+<p><span class="trap">Các nội dung từ ① đến ③ của cả ba đề xuất phải khác nhau hoàn toàn.</span></p>
+<p>Các nội dung sau không được sử dụng. Ngoài ra, giả định mọi công việc trong công trình nêu tại tổng quan công trình đều được thực hiện theo trình tự thi công thông thường.</p>
+<ul><li><span class="trap">Nội dung liên quan đến công việc hoặc thao tác không cần thiết về mặt thi công đối với công trình nêu trong tổng quan.</span></li><li><span class="trap">Nội dung có thể bảo đảm chất lượng thi công nhưng dẫn đến chậm thời điểm hoàn thành và bàn giao.</span></li><li><span class="trap">Nội dung có thể bảo đảm chất lượng thi công nhưng phát sinh chi phí quá lớn.</span></li><li><span class="trap">Nội dung liên quan đến công tác thiết bị kỹ thuật công trình.</span></li></ul>
+<p>① <span class="relation">Tên loại công tác hoặc tên công việc, chất lượng được yêu cầu tại công tác đó, và hạng mục quản lý chất lượng cần đặc biệt chú trọng.</span><br>② <span class="relation">Lý do tại sao hạng mục quản lý chất lượng được xác định ở ① cần được coi là trọng điểm.</span><br>③ <span class="relation">Nội dung cụ thể sẽ thực hiện để quản lý hạng mục quản lý chất lượng đã xác định ở ①.</span></p>
+<h4>Câu hỏi 2</h4>
+<p>Trong ngành xây dựng, nhà thầu chính và nhà thầu phụ có những trường hợp cùng phối hợp để thực hiện công trình. Vì vậy, <strong class="kw">việc chia sẻ nội dung quản lý chất lượng với các đơn vị hợp tác thi công v.v. là rất quan trọng</strong>. Không giới hạn ở công trình có tổng quan tại trang 644, dựa trên kinh nghiệm công tác xây dựng cho đến nay, hãy trình bày cụ thể ① và ② liên quan đến việc chia sẻ nội dung quản lý chất lượng với các nhà thầu/đơn vị hợp tác.</p>
+<p><span class="trap">Không được viết cùng nội dung với mục ③ của Câu hỏi 1.</span></p>
+<p>① <span class="relation">Phương pháp hoặc phương tiện dùng để phổ biến cho đơn vị hợp tác các mục tiêu quản lý chất lượng, hạng mục quản lý và nội dung hoạt động.</span><br>② <span class="relation">Phương pháp hoặc phương tiện để xác nhận rằng công việc đang được thi công theo đúng nội dung quản lý chất lượng nêu ở ①.</span></p></div></article>
+    </div><p class="back-to-toc"><a href="#toc">↑ Mục lục</a></p></section>
+  <section class="subsection" id="sub-quality-sheet"><h3>解答欄 / Phiếu trả lời</h3><div class="study-grid">
+      <article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja"><div class="table-wrap "><table><thead><tr><th>品質管理活動</th><th>記述内容</th><th>配点</th></tr></thead><tbody><tr><td>品質管理活動1</td><td><strong class="kw">① 工種名・要求品質・品質管理項目</strong></td><td>2</td></tr><tr><td></td><td><span class="relation">② 品質管理項目に重点を置くべき理由</span></td><td>3</td></tr><tr><td></td><td><span class="relation">③ 品質管理項目を管理していくうえで実施する内容</span></td><td>3</td></tr><tr><td>品質管理活動2</td><td><strong class="kw">① 工種名・要求品質・品質管理項目</strong></td><td>2</td></tr><tr><td></td><td><span class="relation">② 品質管理項目に重点を置くべき理由</span></td><td>3</td></tr><tr><td></td><td><span class="relation">③ 品質管理項目を管理していくうえで実施する内容</span></td><td>3</td></tr><tr><td>品質管理活動3</td><td><strong class="kw">① 工種名・要求品質・品質管理項目</strong></td><td>2</td></tr><tr><td></td><td><span class="relation">② 品質管理項目に重点を置くべき理由</span></td><td>3</td></tr><tr><td></td><td><span class="relation">③ 品質管理項目を管理していくうえで実施する内容</span></td><td>3</td></tr></tbody></table></div><div class="table-wrap "><table><thead><tr><th>設問2 記述内容</th><th>配点</th></tr></thead><tbody><tr><td><strong class="kw">① 品質管理の内容を協力業者等に周知するための方法・手段</strong></td><td>4</td></tr><tr><td><span class="relation">② 品質管理の内容に基づく施工を確認するための方法・手段</span></td><td>4</td></tr></tbody></table></div></div></article>
+      <article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi"><div class="table-wrap "><table><thead><tr><th>Hoạt động</th><th>Nội dung phải viết</th><th>Điểm</th></tr></thead><tbody><tr><td>Hoạt động 1</td><td><strong class="kw">① Tên loại công tác, chất lượng yêu cầu, hạng mục quản lý chất lượng</strong></td><td>2</td></tr><tr><td></td><td><span class="relation">② Lý do phải đặc biệt chú trọng hạng mục quản lý chất lượng đó</span></td><td>3</td></tr><tr><td></td><td><span class="relation">③ Nội dung thực hiện để quản lý hạng mục chất lượng đó</span></td><td>3</td></tr><tr><td>Hoạt động 2</td><td><strong class="kw">① Tên loại công tác, chất lượng yêu cầu, hạng mục quản lý chất lượng</strong></td><td>2</td></tr><tr><td></td><td><span class="relation">② Lý do phải đặc biệt chú trọng hạng mục quản lý chất lượng đó</span></td><td>3</td></tr><tr><td></td><td><span class="relation">③ Nội dung thực hiện để quản lý hạng mục chất lượng đó</span></td><td>3</td></tr><tr><td>Hoạt động 3</td><td><strong class="kw">① Tên loại công tác, chất lượng yêu cầu, hạng mục quản lý chất lượng</strong></td><td>2</td></tr><tr><td></td><td><span class="relation">② Lý do phải đặc biệt chú trọng hạng mục quản lý chất lượng đó</span></td><td>3</td></tr><tr><td></td><td><span class="relation">③ Nội dung thực hiện để quản lý hạng mục chất lượng đó</span></td><td>3</td></tr></tbody></table></div><div class="table-wrap "><table><thead><tr><th>Nội dung Câu hỏi 2</th><th>Điểm</th></tr></thead><tbody><tr><td><strong class="kw">① Phương pháp/phương tiện để phổ biến nội dung quản lý chất lượng cho các nhà thầu, đơn vị hợp tác</strong></td><td>4</td></tr><tr><td><span class="relation">② Phương pháp/phương tiện để xác nhận rằng việc thi công được thực hiện theo nội dung quản lý chất lượng</span></td><td>4</td></tr></tbody></table></div></div></article>
+    </div><p class="back-to-toc"><a href="#toc">↑ Mục lục</a></p></section>
+  <section class="subsection" id="sub-quality-answer"><h3>品質管理の解答例 / Đáp án mẫu</h3><div class="study-grid">
+      <article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja">
+<h4>品質管理活動1</h4>
+<p>① コンクリート工事では、構造物の耐力が要求されるので、品質管理項目として、<strong class="kw">コンクリートの圧縮強度</strong>を設定する。</p>
+<p>② 鉄筋コンクリート構造物の耐力は、コンクリートの圧縮強度により定まるため、<span class="relation">搬入したコンクリートが指定された呼び強度以上であることを確認する必要がある</span>から。</p>
+<p>③ コンクリート打込み時に、<strong class="kw">スランプおよび空気量を管理</strong>し、合格品だけを打ち込むようにする。コンクリートの供試体は<strong class="kw">水中養生</strong>とし、<strong class="kw">圧縮強度の確認時期</strong>は<mark class="critical">28日後</mark>とする。</p>
+<h4>品質管理活動2</h4>
+<p>① 鉄筋工事では、鉄筋コンクリートの耐力が要求されるので、品質管理項目として、<strong class="kw">鉄筋の圧接部の膨らみ</strong>を設定する。</p>
+<p>② 鉄筋コンクリートの耐力は、鉄筋継手の品質に影響されるため、<span class="relation">鉄筋圧接部の膨らみの直径について、外観検査を行う必要がある</span>から。</p>
+<p>③ ガス圧接後に、<strong class="kw">圧接面の膨らみ</strong>が<mark class="critical">鉄筋径の1.4倍以上</mark>であることなどを確認する。膨らみが不足している箇所がある場合は、<strong class="kw">再加熱・加圧して修正</strong>する。</p>
+<h4>品質管理活動3</h4>
+<p>① 金属工事では、天井の外見上の水平性を要求されるので、品質管理項目として、<strong class="kw">適切なむくりの確保</strong>を設定する。</p>
+<p>② 平天井は、目の錯覚で天井面が下がって見えるので、<strong class="kw">天井下地の中央部のむくり</strong>は、基準高さに比べて、室内張りのスパンの<mark class="critical">1000分の1から500分の1程度</mark>吊り上げる必要があるから。</p>
+<p>③ 室の四隅と中央において、巻尺を垂直に立てて、天井高さを測定する。共同住宅で一般的な<strong class="kw">スパン4mの室</strong>では、<strong class="kw">室の中央と四隅の高さ差</strong>が<mark class="critical">4mm～8mm</mark>であることを確認する。</p>
+<h4>設問2</h4>
+<p>① 協力会社との間で<strong class="kw">施工品質管理表を作成</strong>し、一体化して活動することにより、品質管理活動を明確化し、各工事の品質管理方法を理解させる。</p>
+<p>② 施工後に、担当者の責任により、協力会社が施工した部分について、<strong class="kw">あらかじめ定めた品質試験</strong>を行い、<span class="relation">試験結果の数値が許容差の管理基準値以内であることを確認</span>する。</p></div></article>
+      <article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi">
+<h4>Hoạt động quản lý chất lượng 1: Công tác bê tông</h4>
+<p>① Đối với công tác bê tông, do kết cấu được yêu cầu phải bảo đảm khả năng chịu lực, nên xác định <strong class="kw">cường độ chịu nén của bê tông</strong> là hạng mục quản lý chất lượng.</p>
+<p>② Khả năng chịu lực của kết cấu bê tông cốt thép được quyết định bởi cường độ chịu nén của bê tông, vì vậy <span class="relation">cần xác nhận bê tông được đưa đến công trường đạt từ cường độ danh định được chỉ định trở lên</span>.</p>
+<p>③ Khi đổ bê tông, <strong class="kw">quản lý độ sụt và hàm lượng khí</strong>, chỉ cho phép bê tông đạt yêu cầu được đưa vào kết cấu. Mẫu thử bê tông được <strong class="kw">dưỡng hộ trong nước</strong>, và <strong class="kw">thời điểm xác nhận cường độ chịu nén</strong> là <mark class="critical">sau 28 ngày</mark>.</p>
+<h4>Hoạt động quản lý chất lượng 2: Công tác cốt thép</h4>
+<p>① Đối với công tác cốt thép, do kết cấu bê tông cốt thép được yêu cầu phải bảo đảm khả năng chịu lực, nên xác định <strong class="kw">độ phình của phần nối hàn áp lực cốt thép</strong> là hạng mục quản lý chất lượng.</p>
+<p>② Khả năng chịu lực của bê tông cốt thép chịu ảnh hưởng bởi chất lượng mối nối cốt thép, vì vậy <span class="relation">cần thực hiện kiểm tra ngoại quan đối với đường kính phần phình tại vị trí nối hàn áp lực</span>.</p>
+<p>③ Sau khi thực hiện gas pressure welding, xác nhận <strong class="kw">phần phình tại mặt nối</strong> đạt <mark class="critical">từ 1,4 lần đường kính cốt thép trở lên</mark>. Nếu có vị trí phần phình không đủ, thực hiện <strong class="kw">gia nhiệt lại và ép lại để sửa chữa</strong>.</p>
+<h4>Hoạt động quản lý chất lượng 3: Công tác kim loại, trần</h4>
+<p>① Đối với công tác kim loại, do yêu cầu trần phải có tính nằm ngang về mặt cảm quan, nên xác định việc bảo đảm <strong class="kw">độ vồng ngược thích hợp</strong> là hạng mục quản lý chất lượng.</p>
+<p>② Đối với trần phẳng, do ảo giác thị giác có thể khiến bề mặt trần trông như bị võng xuống, nên <strong class="kw">độ vồng của phần giữa khung trần</strong> cần được nâng cao so với cao độ chuẩn một lượng bằng khoảng <mark class="critical">1/1000 đến 1/500 của nhịp</mark>.</p>
+<p>③ Tại bốn góc phòng và tâm phòng, dựng thước cuộn theo phương thẳng đứng để đo chiều cao trần. Đối với <strong class="kw">phòng có nhịp 4 m</strong>, xác nhận <strong class="kw">phần giữa phòng cao hơn bốn góc</strong> <mark class="critical">4 mm đến 8 mm</mark>.</p>
+<h4>Câu hỏi 2</h4>
+<p>① Lập <strong class="kw">bảng quản lý chất lượng thi công</strong> cùng với các công ty hợp tác và cùng triển khai hoạt động thống nhất, qua đó làm rõ các hoạt động quản lý chất lượng và giúp các đơn vị hiểu phương pháp quản lý chất lượng đối với từng công tác.</p>
+<p>② Sau khi thi công, dưới trách nhiệm của người phụ trách, thực hiện <strong class="kw">các thử nghiệm chất lượng đã được quy định trước</strong> đối với phần công việc do công ty hợp tác thi công, và <span class="relation">xác nhận giá trị kết quả thử nghiệm nằm trong giới hạn tiêu chuẩn quản lý cho phép</span>.</p></div></article>
+    </div><p class="back-to-toc"><a href="#toc">↑ Mục lục</a></p></section>
+</section>
+<section class="study-section" id="sec-byproducts"><div class="section-head"><h2>施工経験記述（建設副産物）</h2><span class="source-ref">Nguồn: Book page 642-643, 647</span></div>
+  <section class="subsection" id="sub-byproducts-question"><h3>問題1・設問1/2 / Đề bài</h3><div class="study-grid">
+      <article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja">
+<p>建設業においては、高度成長期に大量に建設された建築物の更新や、解体工事に伴う建設副産物の発生量の増加が想定されることから、<strong class="kw">建設副産物対策</strong>への更なる取組みが求められている。建築工事の施工に当たり、建設副産物対策を<strong class="kw">施工計画の段階から検討</strong>し、建築工事の現場を管理していく上でのあなたの考えについて、次の設問1および設問2に答えなさい。</p>
+<h4>設問1</h4>
+<p>本書644ページに示す工事概要の建築工事において、あなたが建設現場における統括的な施工の技術的な管理を求められる立場として、建設副産物の<strong class="kw">発生抑制・再使用・再生利用</strong>のいずれかのために、有効と考える建設副産物対策の方法を<strong class="kw">3つ提案</strong>し、それぞれ次の①から③について具体的に記述しなさい。</p>
+<p>ただし、3つの提案の②及び③は、<span class="trap">すべて異なる内容</span>を記述するものとする。</p>
+<p>なお、次の記述は不可とする。また、工事概要に示す工事において、各作業は一般的な手順に従って施工されるものとする。</p>
+<ul><li><span class="trap">工事概要に示す工事において施工上必要としない工事及び作業に関する内容</span></li><li><span class="trap">建設副産物対策にはなるが過大な費用がかかる内容</span></li><li><span class="trap">建築設備の建設副産物に関する内容</span></li></ul>
+<p>① <span class="relation">工種名又は作業名等と、建設副産物対策の分類（発生抑制・再使用・再生利用の別）</span><br>② <span class="relation">建設副産物対策として実施すべき内容と実施に当たっての留意事項</span><br>③ <span class="relation">②の建設副産物対策を実施したことによって得られる副次的効果</span></p>
+<h4>設問2</h4>
+<p>建設業における環境保全対策の1つとして、生活環境の保全及び公衆衛生の向上を図るために、<strong class="kw">建設廃棄物対策</strong>が求められている。本書644ページに示す工事概要の建築工事に係わらず、あなたの今日までの建築工事の経験を踏まえて、建設廃棄物を<strong class="kw">適正に処理するための対策</strong>に関して、次の①及び②について具体的に記述しなさい。</p>
+<p>ただし、<span class="trap">建設副産物の発生抑制・再使用・再生利用に関する記述は不可</span>とする。</p>
+<p>① <span class="relation">建設廃棄物の適正な処理の方法と、そのために実施すべき内容</span><br>② <span class="relation">①の方法を適切に実施するための留意事項</span></p></div></article>
+      <article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi">
+<p>Trong ngành xây dựng, do dự kiến sẽ có sự gia tăng lượng sản phẩm phụ xây dựng phát sinh từ việc cải tạo, thay thế các công trình được xây dựng với số lượng lớn trong thời kỳ tăng trưởng kinh tế cao, cũng như từ công tác phá dỡ, nên ngành xây dựng đang được yêu cầu tăng cường hơn nữa <strong class="kw">các biện pháp đối với sản phẩm phụ xây dựng</strong>. Khi thực hiện công trình xây dựng, phải xem xét các biện pháp này <strong class="kw">ngay từ giai đoạn lập kế hoạch thi công</strong>.</p>
+<h4>Câu hỏi 1</h4>
+<p>Đối với công trình có tổng quan công trình tại trang 644, với tư cách là người ở vị trí được yêu cầu thực hiện quản lý kỹ thuật tổng hợp về thi công tại công trường, hãy đề xuất <strong class="kw">3 biện pháp</strong> đối với sản phẩm phụ xây dựng nhằm thực hiện một trong ba mục đích: <strong class="kw">hạn chế phát sinh, tái sử dụng hoặc tái chế/tái sinh sử dụng</strong>.</p>
+<p><span class="trap">Nội dung ② và ③ của cả ba đề xuất phải khác nhau.</span></p>
+<p>Các nội dung sau không được sử dụng.</p>
+<ul><li><span class="trap">Công việc hoặc thao tác không cần thiết về mặt thi công đối với công trình trong tổng quan công trình.</span></li><li><span class="trap">Nội dung tuy là biện pháp đối với sản phẩm phụ xây dựng nhưng phát sinh chi phí quá lớn.</span></li><li><span class="trap">Nội dung về sản phẩm phụ xây dựng thuộc công tác thiết bị kỹ thuật công trình.</span></li></ul>
+<p>① <span class="relation">Tên loại công tác hoặc tên công việc cùng với phân loại biện pháp: hạn chế phát sinh, tái sử dụng hoặc tái chế/tái sinh sử dụng.</span><br>② <span class="relation">Nội dung cần thực hiện và các điểm cần lưu ý khi thực hiện.</span><br>③ <span class="relation">Hiệu quả phụ trợ thu được nhờ thực hiện biện pháp ở ②.</span></p>
+<h4>Câu hỏi 2</h4>
+<p>Là một trong các biện pháp bảo vệ môi trường trong ngành xây dựng, nhằm bảo vệ môi trường sống và nâng cao vệ sinh công cộng, cần có <strong class="kw">biện pháp xử lý chất thải xây dựng</strong>. Không giới hạn ở công trình tại trang 644, dựa trên kinh nghiệm xây dựng cho đến nay, hãy trình bày các biện pháp <strong class="kw">xử lý chất thải xây dựng một cách thích hợp</strong>.</p>
+<p><span class="trap">Không được viết về hạn chế phát sinh, tái sử dụng hoặc tái chế/tái sinh sản phẩm phụ xây dựng trong Câu hỏi 2.</span></p>
+<p>① <span class="relation">Phương pháp xử lý thích hợp chất thải xây dựng và nội dung cần thực hiện để áp dụng phương pháp đó.</span><br>② <span class="relation">Điểm cần lưu ý để thực hiện thích hợp phương pháp ở ①.</span></p></div></article>
+    </div><p class="back-to-toc"><a href="#toc">↑ Mục lục</a></p></section>
+  <section class="subsection" id="sub-byproducts-sheet"><h3>解答欄 / Phiếu trả lời</h3><div class="study-grid">
+      <article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja"><div class="table-wrap "><table><thead><tr><th>副産物対策</th><th>記述内容</th><th>配点</th></tr></thead><tbody><tr><td>副産物対策1</td><td><strong class="kw">① 工種名（対策分類）</strong></td><td>2</td></tr><tr><td></td><td><span class="relation">② 実施すべき内容と実施に当たっての留意事項</span></td><td>3</td></tr><tr><td></td><td><span class="relation">③ 実施したことによって得られる副次的効果</span></td><td>3</td></tr><tr><td>副産物対策2</td><td><strong class="kw">① 工種名（対策分類）</strong></td><td>2</td></tr><tr><td></td><td><span class="relation">② 実施すべき内容と実施に当たっての留意事項</span></td><td>3</td></tr><tr><td></td><td><span class="relation">③ 実施したことによって得られる副次的効果</span></td><td>3</td></tr><tr><td>副産物対策3</td><td><strong class="kw">① 工種名（対策分類）</strong></td><td>2</td></tr><tr><td></td><td><span class="relation">② 実施すべき内容と実施に当たっての留意事項</span></td><td>3</td></tr><tr><td></td><td><span class="relation">③ 実施したことによって得られる副次的効果</span></td><td>3</td></tr></tbody></table></div><div class="table-wrap "><table><thead><tr><th>設問2 記述内容</th><th>配点</th></tr></thead><tbody><tr><td><strong class="kw">① 建設廃棄物の適正な処理の方法と、そのために実施すべき内容</strong></td><td>4</td></tr><tr><td><span class="relation">② 建設廃棄物の適正な処理を適切に実施するための留意事項</span></td><td>4</td></tr></tbody></table></div></div></article>
+      <article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi"><div class="table-wrap "><table><thead><tr><th>Biện pháp</th><th>Nội dung phải viết</th><th>Điểm</th></tr></thead><tbody><tr><td>Biện pháp 1</td><td><strong class="kw">① Tên loại công tác và phân loại biện pháp</strong></td><td>2</td></tr><tr><td></td><td><span class="relation">② Nội dung cần thực hiện và các điểm cần lưu ý khi thực hiện</span></td><td>3</td></tr><tr><td></td><td><span class="relation">③ Hiệu quả phụ trợ thu được nhờ thực hiện biện pháp</span></td><td>3</td></tr><tr><td>Biện pháp 2</td><td><strong class="kw">① Tên loại công tác và phân loại biện pháp</strong></td><td>2</td></tr><tr><td></td><td><span class="relation">② Nội dung cần thực hiện và các điểm cần lưu ý khi thực hiện</span></td><td>3</td></tr><tr><td></td><td><span class="relation">③ Hiệu quả phụ trợ thu được nhờ thực hiện biện pháp</span></td><td>3</td></tr><tr><td>Biện pháp 3</td><td><strong class="kw">① Tên loại công tác và phân loại biện pháp</strong></td><td>2</td></tr><tr><td></td><td><span class="relation">② Nội dung cần thực hiện và các điểm cần lưu ý khi thực hiện</span></td><td>3</td></tr><tr><td></td><td><span class="relation">③ Hiệu quả phụ trợ thu được nhờ thực hiện biện pháp</span></td><td>3</td></tr></tbody></table></div><div class="table-wrap "><table><thead><tr><th>Nội dung Câu hỏi 2</th><th>Điểm</th></tr></thead><tbody><tr><td><strong class="kw">① Phương pháp xử lý thích hợp chất thải xây dựng và nội dung cần thực hiện để xử lý</strong></td><td>4</td></tr><tr><td><span class="relation">② Các điểm cần lưu ý để thực hiện thích hợp việc xử lý chất thải xây dựng</span></td><td>4</td></tr></tbody></table></div></div></article>
+    </div><p class="back-to-toc"><a href="#toc">↑ Mục lục</a></p></section>
+  <section class="subsection" id="sub-byproducts-answer"><h3>建設副産物の解答例 / Đáp án mẫu</h3><div class="study-grid">
+      <article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja">
+<h4>副産物対策1</h4>
+<p>① <strong class="kw">型枠工事（建設副産物の発生抑制）</strong></p>
+<p>② コンクリート型枠用合板を、木製型枠から<strong class="kw">メタルラス型枠</strong>に変更する。その施工の際は、コンクリートの漏出を避けるため、<strong class="kw">打ち込むコンクリートのスランプ</strong>を<mark class="critical">15cm以下</mark>とする。</p>
+<p>③ メタルラス型枠は、<strong class="kw">捨て型枠</strong>であるため、<span class="relation">型枠の取り外し工程を省略することができ、現場作業の省力化による工程短縮に繋がる</span>。</p>
+<h4>副産物対策2</h4>
+<p>① <strong class="kw">防水工事（建設副産物の再使用）</strong></p>
+<p>② アスファルト露出断熱防水に使用する塗膜材の容器を、<strong class="kw">再使用可能なハイブリッド缶</strong>とする。その施工の際は、<strong class="kw">残余塗膜材を硬化させて除去</strong>するようにする。</p>
+<p>③ 塗膜材の容器となっていた缶の再使用まで考えることで、<span class="relation">社員の環境問題に対する意識が向上し、その後の施工においても環境に配慮した施工を行いやすくなる</span>。</p>
+<h4>副産物対策3</h4>
+<p>① <strong class="kw">土工事（建設副産物の再生利用）</strong></p>
+<p>② 根切り区域で撤去した<strong class="kw">既設道路材料</strong>は、構内舗装の新規道路材料として<strong class="kw">再生利用</strong>する。その施工の際は、撤去時に<strong class="kw">分別</strong>を心がけることで、不適切な材料が使用されないようにする。</p>
+<p>③ <span class="relation">新規道路材料を少なくできるので工事費用が安くなる。また、既設道路材料を廃棄物として運搬・処分する量が少なくなり、廃棄物の保管や委託に関わる費用も安くなる</span>。</p>
+<h4>設問2</h4>
+<p>① 廃棄物が運搬されるまでの間、現場内で保管するときは、周辺の生活環境の保全上の支障がないよう、<strong class="kw">保管場所に囲いを設け</strong>、<span class="relation">廃棄物の飛散・流出・浸透を防止</span>する。</p>
+<p>② 廃棄物の荷重が囲いに掛かるときは、<strong class="kw">囲いがその荷重に対して構造耐力上安全であることを確認</strong>する。また、<strong class="kw">囲いの内外に、ねずみや害虫が発生しないような措置</strong>を講じる。</p></div></article>
+      <article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi">
+<h4>Biện pháp 1: Hạn chế phát sinh sản phẩm phụ xây dựng</h4>
+<p>① <strong class="kw">Công tác ván khuôn, hạn chế phát sinh sản phẩm phụ xây dựng</strong>.</p>
+<p>② Thay ván ép dùng cho ván khuôn bê tông từ ván khuôn gỗ sang <strong class="kw">ván khuôn metal lath</strong>. Khi thi công, để tránh bê tông bị rò/chảy ra ngoài, <strong class="kw">độ sụt của bê tông đổ vào</strong> phải <mark class="critical">không quá 15 cm</mark>.</p>
+<p>③ Do ván khuôn metal lath là <strong class="kw">ván khuôn để lại trong kết cấu, không tháo dỡ</strong>, nên <span class="relation">có thể bỏ công đoạn tháo ván khuôn, nhờ đó giảm công việc tại hiện trường và rút ngắn tiến độ</span>.</p>
+<h4>Biện pháp 2: Tái sử dụng</h4>
+<p>① <strong class="kw">Công tác chống thấm, tái sử dụng sản phẩm phụ xây dựng</strong>.</p>
+<p>② Đối với thùng chứa vật liệu phủ sử dụng cho chống thấm asphalt lộ thiên có cách nhiệt, sử dụng <strong class="kw">thùng hybrid có thể tái sử dụng</strong>. Khi thi công, phần <strong class="kw">vật liệu phủ còn lại phải được làm đóng rắn rồi loại bỏ</strong>.</p>
+<p>③ Việc xem xét cả việc tái sử dụng thùng vốn dùng làm bao chứa vật liệu phủ giúp <span class="relation">nâng cao ý thức của nhân viên đối với các vấn đề môi trường, nhờ đó trong các công tác sau cũng dễ thực hiện thi công có xét đến yếu tố môi trường hơn</span>.</p>
+<h4>Biện pháp 3: Tái chế/tái sinh sử dụng</h4>
+<p>① <strong class="kw">Công tác đất, tái sinh sử dụng sản phẩm phụ xây dựng</strong>.</p>
+<p>② <strong class="kw">Vật liệu đường hiện hữu</strong> được tháo dỡ trong khu vực đào đất được <strong class="kw">tái sinh sử dụng</strong> làm vật liệu đường mới cho phần mặt đường trong khuôn viên. Khi tháo dỡ phải chú trọng <strong class="kw">phân loại vật liệu</strong>, nhằm tránh sử dụng vật liệu không phù hợp.</p>
+<p>③ <span class="relation">Có thể giảm lượng vật liệu đường mới cần mua nên giảm chi phí công trình; đồng thời giảm lượng vật liệu phải vận chuyển và xử lý như chất thải, nên cũng giảm chi phí lưu giữ và ủy thác xử lý chất thải</span>.</p>
+<h4>Câu hỏi 2</h4>
+<p>① Trong thời gian chờ vận chuyển chất thải ra khỏi công trường, khi lưu giữ chất thải trong công trường phải <strong class="kw">bố trí hàng rào/quây chắn tại khu vực lưu giữ</strong> và <span class="relation">ngăn ngừa chất thải phát tán, chảy tràn và thấm vào đất/nền</span>.</p>
+<p>② Nếu tải trọng của chất thải tác dụng lên hàng rào/quây chắn, phải <strong class="kw">xác nhận hàng rào có khả năng chịu lực kết cấu an toàn đối với tải trọng đó</strong>. Ngoài ra, phải thực hiện <strong class="kw">biện pháp để không phát sinh chuột hoặc côn trùng gây hại ở cả bên trong và bên ngoài khu vực quây chắn</strong>.</p></div></article>
+    </div><p class="back-to-toc"><a href="#toc">↑ Mục lục</a></p></section>
+</section>
+<section class="study-section" id="sec-project"><div class="section-head"><h2>工事概要 / Tổng quan công trình</h2><span class="source-ref">Nguồn: Book page 644</span></div>
+  <section class="subsection" id="sub-project-basic"><h3>基本概要・主な構造仕様 / Thông tin cơ bản và kết cấu</h3><div class="study-grid">
+      <article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja">
+<p>表中「○＋△＋□」は、○下地の上△面に□仕上げ等、下地と表面仕上げの関係を示す。</p>
+<div class="table-wrap "><table><caption>基本概要</caption><thead><tr><th>項目</th><th>内容</th><th>項目</th><th>内容</th></tr></thead><tbody><tr><td>工事名</td><td><strong class="kw">共同住宅新築工事</strong></td><td></td><td></td></tr><tr><td>主要用途</td><td>共同住宅40戸（5LDK）</td><td>工期</td><td>2026年3月～2027年6月</td></tr><tr><td>用途地域</td><td>住居地域　6m道路隣接</td><td>主要構造</td><td><strong class="kw">鉄筋コンクリート構造 地上6階建て</strong></td></tr><tr><td>面積</td><td>敷地面積3100.00m²</td><td>エレベーター</td><td>乗用6人乗り 1台</td></tr><tr><td></td><td>建築面積1200.00m²</td><td>構内舗装</td><td>駐車場：アスファルト舗装</td></tr><tr><td></td><td>延床面積5400.00m²</td><td></td><td>自転車置場：コンクリート舗装</td></tr><tr><td>最高高さ</td><td>19.9m</td><td></td><td>アプローチ：インターロッキング舗装</td></tr><tr><td>階高</td><td>3.0m</td><td>囲障</td><td>化粧フェンス、レール式門扉</td></tr></tbody></table></div><div class="table-wrap "><table><caption>主な構造仕様</caption><thead><tr><th>項目</th><th>内容</th><th>項目</th><th>内容</th></tr></thead><tbody><tr><td>根切深さ</td><td><strong class="kw">2.4m</strong></td><td>型枠</td><td>コンクリート型枠用合板</td></tr><tr><td>山留め</td><td><strong class="kw">親杭横矢板工法</strong></td><td></td><td>支保工：パイプサポート</td></tr><tr><td>地業</td><td><strong class="kw">既製コンクリート杭（PHC杭）</strong></td><td>鉄筋</td><td>工場加工、現場組立て</td></tr><tr><td>コンクリート</td><td>普通コンクリート</td><td></td><td>柱・梁主筋：<strong class="kw">ガス圧接継手</strong></td></tr></tbody></table></div></div></article>
+      <article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi">
+<p>Ký hiệu dạng 「○＋△＋□」 trong bảng biểu thị quan hệ giữa lớp nền và lớp hoàn thiện bề mặt, ví dụ: trên lớp nền ○, tạo lớp/bề mặt △ rồi hoàn thiện bằng □.</p>
+<div class="table-wrap "><table><caption>Thông tin cơ bản</caption><thead><tr><th>Hạng mục</th><th>Nội dung</th><th>Hạng mục</th><th>Nội dung</th></tr></thead><tbody><tr><td>Tên công trình</td><td><strong class="kw">Công trình xây mới nhà ở chung cư</strong></td><td></td><td></td></tr><tr><td>Công năng chính</td><td>Chung cư 40 căn hộ (5LDK)</td><td>Thời gian thi công</td><td>03/2026 đến 06/2027</td></tr><tr><td>Khu vực quy hoạch sử dụng</td><td>Khu vực nhà ở, tiếp giáp đường rộng 6 m</td><td>Kết cấu chính</td><td><strong class="kw">Kết cấu bê tông cốt thép, 6 tầng nổi</strong></td></tr><tr><td>Diện tích</td><td>Diện tích khu đất: 3100.00 m²</td><td>Thang máy</td><td>1 thang chở người, sức chứa 6 người</td></tr><tr><td></td><td>Diện tích xây dựng: 1200.00 m²</td><td>Đường, sân trong khuôn viên</td><td>Bãi đỗ ô tô: mặt đường asphalt</td></tr><tr><td></td><td>Tổng diện tích sàn: 5400.00 m²</td><td></td><td>Bãi đỗ xe đạp: mặt đường bê tông</td></tr><tr><td>Chiều cao lớn nhất</td><td>19.9 m</td><td></td><td>Lối tiếp cận: lát interlocking</td></tr><tr><td>Chiều cao tầng</td><td>3.0 m</td><td>Hàng rào/cổng</td><td>Hàng rào trang trí, cổng dạng rail</td></tr></tbody></table></div><div class="table-wrap "><table><caption>Các thông số kết cấu chính</caption><thead><tr><th>Hạng mục</th><th>Nội dung</th><th>Hạng mục</th><th>Nội dung</th></tr></thead><tbody><tr><td>Độ sâu đào đất</td><td><strong class="kw">2,4 m</strong></td><td>Ván khuôn</td><td>Ván ép dùng cho ván khuôn bê tông</td></tr><tr><td>Chống giữ đất</td><td><strong class="kw">Phương pháp cọc chủ và ván ngang</strong></td><td></td><td>Hệ chống ván khuôn: pipe support</td></tr><tr><td>Công tác nền móng</td><td><strong class="kw">Cọc bê tông đúc sẵn PHC</strong></td><td>Cốt thép</td><td>Gia công tại nhà máy, lắp ráp tại công trường</td></tr><tr><td>Bê tông</td><td>Bê tông thông thường</td><td></td><td>Cốt thép chủ cột, dầm: <strong class="kw">mối nối hàn áp lực khí</strong></td></tr></tbody></table></div></div></article>
+    </div><p class="back-to-toc"><a href="#toc">↑ Mục lục</a></p></section>
+  <section class="subsection" id="sub-project-finishes"><h3>主な外部・内部仕上げ / Hoàn thiện ngoài và trong</h3><div class="study-grid">
+      <article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja"><div class="table-wrap "><table><caption>主な外部仕上げ</caption><thead><tr><th>部位</th><th>箇所</th><th>仕上げ</th></tr></thead><tbody><tr><td>屋根</td><td>陸屋根</td><td><strong class="kw">アスファルト露出断熱防水</strong>、アルミニウム製笠木</td></tr><tr><td></td><td>風除室</td><td>ウレタン系塗膜防水</td></tr><tr><td>外壁</td><td>主な外壁</td><td>コンクリート打放し＋防水形複層塗材</td></tr><tr><td></td><td>断熱</td><td>内断熱工法＋現場発泡断熱材吹付け</td></tr><tr><td>床</td><td>廊下・階段</td><td>モルタル下地＋ビニル床シート</td></tr><tr><td></td><td>バルコニー</td><td>モルタル下地＋ウレタン系塗膜防水</td></tr><tr><td>建具</td><td>風除室</td><td>ステンレス製自動扉、強化ガラス共</td></tr><tr><td></td><td>玄関</td><td>化粧シート張り鋼製扉</td></tr><tr><td></td><td>窓</td><td>アルミ製サッシ、複層ガラス共</td></tr></tbody></table></div><p><strong class="kw">主な内部仕上げ</strong>（居室・水廻り：天井高さ2.4m、エントランス・風除室：天井高さ2.5m）</p><div class="table-wrap "><table><caption>主な内部仕上げ</caption><thead><tr><th>部位</th><th>箇所</th><th>仕上げ</th></tr></thead><tbody><tr><td>床</td><td>居室</td><td>コンクリート直均し＋<strong class="kw">乾式二重床＋フローリングボード</strong></td></tr><tr><td></td><td>水廻り</td><td>コンクリート直均し＋乾式二重床＋耐水合板＋ビニル床シート</td></tr><tr><td></td><td>エントランス、風除室</td><td>モルタル下地＋ノンスリップタイル</td></tr><tr><td>壁</td><td>居室</td><td><strong class="kw">軽量鉄骨下地＋石膏ボード＋ビニルクロス</strong></td></tr><tr><td></td><td>水廻り</td><td>軽量鉄骨下地＋シージング石膏ボード＋ビニルクロス</td></tr><tr><td></td><td>エントランス、風除室</td><td>コンクリート打放し＋有機系接着剤による小口タイル</td></tr><tr><td>天井</td><td>居室</td><td>軽量鉄骨下地＋石膏ボード＋ビニルクロス</td></tr><tr><td></td><td>エントランス、風除室</td><td>軽量鉄骨下地＋アルミスパンドレル</td></tr><tr><td>建具</td><td>居室</td><td>化粧シート張り木製扉　枠共</td></tr><tr><td>その他</td><td>水廻り</td><td>ユニットバス、洗面化粧台、システムキッチン</td></tr><tr><td></td><td>エントランス</td><td>集合郵便受け、インターホンパネル</td></tr></tbody></table></div></div></article>
+      <article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi"><div class="table-wrap "><table><caption>Hoàn thiện bên ngoài chính</caption><thead><tr><th>Bộ phận</th><th>Vị trí</th><th>Hoàn thiện</th></tr></thead><tbody><tr><td>Mái</td><td>Mái bằng</td><td><strong class="kw">Chống thấm asphalt lộ thiên có cách nhiệt</strong> + 笠木 nhôm</td></tr><tr><td></td><td>Sảnh chắn gió</td><td>Chống thấm màng phủ hệ urethane</td></tr><tr><td>Tường ngoài</td><td>Tường ngoài chính</td><td>Bê tông để trần + vật liệu phủ hoàn thiện nhiều lớp loại chống thấm</td></tr><tr><td></td><td>Cách nhiệt</td><td>Cách nhiệt phía trong + phun vật liệu cách nhiệt tạo bọt tại hiện trường</td></tr><tr><td>Sàn</td><td>Hành lang, cầu thang</td><td>Nền mortar + tấm vinyl trải sàn</td></tr><tr><td></td><td>Ban công</td><td>Nền mortar + chống thấm màng phủ hệ urethane</td></tr><tr><td>Cửa</td><td>Sảnh chắn gió</td><td>Cửa tự động bằng thép không gỉ, kèm kính cường lực</td></tr><tr><td></td><td>Cửa ra vào căn hộ</td><td>Cửa thép phủ tấm trang trí</td></tr><tr><td></td><td>Cửa sổ</td><td>Sash nhôm, kèm kính hộp nhiều lớp</td></tr></tbody></table></div><p><strong class="kw">Hoàn thiện bên trong chính</strong>: phòng ở và khu vực nước có chiều cao trần 2,4 m; sảnh vào và sảnh chắn gió có chiều cao trần 2,5 m.</p><div class="table-wrap "><table><caption>Hoàn thiện bên trong chính</caption><thead><tr><th>Bộ phận</th><th>Vị trí</th><th>Hoàn thiện</th></tr></thead><tbody><tr><td>Sàn</td><td>Phòng ở</td><td>Bê tông cán phẳng trực tiếp + <strong class="kw">sàn kép khô + ván flooring</strong></td></tr><tr><td></td><td>Khu vực nước</td><td>Bê tông cán phẳng trực tiếp + sàn kép khô + ván ép chịu nước + tấm vinyl trải sàn</td></tr><tr><td></td><td>Sảnh vào, sảnh chắn gió</td><td>Nền mortar + gạch chống trượt</td></tr><tr><td>Tường</td><td>Phòng ở</td><td><strong class="kw">Khung thép nhẹ + tấm thạch cao + giấy/vật liệu vinyl phủ tường</strong></td></tr><tr><td></td><td>Khu vực nước</td><td>Khung thép nhẹ + tấm thạch cao sheathing + vinyl phủ tường</td></tr><tr><td></td><td>Sảnh vào, sảnh chắn gió</td><td>Bê tông để trần + gạch 小口 dán bằng keo hữu cơ</td></tr><tr><td>Trần</td><td>Phòng ở</td><td>Khung thép nhẹ + tấm thạch cao + vinyl phủ</td></tr><tr><td></td><td>Sảnh vào, sảnh chắn gió</td><td>Khung thép nhẹ + tấm nhôm spandrel</td></tr><tr><td>Cửa</td><td>Phòng ở</td><td>Cửa gỗ phủ tấm trang trí, bao gồm cả khung</td></tr><tr><td>Khác</td><td>Khu vực nước</td><td>Unit bath, bàn chậu rửa, system kitchen</td></tr><tr><td></td><td>Sảnh vào</td><td>Cụm hộp thư, bảng intercom</td></tr></tbody></table></div></div></article>
+    </div><p class="back-to-toc"><a href="#toc">↑ Mục lục</a></p></section>
+</section>
+
+  </main>
+  <!-- CONTENT_END -->
+
+  <!-- =====================================================
+       NON-DIMMED STUDY SUPPORT SECTIONS
+       These sections stay normally readable in Keywords mode.
+       ===================================================== -->
+
+  <section class="aggregate-section" id="terms">
+    <div class="section-head">
+      <h2>Thuật ngữ chuyên môn</h2>
+    </div>
+    <div class="table-wrap "><table><caption>Tổng hợp thuật ngữ của Book page 636-647</caption><thead><tr><th>日本語</th><th>読み方</th><th>Tiếng Việt</th><th>Giải thích</th><th>Liên quan</th></tr></thead><tbody><tr><td><span lang="ja">虎の巻</span></td><td>とらのまき</td><td>Cẩm nang / bí quyết ôn thi</td><td>Tên bộ tài liệu luyện thi trong phần攻略編.</td><td>精選模試</td></tr><tr><td><span lang="ja">精選模試</span></td><td>せいせんもし</td><td>Đề thi thử tuyển chọn</td><td>Đề mô phỏng gồm các câu hỏi được tuyển chọn phục vụ ôn thi.</td><td>虎の巻</td></tr><tr><td><span lang="ja">施工経験記述</span></td><td>せこうけいけんきじゅつ</td><td>Bài viết mô tả kinh nghiệm thi công</td><td>Phần thi yêu cầu trình bày kinh nghiệm và quan điểm quản lý thi công.</td><td>工程管理・品質管理・建設副産物</td></tr><tr><td><span lang="ja">実施要項</span></td><td>じっしようこう</td><td>Hướng dẫn thực hiện</td><td>Các điều kiện, cách làm và quy tắc áp dụng cho bài thi thử.</td><td>試験時間・採点</td></tr><tr><td><span lang="ja">工程管理</span></td><td>こうていかんり</td><td>Quản lý tiến độ</td><td>Quản lý trình tự và thời gian thi công.</td><td>現場作業の軽減</td></tr><tr><td><span lang="ja">品質管理</span></td><td>ひんしつかんり</td><td>Quản lý chất lượng</td><td>Quản lý để đạt chất lượng yêu cầu của công trình.</td><td>品質計画</td></tr><tr><td><span lang="ja">建設副産物</span></td><td>けんせつふくさんぶつ</td><td>Sản phẩm phụ xây dựng</td><td>Đối tượng của nhóm đề về hạn chế phát sinh, tái sử dụng và tái sinh sử dụng.</td><td>発生抑制・再使用・再生利用</td></tr><tr><td><span lang="ja">添削</span></td><td>てんさく</td><td>Chấm và sửa bài</td><td>Kiểm tra nội dung bài viết và chỉ ra phần cần chỉnh sửa.</td><td>施工経験記述</td></tr><tr><td><span lang="ja">指定欄</span></td><td>していらん</td><td>Ô/khu vực quy định</td><td>Phạm vi trên phiếu trả lời mà thí sinh được phép viết.</td><td>解答欄</td></tr><tr><td><span lang="ja">技能労働者</span></td><td>ぎのうろうどうしゃ</td><td>Lao động có kỹ năng</td><td>Lao động trực tiếp có kỹ năng nghề phục vụ hoạt động thi công.</td><td>労働者の確保</td></tr><tr><td><span lang="ja">生産性</span></td><td>せいさんせい</td><td>Năng suất</td><td>Chỉ tiêu cần nâng cao khi nguồn lao động giảm.</td><td>働き方改革</td></tr><tr><td><span lang="ja">働き方改革</span></td><td>はたらきかたかいかく</td><td>Cải cách phương thức làm việc</td><td>Các hoạt động cải thiện cách tổ chức và thực hiện công việc.</td><td>生産性</td></tr><tr><td><span lang="ja">現場作業の軽減</span></td><td>げんばさぎょうのけいげん</td><td>Giảm nhẹ công việc tại hiện trường</td><td>Giảm khối lượng hoặc mức độ công việc phải thực hiện trực tiếp tại công trường.</td><td>工程管理</td></tr><tr><td><span lang="ja">統括的な施工の技術的な管理</span></td><td>とうかつてきなせこうのぎじゅつてきなかんり</td><td>Quản lý kỹ thuật tổng hợp về thi công</td><td>Vị trí quản lý được giả định trong đề bài.</td><td>施工経験記述</td></tr><tr><td><span lang="ja">計画変更確認申請</span></td><td>けいかくへんこうかくにんしんせい</td><td>Hồ sơ xin xác nhận thay đổi kế hoạch</td><td>Một trong các nội dung bị đề 工程管理 loại trừ.</td><td>工程管理</td></tr><tr><td><span lang="ja">工種</span></td><td>こうしゅ</td><td>Loại công tác</td><td>Phân loại công việc thi công.</td><td>作業名</td></tr><tr><td><span lang="ja">労働者の確保</span></td><td>ろうどうしゃのかくほ</td><td>Bảo đảm nguồn lao động</td><td>Chủ đề của設問2 trong phần工程管理.</td><td>技能労働者</td></tr><tr><td><span lang="ja">品質計画</span></td><td>ひんしつけいかく</td><td>Kế hoạch chất lượng</td><td>Kế hoạch làm cơ sở để thực hiện các hoạt động quản lý chất lượng.</td><td>品質管理</td></tr><tr><td><span lang="ja">品質管理活動</span></td><td>ひんしつかんりかつどう</td><td>Hoạt động quản lý chất lượng</td><td>Nội dung phải đề xuất 3 phương án trong設問1.</td><td>品質管理項目</td></tr><tr><td><span lang="ja">品質管理項目</span></td><td>ひんしつかんりこうもく</td><td>Hạng mục quản lý chất lượng</td><td>Đối tượng cụ thể được lựa chọn để tập trung kiểm soát.</td><td>要求品質</td></tr><tr><td><span lang="ja">発注者</span></td><td>はっちゅうしゃ</td><td>Chủ đầu tư / bên đặt hàng</td><td>Chủ thể yêu cầu chất lượng công trình.</td><td>設計図書</td></tr><tr><td><span lang="ja">設計図書</span></td><td>せっけいとしょ</td><td>Hồ sơ thiết kế</td><td>Một trong các căn cứ xác định chất lượng được yêu cầu.</td><td>発注者</td></tr><tr><td><span lang="ja">元請負人</span></td><td>もとうけおいにん</td><td>Nhà thầu chính</td><td>Nhà thầu nhận công việc trực tiếp và phối hợp với các nhà thầu phụ.</td><td>下請負人</td></tr><tr><td><span lang="ja">下請負人</span></td><td>したうけおいにん</td><td>Nhà thầu phụ</td><td>Nhà thầu thực hiện phần công việc theo hợp đồng thầu phụ.</td><td>元請負人</td></tr><tr><td><span lang="ja">協力業者</span></td><td>きょうりょくぎょうしゃ</td><td>Đơn vị / nhà thầu hợp tác</td><td>Đối tượng phải được phổ biến và chia sẻ nội dung quản lý chất lượng.</td><td>周知</td></tr><tr><td><span lang="ja">周知</span></td><td>しゅうち</td><td>Phổ biến, thông tin đầy đủ</td><td>Làm cho các bên liên quan biết và hiểu nội dung cần thực hiện.</td><td>確認</td></tr><tr><td><span lang="ja">発生抑制</span></td><td>はっせいよくせい</td><td>Hạn chế phát sinh</td><td>Giảm sản phẩm phụ xây dựng ngay tại nguồn phát sinh.</td><td>再使用・再生利用</td></tr><tr><td><span lang="ja">再使用</span></td><td>さいしよう</td><td>Tái sử dụng</td><td>Sử dụng lại chính vật hoặc vật chứa.</td><td>発生抑制・再生利用</td></tr><tr><td><span lang="ja">再生利用</span></td><td>さいせいりよう</td><td>Tái sinh sử dụng</td><td>Tận dụng vật liệu cũ làm nguồn vật liệu mới.</td><td>発生抑制・再使用</td></tr><tr><td><span lang="ja">副次的効果</span></td><td>ふくじてきこうか</td><td>Hiệu quả phụ trợ</td><td>Hiệu quả bổ sung đạt được ngoài mục tiêu trực tiếp của biện pháp.</td><td>建設副産物対策</td></tr><tr><td><span lang="ja">建設廃棄物</span></td><td>けんせつはいきぶつ</td><td>Chất thải xây dựng</td><td>Đối tượng của設問2 về xử lý thích hợp.</td><td>適正処理</td></tr><tr><td><span lang="ja">適正処理</span></td><td>てきせいしょり</td><td>Xử lý thích hợp</td><td>Thực hiện xử lý theo phương pháp thích hợp.</td><td>建設廃棄物</td></tr><tr><td><span lang="ja">環境保全対策</span></td><td>かんきょうほぜんたいさく</td><td>Biện pháp bảo vệ môi trường</td><td>Khung mục tiêu của設問2 về chất thải xây dựng.</td><td>公衆衛生</td></tr><tr><td><span lang="ja">公衆衛生</span></td><td>こうしゅうえいせい</td><td>Vệ sinh công cộng</td><td>Một trong các mục tiêu được nêu trong đề.</td><td>環境保全</td></tr><tr><td><span lang="ja">工事概要</span></td><td>こうじがいよう</td><td>Tổng quan công trình</td><td>Điều kiện công trình bắt buộc dùng khi xây dựng các câu trả lời.</td><td>Book page 644</td></tr><tr><td><span lang="ja">根切り</span></td><td>ねぎり</td><td>Đào đất móng</td><td>Đào đất tới cao độ phục vụ móng, tầng hầm v.v.</td><td>親杭横矢板工法</td></tr><tr><td><span lang="ja">親杭横矢板工法</span></td><td>おやぐいよこやいたこうほう</td><td>Cọc chủ + ván chắn ngang</td><td>Công pháp chống giữ đất được chỉ định trong tổng quan công trình.</td><td>山留め</td></tr><tr><td><span lang="ja">既製コンクリート杭</span></td><td>きせいコンクリートぐい</td><td>Cọc bê tông đúc sẵn</td><td>Trong công trình này là PHC杭.</td><td>PHC杭</td></tr><tr><td><span lang="ja">ガス圧接継手</span></td><td>ガスあっせつつぎて</td><td>Mối nối hàn áp lực khí</td><td>Phương pháp nối cốt thép chủ cột và dầm trong tổng quan công trình.</td><td>圧接部の膨らみ</td></tr><tr><td><span lang="ja">コンクリート打放し</span></td><td>コンクリートうちはなし</td><td>Bê tông để trần</td><td>Bề mặt bê tông được dùng trực tiếp làm nền/bề mặt kiến trúc.</td><td>外壁仕上げ</td></tr><tr><td><span lang="ja">乾式二重床</span></td><td>かんしきにじゅうゆか</td><td>Sàn kép khô</td><td>Hệ sàn phụ/nâng theo phương pháp khô.</td><td>フローリング</td></tr><tr><td><span lang="ja">シージング石膏ボード</span></td><td>シージングせっこうボード</td><td>Tấm thạch cao sheathing</td><td>Được chỉ định cho tường khu vực nước.</td><td>水廻り</td></tr><tr><td><span lang="ja">アルミスパンドレル</span></td><td></td><td>Tấm spandrel nhôm</td><td>Vật liệu hoàn thiện trần sảnh vào và sảnh chắn gió.</td><td>天井</td></tr><tr><td><span lang="ja">ノンスリップタイル</span></td><td></td><td>Gạch chống trượt</td><td>Hoàn thiện sàn tại khu vực sảnh.</td><td>床</td></tr><tr><td><span lang="ja">機械式継手</span></td><td>きかいしきつぎて</td><td>Mối nối cơ khí</td><td>Phương pháp nối cốt thép bằng cơ cấu/mối nối cơ khí.</td><td>先組み工法</td></tr><tr><td><span lang="ja">先組み工法</span></td><td>さきぐみこうほう</td><td>Công pháp lắp ráp trước</td><td>Lắp ráp một phần cấu kiện/cốt thép trước khi đưa vào vị trí thi công chính.</td><td>機械式継手</td></tr><tr><td><span lang="ja">モルタル充填継手</span></td><td>モルタルじゅうてんつぎて</td><td>Mối nối điền đầy mortar</td><td>Mối nối yêu cầu mortar được điền đầy vào phần nối.</td><td>排出孔</td></tr><tr><td><span lang="ja">排出孔</span></td><td>はいしゅつこう</td><td>Lỗ thoát</td><td>Dùng để xác nhận trạng thái mortar đã điền đầy.</td><td>モルタル充填継手</td></tr><tr><td><span lang="ja">改質アスファルトシート防水トーチ工法</span></td><td>かいしつアスファルトシートぼうすいトーチこうほう</td><td>Chống thấm tấm asphalt cải tiến bằng torch</td><td>Công pháp được chọn trong đáp án mẫu工程管理.</td><td>防水工事</td></tr><tr><td><span lang="ja">増張り</span></td><td>ましばり</td><td>Dán/gia cường bổ sung</td><td>Gia cường thêm tấm tại vị trí cần thiết.</td><td>出隅・入隅</td></tr><tr><td><span lang="ja">重ね幅</span></td><td>かさねはば</td><td>Chiều rộng chồng mí</td><td>Trong đáp án mẫu: 100 mm trở lên.</td><td>防水シート</td></tr><tr><td><span lang="ja">セルフレベリング材</span></td><td></td><td>Vật liệu tự san phẳng</td><td>Tự san nhờ tính chảy và tự trọng.</td><td>左官工事</td></tr><tr><td><span lang="ja">金ごて押さえ</span></td><td>かなごておさえ</td><td>Láng/ép hoàn thiện bằng bay thép</td><td>Công đoạn được giảm bỏ trong phương án mẫu.</td><td>セルフレベリング</td></tr><tr><td><span lang="ja">採暖</span></td><td>さいだん</td><td>Sưởi ấm khu vực thi công</td><td>Dùng để bảo đảm nhiệt độ thi công.</td><td>5℃</td></tr><tr><td><span lang="ja">作業不能日</span></td><td>さぎょうふのうび</td><td>Ngày không thể thi công</td><td>Phải được xét khi thiết lập thời hạn thi công phù hợp.</td><td>工期設定</td></tr><tr><td><span lang="ja">プレキャスト製品</span></td><td>プレキャストせいひん</td><td>Sản phẩm precast</td><td>Ví dụ về công nghệ/sản phẩm giúp giảm lao động tại hiện trường.</td><td>新技術</td></tr><tr><td><span lang="ja">情報共有システム</span></td><td>じょうほうきょうゆうシステム</td><td>Hệ thống chia sẻ thông tin</td><td>Dùng để giảm công việc trao đổi hồ sơ.</td><td>ICT</td></tr><tr><td><span lang="ja">圧縮強度</span></td><td>あっしゅくきょうど</td><td>Cường độ chịu nén</td><td>Hạng mục quản lý chất lượng của bê tông.</td><td>呼び強度</td></tr><tr><td><span lang="ja">呼び強度</span></td><td>よびきょうど</td><td>Cường độ danh định</td><td>Cường độ được chỉ định cho bê tông đặt hàng.</td><td>圧縮強度</td></tr><tr><td><span lang="ja">スランプ</span></td><td></td><td>Độ sụt</td><td>Chỉ tiêu kiểm tra trạng thái bê tông tươi.</td><td>コンクリート</td></tr><tr><td><span lang="ja">空気量</span></td><td>くうきりょう</td><td>Hàm lượng khí</td><td>Chỉ tiêu kiểm tra bê tông tươi trong đáp án.</td><td>コンクリート</td></tr><tr><td><span lang="ja">供試体</span></td><td>きょうしたい</td><td>Mẫu thử</td><td>Mẫu dùng để kiểm tra cường độ bê tông.</td><td>水中養生</td></tr><tr><td><span lang="ja">水中養生</span></td><td>すいちゅうようじょう</td><td>Dưỡng hộ trong nước</td><td>Phương pháp dưỡng hộ mẫu thử được nêu trong đáp án.</td><td>28日</td></tr><tr><td><span lang="ja">圧接部の膨らみ</span></td><td>あっせつぶのふくらみ</td><td>Phần phình của mối nối hàn áp lực</td><td>Hạng mục kiểm tra chất lượng mối nối cốt thép.</td><td>1.4D</td></tr><tr><td><span lang="ja">外観検査</span></td><td>がいかんけんさ</td><td>Kiểm tra ngoại quan</td><td>Kiểm tra hình dạng, kích thước bên ngoài.</td><td>圧接部</td></tr><tr><td><span lang="ja">むくり</span></td><td></td><td>Độ vồng ngược / camber</td><td>Chủ động nâng phần giữa trần để đạt cảm quan nằm ngang.</td><td>L/1000～L/500</td></tr><tr><td><span lang="ja">施工品質管理表</span></td><td>せこうひんしつかんりひょう</td><td>Bảng quản lý chất lượng thi công</td><td>Công cụ dùng để thống nhất nội dung quản lý với đơn vị hợp tác.</td><td>品質管理</td></tr><tr><td><span lang="ja">許容差</span></td><td>きょようさ</td><td>Sai số cho phép</td><td>Khoảng sai lệch được chấp nhận theo tiêu chuẩn quản lý.</td><td>管理基準値</td></tr><tr><td><span lang="ja">型枠工事</span></td><td>かたわくこうじ</td><td>Công tác ván khuôn</td><td>Công tác được chọn cho biện pháp hạn chế phát sinh.</td><td>メタルラス型枠</td></tr><tr><td><span lang="ja">メタルラス型枠</span></td><td>メタルラスかたわく</td><td>Ván khuôn metal lath</td><td>Ván khuôn dạng lưới kim loại được dùng trong đáp án mẫu.</td><td>捨て型枠</td></tr><tr><td><span lang="ja">捨て型枠</span></td><td>すてかたわく</td><td>Ván khuôn để lại</td><td>Ván khuôn không tháo ra sau khi bê tông được thi công.</td><td>メタルラス型枠</td></tr><tr><td><span lang="ja">ハイブリッド缶</span></td><td></td><td>Thùng hybrid</td><td>Loại thùng có khả năng tái sử dụng trong đáp án.</td><td>再使用</td></tr><tr><td><span lang="ja">残余塗膜材</span></td><td>ざんよとまくざい</td><td>Vật liệu phủ còn dư</td><td>Phần vật liệu còn lại trong thùng sau sử dụng.</td><td>ハイブリッド缶</td></tr><tr><td><span lang="ja">既設道路材料</span></td><td>きせつどうろざいりょう</td><td>Vật liệu đường hiện hữu</td><td>Vật liệu được tháo dỡ và tái sinh sử dụng.</td><td>再生利用</td></tr><tr><td><span lang="ja">分別</span></td><td>ぶんべつ</td><td>Phân loại</td><td>Tách vật liệu theo loại để sử dụng/xử lý phù hợp.</td><td>建設副産物</td></tr><tr><td><span lang="ja">飛散</span></td><td>ひさん</td><td>Phát tán</td><td>Chất thải bị gió hoặc tác động khác làm phát tán.</td><td>保管</td></tr><tr><td><span lang="ja">流出</span></td><td>りゅうしゅつ</td><td>Chảy tràn ra ngoài</td><td>Chất thải hoặc chất lỏng thoát khỏi khu vực lưu giữ.</td><td>保管</td></tr><tr><td><span lang="ja">浸透</span></td><td>しんとう</td><td>Thấm</td><td>Thấm vào nền đất hoặc môi trường xung quanh.</td><td>保管</td></tr><tr><td><span lang="ja">囲い</span></td><td>かこい</td><td>Hàng rào/quây chắn</td><td>Kết cấu bao quanh khu vực lưu giữ chất thải.</td><td>構造耐力</td></tr><tr><td><span lang="ja">構造耐力</span></td><td>こうぞうたいりょく</td><td>Khả năng chịu lực kết cấu</td><td>Yêu cầu đối với quây chắn khi chịu tải trọng từ chất thải.</td><td>囲い</td></tr></tbody></table></div>
+  </section>
+
+  <section class="aggregate-section" id="background">
+    <div class="section-head">
+      <h2>Kiến thức nền cần biết</h2>
+    </div>
+    
+<div class="note-box"><strong>1. Cấu trúc trả lời của 工程管理</strong><p>Đề không yêu cầu đơn thuần rút ngắn tiến độ. Chuỗi logic phải là <strong class="kw">công tác → biện pháp giảm công việc tại hiện trường + lý do → chất lượng phải bảo đảm + lưu ý thi công</strong>. Một biện pháp chỉ làm công trình nhanh hơn nhưng không làm giảm công việc tại công trường bị đề loại trừ.</p></div>
+<div class="note-box"><strong>2. Cấu trúc trả lời của 品質管理</strong><p>Mỗi phương án có ba tầng: <strong class="kw">yêu cầu chất lượng + hạng mục quản lý → lý do phải quản lý trọng điểm → nội dung thực hiện để quản lý</strong>. 設問2 chuyển trọng tâm sang <strong class="kw">周知</strong> và <strong class="kw">確認</strong> giữa nhà thầu và đơn vị hợp tác.</p></div>
+<div class="note-box"><strong>3. Cấu trúc trả lời của 建設副産物</strong><p>設問1 tập trung vào <strong class="kw">発生抑制・再使用・再生利用</strong> và yêu cầu nêu riêng <strong class="kw">副次的効果</strong>. 設問2 chuyển sang <strong class="kw">適正処理</strong> của 建設廃棄物 và cấm dùng lại ba nội dung 3R làm câu trả lời.</p></div>
+<div class="note-box"><strong>4. Vai trò của Book page 644</strong><p>工事概要 là điều kiện biên của các câu 施工経験記述. Khi chọn công tác hoặc công pháp để viết, phải dựa trên các công việc thực sự tồn tại trong công trình: PHC杭, 親杭横矢板工法, ガス圧接継手, アスファルト露出断熱防水, 乾式二重床, 軽量鉄骨下地＋石膏ボード v.v. Không chọn công tác không có trong tổng quan.</p></div>
+<div class="note-box"><strong>5. Ba dạng kiểm soát chất lượng trong đáp án mẫu</strong><p><strong class="kw">Bê tông</strong>: quản lý tính năng vật liệu bằng 圧縮強度 và kiểm tra 28 ngày. <strong class="kw">Cốt thép</strong>: quản lý chất lượng mối nối bằng hình dạng 圧接部. <strong class="kw">Trần</strong>: quản lý chất lượng hình học/cảm quan bằng むくり.</p></div>
+
+  </section>
+
+  <section class="aggregate-section" id="memory">
+    <div class="section-head">
+      <h2>Điểm cần nhớ và mẹo nhớ</h2>
+    </div>
+    
+<div class="memory-box"><strong>Cơ cấu điểm chung</strong><p>Mỗi chủ đề 工程管理・品質管理・建設副産物: <strong class="kw">設問1 = 3 phương án × (2 + 3 + 3) = 24 điểm</strong>; <strong class="kw">設問2 = 4 + 4 = 8 điểm</strong>; tổng <strong class="kw">32 điểm</strong>.</p></div>
+<div class="table-wrap "><table><caption>Điểm cần nhớ theo chuỗi nguyên nhân, biện pháp và trị số</caption><thead><tr><th>Nhóm</th><th>Recall cue</th></tr></thead><tbody><tr><td>工程管理</td><td><strong class="kw">鉄筋</strong>: 圧接 → 機械式継手 → bỏ gia nhiệt/làm nguội → xác nhận mortar tại 排出孔</td></tr><tr><td>工程管理</td><td><strong class="kw">防水</strong>: トーチ工法 → 増張り <mark class="critical">200 mm</mark> + 重ね幅 <mark class="critical">≥100 mm</mark></td></tr><tr><td>工程管理</td><td><strong class="kw">左官</strong>: セルフレベリング → bỏ 金ごて押さえ → 気温 <mark class="critical">>5°C</mark> + không thông gió</td></tr><tr><td>品質管理</td><td><strong class="kw">コンクリート</strong>: 圧縮強度 → 水中養生 → <mark class="critical">28 ngày</mark></td></tr><tr><td>品質管理</td><td><strong class="kw">鉄筋圧接部</strong>: 膨らみ → <mark class="critical">≥1,4D</mark></td></tr><tr><td>品質管理</td><td><strong class="kw">天井むくり</strong>: <mark class="critical">L/1000 đến L/500</mark>; L = 4 m → <mark class="critical">4 đến 8 mm</mark></td></tr><tr><td>建設副産物</td><td><strong class="kw">発生抑制</strong>: メタルラス型枠 → スランプ <mark class="critical">≤15 cm</mark></td></tr><tr><td>建設副産物</td><td><strong class="kw">再使用</strong>: ハイブリッド缶 → vật liệu dư làm đóng rắn rồi loại bỏ</td></tr><tr><td>建設副産物</td><td><strong class="kw">再生利用</strong>: 既設道路材料 → 構内舗装 → phân loại khi tháo dỡ</td></tr><tr><td>建設廃棄物</td><td><strong class="kw">囲い</strong> → 飛散・流出・浸透防止 → 構造安全 → ねずみ・害虫防止</td></tr></tbody></table></div>
+<div class="memory-box"><strong>Khung trả lời nhanh</strong><p><strong class="kw">工程管理</strong>: Công tác → giảm việc bằng cách nào → vì sao giảm → chất lượng nào phải giữ → lưu ý thi công. <strong class="kw">品質管理</strong>: Yêu cầu chất lượng → quản lý cái gì → vì sao → thực hiện quản lý thế nào. <strong class="kw">建設副産物</strong>: Phân loại 3R → nội dung + lưu ý → hiệu quả phụ; còn 建設廃棄物 thì chuyển sang phương pháp xử lý thích hợp + nội dung thực hiện + lưu ý.</p></div>
+
+  </section>
+
+</div>
+
+<!-- =======================================================
+     APPROVED COMPONENT LIBRARY
+     Hidden. AI may copy/repeat these components into CONTENT.
+     Do not create a new visual system unless strictly necessary.
+     ======================================================= -->
+<template id="component-library">
+
+  <!-- FIGURE -->
+  <figure class="figure-card">
+    <img src="{{IMAGE_SOURCE}}" alt="{{IMAGE_ALT}}">
+    <figcaption>{{FIGURE_CAPTION}}</figcaption>
+  </figure>
+
+  <!-- MULTIPLE FIGURES -->
+  <div class="figure-grid">
+    <figure class="figure-card">
+      <img src="{{IMAGE_SOURCE_1}}" alt="{{IMAGE_ALT_1}}">
+      <figcaption>{{FIGURE_CAPTION_1}}</figcaption>
+    </figure>
+    <figure class="figure-card">
+      <img src="{{IMAGE_SOURCE_2}}" alt="{{IMAGE_ALT_2}}">
+      <figcaption>{{FIGURE_CAPTION_2}}</figcaption>
+    </figure>
+  </div>
+
+  <!-- TABLE -->
+  <div class="table-wrap">
+    <table>
+      <caption>{{TABLE_CAPTION}}</caption>
+      <thead>
+        <tr><th>{{HEADER_1}}</th><th>{{HEADER_2}}</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong class="kw">{{ROW_SUBJECT}}</strong></td>
+          <td><span class="relation">{{ROW_RECALL_CUE}}</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- NOTE -->
+  <div class="note-box">
+    <strong>{{NOTE_TITLE}}</strong>
+    <p>{{NOTE_CONTENT}}</p>
+  </div>
+
+  <!-- WARNING -->
+  <div class="warning-box">
+    <strong>{{WARNING_TITLE}}</strong>
+    <p>{{WARNING_CONTENT}}</p>
+  </div>
+
+  <!-- MEMORY -->
+  <div class="memory-box">
+    <strong>{{MEMORY_TITLE}}</strong>
+    <p>
+<div class="memory-box"><strong>Cơ cấu điểm chung</strong><p>Mỗi chủ đề 工程管理・品質管理・建設副産物: <strong class="kw">設問1 = 3 phương án × (2 + 3 + 3) = 24 điểm</strong>; <strong class="kw">設問2 = 4 + 4 = 8 điểm</strong>; tổng <strong class="kw">32 điểm</strong>.</p></div>
+<div class="table-wrap "><table><caption>Điểm cần nhớ theo chuỗi nguyên nhân, biện pháp và trị số</caption><thead><tr><th>Nhóm</th><th>Recall cue</th></tr></thead><tbody><tr><td>工程管理</td><td><strong class="kw">鉄筋</strong>: 圧接 → 機械式継手 → bỏ gia nhiệt/làm nguội → xác nhận mortar tại 排出孔</td></tr><tr><td>工程管理</td><td><strong class="kw">防水</strong>: トーチ工法 → 増張り <mark class="critical">200 mm</mark> + 重ね幅 <mark class="critical">≥100 mm</mark></td></tr><tr><td>工程管理</td><td><strong class="kw">左官</strong>: セルフレベリング → bỏ 金ごて押さえ → 気温 <mark class="critical">>5°C</mark> + không thông gió</td></tr><tr><td>品質管理</td><td><strong class="kw">コンクリート</strong>: 圧縮強度 → 水中養生 → <mark class="critical">28 ngày</mark></td></tr><tr><td>品質管理</td><td><strong class="kw">鉄筋圧接部</strong>: 膨らみ → <mark class="critical">≥1,4D</mark></td></tr><tr><td>品質管理</td><td><strong class="kw">天井むくり</strong>: <mark class="critical">L/1000 đến L/500</mark>; L = 4 m → <mark class="critical">4 đến 8 mm</mark></td></tr><tr><td>建設副産物</td><td><strong class="kw">発生抑制</strong>: メタルラス型枠 → スランプ <mark class="critical">≤15 cm</mark></td></tr><tr><td>建設副産物</td><td><strong class="kw">再使用</strong>: ハイブリッド缶 → vật liệu dư làm đóng rắn rồi loại bỏ</td></tr><tr><td>建設副産物</td><td><strong class="kw">再生利用</strong>: 既設道路材料 → 構内舗装 → phân loại khi tháo dỡ</td></tr><tr><td>建設廃棄物</td><td><strong class="kw">囲い</strong> → 飛散・流出・浸透防止 → 構造安全 → ねずみ・害虫防止</td></tr></tbody></table></div>
+<div class="memory-box"><strong>Khung trả lời nhanh</strong><p><strong class="kw">工程管理</strong>: Công tác → giảm việc bằng cách nào → vì sao giảm → chất lượng nào phải giữ → lưu ý thi công. <strong class="kw">品質管理</strong>: Yêu cầu chất lượng → quản lý cái gì → vì sao → thực hiện quản lý thế nào. <strong class="kw">建設副産物</strong>: Phân loại 3R → nội dung + lưu ý → hiệu quả phụ; còn 建設廃棄物 thì chuyển sang phương pháp xử lý thích hợp + nội dung thực hiện + lưu ý.</p></div>
+</p>
+  </div>
+
+  <!-- FORMULA / FLOW -->
+  <div class="formula-box">
+    <div class="formula-line">
+      <span class="flow-node">{{NODE_1}}</span>
+      <span class="flow-arrow">→</span>
+      <span class="flow-node">{{NODE_2}}</span>
+      <span class="flow-arrow">→</span>
+      <span class="flow-node">{{NODE_3}}</span>
+    </div>
+  </div>
+
+</template>
+
+<script>
+(() => {
+  "use strict";
+
+  const root = document.documentElement;
+  const body = document.body;
+
+  const themeToggle = document.getElementById("theme-toggle");
+  const modeToggle = document.getElementById("mode-toggle");
+  const fontDown = document.getElementById("font-down");
+  const fontReset = document.getElementById("font-reset");
+  const fontUp = document.getElementById("font-up");
+
+  const tocToggle = document.getElementById("toc-toggle");
+  const tocClose = document.getElementById("toc-close");
+  const tocOverlay = document.getElementById("toc-overlay");
+  const tocDrawer = document.getElementById("toc-drawer");
+
+  const prevButton = document.getElementById("section-prev");
+  const nextButton = document.getElementById("section-next");
+
+  const FONT_LEVELS = [80, 90, 100, 110, 120, 130, 140];
+
+  function safeGet(key, fallback = null) {
+    try {
+      const value = localStorage.getItem(key);
+      return value === null ? fallback : value;
+    } catch (e) {
+      return fallback;
+    }
+  }
+
+  function safeSet(key, value) {
+    try {
+      localStorage.setItem(key, value);
+    } catch (e) {}
+  }
+
+  /* ---------- Theme ---------- */
+
+  function applyTheme(theme) {
+    const next = theme === "light" ? "light" : "dark";
+    root.dataset.theme = next;
+
+    if (themeToggle) {
+      const dark = next === "dark";
+      themeToggle.textContent = dark ? "☀" : "☾";
+      themeToggle.title = dark ? "Chuyển sang Light" : "Chuyển sang Dark";
+      themeToggle.setAttribute("aria-pressed", String(!dark));
+    }
+
+    safeSet("study-theme", next);
+  }
+
+  const initialTheme =
+    safeGet("study-theme") ||
+    (window.matchMedia &&
+     window.matchMedia("(prefers-color-scheme: dark)").matches
+      ? "dark"
+      : "light");
+
+  applyTheme(initialTheme);
+
+  themeToggle?.addEventListener("click", () => {
+    applyTheme(root.dataset.theme === "dark" ? "light" : "dark");
+  });
+
+  /* ---------- Full / Keywords ---------- */
+
+  function applyMode(mode) {
+    const keywords = mode === "keywords";
+    body.classList.toggle("keyword-focus", keywords);
+
+    if (modeToggle) {
+      modeToggle.textContent = keywords ? "📖" : "🎯";
+      modeToggle.title = keywords ? "Chuyển sang Full" : "Chuyển sang Keywords";
+      modeToggle.setAttribute("aria-pressed", String(keywords));
+    }
+
+    safeSet("study-mode", keywords ? "keywords" : "full");
+  }
+
+  applyMode(safeGet("study-mode", "full"));
+
+  modeToggle?.addEventListener("click", () => {
+    applyMode(body.classList.contains("keyword-focus") ? "full" : "keywords");
+  });
+
+  /* ---------- Font scale ---------- */
+
+  let fontScale = Number(safeGet("study-font-scale", "100"));
+  if (!FONT_LEVELS.includes(fontScale)) {
+    fontScale = 100;
+  }
+
+  function applyFontScale(scale) {
+    fontScale = FONT_LEVELS.includes(scale) ? scale : 100;
+
+    root.style.setProperty(
+      "--base-font-size",
+      `${16 * fontScale / 100}px`
+    );
+
+    if (fontReset) {
+      fontReset.textContent = `${fontScale}%`;
+      fontReset.title =
+        fontScale === 100
+          ? "Cỡ chữ hiện tại 100%"
+          : `Cỡ chữ hiện tại ${fontScale}%, bấm để về 100%`;
+    }
+
+    if (fontDown) {
+      fontDown.disabled = fontScale === FONT_LEVELS[0];
+    }
+
+    if (fontUp) {
+      fontUp.disabled = fontScale === FONT_LEVELS[FONT_LEVELS.length - 1];
+    }
+
+    safeSet("study-font-scale", String(fontScale));
+  }
+
+  applyFontScale(fontScale);
+
+  fontDown?.addEventListener("click", () => {
+    const index = FONT_LEVELS.indexOf(fontScale);
+    if (index > 0) {
+      applyFontScale(FONT_LEVELS[index - 1]);
+    }
+  });
+
+  fontUp?.addEventListener("click", () => {
+    const index = FONT_LEVELS.indexOf(fontScale);
+    if (index >= 0 && index < FONT_LEVELS.length - 1) {
+      applyFontScale(FONT_LEVELS[index + 1]);
+    }
+  });
+
+  fontReset?.addEventListener("click", () => {
+    applyFontScale(100);
+  });
+
+  /* ---------- TOC drawer ---------- */
+
+  function setToc(open) {
+    body.classList.toggle("toc-open", open);
+    tocToggle?.setAttribute("aria-expanded", String(open));
+    tocOverlay?.setAttribute("aria-hidden", String(!open));
+
+    if (open) {
+      requestAnimationFrame(() => tocClose?.focus());
+    }
+  }
+
+  tocToggle?.addEventListener("click", () => {
+    setToc(!body.classList.contains("toc-open"));
+  });
+
+  tocClose?.addEventListener("click", () => setToc(false));
+  tocOverlay?.addEventListener("click", () => setToc(false));
+
+  tocDrawer?.querySelectorAll("a[href^='#']").forEach(link => {
+    link.addEventListener("click", () => setToc(false));
+  });
+
+  document.addEventListener("keydown", event => {
+    if (event.key === "Escape" && body.classList.contains("toc-open")) {
+      setToc(false);
+      tocToggle?.focus();
+    }
+  });
+
+  /* ---------- Back / Next section ---------- */
+
+  const studySections = Array.from(
+    document.querySelectorAll("main .study-section[id]")
+  );
+
+  function currentSectionIndex() {
+    if (!studySections.length) return -1;
+
+    const referenceY = window.scrollY + Math.min(window.innerHeight * 0.32, 220);
+    let index = 0;
+
+    for (let i = 0; i < studySections.length; i++) {
+      if (studySections[i].offsetTop <= referenceY) {
+        index = i;
+      } else {
+        break;
+      }
+    }
+    return index;
+  }
+
+  function updateNavState() {
+    if (!studySections.length) {
+      if (prevButton) prevButton.disabled = true;
+      if (nextButton) nextButton.disabled = true;
+      return;
+    }
+
+    const index = currentSectionIndex();
+    if (prevButton) prevButton.disabled = index <= 0;
+    if (nextButton) nextButton.disabled = index >= studySections.length - 1;
+  }
+
+  function moveSection(delta) {
+    const index = currentSectionIndex();
+    const targetIndex = Math.max(
+      0,
+      Math.min(studySections.length - 1, index + delta)
+    );
+
+    studySections[targetIndex]?.scrollIntoView({
+      behavior: "smooth",
+      block: "start"
+    });
+  }
+
+  prevButton?.addEventListener("click", () => moveSection(-1));
+  nextButton?.addEventListener("click", () => moveSection(1));
+
+  let ticking = false;
+  window.addEventListener("scroll", () => {
+    if (!ticking) {
+      requestAnimationFrame(() => {
+        updateNavState();
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }, { passive: true });
+
+  window.addEventListener("resize", updateNavState);
+  updateNavState();
+})();
+</script>
+
+</body>
+</html>

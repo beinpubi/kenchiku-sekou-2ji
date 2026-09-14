@@ -1,0 +1,1553 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="color-scheme" content="dark light">
+<title>令和元年度 問題6 建築法規 | Book 621-624</title>
+
+<style>
+/* =========================================================
+   FIXED DESIGN TOKENS
+   Do not redesign these values per lesson.
+   ========================================================= */
+
+:root {
+  --font-vi: Arial, Helvetica, sans-serif;
+  --font-ja: "Hiragino Sans", "Yu Gothic", "Yu Gothic UI", Meiryo, sans-serif;
+  --base-font-size: 16px;
+  --content-width: 1320px;
+  --control-size: 38px;
+  --control-gap: 4px;
+}
+
+html[data-theme="dark"] {
+  --bg: #101318;
+  --surface: #171B22;
+  --surface-alt: #1D232C;
+  --text: #E3E7ED;
+  --text-muted: #9DA8B5;
+  --focus-muted: #68717D;
+  --heading: #F4F7FA;
+  --border: #323A46;
+  --link: #7CC4FF;
+  --original-bg: #15181E;
+  --translation-bg: #16202A;
+  --note-bg: #1C2028;
+  --memory-bg: #20231C;
+  --keyword: #74D7FF;
+  --keyword-bg: rgba(75, 190, 255, .10);
+  --critical-bg: #594613;
+  --critical-text: #FFE39A;
+  --trap: #FF8585;
+  --trap-underline: #FF5F5F;
+  --relation-bg: rgba(139, 126, 255, .12);
+  --relation-border: #8F86FF;
+  --shadow: rgba(0, 0, 0, .28);
+  --dock-bg: rgba(23, 27, 34, .94);
+  --overlay: rgba(0, 0, 0, .46);
+}
+
+html[data-theme="light"] {
+  --bg: #F4F6F8;
+  --surface: #FFFFFF;
+  --surface-alt: #EEF1F5;
+  --text: #20242A;
+  --text-muted: #626B77;
+  --focus-muted: #A0A7B0;
+  --heading: #111418;
+  --border: #CCD2DA;
+  --link: #0068B5;
+  --original-bg: #F8FAFC;
+  --translation-bg: #EDF7FC;
+  --note-bg: #F2F4F7;
+  --memory-bg: #F6F7E9;
+  --keyword: #006B9F;
+  --keyword-bg: #E4F4FC;
+  --critical-bg: #FFF0B8;
+  --critical-text: #654900;
+  --trap: #B42318;
+  --trap-underline: #D92D20;
+  --relation-bg: #EEEBFF;
+  --relation-border: #6C5CE7;
+  --shadow: rgba(31, 38, 49, .12);
+  --dock-bg: rgba(255, 255, 255, .94);
+  --overlay: rgba(20, 24, 30, .32);
+}
+
+/* =========================================================
+   BASE
+   ========================================================= */
+
+* { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  font-size: var(--base-font-size);
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-vi);
+  font-size: 1rem;
+  line-height: 1.72;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+:lang(vi) {
+  font-family: var(--font-vi);
+}
+
+:lang(ja) {
+  font-family: var(--font-ja);
+}
+
+a {
+  color: var(--link);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
+a:hover {
+  text-decoration-thickness: 2px;
+}
+
+button {
+  font: inherit;
+}
+
+h1, h2, h3, h4 {
+  color: var(--heading);
+  line-height: 1.35;
+}
+
+h1 {
+  margin: 0 0 .35rem;
+  font-size: clamp(1.75rem, 4vw, 2.7rem);
+}
+
+h2 {
+  margin: 2.5rem 0 1rem;
+  padding-bottom: .42rem;
+  border-bottom: 1px solid var(--border);
+  font-size: clamp(1.42rem, 3vw, 2rem);
+}
+
+h3 {
+  margin: 1.9rem 0 .75rem;
+  font-size: clamp(1.16rem, 2.4vw, 1.5rem);
+}
+
+h4 {
+  margin: 1.2rem 0 .45rem;
+  font-size: 1rem;
+}
+
+p {
+  margin: .58rem 0;
+}
+
+ul, ol {
+  padding-left: 1.45rem;
+}
+
+li {
+  margin: .3rem 0;
+}
+
+[id] {
+  scroll-margin-top: 18px;
+}
+
+/* =========================================================
+   PAGE LAYOUT
+   ========================================================= */
+
+.page-shell {
+  width: min(var(--content-width), calc(100% - 28px));
+  margin: 0 auto;
+  padding: 18px 0 112px;
+}
+
+.hero,
+.toc-card,
+.study-section,
+.aggregate-section {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  box-shadow: 0 8px 28px var(--shadow);
+}
+
+.hero {
+  margin-bottom: 22px;
+  padding: clamp(22px, 3vw, 40px);
+}
+
+.hero-subtitle {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 1.06rem;
+}
+
+.meta-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(195px, 1fr));
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.meta-item {
+  padding: 10px 12px;
+  background: var(--surface-alt);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+
+.meta-label {
+  display: block;
+  margin-bottom: 2px;
+  color: var(--text-muted);
+  font-size: .8rem;
+}
+
+.study-section,
+.aggregate-section {
+  margin: 22px 0;
+  padding: clamp(18px, 2.6vw, 30px);
+}
+
+.section-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 16px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border);
+}
+
+.section-head h2,
+.section-head h3 {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.source-ref {
+  color: var(--text-muted);
+  font-size: .84rem;
+  white-space: nowrap;
+}
+
+.subsection {
+  margin: 26px 0 32px;
+}
+
+.subsection:first-child {
+  margin-top: 0;
+}
+
+.study-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 14px;
+  align-items: start;
+}
+
+.study-card {
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+
+.study-card.original {
+  background: var(--original-bg);
+}
+
+.study-card.translation {
+  background: var(--translation-bg);
+}
+
+.card-title {
+  padding: 9px 13px;
+  background: var(--surface-alt);
+  border-bottom: 1px solid var(--border);
+  color: var(--heading);
+  font-weight: 800;
+  letter-spacing: .02em;
+}
+
+.recall-source {
+  padding: 14px 16px 16px;
+  transition: color .15s ease;
+}
+
+.recall-source > :first-child {
+  margin-top: 0;
+}
+
+.recall-source > :last-child {
+  margin-bottom: 0;
+}
+
+/* =========================================================
+   CONTENT COMPONENTS
+   ========================================================= */
+
+.table-wrap {
+  overflow-x: auto;
+  margin: 12px 0 18px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  -webkit-overflow-scrolling: touch;
+}
+
+table {
+  width: 100%;
+  min-width: 640px;
+  border-collapse: collapse;
+  background: var(--surface);
+}
+
+th,
+td {
+  padding: 9px 11px;
+  border-right: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+  text-align: left;
+}
+
+th:last-child,
+td:last-child {
+  border-right: 0;
+}
+
+tr:last-child td {
+  border-bottom: 0;
+}
+
+th {
+  background: var(--surface-alt);
+  color: var(--heading);
+  font-weight: 800;
+}
+
+caption {
+  padding: 9px 11px;
+  background: var(--surface-alt);
+  color: var(--heading);
+  font-weight: 800;
+  text-align: left;
+  caption-side: top;
+}
+
+.summary-box,
+.note-box,
+.memory-box,
+.warning-box,
+.figure-box,
+.formula-box,
+.comparison-box {
+  margin: 14px 0;
+  padding: 13px 15px;
+  background: var(--note-bg);
+  border: 1px solid var(--border);
+  border-left-width: 4px;
+  border-radius: 10px;
+}
+
+.summary-box,
+.note-box {
+  border-left-color: var(--link);
+}
+
+.memory-box {
+  background: var(--memory-bg);
+  border-left-color: var(--critical-text);
+}
+
+.warning-box {
+  border-left-color: var(--trap);
+}
+
+.figure-box,
+.formula-box,
+.comparison-box {
+  border-left-color: var(--relation-border);
+}
+
+.figure-card {
+  margin: 15px 0 20px;
+  overflow: hidden;
+  background: var(--surface-alt);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+
+.figure-card img {
+  display: block;
+  width: 100%;
+  height: auto;
+  background: #fff;
+}
+
+.figure-card figcaption {
+  padding: 10px 13px 12px;
+  color: var(--text-muted);
+  font-size: .9rem;
+}
+
+.figure-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 12px;
+  margin: 15px 0 20px;
+}
+
+.figure-grid .figure-card {
+  margin: 0;
+}
+
+.item-block {
+  margin-top: 11px;
+  padding-top: 11px;
+  border-top: 1px dashed var(--border);
+}
+
+.item-block:first-child {
+  margin-top: 0;
+  padding-top: 0;
+  border-top: 0;
+}
+
+.item-label {
+  margin-right: .3em;
+  color: var(--heading);
+  font-weight: 800;
+}
+
+.formula-line {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+}
+
+.flow-node {
+  padding: 5px 8px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  font-weight: 700;
+}
+
+.flow-arrow {
+  color: var(--text-muted);
+  font-weight: 800;
+}
+
+/* =========================================================
+   SEMANTIC HIGHLIGHTING
+   ========================================================= */
+
+.kw {
+  padding: .02em .16em;
+  background: var(--keyword-bg);
+  color: var(--keyword);
+  border-radius: .2em;
+  font-weight: 750;
+}
+
+.critical {
+  padding: .04em .22em;
+  background: var(--critical-bg);
+  color: var(--critical-text);
+  border-radius: .22em;
+  font-weight: 750;
+}
+
+.trap {
+  color: var(--trap);
+  font-weight: 700;
+  text-decoration-line: underline;
+  text-decoration-color: var(--trap-underline);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+}
+
+.relation {
+  padding: .02em .14em;
+  background: var(--relation-bg);
+  color: var(--text);
+  border-bottom: 2px solid var(--relation-border);
+  font-weight: 650;
+}
+
+/* Only recall-source is dimmed in Keywords mode. */
+body.keyword-focus .recall-source {
+  color: var(--focus-muted);
+}
+
+body.keyword-focus .recall-source .kw {
+  color: var(--keyword);
+  background: var(--keyword-bg);
+}
+
+body.keyword-focus .recall-source .critical {
+  color: var(--critical-text);
+  background: var(--critical-bg);
+}
+
+body.keyword-focus .recall-source .trap {
+  color: var(--trap);
+}
+
+body.keyword-focus .recall-source .relation {
+  color: var(--text);
+  background: var(--relation-bg);
+}
+
+body.keyword-focus .recall-source th,
+body.keyword-focus .recall-source .item-label {
+  color: var(--heading);
+}
+
+/* =========================================================
+   TOC DRAWER
+   ========================================================= */
+
+.toc-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1990;
+  visibility: hidden;
+  opacity: 0;
+  background: var(--overlay);
+  transition: opacity .18s ease, visibility .18s ease;
+}
+
+.toc-drawer {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 2000;
+  width: min(78vw, 360px);
+  padding: max(14px, env(safe-area-inset-top)) 14px
+           max(18px, env(safe-area-inset-bottom))
+           max(14px, env(safe-area-inset-left));
+  overflow-y: auto;
+  background: var(--surface);
+  border-right: 1px solid var(--border);
+  box-shadow: 14px 0 36px var(--shadow);
+  transform: translateX(-103%);
+  transition: transform .2s ease;
+  -webkit-overflow-scrolling: touch;
+}
+
+body.toc-open .toc-overlay {
+  visibility: visible;
+  opacity: 1;
+}
+
+body.toc-open .toc-drawer {
+  transform: translateX(0);
+}
+
+.toc-drawer-head {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 4px 0 10px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+}
+
+.toc-drawer-head h2 {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 1.2rem;
+}
+
+.toc-close {
+  width: 34px;
+  height: 34px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface-alt);
+  color: var(--text);
+  cursor: pointer;
+}
+
+.toc-list {
+  margin: 12px 0 0;
+  padding-left: 1.2rem;
+}
+
+.toc-list ol {
+  margin-top: 4px;
+}
+
+/* =========================================================
+   COMPACT CONTROLS
+   Left: vertical TOC / Back / Next
+   Right: horizontal display controls
+   ========================================================= */
+
+.nav-dock-left,
+.settings-dock-right {
+  position: fixed;
+  bottom: max(14px, env(safe-area-inset-bottom));
+  z-index: 1900;
+  padding: 5px;
+  background: var(--dock-bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  box-shadow: 0 8px 24px var(--shadow);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  user-select: none;
+}
+
+.nav-dock-left {
+  left: max(10px, env(safe-area-inset-left));
+  display: flex;
+  flex-direction: column;
+  gap: var(--control-gap);
+}
+
+.settings-dock-right {
+  right: max(10px, env(safe-area-inset-right));
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--control-gap);
+}
+
+.nav-dock-left button,
+.settings-dock-right button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--control-size);
+  height: var(--control-size);
+  min-width: var(--control-size);
+  min-height: var(--control-size);
+  padding: 0;
+  background: var(--surface-alt);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-family: var(--font-vi);
+  font-size: .96rem;
+  font-weight: 700;
+  line-height: 1;
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.nav-dock-left button:hover,
+.settings-dock-right button:hover {
+  border-color: var(--link);
+}
+
+.nav-dock-left button:active,
+.settings-dock-right button:active {
+  transform: translateY(1px);
+}
+
+.nav-dock-left button:disabled {
+  opacity: .38;
+  cursor: default;
+}
+
+.settings-dock-right .font-reset {
+  font-size: .66rem;
+  letter-spacing: -.03em;
+}
+
+.settings-dock-right .mode-toggle {
+  font-size: 1.02rem;
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 900px) {
+  .study-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .page-shell {
+    width: min(100% - 18px, 760px);
+  }
+
+  .section-head {
+    display: block;
+  }
+
+  .source-ref {
+    display: block;
+    margin-top: 6px;
+    white-space: normal;
+  }
+}
+
+@media (max-width: 560px) {
+  body {
+    font-size: .96rem;
+  }
+
+  .hero,
+  .study-section,
+  .aggregate-section {
+    border-radius: 12px;
+  }
+
+  .recall-source {
+    padding: 12px 13px 14px;
+  }
+
+  :root {
+    --control-size: 36px;
+  }
+
+  .settings-dock-right {
+    right: max(7px, env(safe-area-inset-right));
+  }
+
+  .nav-dock-left {
+    left: max(7px, env(safe-area-inset-left));
+  }
+}
+
+@media (orientation: landscape) and (pointer: coarse) {
+  .nav-dock-left {
+    left: max(14px, env(safe-area-inset-left));
+  }
+
+  .settings-dock-right {
+    right: max(14px, env(safe-area-inset-right));
+  }
+}
+
+/* =========================================================
+   PRINT
+   ========================================================= */
+
+@media print {
+  html,
+  html[data-theme="dark"],
+  html[data-theme="light"] {
+    --bg: #FFFFFF;
+    --surface: #FFFFFF;
+    --surface-alt: #F1F3F5;
+    --text: #111111;
+    --text-muted: #555555;
+    --heading: #000000;
+    --border: #B8BEC6;
+    --original-bg: #FFFFFF;
+    --translation-bg: #F7FBFD;
+    --note-bg: #F7F7F7;
+    --memory-bg: #FAFAF0;
+    --keyword: #005A86;
+    --keyword-bg: #E4F4FC;
+    --critical-bg: #FFF0B8;
+    --critical-text: #4A3600;
+    --trap: #9E1B12;
+    --trap-underline: #9E1B12;
+    --relation-bg: #F0EDFF;
+    --relation-border: #5B4FD6;
+  }
+
+  body {
+    background: #fff;
+    color: #111;
+    font-size: 11pt;
+  }
+
+  .page-shell {
+    width: 100%;
+    padding: 0;
+  }
+
+  .nav-dock-left,
+  .settings-dock-right,
+  .toc-drawer,
+  .toc-overlay {
+    display: none !important;
+  }
+
+  .hero,
+  .study-card,
+  .summary-box,
+  .note-box,
+  .memory-box,
+  .warning-box,
+  .figure-card {
+    break-inside: avoid;
+  }
+
+  a {
+    color: #000;
+    text-decoration: none;
+  }
+}
+</style>
+
+<script>
+/* Apply saved theme before body paint to reduce flashing. */
+(function () {
+  try {
+    const saved = localStorage.getItem("study-theme");
+    const systemDark = window.matchMedia &&
+      window.matchMedia("(prefers-color-scheme: dark)").matches;
+    document.documentElement.dataset.theme =
+      saved || (systemDark ? "dark" : "light");
+  } catch (e) {
+    document.documentElement.dataset.theme = "dark";
+  }
+
+  try {
+    const savedScale = Number(localStorage.getItem("study-font-scale")) || 100;
+    const clampedScale = Math.max(80, Math.min(140, savedScale));
+    document.documentElement.style.setProperty(
+      "--base-font-size",
+      `${16 * clampedScale / 100}px`
+    );
+  } catch (e) {}
+})();
+</script>
+</head>
+
+<body>
+
+<!-- =======================================================
+     TOC DRAWER
+     Replace only the list contents.
+     ======================================================= -->
+<div class="toc-overlay" id="toc-overlay" aria-hidden="true"></div>
+
+<aside class="toc-drawer" id="toc-drawer" aria-label="Mục lục">
+  <div class="toc-drawer-head">
+    <h2>Mục lục</h2>
+    <button class="toc-close" id="toc-close" type="button" aria-label="Đóng mục lục">×</button>
+  </div>
+
+  <!-- TOC_ITEMS_START -->
+  <ol class="toc-list">
+    <li><a href="#sec-construction-law">1. 建設業法 / Chức trách kỹ sư</a>
+      <ol>
+        <li><a href="#sub-duty-question">Đề bài và đáp án</a></li>
+        <li><a href="#sub-duty-law">Điều 26-4: nội dung cần nhớ</a></li>
+      </ol>
+    </li>
+    <li><a href="#sec-falling-object">2. 建築基準法施行令 / Phòng hộ vật rơi</a>
+      <ol>
+        <li><a href="#sub-falling-question">Đề bài và đáp án</a></li>
+        <li><a href="#sub-falling-law">Điều 136-5: hai ngưỡng chiều cao</a></li>
+        <li><a href="#sub-falling-figure">Giải thích hình minh họa</a></li>
+      </ol>
+    </li>
+    <li><a href="#sec-safety-law">3. 労働安全衛生法 / 特定元方事業者</a>
+      <ol>
+        <li><a href="#sub-safety-question">Đề bài và đáp án</a></li>
+        <li><a href="#sub-safety-measures">Các biện pháp bắt buộc</a></li>
+      </ol>
+    </li>
+    <li><a href="#terms">Thuật ngữ chuyên môn</a></li>
+    <li><a href="#background">Kiến thức nền cần biết</a></li>
+    <li><a href="#memory">Điểm cần nhớ và mẹo nhớ</a></li>
+  </ol>
+  <!-- TOC_ITEMS_END -->
+</aside>
+
+<!-- =======================================================
+     FIXED NAVIGATION CONTROLS
+     Left bottom: vertical.
+     Do not add a Top button.
+     ======================================================= -->
+<nav class="nav-dock-left" aria-label="Điều hướng học tập">
+  <button id="toc-toggle" type="button" aria-label="Mục lục" title="Mục lục"
+          aria-controls="toc-drawer" aria-expanded="false">☰</button>
+  <button id="section-prev" type="button" aria-label="Mục trước" title="Back">‹</button>
+  <button id="section-next" type="button" aria-label="Mục tiếp theo" title="Next">›</button>
+</nav>
+
+<!-- =======================================================
+     FIXED DISPLAY CONTROLS
+     Right bottom: horizontal.
+     ======================================================= -->
+<nav class="settings-dock-right" aria-label="Thiết lập hiển thị">
+  <button id="theme-toggle" type="button" aria-label="Đổi Dark/Light"
+          title="Đổi Dark/Light" aria-pressed="false">☀</button>
+  <button id="mode-toggle" class="mode-toggle" type="button"
+          aria-label="Đổi Full/Keywords" title="Đổi Full/Keywords"
+          aria-pressed="false">🎯</button>
+  <button id="font-reset" class="font-reset" type="button"
+          aria-label="Đặt lại cỡ chữ 100%" title="Đặt lại cỡ chữ 100%">100%</button>
+  <button id="font-down" type="button" aria-label="Giảm cỡ chữ"
+          title="Giảm cỡ chữ">A−</button>
+  <button id="font-up" type="button" aria-label="Tăng cỡ chữ"
+          title="Tăng cỡ chữ">A+</button>
+</nav>
+
+<div class="page-shell">
+
+  <!-- =====================================================
+       DOCUMENT HEADER
+       Replace title/subtitle/meta values only.
+       ===================================================== -->
+  <header class="hero" id="top">
+    <h1>令和元年度 問題6 建築法規 | Book 621-624</h1>
+    <p class="hero-subtitle">1級建築施工管理技術検定 第二次検定 | 建設業法・建築基準法施行令・労働安全衛生法</p>
+
+    <div class="meta-grid">
+      <div class="meta-item">
+        <span class="meta-label">PDF nguồn</span>
+        06h_建築法規_R01_p621-625.pdf
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">File ID</span>
+        F070
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Phạm vi</span>
+        Book page 621-624 / PDF P1-P4
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Chế độ</span>
+        Song ngữ Nhật-Việt / Dark-Light / Full-Keywords / Font 80-140%
+      </div>
+    </div>
+  </header>
+
+  <!-- =====================================================
+       CONTENT_START
+       AI may freely repeat/reorder approved content components.
+       Global CSS/JS/control structure must not be redesigned.
+       ===================================================== -->
+
+  <main id="lesson">
+
+    <section class="study-section" id="sec-construction-law">
+      <div class="section-head">
+        <h2>1. 建設業法 / 主任技術者・監理技術者の職務等</h2>
+        <span class="source-ref">Nguồn: Book page 621-622</span>
+      </div>
+
+      <section class="subsection" id="sub-duty-question">
+        <h3>Đề bài và đáp án</h3>
+        <div class="study-grid">
+          <article class="study-card original">
+            <div class="card-title">原文</div>
+            <div class="recall-source" lang="ja">
+              <p><strong class="kw">設問1　「建設業法」に基づく主任技術者及び監理技術者の職務等</strong></p>
+              <p>「建設業法」に基づく主任技術者及び監理技術者の職務等に関する次の文章において、□に当てはまる語句を記入しなさい。</p>
+              <p>主任技術者及び監理技術者は、工事現場における建設工事を適正に実施するため、当該建設工事の <strong class="kw">① 施工計画</strong> の作成、<strong class="kw">工程管理</strong>、<strong class="kw">品質管理</strong>その他の技術上の管理及び当該建設工事の施工に従事する者の<strong class="kw">技術上の ② 指導監督</strong>の職務を誠実に行わなければならない。</p>
+            </div>
+          </article>
+          <article class="study-card translation">
+            <div class="card-title">Bản dịch tiếng Việt</div>
+            <div class="recall-source" lang="vi">
+              <p><strong class="kw">Câu 1: Chức trách của kỹ sư chủ nhiệm và kỹ sư giám lý theo Luật Kinh doanh Xây dựng</strong></p>
+              <p>Trong đoạn văn sau về chức trách của kỹ sư chủ nhiệm（主任技術者）và kỹ sư giám lý（監理技術者）theo Luật Kinh doanh Xây dựng（建設業法）, hãy điền từ thích hợp vào các ô trống.</p>
+              <p>Kỹ sư chủ nhiệm và kỹ sư giám lý, để thực hiện công trình xây dựng tại công trường một cách phù hợp, phải thực hiện một cách nghiêm túc các chức trách gồm: lập <strong class="kw">① kế hoạch thi công（施工計画）</strong>, <strong class="kw">quản lý tiến độ</strong>, <strong class="kw">quản lý chất lượng</strong>, các công tác quản lý kỹ thuật khác và thực hiện <strong class="kw">② chỉ đạo, giám sát về mặt kỹ thuật（指導監督）</strong> đối với những người tham gia thi công công trình đó.</p>
+            </div>
+          </article>
+        </div>
+        <div class="note-box">
+          <strong>Đáp án</strong>
+          <p>① <strong class="kw">施工計画</strong>　② <strong class="kw">指導監督</strong></p>
+        </div>
+      </section>
+
+      <section class="subsection" id="sub-duty-law">
+        <h3>建設業法第26条の4 / Điều 26-4</h3>
+        <div class="study-grid">
+          <article class="study-card original">
+            <div class="card-title">原文</div>
+            <div class="recall-source" lang="ja">
+              <p><strong class="kw">主任技術者および監理技術者</strong>は、工事現場における建設工事を適正に実施するため、当該建設工事の<strong class="kw">施工計画の作成・工程管理・品質管理・その他の技術上の管理</strong>および当該建設工事の施工に従事する者の<strong class="kw">技術上の指導監督</strong>の職務を、誠実に行わなければならない。</p>
+              <p>工事現場における建設工事の施工に従事する者は、<strong class="kw">主任技術者または監理技術者がその職務として行う指導に従わなければならない</strong>。</p>
+              <p>※関係法令では、一部の法文について、法文そのものを掲載するよりも読みやすさを優先するため、漢字・ひらがなの使用方法や、句読点の位置等を変更しています。</p>
+            </div>
+          </article>
+          <article class="study-card translation">
+            <div class="card-title">Bản dịch tiếng Việt</div>
+            <div class="recall-source" lang="vi">
+              <p><strong class="kw">Kỹ sư chủ nhiệm và kỹ sư giám lý</strong> phải thực hiện một cách nghiêm túc các chức trách gồm <strong class="kw">lập kế hoạch thi công, quản lý tiến độ, quản lý chất lượng và các công tác quản lý kỹ thuật khác</strong>, đồng thời <strong class="kw">chỉ đạo và giám sát về mặt kỹ thuật</strong> đối với những người tham gia thi công, nhằm bảo đảm công trình xây dựng tại công trường được thực hiện một cách phù hợp.</p>
+              <p>Người tham gia thi công công trình xây dựng tại công trường phải <strong class="kw">tuân theo sự chỉ đạo do kỹ sư chủ nhiệm hoặc kỹ sư giám lý thực hiện trong phạm vi chức trách của họ</strong>.</p>
+              <p>Chú thích của sách: đối với một số điều luật liên quan, sách ưu tiên tính dễ đọc và có điều chỉnh cách sử dụng kanji, hiragana và vị trí dấu câu so với nguyên văn pháp luật.</p>
+            </div>
+          </article>
+        </div>
+      </section>
+    </section>
+
+    <section class="study-section" id="sec-falling-object">
+      <div class="section-head">
+        <h2>2. 建築基準法施行令 / 落下物に対する防護</h2>
+        <span class="source-ref">Nguồn: Book page 621, 623</span>
+      </div>
+
+      <section class="subsection" id="sub-falling-question">
+        <h3>Đề bài và đáp án</h3>
+        <div class="study-grid">
+          <article class="study-card original">
+            <div class="card-title">原文</div>
+            <div class="recall-source" lang="ja">
+              <p><strong class="kw">設問2　「建築基準法施行令」に基づく落下物に対する防護</strong></p>
+              <p>建築工事等を行なう場合において、建築のための工事をする部分が<strong class="kw">工事現場の境界線から水平距離</strong>が <mark class="critical">5m以内</mark> で、かつ、<strong class="kw">地盤面から高さ</strong>が <mark class="critical">7m以上</mark> にあるとき、その他はつり、除却、外壁の修繕等に伴う落下物によって工事現場の周辺に危害を生ずるおそれがあるときは、国土交通大臣の定める基準に従って、工事現場の周囲その他危害防止上必要な部分を <strong class="kw">鉄網又は帆布</strong> でおおう等落下物による危害を防止するための措置を講じなければならない。</p>
+            </div>
+          </article>
+          <article class="study-card translation">
+            <div class="card-title">Bản dịch tiếng Việt</div>
+            <div class="recall-source" lang="vi">
+              <p><strong class="kw">Câu 2: Phòng hộ đối với vật rơi theo Nghị định thi hành Luật Tiêu chuẩn Xây dựng</strong></p>
+              <p>Khi thực hiện công trình xây dựng, nếu phần công trình đang thi công nằm trong phạm vi <strong class="kw">khoảng cách ngang tính từ đường ranh giới công trường</strong> <mark class="critical">không quá 5 m</mark> và ở <strong class="kw">độ cao tính từ mặt đất</strong> <mark class="critical">từ 7 m trở lên</mark>, hoặc có nguy cơ vật rơi từ công tác đục phá, tháo dỡ, sửa chữa tường ngoài v.v. gây nguy hại cho khu vực xung quanh công trường, thì phải thực hiện biện pháp phòng ngừa nguy hại do vật rơi, chẳng hạn che phủ các bộ phận cần thiết bằng <strong class="kw">lưới thép hoặc bạt</strong>.</p>
+            </div>
+          </article>
+        </div>
+        <div class="note-box">
+          <strong>Đáp án</strong>
+          <p>③ <mark class="critical">5 m</mark>　④ <strong class="kw">鉄網</strong></p>
+        </div>
+      </section>
+
+      <section class="subsection" id="sub-falling-law">
+        <h3>建築基準法施行令第136条の5 / Hai trường hợp cần phân biệt</h3>
+        <div class="study-grid">
+          <article class="study-card original">
+            <div class="card-title">原文</div>
+            <div class="recall-source" lang="ja">
+              <p>建築工事等において、<strong class="kw">工事現場の境界線からの水平距離</strong>が <mark class="critical">5m以内</mark> で、かつ、<strong class="kw">地盤面からの高さ</strong>が <mark class="critical">3m以上</mark> の場所から、くず・ごみ・その他飛散するおそれのある物を投下する場合においては、<strong class="kw">ダストシュートを用いる等</strong>、当該くず・ごみ等が工事現場の周辺に飛散することを防止するための措置を講じなければならない。</p>
+              <p>建築工事等を行う場合において、建築のための工事をする部分が、<strong class="kw">工事現場の境界線からの水平距離</strong>が <mark class="critical">5m以内</mark> で、かつ、<strong class="kw">地盤面からの高さ</strong>が <mark class="critical">7m以上</mark> にあるときや、はつり・除却・外壁の修繕等に伴う落下物によって工事現場の周辺に危害を生ずるおそれがあるときは、工事現場の周囲・その他危害防止上必要な部分を、<strong class="kw">鉄網または帆布で覆う等</strong>、落下物による危害を防止するための措置を講じなければならない。</p>
+            </div>
+          </article>
+          <article class="study-card translation">
+            <div class="card-title">Bản dịch tiếng Việt</div>
+            <div class="recall-source" lang="vi">
+              <p>Khi chủ động thả phế liệu, rác hoặc vật có nguy cơ phát tán từ vị trí có <strong class="kw">khoảng cách ngang tới ranh giới công trường</strong> <mark class="critical">không quá 5 m</mark> và <strong class="kw">chiều cao so với mặt đất</strong> <mark class="critical">từ 3 m trở lên</mark>, phải <strong class="kw">dùng ống thải rác（ダストシュート）hoặc biện pháp tương đương</strong> để ngăn phát tán ra xung quanh.</p>
+              <p>Khi phần công trình đang thi công có <strong class="kw">khoảng cách ngang tới ranh giới công trường</strong> <mark class="critical">không quá 5 m</mark> và <strong class="kw">chiều cao so với mặt đất</strong> <mark class="critical">từ 7 m trở lên</mark>, hoặc có nguy cơ vật rơi do đục phá, tháo dỡ, sửa chữa tường ngoài v.v., phải <strong class="kw">che bằng lưới thép hoặc bạt</strong> hoặc thực hiện biện pháp tương đương để phòng ngừa nguy hại do vật rơi.</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="subsection" id="sub-falling-figure">
+        <h3>Giải thích hình minh họa trên Book page 623</h3>
+        <div class="table-wrap">
+          <table>
+            <caption>Hai ngưỡng định lượng được đặt cạnh nhau trong hình</caption>
+            <thead>
+              <tr><th>Tình huống</th><th>Khoảng cách ngang tới ranh giới</th><th>Chiều cao</th><th>Biện pháp</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong class="kw">Thả phế liệu, rác</strong></td><td><mark class="critical">≤ 5 m</mark></td><td><mark class="critical">≥ 3 m</mark></td><td><span class="relation">ダストシュート v.v.</span></td></tr>
+              <tr><td><strong class="kw">Nguy cơ vật rơi từ phần công trình</strong></td><td><mark class="critical">≤ 5 m</mark></td><td><mark class="critical">≥ 7 m</mark></td><td><span class="relation">鉄網・帆布 v.v.</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="note-box">
+          <strong>Các ký hiệu khác trong hình</strong>
+          <p>防護棚: sàn/mái phòng hộ; 不燃材料: vật liệu không cháy; 溶接作業: công tác hàn; 仮囲い: hàng rào tạm; chiều cao hàng rào tạm <mark class="critical">1,8 m trở lên</mark>. Hình ghi chú rằng hàng rào tạm được thi công xung quanh toàn bộ công trường.</p>
+        </div>
+      </section>
+    </section>
+
+    <section class="study-section" id="sec-safety-law">
+      <div class="section-head">
+        <h2>3. 労働安全衛生法 / 特定元方事業者等の講ずべき措置</h2>
+        <span class="source-ref">Nguồn: Book page 621, 624</span>
+      </div>
+
+      <section class="subsection" id="sub-safety-question">
+        <h3>Đề bài và đáp án</h3>
+        <div class="study-grid">
+          <article class="study-card original">
+            <div class="card-title">原文</div>
+            <div class="recall-source" lang="ja">
+              <p><strong class="kw">設問3　「労働安全衛生法」に基づく特定元方事業者等の講ずべき措置</strong></p>
+              <p>特定元方事業者は、その労働者及び関係請負人の労働者の作業が<strong class="kw">同一の場所において行われることによって生ずる ⑤ 労働災害</strong>を防止するため、<strong class="kw">⑥ 協議組織の設置及び運営</strong>を行うこと、<strong class="kw">作業間の連絡及び調整</strong>を行うこと、<strong class="kw">作業場所を巡視</strong>すること、関係請負人が行う労働者の安全又は衛生のための教育に関する<strong class="kw">指導及び援助</strong>を行うこと等に関する必要な措置を講じなければならない。</p>
+            </div>
+          </article>
+          <article class="study-card translation">
+            <div class="card-title">Bản dịch tiếng Việt</div>
+            <div class="recall-source" lang="vi">
+              <p><strong class="kw">Câu 3: Các biện pháp mà doanh nghiệp nguyên thầu đặc định phải thực hiện theo Luật An toàn và Sức khỏe Lao động</strong></p>
+              <p>Doanh nghiệp nguyên thầu đặc định phải thực hiện các biện pháp cần thiết nhằm phòng ngừa <strong class="kw">⑤ tai nạn lao động phát sinh do người lao động của doanh nghiệp đó và của các nhà thầu liên quan cùng làm việc tại một địa điểm</strong>, bao gồm <strong class="kw">⑥ thành lập và vận hành tổ chức phối hợp</strong>, <strong class="kw">liên lạc và điều phối giữa các công việc</strong>, <strong class="kw">tuần tra địa điểm làm việc</strong>, và <strong class="kw">chỉ đạo, hỗ trợ hoạt động giáo dục về an toàn hoặc vệ sinh lao động</strong> do các nhà thầu liên quan thực hiện.</p>
+            </div>
+          </article>
+        </div>
+        <div class="note-box">
+          <strong>Đáp án</strong>
+          <p>⑤ <strong class="kw">労働災害</strong>　⑥ <strong class="kw">協議組織</strong></p>
+        </div>
+      </section>
+
+      <section class="subsection" id="sub-safety-measures">
+        <h3>労働安全衛生法第30条 / Các biện pháp cần thực hiện</h3>
+        <div class="study-grid">
+          <article class="study-card original">
+            <div class="card-title">原文</div>
+            <div class="recall-source" lang="ja">
+              <p>特定元方事業者は、その労働者および関係請負人の労働者の作業が同一の場所において行われることによって生ずる<strong class="kw">労働災害を防止するため</strong>、次の事項に関する必要な措置を講じなければならない。</p>
+              <ol>
+                <li><strong class="kw">協議組織の設置および運営</strong>を行うこと。</li>
+                <li><strong class="kw">作業間の連絡および調整</strong>を行うこと。</li>
+                <li><strong class="kw">作業場所を巡視</strong>すること。</li>
+                <li>関係請負人が行う労働者の安全または衛生のための教育に対する<strong class="kw">指導および援助</strong>を行うこと。</li>
+                <li>仕事を行う場所が、仕事ごとに異なることを常態とする業種で、厚生労働省令で定めるものに属する事業を行う特定元方事業者にあっては、<strong class="kw">仕事の工程に関する計画</strong>および<strong class="kw">作業場所における機械・設備等の配置に関する計画</strong>を作成するとともに、当該機械・設備等を使用する作業に関し、関係請負人が労働安全衛生法または労働安全衛生法に基づく命令の規定に基づき講ずべき措置についての<strong class="kw">指導</strong>を行うこと。</li>
+                <li>前各号に掲げるものの他、<strong class="kw">当該労働災害を防止するため必要な事項</strong>。</li>
+              </ol>
+            </div>
+          </article>
+          <article class="study-card translation">
+            <div class="card-title">Bản dịch tiếng Việt</div>
+            <div class="recall-source" lang="vi">
+              <p>Để <strong class="kw">phòng ngừa tai nạn lao động</strong> phát sinh do người lao động của doanh nghiệp nguyên thầu đặc định và người lao động của các nhà thầu liên quan cùng làm việc tại một địa điểm, doanh nghiệp nguyên thầu đặc định phải thực hiện các biện pháp cần thiết sau:</p>
+              <ol>
+                <li><strong class="kw">Thành lập và vận hành tổ chức phối hợp（協議組織）.</strong></li>
+                <li><strong class="kw">Thực hiện liên lạc và điều phối giữa các công việc.</strong></li>
+                <li><strong class="kw">Tuần tra địa điểm làm việc.</strong></li>
+                <li>Thực hiện <strong class="kw">chỉ đạo và hỗ trợ</strong> đối với hoạt động giáo dục về an toàn hoặc vệ sinh lao động do các nhà thầu liên quan tiến hành.</li>
+                <li>Đối với đối tượng thuộc quy định tương ứng, phải lập <strong class="kw">kế hoạch về tiến trình công việc</strong>, lập <strong class="kw">kế hoạch bố trí máy móc, thiết bị v.v. tại địa điểm làm việc</strong>, đồng thời <strong class="kw">thực hiện hướng dẫn</strong> về các biện pháp mà nhà thầu liên quan phải thực hiện theo Luật An toàn và Sức khỏe Lao động hoặc các mệnh lệnh dựa trên luật này.</li>
+                <li>Các <strong class="kw">vấn đề cần thiết khác để phòng ngừa tai nạn lao động đó</strong>.</li>
+              </ol>
+            </div>
+          </article>
+        </div>
+      </section>
+    </section>
+
+  </main>
+  <!-- CONTENT_END -->
+
+  <!-- =====================================================
+       NON-DIMMED STUDY SUPPORT SECTIONS
+       These sections stay normally readable in Keywords mode.
+       ===================================================== -->
+
+  <section class="aggregate-section" id="terms">
+    <div class="section-head">
+      <h2>Thuật ngữ chuyên môn</h2>
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>日本語</th><th>読み方</th><th>Tiếng Việt</th><th>Giải thích</th><th>Liên quan</th></tr></thead>
+        <tbody>
+          <tr><td>主任技術者</td><td>しゅにんぎじゅつしゃ</td><td>Kỹ sư chủ nhiệm</td><td>Chức danh kỹ thuật được nêu trong 建設業法.</td><td>施工計画・工程管理・品質管理</td></tr>
+          <tr><td>監理技術者</td><td>かんりぎじゅつしゃ</td><td>Kỹ sư giám lý</td><td>Chức danh kỹ thuật thực hiện các chức trách quản lý kỹ thuật theo nội dung trang.</td><td>指導監督</td></tr>
+          <tr><td>施工計画</td><td>せこうけいかく</td><td>Kế hoạch thi công</td><td>Một nội dung thuộc chức trách của 主任技術者・監理技術者.</td><td>建設業法第26条の4</td></tr>
+          <tr><td>指導監督</td><td>しどうかんとく</td><td>Chỉ đạo và giám sát</td><td>Chỉ đạo, giám sát về mặt kỹ thuật đối với người tham gia thi công.</td><td>主任技術者・監理技術者</td></tr>
+          <tr><td>落下物</td><td>らっかぶつ</td><td>Vật rơi</td><td>Đối tượng nguy hại cần phòng hộ đối với khu vực xung quanh công trường.</td><td>建築基準法施行令第136条の5</td></tr>
+          <tr><td>鉄網</td><td>てつもう</td><td>Lưới thép</td><td>Vật liệu che chắn được nêu trong biện pháp phòng hộ vật rơi.</td><td>帆布</td></tr>
+          <tr><td>帆布</td><td>はんぷ</td><td>Bạt</td><td>Vật liệu che phủ được nêu cùng với 鉄網.</td><td>落下物に対する防護</td></tr>
+          <tr><td>ダストシュート</td><td>だすとしゅーと</td><td>Ống thải rác</td><td>Dùng khi thả phế liệu, rác từ vị trí có điều kiện chiều cao quy định.</td><td>5m以内・3m以上</td></tr>
+          <tr><td>防護棚</td><td>ぼうごだな</td><td>Sàn/mái phòng hộ</td><td>Bộ phận phòng hộ được thể hiện trong hình minh họa Book page 623.</td><td>落下物</td></tr>
+          <tr><td>仮囲い</td><td>かりがこい</td><td>Hàng rào tạm công trường</td><td>Hình minh họa ghi chiều cao 1,8 m trở lên và bố trí quanh công trường.</td><td>1.8m以上</td></tr>
+          <tr><td>特定元方事業者</td><td>とくていもとかたじぎょうしゃ</td><td>Doanh nghiệp nguyên thầu đặc định</td><td>Chủ thể phải thực hiện các biện pháp phối hợp an toàn được nêu trong trang.</td><td>労働安全衛生法第30条</td></tr>
+          <tr><td>関係請負人</td><td>かんけいうけおいにん</td><td>Nhà thầu liên quan</td><td>Nhà thầu có người lao động cùng tham gia tại địa điểm làm việc.</td><td>特定元方事業者</td></tr>
+          <tr><td>労働災害</td><td>ろうどうさいがい</td><td>Tai nạn lao động</td><td>Đối tượng cần phòng ngừa trong trường hợp nhiều bên cùng làm việc tại một địa điểm.</td><td>混在作業</td></tr>
+          <tr><td>協議組織</td><td>きょうぎそしき</td><td>Tổ chức phối hợp</td><td>Tổ chức phải được thành lập và vận hành theo nội dung trang.</td><td>連絡・調整・巡視</td></tr>
+          <tr><td>巡視</td><td>じゅんし</td><td>Tuần tra</td><td>Kiểm tra trực tiếp địa điểm làm việc.</td><td>労働安全衛生法第30条</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="aggregate-section" id="background">
+    <div class="section-head">
+      <h2>Kiến thức nền cần biết</h2>
+    </div>
+
+    <div class="note-box">
+      <strong>Ba nhóm pháp quy xuất hiện trong Book page 621-624</strong>
+      <p><strong class="kw">建設業法</strong> trong phần này tập trung vào chức trách quản lý kỹ thuật của 主任技術者・監理技術者. <strong class="kw">建築基準法施行令</strong> quy định biện pháp phòng hộ để tránh nguy hại do vật rơi đối với khu vực xung quanh công trường. <strong class="kw">労働安全衛生法</strong> tập trung vào phòng ngừa 労働災害 khi người lao động của nhiều đơn vị cùng làm việc tại một địa điểm.</p>
+    </div>
+    <div class="comparison-box">
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Nhóm</th><th>Đối tượng ghi nhớ chính</th><th>Từ khóa đáp án</th></tr></thead>
+          <tbody>
+            <tr><td>建設業法</td><td>Chức trách kỹ thuật tại công trường</td><td>施工計画 / 指導監督</td></tr>
+            <tr><td>建築基準法施行令</td><td>Phòng hộ vật rơi và điều kiện khoảng cách, chiều cao</td><td>5m / 鉄網</td></tr>
+            <tr><td>労働安全衛生法</td><td>Điều phối an toàn trong công việc hỗn hợp</td><td>労働災害 / 協議組織</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="aggregate-section" id="memory">
+    <div class="section-head">
+      <h2>Điểm cần nhớ và mẹo nhớ</h2>
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <caption>Bộ 6 đáp án của 令和元年度 問題6</caption>
+        <thead><tr><th>Ô</th><th>Đáp án</th><th>Nhóm pháp quy</th></tr></thead>
+        <tbody>
+          <tr><td>①</td><td><strong class="kw">施工計画</strong></td><td>建設業法</td></tr>
+          <tr><td>②</td><td><strong class="kw">指導監督</strong></td><td>建設業法</td></tr>
+          <tr><td>③</td><td><mark class="critical">5 m</mark></td><td>建築基準法施行令</td></tr>
+          <tr><td>④</td><td><strong class="kw">鉄網</strong></td><td>建築基準法施行令</td></tr>
+          <tr><td>⑤</td><td><strong class="kw">労働災害</strong></td><td>労働安全衛生法</td></tr>
+          <tr><td>⑥</td><td><strong class="kw">協議組織</strong></td><td>労働安全衛生法</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="memory-box">
+      <strong>主任技術者・監理技術者</strong>
+      <div class="formula-line">
+        <span class="flow-node">施工計画の作成</span><span class="flow-arrow">→</span>
+        <span class="flow-node">工程管理</span><span class="flow-arrow">→</span>
+        <span class="flow-node">品質管理</span><span class="flow-arrow">→</span>
+        <span class="flow-node">その他の技術上の管理</span><span class="flow-arrow">→</span>
+        <span class="flow-node">技術上の指導監督</span>
+      </div>
+    </div>
+
+    <div class="memory-box">
+      <strong>3 m và 7 m dễ nhầm</strong>
+      <p><strong class="kw">5 m + 3 m</strong>: thả くず・ごみ → <span class="relation">ダストシュート</span>. <strong class="kw">5 m + 7 m</strong>: nguy cơ 落下物 từ phần công trình → <span class="relation">鉄網・帆布</span>. Khoảng cách ngang 5 m giống nhau, nhưng điều kiện chiều cao và biện pháp khác nhau.</p>
+    </div>
+
+    <div class="memory-box">
+      <strong>特定元方事業者: chuỗi biện pháp cốt lõi</strong>
+      <p><span class="relation">協議組織の設置・運営 → 連絡・調整 → 巡視 → 教育への指導・援助</span>. Đối với trường hợp thuộc đối tượng quy định còn có kế hoạch tiến trình công việc, kế hoạch bố trí máy móc・thiết bị và hướng dẫn các biện pháp cần thực hiện.</p>
+    </div>
+  </section>
+
+</div>
+
+<!-- =======================================================
+     APPROVED COMPONENT LIBRARY
+     Hidden. AI may copy/repeat these components into CONTENT.
+     Do not create a new visual system unless strictly necessary.
+     ======================================================= -->
+<template id="component-library">
+
+  <!-- FIGURE -->
+  <figure class="figure-card">
+    <img src="{{IMAGE_SOURCE}}" alt="{{IMAGE_ALT}}">
+    <figcaption>{{FIGURE_CAPTION}}</figcaption>
+  </figure>
+
+  <!-- MULTIPLE FIGURES -->
+  <div class="figure-grid">
+    <figure class="figure-card">
+      <img src="{{IMAGE_SOURCE_1}}" alt="{{IMAGE_ALT_1}}">
+      <figcaption>{{FIGURE_CAPTION_1}}</figcaption>
+    </figure>
+    <figure class="figure-card">
+      <img src="{{IMAGE_SOURCE_2}}" alt="{{IMAGE_ALT_2}}">
+      <figcaption>{{FIGURE_CAPTION_2}}</figcaption>
+    </figure>
+  </div>
+
+  <!-- TABLE -->
+  <div class="table-wrap">
+    <table>
+      <caption>{{TABLE_CAPTION}}</caption>
+      <thead>
+        <tr><th>{{HEADER_1}}</th><th>{{HEADER_2}}</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong class="kw">{{ROW_SUBJECT}}</strong></td>
+          <td><span class="relation">{{ROW_RECALL_CUE}}</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- NOTE -->
+  <div class="note-box">
+    <strong>{{NOTE_TITLE}}</strong>
+    <p>{{NOTE_CONTENT}}</p>
+  </div>
+
+  <!-- WARNING -->
+  <div class="warning-box">
+    <strong>{{WARNING_TITLE}}</strong>
+    <p>{{WARNING_CONTENT}}</p>
+  </div>
+
+  <!-- MEMORY -->
+  <div class="memory-box">
+    <strong>{{MEMORY_TITLE}}</strong>
+    <p>{{MEMORY_CONTENT}}</p>
+  </div>
+
+  <!-- FORMULA / FLOW -->
+  <div class="formula-box">
+    <div class="formula-line">
+      <span class="flow-node">{{NODE_1}}</span>
+      <span class="flow-arrow">→</span>
+      <span class="flow-node">{{NODE_2}}</span>
+      <span class="flow-arrow">→</span>
+      <span class="flow-node">{{NODE_3}}</span>
+    </div>
+  </div>
+
+</template>
+
+<script>
+(() => {
+  "use strict";
+
+  const root = document.documentElement;
+  const body = document.body;
+
+  const themeToggle = document.getElementById("theme-toggle");
+  const modeToggle = document.getElementById("mode-toggle");
+  const fontDown = document.getElementById("font-down");
+  const fontReset = document.getElementById("font-reset");
+  const fontUp = document.getElementById("font-up");
+
+  const tocToggle = document.getElementById("toc-toggle");
+  const tocClose = document.getElementById("toc-close");
+  const tocOverlay = document.getElementById("toc-overlay");
+  const tocDrawer = document.getElementById("toc-drawer");
+
+  const prevButton = document.getElementById("section-prev");
+  const nextButton = document.getElementById("section-next");
+
+  const FONT_LEVELS = [80, 90, 100, 110, 120, 130, 140];
+
+  function safeGet(key, fallback = null) {
+    try {
+      const value = localStorage.getItem(key);
+      return value === null ? fallback : value;
+    } catch (e) {
+      return fallback;
+    }
+  }
+
+  function safeSet(key, value) {
+    try {
+      localStorage.setItem(key, value);
+    } catch (e) {}
+  }
+
+  /* ---------- Theme ---------- */
+
+  function applyTheme(theme) {
+    const next = theme === "light" ? "light" : "dark";
+    root.dataset.theme = next;
+
+    if (themeToggle) {
+      const dark = next === "dark";
+      themeToggle.textContent = dark ? "☀" : "☾";
+      themeToggle.title = dark ? "Chuyển sang Light" : "Chuyển sang Dark";
+      themeToggle.setAttribute("aria-pressed", String(!dark));
+    }
+
+    safeSet("study-theme", next);
+  }
+
+  const initialTheme =
+    safeGet("study-theme") ||
+    (window.matchMedia &&
+     window.matchMedia("(prefers-color-scheme: dark)").matches
+      ? "dark"
+      : "light");
+
+  applyTheme(initialTheme);
+
+  themeToggle?.addEventListener("click", () => {
+    applyTheme(root.dataset.theme === "dark" ? "light" : "dark");
+  });
+
+  /* ---------- Full / Keywords ---------- */
+
+  function applyMode(mode) {
+    const keywords = mode === "keywords";
+    body.classList.toggle("keyword-focus", keywords);
+
+    if (modeToggle) {
+      modeToggle.textContent = keywords ? "📖" : "🎯";
+      modeToggle.title = keywords ? "Chuyển sang Full" : "Chuyển sang Keywords";
+      modeToggle.setAttribute("aria-pressed", String(keywords));
+    }
+
+    safeSet("study-mode", keywords ? "keywords" : "full");
+  }
+
+  applyMode(safeGet("study-mode", "full"));
+
+  modeToggle?.addEventListener("click", () => {
+    applyMode(body.classList.contains("keyword-focus") ? "full" : "keywords");
+  });
+
+  /* ---------- Font scale ---------- */
+
+  let fontScale = Number(safeGet("study-font-scale", "100"));
+  if (!FONT_LEVELS.includes(fontScale)) {
+    fontScale = 100;
+  }
+
+  function applyFontScale(scale) {
+    fontScale = FONT_LEVELS.includes(scale) ? scale : 100;
+
+    root.style.setProperty(
+      "--base-font-size",
+      `${16 * fontScale / 100}px`
+    );
+
+    if (fontReset) {
+      fontReset.textContent = `${fontScale}%`;
+      fontReset.title =
+        fontScale === 100
+          ? "Cỡ chữ hiện tại 100%"
+          : `Cỡ chữ hiện tại ${fontScale}%, bấm để về 100%`;
+    }
+
+    if (fontDown) {
+      fontDown.disabled = fontScale === FONT_LEVELS[0];
+    }
+
+    if (fontUp) {
+      fontUp.disabled = fontScale === FONT_LEVELS[FONT_LEVELS.length - 1];
+    }
+
+    safeSet("study-font-scale", String(fontScale));
+  }
+
+  applyFontScale(fontScale);
+
+  fontDown?.addEventListener("click", () => {
+    const index = FONT_LEVELS.indexOf(fontScale);
+    if (index > 0) {
+      applyFontScale(FONT_LEVELS[index - 1]);
+    }
+  });
+
+  fontUp?.addEventListener("click", () => {
+    const index = FONT_LEVELS.indexOf(fontScale);
+    if (index >= 0 && index < FONT_LEVELS.length - 1) {
+      applyFontScale(FONT_LEVELS[index + 1]);
+    }
+  });
+
+  fontReset?.addEventListener("click", () => {
+    applyFontScale(100);
+  });
+
+  /* ---------- TOC drawer ---------- */
+
+  function setToc(open) {
+    body.classList.toggle("toc-open", open);
+    tocToggle?.setAttribute("aria-expanded", String(open));
+    tocOverlay?.setAttribute("aria-hidden", String(!open));
+
+    if (open) {
+      requestAnimationFrame(() => tocClose?.focus());
+    }
+  }
+
+  tocToggle?.addEventListener("click", () => {
+    setToc(!body.classList.contains("toc-open"));
+  });
+
+  tocClose?.addEventListener("click", () => setToc(false));
+  tocOverlay?.addEventListener("click", () => setToc(false));
+
+  tocDrawer?.querySelectorAll("a[href^='#']").forEach(link => {
+    link.addEventListener("click", () => setToc(false));
+  });
+
+  document.addEventListener("keydown", event => {
+    if (event.key === "Escape" && body.classList.contains("toc-open")) {
+      setToc(false);
+      tocToggle?.focus();
+    }
+  });
+
+  /* ---------- Back / Next section ---------- */
+
+  const studySections = Array.from(
+    document.querySelectorAll("main .study-section[id]")
+  );
+
+  function currentSectionIndex() {
+    if (!studySections.length) return -1;
+
+    const referenceY = window.scrollY + Math.min(window.innerHeight * 0.32, 220);
+    let index = 0;
+
+    for (let i = 0; i < studySections.length; i++) {
+      if (studySections[i].offsetTop <= referenceY) {
+        index = i;
+      } else {
+        break;
+      }
+    }
+    return index;
+  }
+
+  function updateNavState() {
+    if (!studySections.length) {
+      if (prevButton) prevButton.disabled = true;
+      if (nextButton) nextButton.disabled = true;
+      return;
+    }
+
+    const index = currentSectionIndex();
+    if (prevButton) prevButton.disabled = index <= 0;
+    if (nextButton) nextButton.disabled = index >= studySections.length - 1;
+  }
+
+  function moveSection(delta) {
+    const index = currentSectionIndex();
+    const targetIndex = Math.max(
+      0,
+      Math.min(studySections.length - 1, index + delta)
+    );
+
+    studySections[targetIndex]?.scrollIntoView({
+      behavior: "smooth",
+      block: "start"
+    });
+  }
+
+  prevButton?.addEventListener("click", () => moveSection(-1));
+  nextButton?.addEventListener("click", () => moveSection(1));
+
+  let ticking = false;
+  window.addEventListener("scroll", () => {
+    if (!ticking) {
+      requestAnimationFrame(() => {
+        updateNavState();
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }, { passive: true });
+
+  window.addEventListener("resize", updateNavState);
+  updateNavState();
+})();
+</script>
+
+</body>
+</html>

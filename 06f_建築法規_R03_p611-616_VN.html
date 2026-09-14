@@ -1,0 +1,1665 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="color-scheme" content="dark light">
+<title>建築法規｜令和3年度 問題6</title>
+
+<style>
+/* =========================================================
+   FIXED DESIGN TOKENS
+   Do not redesign these values per lesson.
+   ========================================================= */
+
+:root {
+  --font-vi: Arial, Helvetica, sans-serif;
+  --font-ja: "Hiragino Sans", "Yu Gothic", "Yu Gothic UI", Meiryo, sans-serif;
+  --base-font-size: 16px;
+  --content-width: 1320px;
+  --control-size: 38px;
+  --control-gap: 4px;
+}
+
+html[data-theme="dark"] {
+  --bg: #101318;
+  --surface: #171B22;
+  --surface-alt: #1D232C;
+  --text: #E3E7ED;
+  --text-muted: #9DA8B5;
+  --focus-muted: #68717D;
+  --heading: #F4F7FA;
+  --border: #323A46;
+  --link: #7CC4FF;
+  --original-bg: #15181E;
+  --translation-bg: #16202A;
+  --note-bg: #1C2028;
+  --memory-bg: #20231C;
+  --keyword: #74D7FF;
+  --keyword-bg: rgba(75, 190, 255, .10);
+  --critical-bg: #594613;
+  --critical-text: #FFE39A;
+  --trap: #FF8585;
+  --trap-underline: #FF5F5F;
+  --relation-bg: rgba(139, 126, 255, .12);
+  --relation-border: #8F86FF;
+  --shadow: rgba(0, 0, 0, .28);
+  --dock-bg: rgba(23, 27, 34, .94);
+  --overlay: rgba(0, 0, 0, .46);
+}
+
+html[data-theme="light"] {
+  --bg: #F4F6F8;
+  --surface: #FFFFFF;
+  --surface-alt: #EEF1F5;
+  --text: #20242A;
+  --text-muted: #626B77;
+  --focus-muted: #A0A7B0;
+  --heading: #111418;
+  --border: #CCD2DA;
+  --link: #0068B5;
+  --original-bg: #F8FAFC;
+  --translation-bg: #EDF7FC;
+  --note-bg: #F2F4F7;
+  --memory-bg: #F6F7E9;
+  --keyword: #006B9F;
+  --keyword-bg: #E4F4FC;
+  --critical-bg: #FFF0B8;
+  --critical-text: #654900;
+  --trap: #B42318;
+  --trap-underline: #D92D20;
+  --relation-bg: #EEEBFF;
+  --relation-border: #6C5CE7;
+  --shadow: rgba(31, 38, 49, .12);
+  --dock-bg: rgba(255, 255, 255, .94);
+  --overlay: rgba(20, 24, 30, .32);
+}
+
+/* =========================================================
+   BASE
+   ========================================================= */
+
+* { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  font-size: var(--base-font-size);
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-vi);
+  font-size: 1rem;
+  line-height: 1.72;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+:lang(vi) {
+  font-family: var(--font-vi);
+}
+
+:lang(ja) {
+  font-family: var(--font-ja);
+}
+
+a {
+  color: var(--link);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
+a:hover {
+  text-decoration-thickness: 2px;
+}
+
+button {
+  font: inherit;
+}
+
+h1, h2, h3, h4 {
+  color: var(--heading);
+  line-height: 1.35;
+}
+
+h1 {
+  margin: 0 0 .35rem;
+  font-size: clamp(1.75rem, 4vw, 2.7rem);
+}
+
+h2 {
+  margin: 2.5rem 0 1rem;
+  padding-bottom: .42rem;
+  border-bottom: 1px solid var(--border);
+  font-size: clamp(1.42rem, 3vw, 2rem);
+}
+
+h3 {
+  margin: 1.9rem 0 .75rem;
+  font-size: clamp(1.16rem, 2.4vw, 1.5rem);
+}
+
+h4 {
+  margin: 1.2rem 0 .45rem;
+  font-size: 1rem;
+}
+
+p {
+  margin: .58rem 0;
+}
+
+ul, ol {
+  padding-left: 1.45rem;
+}
+
+li {
+  margin: .3rem 0;
+}
+
+[id] {
+  scroll-margin-top: 18px;
+}
+
+/* =========================================================
+   PAGE LAYOUT
+   ========================================================= */
+
+.page-shell {
+  width: min(var(--content-width), calc(100% - 28px));
+  margin: 0 auto;
+  padding: 18px 0 112px;
+}
+
+.hero,
+.toc-card,
+.study-section,
+.aggregate-section {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  box-shadow: 0 8px 28px var(--shadow);
+}
+
+.hero {
+  margin-bottom: 22px;
+  padding: clamp(22px, 3vw, 40px);
+}
+
+.hero-subtitle {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 1.06rem;
+}
+
+.meta-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(195px, 1fr));
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.meta-item {
+  padding: 10px 12px;
+  background: var(--surface-alt);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+
+.meta-label {
+  display: block;
+  margin-bottom: 2px;
+  color: var(--text-muted);
+  font-size: .8rem;
+}
+
+.study-section,
+.aggregate-section {
+  margin: 22px 0;
+  padding: clamp(18px, 2.6vw, 30px);
+}
+
+.section-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 16px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border);
+}
+
+.section-head h2,
+.section-head h3 {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.source-ref {
+  color: var(--text-muted);
+  font-size: .84rem;
+  white-space: nowrap;
+}
+
+.subsection {
+  margin: 26px 0 32px;
+}
+
+.subsection:first-child {
+  margin-top: 0;
+}
+
+.study-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 14px;
+  align-items: start;
+}
+
+.study-card {
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+
+.study-card.original {
+  background: var(--original-bg);
+}
+
+.study-card.translation {
+  background: var(--translation-bg);
+}
+
+.card-title {
+  padding: 9px 13px;
+  background: var(--surface-alt);
+  border-bottom: 1px solid var(--border);
+  color: var(--heading);
+  font-weight: 800;
+  letter-spacing: .02em;
+}
+
+.recall-source {
+  padding: 14px 16px 16px;
+  transition: color .15s ease;
+}
+
+.recall-source > :first-child {
+  margin-top: 0;
+}
+
+.recall-source > :last-child {
+  margin-bottom: 0;
+}
+
+/* =========================================================
+   CONTENT COMPONENTS
+   ========================================================= */
+
+.table-wrap {
+  overflow-x: auto;
+  margin: 12px 0 18px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  -webkit-overflow-scrolling: touch;
+}
+
+table {
+  width: 100%;
+  min-width: 640px;
+  border-collapse: collapse;
+  background: var(--surface);
+}
+
+th,
+td {
+  padding: 9px 11px;
+  border-right: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+  text-align: left;
+}
+
+th:last-child,
+td:last-child {
+  border-right: 0;
+}
+
+tr:last-child td {
+  border-bottom: 0;
+}
+
+th {
+  background: var(--surface-alt);
+  color: var(--heading);
+  font-weight: 800;
+}
+
+caption {
+  padding: 9px 11px;
+  background: var(--surface-alt);
+  color: var(--heading);
+  font-weight: 800;
+  text-align: left;
+  caption-side: top;
+}
+
+.summary-box,
+.note-box,
+.memory-box,
+.warning-box,
+.figure-box,
+.formula-box,
+.comparison-box {
+  margin: 14px 0;
+  padding: 13px 15px;
+  background: var(--note-bg);
+  border: 1px solid var(--border);
+  border-left-width: 4px;
+  border-radius: 10px;
+}
+
+.summary-box,
+.note-box {
+  border-left-color: var(--link);
+}
+
+.memory-box {
+  background: var(--memory-bg);
+  border-left-color: var(--critical-text);
+}
+
+.warning-box {
+  border-left-color: var(--trap);
+}
+
+.figure-box,
+.formula-box,
+.comparison-box {
+  border-left-color: var(--relation-border);
+}
+
+.figure-card {
+  margin: 15px 0 20px;
+  overflow: hidden;
+  background: var(--surface-alt);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+
+.figure-card img {
+  display: block;
+  width: 100%;
+  height: auto;
+  background: #fff;
+}
+
+.figure-card figcaption {
+  padding: 10px 13px 12px;
+  color: var(--text-muted);
+  font-size: .9rem;
+}
+
+.figure-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 12px;
+  margin: 15px 0 20px;
+}
+
+.figure-grid .figure-card {
+  margin: 0;
+}
+
+.item-block {
+  margin-top: 11px;
+  padding-top: 11px;
+  border-top: 1px dashed var(--border);
+}
+
+.item-block:first-child {
+  margin-top: 0;
+  padding-top: 0;
+  border-top: 0;
+}
+
+.item-label {
+  margin-right: .3em;
+  color: var(--heading);
+  font-weight: 800;
+}
+
+.formula-line {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+}
+
+.flow-node {
+  padding: 5px 8px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  font-weight: 700;
+}
+
+.flow-arrow {
+  color: var(--text-muted);
+  font-weight: 800;
+}
+
+/* =========================================================
+   SEMANTIC HIGHLIGHTING
+   ========================================================= */
+
+.kw {
+  padding: .02em .16em;
+  background: var(--keyword-bg);
+  color: var(--keyword);
+  border-radius: .2em;
+  font-weight: 750;
+}
+
+.critical {
+  padding: .04em .22em;
+  background: var(--critical-bg);
+  color: var(--critical-text);
+  border-radius: .22em;
+  font-weight: 750;
+}
+
+.trap {
+  color: var(--trap);
+  font-weight: 700;
+  text-decoration-line: underline;
+  text-decoration-color: var(--trap-underline);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+}
+
+.relation {
+  padding: .02em .14em;
+  background: var(--relation-bg);
+  color: var(--text);
+  border-bottom: 2px solid var(--relation-border);
+  font-weight: 650;
+}
+
+/* Only recall-source is dimmed in Keywords mode. */
+body.keyword-focus .recall-source {
+  color: var(--focus-muted);
+}
+
+body.keyword-focus .recall-source .kw {
+  color: var(--keyword);
+  background: var(--keyword-bg);
+}
+
+body.keyword-focus .recall-source .critical {
+  color: var(--critical-text);
+  background: var(--critical-bg);
+}
+
+body.keyword-focus .recall-source .trap {
+  color: var(--trap);
+}
+
+body.keyword-focus .recall-source .relation {
+  color: var(--text);
+  background: var(--relation-bg);
+}
+
+body.keyword-focus .recall-source th,
+body.keyword-focus .recall-source .item-label {
+  color: var(--heading);
+}
+
+/* =========================================================
+   TOC DRAWER
+   ========================================================= */
+
+.toc-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1990;
+  visibility: hidden;
+  opacity: 0;
+  background: var(--overlay);
+  transition: opacity .18s ease, visibility .18s ease;
+}
+
+.toc-drawer {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 2000;
+  width: min(78vw, 360px);
+  padding: max(14px, env(safe-area-inset-top)) 14px
+           max(18px, env(safe-area-inset-bottom))
+           max(14px, env(safe-area-inset-left));
+  overflow-y: auto;
+  background: var(--surface);
+  border-right: 1px solid var(--border);
+  box-shadow: 14px 0 36px var(--shadow);
+  transform: translateX(-103%);
+  transition: transform .2s ease;
+  -webkit-overflow-scrolling: touch;
+}
+
+body.toc-open .toc-overlay {
+  visibility: visible;
+  opacity: 1;
+}
+
+body.toc-open .toc-drawer {
+  transform: translateX(0);
+}
+
+.toc-drawer-head {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 4px 0 10px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+}
+
+.toc-drawer-head h2 {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 1.2rem;
+}
+
+.toc-close {
+  width: 34px;
+  height: 34px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface-alt);
+  color: var(--text);
+  cursor: pointer;
+}
+
+.toc-list {
+  margin: 12px 0 0;
+  padding-left: 1.2rem;
+}
+
+.toc-list ol {
+  margin-top: 4px;
+}
+
+/* =========================================================
+   COMPACT CONTROLS
+   Left: vertical TOC / Back / Next
+   Right: horizontal display controls
+   ========================================================= */
+
+.nav-dock-left,
+.settings-dock-right {
+  position: fixed;
+  bottom: max(14px, env(safe-area-inset-bottom));
+  z-index: 1900;
+  padding: 5px;
+  background: var(--dock-bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  box-shadow: 0 8px 24px var(--shadow);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  user-select: none;
+}
+
+.nav-dock-left {
+  left: max(10px, env(safe-area-inset-left));
+  display: flex;
+  flex-direction: column;
+  gap: var(--control-gap);
+}
+
+.settings-dock-right {
+  right: max(10px, env(safe-area-inset-right));
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--control-gap);
+}
+
+.nav-dock-left button,
+.settings-dock-right button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--control-size);
+  height: var(--control-size);
+  min-width: var(--control-size);
+  min-height: var(--control-size);
+  padding: 0;
+  background: var(--surface-alt);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-family: var(--font-vi);
+  font-size: .96rem;
+  font-weight: 700;
+  line-height: 1;
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.nav-dock-left button:hover,
+.settings-dock-right button:hover {
+  border-color: var(--link);
+}
+
+.nav-dock-left button:active,
+.settings-dock-right button:active {
+  transform: translateY(1px);
+}
+
+.nav-dock-left button:disabled {
+  opacity: .38;
+  cursor: default;
+}
+
+.settings-dock-right .font-reset {
+  font-size: .66rem;
+  letter-spacing: -.03em;
+}
+
+.settings-dock-right .mode-toggle {
+  font-size: 1.02rem;
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 900px) {
+  .study-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .page-shell {
+    width: min(100% - 18px, 760px);
+  }
+
+  .section-head {
+    display: block;
+  }
+
+  .source-ref {
+    display: block;
+    margin-top: 6px;
+    white-space: normal;
+  }
+}
+
+@media (max-width: 560px) {
+  body {
+    font-size: .96rem;
+  }
+
+  .hero,
+  .study-section,
+  .aggregate-section {
+    border-radius: 12px;
+  }
+
+  .recall-source {
+    padding: 12px 13px 14px;
+  }
+
+  :root {
+    --control-size: 36px;
+  }
+
+  .settings-dock-right {
+    right: max(7px, env(safe-area-inset-right));
+  }
+
+  .nav-dock-left {
+    left: max(7px, env(safe-area-inset-left));
+  }
+}
+
+@media (orientation: landscape) and (pointer: coarse) {
+  .nav-dock-left {
+    left: max(14px, env(safe-area-inset-left));
+  }
+
+  .settings-dock-right {
+    right: max(14px, env(safe-area-inset-right));
+  }
+}
+
+/* =========================================================
+   PRINT
+   ========================================================= */
+
+@media print {
+  html,
+  html[data-theme="dark"],
+  html[data-theme="light"] {
+    --bg: #FFFFFF;
+    --surface: #FFFFFF;
+    --surface-alt: #F1F3F5;
+    --text: #111111;
+    --text-muted: #555555;
+    --heading: #000000;
+    --border: #B8BEC6;
+    --original-bg: #FFFFFF;
+    --translation-bg: #F7FBFD;
+    --note-bg: #F7F7F7;
+    --memory-bg: #FAFAF0;
+    --keyword: #005A86;
+    --keyword-bg: #E4F4FC;
+    --critical-bg: #FFF0B8;
+    --critical-text: #4A3600;
+    --trap: #9E1B12;
+    --trap-underline: #9E1B12;
+    --relation-bg: #F0EDFF;
+    --relation-border: #5B4FD6;
+  }
+
+  body {
+    background: #fff;
+    color: #111;
+    font-size: 11pt;
+  }
+
+  .page-shell {
+    width: 100%;
+    padding: 0;
+  }
+
+  .nav-dock-left,
+  .settings-dock-right,
+  .toc-drawer,
+  .toc-overlay {
+    display: none !important;
+  }
+
+  .hero,
+  .study-card,
+  .summary-box,
+  .note-box,
+  .memory-box,
+  .warning-box,
+  .figure-card {
+    break-inside: avoid;
+  }
+
+  a {
+    color: #000;
+    text-decoration: none;
+  }
+}
+</style>
+
+<script>
+/* Apply saved theme before body paint to reduce flashing. */
+(function () {
+  try {
+    const saved = localStorage.getItem("study-theme");
+    const systemDark = window.matchMedia &&
+      window.matchMedia("(prefers-color-scheme: dark)").matches;
+    document.documentElement.dataset.theme =
+      saved || (systemDark ? "dark" : "light");
+  } catch (e) {
+    document.documentElement.dataset.theme = "dark";
+  }
+
+  try {
+    const savedScale = Number(localStorage.getItem("study-font-scale")) || 100;
+    const clampedScale = Math.max(80, Math.min(140, savedScale));
+    document.documentElement.style.setProperty(
+      "--base-font-size",
+      `${16 * clampedScale / 100}px`
+    );
+  } catch (e) {}
+})();
+</script>
+</head>
+
+<body>
+
+<!-- =======================================================
+     TOC DRAWER
+     Replace only the list contents.
+     ======================================================= -->
+<div class="toc-overlay" id="toc-overlay" aria-hidden="true"></div>
+
+<aside class="toc-drawer" id="toc-drawer" aria-label="Mục lục">
+  <div class="toc-drawer-head">
+    <h2>Mục lục</h2>
+    <button class="toc-close" id="toc-close" type="button" aria-label="Đóng mục lục">×</button>
+  </div>
+
+  <!-- TOC_ITEMS_START -->
+  <ol class="toc-list">
+    <li><a href="#sec-contract">1. 建設業法 - 請負契約とみなす場合</a>
+      <ol>
+        <li><a href="#contract-question">問題・選択肢・解答</a></li>
+        <li><a href="#contract-laws">考え方・解き方／関連法令</a></li>
+      </ol>
+    </li>
+    <li><a href="#sec-erection">2. 建築基準法施行令 - 建て方</a>
+      <ol>
+        <li><a href="#erection-question">問題・選択肢・解答</a></li>
+        <li><a href="#erection-explain">考え方・解き方／参考図の説明</a></li>
+      </ol>
+    </li>
+    <li><a href="#sec-osh">3. 労働安全衛生法 - 元方事業者の措置</a>
+      <ol>
+        <li><a href="#osh-opening">Book 611 冒頭の選択肢</a></li>
+        <li><a href="#osh-question">問題・選択肢・解答</a></li>
+        <li><a href="#osh-laws">考え方・解き方／関連法令</a></li>
+      </ol>
+    </li>
+    <li><a href="#terms">Thuật ngữ chuyên môn</a></li>
+    <li><a href="#background">Kiến thức nền cần biết</a></li>
+    <li><a href="#memory">Điểm cần nhớ và mẹo nhớ</a></li>
+  </ol>
+  <!-- TOC_ITEMS_END -->
+</aside>
+
+<!-- =======================================================
+     FIXED NAVIGATION CONTROLS
+     Left bottom: vertical.
+     Do not add a Top button.
+     ======================================================= -->
+<nav class="nav-dock-left" aria-label="Điều hướng học tập">
+  <button id="toc-toggle" type="button" aria-label="Mục lục" title="Mục lục"
+          aria-controls="toc-drawer" aria-expanded="false">☰</button>
+  <button id="section-prev" type="button" aria-label="Mục trước" title="Back">‹</button>
+  <button id="section-next" type="button" aria-label="Mục tiếp theo" title="Next">›</button>
+</nav>
+
+<!-- =======================================================
+     FIXED DISPLAY CONTROLS
+     Right bottom: horizontal.
+     ======================================================= -->
+<nav class="settings-dock-right" aria-label="Thiết lập hiển thị">
+  <button id="theme-toggle" type="button" aria-label="Đổi Dark/Light"
+          title="Đổi Dark/Light" aria-pressed="false">☀</button>
+  <button id="mode-toggle" class="mode-toggle" type="button"
+          aria-label="Đổi Full/Keywords" title="Đổi Full/Keywords"
+          aria-pressed="false">🎯</button>
+  <button id="font-reset" class="font-reset" type="button"
+          aria-label="Đặt lại cỡ chữ 100%" title="Đặt lại cỡ chữ 100%">100%</button>
+  <button id="font-down" type="button" aria-label="Giảm cỡ chữ"
+          title="Giảm cỡ chữ">A−</button>
+  <button id="font-up" type="button" aria-label="Tăng cỡ chữ"
+          title="Tăng cỡ chữ">A+</button>
+</nav>
+
+<div class="page-shell">
+
+  <!-- =====================================================
+       DOCUMENT HEADER
+       Replace title/subtitle/meta values only.
+       ===================================================== -->
+  <header class="hero" id="top">
+    <h1>建築法規｜令和3年度 問題6</h1>
+    <p class="hero-subtitle">1級建築施工管理技術検定 第二次検定｜Book 611-615</p>
+
+    <div class="meta-grid">
+      <div class="meta-item">
+        <span class="meta-label">PDF nguồn</span>
+        06f_建築法規_R03_p611-616.pdf
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">File ID</span>
+        F068
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Phạm vi</span>
+        Book 611-615 / PDF P1-P5
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Chế độ</span>
+        Song ngữ Nhật-Việt / Dark-Light / Full-Keywords / Font 80-140%
+      </div>
+    </div>
+  </header>
+
+  <!-- =====================================================
+       CONTENT_START
+       AI may freely repeat/reorder approved content components.
+       Global CSS/JS/control structure must not be redesigned.
+       ===================================================== -->
+  <main id="lesson">
+
+    <section class="study-section" id="sec-contract">
+      <div class="section-head">
+        <h2>1. 建設業法 - 請負契約とみなす場合</h2>
+        <span class="source-ref">Nguồn: Book page 611-613</span>
+      </div>
+
+      <section class="subsection" id="contract-question">
+        <h3>問題・選択肢・解答</h3>
+        <div class="study-grid">
+          <article class="study-card original">
+            <div class="card-title">原文</div>
+            <div class="recall-source" lang="ja">
+              <p><strong>令和3年度　問題6　建築法規</strong></p>
+              <p>次の1.から3.の各法文において、□に当てはまる正しい語句を、下の該当する枠内から1つ選びなさい。</p>
+              <p><strong>1. 建設業法（請負契約とみなす場合）</strong></p>
+              <p><strong>第24条</strong><br>
+              委託その他<span class="relation">いかなる <strong class="kw">名義</strong> をもってするかを問わず</span>、<span class="relation"><strong class="kw">報酬</strong> を得て建設工事の完成を目的として締結する契約は、<strong class="kw">建設工事の請負契約</strong>とみなして、この法律の規定を適用する</span>。</p>
+              <div class="item-block"><span class="item-label">①</span>① 業務　② 許可　③ 立場　④ <strong class="kw">名義</strong>　⑤ 資格</div>
+              <div class="item-block"><span class="item-label">②</span>① <strong class="kw">報酬</strong>　② 利益　③ 許可　④ 承認　⑤ 信用</div>
+              <div class="table-wrap">
+                <table>
+                  <caption>令和3年度 問題6 の解答 - 法文1</caption>
+                  <thead><tr><th>空欄</th><th>番号</th><th>正しい語句</th></tr></thead>
+                  <tbody>
+                    <tr><td>①</td><td>④</td><td><strong class="kw">名義</strong></td></tr>
+                    <tr><td>②</td><td>①</td><td><strong class="kw">報酬</strong></td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </article>
+
+          <article class="study-card translation">
+            <div class="card-title">Bản dịch tiếng Việt</div>
+            <div class="recall-source" lang="vi">
+              <p><strong>Năm Reiwa 3, Câu 6: Pháp quy xây dựng</strong></p>
+              <p>Trong từng điều luật từ 1 đến 3 sau đây, chọn một từ đúng để điền vào ô trống từ khung phương án tương ứng bên dưới.</p>
+              <p><strong>1. Luật Ngành Xây dựng: trường hợp được coi là hợp đồng nhận thầu</strong></p>
+              <p><strong>Điều 24</strong><br>
+              Bất kể được gọi là ủy thác hay <span class="relation">dưới bất kỳ <strong class="kw">danh nghĩa</strong> nào</span>, hợp đồng <span class="relation">được giao kết nhằm mục đích hoàn thành công trình xây dựng để nhận <strong class="kw">thù lao</strong> thì được coi là <strong class="kw">hợp đồng nhận thầu xây dựng</strong> và áp dụng các quy định của Luật này</span>.</p>
+              <div class="item-block"><span class="item-label">①</span>1. công việc / nghiệp vụ　2. giấy phép　3. vị thế　4. <strong class="kw">danh nghĩa</strong>　5. tư cách / chứng chỉ</div>
+              <div class="item-block"><span class="item-label">②</span>1. <strong class="kw">thù lao</strong>　2. lợi ích / lợi nhuận　3. giấy phép　4. phê duyệt　5. uy tín / tín nhiệm</div>
+              <div class="table-wrap">
+                <table>
+                  <caption>Đáp án Câu 6 năm Reiwa 3 - Văn bản luật 1</caption>
+                  <thead><tr><th>Ô</th><th>Phương án</th><th>Đáp án</th></tr></thead>
+                  <tbody>
+                    <tr><td>①</td><td>④</td><td><strong class="kw">名義 - danh nghĩa</strong></td></tr>
+                    <tr><td>②</td><td>①</td><td><strong class="kw">報酬 - thù lao</strong></td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="subsection" id="contract-laws">
+        <h3>考え方・解き方／関連法令</h3>
+        <div class="study-grid">
+          <article class="study-card original">
+            <div class="card-title">原文</div>
+            <div class="recall-source" lang="ja">
+              <h4>関係法令　建設業法第1条　建設業法の目的</h4>
+              <p>建設業法は、建設業を営む者の資質の向上・建設工事の請負契約の適正化等を図ることによって、<span class="relation"><strong class="kw">建設工事の適正な施工を確保</strong>し、<strong class="kw">発注者を保護</strong>するとともに、<strong class="kw">建設業の健全な発達を促進</strong></span>し、もって公共の福祉の増進に寄与することを目的とする。</p>
+              <h4>関係法令　建設業法第18条　建設工事の請負契約の原則</h4>
+              <p>建設工事の請負契約の当事者は、<span class="relation"><strong class="kw">各々の対等な立場における合意</strong>に基いて公正な契約を締結し、<strong class="kw">信義に従って誠実に履行</strong></span>しなければならない。</p>
+              <h4>関係法令　建設業法第24条　請負契約とみなす場合</h4>
+              <p>委託・その他<span class="relation"><strong class="kw">いかなる名義</strong>をもってするかを問わず、<strong class="kw">報酬</strong>を得て建設工事の完成を目的として締結する契約は、<strong class="kw">建設工事の請負契約とみなす</strong></span>。</p>
+              <p>※関係法令では、一部の法文について、法文そのものを掲載するよりも読みやすさを優先するため、漢字・ひらがなの使用方法や、句読点の位置等を変更しています。</p>
+            </div>
+          </article>
+          <article class="study-card translation">
+            <div class="card-title">Bản dịch tiếng Việt</div>
+            <div class="recall-source" lang="vi">
+              <h4>Văn bản pháp luật liên quan: Điều 1 Luật Ngành Xây dựng, mục đích của Luật</h4>
+              <p>Luật Ngành Xây dựng nhằm nâng cao năng lực, phẩm chất của người kinh doanh ngành xây dựng và bảo đảm tính thích hợp của hợp đồng nhận thầu xây dựng; qua đó <span class="relation"><strong class="kw">bảo đảm thi công công trình xây dựng một cách thích hợp</strong>, <strong class="kw">bảo vệ bên đặt hàng / chủ đầu tư</strong> và <strong class="kw">thúc đẩy sự phát triển lành mạnh của ngành xây dựng</strong></span>, đồng thời đóng góp vào việc nâng cao phúc lợi công cộng.</p>
+              <h4>Văn bản pháp luật liên quan: Điều 18, nguyên tắc của hợp đồng nhận thầu xây dựng</h4>
+              <p>Các bên của hợp đồng nhận thầu xây dựng phải <span class="relation">ký kết hợp đồng công bằng dựa trên <strong class="kw">sự thỏa thuận giữa các bên ở vị thế bình đẳng</strong> và <strong class="kw">thực hiện hợp đồng một cách trung thực theo nguyên tắc thiện chí</strong></span>.</p>
+              <h4>Văn bản pháp luật liên quan: Điều 24, trường hợp được coi là hợp đồng nhận thầu</h4>
+              <p>Bất kể là ủy thác hay được gọi dưới <span class="relation"><strong class="kw">bất kỳ danh nghĩa nào</strong>, nếu hợp đồng có <strong class="kw">thù lao</strong> và nhằm mục đích hoàn thành công trình xây dựng thì được coi là <strong class="kw">hợp đồng nhận thầu xây dựng</strong></span>.</p>
+              <p><strong>Chú thích của sách:</strong> trong phần pháp luật liên quan, để dễ đọc hơn so với việc chép nguyên văn điều luật, sách có thay đổi một phần cách dùng kanji, hiragana và vị trí dấu câu.</p>
+            </div>
+          </article>
+        </div>
+      </section>
+    </section>
+
+    <section class="study-section" id="sec-erection">
+      <div class="section-head">
+        <h2>2. 建築基準法施行令 - 建て方</h2>
+        <span class="source-ref">Nguồn: Book page 612, 614</span>
+      </div>
+
+      <section class="subsection" id="erection-question">
+        <h3>問題・選択肢・解答</h3>
+        <div class="study-grid">
+          <article class="study-card original">
+            <div class="card-title">原文</div>
+            <div class="recall-source" lang="ja">
+              <p><strong>2. 建築基準法施行令（建て方）</strong></p>
+              <p><strong>第136条の6</strong><br>
+              建築物の建て方を行なうに当たっては、<span class="relation"><strong class="kw">仮筋かいを取り付ける</strong>等、荷重又は外力による<strong class="kw">倒壊を防止</strong></span>するための措置を講じなければならない。</p>
+              <p>2　<span class="relation"><strong class="kw">鉄骨造の建築物の建て方の仮締</strong>は、荷重及び外力に対して<strong class="kw">安全なもの</strong></span>としなければならない。</p>
+              <div class="item-block"><span class="item-label">③</span>① 事故　② 災害　③ 変形　④ 傾倒　⑤ <strong class="kw">倒壊</strong></div>
+              <div class="item-block"><span class="item-label">④</span>① ワイヤロープ　② 仮筋かい　③ <strong class="kw">仮締</strong>　④ 本締　⑤ 手摺</div>
+              <div class="table-wrap">
+                <table>
+                  <caption>令和3年度 問題6 の解答 - 法文2</caption>
+                  <thead><tr><th>空欄</th><th>番号</th><th>正しい語句</th></tr></thead>
+                  <tbody>
+                    <tr><td>③</td><td>⑤</td><td><strong class="kw">倒壊</strong></td></tr>
+                    <tr><td>④</td><td>③</td><td><strong class="kw">仮締</strong></td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </article>
+          <article class="study-card translation">
+            <div class="card-title">Bản dịch tiếng Việt</div>
+            <div class="recall-source" lang="vi">
+              <p><strong>2. Nghị định thi hành Luật Tiêu chuẩn Xây dựng: dựng lắp kết cấu</strong></p>
+              <p><strong>Điều 136-6</strong><br>
+              Khi tiến hành dựng lắp công trình, phải thực hiện các biện pháp như <span class="relation"><strong class="kw">lắp giằng tạm（仮筋かい）</strong> để <strong class="kw">phòng ngừa sụp đổ（倒壊）</strong> do tải trọng hoặc ngoại lực gây ra</span>.</p>
+              <p>2. <span class="relation"><strong class="kw">Việc siết tạm（仮締） trong quá trình dựng lắp công trình kết cấu thép</strong> phải <strong class="kw">bảo đảm an toàn đối với tải trọng và ngoại lực</strong></span>.</p>
+              <div class="item-block"><span class="item-label">③</span>1. sự cố　2. tai họa　3. biến dạng　4. đổ nghiêng　5. <strong class="kw">sụp đổ（倒壊）</strong></div>
+              <div class="item-block"><span class="item-label">④</span>1. cáp thép　2. giằng tạm　3. <strong class="kw">siết tạm（仮締）</strong>　4. siết chính thức　5. lan can</div>
+              <div class="table-wrap">
+                <table>
+                  <caption>Đáp án Câu 6 năm Reiwa 3 - Văn bản luật 2</caption>
+                  <thead><tr><th>Ô</th><th>Phương án</th><th>Đáp án</th></tr></thead>
+                  <tbody>
+                    <tr><td>③</td><td>⑤</td><td><strong class="kw">倒壊 - sụp đổ</strong></td></tr>
+                    <tr><td>④</td><td>③</td><td><strong class="kw">仮締 - siết tạm</strong></td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="subsection" id="erection-explain">
+        <h3>考え方・解き方／参考図の説明</h3>
+        <div class="study-grid">
+          <article class="study-card original">
+            <div class="card-title">原文</div>
+            <div class="recall-source" lang="ja">
+              <h4>関係法令　建築基準法施行令第136条の6　建て方</h4>
+              <p>① 建築物の建て方を行うに当たっては、<span class="relation"><strong class="kw">仮筋かいを取り付ける</strong>等、荷重又は外力による<strong class="kw">倒壊を防止</strong></span>するための措置を講じなければならない。</p>
+              <p>② <span class="relation"><strong class="kw">鉄骨造の建築物の建て方の仮締</strong>は、荷重及び外力に対して<strong class="kw">安全なもの</strong></span>としなければならない。</p>
+              <h4>参考</h4>
+              <p><strong class="kw">建て方</strong>とは、工事現場で建築物の主要部材を組み立てることをいう。</p>
+              <p><strong>木造の建築物の建て方の例</strong><br>本筋かい、木梁、仮筋かい、木柱。</p>
+              <p>※本筋かいの施工が完了するまで、<span class="relation"><strong class="kw">荷重や外力で梁や柱が倒壊しないよう、仮筋かいを入れておく</strong></span>。</p>
+              <p><strong>鉄骨造の建築物の建て方の例</strong><br>鉄骨柱、溶接部、仮設鋼板。</p>
+              <p>※鉄骨柱の仮締では、荷重及び外力に対して安全なものとするため、<span class="relation"><strong class="kw">全数高力ボルトを使用して締め付ける</strong></span>。</p>
+            </div>
+          </article>
+          <article class="study-card translation">
+            <div class="card-title">Bản dịch tiếng Việt</div>
+            <div class="recall-source" lang="vi">
+              <h4>Văn bản pháp luật liên quan: Điều 136-6 - Dựng lắp kết cấu</h4>
+              <p>① Khi tiến hành dựng lắp công trình, phải thực hiện các biện pháp như <span class="relation"><strong class="kw">lắp giằng tạm</strong> để <strong class="kw">phòng ngừa sụp đổ</strong> do tải trọng hoặc ngoại lực gây ra</span>.</p>
+              <p>② <span class="relation"><strong class="kw">Việc siết tạm khi dựng lắp công trình kết cấu thép</strong> phải <strong class="kw">bảo đảm an toàn đối với tải trọng và ngoại lực</strong></span>.</p>
+              <h4>Tham khảo</h4>
+              <p><strong class="kw">建て方</strong> là công việc <strong class="kw">lắp dựng các cấu kiện chính của công trình tại công trường</strong>.</p>
+              <p><strong>Ví dụ đối với công trình gỗ</strong><br>Hình thể hiện cột gỗ（木柱）, dầm gỗ（木梁）, giằng chính / giằng vĩnh viễn（本筋かい）và giằng tạm（仮筋かい）.</p>
+              <p>Cho đến khi thi công xong giằng chính, <span class="relation"><strong class="kw">phải bố trí giằng tạm để dầm và cột không bị sụp đổ do tải trọng hoặc ngoại lực</strong></span>.</p>
+              <p><strong>Ví dụ đối với công trình kết cấu thép</strong><br>Hình thể hiện cột thép（鉄骨柱）, phần liên kết hàn（溶接部）và tấm thép tạm（仮設鋼板）.</p>
+              <p>Theo nội dung sách, khi siết tạm cột thép, để bảo đảm an toàn đối với tải trọng và ngoại lực, <span class="relation"><strong class="kw">sử dụng toàn bộ bu lông cường độ cao（高力ボルト）để siết</strong></span>.</p>
+            </div>
+          </article>
+        </div>
+        <div class="figure-box">
+          <strong>Giải thích hình ở Book page 614</strong>
+          <p>Hình kết cấu gỗ thể hiện vai trò ổn định tạm thời của <strong>仮筋かい</strong> trước khi <strong>本筋かい</strong> hoàn thành. Hình kết cấu thép minh họa trạng thái dựng lắp và liên kết tạm; trọng tâm là ngay cả ở giai đoạn <strong>仮締</strong>, hệ kết cấu vẫn phải an toàn đối với tải trọng và ngoại lực.</p>
+        </div>
+      </section>
+    </section>
+
+    <section class="study-section" id="sec-osh">
+      <div class="section-head">
+        <h2>3. 労働安全衛生法 - 元方事業者の講ずべき措置等</h2>
+        <span class="source-ref">Nguồn: Book page 611-612, 615</span>
+      </div>
+
+      <section class="subsection" id="osh-opening">
+        <h3>Book 611 冒頭の選択肢</h3>
+        <div class="study-grid">
+          <article class="study-card original">
+            <div class="card-title">原文</div>
+            <div class="recall-source" lang="ja">
+              <p><strong>⑤</strong><br>① 破損　② 損壊　③ <strong class="kw">危険</strong>　④ 労働災害　⑤ 事故</p>
+              <p><strong>⑥</strong><br>① 教育　② <strong class="kw">技術</strong>　③ 施工　④ 作業　⑤ 安全</p>
+              <p><span class="relation"><strong class="kw">危険を防止するための措置</strong>が適正に講ぜられるように、<strong class="kw">技術上の指導</strong>その他の必要な措置を講じなければならない</span>。</p>
+            </div>
+          </article>
+          <article class="study-card translation">
+            <div class="card-title">Bản dịch tiếng Việt</div>
+            <div class="recall-source" lang="vi">
+              <p><strong>Ô ⑤</strong><br>1. hư hỏng　2. hư hại / phá hỏng　3. <strong class="kw">nguy hiểm（危険）</strong>　4. tai nạn lao động　5. sự cố / tai nạn</p>
+              <p><strong>Ô ⑥</strong><br>1. giáo dục　2. <strong class="kw">kỹ thuật（技術）</strong>　3. thi công　4. công việc / thao tác　5. an toàn</p>
+              <p><span class="relation">Phải thực hiện <strong class="kw">hướng dẫn về kỹ thuật（技術上の指導）</strong> và các biện pháp cần thiết khác để các <strong class="kw">biện pháp phòng ngừa nguy hiểm（危険）</strong> được thực hiện một cách thích hợp</span>.</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="subsection" id="osh-question">
+        <h3>問題・選択肢・解答</h3>
+        <div class="study-grid">
+          <article class="study-card original">
+            <div class="card-title">原文</div>
+            <div class="recall-source" lang="ja">
+              <p><strong>3. 労働安全衛生法（元方事業者の講ずべき措置等）</strong></p>
+              <p><strong>第29条</strong><br>
+              元方事業者は、関係請負人及び関係請負人の労働者が、当該仕事に関し、この法律又はこれに基づく命令の規定に<span class="relation">違反しないよう必要な <strong class="kw">指導</strong> を行わなければならない</span>。</p>
+              <p>2　元方事業者は、関係請負人又は関係請負人の労働者が、当該仕事に関し、この法律又はこれに基づく命令の規定に<span class="relation">違反していると認めるときは、<strong class="kw">是正</strong>のため必要な指示を行わなければならない</span>。</p>
+              <p>3　（略）</p>
+              <div class="item-block"><span class="item-label">⑤</span>① 説明　② 教育　③ <strong class="kw">指導</strong>　④ 注意喚起　⑤ 契約</div>
+              <div class="item-block"><span class="item-label">⑥</span>① 衛生　② <strong class="kw">是正</strong>　③ 改善　④ 安全　⑤ 健康</div>
+              <div class="table-wrap">
+                <table>
+                  <caption>令和3年度 問題6 の解答 - 法文3</caption>
+                  <thead><tr><th>空欄</th><th>番号</th><th>正しい語句</th></tr></thead>
+                  <tbody>
+                    <tr><td>⑤</td><td>③</td><td><strong class="kw">指導</strong></td></tr>
+                    <tr><td>⑥</td><td>②</td><td><strong class="kw">是正</strong></td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </article>
+          <article class="study-card translation">
+            <div class="card-title">Bản dịch tiếng Việt</div>
+            <div class="recall-source" lang="vi">
+              <p><strong>3. Luật An toàn và Sức khỏe Lao động: các biện pháp doanh nghiệp chủ thầu phải thực hiện</strong></p>
+              <p><strong>Điều 29</strong><br>
+              Doanh nghiệp chủ thầu phải thực hiện <span class="relation"><strong class="kw">hướng dẫn cần thiết（指導）</strong> để nhà thầu liên quan và người lao động của nhà thầu liên quan <strong class="kw">không vi phạm</strong> Luật này hoặc các mệnh lệnh được ban hành dựa trên Luật này</span> trong công việc tương ứng.</p>
+              <p>2. Khi doanh nghiệp chủ thầu nhận thấy nhà thầu liên quan hoặc người lao động của nhà thầu liên quan <span class="relation"><strong class="kw">đang vi phạm</strong> Luật này hoặc các mệnh lệnh được ban hành dựa trên Luật này, phải đưa ra <strong class="kw">chỉ thị cần thiết để khắc phục（是正）</strong></span>.</p>
+              <p>3. (Lược)</p>
+              <div class="item-block"><span class="item-label">⑤</span>1. giải thích　2. giáo dục　3. <strong class="kw">hướng dẫn / chỉ đạo（指導）</strong>　4. nhắc nhở, cảnh báo chú ý　5. hợp đồng</div>
+              <div class="item-block"><span class="item-label">⑥</span>1. vệ sinh　2. <strong class="kw">khắc phục（是正）</strong>　3. cải tiến　4. an toàn　5. sức khỏe</div>
+              <div class="table-wrap">
+                <table>
+                  <caption>Đáp án Câu 6 năm Reiwa 3 - Văn bản luật 3</caption>
+                  <thead><tr><th>Ô</th><th>Phương án</th><th>Đáp án</th></tr></thead>
+                  <tbody>
+                    <tr><td>⑤</td><td>③</td><td><strong class="kw">指導 - hướng dẫn / chỉ đạo</strong></td></tr>
+                    <tr><td>⑥</td><td>②</td><td><strong class="kw">是正 - khắc phục</strong></td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="subsection" id="osh-laws">
+        <h3>考え方・解き方／関連法令</h3>
+        <div class="study-grid">
+          <article class="study-card original">
+            <div class="card-title">原文</div>
+            <div class="recall-source" lang="ja">
+              <h4>関係法令　労働安全衛生法第29条　元方事業者の講ずべき措置等</h4>
+              <p>① 元方事業者は、関係請負人及び関係請負人の労働者が、当該仕事に関し、労働安全衛生法又は労働安全衛生法に基づく命令の規定に<span class="relation">違反しないよう、必要な <strong class="kw">指導</strong> を行わなければならない</span>。</p>
+              <p>② 元方事業者は、関係請負人又は関係請負人の労働者が、当該仕事に関し、労働安全衛生法又は労働安全衛生法に基づく命令の規定に<span class="relation">違反していると認めるときは、<strong class="kw">是正</strong>のため必要な指示を行わなければならない</span>。</p>
+              <p>③ 前項の指示を受けた関係請負人又はその労働者は、<span class="relation"><strong class="kw">当該指示に従わなければならない</strong></span>。</p>
+              <h4>関係法令　労働安全衛生法第29条の2　建設業の元方事業者の講ずべき措置等</h4>
+              <p>建設業に属する事業の元方事業者は、土砂等が崩壊するおそれのある場所・機械等が転倒するおそれのある場所・その他の厚生労働省令で定める場所において、関係請負人の労働者が当該事業の仕事の作業を行うときは、<span class="relation">当該関係請負人が講ずべき当該場所に係る<strong class="kw">危険を防止するための措置</strong>が適正に講ぜられるように、<strong class="kw">技術上の指導</strong>・その他の必要な措置を講じなければならない</span>。</p>
+            </div>
+          </article>
+          <article class="study-card translation">
+            <div class="card-title">Bản dịch tiếng Việt</div>
+            <div class="recall-source" lang="vi">
+              <h4>Văn bản pháp luật liên quan: Điều 29 Luật An toàn và Sức khỏe Lao động</h4>
+              <p>① Doanh nghiệp chủ thầu phải thực hiện <span class="relation"><strong class="kw">hướng dẫn cần thiết（指導）</strong> để nhà thầu liên quan và người lao động của họ <strong class="kw">không vi phạm</strong> Luật An toàn và Sức khỏe Lao động hoặc các quy định của mệnh lệnh ban hành dựa trên luật này</span>.</p>
+              <p>② Khi nhận thấy nhà thầu liên quan hoặc người lao động của họ <span class="relation"><strong class="kw">đang vi phạm</strong>, doanh nghiệp chủ thầu phải đưa ra <strong class="kw">chỉ thị cần thiết để khắc phục（是正）</strong></span>.</p>
+              <p>③ Nhà thầu liên quan hoặc người lao động đã nhận chỉ thị trên <span class="relation"><strong class="kw">phải tuân theo chỉ thị đó</strong></span>.</p>
+              <h4>Văn bản pháp luật liên quan: Điều 29-2, nghĩa vụ của doanh nghiệp chủ thầu trong ngành xây dựng</h4>
+              <p>Khi người lao động của nhà thầu liên quan làm việc tại nơi có nguy cơ đất, cát sụp đổ, nơi có nguy cơ máy móc bị lật hoặc các địa điểm khác được pháp lệnh quy định, doanh nghiệp chủ thầu phải <span class="relation"><strong class="kw">thực hiện hướng dẫn về kỹ thuật（技術上の指導）</strong> và các biện pháp cần thiết khác để <strong class="kw">các biện pháp phòng ngừa nguy hiểm（危険）</strong> mà nhà thầu liên quan phải thực hiện được thực hiện một cách thích hợp</span>.</p>
+            </div>
+          </article>
+        </div>
+      </section>
+    </section>
+
+  </main>
+  <!-- CONTENT_END -->
+
+  <!-- =====================================================
+       NON-DIMMED STUDY SUPPORT SECTIONS
+       These sections stay normally readable in Keywords mode.
+       ===================================================== -->
+
+  <section class="aggregate-section" id="terms">
+    <div class="section-head">
+      <h2>Thuật ngữ chuyên môn</h2>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <caption>Thuật ngữ tổng hợp - Book 611-615</caption>
+        <thead>
+          <tr><th>日本語</th><th>読み方</th><th>Tiếng Việt</th><th>Giải thích</th><th>Liên quan</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>建設業法</td><td>けんせつぎょうほう</td><td>Luật Ngành Xây dựng</td><td>Luật điều chỉnh hoạt động kinh doanh xây dựng và hợp đồng xây dựng.</td><td>請負契約, 発注者</td></tr>
+          <tr><td>請負契約</td><td>うけおいけいやく</td><td>hợp đồng nhận thầu</td><td>Hợp đồng nhằm hoàn thành một công việc để đổi lấy thù lao.</td><td>名義, 報酬</td></tr>
+          <tr><td>名義</td><td>めいぎ</td><td>danh nghĩa, tên gọi pháp lý</td><td>Tên hoặc hình thức được dùng để gọi một giao dịch.</td><td>建設業法第24条</td></tr>
+          <tr><td>報酬</td><td>ほうしゅう</td><td>thù lao</td><td>Khoản lợi ích được nhận để đổi lấy việc hoàn thành công việc.</td><td>請負契約</td></tr>
+          <tr><td>発注者</td><td>はっちゅうしゃ</td><td>bên đặt hàng / chủ đầu tư</td><td>Chủ thể đặt công việc xây dựng.</td><td>建設業法第1条</td></tr>
+          <tr><td>対等な立場</td><td>たいとうなたちば</td><td>vị thế bình đẳng</td><td>Nguyên tắc pháp lý giữa các bên của hợp đồng.</td><td>建設業法第18条</td></tr>
+          <tr><td>信義</td><td>しんぎ</td><td>thiện chí, tín nghĩa</td><td>Yêu cầu các bên thực hiện nghĩa vụ một cách trung thực, thiện chí.</td><td>誠実に履行</td></tr>
+          <tr><td>建て方</td><td>たてかた</td><td>dựng lắp kết cấu</td><td>Lắp dựng các cấu kiện chính của công trình tại công trường.</td><td>仮筋かい, 仮締</td></tr>
+          <tr><td>仮筋かい</td><td>かりすじかい</td><td>giằng tạm</td><td>Giữ ổn định tạm thời cho khung trong giai đoạn thi công.</td><td>倒壊防止</td></tr>
+          <tr><td>本筋かい</td><td>ほんすじかい</td><td>giằng chính</td><td>Giằng thuộc hệ kết cấu hoàn chỉnh.</td><td>仮筋かい</td></tr>
+          <tr><td>倒壊</td><td>とうかい</td><td>sụp đổ</td><td>Trạng thái kết cấu mất ổn định và đổ sập.</td><td>荷重, 外力</td></tr>
+          <tr><td>仮締</td><td>かりじめ</td><td>siết tạm</td><td>Liên kết tạm trong giai đoạn dựng kết cấu.</td><td>本締, 鉄骨造</td></tr>
+          <tr><td>本締</td><td>ほんじめ</td><td>siết chính thức</td><td>Siết hoàn thiện liên kết.</td><td>仮締</td></tr>
+          <tr><td>高力ボルト</td><td>こうりょくボルト</td><td>bu lông cường độ cao</td><td>Bu lông dùng cho liên kết kết cấu thép.</td><td>鉄骨造の建て方</td></tr>
+          <tr><td>外力</td><td>がいりょく</td><td>ngoại lực</td><td>Lực tác động từ bên ngoài lên kết cấu.</td><td>荷重, 倒壊</td></tr>
+          <tr><td>元方事業者</td><td>もとかたじぎょうしゃ</td><td>doanh nghiệp chủ thầu</td><td>Chủ thể có nghĩa vụ hướng dẫn và thực hiện các biện pháp an toàn theo nội dung được nêu trong sách.</td><td>労働安全衛生法第29条</td></tr>
+          <tr><td>関係請負人</td><td>かんけいうけおいにん</td><td>nhà thầu liên quan</td><td>Nhà thầu thực hiện một phần công việc trong hệ thống thầu.</td><td>元方事業者</td></tr>
+          <tr><td>指導</td><td>しどう</td><td>hướng dẫn / chỉ đạo</td><td>Hành động nhằm ngăn ngừa việc vi phạm quy định.</td><td>違反しないよう</td></tr>
+          <tr><td>指示</td><td>しじ</td><td>chỉ thị</td><td>Chỉ thị cụ thể được đưa ra khi cần khắc phục vi phạm.</td><td>是正</td></tr>
+          <tr><td>是正</td><td>ぜせい</td><td>khắc phục, sửa cho đúng</td><td>Đưa tình trạng vi phạm trở lại phù hợp với quy định.</td><td>違反している</td></tr>
+          <tr><td>技術上の指導</td><td>ぎじゅつじょうのしどう</td><td>hướng dẫn về kỹ thuật</td><td>Hướng dẫn kỹ thuật để biện pháp phòng ngừa nguy hiểm được thực hiện thích hợp.</td><td>危険防止</td></tr>
+          <tr><td>危険</td><td>きけん</td><td>nguy hiểm</td><td>Nguy cơ tại địa điểm cần được phòng ngừa.</td><td>措置, 技術上の指導</td></tr>
+          <tr><td>措置</td><td>そち</td><td>biện pháp</td><td>Biện pháp phải thực hiện để đáp ứng yêu cầu pháp luật.</td><td>危険防止</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="aggregate-section" id="background">
+    <div class="section-head">
+      <h2>Kiến thức nền cần biết</h2>
+    </div>
+    <div class="note-box">
+      <strong>1. Bản chất của hợp đồng theo 建設業法第24条</strong>
+      <p>Điểm quyết định là bản chất của giao dịch, không phải tên gọi bên ngoài của hợp đồng. Cấu trúc cần nhận biết: <strong>任意の名義 / bất kỳ danh nghĩa nào + 報酬 / thù lao + mục đích hoàn thành 建設工事 → 請負契約</strong>. Vì vậy, một hợp đồng mang tên <code>委託</code> vẫn có thể được coi là <code>請負契約</code> nếu thỏa mãn các điều kiện nêu trong sách.</p>
+    </div>
+    <div class="note-box">
+      <strong>2. 建て方 và ổn định tạm thời</strong>
+      <p>Trong giai đoạn dựng lắp, hệ kết cấu chưa hoàn chỉnh. Nội dung sách nhấn mạnh hai điểm: đối với kết cấu nói chung, dùng <strong>仮筋かい</strong> để phòng <strong>倒壊</strong>; đối với kết cấu thép, ngay ở trạng thái <strong>仮締</strong> cũng phải bảo đảm an toàn đối với tải trọng và ngoại lực.</p>
+    </div>
+    <div class="note-box">
+      <strong>3. Phân biệt 指導 và 是正</strong>
+      <p><strong>指導</strong> xuất hiện ở giai đoạn phòng ngừa để không vi phạm. Khi đã nhận thấy đang có vi phạm, điều luật dùng cấu trúc <strong>是正のため必要な指示</strong>, tức chỉ thị cần thiết để khắc phục.</p>
+    </div>
+  </section>
+
+  <section class="aggregate-section" id="memory">
+    <div class="section-head">
+      <h2>Điểm cần nhớ và mẹo nhớ</h2>
+    </div>
+    <div class="memory-box">
+      <strong>Chuỗi 6 đáp án của 令和3年度 問題6</strong>
+      <p><strong>名義 → 報酬 → 倒壊 → 仮締 → 指導 → 是正</strong></p>
+    </div>
+    <div class="comparison-box">
+      <strong>Các cặp cần nhớ</strong>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Điều kiện / chủ thể</th><th>Recall cue</th></tr></thead>
+          <tbody>
+            <tr><td><strong>請負契約とみなす場合</strong></td><td>いかなる<strong>名義</strong>でも + <strong>報酬</strong> + 建設工事の完成 → <strong>請負契約</strong></td></tr>
+            <tr><td><strong>仮筋かい</strong></td><td><strong>倒壊防止</strong></td></tr>
+            <tr><td><strong>鉄骨造の建て方</strong></td><td><strong>仮締</strong>も荷重・外力に対して安全</td></tr>
+            <tr><td><strong>違反しないように</strong></td><td><strong>指導</strong></td></tr>
+            <tr><td><strong>違反していると認める</strong></td><td><strong>是正</strong>のため必要な<strong>指示</strong></td></tr>
+            <tr><td><strong>危険を防止するための措置</strong></td><td><strong>技術上の指導</strong> + その他の必要な措置</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="warning-box">
+      <strong>Điểm dễ nhầm trong lựa chọn</strong>
+      <p><strong>倒壊</strong> không phải 変形 hay 傾倒. <strong>仮締</strong> không phải 本締. Ô ⑤ dùng <strong>指導</strong>, không phải 教育 hay 注意喚起. Ô ⑥ dùng chính xác <strong>是正</strong>, không phải 改善.</p>
+    </div>
+  </section>
+
+</div>
+
+<!-- =======================================================
+     APPROVED COMPONENT LIBRARY
+     Hidden. AI may copy/repeat these components into CONTENT.
+     Do not create a new visual system unless strictly necessary.
+     ======================================================= -->
+<template id="component-library">
+
+  <!-- FIGURE -->
+  <figure class="figure-card">
+    <img src="{{IMAGE_SOURCE}}" alt="{{IMAGE_ALT}}">
+    <figcaption>{{FIGURE_CAPTION}}</figcaption>
+  </figure>
+
+  <!-- MULTIPLE FIGURES -->
+  <div class="figure-grid">
+    <figure class="figure-card">
+      <img src="{{IMAGE_SOURCE_1}}" alt="{{IMAGE_ALT_1}}">
+      <figcaption>{{FIGURE_CAPTION_1}}</figcaption>
+    </figure>
+    <figure class="figure-card">
+      <img src="{{IMAGE_SOURCE_2}}" alt="{{IMAGE_ALT_2}}">
+      <figcaption>{{FIGURE_CAPTION_2}}</figcaption>
+    </figure>
+  </div>
+
+  <!-- TABLE -->
+  <div class="table-wrap">
+    <table>
+      <caption>{{TABLE_CAPTION}}</caption>
+      <thead>
+        <tr><th>{{HEADER_1}}</th><th>{{HEADER_2}}</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong class="kw">{{ROW_SUBJECT}}</strong></td>
+          <td><span class="relation">{{ROW_RECALL_CUE}}</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- NOTE -->
+  <div class="note-box">
+    <strong>{{NOTE_TITLE}}</strong>
+    <p>{{NOTE_CONTENT}}</p>
+  </div>
+
+  <!-- WARNING -->
+  <div class="warning-box">
+    <strong>{{WARNING_TITLE}}</strong>
+    <p>{{WARNING_CONTENT}}</p>
+  </div>
+
+  <!-- MEMORY -->
+  <div class="memory-box">
+    <strong>{{MEMORY_TITLE}}</strong>
+    <p><div class="memory-box">
+      <strong>Chuỗi 6 đáp án của 令和3年度 問題6</strong>
+      <p><strong>名義 → 報酬 → 倒壊 → 仮締 → 指導 → 是正</strong></p>
+    </div>
+    <div class="comparison-box">
+      <strong>Các cặp cần nhớ</strong>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Điều kiện / chủ thể</th><th>Recall cue</th></tr></thead>
+          <tbody>
+            <tr><td><strong>請負契約とみなす場合</strong></td><td>いかなる<strong>名義</strong>でも + <strong>報酬</strong> + 建設工事の完成 → <strong>請負契約</strong></td></tr>
+            <tr><td><strong>仮筋かい</strong></td><td><strong>倒壊防止</strong></td></tr>
+            <tr><td><strong>鉄骨造の建て方</strong></td><td><strong>仮締</strong>も荷重・外力に対して安全</td></tr>
+            <tr><td><strong>違反しないように</strong></td><td><strong>指導</strong></td></tr>
+            <tr><td><strong>違反していると認める</strong></td><td><strong>是正</strong>のため必要な<strong>指示</strong></td></tr>
+            <tr><td><strong>危険を防止するための措置</strong></td><td><strong>技術上の指導</strong> + その他の必要な措置</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="warning-box">
+      <strong>Điểm dễ nhầm trong lựa chọn</strong>
+      <p><strong>倒壊</strong> không phải 変形 hay 傾倒. <strong>仮締</strong> không phải 本締. Ô ⑤ dùng <strong>指導</strong>, không phải 教育 hay 注意喚起. Ô ⑥ dùng chính xác <strong>是正</strong>, không phải 改善.</p>
+    </div></p>
+  </div>
+
+  <!-- FORMULA / FLOW -->
+  <div class="formula-box">
+    <div class="formula-line">
+      <span class="flow-node">{{NODE_1}}</span>
+      <span class="flow-arrow">→</span>
+      <span class="flow-node">{{NODE_2}}</span>
+      <span class="flow-arrow">→</span>
+      <span class="flow-node">{{NODE_3}}</span>
+    </div>
+  </div>
+
+</template>
+
+<script>
+(() => {
+  "use strict";
+
+  const root = document.documentElement;
+  const body = document.body;
+
+  const themeToggle = document.getElementById("theme-toggle");
+  const modeToggle = document.getElementById("mode-toggle");
+  const fontDown = document.getElementById("font-down");
+  const fontReset = document.getElementById("font-reset");
+  const fontUp = document.getElementById("font-up");
+
+  const tocToggle = document.getElementById("toc-toggle");
+  const tocClose = document.getElementById("toc-close");
+  const tocOverlay = document.getElementById("toc-overlay");
+  const tocDrawer = document.getElementById("toc-drawer");
+
+  const prevButton = document.getElementById("section-prev");
+  const nextButton = document.getElementById("section-next");
+
+  const FONT_LEVELS = [80, 90, 100, 110, 120, 130, 140];
+
+  function safeGet(key, fallback = null) {
+    try {
+      const value = localStorage.getItem(key);
+      return value === null ? fallback : value;
+    } catch (e) {
+      return fallback;
+    }
+  }
+
+  function safeSet(key, value) {
+    try {
+      localStorage.setItem(key, value);
+    } catch (e) {}
+  }
+
+  /* ---------- Theme ---------- */
+
+  function applyTheme(theme) {
+    const next = theme === "light" ? "light" : "dark";
+    root.dataset.theme = next;
+
+    if (themeToggle) {
+      const dark = next === "dark";
+      themeToggle.textContent = dark ? "☀" : "☾";
+      themeToggle.title = dark ? "Chuyển sang Light" : "Chuyển sang Dark";
+      themeToggle.setAttribute("aria-pressed", String(!dark));
+    }
+
+    safeSet("study-theme", next);
+  }
+
+  const initialTheme =
+    safeGet("study-theme") ||
+    (window.matchMedia &&
+     window.matchMedia("(prefers-color-scheme: dark)").matches
+      ? "dark"
+      : "light");
+
+  applyTheme(initialTheme);
+
+  themeToggle?.addEventListener("click", () => {
+    applyTheme(root.dataset.theme === "dark" ? "light" : "dark");
+  });
+
+  /* ---------- Full / Keywords ---------- */
+
+  function applyMode(mode) {
+    const keywords = mode === "keywords";
+    body.classList.toggle("keyword-focus", keywords);
+
+    if (modeToggle) {
+      modeToggle.textContent = keywords ? "📖" : "🎯";
+      modeToggle.title = keywords ? "Chuyển sang Full" : "Chuyển sang Keywords";
+      modeToggle.setAttribute("aria-pressed", String(keywords));
+    }
+
+    safeSet("study-mode", keywords ? "keywords" : "full");
+  }
+
+  applyMode(safeGet("study-mode", "full"));
+
+  modeToggle?.addEventListener("click", () => {
+    applyMode(body.classList.contains("keyword-focus") ? "full" : "keywords");
+  });
+
+  /* ---------- Font scale ---------- */
+
+  let fontScale = Number(safeGet("study-font-scale", "100"));
+  if (!FONT_LEVELS.includes(fontScale)) {
+    fontScale = 100;
+  }
+
+  function applyFontScale(scale) {
+    fontScale = FONT_LEVELS.includes(scale) ? scale : 100;
+
+    root.style.setProperty(
+      "--base-font-size",
+      `${16 * fontScale / 100}px`
+    );
+
+    if (fontReset) {
+      fontReset.textContent = `${fontScale}%`;
+      fontReset.title =
+        fontScale === 100
+          ? "Cỡ chữ hiện tại 100%"
+          : `Cỡ chữ hiện tại ${fontScale}%, bấm để về 100%`;
+    }
+
+    if (fontDown) {
+      fontDown.disabled = fontScale === FONT_LEVELS[0];
+    }
+
+    if (fontUp) {
+      fontUp.disabled = fontScale === FONT_LEVELS[FONT_LEVELS.length - 1];
+    }
+
+    safeSet("study-font-scale", String(fontScale));
+  }
+
+  applyFontScale(fontScale);
+
+  fontDown?.addEventListener("click", () => {
+    const index = FONT_LEVELS.indexOf(fontScale);
+    if (index > 0) {
+      applyFontScale(FONT_LEVELS[index - 1]);
+    }
+  });
+
+  fontUp?.addEventListener("click", () => {
+    const index = FONT_LEVELS.indexOf(fontScale);
+    if (index >= 0 && index < FONT_LEVELS.length - 1) {
+      applyFontScale(FONT_LEVELS[index + 1]);
+    }
+  });
+
+  fontReset?.addEventListener("click", () => {
+    applyFontScale(100);
+  });
+
+  /* ---------- TOC drawer ---------- */
+
+  function setToc(open) {
+    body.classList.toggle("toc-open", open);
+    tocToggle?.setAttribute("aria-expanded", String(open));
+    tocOverlay?.setAttribute("aria-hidden", String(!open));
+
+    if (open) {
+      requestAnimationFrame(() => tocClose?.focus());
+    }
+  }
+
+  tocToggle?.addEventListener("click", () => {
+    setToc(!body.classList.contains("toc-open"));
+  });
+
+  tocClose?.addEventListener("click", () => setToc(false));
+  tocOverlay?.addEventListener("click", () => setToc(false));
+
+  tocDrawer?.querySelectorAll("a[href^='#']").forEach(link => {
+    link.addEventListener("click", () => setToc(false));
+  });
+
+  document.addEventListener("keydown", event => {
+    if (event.key === "Escape" && body.classList.contains("toc-open")) {
+      setToc(false);
+      tocToggle?.focus();
+    }
+  });
+
+  /* ---------- Back / Next section ---------- */
+
+  const studySections = Array.from(
+    document.querySelectorAll("main .study-section[id]")
+  );
+
+  function currentSectionIndex() {
+    if (!studySections.length) return -1;
+
+    const referenceY = window.scrollY + Math.min(window.innerHeight * 0.32, 220);
+    let index = 0;
+
+    for (let i = 0; i < studySections.length; i++) {
+      if (studySections[i].offsetTop <= referenceY) {
+        index = i;
+      } else {
+        break;
+      }
+    }
+    return index;
+  }
+
+  function updateNavState() {
+    if (!studySections.length) {
+      if (prevButton) prevButton.disabled = true;
+      if (nextButton) nextButton.disabled = true;
+      return;
+    }
+
+    const index = currentSectionIndex();
+    if (prevButton) prevButton.disabled = index <= 0;
+    if (nextButton) nextButton.disabled = index >= studySections.length - 1;
+  }
+
+  function moveSection(delta) {
+    const index = currentSectionIndex();
+    const targetIndex = Math.max(
+      0,
+      Math.min(studySections.length - 1, index + delta)
+    );
+
+    studySections[targetIndex]?.scrollIntoView({
+      behavior: "smooth",
+      block: "start"
+    });
+  }
+
+  prevButton?.addEventListener("click", () => moveSection(-1));
+  nextButton?.addEventListener("click", () => moveSection(1));
+
+  let ticking = false;
+  window.addEventListener("scroll", () => {
+    if (!ticking) {
+      requestAnimationFrame(() => {
+        updateNavState();
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }, { passive: true });
+
+  window.addEventListener("resize", updateNavState);
+  updateNavState();
+})();
+</script>
+
+</body>
+</html>

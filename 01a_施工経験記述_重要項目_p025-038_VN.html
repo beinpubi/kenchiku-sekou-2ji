@@ -1,0 +1,2166 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="color-scheme" content="dark light">
+<title>施工経験記述 重要項目集｜Book 25-38</title>
+
+<style>
+/* =========================================================
+   FIXED DESIGN TOKENS
+   Do not redesign these values per lesson.
+   ========================================================= */
+
+:root {
+  --font-vi: Arial, Helvetica, sans-serif;
+  --font-ja: "Hiragino Sans", "Yu Gothic", "Yu Gothic UI", Meiryo, sans-serif;
+  --base-font-size: 16px;
+  --content-width: 1320px;
+  --control-size: 38px;
+  --control-gap: 4px;
+}
+
+html[data-theme="dark"] {
+  --bg: #101318;
+  --surface: #171B22;
+  --surface-alt: #1D232C;
+  --text: #E3E7ED;
+  --text-muted: #9DA8B5;
+  --focus-muted: #68717D;
+  --heading: #F4F7FA;
+  --border: #323A46;
+  --link: #7CC4FF;
+  --original-bg: #15181E;
+  --translation-bg: #16202A;
+  --note-bg: #1C2028;
+  --memory-bg: #20231C;
+  --keyword: #74D7FF;
+  --keyword-bg: rgba(75, 190, 255, .10);
+  --critical-bg: #594613;
+  --critical-text: #FFE39A;
+  --trap: #FF8585;
+  --trap-underline: #FF5F5F;
+  --relation-bg: rgba(139, 126, 255, .12);
+  --relation-border: #8F86FF;
+  --shadow: rgba(0, 0, 0, .28);
+  --dock-bg: rgba(23, 27, 34, .94);
+  --overlay: rgba(0, 0, 0, .46);
+}
+
+html[data-theme="light"] {
+  --bg: #F4F6F8;
+  --surface: #FFFFFF;
+  --surface-alt: #EEF1F5;
+  --text: #20242A;
+  --text-muted: #626B77;
+  --focus-muted: #A0A7B0;
+  --heading: #111418;
+  --border: #CCD2DA;
+  --link: #0068B5;
+  --original-bg: #F8FAFC;
+  --translation-bg: #EDF7FC;
+  --note-bg: #F2F4F7;
+  --memory-bg: #F6F7E9;
+  --keyword: #006B9F;
+  --keyword-bg: #E4F4FC;
+  --critical-bg: #FFF0B8;
+  --critical-text: #654900;
+  --trap: #B42318;
+  --trap-underline: #D92D20;
+  --relation-bg: #EEEBFF;
+  --relation-border: #6C5CE7;
+  --shadow: rgba(31, 38, 49, .12);
+  --dock-bg: rgba(255, 255, 255, .94);
+  --overlay: rgba(20, 24, 30, .32);
+}
+
+/* =========================================================
+   BASE
+   ========================================================= */
+
+* { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  font-size: var(--base-font-size);
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-vi);
+  font-size: 1rem;
+  line-height: 1.72;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+:lang(vi) {
+  font-family: var(--font-vi);
+}
+
+:lang(ja) {
+  font-family: var(--font-ja);
+}
+
+a {
+  color: var(--link);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
+a:hover {
+  text-decoration-thickness: 2px;
+}
+
+button {
+  font: inherit;
+}
+
+h1, h2, h3, h4 {
+  color: var(--heading);
+  line-height: 1.35;
+}
+
+h1 {
+  margin: 0 0 .35rem;
+  font-size: clamp(1.75rem, 4vw, 2.7rem);
+}
+
+h2 {
+  margin: 2.5rem 0 1rem;
+  padding-bottom: .42rem;
+  border-bottom: 1px solid var(--border);
+  font-size: clamp(1.42rem, 3vw, 2rem);
+}
+
+h3 {
+  margin: 1.9rem 0 .75rem;
+  font-size: clamp(1.16rem, 2.4vw, 1.5rem);
+}
+
+h4 {
+  margin: 1.2rem 0 .45rem;
+  font-size: 1rem;
+}
+
+p {
+  margin: .58rem 0;
+}
+
+ul, ol {
+  padding-left: 1.45rem;
+}
+
+li {
+  margin: .3rem 0;
+}
+
+[id] {
+  scroll-margin-top: 18px;
+}
+
+/* =========================================================
+   PAGE LAYOUT
+   ========================================================= */
+
+.page-shell {
+  width: min(var(--content-width), calc(100% - 28px));
+  margin: 0 auto;
+  padding: 18px 0 112px;
+}
+
+.hero,
+.toc-card,
+.study-section,
+.aggregate-section {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  box-shadow: 0 8px 28px var(--shadow);
+}
+
+.hero {
+  margin-bottom: 22px;
+  padding: clamp(22px, 3vw, 40px);
+}
+
+.hero-subtitle {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 1.06rem;
+}
+
+.meta-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(195px, 1fr));
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.meta-item {
+  padding: 10px 12px;
+  background: var(--surface-alt);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+
+.meta-label {
+  display: block;
+  margin-bottom: 2px;
+  color: var(--text-muted);
+  font-size: .8rem;
+}
+
+.study-section,
+.aggregate-section {
+  margin: 22px 0;
+  padding: clamp(18px, 2.6vw, 30px);
+}
+
+.section-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 16px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border);
+}
+
+.section-head h2,
+.section-head h3 {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.source-ref {
+  color: var(--text-muted);
+  font-size: .84rem;
+  white-space: nowrap;
+}
+
+.subsection {
+  margin: 26px 0 32px;
+}
+
+.subsection:first-child {
+  margin-top: 0;
+}
+
+.study-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 14px;
+  align-items: start;
+}
+
+.study-card {
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+
+.study-card.original {
+  background: var(--original-bg);
+}
+
+.study-card.translation {
+  background: var(--translation-bg);
+}
+
+.card-title {
+  padding: 9px 13px;
+  background: var(--surface-alt);
+  border-bottom: 1px solid var(--border);
+  color: var(--heading);
+  font-weight: 800;
+  letter-spacing: .02em;
+}
+
+.recall-source {
+  padding: 14px 16px 16px;
+  transition: color .15s ease;
+}
+
+.recall-source > :first-child {
+  margin-top: 0;
+}
+
+.recall-source > :last-child {
+  margin-bottom: 0;
+}
+
+/* =========================================================
+   CONTENT COMPONENTS
+   ========================================================= */
+
+.table-wrap {
+  overflow-x: auto;
+  margin: 12px 0 18px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  -webkit-overflow-scrolling: touch;
+}
+
+table {
+  width: 100%;
+  min-width: 640px;
+  border-collapse: collapse;
+  background: var(--surface);
+}
+
+th,
+td {
+  padding: 9px 11px;
+  border-right: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+  text-align: left;
+}
+
+th:last-child,
+td:last-child {
+  border-right: 0;
+}
+
+tr:last-child td {
+  border-bottom: 0;
+}
+
+th {
+  background: var(--surface-alt);
+  color: var(--heading);
+  font-weight: 800;
+}
+
+caption {
+  padding: 9px 11px;
+  background: var(--surface-alt);
+  color: var(--heading);
+  font-weight: 800;
+  text-align: left;
+  caption-side: top;
+}
+
+.summary-box,
+.note-box,
+.memory-box,
+.warning-box,
+.figure-box,
+.formula-box,
+.comparison-box {
+  margin: 14px 0;
+  padding: 13px 15px;
+  background: var(--note-bg);
+  border: 1px solid var(--border);
+  border-left-width: 4px;
+  border-radius: 10px;
+}
+
+.summary-box,
+.note-box {
+  border-left-color: var(--link);
+}
+
+.memory-box {
+  background: var(--memory-bg);
+  border-left-color: var(--critical-text);
+}
+
+.warning-box {
+  border-left-color: var(--trap);
+}
+
+.figure-box,
+.formula-box,
+.comparison-box {
+  border-left-color: var(--relation-border);
+}
+
+.figure-card {
+  margin: 15px 0 20px;
+  overflow: hidden;
+  background: var(--surface-alt);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+
+.figure-card img {
+  display: block;
+  width: 100%;
+  height: auto;
+  background: #fff;
+}
+
+.figure-card figcaption {
+  padding: 10px 13px 12px;
+  color: var(--text-muted);
+  font-size: .9rem;
+}
+
+.figure-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 12px;
+  margin: 15px 0 20px;
+}
+
+.figure-grid .figure-card {
+  margin: 0;
+}
+
+.item-block {
+  margin-top: 11px;
+  padding-top: 11px;
+  border-top: 1px dashed var(--border);
+}
+
+.item-block:first-child {
+  margin-top: 0;
+  padding-top: 0;
+  border-top: 0;
+}
+
+.item-label {
+  margin-right: .3em;
+  color: var(--heading);
+  font-weight: 800;
+}
+
+.formula-line {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+}
+
+.flow-node {
+  padding: 5px 8px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  font-weight: 700;
+}
+
+.flow-arrow {
+  color: var(--text-muted);
+  font-weight: 800;
+}
+
+/* =========================================================
+   SEMANTIC HIGHLIGHTING
+   ========================================================= */
+
+.kw {
+  padding: .02em .16em;
+  background: var(--keyword-bg);
+  color: var(--keyword);
+  border-radius: .2em;
+  font-weight: 750;
+}
+
+.critical {
+  padding: .04em .22em;
+  background: var(--critical-bg);
+  color: var(--critical-text);
+  border-radius: .22em;
+  font-weight: 750;
+}
+
+.trap {
+  color: var(--trap);
+  font-weight: 700;
+  text-decoration-line: underline;
+  text-decoration-color: var(--trap-underline);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+}
+
+.relation {
+  padding: .02em .14em;
+  background: var(--relation-bg);
+  color: var(--text);
+  border-bottom: 2px solid var(--relation-border);
+  font-weight: 650;
+}
+
+/* Only recall-source is dimmed in Keywords mode. */
+body.keyword-focus .recall-source {
+  color: var(--focus-muted);
+}
+
+body.keyword-focus .recall-source .kw {
+  color: var(--keyword);
+  background: var(--keyword-bg);
+}
+
+body.keyword-focus .recall-source .critical {
+  color: var(--critical-text);
+  background: var(--critical-bg);
+}
+
+body.keyword-focus .recall-source .trap {
+  color: var(--trap);
+}
+
+body.keyword-focus .recall-source .relation {
+  color: var(--text);
+  background: var(--relation-bg);
+}
+
+body.keyword-focus .recall-source th,
+body.keyword-focus .recall-source .item-label {
+  color: var(--heading);
+}
+
+/* =========================================================
+   TOC DRAWER
+   ========================================================= */
+
+.toc-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1990;
+  visibility: hidden;
+  opacity: 0;
+  background: var(--overlay);
+  transition: opacity .18s ease, visibility .18s ease;
+}
+
+.toc-drawer {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 2000;
+  width: min(78vw, 360px);
+  padding: max(14px, env(safe-area-inset-top)) 14px
+           max(18px, env(safe-area-inset-bottom))
+           max(14px, env(safe-area-inset-left));
+  overflow-y: auto;
+  background: var(--surface);
+  border-right: 1px solid var(--border);
+  box-shadow: 14px 0 36px var(--shadow);
+  transform: translateX(-103%);
+  transition: transform .2s ease;
+  -webkit-overflow-scrolling: touch;
+}
+
+body.toc-open .toc-overlay {
+  visibility: visible;
+  opacity: 1;
+}
+
+body.toc-open .toc-drawer {
+  transform: translateX(0);
+}
+
+.toc-drawer-head {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 4px 0 10px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+}
+
+.toc-drawer-head h2 {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 1.2rem;
+}
+
+.toc-close {
+  width: 34px;
+  height: 34px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface-alt);
+  color: var(--text);
+  cursor: pointer;
+}
+
+.toc-list {
+  margin: 12px 0 0;
+  padding-left: 1.2rem;
+}
+
+.toc-list ol {
+  margin-top: 4px;
+}
+
+/* =========================================================
+   COMPACT CONTROLS
+   Left: vertical TOC / Back / Next
+   Right: horizontal display controls
+   ========================================================= */
+
+.nav-dock-left,
+.settings-dock-right {
+  position: fixed;
+  bottom: max(14px, env(safe-area-inset-bottom));
+  z-index: 1900;
+  padding: 5px;
+  background: var(--dock-bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  box-shadow: 0 8px 24px var(--shadow);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  user-select: none;
+}
+
+.nav-dock-left {
+  left: max(10px, env(safe-area-inset-left));
+  display: flex;
+  flex-direction: column;
+  gap: var(--control-gap);
+}
+
+.settings-dock-right {
+  right: max(10px, env(safe-area-inset-right));
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--control-gap);
+}
+
+.nav-dock-left button,
+.settings-dock-right button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--control-size);
+  height: var(--control-size);
+  min-width: var(--control-size);
+  min-height: var(--control-size);
+  padding: 0;
+  background: var(--surface-alt);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-family: var(--font-vi);
+  font-size: .96rem;
+  font-weight: 700;
+  line-height: 1;
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.nav-dock-left button:hover,
+.settings-dock-right button:hover {
+  border-color: var(--link);
+}
+
+.nav-dock-left button:active,
+.settings-dock-right button:active {
+  transform: translateY(1px);
+}
+
+.nav-dock-left button:disabled {
+  opacity: .38;
+  cursor: default;
+}
+
+.settings-dock-right .font-reset {
+  font-size: .66rem;
+  letter-spacing: -.03em;
+}
+
+.settings-dock-right .mode-toggle {
+  font-size: 1.02rem;
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 900px) {
+  .study-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .page-shell {
+    width: min(100% - 18px, 760px);
+  }
+
+  .section-head {
+    display: block;
+  }
+
+  .source-ref {
+    display: block;
+    margin-top: 6px;
+    white-space: normal;
+  }
+}
+
+@media (max-width: 560px) {
+  body {
+    font-size: .96rem;
+  }
+
+  .hero,
+  .study-section,
+  .aggregate-section {
+    border-radius: 12px;
+  }
+
+  .recall-source {
+    padding: 12px 13px 14px;
+  }
+
+  :root {
+    --control-size: 36px;
+  }
+
+  .settings-dock-right {
+    right: max(7px, env(safe-area-inset-right));
+  }
+
+  .nav-dock-left {
+    left: max(7px, env(safe-area-inset-left));
+  }
+}
+
+@media (orientation: landscape) and (pointer: coarse) {
+  .nav-dock-left {
+    left: max(14px, env(safe-area-inset-left));
+  }
+
+  .settings-dock-right {
+    right: max(14px, env(safe-area-inset-right));
+  }
+}
+
+/* =========================================================
+   PRINT
+   ========================================================= */
+
+@media print {
+  html,
+  html[data-theme="dark"],
+  html[data-theme="light"] {
+    --bg: #FFFFFF;
+    --surface: #FFFFFF;
+    --surface-alt: #F1F3F5;
+    --text: #111111;
+    --text-muted: #555555;
+    --heading: #000000;
+    --border: #B8BEC6;
+    --original-bg: #FFFFFF;
+    --translation-bg: #F7FBFD;
+    --note-bg: #F7F7F7;
+    --memory-bg: #FAFAF0;
+    --keyword: #005A86;
+    --keyword-bg: #E4F4FC;
+    --critical-bg: #FFF0B8;
+    --critical-text: #4A3600;
+    --trap: #9E1B12;
+    --trap-underline: #9E1B12;
+    --relation-bg: #F0EDFF;
+    --relation-border: #5B4FD6;
+  }
+
+  body {
+    background: #fff;
+    color: #111;
+    font-size: 11pt;
+  }
+
+  .page-shell {
+    width: 100%;
+    padding: 0;
+  }
+
+  .nav-dock-left,
+  .settings-dock-right,
+  .toc-drawer,
+  .toc-overlay {
+    display: none !important;
+  }
+
+  .hero,
+  .study-card,
+  .summary-box,
+  .note-box,
+  .memory-box,
+  .warning-box,
+  .figure-card {
+    break-inside: avoid;
+  }
+
+  a {
+    color: #000;
+    text-decoration: none;
+  }
+}
+</style>
+
+<script>
+/* Apply saved theme before body paint to reduce flashing. */
+(function () {
+  try {
+    const saved = localStorage.getItem("study-theme");
+    const systemDark = window.matchMedia &&
+      window.matchMedia("(prefers-color-scheme: dark)").matches;
+    document.documentElement.dataset.theme =
+      saved || (systemDark ? "dark" : "light");
+  } catch (e) {
+    document.documentElement.dataset.theme = "dark";
+  }
+
+  try {
+    const savedScale = Number(localStorage.getItem("study-font-scale")) || 100;
+    const clampedScale = Math.max(80, Math.min(140, savedScale));
+    document.documentElement.style.setProperty(
+      "--base-font-size",
+      `${16 * clampedScale / 100}px`
+    );
+  } catch (e) {}
+})();
+</script>
+</head>
+
+<body>
+
+<!-- =======================================================
+     TOC DRAWER
+     Replace only the list contents.
+     ======================================================= -->
+<div id="toc"></div>
+<div class="toc-overlay" id="toc-overlay" aria-hidden="true"></div>
+
+<aside class="toc-drawer" id="toc-drawer" aria-label="Mục lục">
+  <div class="toc-drawer-head">
+    <h2>Mục lục</h2>
+    <button class="toc-close" id="toc-close" type="button" aria-label="Đóng mục lục">×</button>
+  </div>
+
+  <!-- TOC_ITEMS_START -->
+
+  <ol class="toc-list">
+    <li><a href="#sec-intro">第1章 施工経験記述</a>
+      <ol>
+        <li><a href="#sub-trend">最新10年間の傾向と対策</a></li>
+      </ol>
+    </li>
+    <li><a href="#sec-111">1.1.1 施工経験記述の解答項目</a>
+      <ol>
+        <li><a href="#sub-read-overview">工事概要の読み方</a></li>
+        <li><a href="#sub-how-to-write">施工経験記述の考え方・書き方</a></li>
+      </ol>
+    </li>
+    <li><a href="#sec-112">1.1.2 工事概要の出題方式</a>
+      <ol>
+        <li><a href="#sub-overview-example">工事概要の出題例</a></li>
+        <li><a href="#sub-overview-importance">工事概要の理解・工期の重要性</a></li>
+      </ol>
+    </li>
+    <li><a href="#sec-113-schedule">1.1.3 工程管理の考え方</a>
+      <ol>
+        <li><a href="#sub-schedule-basics">工程管理・省力化・工程短縮</a></li>
+        <li><a href="#sub-productivity">労働生産性の向上</a></li>
+        <li><a href="#sub-schedule-examples">工程短縮の変更例</a></li>
+      </ol>
+    </li>
+    <li><a href="#sec-113-quality">品質管理の考え方</a>
+      <ol>
+        <li><a href="#sub-quality-hierarchy">品質管理と品質管理項目</a></li>
+        <li><a href="#sub-quality-tests">品質確認の例</a></li>
+      </ol>
+    </li>
+    <li><a href="#sec-113-byproducts">建設副産物対策の考え方</a>
+      <ol>
+        <li><a href="#sub-byproduct-class">建設副産物の分類</a></li>
+        <li><a href="#sub-resource-cycle">資源循環の優先順序</a></li>
+        <li><a href="#sub-env-load">縮減・環境負荷軽減</a></li>
+      </ol>
+    </li>
+    <li><a href="#sec-114-quality">1.1.4 品質管理の学習項目</a></li>
+    <li><a href="#sec-114-schedule">工程管理の記述参考例</a></li>
+    <li><a href="#sec-114-byproducts">建設副産物対策の記述参考例</a></li>
+    <li><a href="#terms">Thuật ngữ chuyên môn</a></li>
+    <li><a href="#background">Kiến thức nền cần biết</a></li>
+    <li><a href="#memory">Điểm cần nhớ và mẹo nhớ</a></li>
+  </ol>
+  <!-- TOC_ITEMS_END -->
+</aside>
+
+<!-- =======================================================
+     FIXED NAVIGATION CONTROLS
+     Left bottom: vertical.
+     Do not add a Top button.
+     ======================================================= -->
+<nav class="nav-dock-left" aria-label="Điều hướng học tập">
+  <button id="toc-toggle" type="button" aria-label="Mục lục" title="Mục lục"
+          aria-controls="toc-drawer" aria-expanded="false">☰</button>
+  <button id="section-prev" type="button" aria-label="Mục trước" title="Back">‹</button>
+  <button id="section-next" type="button" aria-label="Mục tiếp theo" title="Next">›</button>
+</nav>
+
+<!-- =======================================================
+     FIXED DISPLAY CONTROLS
+     Right bottom: horizontal.
+     ======================================================= -->
+<nav class="settings-dock-right" aria-label="Thiết lập hiển thị">
+  <button id="theme-toggle" type="button" aria-label="Đổi Dark/Light"
+          title="Đổi Dark/Light" aria-pressed="false">☀</button>
+  <button id="mode-toggle" class="mode-toggle" type="button"
+          aria-label="Đổi Full/Keywords" title="Đổi Full/Keywords"
+          aria-pressed="false">🎯</button>
+  <button id="font-reset" class="font-reset" type="button"
+          aria-label="Đặt lại cỡ chữ 100%" title="Đặt lại cỡ chữ 100%">100%</button>
+  <button id="font-down" type="button" aria-label="Giảm cỡ chữ"
+          title="Giảm cỡ chữ">A−</button>
+  <button id="font-up" type="button" aria-label="Tăng cỡ chữ"
+          title="Tăng cỡ chữ">A+</button>
+</nav>
+
+<div class="page-shell">
+
+  <!-- =====================================================
+       DOCUMENT HEADER
+       Replace title/subtitle/meta values only.
+       ===================================================== -->
+  <header class="hero" id="top">
+    <h1>施工経験記述 重要項目集｜Book 25-38</h1>
+    <p class="hero-subtitle">1級建築施工管理技術検定 第二次検定｜施工経験記述の考え方・書き方</p>
+
+    <div class="meta-grid">
+      <div class="meta-item">
+        <span class="meta-label">PDF nguồn</span>
+        01a_施工経験記述_重要項目_p025-038.pdf
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">File ID</span>
+        F008
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Phạm vi</span>
+        Book page 25-38
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Chế độ</span>
+        Song ngữ Nhật-Việt / Dark-Light / Full-Keywords / Font 80-140%
+      </div>
+    </div>
+  </header>
+
+  <!-- =====================================================
+       CONTENT_START
+       AI may freely repeat/reorder approved content components.
+       Global CSS/JS/control structure must not be redesigned.
+       ===================================================== -->
+  <main id="lesson">
+
+<section class="study-section" id="sec-intro">
+  <div class="section-head">
+    <h2>第1章 施工経験記述</h2>
+    <span class="source-ref">Nguồn: Book page 25-27</span>
+  </div>
+
+  <section class="subsection" id="sub-chapter-guide">
+    <h3>問題1 / 施工経験記述の考え方・書き方講習</h3>
+    <div class="study-grid">
+      <article class="study-card original">
+        <div class="card-title">原文</div>
+        <div class="recall-source" lang="ja">
+          <p><strong class="kw">施工経験記述</strong>の考え方・書き方講習　無料 YouTube 動画講習</p>
+          <ul>
+            <li>最新10年間の施工経験記述の傾向と対策</li>
+            <li>1.1 施工経験記述 技術検定 重要項目集</li>
+            <li>1.2 施工経験記述 最新問題解説</li>
+          </ul>
+          <p>スマホ版無料動画コーナー　URL https://get-supertext.com/</p>
+          <p>（注意）スマートフォンでの長時間聴講は、Wi-Fi環境が整ったエリアで行いましょう。</p>
+          <p>「施工経験記述の考え方・書き方講習」の動画講習を、GET研究所ホームページから視聴できます。https://get-ken.jp/</p>
+          <p>GET研究所　検索 → 無料動画公開中 → 動画を選択　※動画講習は無料で視聴できます。</p>
+          <p>施工経験記述添削講座　有料 通信講座<br>※施工経験記述添削講座の詳細については、673ページを参照してください。</p>
+        </div>
+      </article>
+      <article class="study-card translation">
+        <div class="card-title">Bản dịch tiếng Việt</div>
+        <div class="recall-source" lang="vi">
+          <p>Khóa hướng dẫn cách tư duy và cách viết phần <strong class="kw">trình bày kinh nghiệm thi công</strong>. Khóa học video YouTube miễn phí.</p>
+          <ul>
+            <li>Xu hướng và đối sách đối với phần trình bày kinh nghiệm thi công trong 10 năm gần đây.</li>
+            <li>1.1 Tổng hợp các hạng mục quan trọng của kỳ thi kỹ thuật về trình bày kinh nghiệm thi công.</li>
+            <li>1.2 Giải thích các đề thi mới nhất về trình bày kinh nghiệm thi công.</li>
+          </ul>
+          <p>Góc video miễn phí dành cho điện thoại: https://get-supertext.com/</p>
+          <p>Chú ý: Khi xem trong thời gian dài bằng điện thoại thông minh, nên thực hiện tại khu vực có môi trường Wi-Fi ổn định.</p>
+          <p>Có thể xem khóa video “Hướng dẫn cách tư duy và cách viết phần trình bày kinh nghiệm thi công” từ trang web của GET研究所: https://get-ken.jp/</p>
+          <p>Tìm kiếm GET研究所 → 無料動画公開中 → chọn video. ※ Có thể xem khóa video miễn phí.</p>
+          <p>Khóa sửa bài trình bày kinh nghiệm thi công: khóa học từ xa có thu phí.<br>※ Chi tiết xem tại trang 673.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="subsection" id="sub-trend">
+    <h3>最新10年間の施工経験記述の傾向と対策</h3>
+    <div class="study-grid">
+      <article class="study-card original">
+        <div class="card-title">原文</div>
+        <div class="recall-source" lang="ja">
+          <div class="table-wrap"><table>
+            <caption>過去10年間の施工経験記述の主要テーマ</caption>
+            <thead><tr><th>設問</th><th>管理項目</th><th>R7</th><th>R6</th><th>R5</th><th>R4</th><th>R3</th><th>R2</th><th>R元</th><th>H30</th><th>H29</th><th>H28</th></tr></thead>
+            <tbody>
+              <tr><td>設問1</td><td><strong class="kw">工事概要</strong></td><td>指定</td><td><span class="relation">指定</span></td><td>記述</td><td>記述</td><td>記述</td><td>記述</td><td>記述</td><td>記述</td><td>記述</td><td>記述</td></tr>
+              <tr><td></td><td><strong class="kw">品質管理</strong></td><td>●</td><td></td><td>●</td><td></td><td>●</td><td></td><td>●</td><td></td><td></td><td>●</td></tr>
+              <tr><td></td><td><strong class="kw">工程管理</strong></td><td></td><td>●</td><td></td><td>●</td><td></td><td>●</td><td></td><td></td><td>●</td><td></td></tr>
+              <tr><td></td><td>建設副産物</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>●</td><td></td><td></td></tr>
+              <tr><td>設問2</td><td><strong class="kw">品質管理</strong></td><td>●</td><td></td><td>●</td><td></td><td>●</td><td></td><td>●</td><td></td><td></td><td>●</td></tr>
+              <tr><td></td><td><strong class="kw">工程管理</strong></td><td></td><td>●</td><td></td><td>●</td><td></td><td>●</td><td></td><td></td><td></td><td></td></tr>
+              <tr><td></td><td>建設副産物</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>●</td><td>●</td><td></td></tr>
+              <tr><td></td><td>環境保全</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+            </tbody>
+          </table></div>
+          <p>※「環境保全」は平成27年度以前にのみ出題があったテーマです。</p>
+          <p>① 施工経験記述の分野で合格点を得るためには、標準的な建築工事に関する<strong class="kw">3つの管理項目（品質管理・工程管理・建設副産物対策）</strong>について、一通り記述してみる必要がある。</p>
+          <p>② <strong class="kw">令和6年度以降</strong>の試験では、令和5年度以前の試験とは異なり、工事概要の項目が「自らが経験した建築工事を記述するもの」ではなく、<span class="relation">「工事概要が試験問題で指定される」</span>ようになった。</p>
+          <p>③ 施工経験記述は、標準的な建築工事（どのような建築工事においても通常実施されることが多い工種）を見極めることさえできれば、<strong class="kw">「事前に解答を準備しておくこと」</strong>が可能な唯一の出題項目であるため、学習による効果が出やすいとされている。</p>
+          <p>④ 令和8年度の試験は、躯体工事（構造仕様が指定されたもの）と仕上げ工事を中心とした工事概要として出題される可能性が高いので、躯体工事と仕上げ工事の標準的な工種について、その品質管理および工程管理を記述することに関する練習が、最も重要になると思われる。</p>
+          <div class="table-wrap"><table>
+            <caption>管理項目ごとの出題内容</caption>
+            <thead><tr><th>管理項目</th><th>設問1の出題内容</th><th>設問2の出題内容</th></tr></thead>
+            <tbody>
+              <tr><td><strong class="kw">品質管理</strong></td><td>①発注者等に要求された品質<br>②施工者の品質管理項目（品質特性）<br>③品質管理項目を定めた理由<br>④品質管理の実施内容<br>⑤品質管理項目の確認方法・検査方法</td><td>①協力業者等への周知方法<br>②品質確認の方法や手段<br>③組織的な品質管理の方法や手段<br>④組織的な品質管理で得られる効果</td></tr>
+              <tr><td><strong class="kw">工程管理</strong></td><td>①施工の合理化が必要となった原因<br>②現場作業の軽減のために実施した内容<br>③現場作業の軽減の際に確保する品質<br>④上記の品質を確保するための留意事項<br>⑤施工の合理化ができたと考える理由</td><td>①施工の合理化と建設資材廃棄物の縮減<br>②工程と品質を確保しながらのコスト削減<br>③工程短縮に効果がある施工方法<br>④省力化に効果がある施工方法<br>⑤労働者の確保に効果がある取組みや工夫</td></tr>
+              <tr><td><strong class="kw">建設副産物</strong></td><td>①建設副産物の発生抑制・再使用・再生利用・熱回収・適正処分<br>②建設副産物対策の実施内容と留意事項<br>③建設副産物対策の副次的効果</td><td>①建設廃棄物の適正処理（分別・保管・収集・運搬・再生・処分）<br>②建設資材廃棄物の発生抑制方法<br>③産業廃棄物の適正処分</td></tr>
+              <tr><td>環境保全</td><td>（出題なし）</td><td>①地球環境保全のための取り組み<br>②二酸化炭素の排出抑制</td></tr>
+            </tbody>
+          </table></div>
+        </div>
+      </article>
+      <article class="study-card translation">
+        <div class="card-title">Bản dịch tiếng Việt</div>
+        <div class="recall-source" lang="vi">
+          <div class="table-wrap"><table>
+            <caption>Các chủ đề chính trong 10 năm qua</caption>
+            <thead><tr><th>Câu hỏi</th><th>Hạng mục quản lý</th><th>R7</th><th>R6</th><th>R5</th><th>R4</th><th>R3</th><th>R2</th><th>R1</th><th>H30</th><th>H29</th><th>H28</th></tr></thead>
+            <tbody>
+              <tr><td>Câu 1</td><td><strong class="kw">Tổng quan công trình</strong></td><td>Đề chỉ định</td><td><span class="relation">Đề chỉ định</span></td><td>Tự viết</td><td>Tự viết</td><td>Tự viết</td><td>Tự viết</td><td>Tự viết</td><td>Tự viết</td><td>Tự viết</td><td>Tự viết</td></tr>
+              <tr><td></td><td><strong class="kw">Quản lý chất lượng</strong></td><td>●</td><td></td><td>●</td><td></td><td>●</td><td></td><td>●</td><td></td><td></td><td>●</td></tr>
+              <tr><td></td><td><strong class="kw">Quản lý tiến độ</strong></td><td></td><td>●</td><td></td><td>●</td><td></td><td>●</td><td></td><td></td><td>●</td><td></td></tr>
+              <tr><td></td><td>Phụ phẩm xây dựng</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>●</td><td></td><td></td></tr>
+              <tr><td>Câu 2</td><td><strong class="kw">Quản lý chất lượng</strong></td><td>●</td><td></td><td>●</td><td></td><td>●</td><td></td><td>●</td><td></td><td></td><td>●</td></tr>
+              <tr><td></td><td><strong class="kw">Quản lý tiến độ</strong></td><td></td><td>●</td><td></td><td>●</td><td></td><td>●</td><td></td><td></td><td></td><td></td></tr>
+              <tr><td></td><td>Phụ phẩm xây dựng</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>●</td><td>●</td><td></td></tr>
+              <tr><td></td><td>Bảo vệ môi trường</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+            </tbody>
+          </table></div>
+          <p>※ Chủ đề bảo vệ môi trường chỉ từng được ra trong các năm Heisei 27 trở về trước.</p>
+          <p>① Để đạt điểm đỗ trong phần trình bày kinh nghiệm thi công, cần thử viết hoàn chỉnh ít nhất một lần đối với <strong class="kw">ba hạng mục quản lý cơ bản: quản lý chất lượng, quản lý tiến độ và biện pháp đối với phụ phẩm xây dựng</strong>.</p>
+          <p>② Từ <strong class="kw">Reiwa 6 trở đi</strong>, khác với Reiwa 5 trở về trước, tổng quan công trình không còn là phần thí sinh tự trình bày một công trình mà bản thân đã trải nghiệm, mà <span class="relation">“tổng quan công trình được đề thi chỉ định sẵn”</span>.</p>
+          <p>③ Với phần trình bày kinh nghiệm thi công, nếu xác định được các công tác xây dựng tiêu chuẩn, đây là hạng mục duy nhất có thể <strong class="kw">chuẩn bị trước nội dung trả lời</strong>, vì vậy hiệu quả học tập dễ thể hiện.</p>
+          <p>④ Theo tài liệu, kỳ thi Reiwa 8 có khả năng cao sẽ đưa ra một tổng quan công trình tập trung vào công tác phần thân/kết cấu với thông số kết cấu được chỉ định và công tác hoàn thiện. Do đó, việc luyện viết về quản lý chất lượng và quản lý tiến độ của các công tác tiêu chuẩn thuộc phần kết cấu và hoàn thiện được tài liệu đánh giá là quan trọng nhất.</p>
+          <div class="table-wrap"><table>
+            <caption>Nội dung câu hỏi theo từng hạng mục quản lý</caption>
+            <thead><tr><th>Hạng mục</th><th>Nội dung Câu 1</th><th>Nội dung Câu 2</th></tr></thead>
+            <tbody>
+              <tr><td><strong class="kw">Quản lý chất lượng</strong></td><td>① Chất lượng mà chủ đầu tư v.v. yêu cầu<br>② Hạng mục quản lý chất lượng của nhà thầu thi công, tức đặc tính chất lượng<br>③ Lý do xác định hạng mục quản lý chất lượng đó<br>④ Nội dung thực hiện quản lý chất lượng<br>⑤ Phương pháp xác nhận/phương pháp kiểm tra hạng mục quản lý chất lượng</td><td>① Phương pháp phổ biến, truyền đạt cho các nhà thầu hợp tác<br>② Phương pháp hoặc biện pháp xác nhận chất lượng<br>③ Phương pháp hoặc biện pháp quản lý chất lượng mang tính tổ chức<br>④ Hiệu quả thu được từ quản lý chất lượng mang tính tổ chức</td></tr>
+              <tr><td><strong class="kw">Quản lý tiến độ</strong></td><td>① Nguyên nhân khiến cần phải hợp lý hóa thi công<br>② Nội dung đã thực hiện để giảm công việc tại hiện trường<br>③ Chất lượng phải bảo đảm khi giảm công việc tại hiện trường<br>④ Các điểm cần lưu ý để bảo đảm chất lượng nói trên<br>⑤ Lý do cho rằng đã có thể hợp lý hóa thi công</td><td>① Hợp lý hóa thi công và giảm chất thải vật liệu xây dựng<br>② Cắt giảm chi phí trong khi vẫn bảo đảm tiến độ và chất lượng<br>③ Phương pháp thi công có hiệu quả rút ngắn tiến độ<br>④ Phương pháp thi công có hiệu quả giảm nhân công/công sức lao động<br>⑤ Biện pháp hoặc sáng kiến có hiệu quả trong việc bảo đảm lực lượng lao động</td></tr>
+              <tr><td><strong class="kw">Phụ phẩm xây dựng</strong></td><td>① Giảm phát sinh, tái sử dụng, tái chế thành tài nguyên, thu hồi nhiệt và xử lý thải bỏ thích hợp<br>② Nội dung thực hiện biện pháp và điểm cần lưu ý<br>③ Hiệu quả phụ của biện pháp</td><td>① Xử lý thích hợp chất thải xây dựng: phân loại, lưu giữ, thu gom, vận chuyển, tái chế, xử lý<br>② Phương pháp hạn chế phát sinh chất thải vật liệu xây dựng<br>③ Xử lý thích hợp chất thải công nghiệp</td></tr>
+              <tr><td>Bảo vệ môi trường</td><td>Không ra đề</td><td>① Các biện pháp bảo vệ môi trường toàn cầu<br>② Hạn chế phát thải CO₂</td></tr>
+            </tbody>
+          </table></div>
+        </div>
+      </article>
+    </div>
+    <p><a href="#toc">↑ Mục lục</a></p>
+  </section>
+</section>
+
+<section class="study-section" id="sec-111">
+  <div class="section-head"><h2>1.1.1 施工経験記述の解答項目</h2><span class="source-ref">Nguồn: Book page 27</span></div>
+  <section class="subsection" id="sub-answer-items">
+    <h3>施工経験記述で解答する2点</h3>
+    <div class="study-grid">
+      <article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja">
+        <p>問題1において、施工経験記述で解答する項目は、次の2点である。</p>
+        <ol>
+          <li><strong class="kw">指定された工事概要の建築工事</strong>について、問われている施工管理の方法を記述する。</li>
+          <li><strong class="kw">指定された工事概要の建築工事に係わらず</strong>、あなたの今日までの経験を踏まえて、問われている施工管理上の問題とその解決方法を記述する。</li>
+        </ol>
+      </div></article>
+      <article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi">
+        <p>Trong Câu 1, nội dung phải trả lời trong phần trình bày kinh nghiệm thi công gồm hai điểm:</p>
+        <ol>
+          <li>Đối với <strong class="kw">công trình xây dựng có tổng quan công trình được chỉ định</strong>, trình bày phương pháp quản lý thi công đang được hỏi.</li>
+          <li><strong class="kw">Không phụ thuộc vào công trình được nêu trong tổng quan công trình</strong>, dựa trên kinh nghiệm cho đến hiện tại để trình bày vấn đề quản lý thi công đang được hỏi và phương pháp giải quyết.</li>
+        </ol>
+      </div></article>
+    </div>
+  </section>
+
+  <section class="subsection" id="sub-read-overview">
+    <h3>工事概要の読み方</h3>
+    <div class="study-grid">
+      <article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja">
+        <p>指定された工事概要は、毎年異なるものになると思われるが、「鉄筋コンクリート工事」または「鉄骨工事」のどちらかは、確実に含まれそうである（どちらも行わない大規模な工事はまずない）など、<strong class="kw">「標準的な建築工事の工種」</strong>が何であるかを把握しておくことが重要である。</p>
+      </div></article>
+      <article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi">
+        <p>Tổng quan công trình được chỉ định có thể thay đổi mỗi năm. Tuy nhiên, điều quan trọng là phải nắm được đâu là <strong class="kw">“các công tác tiêu chuẩn của công trình xây dựng”</strong>. Ví dụ, một công trình quy mô lớn có thể dự kiến sẽ bao gồm công tác bê tông cốt thép hoặc công tác kết cấu thép; trường hợp không thực hiện cả hai là rất hiếm.</p>
+      </div></article>
+    </div>
+  </section>
+
+  <section class="subsection" id="sub-how-to-write">
+    <h3>施工経験記述の考え方・書き方</h3>
+    <div class="study-grid">
+      <article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja">
+        <p><strong class="kw">設問1</strong>では、工事概要に示されている工事について、限定した解答が求められるので、<span class="relation">工事概要に示されている工種（工事内容）の中から選択</span>し、自らの工事経験に基づいて記述する。</p>
+        <p><strong class="kw">設問2</strong>では、工事概要に示されている工事に係わらず、あなたの今日までの経験を踏まえて、問われている内容を自由に記述することができる。ただし、その記述内容が<span class="trap">設問1の施工経験記述と重複しないように</span>注意する必要がある。</p>
+      </div></article>
+      <article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi">
+        <p>Đối với <strong class="kw">Câu 1</strong>, đề yêu cầu câu trả lời bị giới hạn bởi các công việc được nêu trong tổng quan công trình, vì vậy phải <span class="relation">chọn trong các công tác/nội dung công việc có trong tổng quan</span> và viết dựa trên kinh nghiệm thi công.</p>
+        <p>Đối với <strong class="kw">Câu 2</strong>, không bị giới hạn bởi công trình trong tổng quan công trình; có thể dựa trên kinh nghiệm đến hiện tại để trình bày nội dung được hỏi. Tuy nhiên, cần <span class="trap">không được trùng nội dung đã trình bày ở Câu 1</span>.</p>
+      </div></article>
+    </div>
+    <p><a href="#toc">↑ Mục lục</a></p>
+  </section>
+</section>
+
+<section class="study-section" id="sec-112">
+  <div class="section-head"><h2>1.1.2 工事概要の出題方式</h2><span class="source-ref">Nguồn: Book page 27-29</span></div>
+  <section class="subsection" id="sub-format-change">
+    <h3>令和6年度以降の出題方式</h3>
+    <div class="study-grid">
+      <article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja">
+        <p><strong class="kw">令和6年度以降</strong>の試験では、令和5年度以前の試験とは異なり、工事概要の項目が「自らが経験した建築工事を記述するもの」ではなく、<span class="relation">「工事概要が試験問題で指定される」</span>ようになる。</p>
+        <p>そのため、与えられた工事概要の材料・工法に対して、その品質確保の方法・工程の合理化（工程短縮）の方法・建設副産物の適正な再資源化または処分などについて、<strong class="kw">指定された工種名または作業名を選択</strong>し、受検者自身の経験や知見を記述する必要が生じている。</p>
+      </div></article>
+      <article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi">
+        <p>Từ <strong class="kw">Reiwa 6 trở đi</strong>, khác với Reiwa 5 trở về trước, thí sinh không còn tự chọn và viết tổng quan của một công trình mình đã trải nghiệm; thay vào đó <span class="relation">“tổng quan công trình được đề thi chỉ định sẵn”</span>.</p>
+        <p>Do đó, đối với vật liệu và công pháp trong tổng quan được cho, thí sinh phải <strong class="kw">chọn tên công tác hoặc tên công việc được chỉ định</strong> và trình bày dựa trên kinh nghiệm, kiến thức về bảo đảm chất lượng, hợp lý hóa/rút ngắn tiến độ, tái tài nguyên hóa hoặc xử lý phụ phẩm xây dựng.</p>
+      </div></article>
+    </div>
+  </section>
+
+  <section class="subsection" id="sub-overview-example">
+    <h3>工事概要の出題例</h3>
+    <div class="study-grid">
+      <article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja">
+        <p>令和6年度の試験では、次のような工事概要が指定されていた。工事概要を熟読し、<strong class="kw">「主な構造仕様」・「主な外部仕上げ」・「主な内部仕上げ」・「主な外構仕様」</strong>を把握しておこう。</p>
+        <p>一方、主要構造（主な構造仕様）が<strong class="kw">「鉄筋コンクリート構造」</strong>であることにも着目しておこう。</p>
+        <div class="table-wrap"><table>
+          <caption>工事概要</caption>
+          <thead><tr><th>項目</th><th>内容</th><th>項目</th><th>内容</th></tr></thead>
+          <tbody>
+            <tr><td>工事名</td><td>共同住宅新築工事</td><td>主要用途</td><td>共同住宅 52戸</td></tr>
+            <tr><td>工期</td><td>2024年1月～2025年6月</td><td>用途地域</td><td>住居地域　6m道路隣接</td></tr>
+            <tr><td>主要構造</td><td><strong class="kw">鉄筋コンクリート構造　地上7階建て</strong></td><td>敷地面積</td><td>2,350.00m²</td></tr>
+            <tr><td>最高高さ</td><td>23.25m</td><td>建築面積</td><td>758.85m²</td></tr>
+            <tr><td>階高</td><td>1～4階 <mark class="critical">3.3m</mark>、5～7階 <mark class="critical">3.0m</mark></td><td>延床面積</td><td>4,950.60m²</td></tr>
+            <tr><td>エレベーター</td><td>乗用 8人乗り 1台</td><td></td><td></td></tr>
+          </tbody>
+        </table></div>
+        <h4>主な構造仕様</h4>
+        <div class="table-wrap"><table><tbody>
+          <tr><th>根切深さ</th><td><mark class="critical">2.5m</mark></td><th>型枠</th><td>コンクリート型枠用合板、支保工：パイプサポート</td></tr>
+          <tr><th>山留め</th><td><strong class="kw">親杭横矢板工法</strong></td><th>地業</th><td>現場造成杭（<strong class="kw">アースドリル工法</strong>）</td></tr>
+          <tr><th>鉄筋</th><td>工場加工、現場組立て、柱・梁主筋：<strong class="kw">ガス圧接継手</strong></td><th>コンクリート</th><td>普通コンクリート</td></tr>
+        </tbody></table></div>
+        <h4>主な外部仕上げ</h4>
+        <div class="table-wrap"><table><tbody>
+          <tr><th>屋根・陸屋根</th><td>アスファルト露出断熱防水、アルミ製笠木</td><th>床・バルコニー</th><td>モルタル下地＋ウレタン系塗膜防水</td></tr>
+          <tr><th>主な外壁</th><td>コンクリート打放し＋防水形複層塗材</td><th>床・外部廊下</th><td>コンクリート直均し＋ビニル床シート</td></tr>
+          <tr><th>断熱</th><td>内断熱工法、現場発泡断熱材吹付け</td><th>床・外部階段</th><td>モルタル下地＋ビニル床シート</td></tr>
+          <tr><th>手すり壁・バルコニー</th><td>アルミ製既製品　<mark class="critical">H＝1.2m</mark></td><th>建具・風除室</th><td>ステンレス製オートロック式自動扉、強化ガラス共</td></tr>
+          <tr><th>手すり壁・外部廊下</th><td>コンクリート打放し＋防水形複層塗材</td><th>建具・玄関</th><td>化粧シート張り鋼製扉</td></tr>
+          <tr><th>手すり壁・外部階段</th><td>コンクリート打放し＋防水形複層塗材、ステンレス製壁付手すり</td><th>建具・窓</th><td>アルミ製サッシ、1～2階 網入りガラス共、3～7階 フロートガラス共</td></tr>
+        </tbody></table></div>
+        <h4>主な内部仕上げ</h4>
+        <p>（居室、水廻り：天井高さ<mark class="critical">2.4m</mark>、風除室：天井高さ<mark class="critical">2.5m</mark>）</p>
+        <div class="table-wrap"><table><thead><tr><th>部位</th><th>室</th><th>内容</th></tr></thead><tbody>
+          <tr><td>床</td><td>居室</td><td>コンクリート直均し＋乾式二重床＋フローリングボード</td></tr>
+          <tr><td>床</td><td>水廻り</td><td>コンクリート直均し＋乾式二重床＋耐水合板＋ビニル床シート</td></tr>
+          <tr><td>床</td><td>風除室</td><td>モルタル下地＋ノンスリップタイル</td></tr>
+          <tr><td>壁</td><td>居室</td><td>軽量鉄骨下地＋せっこうボード＋ビニルクロス</td></tr>
+          <tr><td>壁</td><td>水廻り</td><td>軽量鉄骨下地＋シージングせっこうボード＋ビニルクロス</td></tr>
+          <tr><td>壁</td><td>風除室</td><td>モルタル下地＋有機系接着剤による小口タイル</td></tr>
+          <tr><td>天井</td><td>居室・水廻り</td><td>軽量鉄骨下地＋せっこうボード＋ビニルクロス</td></tr>
+          <tr><td>天井</td><td>風除室</td><td>軽量鉄骨下地＋アルミスパンドレル</td></tr>
+          <tr><td>建具他</td><td>居室</td><td>化粧シート張り木製扉　枠共</td></tr>
+          <tr><td>建具他</td><td>水廻り</td><td>ユニットバス、洗面化粧台、システムキッチン</td></tr>
+          <tr><td>建具他</td><td>風除室</td><td>集合郵便受け、インターホンパネル</td></tr>
+        </tbody></table></div>
+        <h4>主な外構仕様</h4>
+        <div class="table-wrap"><table><tbody>
+          <tr><th>構内舗装</th><td>駐車場：アスファルト舗装、駐輪場：コンクリート舗装、アプローチ：インターロッキング舗装</td></tr>
+          <tr><th>囲障</th><td>化粧フェンス、駐車場入口：レール式門扉</td></tr>
+          <tr><th>植栽</th><td>敷地境界：中木、低木混栽</td></tr>
+        </tbody></table></div>
+      </div></article>
+
+      <article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi">
+        <p>Trong kỳ thi Reiwa 6, đề đã chỉ định tổng quan công trình như dưới đây. Cần đọc kỹ để nắm được <strong class="kw">“các thông số kết cấu chính, hoàn thiện bên ngoài chính, hoàn thiện bên trong chính và thông số ngoại cấu chính”</strong>.</p>
+        <p>Đồng thời cần đặc biệt chú ý rằng <strong class="kw">kết cấu chính là kết cấu bê tông cốt thép</strong>.</p>
+        <div class="table-wrap"><table>
+          <caption>Tổng quan công trình</caption>
+          <thead><tr><th>Hạng mục</th><th>Nội dung</th><th>Hạng mục</th><th>Nội dung</th></tr></thead>
+          <tbody>
+            <tr><td>Tên công trình</td><td>Công trình xây mới nhà ở chung cư</td><td>Công năng chính</td><td>Nhà ở chung cư, 52 căn</td></tr>
+            <tr><td>Thời gian thi công</td><td>01/2024 đến 06/2025</td><td>Khu vực quy hoạch</td><td>Khu dân cư, tiếp giáp đường rộng 6m</td></tr>
+            <tr><td>Kết cấu chính</td><td><strong class="kw">Kết cấu bê tông cốt thép, 7 tầng trên mặt đất</strong></td><td>Diện tích khu đất</td><td>2.350,00m²</td></tr>
+            <tr><td>Chiều cao lớn nhất</td><td>23,25m</td><td>Diện tích xây dựng</td><td>758,85m²</td></tr>
+            <tr><td>Chiều cao tầng</td><td>Tầng 1 đến 4: <mark class="critical">3,3m</mark>; tầng 5 đến 7: <mark class="critical">3,0m</mark></td><td>Tổng diện tích sàn</td><td>4.950,60m²</td></tr>
+            <tr><td>Thang máy</td><td>Loại chở người, 8 người, 1 thang</td><td></td><td></td></tr>
+          </tbody>
+        </table></div>
+        <h4>Các thông số kết cấu chính</h4>
+        <div class="table-wrap"><table><tbody>
+          <tr><th>Độ sâu đào đất</th><td><mark class="critical">2,5m</mark></td><th>Cốp pha</th><td>Ván ép dùng cho cốp pha bê tông; hệ chống: pipe support</td></tr>
+          <tr><th>Chắn đất</th><td><strong class="kw">Công pháp cọc chủ và ván chắn ngang</strong></td><th>Công tác nền móng</th><td>Cọc thi công tại chỗ, <strong class="kw">công pháp Earth Drill</strong></td></tr>
+          <tr><th>Cốt thép</th><td>Gia công tại nhà máy, lắp dựng tại hiện trường; cốt chủ cột và dầm: <strong class="kw">mối nối ép hàn khí</strong></td><th>Bê tông</th><td>Bê tông thường</td></tr>
+        </tbody></table></div>
+        <h4>Hoàn thiện bên ngoài chính</h4>
+        <div class="table-wrap"><table><tbody>
+          <tr><th>Mái bằng</th><td>Chống thấm asphalt cách nhiệt lộ thiên, coping nhôm</td><th>Sàn ban công</th><td>Nền vữa + chống thấm màng phủ polyurethane</td></tr>
+          <tr><th>Tường ngoài chính</th><td>Bê tông để trần + vật liệu phủ nhiều lớp dạng chống thấm</td><th>Sàn hành lang ngoài</th><td>Bê tông cán phẳng trực tiếp + tấm sàn vinyl</td></tr>
+          <tr><th>Cách nhiệt tường ngoài</th><td>Cách nhiệt phía trong, phun vật liệu cách nhiệt tạo bọt tại hiện trường</td><th>Sàn cầu thang ngoài</th><td>Nền vữa + tấm sàn vinyl</td></tr>
+          <tr><th>Tường lan can ban công</th><td>Sản phẩm nhôm chế tạo sẵn, <mark class="critical">H = 1,2m</mark></td><th>Sảnh chắn gió</th><td>Cửa tự động inox có khóa tự động, kèm kính cường lực</td></tr>
+          <tr><th>Tường lan can hành lang ngoài</th><td>Bê tông để trần + vật liệu phủ nhiều lớp dạng chống thấm</td><th>Cửa ra vào căn hộ</th><td>Cửa thép dán tấm hoàn thiện</td></tr>
+          <tr><th>Tường lan can cầu thang ngoài</th><td>Bê tông để trần + vật liệu phủ nhiều lớp dạng chống thấm; tay vịn inox gắn tường</td><th>Cửa sổ</th><td>Khung nhôm; tầng 1 đến 2 dùng kính có lưới, tầng 3 đến 7 dùng kính float</td></tr>
+        </tbody></table></div>
+        <h4>Hoàn thiện bên trong chính</h4>
+        <p>Phòng ở và khu vực ướt: chiều cao trần <mark class="critical">2,4m</mark>. Sảnh chắn gió: chiều cao trần <mark class="critical">2,5m</mark>.</p>
+        <div class="table-wrap"><table><thead><tr><th>Bộ phận</th><th>Không gian</th><th>Cấu tạo hoàn thiện</th></tr></thead><tbody>
+          <tr><td>Sàn</td><td>Phòng ở</td><td>Bê tông cán phẳng trực tiếp + sàn kép khô + ván flooring</td></tr>
+          <tr><td>Sàn</td><td>Khu vực ướt</td><td>Bê tông cán phẳng trực tiếp + sàn kép khô + plywood chịu nước + tấm sàn vinyl</td></tr>
+          <tr><td>Sàn</td><td>Sảnh chắn gió</td><td>Nền vữa + gạch chống trượt</td></tr>
+          <tr><td>Tường</td><td>Phòng ở</td><td>Khung thép nhẹ + tấm thạch cao + giấy/vải vinyl</td></tr>
+          <tr><td>Tường</td><td>Khu vực ướt</td><td>Khung thép nhẹ + tấm thạch cao sheathing + giấy/vải vinyl</td></tr>
+          <tr><td>Tường</td><td>Sảnh chắn gió</td><td>Nền vữa + gạch cỡ nhỏ sử dụng keo hữu cơ</td></tr>
+          <tr><td>Trần</td><td>Phòng ở, khu vực ướt</td><td>Khung thép nhẹ + tấm thạch cao + giấy/vải vinyl</td></tr>
+          <tr><td>Trần</td><td>Sảnh chắn gió</td><td>Khung thép nhẹ + tấm spandrel nhôm</td></tr>
+          <tr><td>Cửa và hạng mục khác</td><td>Phòng ở</td><td>Cửa gỗ dán tấm hoàn thiện, gồm cả khung</td></tr>
+          <tr><td>Cửa và hạng mục khác</td><td>Khu vực ướt</td><td>Unit bath, bàn chậu rửa, system kitchen</td></tr>
+          <tr><td>Cửa và hạng mục khác</td><td>Sảnh chắn gió</td><td>Hộp thư tập trung, panel intercom</td></tr>
+        </tbody></table></div>
+        <h4>Các thông số ngoại cấu chính</h4>
+        <div class="table-wrap"><table><tbody>
+          <tr><th>Mặt đường trong khuôn viên</th><td>Bãi ô tô: mặt asphalt; bãi xe đạp: mặt bê tông; lối tiếp cận: lát interlocking</td></tr>
+          <tr><th>Hàng rào/cổng</th><td>Hàng rào hoàn thiện trang trí; lối vào bãi ô tô: cổng dạng ray</td></tr>
+          <tr><th>Cây xanh</th><td>Ranh giới khu đất: trồng hỗn hợp cây trung bình và cây thấp</td></tr>
+        </tbody></table></div>
+      </div></article>
+    </div>
+  </section>
+
+  <section class="subsection" id="sub-overview-importance">
+    <h3>工事概要の理解の重要性 / 指定された工期の重要性</h3>
+    <div class="study-grid">
+      <article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja">
+        <p>令和6年度の試験では、主要構造が<strong class="kw">「鉄筋コンクリート構造」</strong>であった。令和7年度の試験では、主要構造が<strong class="kw">「鉄骨構造」</strong>であった。</p>
+        <p>建築物の主要構造には、「鉄筋コンクリート構造」「鉄骨構造」「木構造（1級の試験で扱われる大規模建築物では非一般的）」がある。一例として、令和6年度の2級建築施工管理技術検定試験では、主要構造が「鉄筋コンクリート構造 地上4階建て、風除室 一部鉄骨構造」または「木構造 在来軸組工法 地上2階建て」のように指定されていた。</p>
+        <p>施工経験記述の解答は、<span class="trap">工事概要に示されている工事内容に限定したものとする必要がある</span>。そのため、自身の経験と知見に基づき、工事概要の各工事仕様を十分に読み込んだうえで、記述の方針を定める必要がある。</p>
+        <p>最初に、工事概要に示されている各工種・各作業のうち、自身の経験と知見があるものが何であるかを考える。その後、工種や作業を特定し、その特定した項目の工種や作業の中から、設問に対する解答を考えて記述する。</p>
+        <p>ただし、どの工種・どの作業であっても、記述する内容が、<strong class="kw">品質の確保・工程の合理化・再資源化</strong>のいずれかの（問題文で指定されている）テーマに沿っているかは、常に確認する必要がある。</p>
+        <p>「解答する前に、まずは試験問題を読め。その後、もう一度試験問題を読め。解答した後に、更にもう一度試験問題を読め。」これを怠ると、「試験問題では訊かれてもいない内容」の解答となったり、試験問題の「次の記述は不可とする」に当てはまる解答となったりするおそれが生じる。そのような解答は、どんなに専門的かつ正確な内容となっていても、<span class="trap">「0点」となる</span>。</p>
+        <p>建築工事では、コンクリート・モルタル・接着剤・シーリング材などについて、所定の温度を確保して養生する必要がある。こうした養生日数やオープンタイムなどは、夏季と冬季では異なる場合が多い。そのため、<strong class="kw">「工事概要」の「工期」</strong>の欄を確認し、記述しようとする工種の施工時期が、指定された工期に合致しているかを確認しなければならない。一例として、工期が「1月～3月」と指定されている場合は、<span class="trap">「暑中コンクリート」に関わる解答は避けなければならない</span>。</p>
+      </div></article>
+      <article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi">
+        <p>Trong kỳ thi Reiwa 6, kết cấu chính là <strong class="kw">kết cấu bê tông cốt thép</strong>; trong kỳ thi Reiwa 7, kết cấu chính là <strong class="kw">kết cấu thép</strong>.</p>
+        <p>Các dạng kết cấu chính gồm bê tông cốt thép, kết cấu thép và kết cấu gỗ; loại kết cấu gỗ không phổ biến đối với công trình quy mô lớn được xử lý trong kỳ thi cấp 1. Ví dụ ở kỳ thi cấp 2 Reiwa 6, đề có thể chỉ định “BTCT 4 tầng, sảnh chắn gió một phần kết cấu thép” hoặc “kết cấu gỗ, công pháp khung trục truyền thống, 2 tầng”.</p>
+        <p>Câu trả lời của phần 施工経験記述 <span class="trap">phải được giới hạn trong các nội dung công việc được nêu trong tổng quan công trình</span>. Vì vậy, phải đọc kỹ từng thông số công tác dựa trên kinh nghiệm và kiến thức trước khi xác định phương hướng trả lời.</p>
+        <p>Trước hết xác định các công tác/công việc trong tổng quan mà người dự thi có kinh nghiệm và kiến thức; sau đó xác định cụ thể công tác hoặc công việc, rồi xây dựng câu trả lời trong phạm vi đó.</p>
+        <p>Bất kể chọn công tác nào, luôn phải kiểm tra nội dung có bám đúng chủ đề đề chỉ định như <strong class="kw">bảo đảm chất lượng, hợp lý hóa tiến độ hoặc tái tài nguyên hóa</strong> hay không.</p>
+        <p>Tài liệu nhấn mạnh phải đọc đề nhiều lần. Nếu trả lời nội dung đề không hỏi hoặc rơi vào mục “không được viết”, dù chuyên môn chính xác vẫn có thể <span class="trap">bị “0 điểm”</span>.</p>
+        <p>Đối với bê tông, vữa, keo dán, sealant v.v., điều kiện dưỡng hộ và open time có thể khác giữa mùa hè và mùa đông. Vì vậy phải kiểm tra <strong class="kw">mục “工期”, thời gian thi công</strong> và xác nhận thời điểm của công tác định viết phù hợp với kỳ thi công được chỉ định. Ví dụ nếu công kỳ là tháng 1 đến tháng 3 thì <span class="trap">phải tránh câu trả lời về bê tông thi công trong thời tiết nóng</span>.</p>
+      </div></article>
+    </div>
+    <p><a href="#toc">↑ Mục lục</a></p>
+  </section>
+</section>
+
+<section class="study-section" id="sec-113-schedule">
+  <div class="section-head"><h2>1.1.3 工程管理の考え方</h2><span class="source-ref">Nguồn: Book page 30-31</span></div>
+  <section class="subsection" id="sub-schedule-basics">
+    <h3>工程管理・省力化・工程短縮</h3>
+    <div class="study-grid">
+      <article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja">
+        <h4>(1) 工程管理</h4>
+        <p><strong class="kw">工程管理</strong>とは、計画工程を順調に進めたり、品質確保をした上で遅れた工程を短縮したりすることである。1級建築施工管理技士の第二次検定では、施工の合理化や「現場作業の軽減」、「労働生産性の向上」などの用語で出題される。</p>
+        <p>施工の合理化あるいは生産性の向上というのは、通常、原価圧縮により利益を確保する目的で行われる施工管理（安全管理、品質管理、工程管理）の活動である。</p>
+        <p>施工の合理化のうち、<span class="relation">品質確保を前提とした工程管理</span>に限定するため、省力化、工程短縮、現場作業の軽減、労働生産性向上について記述させている。</p>
+        <h4>(2) 省力化</h4>
+        <p><strong class="kw">省力化</strong>は、労働力を機械化し苦役から労働者を解放するという主旨で始まった安全管理の運動であるが、苦役からの解放にとどまらず、<span class="relation">機械化、プレハブ化、標準化などにより、安全性の向上、品質性能の向上、工期短縮</span>の効果がある。このうち、現場作業の軽減、工程短縮の効果をもたらす具体的な省力化、軽減対策としての機械名、プレハブ化工事、変更する工法等を記述する。</p>
+        <h4>(3) 工程短縮</h4>
+        <p><strong class="kw">工程短縮</strong>では、現状の通り施工すると工期に遅れるため、計画を変更して1日当たりの作業量を増大する必要がある。</p>
+        <p>工程管理の資源として労働力（Manpower）、機械（Machine）、材料（Material）、工法（Method）、管理（Management）の<strong class="kw">5M</strong>がある。したがって、工程計画について、5Mの用い方を変更して1日当たりの作業量を増大して工程を短縮する。</p>
+        <p>工程短縮では<span class="trap">何から何へ変更するのかを具体的な作業の名称をあげて記述しなければならない</span>。工程短縮に伴い、生産された製品の<strong class="kw">品質を確保</strong>することが求められる。このときの<strong class="kw">品質確認</strong>も行わなければならない。</p>
+      </div></article>
+      <article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi">
+        <h4>(1) Quản lý tiến độ</h4>
+        <p><strong class="kw">Quản lý tiến độ</strong> là làm cho tiến độ kế hoạch được triển khai thuận lợi, hoặc khi chậm thì rút ngắn tiến độ trong khi vẫn bảo đảm chất lượng. Trong kỳ thi lần thứ hai, nội dung này được hỏi bằng các thuật ngữ như hợp lý hóa thi công, giảm công việc tại hiện trường và nâng cao năng suất lao động.</p>
+        <p>Hợp lý hóa thi công hoặc nâng cao năng suất thông thường là hoạt động quản lý thi công gồm an toàn, chất lượng và tiến độ nhằm bảo đảm lợi nhuận thông qua giảm giá thành.</p>
+        <p>Đề giới hạn vào <span class="relation">quản lý tiến độ với điều kiện tiên quyết là bảo đảm chất lượng</span>, vì vậy yêu cầu trình bày về giảm sức lao động, rút ngắn tiến độ, giảm công việc tại hiện trường và nâng cao năng suất.</p>
+        <h4>(2) Giảm sức lao động</h4>
+        <p><strong class="kw">Giảm sức lao động</strong> ban đầu nhằm cơ giới hóa lao động để giải phóng người lao động khỏi công việc nặng nhọc; ngoài ra <span class="relation">thông qua cơ giới hóa, prefab hóa, tiêu chuẩn hóa, có thể nâng cao an toàn, nâng cao chất lượng và rút ngắn thời gian thi công</span>. Khi viết cần nêu cụ thể tên máy móc, công tác prefab hóa, công pháp được thay đổi v.v.</p>
+        <h4>(3) Rút ngắn tiến độ</h4>
+        <p>Trong <strong class="kw">rút ngắn tiến độ</strong>, nếu tiếp tục thi công theo hiện trạng sẽ chậm thời hạn, vì vậy phải thay đổi kế hoạch để tăng khối lượng công việc trong một ngày.</p>
+        <p>Nguồn lực của quản lý tiến độ gồm <strong class="kw">5M</strong>: Manpower, Machine, Material, Method, Management. Thay đổi cách dùng 5M để tăng khối lượng/ngày và rút ngắn tiến độ.</p>
+        <p>Khi viết về rút ngắn tiến độ, <span class="trap">phải nêu cụ thể thay đổi từ cái gì sang cái gì</span>. Đồng thời phải <strong class="kw">bảo đảm chất lượng</strong> của sản phẩm/công trình và thực hiện <strong class="kw">xác nhận chất lượng</strong>.</p>
+      </div></article>
+    </div>
+  </section>
+
+  <section class="subsection" id="sub-productivity">
+    <h3>労働生産性の向上</h3>
+    <div class="study-grid">
+      <article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja">
+        <p><strong class="kw">労働生産性</strong>とは、労働者1人あたりの作業量の増大化で一般に、作業効率のことである。労働者の作業効率を高めるためには、労働者の作業能力を向上させるための訓練や研修などの教育や、作業の環境を快適なものに変えていく必要がある。</p>
+        <p>労働生産性の向上は、現場作業効率の向上となり、工程短縮をもたらす結果となるため、工程管理として考えられる。</p>
+        <p>このため、組織的な管理業務の情報化を推進し、抜本的な現場作業の軽減を図ると共に、労働者の安全衛生教育、OJT（オンザジョブトレーニング）などの労働者教育を具体的に示したり、作業環境改善のため休憩室の冷暖房の完備、適正な休日の付与、作業場の安全施設の充実の例や機械化などの具体的な方法を記述する。<span class="relation">魅力ある現場環境が労働意欲の向上につながる</span>。</p>
+      </div></article>
+      <article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi">
+        <p><strong class="kw">Năng suất lao động</strong> là tăng khối lượng công việc thực hiện trên mỗi người lao động, nói chung chính là hiệu suất làm việc. Để tăng hiệu suất cần đào tạo, huấn luyện nâng cao năng lực và cải thiện môi trường làm việc.</p>
+        <p>Nâng cao năng suất lao động làm tăng hiệu suất tại hiện trường và dẫn đến rút ngắn tiến độ, vì vậy được xem là nội dung của quản lý tiến độ.</p>
+        <p>Các biện pháp cụ thể gồm tin học hóa nghiệp vụ quản lý, giảm căn bản công việc hiện trường, đào tạo an toàn vệ sinh, OJT, trang bị sưởi/điều hòa cho phòng nghỉ, bố trí ngày nghỉ hợp lý, tăng cường thiết bị an toàn và cơ giới hóa. <span class="relation">Môi trường công trường hấp dẫn dẫn đến nâng cao động lực làm việc</span>.</p>
+      </div></article>
+    </div>
+  </section>
+
+  <section class="subsection" id="sub-schedule-examples">
+    <h3>工程管理で取り上げることのできる項目の例</h3>
+    <div class="study-grid">
+      <article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja">
+        <div class="table-wrap"><table>
+          <caption>変更前と変更後の内容の例</caption>
+          <thead><tr><th>作業工種</th><th>工種</th><th>変更前</th><th>変更後</th><th>工程短縮の理由</th><th>品質</th></tr></thead>
+          <tbody>
+            <tr><td>仮設</td><td>山留め</td><td>水平切梁工法</td><td><strong class="kw">地盤アンカー工法</strong></td><td><span class="relation">作業空間が広く作業効率が向上</span></td><td>同等</td></tr>
+            <tr><td>仮設</td><td>型枠</td><td>合板型枠</td><td><strong class="kw">捨型枠</strong></td><td><span class="relation">撤去工程の省力化</span></td><td>向上</td></tr>
+            <tr><td>基礎</td><td>掘削機</td><td>リバース工法</td><td><strong class="kw">アースドリル工法</strong></td><td><span class="relation">掘削工程の短縮</span></td><td>同等</td></tr>
+            <tr><td>鉄筋</td><td>組立</td><td>現地組立</td><td><strong class="kw">先行組立吊込み</strong></td><td><span class="relation">先行組立吊込みで工程短縮</span></td><td>向上</td></tr>
+            <tr><td>鉄筋</td><td>加工</td><td>ガス圧接継手</td><td><strong class="kw">機械式継手</strong></td><td><span class="relation">天候に左右されず工程短縮</span></td><td>向上</td></tr>
+            <tr><td>コンクリート</td><td>養生</td><td>普通ポルトランドセメント</td><td><strong class="kw">早強ポルトランドセメント</strong></td><td><span class="relation">養生工程短縮</span></td><td>同等</td></tr>
+            <tr><td>コンクリート</td><td>打込み</td><td>現場打ちコンクリート</td><td><strong class="kw">プレキャストコンクリート製品</strong></td><td><span class="relation">施工工程短縮</span></td><td>向上</td></tr>
+            <tr><td>鉄骨</td><td>建込み</td><td>びょうぶ建て工法</td><td><strong class="kw">水平積上げ工法</strong></td><td><span class="relation">並行作業ができ工程短縮</span></td><td>向上</td></tr>
+            <tr><td>鉄骨</td><td>接合</td><td>現場溶接</td><td><strong class="kw">工場溶接</strong></td><td><span class="relation">溶接工程の省力化</span></td><td>向上</td></tr>
+            <tr><td>防水</td><td>防水</td><td>アスファルト防水密着工法</td><td><strong class="kw">改質アスファルト防水トーチ工法</strong></td><td><span class="relation">防水工程短縮</span></td><td>同等</td></tr>
+            <tr><td>石</td><td>石</td><td>湿式工法</td><td><strong class="kw">乾式工法</strong></td><td><span class="relation">石張り工程短縮</span></td><td>向上</td></tr>
+            <tr><td>タイル</td><td>タイル</td><td>タイル後張り</td><td><strong class="kw">タイル型枠先付け</strong></td><td><span class="relation">タイル張り工程短縮</span></td><td>向上</td></tr>
+            <tr><td>屋根</td><td>屋根</td><td>タイトフレーム現場溶接</td><td><strong class="kw">タイトフレーム工場溶接</strong></td><td><span class="relation">屋根工程短縮</span></td><td>向上</td></tr>
+            <tr><td>左官</td><td>左官</td><td>ラス系下地3回塗り</td><td><strong class="kw">ラス系下地2回塗り</strong></td><td><span class="relation">下地調整工程短縮</span></td><td>同等</td></tr>
+            <tr><td>建具</td><td>建具</td><td>現地組立</td><td><strong class="kw">工場組立</strong></td><td><span class="relation">組立工程省力化</span></td><td>向上</td></tr>
+            <tr><td>塗装</td><td>塗装</td><td>ローラーブラシ塗り工法</td><td><strong class="kw">吹付塗り工法</strong></td><td><span class="relation">塗装工程短縮</span></td><td>同等</td></tr>
+            <tr><td>内装</td><td>床</td><td>エポキシ塗り床</td><td><strong class="kw">アクリル塗り床</strong></td><td><span class="relation">床塗り工程短縮</span></td><td>同等</td></tr>
+            <tr><td>内装</td><td>ガラス</td><td>現場取付け</td><td><strong class="kw">工場取付け</strong></td><td><span class="relation">ガラス取付け工程省力化</span></td><td>向上</td></tr>
+          </tbody>
+        </table></div>
+      </div></article>
+      <article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi">
+        <div class="table-wrap"><table>
+          <caption>Ví dụ thay đổi trước và sau</caption>
+          <thead><tr><th>Nhóm</th><th>Công tác</th><th>Trước</th><th>Sau</th><th>Lý do rút ngắn</th><th>Chất lượng</th></tr></thead>
+          <tbody>
+            <tr><td>Tạm</td><td>Chắn đất</td><td>Công pháp chống ngang</td><td><strong class="kw">Công pháp neo đất</strong></td><td><span class="relation">Không gian làm việc rộng hơn, hiệu suất tăng</span></td><td>Tương đương</td></tr>
+            <tr><td>Tạm</td><td>Cốp pha</td><td>Cốp pha plywood</td><td><strong class="kw">Cốp pha để lại</strong></td><td><span class="relation">Giảm công đoạn tháo dỡ</span></td><td>Nâng cao</td></tr>
+            <tr><td>Móng</td><td>Máy đào</td><td>Reverse</td><td><strong class="kw">Earth Drill</strong></td><td><span class="relation">Rút ngắn công đoạn đào</span></td><td>Tương đương</td></tr>
+            <tr><td>Cốt thép</td><td>Lắp dựng</td><td>Lắp tại chỗ</td><td><strong class="kw">Lắp trước rồi cẩu vào</strong></td><td><span class="relation">Rút ngắn tiến độ nhờ lắp trước</span></td><td>Nâng cao</td></tr>
+            <tr><td>Cốt thép</td><td>Gia công/nối</td><td>Mối nối ép hàn khí</td><td><strong class="kw">Mối nối cơ khí</strong></td><td><span class="relation">Không bị ảnh hưởng bởi thời tiết</span></td><td>Nâng cao</td></tr>
+            <tr><td>Bê tông</td><td>Dưỡng hộ</td><td>Xi măng Portland thường</td><td><strong class="kw">Xi măng Portland cường độ sớm</strong></td><td><span class="relation">Rút ngắn dưỡng hộ</span></td><td>Tương đương</td></tr>
+            <tr><td>Bê tông</td><td>Đổ</td><td>Bê tông đổ tại chỗ</td><td><strong class="kw">Sản phẩm bê tông precast</strong></td><td><span class="relation">Rút ngắn công đoạn thi công</span></td><td>Nâng cao</td></tr>
+            <tr><td>Kết cấu thép</td><td>Lắp dựng</td><td>びょうぶ建て</td><td><strong class="kw">Lắp xếp chồng theo phương ngang</strong></td><td><span class="relation">Có thể làm song song</span></td><td>Nâng cao</td></tr>
+            <tr><td>Kết cấu thép</td><td>Liên kết</td><td>Hàn hiện trường</td><td><strong class="kw">Hàn nhà máy</strong></td><td><span class="relation">Giảm công đoạn hàn hiện trường</span></td><td>Nâng cao</td></tr>
+            <tr><td>Chống thấm</td><td>Chống thấm</td><td>Asphalt dán kín</td><td><strong class="kw">Torch asphalt cải tiến</strong></td><td><span class="relation">Rút ngắn công đoạn chống thấm</span></td><td>Tương đương</td></tr>
+            <tr><td>Đá</td><td>Ốp đá</td><td>Công pháp ướt</td><td><strong class="kw">Công pháp khô</strong></td><td><span class="relation">Rút ngắn ốp đá</span></td><td>Nâng cao</td></tr>
+            <tr><td>Gạch</td><td>Ốp gạch</td><td>Ốp sau</td><td><strong class="kw">Gắn gạch trước vào cốp pha</strong></td><td><span class="relation">Rút ngắn công đoạn ốp</span></td><td>Nâng cao</td></tr>
+            <tr><td>Mái</td><td>Tight frame</td><td>Hàn hiện trường</td><td><strong class="kw">Hàn nhà máy</strong></td><td><span class="relation">Rút ngắn công đoạn mái</span></td><td>Nâng cao</td></tr>
+            <tr><td>Trát</td><td>Nền lath</td><td>Trát 3 lớp</td><td><strong class="kw">Trát 2 lớp</strong></td><td><span class="relation">Rút ngắn điều chỉnh nền</span></td><td>Tương đương</td></tr>
+            <tr><td>Cửa</td><td>Cửa</td><td>Lắp ráp tại hiện trường</td><td><strong class="kw">Lắp ráp tại nhà máy</strong></td><td><span class="relation">Giảm công đoạn lắp ráp</span></td><td>Nâng cao</td></tr>
+            <tr><td>Sơn</td><td>Sơn</td><td>Roller/brush</td><td><strong class="kw">Sơn phun</strong></td><td><span class="relation">Rút ngắn công đoạn sơn</span></td><td>Tương đương</td></tr>
+            <tr><td>Nội thất</td><td>Sàn</td><td>Sàn phủ epoxy</td><td><strong class="kw">Sàn phủ acrylic</strong></td><td><span class="relation">Rút ngắn công đoạn phủ sàn</span></td><td>Tương đương</td></tr>
+            <tr><td>Nội thất</td><td>Kính</td><td>Lắp tại hiện trường</td><td><strong class="kw">Lắp tại nhà máy</strong></td><td><span class="relation">Giảm công đoạn lắp kính</span></td><td>Nâng cao</td></tr>
+          </tbody>
+        </table></div>
+      </div></article>
+    </div>
+    <p><a href="#toc">↑ Mục lục</a></p>
+  </section>
+</section>
+
+<section class="study-section" id="sec-113-quality">
+  <div class="section-head"><h2>品質管理の考え方</h2><span class="source-ref">Nguồn: Book page 32</span></div>
+  <section class="subsection" id="sub-quality-hierarchy">
+    <h3>品質管理と品質管理項目</h3>
+    <div class="study-grid">
+      <article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja">
+        <p><strong class="kw">品質管理</strong>とは、発注者である顧客の要求する建築物の重要品質を明確にし、請負者は、工事監理者と協議し、<strong class="kw">合意品質</strong>を定める。</p>
+        <p>合意品質は漠然とした事項が多く、合意品質を数値化するため、<strong class="kw">施工品質（品質特性）</strong>となる品質管理項目を定め、これを試験又は目視により確認する品質管理計画書を作成し、これに基づき品質管理の活動を行う必要がある。</p>
+        <p>以上の事から、品質という言葉には、顧客のいう品質と、工事監理者のいう品質と請負者のいう品質とは、次のような関係がある。</p>
+        <div class="table-wrap"><table><caption>重要品質を具現化する品質管理項目の一例</caption><thead><tr><th>工事・品質の水準</th><th>顧客の品質</th><th>工事監理者の品質</th><th>請負者の品質管理項目</th></tr></thead><tbody>
+          <tr><td>品質の水準</td><td><strong class="kw">重要品質</strong></td><td><strong class="kw">合意品質</strong></td><td><strong class="kw">施工品質（品質特性）</strong></td></tr>
+          <tr><td>躯体工事</td><td>丈夫な建物としたい。</td><td>コンクリートの強度・耐久性の確保</td><td><span class="relation">スランプ、空気量、圧縮強度、塩化物含有量試験</span></td></tr>
+          <tr><td>仕上げ工事</td><td>タイルが地震時、剥れない。</td><td>耐ひび割性、耐剥離性</td><td><span class="relation">目地性能、平坦精度、打診検査、接着力試験</span></td></tr>
+        </tbody></table></div>
+      </div></article>
+      <article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi">
+        <p><strong class="kw">Quản lý chất lượng</strong> là xác định rõ chất lượng quan trọng của công trình mà khách hàng/chủ đầu tư yêu cầu; nhà thầu trao đổi với người giám sát công trình để xác định <strong class="kw">chất lượng đã thỏa thuận</strong>.</p>
+        <p>Do chất lượng đã thỏa thuận thường khái quát, để định lượng hóa phải xác định các hạng mục quản lý tương ứng với <strong class="kw">chất lượng thi công, tức đặc tính chất lượng</strong>; sau đó lập kế hoạch quản lý chất lượng để xác nhận bằng thử nghiệm hoặc kiểm tra trực quan và thực hiện quản lý theo kế hoạch.</p>
+        <p>Như vậy có quan hệ giữa chất lượng theo yêu cầu của khách hàng, chất lượng theo người giám sát và chất lượng theo nhà thầu.</p>
+        <div class="table-wrap"><table><caption>Ví dụ cụ thể hóa chất lượng quan trọng</caption><thead><tr><th>Công tác/cấp độ</th><th>Chất lượng khách hàng</th><th>Chất lượng giám sát</th><th>Hạng mục quản lý của nhà thầu</th></tr></thead><tbody>
+          <tr><td>Cấp độ</td><td><strong class="kw">Chất lượng quan trọng</strong></td><td><strong class="kw">Chất lượng đã thỏa thuận</strong></td><td><strong class="kw">Chất lượng thi công/đặc tính chất lượng</strong></td></tr>
+          <tr><td>Kết cấu</td><td>Muốn có công trình chắc chắn.</td><td>Bảo đảm cường độ và độ bền lâu của bê tông</td><td><span class="relation">Slump, hàm lượng không khí, cường độ nén, thử hàm lượng chloride</span></td></tr>
+          <tr><td>Hoàn thiện</td><td>Gạch không bong khi động đất.</td><td>Khả năng chống nứt, chống bong</td><td><span class="relation">Tính năng mạch, độ phẳng, kiểm tra gõ, thử lực bám dính</span></td></tr>
+        </tbody></table></div>
+      </div></article>
+    </div>
+  </section>
+  <section class="subsection" id="sub-quality-tests">
+    <h3>建築工事における品質確認の例</h3>
+    <div class="study-grid">
+      <article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja">
+        <div class="table-wrap"><table><caption>品質管理試験の一例</caption><thead><tr><th>工種</th><th>重要品質</th><th>品質管理試験</th><th>品質管理項目の確認</th></tr></thead><tbody>
+          <tr><td><strong class="kw">型枠工事</strong></td><td>平坦性</td><td>単位長さあたりの凹凸測定</td><td><span class="relation">仕上げ面の平坦性の確認</span></td></tr>
+          <tr><td><strong class="kw">コンクリート工事</strong></td><td>コンクリート強度</td><td>受入れ試験、圧縮強度試験</td><td><span class="relation">コンクリート強度の確認</span></td></tr>
+          <tr><td><strong class="kw">鉄骨工事</strong></td><td>鉄骨建込み精度</td><td>鉛直傾斜角、水平傾斜角の測定</td><td><span class="relation">柱の鉛直精度、梁の水平精度の確認</span></td></tr>
+          <tr><td><strong class="kw">鉄骨工事</strong></td><td>鉄骨接合耐力</td><td>溶接性能検査</td><td><span class="relation">溶接欠陥の有無の確認</span></td></tr>
+          <tr><td><strong class="kw">鉄筋工事</strong></td><td>鉄筋継手耐力</td><td>引張強度試験</td><td><span class="relation">鉄筋耐力の確認</span></td></tr>
+          <tr><td><strong class="kw">防水工事</strong></td><td>漏水防止性能</td><td>水張試験</td><td><span class="relation">漏水の有無の確認</span></td></tr>
+          <tr><td><strong class="kw">タイル工事</strong></td><td>耐剥離性能</td><td>接着力試験</td><td><span class="relation">耐剥離性能の確認</span></td></tr>
+          <tr><td><strong class="kw">石工事</strong></td><td>剥落防止</td><td>だぼ部の固定耐力試験</td><td><span class="relation">耐剥落性能の確認</span></td></tr>
+          <tr><td><strong class="kw">金属工事</strong></td><td>アンカー脱落防止</td><td>引抜き耐力試験</td><td><span class="relation">つり材耐力の確認</span></td></tr>
+          <tr><td><strong class="kw">建具工事</strong></td><td>耐風性、耐漏水性</td><td>JIS規格性能試験</td><td><span class="relation">耐風性能、耐漏水性能等の確認</span></td></tr>
+        </tbody></table></div>
+      </div></article>
+      <article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi">
+        <div class="table-wrap"><table><caption>Ví dụ về thử nghiệm quản lý chất lượng</caption><thead><tr><th>Công tác</th><th>Chất lượng quan trọng</th><th>Thử nghiệm</th><th>Nội dung xác nhận</th></tr></thead><tbody>
+          <tr><td><strong class="kw">Cốp pha</strong></td><td>Độ phẳng</td><td>Đo độ lồi lõm trên một đơn vị chiều dài</td><td><span class="relation">Xác nhận độ phẳng bề mặt hoàn thiện</span></td></tr>
+          <tr><td><strong class="kw">Bê tông</strong></td><td>Cường độ bê tông</td><td>Thử tiếp nhận, thử cường độ nén</td><td><span class="relation">Xác nhận cường độ bê tông</span></td></tr>
+          <tr><td><strong class="kw">Kết cấu thép</strong></td><td>Độ chính xác lắp dựng</td><td>Đo góc nghiêng đứng và ngang</td><td><span class="relation">Xác nhận độ thẳng đứng cột và độ ngang dầm</span></td></tr>
+          <tr><td><strong class="kw">Kết cấu thép</strong></td><td>Khả năng chịu lực liên kết</td><td>Kiểm tra tính năng mối hàn</td><td><span class="relation">Xác nhận có hay không khuyết tật hàn</span></td></tr>
+          <tr><td><strong class="kw">Cốt thép</strong></td><td>Khả năng chịu lực mối nối</td><td>Thử cường độ kéo</td><td><span class="relation">Xác nhận khả năng chịu lực của cốt thép</span></td></tr>
+          <tr><td><strong class="kw">Chống thấm</strong></td><td>Khả năng chống rò nước</td><td>Thử ngâm nước</td><td><span class="relation">Xác nhận có hay không rò nước</span></td></tr>
+          <tr><td><strong class="kw">Gạch ốp</strong></td><td>Khả năng chống bong</td><td>Thử lực bám dính</td><td><span class="relation">Xác nhận khả năng chống bong</span></td></tr>
+          <tr><td><strong class="kw">Đá</strong></td><td>Phòng chống bong rơi</td><td>Thử khả năng chịu lực cố định tại chốt だぼ</td><td><span class="relation">Xác nhận khả năng chống bong rơi</span></td></tr>
+          <tr><td><strong class="kw">Kim loại</strong></td><td>Phòng chống tuột neo</td><td>Thử kéo nhổ</td><td><span class="relation">Xác nhận khả năng chịu lực của cấu kiện treo</span></td></tr>
+          <tr><td><strong class="kw">Cửa</strong></td><td>Chịu gió, chống rò nước</td><td>Thử tính năng theo JIS</td><td><span class="relation">Xác nhận khả năng chịu gió, chống rò nước v.v.</span></td></tr>
+        </tbody></table></div>
+      </div></article>
+    </div>
+    <p><a href="#toc">↑ Mục lục</a></p>
+  </section>
+</section>
+
+<section class="study-section" id="sec-113-byproducts">
+  <div class="section-head"><h2>建設副産物対策の考え方</h2><span class="source-ref">Nguồn: Book page 33-34</span></div>
+  <section class="subsection" id="sub-byproduct-class">
+    <h3>建設副産物の分類</h3>
+    <div class="study-grid">
+      <article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja">
+        <p>建設副産物は、法律によって次の表のように、<strong class="kw">3つに区分</strong>されている。</p>
+        <div class="table-wrap"><table><caption>建設副産物の分類</caption><thead><tr><th>項目</th><th>廃棄物</th><th>再資源化すべき再生資源</th><th>再生資源</th></tr></thead><tbody>
+          <tr><td>分類</td><td>原材料として利用不可能な廃棄物</td><td>原材料として利用の可能性がある再生資源</td><td>そのまま原材料となる再生資源</td></tr>
+          <tr><td>名称の例</td><td>有害・危険物質の例：廃PCB、廃酸・廃アルカリ、廃石こうボード</td><td>特定建設資材、コンクリート塊、アスファルト・コンクリート塊、建設発生木材、建設汚泥、建設混合廃棄物</td><td>建設発生土、金属くず（鉄筋等の有価物）</td></tr>
+          <tr><td>運搬・処分制限</td><td><strong class="kw">マニフェストで運搬・処分を管理</strong></td><td><strong class="kw">マニフェストで運搬・処分を管理</strong></td><td>制限なし</td></tr>
+          <tr><td>処理と処分</td><td>最終処分場：安定型、管理型、遮断型</td><td>中間処理・縮減：再生骨材、再生アスファルト混合物、チップ・燃料、土砂・汚泥の分離・固化、分別・回収・解体</td><td>発注者指定処分、自由処分、有償売却</td></tr>
+          <tr><td>最終処分</td><td><span class="relation">最終処分（埋立）</span></td><td><span class="relation">再生資源化（リサイクル）</span></td><td><span class="relation">再利用（リュース）</span></td></tr>
+          <tr><td>主な法律</td><td>産業廃棄物処理法</td><td>建設リサイクル法</td><td>資源有効利用促進法</td></tr>
+        </tbody></table></div>
+      </div></article>
+      <article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi">
+        <p>Theo tài liệu, phụ phẩm xây dựng được pháp luật phân thành <strong class="kw">ba nhóm</strong>.</p>
+        <div class="table-wrap"><table><caption>Phân loại phụ phẩm xây dựng</caption><thead><tr><th>Hạng mục</th><th>Chất thải</th><th>Tài nguyên tái sinh cần tái tài nguyên hóa</th><th>Tài nguyên tái sinh</th></tr></thead><tbody>
+          <tr><td>Phân loại</td><td>Chất thải không thể sử dụng làm nguyên liệu</td><td>Tài nguyên có khả năng sử dụng làm nguyên liệu</td><td>Tài nguyên có thể trực tiếp trở thành nguyên liệu</td></tr>
+          <tr><td>Ví dụ</td><td>PCB thải, axit/kiềm thải, tấm thạch cao thải</td><td>Vật liệu xây dựng chỉ định, bê tông phế, asphalt-concrete phế, gỗ phát sinh, bùn xây dựng, chất thải hỗn hợp</td><td>Đất phát sinh từ xây dựng, phế liệu kim loại có giá trị</td></tr>
+          <tr><td>Hạn chế vận chuyển/xử lý</td><td><strong class="kw">Quản lý bằng manifest</strong></td><td><strong class="kw">Quản lý bằng manifest</strong></td><td>Không hạn chế</td></tr>
+          <tr><td>Xử lý</td><td>Bãi xử lý cuối cùng: loại ổn định, quản lý, cách ly</td><td>Xử lý trung gian/giảm thể tích: cốt liệu tái chế, asphalt tái chế, chip/nhiên liệu, phân tách/hóa rắn đất bùn, phân loại/thu hồi/tháo dỡ</td><td>Xử lý theo chỉ định chủ đầu tư, xử lý tự do, bán có thu tiền</td></tr>
+          <tr><td>Hướng cuối cùng</td><td><span class="relation">Chôn lấp cuối cùng</span></td><td><span class="relation">Tái tài nguyên hóa</span></td><td><span class="relation">Tái sử dụng</span></td></tr>
+          <tr><td>Luật chính</td><td>産業廃棄物処理法</td><td>建設リサイクル法</td><td>資源有効利用促進法</td></tr>
+        </tbody></table></div>
+      </div></article>
+    </div>
+  </section>
+
+  <section class="subsection" id="sub-resource-cycle">
+    <h3>建設副産物の対策（処分）の考え方</h3>
+    <div class="study-grid">
+      <article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja">
+        <p>建築工事で発生する建設副産物に対して、循環型社会形成推進基本法にもとづき、事業者は次の順番で資源の循環を考える。</p>
+        <ol>
+          <li><strong class="kw">発生抑制（リデュース）</strong>：現場発生土の安定処理、捨型枠の採用、タイル型枠先付けの採用などにより、建設副産物の発生量を抑制する。</li>
+          <li><strong class="kw">再利用（リュース）</strong>：建設副産物をそのまま又は少しの加工で再利用することにより、廃棄物を減少させる。</li>
+          <li><strong class="kw">再生利用（マテリアルリサイクル／循環形）</strong>：建設副産物を分別・破砕し、再資源化して活用することにより、埋め立てる廃棄物を減少させる。</li>
+          <li><strong class="kw">熱回収（サーマルリサイクル）</strong>：建設副産物を燃料として利用する。</li>
+          <li><strong class="kw">適正処分</strong>：再資源化できない廃棄物は、廃棄物の種類に応じた埋立処分を行う。</li>
+        </ol>
+      </div></article>
+      <article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi">
+        <p>Đối với phụ phẩm xây dựng, dựa trên luật cơ bản thúc đẩy hình thành xã hội tuần hoàn, doanh nghiệp xem xét tuần hoàn tài nguyên theo thứ tự sau:</p>
+        <ol>
+          <li><strong class="kw">Hạn chế phát sinh (Reduce)</strong>: xử lý ổn định đất phát sinh, dùng cốp pha để lại, gắn gạch trước vào cốp pha v.v. để hạn chế lượng phụ phẩm.</li>
+          <li><strong class="kw">Tái sử dụng (Reuse)</strong>: tái sử dụng nguyên trạng hoặc chỉ qua gia công nhẹ để giảm chất thải.</li>
+          <li><strong class="kw">Tái chế vật liệu (Material recycle)</strong>: phân loại, nghiền, tái tài nguyên hóa và sử dụng lại để giảm lượng chôn lấp.</li>
+          <li><strong class="kw">Thu hồi nhiệt (Thermal recycle)</strong>: sử dụng phụ phẩm làm nhiên liệu.</li>
+          <li><strong class="kw">Xử lý thích hợp</strong>: chất thải không thể tái tài nguyên hóa được chôn lấp phù hợp theo từng loại.</li>
+        </ol>
+      </div></article>
+    </div>
+  </section>
+
+  <section class="subsection" id="sub-env-load">
+    <h3>建設廃棄物の縮減 / 環境負荷軽減対策</h3>
+    <div class="study-grid">
+      <article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja">
+        <h4>(3) 建設廃棄物の縮減</h4>
+        <p><strong class="kw">縮減とは体積を減少させること</strong>である。再資源化が困難な場合に埋立処分するもので、焼却、粉砕、脱水、乾燥等の方法を用いる。</p>
+        <ol>
+          <li>がれき類は<strong class="kw">破砕</strong></li>
+          <li>ガラスくず・陶磁器くずは<strong class="kw">破砕・圧縮</strong></li>
+          <li>廃プラスチック類は<strong class="kw">焼却、溶融固化で安定型埋立処分</strong></li>
+          <li>廃材は<strong class="kw">焼却・破砕</strong></li>
+          <li>汚泥は<strong class="kw">脱水・焼却で管理型埋立処分</strong></li>
+        </ol>
+        <h4>(4) 環境負荷軽減対策の考え方</h4>
+        <p>環境負荷軽減対策について、地球温暖化防止のための二酸化炭素（CO₂）削減対策、熱帯林等の資源の枯渇防止対策と、大気、水質等の汚染対策についての考えを整理しておく必要がある。</p>
+        <div class="table-wrap"><table><caption>環境負荷軽減対策の例</caption><thead><tr><th>対策</th><th>措置の考え方</th><th>具体的な措置</th></tr></thead><tbody>
+          <tr><td><strong class="kw">地球温暖化対策</strong></td><td>二酸化炭素等地球温暖化ガス排出抑制</td><td><span class="relation">①CO₂排出抑制型建設機械の選定 ②エンジンから電動機への変更 ③運転方法による省エネ ④現場事務所のエアコン等の省エネ ⑤解体時フロンガス等の回収</span></td></tr>
+          <tr><td><strong class="kw">資源枯渇防止対策</strong></td><td>熱帯林の保全、資源のリサイクル</td><td><span class="relation">①合板型枠から金属製型枠へ変更 ②合板型枠の転用・再資源化、建設廃棄物の分別集収 ③仮設の転用 ④天然資源利用抑制と再資源化資源利用促進</span></td></tr>
+          <tr><td><strong class="kw">大気汚染防止対策</strong></td><td>有害ガス排出抑制、ほこり飛散抑制</td><td><span class="relation">①排ガス対策車 ②アイドリングストップ ③水系塗料 ④解体・土工事への散水</span></td></tr>
+          <tr><td><strong class="kw">水質汚濁防止対策</strong></td><td>排水中の汚濁物質除去</td><td><span class="relation">①湧水を沈殿層に通しpH調整後排水 ②洗浄水は沈殿層・pH調整・ノルマルヘキサン物質除去後排水 ③降雨は仮設排水路から排水</span></td></tr>
+        </tbody></table></div>
+      </div></article>
+      <article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi">
+        <h4>(3) Giảm thể tích chất thải xây dựng</h4>
+        <p><strong class="kw">縮減 có nghĩa là giảm thể tích</strong>. Khi khó tái tài nguyên hóa và phải chôn lấp, dùng các phương pháp như đốt, nghiền, tách nước, sấy.</p>
+        <ol>
+          <li>Phế dạng rubble: <strong class="kw">nghiền</strong>.</li>
+          <li>Phế thủy tinh/gốm sứ: <strong class="kw">nghiền và nén</strong>.</li>
+          <li>Nhựa thải: <strong class="kw">đốt, hóa rắn bằng nóng chảy rồi chôn lấp loại ổn định</strong>.</li>
+          <li>Vật liệu phế: <strong class="kw">đốt và nghiền</strong>.</li>
+          <li>Bùn: <strong class="kw">tách nước, đốt rồi chôn lấp loại quản lý</strong>.</li>
+        </ol>
+        <h4>(4) Cách tư duy về giảm tải môi trường</h4>
+        <p>Cần hệ thống hóa biện pháp giảm CO₂ nhằm ngăn nóng lên toàn cầu, phòng cạn kiệt tài nguyên như rừng nhiệt đới, chống ô nhiễm không khí và ô nhiễm nước.</p>
+        <div class="table-wrap"><table><caption>Ví dụ biện pháp giảm tải môi trường</caption><thead><tr><th>Nhóm</th><th>Cách tư duy</th><th>Biện pháp cụ thể</th></tr></thead><tbody>
+          <tr><td><strong class="kw">Chống nóng lên toàn cầu</strong></td><td>Hạn chế phát thải CO₂ và khí gây nóng lên</td><td><span class="relation">①Máy xây dựng ít CO₂ ②Thay động cơ đốt bằng động cơ điện ③Vận hành tiết kiệm năng lượng ④Tiết kiệm điều hòa văn phòng công trường ⑤Thu hồi fluorocarbon khi tháo dỡ</span></td></tr>
+          <tr><td><strong class="kw">Phòng cạn kiệt tài nguyên</strong></td><td>Bảo tồn rừng nhiệt đới, tái chế tài nguyên</td><td><span class="relation">①Thay plywood bằng cốp pha kim loại ②Luân chuyển/tái tài nguyên hóa plywood và phân loại thu gom chất thải ③Tái sử dụng hạng mục tạm ④Giảm tài nguyên tự nhiên và tăng tài nguyên tái chế</span></td></tr>
+          <tr><td><strong class="kw">Chống ô nhiễm không khí</strong></td><td>Hạn chế khí có hại và bụi</td><td><span class="relation">①Xe/máy xử lý khí thải ②Idling stop ③Sơn hệ nước ④Phun nước tại tháo dỡ và công tác đất</span></td></tr>
+          <tr><td><strong class="kw">Chống ô nhiễm nước</strong></td><td>Loại bỏ chất ô nhiễm trong nước thải</td><td><span class="relation">①Nước trồi qua bể/lớp lắng, chỉnh pH rồi xả ②Nước rửa qua lắng, chỉnh pH, loại dầu normal-hexane rồi xả ③Nước mưa qua đường thoát tạm rồi xả</span></td></tr>
+        </tbody></table></div>
+      </div></article>
+    </div>
+    <p><a href="#toc">↑ Mục lục</a></p>
+  </section>
+</section>
+
+<section class="study-section" id="sec-114-quality">
+  <div class="section-head"><h2>1.1.4 施工経験記述の学習項目：品質管理</h2><span class="source-ref">Nguồn: Book page 35-36</span></div>
+  <section class="subsection" id="sub-quality-answer-frame">
+    <h3>顧客が満足する品質管理</h3>
+    <div class="note-box"><strong>Ghi chú tổ chức nội dung</strong><p>Book page 35 tái sử dụng cùng ví dụ 工事概要 đã trình bày ở Book page 28; bảng tổng quan chi tiết được giữ một lần ở mục 1.1.2 phía trên để tránh lặp không cần thiết.</p></div>
+    <div class="study-grid">
+      <article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja">
+        <p>顧客が満足する品質管理について、有効と考える品質管理活動の内容を記述しなさい。</p>
+        <ol>
+          <li><strong class="kw">工種名又は作業名等</strong></li>
+          <li><strong class="kw">重点を置く品質管理項目</strong></li>
+          <li><strong class="kw">②項目に重点を置くべき理由</strong></li>
+          <li><strong class="kw">管理のために実施すべき内容</strong></li>
+        </ol>
+        <p>※①の「工種名又は作業名等」は、<span class="trap">工事概要で示されたものと関係していなければならない</span>。一例として「タイル工事」を工種名とするなら、<span class="trap">工事概要に「タイル」という語句が含まれている必要がある</span>。</p>
+        <div class="table-wrap"><table><caption>品質管理の記述の参考例（躯体工事・仕上げ工事）</caption><thead><tr><th>工種名又は作業名等</th><th>品質管理項目</th><th>理由</th><th>実施内容</th></tr></thead><tbody>
+          <tr><td><strong class="kw">土工事</strong></td><td>根切り床付け面の平坦性と支持力の確保</td><td>床付け地盤の支持力と砕石敷の施工性、平坦性を確保するため。</td><td><span class="relation">バックホウのアタッチメントに平形のバケットを用い、地盤を乱さず平坦に仕上げる。</span></td></tr>
+          <tr><td><strong class="kw">地業工事</strong></td><td>基礎コンクリートの連続性の確保</td><td>コールドジョイントを生じると基礎の支持力が低下するから。</td><td><span class="relation">基礎コンクリートは連続して打設するよう管理し、コールドジョイントを防止する。</span></td></tr>
+          <tr><td><strong class="kw">型枠工事</strong></td><td>型枠の適正な配置</td><td>コンクリート部材寸法の確保のため。</td><td><span class="relation">型枠の精度の確保をする。</span></td></tr>
+          <tr><td><strong class="kw">鉄筋工事</strong></td><td>鉄筋の適正な配置</td><td>鉄筋の適正配筋のため。</td><td><span class="relation">配筋精度を確保する。</span></td></tr>
+          <tr><td><strong class="kw">コンクリート工事</strong></td><td>コンクリートのじゃんか防止</td><td>材料分離を防止し、均一な品質を確保するため。</td><td><span class="relation">高い柱の型枠の途中に開口部を設け、打込み高さを低くし、じゃんかを防止する。</span></td></tr>
+          <tr><td><strong class="kw">鉄骨工事</strong></td><td>部材の接合部の欠陥の防止</td><td>可能な限り工場溶接とし、接合の信頼性を高めるため。</td><td><span class="relation">工場溶接を増加することで部材の接合部の点検を工場で確実に実施できる。</span></td></tr>
+          <tr><td><strong class="kw">防水工事</strong></td><td>漏水防止</td><td>防水工事の目的として最も重要な品質だから。</td><td><span class="relation">屋上防水として信頼性の高いアスファルト防水とし、アスファルトルーフィングの接合部からの漏水を防止する。</span></td></tr>
+          <tr><td><strong class="kw">石工事</strong></td><td>石張りの衝撃耐力の確保</td><td>幅木部を台車などの衝撃からの破損から守るため。</td><td><span class="relation">乾式石張り工法の最下端部の石張りはモルタルを充填して、衝撃耐力を確保する。</span></td></tr>
+          <tr><td><strong class="kw">タイル工事</strong></td><td>タイルの接着力の確保</td><td>タイル剥離を防止するため。</td><td><span class="relation">張付けモルタルを使い始めから規定時間内で使い切ってモルタルの接着力を確保する。</span></td></tr>
+          <tr><td><strong class="kw">左官工事</strong></td><td>コンクリート打継部のひび割れ防止</td><td>打継部は衝撃力を受けひび割れしやすいから。</td><td><span class="relation">コンクリート打継部にメタルラスを張り付けてモルタルを塗ってひび割れを抑制する。</span></td></tr>
+          <tr><td><strong class="kw">金属工事</strong></td><td>軽量鉄骨の下地組立の適正配置</td><td>天井照明やダクトを避けて適正に配置する必要があるから。</td><td><span class="relation">天井照明やダクトの配置に応じ野縁受けをチャネルで補強して、安定した天井ボードの下地とする。</span></td></tr>
+          <tr><td><strong class="kw">内装工事</strong></td><td>ビニル床継目の平坦性の確保</td><td>凹凸があると見た目が悪くほこりがたまりやすいから。</td><td><span class="relation">ビニル床の熱溶接で余盛をして、十分に冷却し収縮を待ってカッターで平坦に仕上げる。</span></td></tr>
+        </tbody></table></div>
+      </div></article>
+      <article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi">
+        <p>Hãy trình bày nội dung hoạt động quản lý chất lượng được cho là hữu hiệu để làm khách hàng hài lòng.</p>
+        <ol>
+          <li><strong class="kw">Tên công tác hoặc tên công việc</strong></li>
+          <li><strong class="kw">Hạng mục quản lý chất lượng cần chú trọng</strong></li>
+          <li><strong class="kw">Lý do phải chú trọng hạng mục ở ②</strong></li>
+          <li><strong class="kw">Nội dung cần thực hiện để quản lý</strong></li>
+        </ol>
+        <p>※ Tên công tác/công việc ở mục ① <span class="trap">phải liên quan đến nội dung được nêu trong tổng quan công trình</span>. Ví dụ nếu chọn công tác gạch thì <span class="trap">trong tổng quan công trình phải có nội dung “タイル”</span>.</p>
+        <div class="table-wrap"><table><caption>Ví dụ tham khảo về quản lý chất lượng</caption><thead><tr><th>Công tác</th><th>Hạng mục chất lượng</th><th>Lý do</th><th>Nội dung quản lý</th></tr></thead><tbody>
+          <tr><td><strong class="kw">Công tác đất</strong></td><td>Độ phẳng và khả năng chịu lực của mặt đáy đào</td><td>Bảo đảm sức chịu tải nền, khả năng thi công lớp đá dăm và độ phẳng.</td><td><span class="relation">Dùng gầu phẳng cho backhoe, hoàn thiện phẳng mà không làm xáo trộn nền đất.</span></td></tr>
+          <tr><td><strong class="kw">Công tác nền móng</strong></td><td>Tính liên tục của bê tông móng</td><td>Cold joint làm giảm khả năng chịu lực của móng.</td><td><span class="relation">Quản lý đổ bê tông móng liên tục để ngăn cold joint.</span></td></tr>
+          <tr><td><strong class="kw">Cốp pha</strong></td><td>Bố trí cốp pha đúng yêu cầu</td><td>Bảo đảm kích thước cấu kiện bê tông.</td><td><span class="relation">Bảo đảm độ chính xác của cốp pha.</span></td></tr>
+          <tr><td><strong class="kw">Cốt thép</strong></td><td>Bố trí cốt thép đúng yêu cầu</td><td>Bảo đảm bố trí cốt thép chính xác.</td><td><span class="relation">Bảo đảm độ chính xác của công tác bố trí cốt thép.</span></td></tr>
+          <tr><td><strong class="kw">Bê tông</strong></td><td>Phòng ngừa rỗ tổ ong じゃんか</td><td>Ngăn phân tầng vật liệu và bảo đảm chất lượng đồng đều.</td><td><span class="relation">Với cột cao, bố trí cửa mở giữa cốp pha để giảm chiều cao đổ và ngăn rỗ tổ ong.</span></td></tr>
+          <tr><td><strong class="kw">Kết cấu thép</strong></td><td>Ngăn khuyết tật liên kết</td><td>Tăng độ tin cậy bằng hàn nhà máy trong phạm vi có thể.</td><td><span class="relation">Tăng hàn tại nhà máy để kiểm tra chắc chắn các liên kết tại nhà máy.</span></td></tr>
+          <tr><td><strong class="kw">Chống thấm</strong></td><td>Phòng rò nước</td><td>Đây là chất lượng quan trọng nhất của chống thấm.</td><td><span class="relation">Dùng chống thấm asphalt đáng tin cậy cho mái và ngăn rò tại mối nối roofing.</span></td></tr>
+          <tr><td><strong class="kw">Ốp đá</strong></td><td>Khả năng chịu va đập</td><td>Ngăn hỏng phần chân tường do xe đẩy v.v.</td><td><span class="relation">Chèn đầy vữa hàng đá thấp nhất của ốp đá khô để bảo đảm chịu va đập.</span></td></tr>
+          <tr><td><strong class="kw">Ốp gạch</strong></td><td>Lực bám dính của gạch</td><td>Ngăn bong gạch.</td><td><span class="relation">Dùng hết vữa dán trong thời gian quy định từ lúc bắt đầu sử dụng.</span></td></tr>
+          <tr><td><strong class="kw">Trát</strong></td><td>Ngăn nứt mạch nối bê tông</td><td>Mạch nối dễ chịu va đập và nứt.</td><td><span class="relation">Gắn metal lath tại mạch nối rồi trát vữa để hạn chế nứt.</span></td></tr>
+          <tr><td><strong class="kw">Kim loại</strong></td><td>Bố trí đúng khung thép nhẹ</td><td>Phải tránh đèn trần và duct.</td><td><span class="relation">Gia cường thanh đỡ khung trần bằng channel theo vị trí đèn/duct.</span></td></tr>
+          <tr><td><strong class="kw">Nội thất</strong></td><td>Độ phẳng mối nối sàn vinyl</td><td>Lồi lõm làm xấu thẩm mỹ và tích bụi.</td><td><span class="relation">Hàn nhiệt để dư mối, làm nguội và chờ co ngót rồi cắt phẳng bằng dao.</span></td></tr>
+        </tbody></table></div>
+      </div></article>
+    </div>
+  </section>
+  <section class="subsection" id="sub-schedule-question-frame">
+    <h3>施工の合理化：現場作業の軽減策</h3>
+    <div class="study-grid">
+      <article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja">
+        <p>施工の合理化について、有効と考える現場作業の軽減策を記述しなさい。</p>
+        <ol><li><strong class="kw">工種名又は作業名等</strong></li><li><strong class="kw">合理化が必要となる原因</strong></li><li><strong class="kw">有効な現場作業の軽減策</strong></li><li><strong class="kw">合理化による品質の確保</strong></li><li><strong class="kw">作業軽減に繋がる理由</strong></li></ol>
+      </div></article>
+      <article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi">
+        <p>Đối với việc hợp lý hóa thi công, hãy trình bày biện pháp giảm công việc tại hiện trường được cho là hữu hiệu.</p>
+        <ol><li><strong class="kw">Tên công tác/tên công việc</strong></li><li><strong class="kw">Nguyên nhân khiến cần hợp lý hóa</strong></li><li><strong class="kw">Biện pháp giảm công việc tại hiện trường có hiệu quả</strong></li><li><strong class="kw">Bảo đảm chất lượng khi hợp lý hóa</strong></li><li><strong class="kw">Lý do dẫn đến giảm công việc</strong></li></ol>
+      </div></article>
+    </div>
+    <p><a href="#toc">↑ Mục lục</a></p>
+  </section>
+</section>
+
+<section class="study-section" id="sec-114-schedule">
+  <div class="section-head"><h2>工程管理の記述の参考例（躯体工事・仕上げ工事）</h2><span class="source-ref">Nguồn: Book page 37</span></div>
+  <div class="study-grid">
+    <article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja">
+      <p>（プレカット工法は除く）</p>
+      <div class="table-wrap"><table><thead><tr><th>工種</th><th>合理化が必要となる原因</th><th>有効な現場作業の軽減策</th><th>品質性能</th><th>作業軽減に繋がる理由</th></tr></thead><tbody>
+        <tr><td><strong class="kw">型枠工事</strong></td><td>先行作業（根切り工事）の遅延</td><td>転用型枠を<strong class="kw">捨型枠</strong>に変更</td><td>向上</td><td><span class="relation">型枠取外し工程の省力化で工程短縮</span></td></tr>
+        <tr><td><strong class="kw">土工事</strong></td><td>悪天候による根切り作業の遅延</td><td>水平切梁工法を<strong class="kw">地盤アンカー工法</strong>に変更</td><td>同等</td><td><span class="relation">切梁がないため2箇所から並行し根切りし工程短縮</span></td></tr>
+        <tr><td><strong class="kw">地業工事</strong></td><td>用地取得の遅延に伴う工程短縮の要請</td><td>リバース工法を<strong class="kw">アースドリル工法</strong>に変更</td><td>同等</td><td><span class="relation">掘削速度が速く工程短縮</span></td></tr>
+        <tr><td><strong class="kw">鉄筋工事</strong></td><td>悪天候による工程の遅延</td><td>ガス圧接継手を<strong class="kw">機械式継手</strong>に変更</td><td>向上</td><td><span class="relation">天候の影響がなく予定通り鉄筋継手工程を確保</span></td></tr>
+        <tr><td><strong class="kw">コンクリート工事</strong></td><td>発注者の設計変更に伴う工程の遅延</td><td>普通コンクリートを<strong class="kw">早強コンクリート</strong>に変更</td><td>同等</td><td><span class="relation">養生期間の短縮による工程短縮</span></td></tr>
+        <tr><td><strong class="kw">鉄骨工事</strong></td><td>道路使用許可の申請の遅延</td><td>現場溶接を<strong class="kw">工場溶接</strong>に変更</td><td>向上</td><td><span class="relation">現場溶接工程の省力化</span></td></tr>
+        <tr><td><strong class="kw">防水工事</strong></td><td>天候不順による作業の遅延</td><td>アスファルト防水密着工法を<strong class="kw">改質アスファルト防水トーチ工法</strong>に変更</td><td>同等</td><td><span class="relation">工程数が少なく工程短縮</span></td></tr>
+        <tr><td><strong class="kw">石工事</strong></td><td>先行する躯体工事の遅延</td><td>湿式石張り工法を<strong class="kw">乾式石張り工法</strong>に変更</td><td>向上</td><td><span class="relation">モルタルの養生期間を省力化でき工程短縮</span></td></tr>
+        <tr><td><strong class="kw">タイル工事</strong></td><td>発注者の材料変更に伴うタイル納入の遅延</td><td>タイル密着張り工法を<strong class="kw">タイル型枠先付け</strong>に変更</td><td>向上</td><td><span class="relation">タイル張り工程が省力化でき工程短縮</span></td></tr>
+        <tr><td><strong class="kw">左官工事</strong></td><td>左官職人の不足による工程の遅延</td><td>床コンクリート直均し仕上げを<strong class="kw">セルフレベリング床下地工法</strong>に変更</td><td>同等</td><td><span class="relation">熟練技能不要・自然重力利用で工程短縮</span></td></tr>
+        <tr><td><strong class="kw">建具工事</strong></td><td>躯体工事の遅延に伴う日程短縮の要請</td><td>現場組立工法を<strong class="kw">工場組立工法</strong>に変更</td><td>向上</td><td><span class="relation">組立工程の簡素化で工程短縮</span></td></tr>
+        <tr><td><strong class="kw">金属工事</strong></td><td>間仕切の設計変更に伴う工程の遅延</td><td><strong class="kw">軽量鉄骨天井下地と軽量鉄骨壁下地の並行作業</strong></td><td>同等</td><td><span class="relation">2班体制の施工で工程短縮</span></td></tr>
+        <tr><td><strong class="kw">内装工事</strong></td><td>内部建具の据付け工程の遅延</td><td>石こうボードを<strong class="kw">化粧石こうボード</strong>に変更</td><td>同等</td><td><span class="relation">クロス張りの省力化で工程短縮</span></td></tr>
+      </tbody></table></div>
+    </div></article>
+    <article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi">
+      <p>Không bao gồm công pháp precut.</p>
+      <div class="table-wrap"><table><thead><tr><th>Công tác</th><th>Nguyên nhân</th><th>Biện pháp giảm công việc</th><th>Chất lượng</th><th>Lý do</th></tr></thead><tbody>
+        <tr><td><strong class="kw">Cốp pha</strong></td><td>Công tác đào đất trước đó bị chậm</td><td>Thay cốp pha luân chuyển bằng <strong class="kw">cốp pha để lại</strong></td><td>Nâng cao</td><td><span class="relation">Loại bỏ/giảm công đoạn tháo cốp pha, rút ngắn tiến độ</span></td></tr>
+        <tr><td><strong class="kw">Công tác đất</strong></td><td>Đào đất chậm do thời tiết xấu</td><td>Thay chống ngang bằng <strong class="kw">neo đất</strong></td><td>Tương đương</td><td><span class="relation">Không có chống ngang, đào song song từ 2 vị trí</span></td></tr>
+        <tr><td><strong class="kw">Nền móng</strong></td><td>Yêu cầu rút ngắn do chậm thu hồi/mua đất</td><td>Thay Reverse bằng <strong class="kw">Earth Drill</strong></td><td>Tương đương</td><td><span class="relation">Tốc độ đào nhanh hơn</span></td></tr>
+        <tr><td><strong class="kw">Cốt thép</strong></td><td>Chậm do thời tiết xấu</td><td>Thay ép hàn khí bằng <strong class="kw">mối nối cơ khí</strong></td><td>Nâng cao</td><td><span class="relation">Không bị ảnh hưởng thời tiết, giữ đúng công đoạn nối</span></td></tr>
+        <tr><td><strong class="kw">Bê tông</strong></td><td>Chậm do chủ đầu tư thay đổi thiết kế</td><td>Thay bê tông thường bằng <strong class="kw">bê tông cường độ sớm</strong></td><td>Tương đương</td><td><span class="relation">Rút ngắn thời gian dưỡng hộ</span></td></tr>
+        <tr><td><strong class="kw">Kết cấu thép</strong></td><td>Chậm xin phép sử dụng đường</td><td>Thay hàn hiện trường bằng <strong class="kw">hàn nhà máy</strong></td><td>Nâng cao</td><td><span class="relation">Giảm công đoạn hàn hiện trường</span></td></tr>
+        <tr><td><strong class="kw">Chống thấm</strong></td><td>Chậm do thời tiết</td><td>Thay asphalt dán kín bằng <strong class="kw">torch asphalt cải tiến</strong></td><td>Tương đương</td><td><span class="relation">Ít công đoạn hơn</span></td></tr>
+        <tr><td><strong class="kw">Ốp đá</strong></td><td>Kết cấu trước đó bị chậm</td><td>Thay ốp ướt bằng <strong class="kw">ốp khô</strong></td><td>Nâng cao</td><td><span class="relation">Giảm thời gian dưỡng hộ vữa</span></td></tr>
+        <tr><td><strong class="kw">Ốp gạch</strong></td><td>Gạch giao chậm do đổi vật liệu</td><td>Thay ốp bám dính bằng <strong class="kw">gắn gạch trước vào cốp pha</strong></td><td>Nâng cao</td><td><span class="relation">Giảm công đoạn ốp</span></td></tr>
+        <tr><td><strong class="kw">Trát</strong></td><td>Thiếu thợ trát</td><td>Thay cán phẳng trực tiếp bằng <strong class="kw">self-leveling</strong></td><td>Tương đương</td><td><span class="relation">Không cần tay nghề cao, tận dụng trọng lực</span></td></tr>
+        <tr><td><strong class="kw">Cửa</strong></td><td>Yêu cầu rút ngắn do kết cấu chậm</td><td>Thay lắp tại hiện trường bằng <strong class="kw">lắp tại nhà máy</strong></td><td>Nâng cao</td><td><span class="relation">Đơn giản hóa công đoạn lắp</span></td></tr>
+        <tr><td><strong class="kw">Kim loại</strong></td><td>Chậm do đổi thiết kế vách</td><td><strong class="kw">Thi công song song nền trần và nền tường thép nhẹ</strong></td><td>Tương đương</td><td><span class="relation">Thi công theo 2 tổ để rút ngắn</span></td></tr>
+        <tr><td><strong class="kw">Nội thất</strong></td><td>Lắp cửa trong nhà bị chậm</td><td>Thay thạch cao thường bằng <strong class="kw">thạch cao trang trí</strong></td><td>Tương đương</td><td><span class="relation">Giảm công tác dán wallpaper</span></td></tr>
+      </tbody></table></div>
+    </div></article>
+  </div>
+  <p><a href="#toc">↑ Mục lục</a></p>
+</section>
+
+<section class="study-section" id="sec-114-byproducts">
+  <div class="section-head"><h2>建設副産物対策の記述参考例</h2><span class="source-ref">Nguồn: Book page 38</span></div>
+  <div class="study-grid">
+    <article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja">
+      <p>建設副産物の対策について、<strong class="kw">3つの異なる処分方法</strong>を具体的に記述しなさい。</p>
+      <ol><li>対策名</li><li>扱う資材名又は建設副産物名</li><li>実施すべき処分方法の具体的な内容</li></ol>
+      <p><strong class="kw">A 発生抑制　B 再使用　C 再生利用　D 熱回収　E 適正処分</strong></p>
+      <div class="table-wrap"><table><thead><tr><th>対策名</th><th>資材・建設副産物</th><th>具体的な内容の例</th></tr></thead><tbody>
+        <tr><td><strong class="kw">発生抑制</strong></td><td>建設発生土</td><td><span class="relation">軟弱地盤を安定処理し発生土を抑制</span></td></tr>
+        <tr><td><strong class="kw">再生利用</strong></td><td>汚泥（ベントナイト溶液）</td><td><span class="relation">安定液は脱水処理し造園土として利用</span></td></tr>
+        <tr><td><strong class="kw">再使用</strong></td><td>汚泥（ベントナイト溶液）</td><td><span class="relation">場所打ち杭に用いた作泥を吸上げ、他現場で再使用（有償売却）</span></td></tr>
+        <tr><td><strong class="kw">再生利用</strong></td><td>コンクリートがら</td><td><span class="relation">再資源化設備で中間処理し再生骨材として駐車場骨材に再生利用</span></td></tr>
+        <tr><td><strong class="kw">再生利用</strong></td><td>アスファルトコンクリートがら</td><td><span class="relation">移動式破砕施設で分解し、敷砂利用再生骨材として利用</span></td></tr>
+        <tr><td><strong class="kw">再生利用</strong></td><td>廃石こうボード</td><td><span class="relation">メーカ側と契約し、メーカ側に引渡し再資源化</span></td></tr>
+        <tr><td><strong class="kw">再生利用</strong></td><td>廃プラスチック類</td><td><span class="relation">塩ビ管くずをメーカに搬入し再生塩ビ管に再資源化</span></td></tr>
+        <tr><td><strong class="kw">熱回収</strong></td><td>廃プラスチック類</td><td><span class="relation">発泡スチロールくずを分別後、ペレット化して有償売却</span></td></tr>
+        <tr><td><strong class="kw">再使用</strong></td><td>金属くず</td><td><span class="relation">足場パイプ等の処分品を持帰り、自社で再使用</span></td></tr>
+        <tr><td><strong class="kw">再生利用</strong></td><td>金属くず</td><td><span class="relation">スクラップとして有償売却</span></td></tr>
+        <tr><td><strong class="kw">適正処分</strong></td><td>ゴムくず</td><td><span class="relation">安定型処分場に埋立</span></td></tr>
+        <tr><td><strong class="kw">発生抑制</strong></td><td>木くず</td><td><span class="relation">捨型枠の採用、使用済型枠を清掃して長期利用し、廃棄物発生を抑制</span></td></tr>
+        <tr><td><strong class="kw">再生利用</strong></td><td>木くず</td><td><span class="relation">紙・ボード用チップ、堆肥用チップに再資源化</span></td></tr>
+        <tr><td><strong class="kw">熱回収</strong></td><td>木くず</td><td><span class="relation">燃料用チップ（サーマルリサイクル）</span></td></tr>
+        <tr><td><strong class="kw">再生利用</strong></td><td>紙くず</td><td><span class="relation">ダンボール古紙再生業者に有償売却</span></td></tr>
+        <tr><td><strong class="kw">熱回収</strong></td><td>紙くず</td><td><span class="relation">固形化燃料に再資源化</span></td></tr>
+        <tr><td><strong class="kw">熱回収</strong></td><td>廃油</td><td><span class="relation">中間処理後、助燃材</span></td></tr>
+        <tr><td><strong class="kw">適正処分</strong></td><td>混合廃棄物</td><td><span class="relation">管理型処分場に埋立</span></td></tr>
+      </tbody></table></div>
+      <h4>備考</h4>
+      <p>建設副産物名：①建設発生土 ②建設発生木材 ③コンクリート塊 ④アスファルト・コンクリート塊 ⑤建設汚泥 ⑥金属くず ⑦ガラス・陶器くず ⑧廃プラスチック ⑨木くず・紙くず ⑩廃油</p>
+      <p>対策名：A 発生抑制、B 再使用、C 再生利用（マテリアルリサイクル）、D 熱回収（サーマルリサイクル）、E 適正処分（最終埋立処分場に運搬し、埋め立てること）</p>
+      <p>特定建設資材名：①コンクリート ②アスファルト・コンクリート ③コンクリート及び鉄から成る建設資材 ④木材</p>
+    </div></article>
+    <article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi">
+      <p>Đối với biện pháp xử lý phụ phẩm xây dựng, hãy trình bày cụ thể <strong class="kw">3 phương pháp xử lý khác nhau</strong>.</p>
+      <ol><li>Tên biện pháp</li><li>Tên vật liệu hoặc phụ phẩm xây dựng</li><li>Nội dung cụ thể của phương pháp xử lý cần thực hiện</li></ol>
+      <p><strong class="kw">A Hạn chế phát sinh　B Tái sử dụng　C Tái chế vật liệu　D Thu hồi nhiệt　E Xử lý thích hợp</strong></p>
+      <div class="table-wrap"><table><thead><tr><th>Biện pháp</th><th>Vật liệu/phụ phẩm</th><th>Nội dung cụ thể</th></tr></thead><tbody>
+        <tr><td><strong class="kw">Hạn chế phát sinh</strong></td><td>Đất phát sinh</td><td><span class="relation">Xử lý ổn định nền đất yếu để hạn chế lượng đất phát sinh</span></td></tr>
+        <tr><td><strong class="kw">Tái chế</strong></td><td>Bùn, dung dịch bentonite</td><td><span class="relation">Tách nước dung dịch ổn định rồi dùng làm đất cảnh quan</span></td></tr>
+        <tr><td><strong class="kw">Tái sử dụng</strong></td><td>Bùn, dung dịch bentonite</td><td><span class="relation">Hút bùn đã dùng cho cọc tại chỗ và tái sử dụng ở công trường khác, có thể bán có thu tiền</span></td></tr>
+        <tr><td><strong class="kw">Tái chế</strong></td><td>Bê tông phế</td><td><span class="relation">Xử lý trung gian để tạo cốt liệu tái chế dùng cho bãi đỗ xe</span></td></tr>
+        <tr><td><strong class="kw">Tái chế</strong></td><td>Asphalt-concrete phế</td><td><span class="relation">Nghiền bằng thiết bị di động và dùng làm cốt liệu tái chế để rải</span></td></tr>
+        <tr><td><strong class="kw">Tái chế</strong></td><td>Tấm thạch cao thải</td><td><span class="relation">Giao lại nhà sản xuất theo hợp đồng để tái tài nguyên hóa</span></td></tr>
+        <tr><td><strong class="kw">Tái chế</strong></td><td>Nhựa thải</td><td><span class="relation">Đưa phế ống PVC về nhà sản xuất để tái chế thành ống PVC tái sinh</span></td></tr>
+        <tr><td><strong class="kw">Thu hồi nhiệt</strong></td><td>Nhựa thải</td><td><span class="relation">Phân loại xốp polystyrene, pellet hóa rồi bán có thu tiền</span></td></tr>
+        <tr><td><strong class="kw">Tái sử dụng</strong></td><td>Phế kim loại</td><td><span class="relation">Mang ống giàn giáo v.v. về công ty để tái sử dụng</span></td></tr>
+        <tr><td><strong class="kw">Tái chế</strong></td><td>Phế kim loại</td><td><span class="relation">Bán dưới dạng scrap có thu tiền</span></td></tr>
+        <tr><td><strong class="kw">Xử lý thích hợp</strong></td><td>Phế cao su</td><td><span class="relation">Chôn lấp tại bãi xử lý loại ổn định</span></td></tr>
+        <tr><td><strong class="kw">Hạn chế phát sinh</strong></td><td>Phế gỗ</td><td><span class="relation">Dùng cốp pha để lại, vệ sinh cốp pha đã dùng để dùng lâu dài, giảm phát sinh chất thải</span></td></tr>
+        <tr><td><strong class="kw">Tái chế</strong></td><td>Phế gỗ</td><td><span class="relation">Tái chế thành chip cho giấy, board hoặc compost</span></td></tr>
+        <tr><td><strong class="kw">Thu hồi nhiệt</strong></td><td>Phế gỗ</td><td><span class="relation">Chip nhiên liệu, thermal recycle</span></td></tr>
+        <tr><td><strong class="kw">Tái chế</strong></td><td>Phế giấy</td><td><span class="relation">Bán carton cho doanh nghiệp tái chế giấy cũ</span></td></tr>
+        <tr><td><strong class="kw">Thu hồi nhiệt</strong></td><td>Phế giấy</td><td><span class="relation">Tái tài nguyên hóa thành nhiên liệu rắn</span></td></tr>
+        <tr><td><strong class="kw">Thu hồi nhiệt</strong></td><td>Dầu thải</td><td><span class="relation">Sau xử lý trung gian, dùng làm vật liệu hỗ trợ đốt</span></td></tr>
+        <tr><td><strong class="kw">Xử lý thích hợp</strong></td><td>Chất thải hỗn hợp</td><td><span class="relation">Chôn lấp tại bãi xử lý loại quản lý</span></td></tr>
+      </tbody></table></div>
+      <h4>Ghi chú</h4>
+      <p>Tên phụ phẩm xây dựng: ① đất phát sinh ② gỗ phát sinh ③ bê tông phế ④ asphalt-concrete phế ⑤ bùn xây dựng ⑥ phế kim loại ⑦ thủy tinh/gốm ⑧ nhựa thải ⑨ phế gỗ/phế giấy ⑩ dầu thải.</p>
+      <p>Biện pháp: A hạn chế phát sinh; B tái sử dụng; C tái chế vật liệu; D thu hồi nhiệt; E xử lý thích hợp bằng vận chuyển đến bãi xử lý cuối cùng và chôn lấp.</p>
+      <p>Vật liệu xây dựng chỉ định: ① bê tông ② asphalt-concrete ③ vật liệu xây dựng gồm bê tông và thép ④ gỗ.</p>
+    </div></article>
+  </div>
+  <p><a href="#toc">↑ Mục lục</a></p>
+</section>
+
+  </main>
+  <!-- CONTENT_END -->
+
+  <!-- =====================================================
+       NON-DIMMED STUDY SUPPORT SECTIONS
+       These sections stay normally readable in Keywords mode.
+       ===================================================== -->
+
+  <section class="aggregate-section" id="terms">
+    <div class="section-head">
+      <h2>Thuật ngữ chuyên môn</h2>
+    </div>
+    
+<div class="table-wrap"><table>
+  <thead><tr><th>日本語</th><th>読み方</th><th>Tiếng Việt</th><th>Giải thích</th><th>Liên quan</th></tr></thead>
+  <tbody>
+    <tr><td>施工経験記述</td><td>せこうけいけんきじゅつ</td><td>Trình bày kinh nghiệm thi công</td><td>Phần tự luận yêu cầu trình bày quản lý thi công dựa trên công trình, điều kiện và kinh nghiệm/kiến thức.</td><td>問題1</td></tr>
+    <tr><td>工事概要</td><td>こうじがいよう</td><td>Tổng quan công trình</td><td>Các điều kiện của công trình được đề chỉ định để giới hạn phạm vi câu trả lời.</td><td>工種, 工期</td></tr>
+    <tr><td>品質管理</td><td>ひんしつかんり</td><td>Quản lý chất lượng</td><td>Quản lý nhằm cụ thể hóa và xác nhận chất lượng yêu cầu.</td><td>重要品質, 合意品質</td></tr>
+    <tr><td>工程管理</td><td>こうていかんり</td><td>Quản lý tiến độ</td><td>Quản lý để thực hiện đúng kế hoạch hoặc rút ngắn tiến độ khi chậm, với điều kiện bảo đảm chất lượng.</td><td>5M, 工程短縮</td></tr>
+    <tr><td>建設副産物</td><td>けんせつふくさんぶつ</td><td>Phụ phẩm xây dựng</td><td>Vật chất phát sinh kèm hoạt động xây dựng, khái niệm rộng hơn chất thải.</td><td>再使用, 再生利用</td></tr>
+    <tr><td>施工の合理化</td><td>せこうのごうりか</td><td>Hợp lý hóa thi công</td><td>Cải tiến phương pháp/tổ chức thi công nhằm nâng hiệu quả.</td><td>省力化, 工程短縮</td></tr>
+    <tr><td>省力化</td><td>しょうりょくか</td><td>Giảm sức lao động</td><td>Giảm lao động hiện trường bằng cơ giới hóa, prefab hóa, tiêu chuẩn hóa v.v.</td><td>労働生産性</td></tr>
+    <tr><td>工程短縮</td><td>こうていたんしゅく</td><td>Rút ngắn tiến độ</td><td>Giảm thời gian thi công bằng thay đổi nguồn lực/công pháp và tăng sản lượng theo ngày.</td><td>5M</td></tr>
+    <tr><td>労働生産性</td><td>ろうどうせいさんせい</td><td>Năng suất lao động</td><td>Khối lượng công việc trên mỗi người lao động.</td><td>OJT</td></tr>
+    <tr><td>5M</td><td>ごエム</td><td>5M</td><td>Manpower, Machine, Material, Method, Management.</td><td>工程管理</td></tr>
+    <tr><td>重要品質</td><td>じゅうようひんしつ</td><td>Chất lượng quan trọng</td><td>Yêu cầu chất lượng ở cấp độ nhu cầu của khách hàng/chủ đầu tư.</td><td>合意品質</td></tr>
+    <tr><td>合意品質</td><td>ごういひんしつ</td><td>Chất lượng đã thỏa thuận</td><td>Mức chất lượng được thống nhất giữa nhà thầu và người giám sát công trình.</td><td>施工品質</td></tr>
+    <tr><td>施工品質</td><td>せこうひんしつ</td><td>Chất lượng thi công</td><td>Chất lượng thực tế cần quản lý trong quá trình thi công.</td><td>品質特性</td></tr>
+    <tr><td>品質特性</td><td>ひんしつとくせい</td><td>Đặc tính chất lượng</td><td>Đại lượng/đặc tính cụ thể có thể kiểm tra, đo hoặc thử.</td><td>品質管理試験</td></tr>
+    <tr><td>親杭横矢板工法</td><td>おやぐいよこやいたこうほう</td><td>Cọc chủ và ván chắn ngang</td><td>Công pháp tường chắn đất tạm dùng cọc chủ và ván ngang.</td><td>山留め</td></tr>
+    <tr><td>アースドリル工法</td><td>アースドリルこうほう</td><td>Earth Drill</td><td>Công pháp khoan tạo lỗ thi công cọc tại chỗ.</td><td>現場造成杭</td></tr>
+    <tr><td>ガス圧接継手</td><td>ガスあっせつつぎて</td><td>Mối nối ép hàn khí</td><td>Nối cốt thép bằng gia nhiệt khí và ép hai đầu.</td><td>機械式継手</td></tr>
+    <tr><td>機械式継手</td><td>きかいしきつぎて</td><td>Mối nối cơ khí</td><td>Nối cốt thép bằng coupler/thiết bị cơ khí.</td><td>工程短縮</td></tr>
+    <tr><td>捨型枠</td><td>すてかたわく</td><td>Cốp pha để lại</td><td>Cốp pha không tháo ra sau thi công.</td><td>省力化</td></tr>
+    <tr><td>コールドジョイント</td><td>コールドジョイント</td><td>Cold joint</td><td>Mặt gián đoạn do đổ bê tông không liên tục.</td><td>地業工事</td></tr>
+    <tr><td>じゃんか</td><td>じゃんか</td><td>Rỗ tổ ong bê tông</td><td>Khuyết tật dạng rỗ/hốc do bê tông không đặc chắc đồng đều.</td><td>コンクリート工事</td></tr>
+    <tr><td>打診検査</td><td>だしんけんさ</td><td>Kiểm tra gõ</td><td>Kiểm tra bằng phản ứng/âm thanh khi gõ bề mặt.</td><td>タイル工事</td></tr>
+    <tr><td>引抜き耐力試験</td><td>ひきぬきたいりょくしけん</td><td>Thử kéo nhổ</td><td>Kiểm tra khả năng chống bị kéo tuột của neo/cấu kiện.</td><td>金属工事</td></tr>
+    <tr><td>マニフェスト</td><td>マニフェスト</td><td>Manifest chất thải</td><td>Chứng từ quản lý vận chuyển và xử lý chất thải.</td><td>廃棄物</td></tr>
+    <tr><td>再資源化</td><td>さいしげんか</td><td>Tái tài nguyên hóa</td><td>Biến vật liệu phát sinh thành tài nguyên có thể sử dụng lại.</td><td>再生利用</td></tr>
+    <tr><td>発生抑制</td><td>はっせいよくせい</td><td>Hạn chế phát sinh</td><td>Giảm lượng phụ phẩm/chất thải ngay từ nguồn.</td><td>Reduce</td></tr>
+    <tr><td>再使用</td><td>さいしよう</td><td>Tái sử dụng</td><td>Sử dụng lại nguyên trạng hoặc chỉ qua gia công nhỏ.</td><td>Reuse</td></tr>
+    <tr><td>再生利用</td><td>さいせいりよう</td><td>Tái chế vật liệu</td><td>Phân loại/xử lý để tái sử dụng như tài nguyên.</td><td>Material recycle</td></tr>
+    <tr><td>熱回収</td><td>ねつかいしゅう</td><td>Thu hồi nhiệt</td><td>Sử dụng phụ phẩm/chất thải làm nhiên liệu.</td><td>Thermal recycle</td></tr>
+    <tr><td>適正処分</td><td>てきせいしょぶん</td><td>Xử lý thích hợp</td><td>Xử lý cuối cùng phù hợp đối với phần không thể tái tài nguyên hóa.</td><td>埋立</td></tr>
+    <tr><td>縮減</td><td>しゅくげん</td><td>Giảm thể tích</td><td>Trong tài liệu này là giảm thể tích trước xử lý/chôn lấp.</td><td>破砕, 脱水</td></tr>
+    <tr><td>溶融固化</td><td>ようゆうこか</td><td>Hóa rắn bằng nóng chảy</td><td>Phương pháp xử lý được nêu cho nhựa thải.</td><td>廃プラスチック</td></tr>
+    <tr><td>セルフレベリング床下地工法</td><td>セルフレベリングゆかしたじこうほう</td><td>Công pháp nền sàn self-leveling</td><td>Tạo mặt nền bằng vật liệu có khả năng tự san phẳng.</td><td>左官工事</td></tr>
+    <tr><td>オープンタイム</td><td>オープンタイム</td><td>Open time</td><td>Thời gian cho phép từ khi bôi keo đến khi hoàn tất dán.</td><td>工期</td></tr>
+  </tbody>
+</table></div>
+
+  </section>
+
+  <section class="aggregate-section" id="background">
+    <div class="section-head">
+      <h2>Kiến thức nền cần biết</h2>
+    </div>
+    
+<div class="note-box">
+  <strong>1. Cách đọc đề sau thay đổi từ R6</strong>
+  <p>Phạm vi câu trả lời không còn xuất phát từ một công trình do thí sinh tự chọn, mà xuất phát từ <code>工事概要</code> do đề cung cấp. Vì vậy logic đúng là: <strong>đọc 工事概要 → xác định 工種/作業 → xác nhận chủ đề câu hỏi → xây dựng câu trả lời</strong>.</p>
+</div>
+<div class="note-box">
+  <strong>2. Logic rút ngắn tiến độ</strong>
+  <p>Khi có nguy cơ chậm, thay đổi một hoặc nhiều yếu tố trong 5M để tăng khối lượng/ngày. Câu trả lời phải cụ thể hóa “từ cái gì sang cái gì”, sau đó nêu cách bảo đảm và xác nhận chất lượng.</p>
+</div>
+<div class="note-box">
+  <strong>3. Quan hệ ba cấp độ chất lượng</strong>
+  <p><strong>重要品質 → 合意品質 → 施工品質（品質特性）→ 試験・確認</strong>. Yêu cầu khái quát của khách hàng cần được chuyển thành đặc tính có thể đo, thử hoặc kiểm tra.</p>
+</div>
+<div class="note-box">
+  <strong>4. 建設副産物 không đồng nghĩa với 廃棄物</strong>
+  <p>建設副産物 là khái niệm rộng. Trong đó có phần trở thành chất thải, phần phải tái tài nguyên hóa và phần có thể trực tiếp tái sử dụng.</p>
+</div>
+<div class="note-box">
+  <strong>5. 縮減 và 再資源化</strong>
+  <p><strong>縮減</strong> là giảm thể tích bằng nghiền, đốt, tách nước, sấy v.v.; <strong>再資源化</strong> là chuyển vật liệu phát sinh thành tài nguyên để sử dụng lại.</p>
+</div>
+
+  </section>
+
+  <section class="aggregate-section" id="memory">
+    <div class="section-head">
+      <h2>Điểm cần nhớ và mẹo nhớ</h2>
+    </div>
+    
+<div class="memory-box"><strong>Ba trục chuẩn bị chính</strong><p>品質管理 + 工程管理 + 建設副産物対策</p></div>
+<div class="memory-box"><strong>Thay đổi lớn từ R6</strong><p>工事概要: 自分で記述 → 試験問題で指定</p></div>
+<div class="memory-box"><strong>Khung trả lời 品質管理</strong><p>① 工種・作業 → ② 品質管理項目 → ③ 理由 → ④ 実施内容</p></div>
+<div class="memory-box"><strong>Khung trả lời 工程管理</strong><p>原因 → 変更前 → 変更後 → 品質 → 工程短縮・作業軽減の理由</p></div>
+<div class="memory-box"><strong>5M</strong><p>Manpower / Machine / Material / Method / Management</p></div>
+<div class="memory-box"><strong>Thứ tự tuần hoàn tài nguyên</strong><p>発生抑制 → 再使用 → 再生利用 → 熱回収 → 適正処分</p></div>
+<div class="memory-box"><strong>4 nhóm biện pháp môi trường</strong><p>地球温暖化 → 資源枯渇 → 大気汚染 → 水質汚濁</p></div>
+<div class="warning-box"><strong>Điều kiện phạm vi câu trả lời</strong><p>工種 phải có trong 工事概要; nội dung phải đúng chủ đề; thời điểm thi công phải phù hợp 工期. Nội dung kỹ thuật đúng nhưng ngoài phạm vi câu hỏi vẫn có thể bị 0 điểm theo cảnh báo của sách.</p></div>
+
+  </section>
+
+</div>
+
+<!-- =======================================================
+     APPROVED COMPONENT LIBRARY
+     Hidden. AI may copy/repeat these components into CONTENT.
+     Do not create a new visual system unless strictly necessary.
+     ======================================================= -->
+<template id="component-library">
+
+  <!-- FIGURE -->
+  <figure class="figure-card">
+    <img src="{{IMAGE_SOURCE}}" alt="{{IMAGE_ALT}}">
+    <figcaption>{{FIGURE_CAPTION}}</figcaption>
+  </figure>
+
+  <!-- MULTIPLE FIGURES -->
+  <div class="figure-grid">
+    <figure class="figure-card">
+      <img src="{{IMAGE_SOURCE_1}}" alt="{{IMAGE_ALT_1}}">
+      <figcaption>{{FIGURE_CAPTION_1}}</figcaption>
+    </figure>
+    <figure class="figure-card">
+      <img src="{{IMAGE_SOURCE_2}}" alt="{{IMAGE_ALT_2}}">
+      <figcaption>{{FIGURE_CAPTION_2}}</figcaption>
+    </figure>
+  </div>
+
+  <!-- TABLE -->
+  <div class="table-wrap">
+    <table>
+      <caption>{{TABLE_CAPTION}}</caption>
+      <thead>
+        <tr><th>{{HEADER_1}}</th><th>{{HEADER_2}}</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong class="kw">{{ROW_SUBJECT}}</strong></td>
+          <td><span class="relation">{{ROW_RECALL_CUE}}</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- NOTE -->
+  <div class="note-box">
+    <strong>{{NOTE_TITLE}}</strong>
+    <p>{{NOTE_CONTENT}}</p>
+  </div>
+
+  <!-- WARNING -->
+  <div class="warning-box">
+    <strong>{{WARNING_TITLE}}</strong>
+    <p>{{WARNING_CONTENT}}</p>
+  </div>
+
+  <!-- MEMORY -->
+  <div class="memory-box">
+    <strong>{{MEMORY_TITLE}}</strong>
+    <p>
+<div class="memory-box"><strong>Ba trục chuẩn bị chính</strong><p>品質管理 + 工程管理 + 建設副産物対策</p></div>
+<div class="memory-box"><strong>Thay đổi lớn từ R6</strong><p>工事概要: 自分で記述 → 試験問題で指定</p></div>
+<div class="memory-box"><strong>Khung trả lời 品質管理</strong><p>① 工種・作業 → ② 品質管理項目 → ③ 理由 → ④ 実施内容</p></div>
+<div class="memory-box"><strong>Khung trả lời 工程管理</strong><p>原因 → 変更前 → 変更後 → 品質 → 工程短縮・作業軽減の理由</p></div>
+<div class="memory-box"><strong>5M</strong><p>Manpower / Machine / Material / Method / Management</p></div>
+<div class="memory-box"><strong>Thứ tự tuần hoàn tài nguyên</strong><p>発生抑制 → 再使用 → 再生利用 → 熱回収 → 適正処分</p></div>
+<div class="memory-box"><strong>4 nhóm biện pháp môi trường</strong><p>地球温暖化 → 資源枯渇 → 大気汚染 → 水質汚濁</p></div>
+<div class="warning-box"><strong>Điều kiện phạm vi câu trả lời</strong><p>工種 phải có trong 工事概要; nội dung phải đúng chủ đề; thời điểm thi công phải phù hợp 工期. Nội dung kỹ thuật đúng nhưng ngoài phạm vi câu hỏi vẫn có thể bị 0 điểm theo cảnh báo của sách.</p></div>
+</p>
+  </div>
+
+  <!-- FORMULA / FLOW -->
+  <div class="formula-box">
+    <div class="formula-line">
+      <span class="flow-node">{{NODE_1}}</span>
+      <span class="flow-arrow">→</span>
+      <span class="flow-node">{{NODE_2}}</span>
+      <span class="flow-arrow">→</span>
+      <span class="flow-node">{{NODE_3}}</span>
+    </div>
+  </div>
+
+</template>
+
+<script>
+(() => {
+  "use strict";
+
+  const root = document.documentElement;
+  const body = document.body;
+
+  const themeToggle = document.getElementById("theme-toggle");
+  const modeToggle = document.getElementById("mode-toggle");
+  const fontDown = document.getElementById("font-down");
+  const fontReset = document.getElementById("font-reset");
+  const fontUp = document.getElementById("font-up");
+
+  const tocToggle = document.getElementById("toc-toggle");
+  const tocClose = document.getElementById("toc-close");
+  const tocOverlay = document.getElementById("toc-overlay");
+  const tocDrawer = document.getElementById("toc-drawer");
+
+  const prevButton = document.getElementById("section-prev");
+  const nextButton = document.getElementById("section-next");
+
+  const FONT_LEVELS = [80, 90, 100, 110, 120, 130, 140];
+
+  function safeGet(key, fallback = null) {
+    try {
+      const value = localStorage.getItem(key);
+      return value === null ? fallback : value;
+    } catch (e) {
+      return fallback;
+    }
+  }
+
+  function safeSet(key, value) {
+    try {
+      localStorage.setItem(key, value);
+    } catch (e) {}
+  }
+
+  /* ---------- Theme ---------- */
+
+  function applyTheme(theme) {
+    const next = theme === "light" ? "light" : "dark";
+    root.dataset.theme = next;
+
+    if (themeToggle) {
+      const dark = next === "dark";
+      themeToggle.textContent = dark ? "☀" : "☾";
+      themeToggle.title = dark ? "Chuyển sang Light" : "Chuyển sang Dark";
+      themeToggle.setAttribute("aria-pressed", String(!dark));
+    }
+
+    safeSet("study-theme", next);
+  }
+
+  const initialTheme =
+    safeGet("study-theme") ||
+    (window.matchMedia &&
+     window.matchMedia("(prefers-color-scheme: dark)").matches
+      ? "dark"
+      : "light");
+
+  applyTheme(initialTheme);
+
+  themeToggle?.addEventListener("click", () => {
+    applyTheme(root.dataset.theme === "dark" ? "light" : "dark");
+  });
+
+  /* ---------- Full / Keywords ---------- */
+
+  function applyMode(mode) {
+    const keywords = mode === "keywords";
+    body.classList.toggle("keyword-focus", keywords);
+
+    if (modeToggle) {
+      modeToggle.textContent = keywords ? "📖" : "🎯";
+      modeToggle.title = keywords ? "Chuyển sang Full" : "Chuyển sang Keywords";
+      modeToggle.setAttribute("aria-pressed", String(keywords));
+    }
+
+    safeSet("study-mode", keywords ? "keywords" : "full");
+  }
+
+  applyMode(safeGet("study-mode", "full"));
+
+  modeToggle?.addEventListener("click", () => {
+    applyMode(body.classList.contains("keyword-focus") ? "full" : "keywords");
+  });
+
+  /* ---------- Font scale ---------- */
+
+  let fontScale = Number(safeGet("study-font-scale", "100"));
+  if (!FONT_LEVELS.includes(fontScale)) {
+    fontScale = 100;
+  }
+
+  function applyFontScale(scale) {
+    fontScale = FONT_LEVELS.includes(scale) ? scale : 100;
+
+    root.style.setProperty(
+      "--base-font-size",
+      `${16 * fontScale / 100}px`
+    );
+
+    if (fontReset) {
+      fontReset.textContent = `${fontScale}%`;
+      fontReset.title =
+        fontScale === 100
+          ? "Cỡ chữ hiện tại 100%"
+          : `Cỡ chữ hiện tại ${fontScale}%, bấm để về 100%`;
+    }
+
+    if (fontDown) {
+      fontDown.disabled = fontScale === FONT_LEVELS[0];
+    }
+
+    if (fontUp) {
+      fontUp.disabled = fontScale === FONT_LEVELS[FONT_LEVELS.length - 1];
+    }
+
+    safeSet("study-font-scale", String(fontScale));
+  }
+
+  applyFontScale(fontScale);
+
+  fontDown?.addEventListener("click", () => {
+    const index = FONT_LEVELS.indexOf(fontScale);
+    if (index > 0) {
+      applyFontScale(FONT_LEVELS[index - 1]);
+    }
+  });
+
+  fontUp?.addEventListener("click", () => {
+    const index = FONT_LEVELS.indexOf(fontScale);
+    if (index >= 0 && index < FONT_LEVELS.length - 1) {
+      applyFontScale(FONT_LEVELS[index + 1]);
+    }
+  });
+
+  fontReset?.addEventListener("click", () => {
+    applyFontScale(100);
+  });
+
+  /* ---------- TOC drawer ---------- */
+
+  function setToc(open) {
+    body.classList.toggle("toc-open", open);
+    tocToggle?.setAttribute("aria-expanded", String(open));
+    tocOverlay?.setAttribute("aria-hidden", String(!open));
+
+    if (open) {
+      requestAnimationFrame(() => tocClose?.focus());
+    }
+  }
+
+  tocToggle?.addEventListener("click", () => {
+    setToc(!body.classList.contains("toc-open"));
+  });
+
+  tocClose?.addEventListener("click", () => setToc(false));
+  tocOverlay?.addEventListener("click", () => setToc(false));
+
+  tocDrawer?.querySelectorAll("a[href^='#']").forEach(link => {
+    link.addEventListener("click", () => setToc(false));
+  });
+
+  document.addEventListener("keydown", event => {
+    if (event.key === "Escape" && body.classList.contains("toc-open")) {
+      setToc(false);
+      tocToggle?.focus();
+    }
+  });
+
+  /* ---------- Back / Next section ---------- */
+
+  const studySections = Array.from(
+    document.querySelectorAll("main .study-section[id]")
+  );
+
+  function currentSectionIndex() {
+    if (!studySections.length) return -1;
+
+    const referenceY = window.scrollY + Math.min(window.innerHeight * 0.32, 220);
+    let index = 0;
+
+    for (let i = 0; i < studySections.length; i++) {
+      if (studySections[i].offsetTop <= referenceY) {
+        index = i;
+      } else {
+        break;
+      }
+    }
+    return index;
+  }
+
+  function updateNavState() {
+    if (!studySections.length) {
+      if (prevButton) prevButton.disabled = true;
+      if (nextButton) nextButton.disabled = true;
+      return;
+    }
+
+    const index = currentSectionIndex();
+    if (prevButton) prevButton.disabled = index <= 0;
+    if (nextButton) nextButton.disabled = index >= studySections.length - 1;
+  }
+
+  function moveSection(delta) {
+    const index = currentSectionIndex();
+    const targetIndex = Math.max(
+      0,
+      Math.min(studySections.length - 1, index + delta)
+    );
+
+    studySections[targetIndex]?.scrollIntoView({
+      behavior: "smooth",
+      block: "start"
+    });
+  }
+
+  prevButton?.addEventListener("click", () => moveSection(-1));
+  nextButton?.addEventListener("click", () => moveSection(1));
+
+  let ticking = false;
+  window.addEventListener("scroll", () => {
+    if (!ticking) {
+      requestAnimationFrame(() => {
+        updateNavState();
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }, { passive: true });
+
+  window.addEventListener("resize", updateNavState);
+  updateNavState();
+})();
+</script>
+
+</body>
+</html>

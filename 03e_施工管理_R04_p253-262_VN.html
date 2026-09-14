@@ -1,0 +1,1610 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="color-scheme" content="dark light">
+<title>令和4年度 問題3 施工管理 - Nội thất và Network tiến độ</title>
+
+<style>
+/* =========================================================
+   FIXED DESIGN TOKENS
+   Do not redesign these values per lesson.
+   ========================================================= */
+
+:root {
+  --font-vi: Arial, Helvetica, sans-serif;
+  --font-ja: "Hiragino Sans", "Yu Gothic", "Yu Gothic UI", Meiryo, sans-serif;
+  --base-font-size: 16px;
+  --content-width: 1320px;
+  --control-size: 38px;
+  --control-gap: 4px;
+}
+
+html[data-theme="dark"] {
+  --bg: #101318;
+  --surface: #171B22;
+  --surface-alt: #1D232C;
+  --text: #E3E7ED;
+  --text-muted: #9DA8B5;
+  --focus-muted: #68717D;
+  --heading: #F4F7FA;
+  --border: #323A46;
+  --link: #7CC4FF;
+  --original-bg: #15181E;
+  --translation-bg: #16202A;
+  --note-bg: #1C2028;
+  --memory-bg: #20231C;
+  --keyword: #74D7FF;
+  --keyword-bg: rgba(75, 190, 255, .10);
+  --critical-bg: #594613;
+  --critical-text: #FFE39A;
+  --trap: #FF8585;
+  --trap-underline: #FF5F5F;
+  --relation-bg: rgba(139, 126, 255, .12);
+  --relation-border: #8F86FF;
+  --shadow: rgba(0, 0, 0, .28);
+  --dock-bg: rgba(23, 27, 34, .94);
+  --overlay: rgba(0, 0, 0, .46);
+}
+
+html[data-theme="light"] {
+  --bg: #F4F6F8;
+  --surface: #FFFFFF;
+  --surface-alt: #EEF1F5;
+  --text: #20242A;
+  --text-muted: #626B77;
+  --focus-muted: #A0A7B0;
+  --heading: #111418;
+  --border: #CCD2DA;
+  --link: #0068B5;
+  --original-bg: #F8FAFC;
+  --translation-bg: #EDF7FC;
+  --note-bg: #F2F4F7;
+  --memory-bg: #F6F7E9;
+  --keyword: #006B9F;
+  --keyword-bg: #E4F4FC;
+  --critical-bg: #FFF0B8;
+  --critical-text: #654900;
+  --trap: #B42318;
+  --trap-underline: #D92D20;
+  --relation-bg: #EEEBFF;
+  --relation-border: #6C5CE7;
+  --shadow: rgba(31, 38, 49, .12);
+  --dock-bg: rgba(255, 255, 255, .94);
+  --overlay: rgba(20, 24, 30, .32);
+}
+
+/* =========================================================
+   BASE
+   ========================================================= */
+
+* { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  font-size: var(--base-font-size);
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-vi);
+  font-size: 1rem;
+  line-height: 1.72;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+:lang(vi) {
+  font-family: var(--font-vi);
+}
+
+:lang(ja) {
+  font-family: var(--font-ja);
+}
+
+a {
+  color: var(--link);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
+a:hover {
+  text-decoration-thickness: 2px;
+}
+
+button {
+  font: inherit;
+}
+
+h1, h2, h3, h4 {
+  color: var(--heading);
+  line-height: 1.35;
+}
+
+h1 {
+  margin: 0 0 .35rem;
+  font-size: clamp(1.75rem, 4vw, 2.7rem);
+}
+
+h2 {
+  margin: 2.5rem 0 1rem;
+  padding-bottom: .42rem;
+  border-bottom: 1px solid var(--border);
+  font-size: clamp(1.42rem, 3vw, 2rem);
+}
+
+h3 {
+  margin: 1.9rem 0 .75rem;
+  font-size: clamp(1.16rem, 2.4vw, 1.5rem);
+}
+
+h4 {
+  margin: 1.2rem 0 .45rem;
+  font-size: 1rem;
+}
+
+p {
+  margin: .58rem 0;
+}
+
+ul, ol {
+  padding-left: 1.45rem;
+}
+
+li {
+  margin: .3rem 0;
+}
+
+[id] {
+  scroll-margin-top: 18px;
+}
+
+/* =========================================================
+   PAGE LAYOUT
+   ========================================================= */
+
+.page-shell {
+  width: min(var(--content-width), calc(100% - 28px));
+  margin: 0 auto;
+  padding: 18px 0 112px;
+}
+
+.hero,
+.toc-card,
+.study-section,
+.aggregate-section {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  box-shadow: 0 8px 28px var(--shadow);
+}
+
+.hero {
+  margin-bottom: 22px;
+  padding: clamp(22px, 3vw, 40px);
+}
+
+.hero-subtitle {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 1.06rem;
+}
+
+.meta-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(195px, 1fr));
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.meta-item {
+  padding: 10px 12px;
+  background: var(--surface-alt);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+
+.meta-label {
+  display: block;
+  margin-bottom: 2px;
+  color: var(--text-muted);
+  font-size: .8rem;
+}
+
+.study-section,
+.aggregate-section {
+  margin: 22px 0;
+  padding: clamp(18px, 2.6vw, 30px);
+}
+
+.section-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 16px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border);
+}
+
+.section-head h2,
+.section-head h3 {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.source-ref {
+  color: var(--text-muted);
+  font-size: .84rem;
+  white-space: nowrap;
+}
+
+.subsection {
+  margin: 26px 0 32px;
+}
+
+.subsection:first-child {
+  margin-top: 0;
+}
+
+.study-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 14px;
+  align-items: start;
+}
+
+.study-card {
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+
+.study-card.original {
+  background: var(--original-bg);
+}
+
+.study-card.translation {
+  background: var(--translation-bg);
+}
+
+.card-title {
+  padding: 9px 13px;
+  background: var(--surface-alt);
+  border-bottom: 1px solid var(--border);
+  color: var(--heading);
+  font-weight: 800;
+  letter-spacing: .02em;
+}
+
+.recall-source {
+  padding: 14px 16px 16px;
+  transition: color .15s ease;
+}
+
+.recall-source > :first-child {
+  margin-top: 0;
+}
+
+.recall-source > :last-child {
+  margin-bottom: 0;
+}
+
+/* =========================================================
+   CONTENT COMPONENTS
+   ========================================================= */
+
+.table-wrap {
+  overflow-x: auto;
+  margin: 12px 0 18px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  -webkit-overflow-scrolling: touch;
+}
+
+table {
+  width: 100%;
+  min-width: 640px;
+  border-collapse: collapse;
+  background: var(--surface);
+}
+
+th,
+td {
+  padding: 9px 11px;
+  border-right: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+  text-align: left;
+}
+
+th:last-child,
+td:last-child {
+  border-right: 0;
+}
+
+tr:last-child td {
+  border-bottom: 0;
+}
+
+th {
+  background: var(--surface-alt);
+  color: var(--heading);
+  font-weight: 800;
+}
+
+caption {
+  padding: 9px 11px;
+  background: var(--surface-alt);
+  color: var(--heading);
+  font-weight: 800;
+  text-align: left;
+  caption-side: top;
+}
+
+.summary-box,
+.note-box,
+.memory-box,
+.warning-box,
+.figure-box,
+.formula-box,
+.comparison-box {
+  margin: 14px 0;
+  padding: 13px 15px;
+  background: var(--note-bg);
+  border: 1px solid var(--border);
+  border-left-width: 4px;
+  border-radius: 10px;
+}
+
+.summary-box,
+.note-box {
+  border-left-color: var(--link);
+}
+
+.memory-box {
+  background: var(--memory-bg);
+  border-left-color: var(--critical-text);
+}
+
+.warning-box {
+  border-left-color: var(--trap);
+}
+
+.figure-box,
+.formula-box,
+.comparison-box {
+  border-left-color: var(--relation-border);
+}
+
+.figure-card {
+  margin: 15px 0 20px;
+  overflow: hidden;
+  background: var(--surface-alt);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+
+.figure-card img {
+  display: block;
+  width: 100%;
+  height: auto;
+  background: #fff;
+}
+
+.figure-card figcaption {
+  padding: 10px 13px 12px;
+  color: var(--text-muted);
+  font-size: .9rem;
+}
+
+.figure-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 12px;
+  margin: 15px 0 20px;
+}
+
+.figure-grid .figure-card {
+  margin: 0;
+}
+
+.item-block {
+  margin-top: 11px;
+  padding-top: 11px;
+  border-top: 1px dashed var(--border);
+}
+
+.item-block:first-child {
+  margin-top: 0;
+  padding-top: 0;
+  border-top: 0;
+}
+
+.item-label {
+  margin-right: .3em;
+  color: var(--heading);
+  font-weight: 800;
+}
+
+.formula-line {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+}
+
+.flow-node {
+  padding: 5px 8px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  font-weight: 700;
+}
+
+.flow-arrow {
+  color: var(--text-muted);
+  font-weight: 800;
+}
+
+/* =========================================================
+   SEMANTIC HIGHLIGHTING
+   ========================================================= */
+
+.kw {
+  padding: .02em .16em;
+  background: var(--keyword-bg);
+  color: var(--keyword);
+  border-radius: .2em;
+  font-weight: 750;
+}
+
+.critical {
+  padding: .04em .22em;
+  background: var(--critical-bg);
+  color: var(--critical-text);
+  border-radius: .22em;
+  font-weight: 750;
+}
+
+.trap {
+  color: var(--trap);
+  font-weight: 700;
+  text-decoration-line: underline;
+  text-decoration-color: var(--trap-underline);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+}
+
+.relation {
+  padding: .02em .14em;
+  background: var(--relation-bg);
+  color: var(--text);
+  border-bottom: 2px solid var(--relation-border);
+  font-weight: 650;
+}
+
+/* Only recall-source is dimmed in Keywords mode. */
+body.keyword-focus .recall-source {
+  color: var(--focus-muted);
+}
+
+body.keyword-focus .recall-source .kw {
+  color: var(--keyword);
+  background: var(--keyword-bg);
+}
+
+body.keyword-focus .recall-source .critical {
+  color: var(--critical-text);
+  background: var(--critical-bg);
+}
+
+body.keyword-focus .recall-source .trap {
+  color: var(--trap);
+}
+
+body.keyword-focus .recall-source .relation {
+  color: var(--text);
+  background: var(--relation-bg);
+}
+
+body.keyword-focus .recall-source th,
+body.keyword-focus .recall-source .item-label {
+  color: var(--heading);
+}
+
+/* =========================================================
+   TOC DRAWER
+   ========================================================= */
+
+.toc-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1990;
+  visibility: hidden;
+  opacity: 0;
+  background: var(--overlay);
+  transition: opacity .18s ease, visibility .18s ease;
+}
+
+.toc-drawer {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 2000;
+  width: min(78vw, 360px);
+  padding: max(14px, env(safe-area-inset-top)) 14px
+           max(18px, env(safe-area-inset-bottom))
+           max(14px, env(safe-area-inset-left));
+  overflow-y: auto;
+  background: var(--surface);
+  border-right: 1px solid var(--border);
+  box-shadow: 14px 0 36px var(--shadow);
+  transform: translateX(-103%);
+  transition: transform .2s ease;
+  -webkit-overflow-scrolling: touch;
+}
+
+body.toc-open .toc-overlay {
+  visibility: visible;
+  opacity: 1;
+}
+
+body.toc-open .toc-drawer {
+  transform: translateX(0);
+}
+
+.toc-drawer-head {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 4px 0 10px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+}
+
+.toc-drawer-head h2 {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 1.2rem;
+}
+
+.toc-close {
+  width: 34px;
+  height: 34px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface-alt);
+  color: var(--text);
+  cursor: pointer;
+}
+
+.toc-list {
+  margin: 12px 0 0;
+  padding-left: 1.2rem;
+}
+
+.toc-list ol {
+  margin-top: 4px;
+}
+
+/* =========================================================
+   COMPACT CONTROLS
+   Left: vertical TOC / Back / Next
+   Right: horizontal display controls
+   ========================================================= */
+
+.nav-dock-left,
+.settings-dock-right {
+  position: fixed;
+  bottom: max(14px, env(safe-area-inset-bottom));
+  z-index: 1900;
+  padding: 5px;
+  background: var(--dock-bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  box-shadow: 0 8px 24px var(--shadow);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  user-select: none;
+}
+
+.nav-dock-left {
+  left: max(10px, env(safe-area-inset-left));
+  display: flex;
+  flex-direction: column;
+  gap: var(--control-gap);
+}
+
+.settings-dock-right {
+  right: max(10px, env(safe-area-inset-right));
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--control-gap);
+}
+
+.nav-dock-left button,
+.settings-dock-right button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--control-size);
+  height: var(--control-size);
+  min-width: var(--control-size);
+  min-height: var(--control-size);
+  padding: 0;
+  background: var(--surface-alt);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-family: var(--font-vi);
+  font-size: .96rem;
+  font-weight: 700;
+  line-height: 1;
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.nav-dock-left button:hover,
+.settings-dock-right button:hover {
+  border-color: var(--link);
+}
+
+.nav-dock-left button:active,
+.settings-dock-right button:active {
+  transform: translateY(1px);
+}
+
+.nav-dock-left button:disabled {
+  opacity: .38;
+  cursor: default;
+}
+
+.settings-dock-right .font-reset {
+  font-size: .66rem;
+  letter-spacing: -.03em;
+}
+
+.settings-dock-right .mode-toggle {
+  font-size: 1.02rem;
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 900px) {
+  .study-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .page-shell {
+    width: min(100% - 18px, 760px);
+  }
+
+  .section-head {
+    display: block;
+  }
+
+  .source-ref {
+    display: block;
+    margin-top: 6px;
+    white-space: normal;
+  }
+}
+
+@media (max-width: 560px) {
+  body {
+    font-size: .96rem;
+  }
+
+  .hero,
+  .study-section,
+  .aggregate-section {
+    border-radius: 12px;
+  }
+
+  .recall-source {
+    padding: 12px 13px 14px;
+  }
+
+  :root {
+    --control-size: 36px;
+  }
+
+  .settings-dock-right {
+    right: max(7px, env(safe-area-inset-right));
+  }
+
+  .nav-dock-left {
+    left: max(7px, env(safe-area-inset-left));
+  }
+}
+
+@media (orientation: landscape) and (pointer: coarse) {
+  .nav-dock-left {
+    left: max(14px, env(safe-area-inset-left));
+  }
+
+  .settings-dock-right {
+    right: max(14px, env(safe-area-inset-right));
+  }
+}
+
+/* =========================================================
+   PRINT
+   ========================================================= */
+
+@media print {
+  html,
+  html[data-theme="dark"],
+  html[data-theme="light"] {
+    --bg: #FFFFFF;
+    --surface: #FFFFFF;
+    --surface-alt: #F1F3F5;
+    --text: #111111;
+    --text-muted: #555555;
+    --heading: #000000;
+    --border: #B8BEC6;
+    --original-bg: #FFFFFF;
+    --translation-bg: #F7FBFD;
+    --note-bg: #F7F7F7;
+    --memory-bg: #FAFAF0;
+    --keyword: #005A86;
+    --keyword-bg: #E4F4FC;
+    --critical-bg: #FFF0B8;
+    --critical-text: #4A3600;
+    --trap: #9E1B12;
+    --trap-underline: #9E1B12;
+    --relation-bg: #F0EDFF;
+    --relation-border: #5B4FD6;
+  }
+
+  body {
+    background: #fff;
+    color: #111;
+    font-size: 11pt;
+  }
+
+  .page-shell {
+    width: 100%;
+    padding: 0;
+  }
+
+  .nav-dock-left,
+  .settings-dock-right,
+  .toc-drawer,
+  .toc-overlay {
+    display: none !important;
+  }
+
+  .hero,
+  .study-card,
+  .summary-box,
+  .note-box,
+  .memory-box,
+  .warning-box,
+  .figure-card {
+    break-inside: avoid;
+  }
+
+  a {
+    color: #000;
+    text-decoration: none;
+  }
+}
+</style>
+
+<script>
+/* Apply saved theme before body paint to reduce flashing. */
+(function () {
+  try {
+    const saved = localStorage.getItem("study-theme");
+    const systemDark = window.matchMedia &&
+      window.matchMedia("(prefers-color-scheme: dark)").matches;
+    document.documentElement.dataset.theme =
+      saved || (systemDark ? "dark" : "light");
+  } catch (e) {
+    document.documentElement.dataset.theme = "dark";
+  }
+
+  try {
+    const savedScale = Number(localStorage.getItem("study-font-scale")) || 100;
+    const clampedScale = Math.max(80, Math.min(140, savedScale));
+    document.documentElement.style.setProperty(
+      "--base-font-size",
+      `${16 * clampedScale / 100}px`
+    );
+  } catch (e) {}
+})();
+</script>
+</head>
+
+<body>
+
+<!-- =======================================================
+     TOC DRAWER
+     Replace only the list contents.
+     ======================================================= -->
+<div class="toc-overlay" id="toc-overlay" aria-hidden="true"></div>
+
+<aside class="toc-drawer" id="toc-drawer" aria-label="Mục lục">
+  <div class="toc-drawer-head">
+    <h2>Mục lục</h2>
+    <button class="toc-close" id="toc-close" type="button" aria-label="Đóng mục lục">×</button>
+  </div>
+
+  <!-- TOC_ITEMS_START -->
+<ol class="toc-list">
+  <li><a href="#sec-problem">1. 令和4年度 問題3 施工管理</a>
+    <ol>
+      <li><a href="#sub-problem">Đề bài và khái quát công trình</a></li>
+      <li><a href="#sub-network">Bảng tiến độ nội thất tầng 3</a></li>
+    </ol>
+  </li>
+  <li><a href="#sec-q1">2. 問い1 作業内容の特定</a>
+    <ol><li><a href="#sub-q1-answer">Đáp án và cách xác định A1/B1, A6/B6</a></li></ol>
+  </li>
+  <li><a href="#sec-q2">3. 問い2 総所要日数</a>
+    <ol>
+      <li><a href="#sub-q2-forward">Tính tiến trên network</a></li>
+      <li><a href="#sub-q2-table">Cách giải bằng bảng ngày công tác</a></li>
+    </ol>
+  </li>
+  <li><a href="#sec-q3">4. 問い3 フリーフロート</a>
+    <ol>
+      <li><a href="#sub-q3-network">Tính FF từ network</a></li>
+      <li><a href="#sub-q3-table">Tính FF bằng ngày trống</a></li>
+    </ol>
+  </li>
+  <li><a href="#sec-q4">5. 問い4 予定変更とクリティカルパス</a>
+    <ol>
+      <li><a href="#sub-q4-change">Thay đổi thứ tự C2 và khu A/B</a></li>
+      <li><a href="#sub-q4-table">Bảng tiến độ sau thay đổi</a></li>
+    </ol>
+  </li>
+  <li><a href="#terms">Thuật ngữ chuyên môn</a></li>
+  <li><a href="#background">Kiến thức nền cần biết</a></li>
+  <li><a href="#memory">Điểm cần nhớ và mẹo nhớ</a></li>
+</ol>
+  <!-- TOC_ITEMS_END -->
+</aside>
+
+<!-- =======================================================
+     FIXED NAVIGATION CONTROLS
+     Left bottom: vertical.
+     Do not add a Top button.
+     ======================================================= -->
+<nav class="nav-dock-left" aria-label="Điều hướng học tập">
+  <button id="toc-toggle" type="button" aria-label="Mục lục" title="Mục lục"
+          aria-controls="toc-drawer" aria-expanded="false">☰</button>
+  <button id="section-prev" type="button" aria-label="Mục trước" title="Back">‹</button>
+  <button id="section-next" type="button" aria-label="Mục tiếp theo" title="Next">›</button>
+</nav>
+
+<!-- =======================================================
+     FIXED DISPLAY CONTROLS
+     Right bottom: horizontal.
+     ======================================================= -->
+<nav class="settings-dock-right" aria-label="Thiết lập hiển thị">
+  <button id="theme-toggle" type="button" aria-label="Đổi Dark/Light"
+          title="Đổi Dark/Light" aria-pressed="false">☀</button>
+  <button id="mode-toggle" class="mode-toggle" type="button"
+          aria-label="Đổi Full/Keywords" title="Đổi Full/Keywords"
+          aria-pressed="false">🎯</button>
+  <button id="font-reset" class="font-reset" type="button"
+          aria-label="Đặt lại cỡ chữ 100%" title="Đặt lại cỡ chữ 100%">100%</button>
+  <button id="font-down" type="button" aria-label="Giảm cỡ chữ"
+          title="Giảm cỡ chữ">A−</button>
+  <button id="font-up" type="button" aria-label="Tăng cỡ chữ"
+          title="Tăng cỡ chữ">A+</button>
+</nav>
+
+<div class="page-shell">
+
+  <!-- =====================================================
+       DOCUMENT HEADER
+       Replace title/subtitle/meta values only.
+       ===================================================== -->
+  <header class="hero" id="top">
+    <h1>令和4年度 問題3 施工管理 - Nội thất và Network tiến độ</h1>
+    <p class="hero-subtitle">Tài liệu học song ngữ Nhật-Việt, Book page 253-261</p>
+
+    <div class="meta-grid">
+      <div class="meta-item">
+        <span class="meta-label">PDF nguồn</span>
+        03e_施工管理_R04_p253-262.pdf
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">File ID</span>
+        F034
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Phạm vi</span>
+        Book page 253-261
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Chế độ</span>
+        Song ngữ Nhật-Việt / Dark-Light / Full-Keywords / Font 80-140%
+      </div>
+    </div>
+  </header>
+
+  <!-- =====================================================
+       CONTENT_START
+       AI may freely repeat/reorder approved content components.
+       Global CSS/JS/control structure must not be redesigned.
+       ===================================================== -->
+  <main id="lesson">
+<section class="study-section" id="sec-problem">
+<div class="section-head"><h2>1. 令和4年度 問題3 施工管理</h2><span class="source-ref">Nguồn: Book page 253-254</span></div>
+<section class="subsection" id="sub-problem"><h3>Đề bài và khái quát công trình</h3><div class="study-grid">
+  <article class="study-card original">
+    <div class="card-title">原文</div>
+    <div class="recall-source" lang="ja">
+<h4>令和4年度 問題3 施工管理</h4>
+<p>市街地での事務所ビル新築工事において、<strong class="kw">同一フロアをA、Bの2工区に分けて施工</strong>を行うとき、右の内装工事工程表（3階）に関し、次の1.から4.の問いに答えなさい。</p>
+<p>工程表は計画時点のもので、検査や設備関係の作業については省略している。</p>
+<p>各作業日数と作業内容は工程表及び作業内容表に記載のとおりであり、Aで始まる作業名はA工区の作業を、Bで始まる作業名はB工区の作業を、Cで始まる作業名は両工区を同時に行う作業を示すが、作業A1、B1及び作業A6、B6については作業内容を記載していない。</p>
+<p>各作業班は、それぞれ当該作業のみを行い、各作業内容共、<span class="relation">A工区の作業が完了してからB工区の作業を行う</span>。また、<span class="trap">A工区における作業A2と作業C2以外は</span>、工区内で複数の作業を同時に行わず、各作業は先行する作業が完了してから開始するものとする。</p>
+<p>なお、各作業は一般的な手順に従って施工されるものとする。</p>
+<h4>〔工事概要〕</h4>
+<ul>
+<li>用途：事務所</li>
+<li>構造・規模：鉄筋コンクリート造、地上6階、塔屋1階、延べ面積2,800m²</li>
+<li>仕上げ：床は、フリーアクセスフロア下地、タイルカーペット仕上げ</li>
+<li>壁は、軽量鉄骨下地、せっこうボード張り、ビニルクロス仕上げ</li>
+<li>天井は、システム天井下地、ロックウール化粧吸音板仕上げ</li>
+<li>A工区の会議室に可動間仕切設置</li>
+</ul>
+<h4>設問</h4>
+<ol>
+<li>作業A1、B1及び作業A6、B6の作業内容を記述しなさい。</li>
+<li>〔始〕から〔終〕までの総所要日数を記入しなさい。</li>
+<li>作業A4のフリーフロートを記入しなさい。</li>
+<li>次の記述の［　］に当てはまる作業名と数値をそれぞれ記入しなさい。</li>
+</ol>
+<p>建具枠納入予定日の前日に、A工区分の納入が遅れることが判明したため、<span class="relation">B工区の建具枠取付けを先行し、その後の作業もB工区の作業が完了してからA工区の作業を行う</span>こととした。</p>
+<p>なお、変更後のB工区の建具枠取付けの所要日数は<mark class="critical">2日</mark>で、納入の遅れたA工区の建具枠は、B工区の壁せっこうボード張り完了までに取り付けられることが判った。</p>
+<p>このとき、当初クリティカルパスではなかった作業［あ］から作業A8までがクリティカルパスとなり、〔始〕から〔終〕までの総所要日数は［い］日となる。</p></div>
+  </article>
+  <article class="study-card translation">
+    <div class="card-title">Bản dịch tiếng Việt</div>
+    <div class="recall-source" lang="vi">
+<h4>Năm Reiwa 4 (2022), Câu 3: Quản lý thi công</h4>
+<p>Trong công trình xây mới một tòa nhà văn phòng tại khu vực đô thị, khi <strong class="kw">chia cùng một tầng thành hai khu thi công A và B</strong> để tiến hành thi công, hãy trả lời các câu 1 đến 4 liên quan đến bảng tiến độ công tác nội thất tầng 3.</p>
+<p>Bảng tiến độ là bảng tại thời điểm lập kế hoạch; các công tác kiểm tra và các công tác liên quan đến thiết bị kỹ thuật được lược bỏ.</p>
+<p>Số ngày và nội dung của từng công tác được ghi trong bảng tiến độ và bảng nội dung công tác. Công tác bắt đầu bằng A thuộc khu A, bắt đầu bằng B thuộc khu B, bắt đầu bằng C là công tác thực hiện đồng thời cho cả hai khu. Riêng A1, B1 và A6, B6 không được ghi nội dung công tác.</p>
+<p>Mỗi đội thi công chỉ thực hiện công tác mà đội đó phụ trách. Đối với từng loại công tác, <span class="relation">sau khi công tác khu A hoàn thành mới thực hiện công tác khu B</span>. Ngoài ra, <span class="trap">ngoại trừ A2 của khu A và C2</span>, trong cùng một khu không thực hiện đồng thời nhiều công tác; mỗi công tác chỉ được bắt đầu sau khi công tác đi trước đã hoàn thành.</p>
+<p>Mỗi công tác được coi là thi công theo trình tự thông thường.</p>
+<h4>Khái quát công trình</h4>
+<ul>
+<li>Công năng: văn phòng</li>
+<li>Kết cấu, quy mô: bê tông cốt thép, 6 tầng nổi, 1 tầng tum, tổng diện tích sàn 2.800 m²</li>
+<li>Sàn: nền sàn nâng kỹ thuật, hoàn thiện thảm tấm</li>
+<li>Tường: khung xương thép nhẹ, ốp tấm thạch cao, hoàn thiện giấy dán tường vinyl</li>
+<li>Trần: nền trần hệ thống, hoàn thiện bằng tấm tiêu âm trang trí rock wool</li>
+<li>Phòng họp khu A có lắp vách ngăn di động</li>
+</ul>
+<h4>Câu hỏi</h4>
+<ol>
+<li>Ghi nội dung công tác của A1, B1 và A6, B6.</li>
+<li>Ghi tổng số ngày cần thiết từ sự kiện Bắt đầu đến Kết thúc.</li>
+<li>Ghi free float của công tác A4.</li>
+<li>Điền tên công tác và trị số thích hợp vào các ô trống.</li>
+</ol>
+<p>Một ngày trước ngày dự kiến giao khung cửa, phát hiện phần khung cửa của khu A sẽ bị giao chậm. Vì vậy, <span class="relation">lắp khung cửa khu B trước; các công tác sau cũng đổi thành khu B hoàn thành rồi mới làm khu A</span>.</p>
+<p>Sau thay đổi, thời lượng lắp khung cửa khu B là <mark class="critical">2 ngày</mark>; khung cửa khu A bị giao chậm vẫn có thể lắp xong trước khi hoàn thành công tác ốp tấm thạch cao tường khu B.</p>
+<p>Khi đó, từ công tác [あ] vốn không nằm trên đường găng ban đầu đến A8 sẽ trở thành đường găng; tổng thời gian từ Bắt đầu đến Kết thúc sẽ là [い] ngày.</p></div>
+  </article>
+</div><p class="source-ref"><a href="#toc">↑ Mục lục</a></p></section>
+<section class="subsection" id="sub-network"><h3>Bảng tiến độ nội thất tầng 3 và bảng nội dung công tác</h3><div class="study-grid">
+  <article class="study-card original">
+    <div class="card-title">原文</div>
+    <div class="recall-source" lang="ja">
+<h4>内装工事工程表（3階）</h4>
+<div class="formula-box">
+  <div class="formula-line"><span class="flow-node">始</span><span class="flow-arrow">→</span><span class="flow-node">C1 1日</span><span class="flow-arrow">→</span><span class="flow-node">A1 2日</span><span class="flow-arrow">→</span><span class="flow-node">A2 4日</span><span class="flow-arrow">→</span><span class="flow-node">A3 2日</span><span class="flow-arrow">→</span><span class="flow-node">A4 2日</span><span class="flow-arrow">→</span><span class="flow-node">A5 3日</span><span class="flow-arrow">→</span><span class="flow-node">A6 2日</span><span class="flow-arrow">→</span><span class="flow-node">A7 2日</span><span class="flow-arrow">→</span><span class="flow-node">A8 2日</span><span class="flow-arrow">→</span><span class="flow-node">C3 2日</span><span class="flow-arrow">→</span><span class="flow-node">終</span></div>
+  <div class="formula-line" style="margin-top:8px"><span class="flow-node">A1</span><span class="flow-arrow">→</span><span class="flow-node">B1 2日</span><span class="flow-arrow">→</span><span class="flow-node">C2 3日</span><span class="flow-arrow">→</span><span class="flow-node">A3前イベント</span></div>
+  <div class="formula-line" style="margin-top:8px"><span class="flow-node">A3</span><span class="flow-arrow">→</span><span class="flow-node">B3 3日</span><span class="flow-arrow">→</span><span class="flow-node">B4 3日</span><span class="flow-arrow">→</span><span class="flow-node">B5 3日</span><span class="flow-arrow">→</span><span class="flow-node">B6 2日</span><span class="flow-arrow">→</span><span class="flow-node">B7 2日</span><span class="flow-arrow">→</span><span class="flow-node">C3前イベント</span></div>
+</div>
+<p>※ 凡例：B1の矢線に「2」とあるのは、<strong class="kw">作業B1の所要日数</strong>が<mark class="critical">2日</mark>であることを表している。</p>
+<p>※ 所要日数には、各作業に必要な仮設、資機材運搬を含む。</p>
+<div class="table-wrap"><table><caption>作業内容表（各作業に必要な仮設、資機材運搬を含む）</caption><thead><tr><th>作業名</th><th>作業内容</th></tr></thead><tbody><tr><td>C1</td><td>墨出し</td></tr><tr><td><strong class="kw">A1、B1</strong></td><td>［空欄］</td></tr><tr><td>A2</td><td>可動間仕切レール取付け（下地共）</td></tr><tr><td>C2</td><td>建具枠取付け</td></tr><tr><td>A3、B3</td><td>壁せっこうボード張り</td></tr><tr><td>A4、B4</td><td>システム天井組立て（ロックウール化粧吸音板仕上げを含む）</td></tr><tr><td>A5、B5</td><td>壁ビニルクロス張り</td></tr><tr><td><strong class="kw">A6、B6</strong></td><td>［空欄］</td></tr><tr><td>A7、B7</td><td>タイルカーペット敷設、幅木取付け</td></tr><tr><td>A8</td><td>可動間仕切壁取付け</td></tr><tr><td>C3</td><td>建具扉吊込み</td></tr></tbody></table></div>
+<p>検討用：0日から30日までのタイムスケール作成用グリッド。</p></div>
+  </article>
+  <article class="study-card translation">
+    <div class="card-title">Bản dịch tiếng Việt</div>
+    <div class="recall-source" lang="vi">
+<h4>Bảng tiến độ công tác nội thất tầng 3</h4>
+<div class="formula-box">
+  <div class="formula-line"><span class="flow-node">Bắt đầu</span><span class="flow-arrow">→</span><span class="flow-node">C1 1 ngày</span><span class="flow-arrow">→</span><span class="flow-node">A1 2 ngày</span><span class="flow-arrow">→</span><span class="flow-node">A2 4 ngày</span><span class="flow-arrow">→</span><span class="flow-node">A3 2 ngày</span><span class="flow-arrow">→</span><span class="flow-node">A4 2 ngày</span><span class="flow-arrow">→</span><span class="flow-node">A5 3 ngày</span><span class="flow-arrow">→</span><span class="flow-node">A6 2 ngày</span><span class="flow-arrow">→</span><span class="flow-node">A7 2 ngày</span><span class="flow-arrow">→</span><span class="flow-node">A8 2 ngày</span><span class="flow-arrow">→</span><span class="flow-node">C3 2 ngày</span><span class="flow-arrow">→</span><span class="flow-node">Kết thúc</span></div>
+  <div class="formula-line" style="margin-top:8px"><span class="flow-node">A1</span><span class="flow-arrow">→</span><span class="flow-node">B1 2 ngày</span><span class="flow-arrow">→</span><span class="flow-node">C2 3 ngày</span><span class="flow-arrow">→</span><span class="flow-node">event trước A3</span></div>
+  <div class="formula-line" style="margin-top:8px"><span class="flow-node">A3</span><span class="flow-arrow">→</span><span class="flow-node">B3 3 ngày</span><span class="flow-arrow">→</span><span class="flow-node">B4 3 ngày</span><span class="flow-arrow">→</span><span class="flow-node">B5 3 ngày</span><span class="flow-arrow">→</span><span class="flow-node">B6 2 ngày</span><span class="flow-arrow">→</span><span class="flow-node">B7 2 ngày</span><span class="flow-arrow">→</span><span class="flow-node">event trước C3</span></div>
+</div>
+<p>Chú thích: khi mũi tên B1 ghi số 2, <strong class="kw">thời lượng của B1</strong> là <mark class="critical">2 ngày</mark>.</p>
+<p>Thời lượng đã bao gồm các công tác tạm và vận chuyển vật tư, thiết bị cần thiết cho từng công tác.</p>
+<div class="table-wrap"><table><caption>Bảng nội dung công tác</caption><thead><tr><th>Công tác</th><th>Nội dung</th></tr></thead><tbody><tr><td>C1</td><td>Định vị, lấy dấu</td></tr><tr><td><strong class="kw">A1, B1</strong></td><td>[Ô trống của đề bài]</td></tr><tr><td>A2</td><td>Lắp ray vách ngăn di động, bao gồm phần nền/khung nền</td></tr><tr><td>C2</td><td>Lắp khung cửa</td></tr><tr><td>A3, B3</td><td>Ốp tấm thạch cao tường</td></tr><tr><td>A4, B4</td><td>Lắp trần hệ thống, bao gồm hoàn thiện tấm tiêu âm rock wool</td></tr><tr><td>A5, B5</td><td>Dán giấy vinyl lên tường</td></tr><tr><td><strong class="kw">A6, B6</strong></td><td>[Ô trống của đề bài]</td></tr><tr><td>A7, B7</td><td>Trải thảm tấm và lắp len chân tường</td></tr><tr><td>A8</td><td>Lắp vách ngăn di động</td></tr><tr><td>C3</td><td>Treo/lắp cánh cửa vào khung</td></tr></tbody></table></div>
+<p>Phần 検討用 phía dưới là lưới từ ngày 0 đến ngày 30 dùng để triển khai sơ đồ thành time scale khi giải bài.</p></div>
+  </article>
+</div>
+<div class="note-box"><strong>Ý nghĩa sơ đồ</strong><p>A3 chỉ được bắt đầu khi cả A2 và C2 đã hoàn thành. Sau A3, tiến độ tách thành nhánh A và nhánh B, rồi hai nhánh hợp lại trước C3.</p></div><p class="source-ref"><a href="#toc">↑ Mục lục</a></p></section>
+</section><section class="study-section" id="sec-q1">
+<div class="section-head"><h2>2. 問い1 作業内容の特定</h2><span class="source-ref">Nguồn: Book page 255-256</span></div>
+<section class="subsection" id="sub-q1-answer"><h3>Đáp án và cách xác định A1/B1, A6/B6</h3><div class="study-grid">
+  <article class="study-card original">
+    <div class="card-title">原文</div>
+    <div class="recall-source" lang="ja"><div class="table-wrap"><table><caption>令和4年度 問題3 の解答例</caption><thead><tr><th>設問内容</th><th>解答例</th></tr></thead><tbody><tr><td>作業A1・作業B1の作業内容</td><td><strong class="kw">壁軽量鉄骨下地組立て</strong></td></tr><tr><td>作業A6・作業B6の作業内容</td><td><strong class="kw">フリーアクセスフロア敷設</strong></td></tr><tr><td>〔始〕から〔終〕までの総所要日数</td><td><mark class="critical">25日</mark></td></tr><tr><td>作業A4のフリーフロート</td><td><mark class="critical">0日</mark></td></tr><tr><td>クリティカルパスとなる作業</td><td><strong class="kw">［作業］A5</strong></td></tr><tr><td>〔始〕から〔終〕までの総所要日数（予定変更後）</td><td><mark class="critical">27日</mark></td></tr></tbody></table></div>
+<h4>問い1. 考え方・解き方</h4>
+<p>作業内容表の空欄を埋めるときは、<span class="relation">問題文中の「工事概要」には記載されているが、「作業内容表」には記載されていない内容を探し出す</span>必要がある。</p>
+<div class="table-wrap"><table><thead><tr><th>区分</th><th>「工事概要」の「仕上げ」の記載</th><th>作業内容表の記載</th></tr></thead><tbody><tr><td>床</td><td>フリーアクセスフロア下地</td><td><span class="relation">作業内容表には「フリーアクセスフロア」の記載がない。</span></td></tr><tr><td>床</td><td>タイルカーペット仕上げ</td><td>A7、B7 タイルカーペット敷設、幅木取付け</td></tr><tr><td>壁</td><td>軽量鉄骨壁下地</td><td><span class="relation">作業内容表には「軽量鉄骨壁」の記載がない。</span></td></tr><tr><td>壁</td><td>せっこうボード張り</td><td>A3、B3 壁せっこうボード張り</td></tr><tr><td>壁</td><td>ビニルクロス仕上げ</td><td>A5、B5 壁ビニルクロス張り</td></tr><tr><td>天井</td><td>システム天井下地／ロックウール化粧吸音板仕上げ</td><td>A4、B4 システム天井組立て（ロックウール化粧吸音板仕上げを含む）</td></tr><tr><td>その他</td><td>A工区の会議室に可動間仕切設置</td><td>A2 可動間仕切レール取付け（下地共）／A8 可動間仕切壁取付け</td></tr></tbody></table></div>
+<p>※作業名Cの作業内容は、「仕上げ」に該当する作業ではないので、「工事概要」の「仕上げ」には記載されていない。</p>
+<p>作業A1・B1の作業内容は、「軽量鉄骨壁下地」の仕上げに関することである。ただし、解答が「軽量鉄骨壁下地」であると単純に考えてはならない。<span class="relation">「軽量鉄骨壁下地」は部材名であり、作業内容を示す語句ではない</span>からである。</p>
+<p>作業A3・B3では部材名の前に「壁」が付き、作業A4・B4では部材名の後に「組立て」が付いている。したがって、作業A1・B1の作業内容は、<strong class="kw">「壁軽量鉄骨下地組立て」</strong>である。</p>
+<p>※「壁軽量鉄骨組立て」とすることも考えられるが、過去の問題（令和2年度・平成30年度）では「下地」の語句が付いているので、<strong class="kw">「壁軽量鉄骨下地組立て」</strong>とした方が無難であると考えられる。</p>
+<p>作業A6・B6の作業内容は、「フリーアクセスフロア」の仕上げに関することである。作業A7・B7では部材名の後に「敷設」が付いているので、作業A6・B6は、<strong class="kw">「フリーアクセスフロア敷設」</strong>である。</p>
+<p>※「フリーアクセスフロア下地敷設」とすることも考えられるが、過去の問題（令和2年度・平成30年度）では「下地」の語句が付いていないので、<strong class="kw">「フリーアクセスフロア敷設」</strong>とした方が無難であると考えられる。</p></div>
+  </article>
+  <article class="study-card translation">
+    <div class="card-title">Bản dịch tiếng Việt</div>
+    <div class="recall-source" lang="vi"><div class="table-wrap"><table><caption>Đáp án mẫu Câu 3, năm Reiwa 4</caption><thead><tr><th>Nội dung</th><th>Đáp án mẫu</th></tr></thead><tbody><tr><td>Nội dung A1, B1</td><td><strong class="kw">Lắp dựng khung xương thép nhẹ làm nền tường</strong></td></tr><tr><td>Nội dung A6, B6</td><td><strong class="kw">Lắp đặt sàn nâng kỹ thuật</strong></td></tr><tr><td>Tổng thời gian Bắt đầu → Kết thúc</td><td><mark class="critical">25 ngày</mark></td></tr><tr><td>Free float của A4</td><td><mark class="critical">0 ngày</mark></td></tr><tr><td>Công tác trở thành critical path</td><td><strong class="kw">A5</strong></td></tr><tr><td>Tổng thời gian sau thay đổi</td><td><mark class="critical">27 ngày</mark></td></tr></tbody></table></div>
+<h4>Câu 1: Cách suy nghĩ và cách giải</h4>
+<p>Khi điền các ô trống của bảng nội dung công tác, phải tìm các hạng mục <span class="relation">có trong “Khái quát công trình” nhưng chưa xuất hiện trong “Bảng nội dung công tác”</span>.</p>
+<div class="table-wrap"><table><thead><tr><th>Phân loại</th><th>Nội dung trong Khái quát công trình</th><th>Nội dung đã có trong bảng công tác</th></tr></thead><tbody><tr><td>Sàn</td><td>Nền sàn nâng kỹ thuật</td><td><span class="relation">Chưa có công tác sàn nâng kỹ thuật.</span></td></tr><tr><td>Sàn</td><td>Hoàn thiện thảm tấm</td><td>A7, B7: trải thảm tấm, lắp len chân tường</td></tr><tr><td>Tường</td><td>Nền tường bằng khung xương thép nhẹ</td><td><span class="relation">Chưa có công tác khung xương thép nhẹ tường.</span></td></tr><tr><td>Tường</td><td>Ốp tấm thạch cao</td><td>A3, B3: ốp tấm thạch cao tường</td></tr><tr><td>Tường</td><td>Hoàn thiện vinyl</td><td>A5, B5: dán vinyl tường</td></tr><tr><td>Trần</td><td>Nền trần hệ thống, hoàn thiện tấm tiêu âm rock wool</td><td>A4, B4: lắp trần hệ thống, bao gồm tấm tiêu âm</td></tr><tr><td>Khác</td><td>Phòng họp khu A có vách ngăn di động</td><td>A2: lắp ray vách di động / A8: lắp vách di động</td></tr></tbody></table></div>
+<p>Các công tác ký hiệu C không phải là hạng mục được phân loại trong phần “hoàn thiện”, vì vậy không nhất thiết xuất hiện trong phần hoàn thiện của Khái quát công trình.</p>
+<p>A1, B1 liên quan đến hệ khung xương thép nhẹ làm nền tường. Tuy nhiên, <span class="relation">“khung xương thép nhẹ làm nền tường” chỉ là tên hệ/cấu kiện, không phải tên công tác</span>. Dựa vào cách đặt tên các công tác khác, phải thêm hành động thi công.</p>
+<p>Do đó A1, B1 = <strong class="kw">“Lắp dựng khung xương thép nhẹ làm nền tường”</strong>.</p>
+<p>Sách lưu ý có thể nghĩ đến cách bỏ từ “nền”, nhưng đề các năm Reiwa 2 và Heisei 30 có dùng từ 下地, nên <strong class="kw">壁軽量鉄骨下地組立て</strong> là cách viết an toàn hơn.</p>
+<p>A6, B6 liên quan đến sàn nâng kỹ thuật. Dựa vào cách dùng từ 敷設 ở A7, B7, đáp án là <strong class="kw">“Lắp đặt sàn nâng kỹ thuật”</strong>.</p>
+<p>Cũng có thể nghĩ đến “フリーアクセスフロア下地敷設”, nhưng các đề Reiwa 2 và Heisei 30 không dùng từ 下地, nên <strong class="kw">フリーアクセスフロア敷設</strong> là cách viết an toàn hơn.</p></div>
+  </article>
+</div><p class="source-ref"><a href="#toc">↑ Mục lục</a></p></section>
+</section><section class="study-section" id="sec-q2">
+<div class="section-head"><h2>3. 問い2 総所要日数</h2><span class="source-ref">Nguồn: Book page 256-257</span></div>
+<section class="subsection" id="sub-q2-forward"><h3>Tính tiến trên network</h3><div class="study-grid">
+  <article class="study-card original">
+    <div class="card-title">原文</div>
+    <div class="recall-source" lang="ja">
+<h4>問い2.</h4>
+<p><strong>解答：</strong>〔始〕から〔終〕までの総所要日数 <mark class="critical">25日</mark></p>
+<h4>考え方・解き方</h4>
+<p>① 内装工事工程表（ネットワーク工程表）の最早開始日を計算すると、下図のようになる。</p>
+<div class="formula-box"><div class="formula-line"><span class="flow-node">始=0</span><span class="flow-arrow">→</span><span class="flow-node">C1完了=1</span><span class="flow-arrow">→</span><span class="flow-node">A1完了=3</span><span class="flow-arrow">→</span><span class="flow-node">A3前=max(7,8)=8</span><span class="flow-arrow">→</span><span class="flow-node">A3完了=10</span><span class="flow-arrow">→</span><span class="flow-node">A4=12</span><span class="flow-arrow">→</span><span class="flow-node">A5=15</span><span class="flow-arrow">→</span><span class="flow-node">A6=17</span><span class="flow-arrow">→</span><span class="flow-node">A7=19</span><span class="flow-arrow">→</span><span class="flow-node">A8=21</span><span class="flow-arrow">→</span><span class="flow-node">C3前=max(21,23)=23</span><span class="flow-arrow">→</span><span class="flow-node">終=25</span></div></div>
+<p>① ネットワーク工程表の総所要日数を求めるときは、最初に、各イベントの<strong class="kw">最早開始日</strong>を求める。</p>
+<p>② 工事の出発点であるイベント〔始〕の<strong class="kw">最早開始日</strong>を<mark class="critical">0日</mark>とする。</p>
+<p>③ 破線で示された矢線は、<strong class="kw">所要日数</strong>が<mark class="critical">0日</mark>の作業として扱う。</p>
+<p>④ 各イベント○の最早開始日は、直前のイベントの<span class="relation">「最早開始日＋所要日数」</span>とする。</p>
+<p>⑤ 複数の矢線が流入するイベントの最早開始日は、上記④で計算された値の<span class="relation">最大値</span>とする。</p>
+<p>⑥ 工事の完成点であるイベント〔終〕の最早開始日である<mark class="critical">25日</mark>が、〔始〕から〔終〕までの総所要日数である。</p>
+<p>工事の完成点であるイベント〔終〕の最早開始日が<mark class="critical">25日</mark>となるので、〔始〕から〔終〕までの総所要日数は、<mark class="critical">25日</mark>である。</p></div>
+  </article>
+  <article class="study-card translation">
+    <div class="card-title">Bản dịch tiếng Việt</div>
+    <div class="recall-source" lang="vi">
+<h4>Câu 2</h4>
+<p><strong>Đáp án:</strong> Tổng thời gian từ Bắt đầu đến Kết thúc = <mark class="critical">25 ngày</mark>.</p>
+<h4>Cách suy nghĩ và cách giải</h4>
+<p>① Khi tính các thời điểm sớm nhất của bảng tiến độ network, kết quả như sau:</p>
+<div class="formula-box"><div class="formula-line"><span class="flow-node">Bắt đầu=0</span><span class="flow-arrow">→</span><span class="flow-node">C1 xong=1</span><span class="flow-arrow">→</span><span class="flow-node">A1 xong=3</span><span class="flow-arrow">→</span><span class="flow-node">trước A3=max(7,8)=8</span><span class="flow-arrow">→</span><span class="flow-node">A3 xong=10</span><span class="flow-arrow">→</span><span class="flow-node">A4=12</span><span class="flow-arrow">→</span><span class="flow-node">A5=15</span><span class="flow-arrow">→</span><span class="flow-node">A6=17</span><span class="flow-arrow">→</span><span class="flow-node">A7=19</span><span class="flow-arrow">→</span><span class="flow-node">A8=21</span><span class="flow-arrow">→</span><span class="flow-node">trước C3=max(21,23)=23</span><span class="flow-arrow">→</span><span class="flow-node">Kết thúc=25</span></div></div>
+<p>① Khi tính tổng thời gian của network, trước tiên phải xác định <strong class="kw">thời điểm bắt đầu sớm nhất</strong> của từng event.</p>
+<p>② Đặt <strong class="kw">thời điểm bắt đầu sớm nhất của event Bắt đầu</strong> bằng <mark class="critical">0 ngày</mark>.</p>
+<p>③ Mũi tên nét đứt được coi là công tác có <strong class="kw">thời lượng</strong> <mark class="critical">0 ngày</mark>.</p>
+<p>④ Thời điểm sớm nhất của event tiếp theo được tính theo <span class="relation">“thời điểm sớm nhất của event trước + thời lượng công tác”</span>.</p>
+<p>⑤ Khi có nhiều mũi tên cùng đi vào một event, lấy <span class="relation">giá trị lớn nhất</span>.</p>
+<p>⑥ Event Kết thúc có thời điểm sớm nhất là <mark class="critical">25 ngày</mark>; đây chính là tổng thời gian từ Bắt đầu đến Kết thúc.</p>
+<p>Event Kết thúc có thời điểm bắt đầu sớm nhất là <mark class="critical">25 ngày</mark>, vì vậy tổng thời gian từ Bắt đầu đến Kết thúc là <mark class="critical">25 ngày</mark>.</p></div>
+  </article>
+</div>
+<div class="note-box"><strong>Quy tắc hợp dòng</strong><p>Một event có nhiều nhánh đi vào chỉ có thể xảy ra khi tất cả nhánh tiền nhiệm đã hoàn thành; vì vậy phép tính tiến lấy giá trị lớn nhất.</p></div><p class="source-ref"><a href="#toc">↑ Mục lục</a></p></section>
+<section class="subsection" id="sub-q2-table"><h3>Cách giải bằng bảng ngày công tác</h3><div class="study-grid">
+  <article class="study-card original">
+    <div class="card-title">原文</div>
+    <div class="recall-source" lang="ja">
+<h4>参考　ネットワーク工程表の考え方を使用せずに解答を導き出す方法</h4>
+<p>① 内装工事工程表（各作業の先行作業と後続作業を示したもの）から、各作業の作業日（どの作業を工事開始から何日目に行うか）を、下表のように明示する。</p>
+<div class="table-wrap"><table><thead><tr><th>作業名</th><th>所要日数</th><th>先行作業</th><th>作業日</th><th>後続作業</th></tr></thead><tbody><tr><td>C1</td><td>1日</td><td>なし</td><td>1</td><td>A1</td></tr><tr><td>A1</td><td>2日</td><td>C1</td><td>2,3</td><td>A2,B1</td></tr><tr><td>A2</td><td>4日</td><td>A1</td><td>4,5,6,7</td><td>A3</td></tr><tr><td>B1</td><td>2日</td><td>A1</td><td>4,5</td><td>C2</td></tr><tr><td>C2</td><td>3日</td><td>B1</td><td>6,7,8</td><td>A3</td></tr><tr><td>A3</td><td>2日</td><td>A2,C2</td><td>9,10</td><td>A4,B3</td></tr><tr><td>A4</td><td>2日</td><td>A3</td><td>11,12</td><td>A5</td></tr><tr><td>B3</td><td>3日</td><td>A3</td><td>11,12,13</td><td>B4</td></tr><tr><td>A5</td><td>3日</td><td>A4</td><td>13,14,15</td><td>A6</td></tr><tr><td>B4</td><td>3日</td><td>B3</td><td>14,15,16</td><td>B5</td></tr><tr><td>A6</td><td>2日</td><td>A5</td><td>16,17</td><td>A7</td></tr><tr><td>B5</td><td>3日</td><td>B4</td><td>17,18,19</td><td>B6</td></tr><tr><td>A7</td><td>2日</td><td>A6</td><td>18,19</td><td>A8</td></tr><tr><td>B6</td><td>2日</td><td>B5</td><td>20,21</td><td>B7</td></tr><tr><td>A8</td><td>2日</td><td>A7</td><td>20,21</td><td>C3</td></tr><tr><td>B7</td><td>2日</td><td>B6</td><td>22,23</td><td>C3</td></tr><tr><td>C3</td><td>2日</td><td>A8,B7</td><td>24,25</td><td>なし</td></tr></tbody></table></div>
+<p>※「ネットワーク工程表の考え方を使用せずに解答を導き出す方法」は、ネットワーク計算が苦手な受検者のために、作業日数に着目した表形式での解答方法を示したものである。</p>
+<p>※<strong class="kw">先行作業</strong>とは、その作業の前に完了させておかなければならない作業である。したがって、各作業の開始日は、<span class="relation">すべての先行作業が終了した日の翌日</span>となる。</p>
+<p>※<strong class="kw">後続作業</strong>とは、その作業の後に続けて行われる作業である。したがって、後続作業の開始日は、<span class="relation">その作業が終了した日の翌日</span>となる。</p>
+<p>② 上表を見ると、この工事の最終作業である作業C3は、<mark class="critical">25日目</mark>に完了することが分かる。したがって、〔始〕から〔終〕までの総所要日数は、<mark class="critical">25日</mark>である。</p></div>
+  </article>
+  <article class="study-card translation">
+    <div class="card-title">Bản dịch tiếng Việt</div>
+    <div class="recall-source" lang="vi">
+<h4>Tham khảo: Cách giải không sử dụng phép tính network</h4>
+<p>① Từ bảng tiến độ nội thất, xác định công tác đi trước, công tác đi sau và ngày thực hiện của từng công tác kể từ khi bắt đầu công trình.</p>
+<div class="table-wrap"><table><thead><tr><th>Công tác</th><th>Thời lượng</th><th>Công tác đi trước</th><th>Ngày thực hiện</th><th>Công tác đi sau</th></tr></thead><tbody><tr><td>C1</td><td>1 ngày</td><td>Không</td><td>1</td><td>A1</td></tr><tr><td>A1</td><td>2 ngày</td><td>C1</td><td>2,3</td><td>A2,B1</td></tr><tr><td>A2</td><td>4 ngày</td><td>A1</td><td>4,5,6,7</td><td>A3</td></tr><tr><td>B1</td><td>2 ngày</td><td>A1</td><td>4,5</td><td>C2</td></tr><tr><td>C2</td><td>3 ngày</td><td>B1</td><td>6,7,8</td><td>A3</td></tr><tr><td>A3</td><td>2 ngày</td><td>A2,C2</td><td>9,10</td><td>A4,B3</td></tr><tr><td>A4</td><td>2 ngày</td><td>A3</td><td>11,12</td><td>A5</td></tr><tr><td>B3</td><td>3 ngày</td><td>A3</td><td>11,12,13</td><td>B4</td></tr><tr><td>A5</td><td>3 ngày</td><td>A4</td><td>13,14,15</td><td>A6</td></tr><tr><td>B4</td><td>3 ngày</td><td>B3</td><td>14,15,16</td><td>B5</td></tr><tr><td>A6</td><td>2 ngày</td><td>A5</td><td>16,17</td><td>A7</td></tr><tr><td>B5</td><td>3 ngày</td><td>B4</td><td>17,18,19</td><td>B6</td></tr><tr><td>A7</td><td>2 ngày</td><td>A6</td><td>18,19</td><td>A8</td></tr><tr><td>B6</td><td>2 ngày</td><td>B5</td><td>20,21</td><td>B7</td></tr><tr><td>A8</td><td>2 ngày</td><td>A7</td><td>20,21</td><td>C3</td></tr><tr><td>B7</td><td>2 ngày</td><td>B6</td><td>22,23</td><td>C3</td></tr><tr><td>C3</td><td>2 ngày</td><td>A8,B7</td><td>24,25</td><td>Không</td></tr></tbody></table></div>
+<p>Phương pháp này dành cho người không thành thạo phép tính network, tập trung vào số ngày thực hiện từng công tác.</p>
+<p><strong class="kw">Công tác đi trước</strong> là công tác bắt buộc phải hoàn thành trước công tác đang xét. Vì vậy, công tác đang xét bắt đầu vào <span class="relation">ngày kế tiếp sau khi tất cả công tác đi trước đã hoàn thành</span>.</p>
+<p><strong class="kw">Công tác đi sau</strong> là công tác được thực hiện tiếp theo. Vì vậy, công tác đi sau bắt đầu vào <span class="relation">ngày kế tiếp sau ngày công tác trước kết thúc</span>.</p>
+<p>C3 là công tác cuối cùng và hoàn thành vào <mark class="critical">ngày thứ 25</mark>. Do đó tổng thời gian công trình là <mark class="critical">25 ngày</mark>.</p></div>
+  </article>
+</div><p class="source-ref"><a href="#toc">↑ Mục lục</a></p></section>
+</section><section class="study-section" id="sec-q3">
+<div class="section-head"><h2>4. 問い3 フリーフロート</h2><span class="source-ref">Nguồn: Book page 258-259</span></div>
+<section class="subsection" id="sub-q3-network"><h3>Tính free float từ network</h3><div class="study-grid">
+  <article class="study-card original">
+    <div class="card-title">原文</div>
+    <div class="recall-source" lang="ja">
+<h4>問い3.</h4>
+<p><strong>解答：</strong><strong class="kw">作業A4のフリーフロート</strong> <mark class="critical">0日</mark></p>
+<h4>考え方・解き方</h4>
+<p>① 内装工事工程表（ネットワーク工程表）を、タイムスケールの形式で展開すると、A2のフリーフロートが<mark class="critical">1日</mark>、A4のフリーフロートが<mark class="critical">0日</mark>、A8のフリーフロートが<mark class="critical">2日</mark>になることなどが分かる。（この問題の「検討用」の表はタイムスケールを描くために存在する）</p>
+<p>検討用：<span class="relation">A工区を先行させてB工区を後続させたタイムスケール</span>（ダミーはAからBに向かう）。</p>
+<p>② ネットワークから計算すると、フリーフロート（FF）は、クリティカルパス以外の作業が、クリティカルパスに合流する作業についてのみ存在する。したがって、このネットワーク工程表では、作業A2と作業A8についてのみフリーフロートが存在する。</p>
+<p>③ <span class="relation">フリーフロート（FF）＝（後続作業の最早開始日）－（その作業の最早開始日＋その作業の所要日数）</span>である。</p>
+<p><strong class="kw">作業A2のFF</strong>：8－（3＋4）＝<mark class="critical">1日</mark><br><strong class="kw">作業A8のFF</strong>：23－（19＋2）＝<mark class="critical">2日</mark></p>
+<p>④ 作業A4・作業A5・作業A6・作業A7は、フリーフロートが<mark class="critical">0日</mark>である（存在しない）。</p>
+<p>※クリティカルパスの作業では、フリーフロート・トータルフロート・ディペンデントフロートなどの「フロート」と名の付くものは、すべてが<mark class="critical">0日</mark>となる。</p></div>
+  </article>
+  <article class="study-card translation">
+    <div class="card-title">Bản dịch tiếng Việt</div>
+    <div class="recall-source" lang="vi">
+<h4>Câu 3</h4>
+<p><strong>Đáp án:</strong> <strong class="kw">Free float của A4</strong> = <mark class="critical">0 ngày</mark>.</p>
+<h4>Cách suy nghĩ và cách giải</h4>
+<p>① Khi triển khai network thành time scale, có thể thấy FF của A2 là <mark class="critical">1 ngày</mark>, A4 là <mark class="critical">0 ngày</mark>, A8 là <mark class="critical">2 ngày</mark>. Bảng 検討用 được bố trí để người thi vẽ time scale.</p>
+<p>Time scale này áp dụng quan hệ <span class="relation">khu A làm trước, khu B làm sau</span>; dummy hướng từ A sang B.</p>
+<p>② Theo cách tính trong sách, free float xuất hiện ở các công tác ngoài đường găng khi nhánh đó hợp vào đường găng. Trong network này chỉ A2 và A8 có free float.</p>
+<p>③ <span class="relation">FF = EST của công tác sau − (EST của công tác đang xét + thời lượng)</span>.</p>
+<p><strong class="kw">FF của A2</strong>: 8 − (3 + 4) = <mark class="critical">1 ngày</mark><br><strong class="kw">FF của A8</strong>: 23 − (19 + 2) = <mark class="critical">2 ngày</mark></p>
+<p>④ A4, A5, A6 và A7 đều có free float <mark class="critical">0 ngày</mark>.</p>
+<p>Sách lưu ý: đối với công tác nằm trên critical path, các loại float như free float, total float và dependent float đều bằng <mark class="critical">0 ngày</mark>.</p></div>
+  </article>
+</div><p class="source-ref"><a href="#toc">↑ Mục lục</a></p></section>
+<section class="subsection" id="sub-q3-table"><h3>Tính free float bằng ngày trống</h3><div class="study-grid">
+  <article class="study-card original">
+    <div class="card-title">原文</div>
+    <div class="recall-source" lang="ja">
+<h4>参考　ネットワーク工程表の考え方を使用せずに解答を導き出す方法</h4>
+<p>① フリーフロートとは、その作業に固有の（その作業で使い切っても他の作業の余裕時間に影響しない）余裕時間である。各作業のフリーフロートは、<span class="relation">「その作業の完了日」と「後続作業の開始日」との間に存在する日数</span>に等しい。</p>
+<div class="table-wrap"><table><thead><tr><th>作業名</th><th>所要日数</th><th>先行作業</th><th>作業日</th><th>後続作業</th><th>フリーフロート</th></tr></thead><tbody><tr><td>C1</td><td>1日</td><td>なし</td><td>1</td><td>A1</td><td>0日</td></tr><tr><td>A1</td><td>2日</td><td>C1</td><td>2,3</td><td>A2,B1</td><td>0日</td></tr><tr><td>A2</td><td>4日</td><td>A1</td><td>4,5,6,7</td><td>A3</td><td><mark class="critical">1日</mark></td></tr><tr><td>B1</td><td>2日</td><td>A1</td><td>4,5</td><td>C2</td><td>0日</td></tr><tr><td>C2</td><td>3日</td><td>B1</td><td>6,7,8</td><td>A3</td><td>0日</td></tr><tr><td>A3</td><td>2日</td><td>A2,C2</td><td>9,10</td><td>A4,B3</td><td>0日</td></tr><tr><td>A4</td><td>2日</td><td>A3</td><td>11,12</td><td>A5</td><td><mark class="critical">0日</mark></td></tr><tr><td>B3</td><td>3日</td><td>A3</td><td>11,12,13</td><td>B4</td><td>0日</td></tr><tr><td>A5</td><td>3日</td><td>A4</td><td>13,14,15</td><td>A6</td><td>0日</td></tr><tr><td>B4</td><td>3日</td><td>B3</td><td>14,15,16</td><td>B5</td><td>0日</td></tr><tr><td>A6</td><td>2日</td><td>A5</td><td>16,17</td><td>A7</td><td>0日</td></tr><tr><td>B5</td><td>3日</td><td>B4</td><td>17,18,19</td><td>B6</td><td>0日</td></tr><tr><td>A7</td><td>2日</td><td>A6</td><td>18,19</td><td>A8</td><td>0日</td></tr><tr><td>B6</td><td>2日</td><td>B5</td><td>20,21</td><td>B7</td><td>0日</td></tr><tr><td>A8</td><td>2日</td><td>A7</td><td>20,21</td><td>C3</td><td><mark class="critical">2日</mark></td></tr><tr><td>B7</td><td>2日</td><td>B6</td><td>22,23</td><td>C3</td><td>0日</td></tr><tr><td>C3</td><td>2日</td><td>A8,B7</td><td>24,25</td><td>なし</td><td>0日</td></tr></tbody></table></div>
+<p>② <strong class="kw">作業A4のフリーフロート</strong>は、「作業A4の完了日が12日目」・「後続作業A5の開始日が13日目」・「12日目と13日目との間に存在する日数は0日」なので、<mark class="critical">0日</mark>である。</p>
+<p>③ <strong class="kw">作業A2のフリーフロート</strong>は、「作業A2の完了日が7日目」・「後続作業A3の開始日が9日目」・「7日目と9日目との間に存在する日数は1日（8日目のみ）」なので、<mark class="critical">1日</mark>である。</p></div>
+  </article>
+  <article class="study-card translation">
+    <div class="card-title">Bản dịch tiếng Việt</div>
+    <div class="recall-source" lang="vi">
+<h4>Tham khảo: Cách tìm đáp án không dùng phép tính network</h4>
+<p>① Free float là khoảng dự trữ riêng của công tác, có thể dùng hết cho công tác đó mà không ảnh hưởng đến thời gian dự trữ của công tác khác. Free float bằng <span class="relation">số ngày nằm giữa ngày hoàn thành của công tác đó và ngày bắt đầu của công tác kế tiếp</span>.</p>
+<div class="table-wrap"><table><thead><tr><th>Công tác</th><th>Thời lượng</th><th>Đi trước</th><th>Ngày thực hiện</th><th>Đi sau</th><th>Free float</th></tr></thead><tbody><tr><td>C1</td><td>1 ngày</td><td>Không</td><td>1</td><td>A1</td><td>0</td></tr><tr><td>A1</td><td>2 ngày</td><td>C1</td><td>2,3</td><td>A2,B1</td><td>0</td></tr><tr><td>A2</td><td>4 ngày</td><td>A1</td><td>4,5,6,7</td><td>A3</td><td><mark class="critical">1 ngày</mark></td></tr><tr><td>B1</td><td>2 ngày</td><td>A1</td><td>4,5</td><td>C2</td><td>0</td></tr><tr><td>C2</td><td>3 ngày</td><td>B1</td><td>6,7,8</td><td>A3</td><td>0</td></tr><tr><td>A3</td><td>2 ngày</td><td>A2,C2</td><td>9,10</td><td>A4,B3</td><td>0</td></tr><tr><td>A4</td><td>2 ngày</td><td>A3</td><td>11,12</td><td>A5</td><td><mark class="critical">0 ngày</mark></td></tr><tr><td>B3</td><td>3 ngày</td><td>A3</td><td>11,12,13</td><td>B4</td><td>0</td></tr><tr><td>A5</td><td>3 ngày</td><td>A4</td><td>13,14,15</td><td>A6</td><td>0</td></tr><tr><td>B4</td><td>3 ngày</td><td>B3</td><td>14,15,16</td><td>B5</td><td>0</td></tr><tr><td>A6</td><td>2 ngày</td><td>A5</td><td>16,17</td><td>A7</td><td>0</td></tr><tr><td>B5</td><td>3 ngày</td><td>B4</td><td>17,18,19</td><td>B6</td><td>0</td></tr><tr><td>A7</td><td>2 ngày</td><td>A6</td><td>18,19</td><td>A8</td><td>0</td></tr><tr><td>B6</td><td>2 ngày</td><td>B5</td><td>20,21</td><td>B7</td><td>0</td></tr><tr><td>A8</td><td>2 ngày</td><td>A7</td><td>20,21</td><td>C3</td><td><mark class="critical">2 ngày</mark></td></tr><tr><td>B7</td><td>2 ngày</td><td>B6</td><td>22,23</td><td>C3</td><td>0</td></tr><tr><td>C3</td><td>2 ngày</td><td>A8,B7</td><td>24,25</td><td>Không</td><td>0</td></tr></tbody></table></div>
+<p>② <strong class="kw">FF của A4</strong>: A4 hoàn thành ngày 12, A5 bắt đầu ngày 13, không có ngày nào nằm giữa hai mốc này, nên FF = <mark class="critical">0 ngày</mark>.</p>
+<p>③ <strong class="kw">FF của A2</strong>: A2 hoàn thành ngày 7, A3 bắt đầu ngày 9; chỉ có ngày 8 nằm giữa, nên FF = <mark class="critical">1 ngày</mark>.</p></div>
+  </article>
+</div><p class="source-ref"><a href="#toc">↑ Mục lục</a></p></section>
+</section><section class="study-section" id="sec-q4">
+<div class="section-head"><h2>5. 問い4 予定変更とクリティカルパス</h2><span class="source-ref">Nguồn: Book page 260-261</span></div>
+<section class="subsection" id="sub-q4-change"><h3>Thay đổi thứ tự C2 và thứ tự khu A/B</h3><div class="study-grid">
+  <article class="study-card original">
+    <div class="card-title">原文</div>
+    <div class="recall-source" lang="ja">
+<h4>問い4.</h4>
+<div class="table-wrap"><table><thead><tr><th></th><th>設問内容</th><th>解答</th></tr></thead><tbody><tr><td>あ</td><td>クリティカルパスとなる作業</td><td><strong class="kw">［作業］A5</strong></td></tr><tr><td>い</td><td>〔始〕から〔終〕までの総所要日数</td><td><mark class="critical">27日</mark></td></tr></tbody></table></div>
+<h4>考え方・解き方</h4>
+<p>① 作業C2の建具枠取付けについて、A工区分の建具の納入が遅れたが、B工区分の建具の納入は期日通りであったことを考える。</p>
+<p>② この条件では、B工区分の建具枠取付け（作業名を<strong class="kw">C2B</strong>とする）は、<mark class="critical">5日目</mark>から開始し、<mark class="critical">6日目</mark>に完了させることができる。しかしA工区の建具枠取付け（作業名を<strong class="kw">C2A</strong>とする）が完了するのは、B工区の石膏ボード張りの完了日となる<mark class="critical">10日目</mark>である。</p>
+<p>③ 以上のルールに従って、タイムスケールを描く。検討用：<span class="relation">B工区を先行させてA工区を後続させたタイムスケール</span>（ダミーはBからAに向かう）。</p>
+<p>① 作業C2の建具枠取付けを、A工区（C2A）とB工区（C2B）に分けて、<span class="relation">C2Bを先行させ、次にC2Aの作業をする</span>ことがポイントである。</p>
+<p>② 作業C2の建具枠取付け以降の作業は、<span class="relation">B工区を先行させ、A工区を後続作業とする</span>。</p>
+<p>④ このとき、当初クリティカルパスではなかった作業<strong class="kw">A5</strong>から作業A8までがクリティカルパスとなり、〔始〕から〔終〕までの総所要日数は<mark class="critical">27日</mark>となる。</p>
+<h4>参考　ネットワーク工程表の考え方を使用せずに解答を導き出す方法</h4>
+<p>① 設問に書かれている予定変更をすべて適用すると、内装工事工程表は、予定変更が適用された内装工事工程表となる。</p>
+<ul><li>A工区の建具枠取付け：所要日数は明示なし</li><li>B工区の建具枠取付け：所要日数は<mark class="critical">2日</mark></li><li>B工区の壁せっこうボード張り完了後、その後の作業もB工区が完了してからA工区を行う。</li></ul></div>
+  </article>
+  <article class="study-card translation">
+    <div class="card-title">Bản dịch tiếng Việt</div>
+    <div class="recall-source" lang="vi">
+<h4>Câu 4</h4>
+<div class="table-wrap"><table><thead><tr><th>Ô</th><th>Nội dung</th><th>Đáp án</th></tr></thead><tbody><tr><td>あ</td><td>Công tác trở thành critical path</td><td><strong class="kw">A5</strong></td></tr><tr><td>い</td><td>Tổng thời gian Bắt đầu → Kết thúc</td><td><mark class="critical">27 ngày</mark></td></tr></tbody></table></div>
+<h4>Cách suy nghĩ và cách giải</h4>
+<p>① Với công tác C2 là lắp khung cửa, vật tư khu A bị giao chậm nhưng vật tư khu B vẫn đến đúng hạn.</p>
+<p>② Vì vậy, lắp khung cửa khu B được gọi là <strong class="kw">C2B</strong>, có thể bắt đầu từ <mark class="critical">ngày 5</mark> và hoàn thành vào <mark class="critical">ngày 6</mark>. Lắp khung cửa khu A được gọi là <strong class="kw">C2A</strong>, hoàn thành vào <mark class="critical">ngày 10</mark>, tức ngày hoàn thành ốp tấm thạch cao tường khu B.</p>
+<p>③ Time scale mới áp dụng quan hệ <span class="relation">khu B làm trước, khu A làm sau</span>; dummy hướng từ B sang A.</p>
+<p>Điểm cốt lõi là tách C2 thành C2A và C2B, rồi <span class="relation">thực hiện C2B trước, sau đó mới đến C2A</span>.</p>
+<p>Sau C2, các công tác tiếp tục theo quan hệ <span class="relation">khu B làm trước, khu A làm sau</span>.</p>
+<p>Kết quả, chuỗi từ <strong class="kw">A5</strong> đến A8 vốn không thuộc đường găng ban đầu trở thành critical path; tổng thời gian tăng lên <mark class="critical">27 ngày</mark>.</p>
+<h4>Tham khảo: Cách giải không dùng phép tính network</h4>
+<p>Khi áp dụng toàn bộ thay đổi của đề, tiến độ mới có:</p>
+<ul><li>Lắp khung cửa khu A: đề không ghi trực tiếp thời lượng</li><li>Lắp khung cửa khu B: thời lượng <mark class="critical">2 ngày</mark></li><li>Sau khi hoàn thành ốp thạch cao khu B, các công tác tiếp theo cũng áp dụng nguyên tắc B hoàn thành rồi mới làm A.</li></ul></div>
+  </article>
+</div><p class="source-ref"><a href="#toc">↑ Mục lục</a></p></section>
+<section class="subsection" id="sub-q4-table"><h3>Bảng tiến độ sau thay đổi và critical path mới</h3><div class="study-grid">
+  <article class="study-card original">
+    <div class="card-title">原文</div>
+    <div class="recall-source" lang="ja">
+<p>② クリティカルパス（重点的な工程管理が必要になる作業）とは、その流れの中にある作業が<mark class="critical">1日</mark>でも遅れると、総所要日数が当初の予定よりも長くなってしまう作業の流れである。</p>
+<p>③ 「予定変更が適用された内装工事工程表」から、各作業の作業日とフリーフロートを下表のように明示する。</p>
+<div class="table-wrap"><table><thead><tr><th>作業名</th><th>所要日数</th><th>先行作業</th><th>作業日</th><th>後続作業</th><th>フリーフロート</th></tr></thead><tbody><tr><td>C1</td><td>1日</td><td>なし</td><td>1</td><td>A1</td><td>0日</td></tr><tr><td>A1</td><td>2日</td><td>C1</td><td>2,3</td><td>A2,B1</td><td>0日</td></tr><tr><td>A2</td><td>4日</td><td>A1</td><td>4,5,6,7</td><td>C2A</td><td>0日</td></tr><tr><td>B1</td><td>2日</td><td>A1</td><td>4,5</td><td>C2B</td><td>0日</td></tr><tr><td>C2B</td><td>2日</td><td>B1</td><td>6,7</td><td>C2A,B3</td><td>0日</td></tr><tr><td>C2A</td><td>3日※</td><td>A2,C2B</td><td>8,9,10※</td><td>A3</td><td>0日</td></tr><tr><td>B3</td><td>3日</td><td>C2B</td><td>8,9,10</td><td>A3,B4</td><td>0日</td></tr><tr><td>A3</td><td>2日</td><td>C2A,B3</td><td>11,12</td><td>A4</td><td><mark class="critical">1日</mark></td></tr><tr><td>B4</td><td>3日</td><td>B3</td><td>11,12,13</td><td>A4,B5</td><td>0日</td></tr><tr><td>A4</td><td>2日</td><td>A3,B4</td><td>14,15</td><td>A5</td><td><mark class="critical">1日</mark></td></tr><tr><td>B5</td><td>3日</td><td>B4</td><td>14,15,16</td><td>A5,B6</td><td>0日</td></tr><tr><td>A5</td><td>3日</td><td>A4,B5</td><td>17,18,19</td><td>A6</td><td><mark class="critical">0日</mark></td></tr><tr><td>B6</td><td>2日</td><td>B5</td><td>17,18</td><td>A6,B7</td><td>0日</td></tr><tr><td>A6</td><td>2日</td><td>A5,B6</td><td>20,21</td><td>A7</td><td><mark class="critical">0日</mark></td></tr><tr><td>A7</td><td>2日</td><td>A6</td><td>22,23</td><td>A8</td><td><mark class="critical">0日</mark></td></tr><tr><td>A8</td><td>2日</td><td>A7</td><td>24,25</td><td>C3</td><td><mark class="critical">0日</mark></td></tr><tr><td>B7</td><td>2日</td><td>B6</td><td>19,20</td><td>C3</td><td><mark class="critical">5日</mark></td></tr><tr><td>C3</td><td>2日</td><td>A8,B7</td><td>26,27</td><td>なし</td><td>0日</td></tr></tbody></table></div>
+<p>※作業C2Aの所要日数は明示されていないが、計算上は、当初の作業C2と同様に<mark class="critical">3日</mark>であるものとする。</p>
+<p>④ 上表を見ると、作業A4にはフリーフロートが存在するが、<span class="relation">作業A5から作業A8までの流れの中には、フリーフロートが存在しない</span>ことが分かる。したがって、当初クリティカルパスではなかった<strong class="kw">作業A5から作業A8まで</strong>がクリティカルパスとなる。</p>
+<p>④ 上表を見ると、この工事の最終作業である作業C3は、<mark class="critical">27日目</mark>に完了することが分かる。したがって、〔始〕から〔終〕までの総所要日数は、<mark class="critical">27日</mark>である。</p></div>
+  </article>
+  <article class="study-card translation">
+    <div class="card-title">Bản dịch tiếng Việt</div>
+    <div class="recall-source" lang="vi">
+<p>② Critical path, tức chuỗi công tác cần quản lý tiến độ trọng điểm, là chuỗi mà chỉ cần một công tác chậm <mark class="critical">1 ngày</mark> thì tổng thời gian công trình sẽ dài hơn kế hoạch ban đầu.</p>
+<p>③ Từ tiến độ sau thay đổi, ngày thực hiện và free float của từng công tác như sau:</p>
+<div class="table-wrap"><table><thead><tr><th>Công tác</th><th>Thời lượng</th><th>Đi trước</th><th>Ngày thực hiện</th><th>Đi sau</th><th>Free float</th></tr></thead><tbody><tr><td>C1</td><td>1 ngày</td><td>Không</td><td>1</td><td>A1</td><td>0</td></tr><tr><td>A1</td><td>2 ngày</td><td>C1</td><td>2,3</td><td>A2,B1</td><td>0</td></tr><tr><td>A2</td><td>4 ngày</td><td>A1</td><td>4,5,6,7</td><td>C2A</td><td>0</td></tr><tr><td>B1</td><td>2 ngày</td><td>A1</td><td>4,5</td><td>C2B</td><td>0</td></tr><tr><td>C2B</td><td>2 ngày</td><td>B1</td><td>6,7</td><td>C2A,B3</td><td>0</td></tr><tr><td>C2A</td><td>3 ngày*</td><td>A2,C2B</td><td>8,9,10*</td><td>A3</td><td>0</td></tr><tr><td>B3</td><td>3 ngày</td><td>C2B</td><td>8,9,10</td><td>A3,B4</td><td>0</td></tr><tr><td>A3</td><td>2 ngày</td><td>C2A,B3</td><td>11,12</td><td>A4</td><td><mark class="critical">1 ngày</mark></td></tr><tr><td>B4</td><td>3 ngày</td><td>B3</td><td>11,12,13</td><td>A4,B5</td><td>0</td></tr><tr><td>A4</td><td>2 ngày</td><td>A3,B4</td><td>14,15</td><td>A5</td><td><mark class="critical">1 ngày</mark></td></tr><tr><td>B5</td><td>3 ngày</td><td>B4</td><td>14,15,16</td><td>A5,B6</td><td>0</td></tr><tr><td>A5</td><td>3 ngày</td><td>A4,B5</td><td>17,18,19</td><td>A6</td><td><mark class="critical">0 ngày</mark></td></tr><tr><td>B6</td><td>2 ngày</td><td>B5</td><td>17,18</td><td>A6,B7</td><td>0</td></tr><tr><td>A6</td><td>2 ngày</td><td>A5,B6</td><td>20,21</td><td>A7</td><td><mark class="critical">0 ngày</mark></td></tr><tr><td>A7</td><td>2 ngày</td><td>A6</td><td>22,23</td><td>A8</td><td><mark class="critical">0 ngày</mark></td></tr><tr><td>A8</td><td>2 ngày</td><td>A7</td><td>24,25</td><td>C3</td><td><mark class="critical">0 ngày</mark></td></tr><tr><td>B7</td><td>2 ngày</td><td>B6</td><td>19,20</td><td>C3</td><td><mark class="critical">5 ngày</mark></td></tr><tr><td>C3</td><td>2 ngày</td><td>A8,B7</td><td>26,27</td><td>Không</td><td>0</td></tr></tbody></table></div>
+<p>* Đề không ghi rõ thời lượng C2A; khi tính toán, sách giả định C2A vẫn có thời lượng <mark class="critical">3 ngày</mark>, giống C2 ban đầu.</p>
+<p>④ A4 vẫn có free float, nhưng <span class="relation">từ A5 đến A8 không còn free float</span>. Vì vậy <strong class="kw">A5 đến A8</strong>, vốn không nằm trên critical path ban đầu, trở thành critical path.</p>
+<p>④ C3 hoàn thành vào <mark class="critical">ngày thứ 27</mark>. Do đó tổng thời gian từ Bắt đầu đến Kết thúc là <mark class="critical">27 ngày</mark>.</p>
+<div class="warning-box"><strong>Lưu ý về nguyên bản</strong><p>Hai đoạn cuối của trang sách đều được đánh số ④. Tài liệu giữ nguyên cách đánh số đó.</p></div></div>
+  </article>
+</div><p class="source-ref"><a href="#toc">↑ Mục lục</a></p></section>
+</section>
+  </main>
+  <!-- CONTENT_END -->
+
+  <!-- =====================================================
+       NON-DIMMED STUDY SUPPORT SECTIONS
+       These sections stay normally readable in Keywords mode.
+       ===================================================== -->
+
+  <section class="aggregate-section" id="terms">
+    <div class="section-head">
+      <h2>Thuật ngữ chuyên môn</h2>
+    </div>
+    <div class="table-wrap"><table><thead><tr><th>日本語</th><th>読み方</th><th>Tiếng Việt</th><th>Giải thích</th><th>Liên quan</th></tr></thead><tbody><tr><td>工区</td><td>こうく</td><td>khu thi công</td><td>Phạm vi được chia để tổ chức thi công riêng.</td><td>A工区 / B工区</td></tr><tr><td>作業班</td><td>さぎょうはん</td><td>đội/tổ thi công</td><td>Nhóm nhân công phụ trách một loại công tác.</td><td>施工順序</td></tr><tr><td>先行作業</td><td>せんこうさぎょう</td><td>công tác đi trước</td><td>Công tác phải hoàn thành trước khi công tác đang xét được bắt đầu.</td><td>後続作業</td></tr><tr><td>後続作業</td><td>こうぞくさぎょう</td><td>công tác đi sau</td><td>Công tác tiếp theo sau công tác đang xét.</td><td>先行作業</td></tr><tr><td>墨出し</td><td>すみだし</td><td>định vị, lấy dấu</td><td>Chuyển trục, vị trí, đường chuẩn từ bản vẽ ra hiện trường.</td><td>C1</td></tr><tr><td>軽量鉄骨下地</td><td>けいりょうてっこつしたじ</td><td>khung xương thép nhẹ làm nền</td><td>Hệ LGS làm nền cho tường hoặc trần.</td><td>壁軽量鉄骨下地組立て</td></tr><tr><td>壁軽量鉄骨下地組立て</td><td>かべけいりょうてっこつしたじくみたて</td><td>lắp dựng khung xương thép nhẹ làm nền tường</td><td>Tên công tác A1/B1 theo đáp án sách.</td><td>A1 / B1</td></tr><tr><td>フリーアクセスフロア</td><td>ふりーあくせすふろあ</td><td>sàn nâng kỹ thuật</td><td>Sàn có khoảng rỗng phía dưới phục vụ bố trí hệ kỹ thuật.</td><td>A6 / B6</td></tr><tr><td>フリーアクセスフロア敷設</td><td>ふりーあくせすふろあふせつ</td><td>lắp đặt sàn nâng kỹ thuật</td><td>Tên công tác A6/B6 theo đáp án sách.</td><td>A6 / B6</td></tr><tr><td>可動間仕切</td><td>かどうまじきり</td><td>vách ngăn di động</td><td>Vách có thể di chuyển hoặc đóng mở để thay đổi không gian.</td><td>A2 / A8</td></tr><tr><td>建具枠取付け</td><td>たてぐわくとりつけ</td><td>lắp khung cửa</td><td>Lắp khung trước khi treo/lắp cánh cửa.</td><td>C2 / C2A / C2B</td></tr><tr><td>建具扉吊込み</td><td>たてぐとびらつりこみ</td><td>treo/lắp cánh cửa</td><td>Đưa cánh vào khung và lắp phụ kiện liên quan.</td><td>C3</td></tr><tr><td>幅木</td><td>はばき</td><td>len chân tường</td><td>Chi tiết hoàn thiện tại giao tuyến tường và sàn.</td><td>A7 / B7</td></tr><tr><td>イベント</td><td>いべんと</td><td>event, nút sự kiện</td><td>Điểm biểu diễn mốc bắt đầu/kết thúc trong network.</td><td>ネットワーク工程表</td></tr><tr><td>ダミー</td><td>だみー</td><td>dummy, công tác giả</td><td>Mũi tên có thời lượng 0 dùng để biểu diễn quan hệ phụ thuộc.</td><td>所要日数0日</td></tr><tr><td>最早開始日</td><td>さいそうかいしび</td><td>thời điểm bắt đầu sớm nhất</td><td>Thời điểm sớm nhất event/công tác có thể bắt đầu theo network.</td><td>EST</td></tr><tr><td>フリーフロート</td><td>ふりーふろーと</td><td>free float, dự trữ tự do</td><td>Khoảng thời gian công tác có thể chậm mà không làm chậm thời điểm bắt đầu sớm nhất của công tác sau.</td><td>FF</td></tr><tr><td>トータルフロート</td><td>とーたるふろーと</td><td>total float, dự trữ toàn phần</td><td>Khoảng trễ cho phép mà không làm chậm thời điểm hoàn thành toàn bộ công trình.</td><td>クリティカルパス</td></tr><tr><td>ディペンデントフロート</td><td>でぃぺんでんとふろーと</td><td>dependent float</td><td>Một loại thời gian dự trữ trong tính toán network.</td><td>フロート</td></tr><tr><td>クリティカルパス</td><td>くりてぃかるぱす</td><td>critical path, đường găng</td><td>Chuỗi công tác quyết định thời gian hoàn thành công trình.</td><td>工程管理</td></tr><tr><td>所要日数</td><td>しょようにっすう</td><td>thời lượng cần thiết</td><td>Số ngày cần để hoàn thành công tác.</td><td>作業日</td></tr><tr><td>納入</td><td>のうにゅう</td><td>giao vật tư</td><td>Đưa vật tư đến công trường theo kế hoạch.</td><td>建具枠</td></tr></tbody></table></div>
+  </section>
+
+  <section class="aggregate-section" id="background">
+    <div class="section-head">
+      <h2>Kiến thức nền cần biết</h2>
+    </div>
+    
+<section class="subsection" id="bg-missing-work"><h3>1. Cách xác định công tác bị bỏ trống</h3>
+<p>Đối chiếu <strong>工事概要</strong> với <strong>作業内容表</strong>: hạng mục có trong mô tả hoàn thiện nhưng chưa xuất hiện trong bảng công tác là ứng viên cho ô trống. Sau đó phải chuyển tên cấu kiện thành tên hành động thi công phù hợp, ví dụ “軽量鉄骨壁下地” không phải tên công tác, còn “壁軽量鉄骨下地組立て” mới là tên công tác.</p></section>
+<section class="subsection" id="bg-forward"><h3>2. Phép tính tiến trên network</h3>
+<p>Event đầu tiên được đặt bằng 0. Mỗi nhánh tính theo “thời điểm event trước + duration”. Khi nhiều nhánh cùng nhập vào một event, event chỉ có thể xảy ra sau khi tất cả nhánh đã hoàn thành, nên lấy giá trị lớn nhất.</p>
+<div class="formula-box"><div class="formula-line"><span class="flow-node">Start = 0</span><span class="flow-arrow">→</span><span class="flow-node">ES mới = ES trước + duration</span><span class="flow-arrow">→</span><span class="flow-node">Nhiều nhánh nhập → MAX</span></div></div></section>
+<section class="subsection" id="bg-ff"><h3>3. Hai cách hiểu free float</h3>
+<p>Cách công thức: FF = EST của công tác sau − (EST của công tác hiện tại + duration). Cách theo ngày công tác: đếm số ngày trống thực sự nằm giữa ngày hoàn thành công tác hiện tại và ngày bắt đầu công tác sau.</p></section>
+<section class="subsection" id="bg-change"><h3>4. Tác động của thay đổi thứ tự khu thi công</h3>
+<p>Trong kế hoạch ban đầu, A đi trước B. Khi khung cửa khu A giao chậm, C2 được tách thành C2B và C2A, thứ tự đổi thành B trước A. Quan hệ phụ thuộc mới tiêu hao dự trữ của nhánh A, làm A5 đến A8 trở thành đường găng.</p></section>
+  </section>
+
+  <section class="aggregate-section" id="memory">
+    <div class="section-head">
+      <h2>Điểm cần nhớ và mẹo nhớ</h2>
+    </div>
+    
+<div class="memory-box"><strong>Quy tắc tính tiến</strong><p>Start = 0; dummy = 0 ngày; một nhánh: cộng duration; nhiều nhánh cùng nhập: lấy MAX.</p></div>
+<div class="memory-box"><strong>Công thức free float</strong><p>FF = EST của công tác sau − (EST hiện tại + duration).</p></div>
+<div class="table-wrap"><table><caption>So sánh trước và sau thay đổi tiến độ</caption><thead><tr><th>Nội dung</th><th>Kế hoạch ban đầu</th><th>Sau thay đổi</th></tr></thead><tbody><tr><td>Thứ tự khu</td><td>A trước, B sau</td><td>B trước, A sau</td></tr><tr><td>Công tác khung cửa</td><td>C2</td><td>C2B rồi C2A</td></tr><tr><td>Tổng thời gian</td><td><mark class="critical">25 ngày</mark></td><td><mark class="critical">27 ngày</mark></td></tr><tr><td>A8 free float</td><td><mark class="critical">2 ngày</mark></td><td><mark class="critical">0 ngày</mark></td></tr><tr><td>B7 free float</td><td><mark class="critical">0 ngày</mark></td><td><mark class="critical">5 ngày</mark></td></tr><tr><td>Critical path mới</td><td>-</td><td><strong class="kw">A5 → A6 → A7 → A8</strong></td></tr></tbody></table></div>
+<div class="memory-box"><strong>Mẹo nhớ tên công tác</strong><p>Đề hỏi 作業内容 thì không chỉ nêu “cái gì”, mà phải nêu “làm gì với cái đó”: 軽量鉄骨壁下地 → 組立て; フリーアクセスフロア → 敷設.</p></div>
+<div class="memory-box"><strong>Đếm FF bằng ngày</strong><p>Không tính ngày cuối của công tác trước và ngày đầu của công tác sau; chỉ đếm các ngày thực sự nằm giữa.</p></div>
+  </section>
+
+</div>
+
+<!-- =======================================================
+     APPROVED COMPONENT LIBRARY
+     Hidden. AI may copy/repeat these components into CONTENT.
+     Do not create a new visual system unless strictly necessary.
+     ======================================================= -->
+<template id="component-library">
+
+  <!-- FIGURE -->
+  <figure class="figure-card">
+    <img src="{{IMAGE_SOURCE}}" alt="{{IMAGE_ALT}}">
+    <figcaption>{{FIGURE_CAPTION}}</figcaption>
+  </figure>
+
+  <!-- MULTIPLE FIGURES -->
+  <div class="figure-grid">
+    <figure class="figure-card">
+      <img src="{{IMAGE_SOURCE_1}}" alt="{{IMAGE_ALT_1}}">
+      <figcaption>{{FIGURE_CAPTION_1}}</figcaption>
+    </figure>
+    <figure class="figure-card">
+      <img src="{{IMAGE_SOURCE_2}}" alt="{{IMAGE_ALT_2}}">
+      <figcaption>{{FIGURE_CAPTION_2}}</figcaption>
+    </figure>
+  </div>
+
+  <!-- TABLE -->
+  <div class="table-wrap">
+    <table>
+      <caption>{{TABLE_CAPTION}}</caption>
+      <thead>
+        <tr><th>{{HEADER_1}}</th><th>{{HEADER_2}}</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong class="kw">{{ROW_SUBJECT}}</strong></td>
+          <td><span class="relation">{{ROW_RECALL_CUE}}</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- NOTE -->
+  <div class="note-box">
+    <strong>{{NOTE_TITLE}}</strong>
+    <p>{{NOTE_CONTENT}}</p>
+  </div>
+
+  <!-- WARNING -->
+  <div class="warning-box">
+    <strong>{{WARNING_TITLE}}</strong>
+    <p>{{WARNING_CONTENT}}</p>
+  </div>
+
+  <!-- MEMORY -->
+  <div class="memory-box">
+    <strong>{{MEMORY_TITLE}}</strong>
+    <p>
+<div class="memory-box"><strong>Quy tắc tính tiến</strong><p>Start = 0; dummy = 0 ngày; một nhánh: cộng duration; nhiều nhánh cùng nhập: lấy MAX.</p></div>
+<div class="memory-box"><strong>Công thức free float</strong><p>FF = EST của công tác sau − (EST hiện tại + duration).</p></div>
+<div class="table-wrap"><table><caption>So sánh trước và sau thay đổi tiến độ</caption><thead><tr><th>Nội dung</th><th>Kế hoạch ban đầu</th><th>Sau thay đổi</th></tr></thead><tbody><tr><td>Thứ tự khu</td><td>A trước, B sau</td><td>B trước, A sau</td></tr><tr><td>Công tác khung cửa</td><td>C2</td><td>C2B rồi C2A</td></tr><tr><td>Tổng thời gian</td><td><mark class="critical">25 ngày</mark></td><td><mark class="critical">27 ngày</mark></td></tr><tr><td>A8 free float</td><td><mark class="critical">2 ngày</mark></td><td><mark class="critical">0 ngày</mark></td></tr><tr><td>B7 free float</td><td><mark class="critical">0 ngày</mark></td><td><mark class="critical">5 ngày</mark></td></tr><tr><td>Critical path mới</td><td>-</td><td><strong class="kw">A5 → A6 → A7 → A8</strong></td></tr></tbody></table></div>
+<div class="memory-box"><strong>Mẹo nhớ tên công tác</strong><p>Đề hỏi 作業内容 thì không chỉ nêu “cái gì”, mà phải nêu “làm gì với cái đó”: 軽量鉄骨壁下地 → 組立て; フリーアクセスフロア → 敷設.</p></div>
+<div class="memory-box"><strong>Đếm FF bằng ngày</strong><p>Không tính ngày cuối của công tác trước và ngày đầu của công tác sau; chỉ đếm các ngày thực sự nằm giữa.</p></div></p>
+  </div>
+
+  <!-- FORMULA / FLOW -->
+  <div class="formula-box">
+    <div class="formula-line">
+      <span class="flow-node">{{NODE_1}}</span>
+      <span class="flow-arrow">→</span>
+      <span class="flow-node">{{NODE_2}}</span>
+      <span class="flow-arrow">→</span>
+      <span class="flow-node">{{NODE_3}}</span>
+    </div>
+  </div>
+
+</template>
+
+<script>
+(() => {
+  "use strict";
+
+  const root = document.documentElement;
+  const body = document.body;
+
+  const themeToggle = document.getElementById("theme-toggle");
+  const modeToggle = document.getElementById("mode-toggle");
+  const fontDown = document.getElementById("font-down");
+  const fontReset = document.getElementById("font-reset");
+  const fontUp = document.getElementById("font-up");
+
+  const tocToggle = document.getElementById("toc-toggle");
+  const tocClose = document.getElementById("toc-close");
+  const tocOverlay = document.getElementById("toc-overlay");
+  const tocDrawer = document.getElementById("toc-drawer");
+
+  const prevButton = document.getElementById("section-prev");
+  const nextButton = document.getElementById("section-next");
+
+  const FONT_LEVELS = [80, 90, 100, 110, 120, 130, 140];
+
+  function safeGet(key, fallback = null) {
+    try {
+      const value = localStorage.getItem(key);
+      return value === null ? fallback : value;
+    } catch (e) {
+      return fallback;
+    }
+  }
+
+  function safeSet(key, value) {
+    try {
+      localStorage.setItem(key, value);
+    } catch (e) {}
+  }
+
+  /* ---------- Theme ---------- */
+
+  function applyTheme(theme) {
+    const next = theme === "light" ? "light" : "dark";
+    root.dataset.theme = next;
+
+    if (themeToggle) {
+      const dark = next === "dark";
+      themeToggle.textContent = dark ? "☀" : "☾";
+      themeToggle.title = dark ? "Chuyển sang Light" : "Chuyển sang Dark";
+      themeToggle.setAttribute("aria-pressed", String(!dark));
+    }
+
+    safeSet("study-theme", next);
+  }
+
+  const initialTheme =
+    safeGet("study-theme") ||
+    (window.matchMedia &&
+     window.matchMedia("(prefers-color-scheme: dark)").matches
+      ? "dark"
+      : "light");
+
+  applyTheme(initialTheme);
+
+  themeToggle?.addEventListener("click", () => {
+    applyTheme(root.dataset.theme === "dark" ? "light" : "dark");
+  });
+
+  /* ---------- Full / Keywords ---------- */
+
+  function applyMode(mode) {
+    const keywords = mode === "keywords";
+    body.classList.toggle("keyword-focus", keywords);
+
+    if (modeToggle) {
+      modeToggle.textContent = keywords ? "📖" : "🎯";
+      modeToggle.title = keywords ? "Chuyển sang Full" : "Chuyển sang Keywords";
+      modeToggle.setAttribute("aria-pressed", String(keywords));
+    }
+
+    safeSet("study-mode", keywords ? "keywords" : "full");
+  }
+
+  applyMode(safeGet("study-mode", "full"));
+
+  modeToggle?.addEventListener("click", () => {
+    applyMode(body.classList.contains("keyword-focus") ? "full" : "keywords");
+  });
+
+  /* ---------- Font scale ---------- */
+
+  let fontScale = Number(safeGet("study-font-scale", "100"));
+  if (!FONT_LEVELS.includes(fontScale)) {
+    fontScale = 100;
+  }
+
+  function applyFontScale(scale) {
+    fontScale = FONT_LEVELS.includes(scale) ? scale : 100;
+
+    root.style.setProperty(
+      "--base-font-size",
+      `${16 * fontScale / 100}px`
+    );
+
+    if (fontReset) {
+      fontReset.textContent = `${fontScale}%`;
+      fontReset.title =
+        fontScale === 100
+          ? "Cỡ chữ hiện tại 100%"
+          : `Cỡ chữ hiện tại ${fontScale}%, bấm để về 100%`;
+    }
+
+    if (fontDown) {
+      fontDown.disabled = fontScale === FONT_LEVELS[0];
+    }
+
+    if (fontUp) {
+      fontUp.disabled = fontScale === FONT_LEVELS[FONT_LEVELS.length - 1];
+    }
+
+    safeSet("study-font-scale", String(fontScale));
+  }
+
+  applyFontScale(fontScale);
+
+  fontDown?.addEventListener("click", () => {
+    const index = FONT_LEVELS.indexOf(fontScale);
+    if (index > 0) {
+      applyFontScale(FONT_LEVELS[index - 1]);
+    }
+  });
+
+  fontUp?.addEventListener("click", () => {
+    const index = FONT_LEVELS.indexOf(fontScale);
+    if (index >= 0 && index < FONT_LEVELS.length - 1) {
+      applyFontScale(FONT_LEVELS[index + 1]);
+    }
+  });
+
+  fontReset?.addEventListener("click", () => {
+    applyFontScale(100);
+  });
+
+  /* ---------- TOC drawer ---------- */
+
+  function setToc(open) {
+    body.classList.toggle("toc-open", open);
+    tocToggle?.setAttribute("aria-expanded", String(open));
+    tocOverlay?.setAttribute("aria-hidden", String(!open));
+
+    if (open) {
+      requestAnimationFrame(() => tocClose?.focus());
+    }
+  }
+
+  tocToggle?.addEventListener("click", () => {
+    setToc(!body.classList.contains("toc-open"));
+  });
+
+  tocClose?.addEventListener("click", () => setToc(false));
+  tocOverlay?.addEventListener("click", () => setToc(false));
+
+  tocDrawer?.querySelectorAll("a[href^='#']").forEach(link => {
+    link.addEventListener("click", () => setToc(false));
+  });
+
+  document.addEventListener("keydown", event => {
+    if (event.key === "Escape" && body.classList.contains("toc-open")) {
+      setToc(false);
+      tocToggle?.focus();
+    }
+  });
+
+  /* ---------- Back / Next section ---------- */
+
+  const studySections = Array.from(
+    document.querySelectorAll("main .study-section[id]")
+  );
+
+  function currentSectionIndex() {
+    if (!studySections.length) return -1;
+
+    const referenceY = window.scrollY + Math.min(window.innerHeight * 0.32, 220);
+    let index = 0;
+
+    for (let i = 0; i < studySections.length; i++) {
+      if (studySections[i].offsetTop <= referenceY) {
+        index = i;
+      } else {
+        break;
+      }
+    }
+    return index;
+  }
+
+  function updateNavState() {
+    if (!studySections.length) {
+      if (prevButton) prevButton.disabled = true;
+      if (nextButton) nextButton.disabled = true;
+      return;
+    }
+
+    const index = currentSectionIndex();
+    if (prevButton) prevButton.disabled = index <= 0;
+    if (nextButton) nextButton.disabled = index >= studySections.length - 1;
+  }
+
+  function moveSection(delta) {
+    const index = currentSectionIndex();
+    const targetIndex = Math.max(
+      0,
+      Math.min(studySections.length - 1, index + delta)
+    );
+
+    studySections[targetIndex]?.scrollIntoView({
+      behavior: "smooth",
+      block: "start"
+    });
+  }
+
+  prevButton?.addEventListener("click", () => moveSection(-1));
+  nextButton?.addEventListener("click", () => moveSection(1));
+
+  let ticking = false;
+  window.addEventListener("scroll", () => {
+    if (!ticking) {
+      requestAnimationFrame(() => {
+        updateNavState();
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }, { passive: true });
+
+  window.addEventListener("resize", updateNavState);
+  updateNavState();
+})();
+</script>
+
+</body>
+</html>
