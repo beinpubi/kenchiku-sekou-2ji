@@ -1,0 +1,1552 @@
+<!DOCTYPE html>
+
+<html data-theme="dark" lang="vi">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<meta content="dark light" name="color-scheme"/>
+<title>最新問題の一括要約リスト｜Book 14</title>
+<style>
+/* =========================================================
+   FIXED DESIGN TOKENS
+   Do not redesign these values per lesson.
+   ========================================================= */
+
+:root {
+  --font-vi: Arial, Helvetica, sans-serif;
+  --font-ja: "Hiragino Sans", "Yu Gothic", "Yu Gothic UI", Meiryo, sans-serif;
+  --base-font-size: 16px;
+  --content-width: 1320px;
+  --control-size: 38px;
+  --control-gap: 4px;
+}
+
+html[data-theme="dark"] {
+  --bg: #101318;
+  --surface: #171B22;
+  --surface-alt: #1D232C;
+  --text: #E3E7ED;
+  --text-muted: #9DA8B5;
+  --focus-muted: #68717D;
+  --heading: #F4F7FA;
+  --border: #323A46;
+  --link: #7CC4FF;
+  --original-bg: #15181E;
+  --translation-bg: #16202A;
+  --note-bg: #1C2028;
+  --memory-bg: #20231C;
+  --keyword: #74D7FF;
+  --keyword-bg: rgba(75, 190, 255, .10);
+  --critical-bg: #594613;
+  --critical-text: #FFE39A;
+  --trap: #FF8585;
+  --trap-underline: #FF5F5F;
+  --relation-bg: rgba(139, 126, 255, .12);
+  --relation-border: #8F86FF;
+  --shadow: rgba(0, 0, 0, .28);
+  --dock-bg: rgba(23, 27, 34, .94);
+  --overlay: rgba(0, 0, 0, .46);
+}
+
+html[data-theme="light"] {
+  --bg: #F4F6F8;
+  --surface: #FFFFFF;
+  --surface-alt: #EEF1F5;
+  --text: #20242A;
+  --text-muted: #626B77;
+  --focus-muted: #A0A7B0;
+  --heading: #111418;
+  --border: #CCD2DA;
+  --link: #0068B5;
+  --original-bg: #F8FAFC;
+  --translation-bg: #EDF7FC;
+  --note-bg: #F2F4F7;
+  --memory-bg: #F6F7E9;
+  --keyword: #006B9F;
+  --keyword-bg: #E4F4FC;
+  --critical-bg: #FFF0B8;
+  --critical-text: #654900;
+  --trap: #B42318;
+  --trap-underline: #D92D20;
+  --relation-bg: #EEEBFF;
+  --relation-border: #6C5CE7;
+  --shadow: rgba(31, 38, 49, .12);
+  --dock-bg: rgba(255, 255, 255, .94);
+  --overlay: rgba(20, 24, 30, .32);
+}
+
+/* =========================================================
+   BASE
+   ========================================================= */
+
+* { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  font-size: var(--base-font-size);
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-vi);
+  font-size: 1rem;
+  line-height: 1.72;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+:lang(vi) {
+  font-family: var(--font-vi);
+}
+
+:lang(ja) {
+  font-family: var(--font-ja);
+}
+
+a {
+  color: var(--link);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
+a:hover {
+  text-decoration-thickness: 2px;
+}
+
+button {
+  font: inherit;
+}
+
+h1, h2, h3, h4 {
+  color: var(--heading);
+  line-height: 1.35;
+}
+
+h1 {
+  margin: 0 0 .35rem;
+  font-size: clamp(1.75rem, 4vw, 2.7rem);
+}
+
+h2 {
+  margin: 2.5rem 0 1rem;
+  padding-bottom: .42rem;
+  border-bottom: 1px solid var(--border);
+  font-size: clamp(1.42rem, 3vw, 2rem);
+}
+
+h3 {
+  margin: 1.9rem 0 .75rem;
+  font-size: clamp(1.16rem, 2.4vw, 1.5rem);
+}
+
+h4 {
+  margin: 1.2rem 0 .45rem;
+  font-size: 1rem;
+}
+
+p {
+  margin: .58rem 0;
+}
+
+ul, ol {
+  padding-left: 1.45rem;
+}
+
+li {
+  margin: .3rem 0;
+}
+
+[id] {
+  scroll-margin-top: 18px;
+}
+
+/* =========================================================
+   PAGE LAYOUT
+   ========================================================= */
+
+.page-shell {
+  width: min(var(--content-width), calc(100% - 28px));
+  margin: 0 auto;
+  padding: 18px 0 112px;
+}
+
+.hero,
+.toc-card,
+.study-section,
+.aggregate-section {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  box-shadow: 0 8px 28px var(--shadow);
+}
+
+.hero {
+  margin-bottom: 22px;
+  padding: clamp(22px, 3vw, 40px);
+}
+
+.hero-subtitle {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 1.06rem;
+}
+
+.meta-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(195px, 1fr));
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.meta-item {
+  padding: 10px 12px;
+  background: var(--surface-alt);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+
+.meta-label {
+  display: block;
+  margin-bottom: 2px;
+  color: var(--text-muted);
+  font-size: .8rem;
+}
+
+.study-section,
+.aggregate-section {
+  margin: 22px 0;
+  padding: clamp(18px, 2.6vw, 30px);
+}
+
+.section-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 16px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border);
+}
+
+.section-head h2,
+.section-head h3 {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.source-ref {
+  color: var(--text-muted);
+  font-size: .84rem;
+  white-space: nowrap;
+}
+
+.subsection {
+  margin: 26px 0 32px;
+}
+
+.subsection:first-child {
+  margin-top: 0;
+}
+
+.study-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 14px;
+  align-items: start;
+}
+
+.study-card {
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+
+.study-card.original {
+  background: var(--original-bg);
+}
+
+.study-card.translation {
+  background: var(--translation-bg);
+}
+
+.card-title {
+  padding: 9px 13px;
+  background: var(--surface-alt);
+  border-bottom: 1px solid var(--border);
+  color: var(--heading);
+  font-weight: 800;
+  letter-spacing: .02em;
+}
+
+.recall-source {
+  padding: 14px 16px 16px;
+  transition: color .15s ease;
+}
+
+.recall-source > :first-child {
+  margin-top: 0;
+}
+
+.recall-source > :last-child {
+  margin-bottom: 0;
+}
+
+/* =========================================================
+   CONTENT COMPONENTS
+   ========================================================= */
+
+.table-wrap {
+  overflow-x: auto;
+  margin: 12px 0 18px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  -webkit-overflow-scrolling: touch;
+}
+
+table {
+  width: 100%;
+  min-width: 640px;
+  border-collapse: collapse;
+  background: var(--surface);
+}
+
+th,
+td {
+  padding: 9px 11px;
+  border-right: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+  text-align: left;
+}
+
+th:last-child,
+td:last-child {
+  border-right: 0;
+}
+
+tr:last-child td {
+  border-bottom: 0;
+}
+
+th {
+  background: var(--surface-alt);
+  color: var(--heading);
+  font-weight: 800;
+}
+
+caption {
+  padding: 9px 11px;
+  background: var(--surface-alt);
+  color: var(--heading);
+  font-weight: 800;
+  text-align: left;
+  caption-side: top;
+}
+
+.summary-box,
+.note-box,
+.memory-box,
+.warning-box,
+.figure-box,
+.formula-box,
+.comparison-box {
+  margin: 14px 0;
+  padding: 13px 15px;
+  background: var(--note-bg);
+  border: 1px solid var(--border);
+  border-left-width: 4px;
+  border-radius: 10px;
+}
+
+.summary-box,
+.note-box {
+  border-left-color: var(--link);
+}
+
+.memory-box {
+  background: var(--memory-bg);
+  border-left-color: var(--critical-text);
+}
+
+.warning-box {
+  border-left-color: var(--trap);
+}
+
+.figure-box,
+.formula-box,
+.comparison-box {
+  border-left-color: var(--relation-border);
+}
+
+.figure-card {
+  margin: 15px 0 20px;
+  overflow: hidden;
+  background: var(--surface-alt);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+
+.figure-card img {
+  display: block;
+  width: 100%;
+  height: auto;
+  background: #fff;
+}
+
+.figure-card figcaption {
+  padding: 10px 13px 12px;
+  color: var(--text-muted);
+  font-size: .9rem;
+}
+
+.figure-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 12px;
+  margin: 15px 0 20px;
+}
+
+.figure-grid .figure-card {
+  margin: 0;
+}
+
+.item-block {
+  margin-top: 11px;
+  padding-top: 11px;
+  border-top: 1px dashed var(--border);
+}
+
+.item-block:first-child {
+  margin-top: 0;
+  padding-top: 0;
+  border-top: 0;
+}
+
+.item-label {
+  margin-right: .3em;
+  color: var(--heading);
+  font-weight: 800;
+}
+
+.formula-line {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+}
+
+.flow-node {
+  padding: 5px 8px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  font-weight: 700;
+}
+
+.flow-arrow {
+  color: var(--text-muted);
+  font-weight: 800;
+}
+
+/* =========================================================
+   SEMANTIC HIGHLIGHTING
+   ========================================================= */
+
+.kw {
+  padding: .02em .16em;
+  background: var(--keyword-bg);
+  color: var(--keyword);
+  border-radius: .2em;
+  font-weight: 750;
+}
+
+.critical {
+  padding: .04em .22em;
+  background: var(--critical-bg);
+  color: var(--critical-text);
+  border-radius: .22em;
+  font-weight: 750;
+}
+
+.trap {
+  color: var(--trap);
+  font-weight: 700;
+  text-decoration-line: underline;
+  text-decoration-color: var(--trap-underline);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+}
+
+.relation {
+  padding: .02em .14em;
+  background: var(--relation-bg);
+  color: var(--text);
+  border-bottom: 2px solid var(--relation-border);
+  font-weight: 650;
+}
+
+/* Only recall-source is dimmed in Keywords mode. */
+body.keyword-focus .recall-source {
+  color: var(--focus-muted);
+}
+
+body.keyword-focus .recall-source .kw {
+  color: var(--keyword);
+  background: var(--keyword-bg);
+}
+
+body.keyword-focus .recall-source .critical {
+  color: var(--critical-text);
+  background: var(--critical-bg);
+}
+
+body.keyword-focus .recall-source .trap {
+  color: var(--trap);
+}
+
+body.keyword-focus .recall-source .relation {
+  color: var(--text);
+  background: var(--relation-bg);
+}
+
+body.keyword-focus .recall-source th,
+body.keyword-focus .recall-source .item-label {
+  color: var(--heading);
+}
+
+/* =========================================================
+   TOC DRAWER
+   ========================================================= */
+
+.toc-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1990;
+  visibility: hidden;
+  opacity: 0;
+  background: var(--overlay);
+  transition: opacity .18s ease, visibility .18s ease;
+}
+
+.toc-drawer {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 2000;
+  width: min(78vw, 360px);
+  padding: max(14px, env(safe-area-inset-top)) 14px
+           max(18px, env(safe-area-inset-bottom))
+           max(14px, env(safe-area-inset-left));
+  overflow-y: auto;
+  background: var(--surface);
+  border-right: 1px solid var(--border);
+  box-shadow: 14px 0 36px var(--shadow);
+  transform: translateX(-103%);
+  transition: transform .2s ease;
+  -webkit-overflow-scrolling: touch;
+}
+
+body.toc-open .toc-overlay {
+  visibility: visible;
+  opacity: 1;
+}
+
+body.toc-open .toc-drawer {
+  transform: translateX(0);
+}
+
+.toc-drawer-head {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 4px 0 10px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+}
+
+.toc-drawer-head h2 {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 1.2rem;
+}
+
+.toc-close {
+  width: 34px;
+  height: 34px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface-alt);
+  color: var(--text);
+  cursor: pointer;
+}
+
+.toc-list {
+  margin: 12px 0 0;
+  padding-left: 1.2rem;
+}
+
+.toc-list ol {
+  margin-top: 4px;
+}
+
+/* =========================================================
+   COMPACT CONTROLS
+   Left: vertical TOC / Back / Next
+   Right: horizontal display controls
+   ========================================================= */
+
+.nav-dock-left,
+.settings-dock-right {
+  position: fixed;
+  bottom: max(14px, env(safe-area-inset-bottom));
+  z-index: 1900;
+  padding: 5px;
+  background: var(--dock-bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  box-shadow: 0 8px 24px var(--shadow);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  user-select: none;
+}
+
+.nav-dock-left {
+  left: max(10px, env(safe-area-inset-left));
+  display: flex;
+  flex-direction: column;
+  gap: var(--control-gap);
+}
+
+.settings-dock-right {
+  right: max(10px, env(safe-area-inset-right));
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--control-gap);
+}
+
+.nav-dock-left button,
+.settings-dock-right button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--control-size);
+  height: var(--control-size);
+  min-width: var(--control-size);
+  min-height: var(--control-size);
+  padding: 0;
+  background: var(--surface-alt);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-family: var(--font-vi);
+  font-size: .96rem;
+  font-weight: 700;
+  line-height: 1;
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.nav-dock-left button:hover,
+.settings-dock-right button:hover {
+  border-color: var(--link);
+}
+
+.nav-dock-left button:active,
+.settings-dock-right button:active {
+  transform: translateY(1px);
+}
+
+.nav-dock-left button:disabled {
+  opacity: .38;
+  cursor: default;
+}
+
+.settings-dock-right .font-reset {
+  font-size: .66rem;
+  letter-spacing: -.03em;
+}
+
+.settings-dock-right .mode-toggle {
+  font-size: 1.02rem;
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 900px) {
+  .study-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .page-shell {
+    width: min(100% - 18px, 760px);
+  }
+
+  .section-head {
+    display: block;
+  }
+
+  .source-ref {
+    display: block;
+    margin-top: 6px;
+    white-space: normal;
+  }
+}
+
+@media (max-width: 560px) {
+  body {
+    font-size: .96rem;
+  }
+
+  .hero,
+  .study-section,
+  .aggregate-section {
+    border-radius: 12px;
+  }
+
+  .recall-source {
+    padding: 12px 13px 14px;
+  }
+
+  :root {
+    --control-size: 36px;
+  }
+
+  .settings-dock-right {
+    right: max(7px, env(safe-area-inset-right));
+  }
+
+  .nav-dock-left {
+    left: max(7px, env(safe-area-inset-left));
+  }
+}
+
+@media (orientation: landscape) and (pointer: coarse) {
+  .nav-dock-left {
+    left: max(14px, env(safe-area-inset-left));
+  }
+
+  .settings-dock-right {
+    right: max(14px, env(safe-area-inset-right));
+  }
+}
+
+/* =========================================================
+   PRINT
+   ========================================================= */
+
+@media print {
+  html,
+  html[data-theme="dark"],
+  html[data-theme="light"] {
+    --bg: #FFFFFF;
+    --surface: #FFFFFF;
+    --surface-alt: #F1F3F5;
+    --text: #111111;
+    --text-muted: #555555;
+    --heading: #000000;
+    --border: #B8BEC6;
+    --original-bg: #FFFFFF;
+    --translation-bg: #F7FBFD;
+    --note-bg: #F7F7F7;
+    --memory-bg: #FAFAF0;
+    --keyword: #005A86;
+    --keyword-bg: #E4F4FC;
+    --critical-bg: #FFF0B8;
+    --critical-text: #4A3600;
+    --trap: #9E1B12;
+    --trap-underline: #9E1B12;
+    --relation-bg: #F0EDFF;
+    --relation-border: #5B4FD6;
+  }
+
+  body {
+    background: #fff;
+    color: #111;
+    font-size: 11pt;
+  }
+
+  .page-shell {
+    width: 100%;
+    padding: 0;
+  }
+
+  .nav-dock-left,
+  .settings-dock-right,
+  .toc-drawer,
+  .toc-overlay {
+    display: none !important;
+  }
+
+  .hero,
+  .study-card,
+  .summary-box,
+  .note-box,
+  .memory-box,
+  .warning-box,
+  .figure-card {
+    break-inside: avoid;
+  }
+
+  a {
+    color: #000;
+    text-decoration: none;
+  }
+}
+</style>
+<script>
+/* Apply saved theme before body paint to reduce flashing. */
+(function () {
+  try {
+    const saved = localStorage.getItem("study-theme");
+    const systemDark = window.matchMedia &&
+      window.matchMedia("(prefers-color-scheme: dark)").matches;
+    document.documentElement.dataset.theme =
+      saved || (systemDark ? "dark" : "light");
+  } catch (e) {
+    document.documentElement.dataset.theme = "dark";
+  }
+
+  try {
+    const savedScale = Number(localStorage.getItem("study-font-scale")) || 100;
+    const clampedScale = Math.max(80, Math.min(140, savedScale));
+    document.documentElement.style.setProperty(
+      "--base-font-size",
+      `${16 * clampedScale / 100}px`
+    );
+  } catch (e) {}
+})();
+</script>
+</head>
+<body>
+<!-- =======================================================
+     TOC DRAWER
+     Replace only the list contents.
+     ======================================================= -->
+<div aria-hidden="true" class="toc-overlay" id="toc-overlay"></div>
+<aside aria-label="Mục lục" class="toc-drawer" id="toc-drawer">
+<div class="toc-drawer-head">
+<h2>Mục lục</h2>
+<button aria-label="Đóng mục lục" class="toc-close" id="toc-close" type="button">×</button>
+</div>
+<!-- TOC_ITEMS_START -->
+<ol class="toc-list">
+<li><a href="#sec-learning">完全合格のための学習法</a>
+<ol>
+<li><a href="#sub-intro">学習法のねらい</a></li>
+<li><a href="#sub-q1">問題1：施工経験記述</a></li>
+<li><a href="#sub-q3">問題3：施工管理</a></li>
+<li><a href="#sub-q2456">問題2・4・5・6</a></li>
+</ol>
+</li>
+<li><a href="#sec-summary-list">最新問題の一括要約リストの使い方</a></li>
+<li><a href="#sec-numbering">問題番号の割り振り</a></li>
+<li><a href="#sec-video">スマホ版無料動画コーナー</a></li>
+<li><a href="#terms">Thuật ngữ chuyên môn</a></li>
+<li><a href="#background">Kiến thức nền cần biết</a></li>
+<li><a href="#memory">Điểm cần nhớ và mẹo nhớ</a></li>
+</ol>
+<!-- TOC_ITEMS_END -->
+</aside>
+<!-- =======================================================
+     FIXED NAVIGATION CONTROLS
+     Left bottom: vertical.
+     Do not add a Top button.
+     ======================================================= -->
+<nav aria-label="Điều hướng học tập" class="nav-dock-left">
+<button aria-controls="toc-drawer" aria-expanded="false" aria-label="Mục lục" id="toc-toggle" title="Mục lục" type="button">☰</button>
+<button aria-label="Mục trước" id="section-prev" title="Back" type="button">‹</button>
+<button aria-label="Mục tiếp theo" id="section-next" title="Next" type="button">›</button>
+</nav>
+<!-- =======================================================
+     FIXED DISPLAY CONTROLS
+     Right bottom: horizontal.
+     ======================================================= -->
+<nav aria-label="Thiết lập hiển thị" class="settings-dock-right">
+<button aria-label="Đổi Dark/Light" aria-pressed="false" id="theme-toggle" title="Đổi Dark/Light" type="button">☀</button>
+<button aria-label="Đổi Full/Keywords" aria-pressed="false" class="mode-toggle" id="mode-toggle" title="Đổi Full/Keywords" type="button">🎯</button>
+<button aria-label="Đặt lại cỡ chữ 100%" class="font-reset" id="font-reset" title="Đặt lại cỡ chữ 100%" type="button">100%</button>
+<button aria-label="Giảm cỡ chữ" id="font-down" title="Giảm cỡ chữ" type="button">A−</button>
+<button aria-label="Tăng cỡ chữ" id="font-up" title="Tăng cỡ chữ" type="button">A+</button>
+</nav>
+<div class="page-shell">
+<!-- =====================================================
+       DOCUMENT HEADER
+       Replace title/subtitle/meta values only.
+       ===================================================== -->
+<header class="hero" id="top">
+<h1>最新問題の一括要約リスト｜Book 14</h1>
+<p class="hero-subtitle">1級建築施工管理技術検定 第二次検定｜完全合格のための学習法</p>
+<div class="meta-grid">
+<div class="meta-item">
+<span class="meta-label">PDF nguồn</span>
+        00b_最新問題一括要約_概要_p014.pdf
+      </div>
+<div class="meta-item">
+<span class="meta-label">File ID</span>
+        F002
+      </div>
+<div class="meta-item">
+<span class="meta-label">Phạm vi</span>
+        Book page 14
+      </div>
+<div class="meta-item">
+<span class="meta-label">Chế độ</span>
+        Song ngữ Nhật-Việt / Dark-Light / Full-Keywords / Font 80-140%
+      </div>
+</div>
+</header>
+<!-- =====================================================
+       CONTENT_START
+       AI may freely repeat/reorder approved content components.
+       Global CSS/JS/control structure must not be redesigned.
+       ===================================================== -->
+<main id="lesson">
+<section class="study-section" id="sec-learning">
+<div class="section-head">
+<h2>1級建築施工管理技術検定試験第二次検定 完全合格のための学習法</h2>
+<span class="source-ref">Nguồn: Book page 14</span>
+</div>
+<section class="subsection" id="sub-intro">
+<h3>学習法のねらい</h3>
+<div class="study-grid">
+<article class="study-card original">
+<div class="card-title">原文</div>
+<div class="recall-source" lang="ja">
+<p><strong class="kw">最新問題の一括要約リスト</strong></p>
+<p><strong class="kw">この学習法</strong>で<span class="relation">一発合格を手にしよう！</span></p>
+</div>
+</article>
+<article class="study-card translation">
+<div class="card-title">Bản dịch tiếng Việt</div>
+<div class="recall-source" lang="vi">
+<p><strong class="kw">Danh sách tổng hợp các câu hỏi mới nhất</strong></p>
+<p>Hãy hướng tới <span class="relation">đỗ ngay trong một lần</span> bằng <strong class="kw">phương pháp học này</strong>!</p>
+</div>
+</article>
+</div>
+</section>
+<section class="subsection" id="sub-q1">
+<h3>問題1（施工経験記述）</h3>
+<div class="study-grid">
+<article class="study-card original">
+<div class="card-title">原文</div>
+<div class="recall-source" lang="ja">
+<p><strong class="kw">問題1（施工経験記述）</strong>については、本書を読み込み、「施工経験記述の考え方・書き方講習」の無料動画を視聴した後、標準的な建築工事の工事概要（どのような建築工事においても共通して実施されることが多い工種が何であるか）を理解し、その工事概要に基づき、<strong class="kw">工程管理・品質管理・建設副産物の3つの出題分野</strong>について、自身の工事経験を基に有効と考える施工管理の方法を書いてみることで、<span class="relation">事前に解答を準備することができる</span>ため、比較的合格点を獲得しやすい分野となっている。</p>
+</div>
+</article>
+<article class="study-card translation">
+<div class="card-title">Bản dịch tiếng Việt</div>
+<div class="recall-source" lang="vi">
+<p>Đối với <strong class="kw">Câu 1: Viết kinh nghiệm thi công（施工経験記述）</strong>, sau khi đọc kỹ giáo trình này và xem video miễn phí <strong>“Khóa hướng dẫn cách tư duy và cách viết phần mô tả kinh nghiệm thi công”</strong>, cần hiểu <strong>tổng quan của một công trình xây dựng tiêu chuẩn</strong>, tức là hiểu những <strong>loại công tác thường được thực hiện chung trong hầu hết các công trình xây dựng</strong>.</p>
+<p>Trên cơ sở tổng quan công trình đó, đối với <strong class="kw">ba lĩnh vực được ra đề</strong> là:</p>
+<ul>
+<li><strong class="kw">quản lý tiến độ（工程管理）</strong>;</li>
+<li><strong class="kw">quản lý chất lượng（品質管理）</strong>;</li>
+<li><strong class="kw">sản phẩm phụ xây dựng（建設副産物）</strong>;</li>
+</ul>
+<p>nếu thử tự viết ra những phương pháp quản lý thi công được cho là hiệu quả dựa trên kinh nghiệm công trình của bản thân, thì có thể <span class="relation">chuẩn bị trước nội dung trả lời</span>. Vì vậy, đây là lĩnh vực tương đối dễ đạt điểm đỗ.</p>
+</div>
+</article>
+</div>
+</section>
+<section class="subsection" id="sub-q3">
+<h3>問題3（施工管理）</h3>
+<div class="study-grid">
+<article class="study-card original">
+<div class="card-title">原文</div>
+<div class="recall-source" lang="ja">
+<p><strong class="kw">問題3（施工管理）</strong>については、本書を読み込み、「ネットワーク計算の解き方講習」の無料動画を視聴することで、解答に必要となる<strong class="kw">「タイムスケール」の考え方</strong>を<span class="relation">身につけることができる</span>ようになっている。</p>
+</div>
+</article>
+<article class="study-card translation">
+<div class="card-title">Bản dịch tiếng Việt</div>
+<div class="recall-source" lang="vi">
+<p>Đối với <strong class="kw">Câu 3: Quản lý thi công（施工管理）</strong>, bằng cách đọc kỹ giáo trình này và xem video miễn phí <strong>“Khóa hướng dẫn cách giải bài tính network”</strong>, người học có thể <span class="relation">nắm được cách tư duy</span> về <strong class="kw">“time scale（タイムスケール）”</strong>, là kiến thức cần thiết để giải bài.</p>
+</div>
+</article>
+</div>
+</section>
+<section class="subsection" id="sub-q2456">
+<h3>問題2・問題4・問題5・問題6</h3>
+<div class="study-grid">
+<article class="study-card original">
+<div class="card-title">原文</div>
+<div class="recall-source" lang="ja">
+<p><strong class="kw">問題2（施工計画）・問題4（躯体工事）・問題5（仕上げ工事）・問題6（建築法規）</strong>の4つの問題については、<span class="relation">過去の試験から繰り返して出題されている問題が多い</span>ため、一見すると簡単に思えるかもしれない。しかし、法律や基準書などに書かれている<strong class="kw">用語や数値</strong>について、似たような用語や数値の中から正確に選択したり、工事の<strong class="kw">施工方法や留意事項</strong>などについて、要約して具体的に記述したりすることは、意外と難しいことである。これらの問題で合格点を獲得するためには、<span class="relation">過去に出題された問題について、その要点をまとめることが重要</span>となる。</p>
+</div>
+</article>
+<article class="study-card translation">
+<div class="card-title">Bản dịch tiếng Việt</div>
+<div class="recall-source" lang="vi">
+<p>Đối với bốn câu:</p>
+<ul>
+<li><strong class="kw">Câu 2: Kế hoạch thi công（施工計画）</strong></li>
+<li><strong class="kw">Câu 4: Công tác phần thân/kết cấu（躯体工事）</strong></li>
+<li><strong class="kw">Câu 5: Công tác hoàn thiện（仕上げ工事）</strong></li>
+<li><strong class="kw">Câu 6: Pháp quy xây dựng（建築法規）</strong></li>
+</ul>
+<p>có nhiều nội dung <span class="relation">được lặp lại từ các kỳ thi trước</span>, nên thoạt nhìn có thể tưởng là đơn giản.</p>
+<p>Tuy nhiên, thực tế không dễ:</p>
+<ul>
+<li>phải lựa chọn <strong class="kw">chính xác thuật ngữ và trị số</strong> trong số nhiều thuật ngữ, trị số gần giống nhau được quy định trong luật và các tiêu chuẩn;</li>
+<li>phải <strong class="kw">tóm lược rồi mô tả cụ thể</strong> phương pháp thi công, các điểm cần lưu ý khi thi công, v.v.</li>
+</ul>
+<p>Để đạt điểm đỗ ở các câu này, điều quan trọng là phải <span class="relation">tổng hợp các điểm cốt lõi của những câu đã từng được ra trong quá khứ</span>.</p>
+</div>
+</article>
+</div>
+</section>
+</section>
+<section class="study-section" id="sec-summary-list">
+<div class="section-head">
+<h2>最新問題の一括要約リストの使い方</h2>
+<span class="source-ref">Nguồn: Book page 14</span>
+</div>
+<div class="study-grid">
+<article class="study-card original">
+<div class="card-title">原文</div>
+<div class="recall-source" lang="ja">
+<p>本書では、<strong class="kw">「最新問題の一括要約リスト」</strong>として、<strong class="kw">過去10年間</strong>に出題された施工計画分野・躯体工事分野・仕上げ工事分野・建築法規分野の全問題について、その解答の要点を分野別にまとめている。</p>
+<p>また、<strong class="kw">平成29年度以降</strong>の（出題が<strong class="kw">ネットワーク工程表</strong>になった後の）施工管理分野についても、出題の要点をまとめている。この「最新問題の一括要約リスト」を手元に置き、「完全合格のための学習法」の無料動画を視聴することで、<span class="relation">「要点のまとめ」の学習を、短期間で確実に完了させることができる</span>。</p>
+</div>
+</article>
+<article class="study-card translation">
+<div class="card-title">Bản dịch tiếng Việt</div>
+<div class="recall-source" lang="vi">
+<p>Trong giáo trình này, dưới dạng <strong class="kw">“Danh sách tổng hợp các câu hỏi mới nhất”</strong>, tác giả đã tổng hợp theo từng lĩnh vực các điểm chính của đáp án đối với toàn bộ câu hỏi trong <strong class="kw">10 năm gần đây</strong> thuộc kế hoạch thi công, công tác phần thân/kết cấu, công tác hoàn thiện và pháp quy xây dựng.</p>
+<p>Ngoài ra, đối với lĩnh vực quản lý thi công, giáo trình cũng tổng hợp các điểm ra đề kể từ <strong class="kw">năm Heisei 29 (2017)</strong>, tức từ khi dạng câu hỏi được chuyển sang <strong class="kw">sơ đồ tiến độ network（ネットワーク工程表）</strong>. Nếu đặt “Danh sách tổng hợp các câu hỏi mới nhất” này bên cạnh khi học và đồng thời xem video miễn phí “Phương pháp học để đỗ hoàn toàn”, có thể <span class="relation">hoàn thành chắc chắn việc học “tổng hợp các điểm trọng yếu” trong thời gian ngắn</span>.</p>
+</div>
+</article>
+</div>
+</section>
+<section class="study-section" id="sec-numbering">
+<div class="section-head">
+<h2>問題番号の割り振り</h2>
+<span class="source-ref">Nguồn: Book page 14</span>
+</div>
+<section class="subsection" id="sub-number-note">
+<h3>問題番号の基準</h3>
+<div class="study-grid">
+<article class="study-card original">
+<div class="card-title">原文</div>
+<div class="recall-source" lang="ja">
+<p>※「最新問題の一括要約リスト」に記載されている問題番号は、<strong class="kw">令和3年度以降（奇数年度）の第二次検定</strong>に基づくものです。<strong class="kw">令和3年度以降（偶数年度）の第二次検定</strong>および<strong class="kw">令和2年度以前の実地試験</strong>（第二次検定の旧称）では、下表のように、問題番号の割り振りが異なります。</p>
+</div>
+</article>
+<article class="study-card translation">
+<div class="card-title">Bản dịch tiếng Việt</div>
+<div class="recall-source" lang="vi">
+<p><strong class="kw">Chú thích:</strong> Số câu ghi trong “Danh sách tổng hợp các câu hỏi mới nhất” được căn cứ theo cách đánh số của <strong class="kw">Kỳ thi lần 2 từ năm Reiwa 3 trở đi ở các năm lẻ</strong>. Với <strong class="kw">các năm chẵn từ Reiwa 3 trở đi</strong> và <strong class="kw">kỳ 実地試験 từ Reiwa 2 trở về trước</strong>, cách phân bổ số câu khác nhau như bảng dưới đây.</p>
+</div>
+</article>
+</div>
+</section>
+<section class="subsection" id="sub-number-table">
+<h3>問題番号の割り振り表</h3>
+<div class="study-grid">
+<article class="study-card original">
+<div class="card-title">原文</div>
+<div class="recall-source" lang="ja">
+<div class="table-wrap">
+<table>
+<thead><tr><th>区分</th><th>施工計画</th><th>施工管理</th><th>躯体工事</th><th>仕上げ工事</th><th>建築法規</th></tr></thead>
+<tbody>
+<tr><td><strong class="kw">令和3年度以降（奇数年度）の第二次検定</strong></td><td>問題2</td><td>問題3</td><td><span class="relation">問題4</span></td><td><span class="relation">問題5</span></td><td>問題6</td></tr>
+<tr><td><strong class="kw">令和3年度以降（偶数年度）の第二次検定</strong></td><td>問題2</td><td>問題3</td><td><span class="relation">問題5</span></td><td><span class="relation">問題4</span></td><td>問題6</td></tr>
+<tr><td><strong class="kw">令和2年度以前の実地試験</strong></td><td>問題2</td><td>問題5</td><td>問題3</td><td>問題4</td><td>問題6</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+</article>
+<article class="study-card translation">
+<div class="card-title">Bản dịch tiếng Việt</div>
+<div class="recall-source" lang="vi">
+<div class="table-wrap">
+<table>
+<thead><tr><th>Phân loại kỳ thi</th><th>Kế hoạch thi công</th><th>Quản lý thi công</th><th>Phần thân/kết cấu</th><th>Hoàn thiện</th><th>Pháp quy xây dựng</th></tr></thead>
+<tbody>
+<tr><td><strong class="kw">Kỳ thi lần 2 từ R3 trở đi, năm lẻ</strong></td><td>Câu 2</td><td>Câu 3</td><td><span class="relation">Câu 4</span></td><td><span class="relation">Câu 5</span></td><td>Câu 6</td></tr>
+<tr><td><strong class="kw">Kỳ thi lần 2 từ R3 trở đi, năm chẵn</strong></td><td>Câu 2</td><td>Câu 3</td><td><span class="relation">Câu 5</span></td><td><span class="relation">Câu 4</span></td><td>Câu 6</td></tr>
+<tr><td><strong class="kw">実地試験 từ R2 trở về trước</strong></td><td>Câu 2</td><td>Câu 5</td><td>Câu 3</td><td>Câu 4</td><td>Câu 6</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+</article>
+</div>
+<div class="note-box">
+<strong>Giải thích bảng</strong>
+<ol>
+<li><strong>Từ R3 trở đi, năm lẻ</strong>
+<ul>
+<li>Q2: 施工計画</li><li>Q3: 施工管理</li><li>Q4: 躯体工事</li><li>Q5: 仕上げ工事</li><li>Q6: 建築法規</li>
+</ul>
+</li>
+<li><strong>Từ R3 trở đi, năm chẵn</strong>
+<ul>
+<li>Q2, Q3 và Q6 giữ nguyên.</li>
+<li><strong>Q4 và Q5 đổi chỗ cho nhau</strong>: Q4 = 仕上げ工事; Q5 = 躯体工事.</li>
+</ul>
+</li>
+<li><strong>R2 trở về trước</strong>
+<ul>
+<li>Q2 = 施工計画</li><li>Q3 = 躯体工事</li><li>Q4 = 仕上げ工事</li><li>Q5 = 施工管理</li><li>Q6 = 建築法規</li>
+</ul>
+</li>
+</ol>
+</div>
+</section>
+<section class="subsection" id="sub-r8-note">
+<h3>令和8年度について</h3>
+<div class="study-grid">
+<article class="study-card original">
+<div class="card-title">原文</div>
+<div class="recall-source" lang="ja">
+<p>※本年度（<strong class="kw">令和8年度</strong>）の試験は、奇数年度ではなく<strong class="kw">偶数年度</strong>に該当しますが、<span class="relation">躯体工事の前に仕上げ工事を配置するのは不自然である（仕上げ工事は躯体工事の後に行われる）</span>ため、本書では<strong class="kw">奇数年度の順序で採録</strong>しています。</p>
+</div>
+</article>
+<article class="study-card translation">
+<div class="card-title">Bản dịch tiếng Việt</div>
+<div class="recall-source" lang="vi">
+<p><strong class="kw">Năm hiện tại Reiwa 8</strong> thuộc <strong class="kw">năm chẵn</strong>, không phải năm lẻ. Tuy nhiên, <span class="relation">việc xếp công tác hoàn thiện trước công tác phần thân/kết cấu là không tự nhiên, vì về trình tự thi công, công tác hoàn thiện được thực hiện sau công tác phần thân</span>. Do đó, <strong class="kw">giáo trình này vẫn sắp xếp nội dung theo thứ tự của năm lẻ</strong>.</p>
+</div>
+</article>
+</div>
+</section>
+</section>
+<section class="study-section" id="sec-video">
+<div class="section-head">
+<h2>スマホ版無料動画コーナー</h2>
+<span class="source-ref">Nguồn: Book page 14</span>
+</div>
+<div class="study-grid">
+<article class="study-card original">
+<div class="card-title">原文</div>
+<div class="recall-source" lang="ja">
+<p><strong class="kw">スマホ版無料動画コーナー</strong></p>
+<p>URL <a href="https://get-supertext.com/">https://get-supertext.com/</a></p>
+<p>（注意）スマートフォンでの長時間聴講は、Wi-Fi環境が整ったエリアで行いましょう。</p>
+<p>「完全合格のための学習法」の動画講習を、<strong class="kw">GET研究所ホームページ</strong>から視聴できます。</p>
+<p><a href="https://get-ken.jp/">https://get-ken.jp/</a></p>
+<p><span class="relation">GET研究所 → 検索 → 無料動画公開中 → 動画を選択</span></p>
+</div>
+</article>
+<article class="study-card translation">
+<div class="card-title">Bản dịch tiếng Việt</div>
+<div class="recall-source" lang="vi">
+<p><strong class="kw">Góc video miễn phí dành cho điện thoại</strong></p>
+<p>URL: <a href="https://get-supertext.com/">https://get-supertext.com/</a></p>
+<p>Lưu ý: Khi xem bài giảng trong thời gian dài bằng điện thoại thông minh, nên thực hiện tại nơi có môi trường Wi-Fi phù hợp.</p>
+<p>Video “Phương pháp học để đỗ hoàn toàn” có thể xem từ trang chủ của <strong class="kw">GET研究所</strong>:</p>
+<p><a href="https://get-ken.jp/">https://get-ken.jp/</a></p>
+<p><span class="relation">GET研究所 → Tìm kiếm → Video miễn phí đang công khai → Chọn video</span></p>
+</div>
+</article>
+</div>
+<div class="note-box">
+<strong>Giải thích hình trên trang</strong>
+<p>Phần dưới trang còn có <strong>QR code</strong> dẫn đến khu vực video miễn phí dành cho điện thoại.</p>
+</div></section>
+</main>
+<!-- CONTENT_END -->
+<!-- =====================================================
+       NON-DIMMED STUDY SUPPORT SECTIONS
+       These sections stay normally readable in Keywords mode.
+       ===================================================== -->
+<section class="aggregate-section" id="terms">
+<div class="section-head">
+<h2>Thuật ngữ chuyên môn</h2>
+</div>
+<div class="table-wrap">
+<table>
+<thead><tr><th>日本語</th><th>読み方</th><th>Tiếng Việt</th><th>Giải thích</th><th>Liên quan</th></tr></thead>
+<tbody>
+<tr><td>施工経験記述</td><td>せこうけいけんきじゅつ</td><td>Bài viết mô tả kinh nghiệm thi công</td><td>Dạng câu tự luận yêu cầu trình bày kinh nghiệm, biện pháp và tư duy quản lý thi công.</td><td>問題1</td></tr>
+<tr><td>工事概要</td><td>こうじがいよう</td><td>Tổng quan công trình</td><td>Các thông tin cơ bản xác định loại công trình và phạm vi công tác.</td><td>施工経験記述</td></tr>
+<tr><td>工程管理</td><td>こうていかんり</td><td>Quản lý tiến độ</td><td>Quản lý trình tự, thời gian và quan hệ giữa các công tác.</td><td>施工経験記述</td></tr>
+<tr><td>品質管理</td><td>ひんしつかんり</td><td>Quản lý chất lượng</td><td>Quản lý để bảo đảm chất lượng thi công theo yêu cầu.</td><td>施工経験記述</td></tr>
+<tr><td>建設副産物</td><td>けんせつふくさんぶつ</td><td>Sản phẩm phụ xây dựng</td><td>Vật chất phát sinh kèm theo hoạt động xây dựng, gồm vật liệu có thể tái sử dụng, tái chế hoặc cần xử lý.</td><td>施工経験記述</td></tr>
+<tr><td>施工管理</td><td>せこうかんり</td><td>Quản lý thi công</td><td>Trong trang này đặc biệt liên quan đến bài toán tiến độ network.</td><td>問題3</td></tr>
+<tr><td>ネットワーク工程表</td><td>ネットワークこうていひょう</td><td>Sơ đồ tiến độ network</td><td>Biểu diễn quan hệ trước sau giữa các công tác dưới dạng mạng.</td><td>タイムスケール</td></tr>
+<tr><td>タイムスケール</td><td>タイムスケール</td><td>Thang thời gian / time scale</td><td>Cách biểu diễn tiến độ network trên trục thời gian để xác định thời điểm và số ngày của các công tác.</td><td>ネットワーク工程表</td></tr>
+<tr><td>躯体工事</td><td>くたいこうじ</td><td>Công tác phần thân/kết cấu</td><td>Công tác tạo nên kết cấu chính của công trình.</td><td>問題4/5</td></tr>
+<tr><td>仕上げ工事</td><td>しあげこうじ</td><td>Công tác hoàn thiện</td><td>Các công tác hoàn thiện thực hiện sau phần kết cấu.</td><td>問題4/5</td></tr>
+<tr><td>建築法規</td><td>けんちくほうき</td><td>Pháp quy xây dựng</td><td>Các luật, nghị định và quy định liên quan đến xây dựng được kiểm tra trong kỳ thi.</td><td>問題6</td></tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="aggregate-section" id="background">
+<div class="section-head">
+<h2>Kiến thức nền cần biết</h2>
+</div>
+<div class="note-box">
+<strong>Vì sao Câu 1 có thể chuẩn bị trước?</strong>
+<p>Logic mà sách đưa ra là: <strong>công trình tiêu chuẩn → xác định các công tác phổ biến → chuẩn bị trước nội dung quản lý chất lượng / tiến độ / sản phẩm phụ xây dựng → điều chỉnh theo đề thi thực tế</strong>.</p>
+<p>Điểm quan trọng là không học thuộc một công trình cụ thể, mà phải hiểu <strong>những công tác tiêu chuẩn có khả năng xuất hiện trong nhiều loại công trình</strong>.</p>
+</div>
+<div class="note-box">
+<strong>“Network” trong Câu 3</strong>
+<p>Từ H29 trở đi, phần <strong>施工管理</strong> sử dụng dạng <strong>network schedule</strong>. Vì vậy, ngoài hiểu trình tự thi công, cần nắm các khái niệm tính toán tiến độ như thời điểm bắt đầu, tổng thời gian và khoảng dự trữ của công tác.</p>
+<p>Phần giải thích này là kiến thức nền để hiểu ý của trang, không phải câu văn nguyên bản của sách.</p>
+</div>
+</section>
+<section class="aggregate-section" id="memory">
+<div class="section-head">
+<h2>Điểm cần nhớ và mẹo nhớ</h2>
+</div>
+<div class="memory-box">
+<strong>1. Từ R3 trở đi: nhớ bộ 2 - 3 - 6 cố định</strong>
+<p><strong>2 = 施工計画</strong> · <strong>3 = 施工管理</strong> · <strong>6 = 建築法規</strong>.</p>
+<p>Chỉ có <strong>Q4 và Q5 hoán đổi</strong>: năm lẻ <strong>4 躯体 → 5 仕上げ</strong>; năm chẵn <strong>4 仕上げ → 5 躯体</strong>.</p>
+</div>
+<div class="memory-box">
+<strong>2. Trọng tâm học theo sách</strong>
+<ul>
+<li><strong>問題1:</strong> chuẩn bị trước phương án viết.</li>
+<li><strong>問題3:</strong> luyện network và time scale.</li>
+<li><strong>問題2・4・5・6:</strong> tổng hợp chính xác <strong>thuật ngữ + trị số + phương pháp thi công + lưu ý</strong> từ đề cũ.</li>
+</ul>
+</div>
+<div class="memory-box">
+<strong>3. Chú ý riêng cho R8</strong>
+<p><strong>R8 là năm chẵn</strong>, nên số câu thực tế tuân theo cách phân bổ của năm chẵn. Tuy nhiên, <strong>thứ tự trình bày trong giáo trình vẫn theo năm lẻ</strong> để giữ trình tự tự nhiên: <strong>躯体工事 → 仕上げ工事</strong>.</p>
+</div>
+</section>
+</div>
+<!-- =======================================================
+     APPROVED COMPONENT LIBRARY
+     Hidden. AI may copy/repeat these components into CONTENT.
+     Do not create a new visual system unless strictly necessary.
+     ======================================================= -->
+<template id="component-library">
+<!-- FIGURE -->
+<figure class="figure-card">
+<img alt="{{IMAGE_ALT}}" src="{{IMAGE_SOURCE}}"/>
+<figcaption>{{FIGURE_CAPTION}}</figcaption>
+</figure>
+<!-- MULTIPLE FIGURES -->
+<div class="figure-grid">
+<figure class="figure-card">
+<img alt="{{IMAGE_ALT_1}}" src="{{IMAGE_SOURCE_1}}"/>
+<figcaption>{{FIGURE_CAPTION_1}}</figcaption>
+</figure>
+<figure class="figure-card">
+<img alt="{{IMAGE_ALT_2}}" src="{{IMAGE_SOURCE_2}}"/>
+<figcaption>{{FIGURE_CAPTION_2}}</figcaption>
+</figure>
+</div>
+<!-- TABLE -->
+<div class="table-wrap">
+<table>
+<caption>{{TABLE_CAPTION}}</caption>
+<thead>
+<tr><th>{{HEADER_1}}</th><th>{{HEADER_2}}</th></tr>
+</thead>
+<tbody>
+<tr>
+<td><strong class="kw">{{ROW_SUBJECT}}</strong></td>
+<td><span class="relation">{{ROW_RECALL_CUE}}</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- NOTE -->
+<div class="note-box">
+<strong>{{NOTE_TITLE}}</strong>
+<p>{{NOTE_CONTENT}}</p>
+</div>
+<!-- WARNING -->
+<div class="warning-box">
+<strong>{{WARNING_TITLE}}</strong>
+<p>{{WARNING_CONTENT}}</p>
+</div>
+<!-- MEMORY -->
+<div class="memory-box">
+<strong>{{MEMORY_TITLE}}</strong>
+<p>
+<div class="memory-box">
+<strong>1. Từ R3 trở đi: nhớ bộ 2 - 3 - 6 cố định</strong>
+<p><strong>2 = 施工計画</strong> · <strong>3 = 施工管理</strong> · <strong>6 = 建築法規</strong>.</p>
+<p>Chỉ có <strong>Q4 và Q5 hoán đổi</strong>: năm lẻ <strong>4 躯体 → 5 仕上げ</strong>; năm chẵn <strong>4 仕上げ → 5 躯体</strong>.</p>
+</div>
+<div class="memory-box">
+<strong>2. Trọng tâm học theo sách</strong>
+<ul>
+<li><strong>問題1:</strong> chuẩn bị trước phương án viết.</li>
+<li><strong>問題3:</strong> luyện network và time scale.</li>
+<li><strong>問題2・4・5・6:</strong> tổng hợp chính xác <strong>thuật ngữ + trị số + phương pháp thi công + lưu ý</strong> từ đề cũ.</li>
+</ul>
+</div>
+<div class="memory-box">
+<strong>3. Chú ý riêng cho R8</strong>
+<p><strong>R8 là năm chẵn</strong>, nên số câu thực tế tuân theo cách phân bổ của năm chẵn. Tuy nhiên, <strong>thứ tự trình bày trong giáo trình vẫn theo năm lẻ</strong> để giữ trình tự tự nhiên: <strong>躯体工事 → 仕上げ工事</strong>.</p>
+</div>
+</p>
+</div>
+<!-- FORMULA / FLOW -->
+<div class="formula-box">
+<div class="formula-line">
+<span class="flow-node">{{NODE_1}}</span>
+<span class="flow-arrow">→</span>
+<span class="flow-node">{{NODE_2}}</span>
+<span class="flow-arrow">→</span>
+<span class="flow-node">{{NODE_3}}</span>
+</div>
+</div>
+</template>
+<script>
+(() => {
+  "use strict";
+
+  const root = document.documentElement;
+  const body = document.body;
+
+  const themeToggle = document.getElementById("theme-toggle");
+  const modeToggle = document.getElementById("mode-toggle");
+  const fontDown = document.getElementById("font-down");
+  const fontReset = document.getElementById("font-reset");
+  const fontUp = document.getElementById("font-up");
+
+  const tocToggle = document.getElementById("toc-toggle");
+  const tocClose = document.getElementById("toc-close");
+  const tocOverlay = document.getElementById("toc-overlay");
+  const tocDrawer = document.getElementById("toc-drawer");
+
+  const prevButton = document.getElementById("section-prev");
+  const nextButton = document.getElementById("section-next");
+
+  const FONT_LEVELS = [80, 90, 100, 110, 120, 130, 140];
+
+  function safeGet(key, fallback = null) {
+    try {
+      const value = localStorage.getItem(key);
+      return value === null ? fallback : value;
+    } catch (e) {
+      return fallback;
+    }
+  }
+
+  function safeSet(key, value) {
+    try {
+      localStorage.setItem(key, value);
+    } catch (e) {}
+  }
+
+  /* ---------- Theme ---------- */
+
+  function applyTheme(theme) {
+    const next = theme === "light" ? "light" : "dark";
+    root.dataset.theme = next;
+
+    if (themeToggle) {
+      const dark = next === "dark";
+      themeToggle.textContent = dark ? "☀" : "☾";
+      themeToggle.title = dark ? "Chuyển sang Light" : "Chuyển sang Dark";
+      themeToggle.setAttribute("aria-pressed", String(!dark));
+    }
+
+    safeSet("study-theme", next);
+  }
+
+  const initialTheme =
+    safeGet("study-theme") ||
+    (window.matchMedia &&
+     window.matchMedia("(prefers-color-scheme: dark)").matches
+      ? "dark"
+      : "light");
+
+  applyTheme(initialTheme);
+
+  themeToggle?.addEventListener("click", () => {
+    applyTheme(root.dataset.theme === "dark" ? "light" : "dark");
+  });
+
+  /* ---------- Full / Keywords ---------- */
+
+  function applyMode(mode) {
+    const keywords = mode === "keywords";
+    body.classList.toggle("keyword-focus", keywords);
+
+    if (modeToggle) {
+      modeToggle.textContent = keywords ? "📖" : "🎯";
+      modeToggle.title = keywords ? "Chuyển sang Full" : "Chuyển sang Keywords";
+      modeToggle.setAttribute("aria-pressed", String(keywords));
+    }
+
+    safeSet("study-mode", keywords ? "keywords" : "full");
+  }
+
+  applyMode(safeGet("study-mode", "full"));
+
+  modeToggle?.addEventListener("click", () => {
+    applyMode(body.classList.contains("keyword-focus") ? "full" : "keywords");
+  });
+
+  /* ---------- Font scale ---------- */
+
+  let fontScale = Number(safeGet("study-font-scale", "100"));
+  if (!FONT_LEVELS.includes(fontScale)) {
+    fontScale = 100;
+  }
+
+  function applyFontScale(scale) {
+    fontScale = FONT_LEVELS.includes(scale) ? scale : 100;
+
+    root.style.setProperty(
+      "--base-font-size",
+      `${16 * fontScale / 100}px`
+    );
+
+    if (fontReset) {
+      fontReset.textContent = `${fontScale}%`;
+      fontReset.title =
+        fontScale === 100
+          ? "Cỡ chữ hiện tại 100%"
+          : `Cỡ chữ hiện tại ${fontScale}%, bấm để về 100%`;
+    }
+
+    if (fontDown) {
+      fontDown.disabled = fontScale === FONT_LEVELS[0];
+    }
+
+    if (fontUp) {
+      fontUp.disabled = fontScale === FONT_LEVELS[FONT_LEVELS.length - 1];
+    }
+
+    safeSet("study-font-scale", String(fontScale));
+  }
+
+  applyFontScale(fontScale);
+
+  fontDown?.addEventListener("click", () => {
+    const index = FONT_LEVELS.indexOf(fontScale);
+    if (index > 0) {
+      applyFontScale(FONT_LEVELS[index - 1]);
+    }
+  });
+
+  fontUp?.addEventListener("click", () => {
+    const index = FONT_LEVELS.indexOf(fontScale);
+    if (index >= 0 && index < FONT_LEVELS.length - 1) {
+      applyFontScale(FONT_LEVELS[index + 1]);
+    }
+  });
+
+  fontReset?.addEventListener("click", () => {
+    applyFontScale(100);
+  });
+
+  /* ---------- TOC drawer ---------- */
+
+  function setToc(open) {
+    body.classList.toggle("toc-open", open);
+    tocToggle?.setAttribute("aria-expanded", String(open));
+    tocOverlay?.setAttribute("aria-hidden", String(!open));
+
+    if (open) {
+      requestAnimationFrame(() => tocClose?.focus());
+    }
+  }
+
+  tocToggle?.addEventListener("click", () => {
+    setToc(!body.classList.contains("toc-open"));
+  });
+
+  tocClose?.addEventListener("click", () => setToc(false));
+  tocOverlay?.addEventListener("click", () => setToc(false));
+
+  tocDrawer?.querySelectorAll("a[href^='#']").forEach(link => {
+    link.addEventListener("click", () => setToc(false));
+  });
+
+  document.addEventListener("keydown", event => {
+    if (event.key === "Escape" && body.classList.contains("toc-open")) {
+      setToc(false);
+      tocToggle?.focus();
+    }
+  });
+
+  /* ---------- Back / Next section ---------- */
+
+  const studySections = Array.from(
+    document.querySelectorAll("main .study-section[id]")
+  );
+
+  function currentSectionIndex() {
+    if (!studySections.length) return -1;
+
+    const referenceY = window.scrollY + Math.min(window.innerHeight * 0.32, 220);
+    let index = 0;
+
+    for (let i = 0; i < studySections.length; i++) {
+      if (studySections[i].offsetTop <= referenceY) {
+        index = i;
+      } else {
+        break;
+      }
+    }
+    return index;
+  }
+
+  function updateNavState() {
+    if (!studySections.length) {
+      if (prevButton) prevButton.disabled = true;
+      if (nextButton) nextButton.disabled = true;
+      return;
+    }
+
+    const index = currentSectionIndex();
+    if (prevButton) prevButton.disabled = index <= 0;
+    if (nextButton) nextButton.disabled = index >= studySections.length - 1;
+  }
+
+  function moveSection(delta) {
+    const index = currentSectionIndex();
+    const targetIndex = Math.max(
+      0,
+      Math.min(studySections.length - 1, index + delta)
+    );
+
+    studySections[targetIndex]?.scrollIntoView({
+      behavior: "smooth",
+      block: "start"
+    });
+  }
+
+  prevButton?.addEventListener("click", () => moveSection(-1));
+  nextButton?.addEventListener("click", () => moveSection(1));
+
+  let ticking = false;
+  window.addEventListener("scroll", () => {
+    if (!ticking) {
+      requestAnimationFrame(() => {
+        updateNavState();
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }, { passive: true });
+
+  window.addEventListener("resize", updateNavState);
+  updateNavState();
+})();
+</script>
+</body>
+</html>
