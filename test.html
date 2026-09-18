@@ -5,6 +5,7 @@
 <meta charset="UTF-8"/>
 <meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
 <meta content="dark light" name="color-scheme"/>
+<meta name="study-template-version" content="test-2.0-reader-anchor"/>
 <title>施工計画 重要項目｜Book page 123-132｜Bản dịch tiếng Việt</title>
 
 <style>
@@ -271,88 +272,155 @@ html[data-study-mode="keywords"] .recall-source .item-label { color: var(--headi
 
 .backlink, .back-toc, .back { display: inline-block; margin-top: .8rem; font-size: .9rem; }
 
-/* Compact study controls */
-.nav-dock-left,
-.settings-dock-right {
+/* Collapsible study controls: one launcher at bottom-left. */
+.control-cluster {
   position: fixed;
-  bottom: max(14px, env(safe-area-inset-bottom));
-  z-index: 1900;
-  padding: 5px;
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  background: var(--dock-bg);
-  box-shadow: 0 8px 24px var(--shadow);
-  -webkit-backdrop-filter: blur(10px);
-  backdrop-filter: blur(10px);
-  user-select: none;
-}
-
-.nav-dock-left {
-  left: max(10px, env(safe-area-inset-left));
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.settings-dock-right {
-  right: max(10px, env(safe-area-inset-right));
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 4px;
-}
-
-.nav-dock-left button,
-.nav-dock-left a,
-.settings-dock-right button,
-.settings-dock-right a {
+  left: max(8px, env(safe-area-inset-left));
+  bottom: max(10px, env(safe-area-inset-bottom));
+  z-index: 2200;
   width: 38px;
   height: 38px;
-  min-width: 38px;
-  min-height: 38px;
-  display: flex;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.control-launcher,
+.control-panel button {
+  display: inline-flex;
   align-items: center;
   justify-content: center;
+  flex: 0 0 auto;
+  width: 32px;
+  height: 32px;
+  min-width: 32px;
+  min-height: 32px;
+  padding: 0;
   border: 1px solid var(--border);
   border-radius: 8px;
   background: var(--surface-alt);
   color: var(--text);
-  font-family: var(--font-vi);
-  font-size: .96rem;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
   font-weight: 700;
   line-height: 1;
-  text-decoration: none;
   cursor: pointer;
   touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
 }
 
-.nav-dock-left button:active,
-.nav-dock-left a:active,
-.settings-dock-right button:active,
-.settings-dock-right a:active {
-  transform: translateY(1px);
+.control-launcher {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  z-index: 2;
+  width: 38px;
+  height: 38px;
+  min-width: 38px;
+  min-height: 38px;
+  border-radius: 11px;
+  background: var(--dock-bg);
+  box-shadow: 0 6px 18px var(--shadow);
+  font-size: 20px;
+  letter-spacing: 1px;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
 }
 
-.nav-dock-left button:hover,
-.nav-dock-left a:hover,
-.settings-dock-right button:hover,
-.settings-dock-right a:hover {
+.control-panel {
+  position: absolute;
+  left: 43px;
+  bottom: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 2px;
+  width: max-content;
+  max-width: calc(100dvw - max(59px, env(safe-area-inset-left) + 59px) - max(8px, env(safe-area-inset-right)));
+  padding: 3px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  overscroll-behavior-x: contain;
+  scrollbar-width: none;
+  border: 1px solid var(--border);
+  border-radius: 11px;
+  background: var(--dock-bg);
+  box-shadow: 0 6px 18px var(--shadow);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateX(-10px) scale(.98);
+  transform-origin: left bottom;
+  transition: opacity .14s ease, transform .14s ease, visibility .14s ease;
+}
+
+.control-panel::-webkit-scrollbar { display: none; }
+
+.control-cluster.open .control-panel {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateX(0) scale(1);
+}
+
+.control-cluster.open .control-launcher {
   border-color: var(--link);
 }
 
-.settings-dock-right .font-reset {
-  font-size: .66rem;
+.control-panel button:active,
+.control-launcher:active { transform: translateY(1px); }
+
+.control-panel button:hover,
+.control-launcher:hover { border-color: var(--link); }
+
+.control-panel button:disabled {
+  opacity: .36;
+  cursor: default;
+}
+
+.control-panel .font-reset {
+  width: 38px;
+  min-width: 38px;
+  font-size: 9px;
   letter-spacing: -.03em;
 }
 
-.settings-dock-right .mode-toggle {
-  font-size: 1.02rem;
+.control-panel .mode-toggle { font-size: 14px; }
+
+.control-panel .home-icon svg {
+  width: 17px;
+  height: 17px;
+  display: block;
 }
 
+/*
+  Rotation-stable reading geometry for iPad/iPhone.
+  vmin is unchanged when portrait/landscape are swapped, therefore the
+  effective reading width and line wrapping stay much more stable.
+*/
 @media (pointer: coarse) {
-  .nav-dock-left button,
-  .settings-dock-right button {
-    -webkit-tap-highlight-color: transparent;
+  body > main,
+  body > .page-shell {
+    width: min(calc(100vmin - 16px), 900px) !important;
+  }
+
+  .study-grid,
+  .lang-grid,
+  .bilingual-note {
+    grid-template-columns: 1fr !important;
+  }
+
+  .hero {
+    padding: 1rem !important;
+  }
+
+  body > main > section:not(#toc),
+  body > .page-shell > section:not(#toc),
+  body > .page-shell > main > section,
+  .topic,
+  .aggregate-section {
+    padding: 1rem !important;
   }
 }
 
@@ -432,19 +500,10 @@ body.toc-open { overflow: hidden; }
   body > .page-shell > section:not(#toc),
   body > .page-shell > main > section,
   .topic, .aggregate-section { padding: 1rem; border-radius: 12px; }
-  .study-dock { grid-template-columns: repeat(3, 44px); }
-  .study-dock button, .study-dock a { width: 44px; height: 44px; }
-}
-
-@media (orientation: landscape) and (pointer: coarse) {
-  .study-dock {
-    left: max(20px, env(safe-area-inset-left));
-    bottom: max(20px, env(safe-area-inset-bottom));
-  }
 }
 
 @media print {
-  .nav-dock-left, .settings-dock-right { display: none !important; }
+  .control-cluster { display: none !important; }
   :root,
   html[data-theme="dark"],
   html[data-theme="light"] {
@@ -470,7 +529,7 @@ body.toc-open { overflow: hidden; }
     --shadow: transparent;
   }
   body { background: #fff; color: #111; font-size: 11pt; padding-bottom: 0; }
-  .study-dock, .toc-overlay, .toc-drawer-head { display: none !important; }
+  .control-cluster, .toc-overlay, .toc-drawer-head { display: none !important; }
   #toc {
     position: static !important;
     transform: none !important;
@@ -497,34 +556,36 @@ try {
   const root = document.documentElement;
   try {
     const savedTheme = localStorage.getItem('study-theme');
-    const systemDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-    root.dataset.theme = savedTheme || (systemDark ? 'dark' : 'light');
+    root.dataset.theme = savedTheme === 'light' ? 'light' : 'dark';
 
     const savedMode = localStorage.getItem('study-mode');
     root.dataset.studyMode = savedMode === 'keywords' ? 'keywords' : 'full';
 
     const savedScale = Number(localStorage.getItem('study-font-scale'));
-    const valid = [80, 90, 100, 110, 120, 130, 140];
-    const scale = valid.includes(savedScale) ? savedScale : 100;
+    const scale = Number.isFinite(savedScale) && savedScale >= 50 && savedScale <= 150 && savedScale % 5 === 0
+      ? savedScale : 100;
     root.style.setProperty('--base-font-size', (16 * scale / 100) + 'px');
   } catch (e) {
     root.dataset.theme = 'dark';
     root.dataset.studyMode = 'full';
+    root.style.setProperty('--base-font-size', '16px');
   }
 })();
 </script></head>
-<body><nav aria-label="Điều hướng học tập" class="nav-dock-left">
+<body><div class="control-cluster" id="control-cluster">
+<button aria-controls="control-panel" aria-expanded="false" aria-label="Mở công cụ" class="control-launcher" id="controls-toggle" title="Mở công cụ" type="button">⋯</button>
+<div aria-label="Công cụ học tập" class="control-panel" id="control-panel" role="toolbar">
 <button aria-controls="toc" aria-expanded="false" aria-label="Mục lục" id="toc-toggle" title="Mục lục" type="button">☰</button>
-<button aria-label="Mục trước" id="section-prev" title="Back" type="button">‹</button>
-<button aria-label="Mục tiếp theo" id="section-next" title="Next" type="button">›</button>
-</nav>
-<nav aria-label="Thiết lập hiển thị" class="settings-dock-right">
+<button aria-label="Mục trước" id="section-prev" title="Mục trước" type="button">‹</button>
+<button aria-label="Mục tiếp theo" id="section-next" title="Mục tiếp theo" type="button">›</button>
 <button aria-label="Đổi Dark/Light" aria-pressed="false" id="theme-toggle" title="Đổi Dark/Light" type="button">☀</button>
 <button aria-label="Đổi Full/Keywords" aria-pressed="false" class="mode-toggle" id="mode-toggle" title="Đổi Full/Keywords" type="button">🎯</button>
+<button aria-label="Giảm cỡ chữ" id="font-down" title="Giảm cỡ chữ 5%" type="button">A−</button>
 <button aria-label="Đặt lại cỡ chữ 100%" class="font-reset" id="font-reset" title="Đặt lại cỡ chữ 100%" type="button">100%</button>
-<button aria-label="Giảm cỡ chữ" id="font-down" title="Giảm cỡ chữ" type="button">A−</button>
-<button aria-label="Tăng cỡ chữ" id="font-up" title="Tăng cỡ chữ" type="button">A+</button>
-</nav><div aria-hidden="true" class="toc-overlay" id="toc-overlay"></div>
+<button aria-label="Tăng cỡ chữ" id="font-up" title="Tăng cỡ chữ 5%" type="button">A+</button>
+<button aria-label="Top Page" class="home-icon" id="home-button" title="Top Page" type="button"><svg aria-hidden="true" fill="none" viewBox="0 0 24 24"><path d="M3.5 10.5 12 3.8l8.5 6.7v9.2h-5.3v-6H8.8v6H3.5z" stroke="currentColor" stroke-linejoin="round" stroke-width="1.8"/></svg></button>
+</div>
+</div><div aria-hidden="true" class="toc-overlay" id="toc-overlay"></div>
 
 <div class="page-shell">
 <header class="hero" id="top">
@@ -1573,183 +1634,16 @@ try {
 
 <script>
 (function () {
+  'use strict';
+
   const root = document.documentElement;
   const body = document.body;
-  const FONT_LEVELS = [80, 90, 100, 110, 120, 130, 140];
-
-  /* ---------- Stable reading position ---------- */
-
-  const SCROLL_STATE_KEY =
-    "study-scroll-anchor:" + location.pathname + location.search;
-
-  let scrollAnchorNodes = [];
-  let scrollSaveTimer = 0;
-  let restoringScroll = false;
-
-  try {
-    if ("scrollRestoration" in history) {
-      history.scrollRestoration = "manual";
-    }
-  } catch (e) {}
-
-  function rebuildScrollAnchorNodes() {
-    scrollAnchorNodes = Array.from(document.querySelectorAll(
-      "main .study-section[id], " +
-      "main .subsection[id], " +
-      "main h2[id], main h3[id], main h4[id], " +
-      "main .recall-source p, main .recall-source li, " +
-      "main .recall-source tr, main figure"
-    )).filter(el => {
-      const rect = el.getBoundingClientRect();
-      return rect.width > 0 && rect.height > 0;
-    });
-
-    scrollAnchorNodes.forEach((el, i) => {
-      el.dataset.studyScrollIndex = String(i);
-    });
-  }
-
-  function captureViewportAnchor() {
-    if (!scrollAnchorNodes.length) rebuildScrollAnchorNodes();
-    if (!scrollAnchorNodes.length) return null;
-
-    const referenceY = Math.min(
-      Math.max(window.innerHeight * 0.28, 96),
-      190
-    );
-
-    let containing = null;
-    let containingHeight = Infinity;
-    let nearest = null;
-    let nearestDistance = Infinity;
-
-    for (let i = 0; i < scrollAnchorNodes.length; i++) {
-      const el = scrollAnchorNodes[i];
-      const rect = el.getBoundingClientRect();
-
-      if (rect.bottom >= referenceY && rect.top <= referenceY) {
-        if (rect.height < containingHeight) {
-          containing = { index: i, top: rect.top };
-          containingHeight = rect.height;
-        }
-        continue;
-      }
-
-      const distance =
-        rect.top > referenceY
-          ? rect.top - referenceY
-          : referenceY - rect.bottom;
-
-      if (distance < nearestDistance) {
-        nearest = { index: i, top: rect.top };
-        nearestDistance = distance;
-      }
-    }
-
-    return containing || nearest;
-  }
-
-  function restoreViewportAnchor(state) {
-    if (!state || !Number.isInteger(state.index)) return;
-    if (!scrollAnchorNodes.length) rebuildScrollAnchorNodes();
-
-    const target = scrollAnchorNodes[state.index];
-    if (!target) return;
-
-    const desiredTop = Number(state.top);
-    if (!Number.isFinite(desiredTop)) return;
-
-    const currentTop = target.getBoundingClientRect().top;
-    const delta = currentTop - desiredTop;
-
-    if (Math.abs(delta) < 0.5) return;
-
-    restoringScroll = true;
-    const previousBehavior = root.style.scrollBehavior;
-    root.style.scrollBehavior = "auto";
-    window.scrollTo(window.scrollX, window.scrollY + delta);
-
-    requestAnimationFrame(() => {
-      root.style.scrollBehavior = previousBehavior;
-      restoringScroll = false;
-    });
-  }
-
-  function preserveViewportWhile(mutator) {
-    const anchor = captureViewportAnchor();
-    mutator();
-
-    requestAnimationFrame(() => {
-      requestAnimationFrame(() => {
-        restoreViewportAnchor(anchor);
-        scheduleScrollStateSave();
-      });
-    });
-  }
-
-  function saveScrollStateNow() {
-    if (restoringScroll) return;
-
-    const anchor = captureViewportAnchor();
-    if (!anchor) return;
-
-    try {
-      sessionStorage.setItem(
-        SCROLL_STATE_KEY,
-        JSON.stringify(anchor)
-      );
-    } catch (e) {}
-  }
-
-  function scheduleScrollStateSave() {
-    clearTimeout(scrollSaveTimer);
-    scrollSaveTimer = window.setTimeout(saveScrollStateNow, 120);
-  }
-
-  function readSavedScrollState() {
-    try {
-      const raw = sessionStorage.getItem(SCROLL_STATE_KEY);
-      return raw ? JSON.parse(raw) : null;
-    } catch (e) {
-      return null;
-    }
-  }
-
-  function restoreSavedScrollState() {
-    if (location.hash) return;
-
-    const state = readSavedScrollState();
-    if (!state) return;
-
-    rebuildScrollAnchorNodes();
-
-    requestAnimationFrame(() => {
-      requestAnimationFrame(() => {
-        restoreViewportAnchor(state);
-      });
-    });
-  }
-
-  rebuildScrollAnchorNodes();
-
-  window.addEventListener("scroll", scheduleScrollStateSave, {
-    passive: true
-  });
-
-  window.addEventListener("pagehide", saveScrollStateNow);
-  window.addEventListener("beforeunload", saveScrollStateNow);
-
-  window.addEventListener("load", () => {
-    rebuildScrollAnchorNodes();
-    restoreSavedScrollState();
-
-    window.setTimeout(() => {
-      restoreSavedScrollState();
-    }, 120);
-  });
-
-
   const q = id => document.getElementById(id);
+  const FONT_LEVELS = Array.from({ length: 21 }, (_, i) => 50 + i * 5);
+
+  const controls = q('control-cluster');
+  const controlsToggle = q('controls-toggle');
+  const controlPanel = q('control-panel');
   const themeButton = q('theme-toggle');
   const modeButton = q('mode-toggle');
   const fontDown = q('font-down');
@@ -1760,10 +1654,264 @@ try {
   const overlay = q('toc-overlay');
   const prevButton = q('section-prev');
   const nextButton = q('section-next');
+  const homeButton = q('home-button');
+
+  const pageKey = location.pathname + location.search;
+  const readerStateKey = 'study-reader-position:' + pageKey;
+  const lastPageKey = 'study-last-page';
+  const explicitHomeKey = 'study-explicit-home';
+  const anchorSelector = [
+    '.page-shell h1', '.page-shell h2', '.page-shell h3', '.page-shell h4',
+    '.page-shell p', '.page-shell li', '.page-shell td', '.page-shell th',
+    '.page-shell figcaption', '.page-shell .card-title'
+  ].join(', ');
+
+  let anchorElements = [];
+  let lastStablePosition = null;
+  let scrollSaveTimer = 0;
+  let resizeRestoreTimer = 0;
+  let resizeAnchor = null;
+  let suppressScrollSaveUntil = 0;
+  let lastViewportWidth = window.visualViewport ? window.visualViewport.width : window.innerWidth;
+  let lastViewportHeight = window.visualViewport ? window.visualViewport.height : window.innerHeight;
+
+  try {
+    if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+  } catch (e) {}
+
+  function safeGet(key, fallback = null) {
+    try {
+      const value = localStorage.getItem(key);
+      return value === null ? fallback : value;
+    } catch (e) {
+      return fallback;
+    }
+  }
 
   function safeSet(key, value) {
     try { localStorage.setItem(key, value); } catch (e) {}
   }
+
+  function safeRemove(key) {
+    try { localStorage.removeItem(key); } catch (e) {}
+  }
+
+  /* ---------- Persistent page / PWA resume metadata ---------- */
+
+  function rememberCurrentPage() {
+    safeSet(lastPageKey, pageKey);
+    safeSet('study-last-active-at', String(Date.now()));
+  }
+
+  rememberCurrentPage();
+
+  /* ---------- Reader anchors ---------- */
+
+  function rebuildReaderAnchors() {
+    anchorElements = Array.from(document.querySelectorAll(anchorSelector));
+    anchorElements.forEach((el, index) => {
+      el.dataset.readerKey = 'r' + index;
+    });
+  }
+
+  function closestReaderElement(node) {
+    if (!node) return null;
+    const el = node.nodeType === Node.ELEMENT_NODE ? node : node.parentElement;
+    return el ? el.closest('[data-reader-key]') : null;
+  }
+
+  function caretAtPoint(x, y) {
+    try {
+      if (document.caretPositionFromPoint) {
+        const pos = document.caretPositionFromPoint(x, y);
+        if (!pos || !pos.offsetNode) return null;
+        return { node: pos.offsetNode, offset: pos.offset };
+      }
+      if (document.caretRangeFromPoint) {
+        const range = document.caretRangeFromPoint(x, y);
+        if (!range) return null;
+        return { node: range.startContainer, offset: range.startOffset };
+      }
+    } catch (e) {}
+    return null;
+  }
+
+  function textOffsetFromElementStart(element, node, offset) {
+    try {
+      const range = document.createRange();
+      range.setStart(element, 0);
+      range.setEnd(node, offset);
+      return range.toString().length;
+    } catch (e) {
+      return 0;
+    }
+  }
+
+  function domPositionFromTextOffset(element, targetOffset) {
+    const walker = document.createTreeWalker(element, NodeFilter.SHOW_TEXT);
+    let remaining = Math.max(0, targetOffset);
+    let node = walker.nextNode();
+    let last = null;
+
+    while (node) {
+      last = node;
+      const len = node.nodeValue ? node.nodeValue.length : 0;
+      if (remaining <= len) {
+        return { node, offset: remaining };
+      }
+      remaining -= len;
+      node = walker.nextNode();
+    }
+
+    if (last) return { node: last, offset: last.nodeValue ? last.nodeValue.length : 0 };
+    return { node: element, offset: 0 };
+  }
+
+  function characterRect(node, offset) {
+    try {
+      if (node.nodeType !== Node.TEXT_NODE) {
+        const r = node.getBoundingClientRect ? node.getBoundingClientRect() : null;
+        return r && r.height ? r : null;
+      }
+
+      const len = node.nodeValue ? node.nodeValue.length : 0;
+      if (!len) return node.parentElement ? node.parentElement.getBoundingClientRect() : null;
+
+      let start = Math.max(0, Math.min(offset, len - 1));
+      let end = Math.min(len, start + 1);
+      if (offset >= len && len > 0) {
+        start = len - 1;
+        end = len;
+      }
+
+      const range = document.createRange();
+      range.setStart(node, start);
+      range.setEnd(node, end);
+      const rects = range.getClientRects();
+      return rects.length ? rects[0] : range.getBoundingClientRect();
+    } catch (e) {
+      return null;
+    }
+  }
+
+  function captureReadingPosition() {
+    if (!anchorElements.length) rebuildReaderAnchors();
+    if (!anchorElements.length) return null;
+
+    const vv = window.visualViewport;
+    const viewportWidth = vv ? vv.width : window.innerWidth;
+    const topProbe = 6;
+    const ys = [topProbe, 12, 18, 26, 36, 50];
+    const xs = [];
+
+    for (let x = 12; x <= Math.min(viewportWidth - 12, 220); x += 16) xs.push(x);
+    xs.push(viewportWidth * .25, viewportWidth * .5, viewportWidth * .75);
+
+    for (const y of ys) {
+      for (const x of xs) {
+        if (x <= 0 || x >= viewportWidth) continue;
+        const caret = caretAtPoint(x, y);
+        if (!caret) continue;
+        const element = closestReaderElement(caret.node);
+        if (!element || !document.querySelector('.page-shell')?.contains(element)) continue;
+
+        const offset = textOffsetFromElementStart(element, caret.node, caret.offset);
+        const rect = characterRect(caret.node, caret.offset);
+        const key = element.dataset.readerKey;
+        if (key && rect && Number.isFinite(rect.top)) {
+          return { key, offset, top: rect.top };
+        }
+      }
+    }
+
+    /* Fallback: nearest textual block to the top edge. */
+    let best = null;
+    let bestDistance = Infinity;
+    for (const element of anchorElements) {
+      const rect = element.getBoundingClientRect();
+      if (rect.bottom < 0 || rect.top > (vv ? vv.height : window.innerHeight)) continue;
+      const distance = Math.abs(rect.top);
+      if (distance < bestDistance) {
+        bestDistance = distance;
+        best = { key: element.dataset.readerKey, offset: 0, top: rect.top };
+      }
+    }
+    return best;
+  }
+
+  function restoreReadingPosition(state) {
+    if (!state || !state.key) return false;
+    if (!anchorElements.length) rebuildReaderAnchors();
+
+    const element = document.querySelector('[data-reader-key="' + CSS.escape(state.key) + '"]');
+    if (!element) return false;
+
+    const pos = domPositionFromTextOffset(element, Number(state.offset) || 0);
+    const rect = characterRect(pos.node, pos.offset);
+    if (!rect || !Number.isFinite(rect.top)) return false;
+
+    const desiredTop = Number.isFinite(Number(state.top)) ? Number(state.top) : 6;
+    const delta = rect.top - desiredTop;
+    if (Math.abs(delta) < .5) return true;
+
+    suppressScrollSaveUntil = Date.now() + 700;
+    const oldBehavior = root.style.scrollBehavior;
+    root.style.scrollBehavior = 'auto';
+    window.scrollBy(0, delta);
+    root.style.scrollBehavior = oldBehavior;
+    return true;
+  }
+
+  function saveReaderState(state) {
+    if (!state) return;
+    lastStablePosition = state;
+    safeSet(readerStateKey, JSON.stringify(state));
+  }
+
+  function readReaderState() {
+    try {
+      const raw = safeGet(readerStateKey);
+      return raw ? JSON.parse(raw) : null;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  function settleRestore(state, delays = [0, 60, 180, 420]) {
+    if (!state) return;
+    suppressScrollSaveUntil = Date.now() + Math.max(...delays) + 350;
+    delays.forEach(delay => {
+      window.setTimeout(() => {
+        requestAnimationFrame(() => restoreReadingPosition(state));
+      }, delay);
+    });
+    window.setTimeout(() => {
+      saveReaderState(state);
+    }, Math.max(...delays) + 120);
+  }
+
+  function preserveReadingPosition(mutator) {
+    const state = captureReadingPosition() || lastStablePosition || readReaderState();
+    if (state) saveReaderState(state);
+    mutator();
+    rebuildReaderAnchors();
+    settleRestore(state);
+  }
+
+  function scheduleReaderSave() {
+    if (Date.now() < suppressScrollSaveUntil) return;
+    clearTimeout(scrollSaveTimer);
+    scrollSaveTimer = window.setTimeout(() => {
+      if (Date.now() < suppressScrollSaveUntil) return;
+      const state = captureReadingPosition();
+      if (state) saveReaderState(state);
+    }, 130);
+  }
+
+  rebuildReaderAnchors();
+  lastStablePosition = readReaderState();
+
+  /* ---------- Theme ---------- */
 
   function applyTheme(theme) {
     theme = theme === 'light' ? 'light' : 'dark';
@@ -1776,6 +1924,8 @@ try {
       themeButton.setAttribute('aria-pressed', theme === 'light' ? 'true' : 'false');
     }
   }
+
+  /* ---------- Full / Keywords ---------- */
 
   function applyMode(mode) {
     mode = mode === 'keywords' ? 'keywords' : 'full';
@@ -1790,17 +1940,18 @@ try {
     }
   }
 
+  /* ---------- Font 50-150%, step 5% ---------- */
+
   function currentScale() {
-    try {
-      const saved = Number(localStorage.getItem('study-font-scale'));
-      return FONT_LEVELS.includes(saved) ? saved : 100;
-    } catch (e) { return 100; }
+    const saved = Number(safeGet('study-font-scale', '100'));
+    return FONT_LEVELS.includes(saved) ? saved : 100;
   }
 
   function applyFontScale(scale) {
     if (!FONT_LEVELS.includes(scale)) scale = 100;
     root.style.setProperty('--base-font-size', (16 * scale / 100) + 'px');
     safeSet('study-font-scale', String(scale));
+
     if (fontReset) {
       fontReset.textContent = scale + '%';
       fontReset.title = 'Cỡ chữ hiện tại ' + scale + '%. Chạm để về 100%';
@@ -1810,40 +1961,72 @@ try {
     if (fontUp) fontUp.disabled = scale === FONT_LEVELS[FONT_LEVELS.length - 1];
   }
 
+  /* ---------- Collapsible controls ---------- */
+
+  function setControlsOpen(open) {
+    if (!controls) return;
+    controls.classList.toggle('open', open);
+    controlsToggle?.setAttribute('aria-expanded', String(open));
+    controlsToggle?.setAttribute('aria-label', open ? 'Đóng công cụ' : 'Mở công cụ');
+    controlsToggle?.setAttribute('title', open ? 'Đóng công cụ' : 'Mở công cụ');
+  }
+
+  controlsToggle?.addEventListener('click', event => {
+    event.stopPropagation();
+    setControlsOpen(!controls.classList.contains('open'));
+  });
+
+  controlPanel?.addEventListener('click', event => event.stopPropagation());
+  document.addEventListener('pointerdown', event => {
+    if (controls?.classList.contains('open') && !controls.contains(event.target)) setControlsOpen(false);
+  });
+
+  /* ---------- TOC ---------- */
+
   function openToc() {
     body.classList.add('toc-open');
-    if (tocButton) tocButton.setAttribute('aria-expanded', 'true');
+    tocButton?.setAttribute('aria-expanded', 'true');
+    setControlsOpen(false);
   }
+
   function closeToc() {
     body.classList.remove('toc-open');
-    if (tocButton) tocButton.setAttribute('aria-expanded', 'false');
+    tocButton?.setAttribute('aria-expanded', 'false');
   }
 
-  applyTheme(root.dataset.theme || 'dark');
-  applyMode(root.dataset.studyMode || 'full');
-  applyFontScale(currentScale());
+  tocButton?.addEventListener('click', openToc);
+  tocClose?.addEventListener('click', closeToc);
+  overlay?.addEventListener('click', closeToc);
 
-  if (themeButton) themeButton.addEventListener('click', () => applyTheme(root.dataset.theme === 'dark' ? 'light' : 'dark'));
-  if (modeButton) modeButton.addEventListener('click', () => applyMode(root.dataset.studyMode === 'keywords' ? 'full' : 'keywords'));
-  if (fontDown) fontDown.addEventListener('click', () => {
-    const i = FONT_LEVELS.indexOf(currentScale());
-    if (i > 0) preserveViewportWhile(() => applyFontScale(FONT_LEVELS[i - 1]));
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape') {
+      closeToc();
+      setControlsOpen(false);
+    }
   });
-  if (fontUp) fontUp.addEventListener('click', () => {
-    const i = FONT_LEVELS.indexOf(currentScale());
-    if (i >= 0 && i < FONT_LEVELS.length - 1) preserveViewportWhile(() => applyFontScale(FONT_LEVELS[i + 1]));
-  });
-  if (fontReset) fontReset.addEventListener('click', () => preserveViewportWhile(() => applyFontScale(100)));
-
-  if (tocButton) tocButton.addEventListener('click', openToc);
-  if (tocClose) tocClose.addEventListener('click', closeToc);
-  if (overlay) overlay.addEventListener('click', closeToc);
-  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeToc(); });
 
   document.querySelectorAll('a[href="#toc"]').forEach(a => {
-    a.addEventListener('click', e => { e.preventDefault(); openToc(); });
+    a.addEventListener('click', event => {
+      event.preventDefault();
+      openToc();
+    });
   });
-  document.querySelectorAll('#toc a[href^="#"]').forEach(a => a.addEventListener('click', () => setTimeout(closeToc, 0)));
+
+  /* TOC navigation does not add hash-history entries. */
+  document.querySelectorAll('#toc a[href^="#"]').forEach(a => {
+    a.addEventListener('click', event => {
+      const href = a.getAttribute('href');
+      if (!href || href === '#toc') return;
+      const target = document.getElementById(decodeURIComponent(href.slice(1)));
+      if (!target) return;
+      event.preventDefault();
+      closeToc();
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      window.setTimeout(scheduleReaderSave, 450);
+    });
+  });
+
+  /* ---------- Previous / next lesson item ---------- */
 
   const tocTargets = Array.from(document.querySelectorAll('#toc a[href^="#"]'))
     .map(a => document.getElementById(decodeURIComponent(a.getAttribute('href').slice(1))))
@@ -1851,19 +2034,140 @@ try {
 
   function currentSectionIndex() {
     let idx = -1;
-    const threshold = 130;
+    const threshold = 24;
     tocTargets.forEach((el, i) => {
       if (el.getBoundingClientRect().top <= threshold) idx = i;
     });
     return idx;
   }
+
+  function updateSectionButtons() {
+    const i = currentSectionIndex();
+    if (prevButton) prevButton.disabled = !tocTargets.length || i <= 0;
+    if (nextButton) nextButton.disabled = !tocTargets.length || i >= tocTargets.length - 1;
+  }
+
   function goToIndex(i) {
     if (!tocTargets.length) return;
     i = Math.max(0, Math.min(tocTargets.length - 1, i));
     tocTargets[i].scrollIntoView({ behavior: 'smooth', block: 'start' });
+    window.setTimeout(() => {
+      const state = captureReadingPosition();
+      if (state) saveReaderState(state);
+      updateSectionButtons();
+    }, 450);
   }
-  if (prevButton) prevButton.addEventListener('click', () => goToIndex(Math.max(0, currentSectionIndex() - 1)));
-  if (nextButton) nextButton.addEventListener('click', () => goToIndex(Math.min(tocTargets.length - 1, currentSectionIndex() + 1)));
+
+  prevButton?.addEventListener('click', () => goToIndex(Math.max(0, currentSectionIndex() - 1)));
+  nextButton?.addEventListener('click', () => goToIndex(Math.min(tocTargets.length - 1, currentSectionIndex() + 1)));
+
+  /* ---------- Home ---------- */
+
+  homeButton?.addEventListener('click', () => {
+    const state = captureReadingPosition();
+    if (state) saveReaderState(state);
+    safeSet(explicitHomeKey, '1');
+    safeSet('study-home-click-at', String(Date.now()));
+    window.location.href = new URL('index.html', window.location.href).href;
+  });
+
+  /* ---------- Initialize state ---------- */
+
+  applyTheme(root.dataset.theme === 'light' ? 'light' : 'dark');
+  applyMode(root.dataset.studyMode || 'full');
+  applyFontScale(currentScale());
+
+  themeButton?.addEventListener('click', () => applyTheme(root.dataset.theme === 'dark' ? 'light' : 'dark'));
+  modeButton?.addEventListener('click', () => applyMode(root.dataset.studyMode === 'keywords' ? 'full' : 'keywords'));
+
+  fontDown?.addEventListener('click', () => {
+    const i = FONT_LEVELS.indexOf(currentScale());
+    if (i > 0) preserveReadingPosition(() => applyFontScale(FONT_LEVELS[i - 1]));
+  });
+
+  fontUp?.addEventListener('click', () => {
+    const i = FONT_LEVELS.indexOf(currentScale());
+    if (i >= 0 && i < FONT_LEVELS.length - 1) preserveReadingPosition(() => applyFontScale(FONT_LEVELS[i + 1]));
+  });
+
+  fontReset?.addEventListener('click', () => preserveReadingPosition(() => applyFontScale(100)));
+
+  /* ---------- Scroll / rotation / resize persistence ---------- */
+
+  window.addEventListener('scroll', () => {
+    scheduleReaderSave();
+    updateSectionButtons();
+  }, { passive: true });
+
+  function handleViewportResize() {
+    const vv = window.visualViewport;
+    const w = vv ? vv.width : window.innerWidth;
+    const h = vv ? vv.height : window.innerHeight;
+    if (Math.abs(w - lastViewportWidth) < 1 && Math.abs(h - lastViewportHeight) < 1) return;
+
+    if (!resizeAnchor) {
+      resizeAnchor = lastStablePosition || readReaderState() || captureReadingPosition();
+    }
+
+    lastViewportWidth = w;
+    lastViewportHeight = h;
+    if (resizeAnchor) settleRestore(resizeAnchor, [0, 50, 140, 300]);
+
+    clearTimeout(resizeRestoreTimer);
+    resizeRestoreTimer = window.setTimeout(() => {
+      if (resizeAnchor) settleRestore(resizeAnchor, [0, 80, 220]);
+      window.setTimeout(() => {
+        lastStablePosition = resizeAnchor || captureReadingPosition();
+        if (lastStablePosition) saveReaderState(lastStablePosition);
+        resizeAnchor = null;
+        updateSectionButtons();
+      }, 320);
+    }, 260);
+  }
+
+  window.addEventListener('resize', handleViewportResize, { passive: true });
+  window.addEventListener('orientationchange', () => {
+    resizeAnchor = lastStablePosition || readReaderState() || captureReadingPosition();
+    handleViewportResize();
+  }, { passive: true });
+  window.visualViewport?.addEventListener('resize', handleViewportResize, { passive: true });
+
+  function saveLifecycleState() {
+    const state = captureReadingPosition() || lastStablePosition;
+    if (state) saveReaderState(state);
+    rememberCurrentPage();
+  }
+
+  document.addEventListener('visibilitychange', () => {
+    if (document.visibilityState === 'hidden') saveLifecycleState();
+    else {
+      rememberCurrentPage();
+      const state = readReaderState();
+      if (state) settleRestore(state, [0, 80, 220]);
+    }
+  });
+
+  window.addEventListener('pagehide', saveLifecycleState);
+  window.addEventListener('beforeunload', saveLifecycleState);
+
+  window.addEventListener('pageshow', () => {
+    rememberCurrentPage();
+    rebuildReaderAnchors();
+    const state = readReaderState();
+    if (!location.hash && state) settleRestore(state, [0, 80, 220, 500]);
+    window.setTimeout(updateSectionButtons, 80);
+  });
+
+  window.addEventListener('load', () => {
+    rebuildReaderAnchors();
+    const state = readReaderState();
+    if (!location.hash && state) settleRestore(state, [0, 80, 220, 500]);
+    else {
+      const current = captureReadingPosition();
+      if (current) saveReaderState(current);
+    }
+    updateSectionButtons();
+  });
 })();
 </script></body>
 </html>
