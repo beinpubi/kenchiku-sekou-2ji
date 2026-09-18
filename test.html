@@ -1716,8 +1716,27 @@ try {
   let resizeRestoreTimer = 0;
   let resizeAnchor = null;
   let suppressScrollSaveUntil = 0;
-  let lastViewportWidth = window.visualViewport ? window.visualViewport.width : window.innerWidth;
-  let lastViewportHeight = window.visualViewport ? window.visualViewport.height : window.innerHeight;
+  function layoutViewportSize() {
+    const de = document.documentElement;
+    return {
+      width: de.clientWidth || window.innerWidth,
+      height: de.clientHeight || window.innerHeight
+    };
+  }
+
+  function visualViewportScale() {
+    const vv = window.visualViewport;
+    return vv && Number.isFinite(vv.scale) ? vv.scale : 1;
+  }
+
+  function isPinchZoomActive() {
+    return Math.abs(visualViewportScale() - 1) > 0.015;
+  }
+
+  const initialLayoutViewport = layoutViewportSize();
+  let lastViewportWidth = initialLayoutViewport.width;
+  let lastViewportHeight = initialLayoutViewport.height;
+  let pinchZoomSession = false;
 
   try {
     if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
@@ -1749,12 +1768,21 @@ try {
 
   rememberCurrentPage();
 
-  /* ---------- Actual visual viewport geometry ---------- */
+  /* ---------- Layout viewport geometry ---------- */
 
+  /*
+    Pinch zoom changes visualViewport.width / height / scale.
+    It must NOT change the document layout width.
+
+    Therefore --app-viewport-width is derived only from the layout viewport
+    (documentElement.clientWidth / innerWidth), never from visualViewport.width.
+  */
   function syncViewportGeometry() {
-    const vv = window.visualViewport;
-    const width = vv && Number.isFinite(vv.width) ? vv.width : window.innerWidth;
-    root.style.setProperty('--app-viewport-width', `${Math.round(width * 100) / 100}px`);
+    const { width } = layoutViewportSize();
+    root.style.setProperty(
+      '--app-viewport-width',
+      `${Math.round(width * 100) / 100}px`
+    );
   }
 
   syncViewportGeometry();
@@ -2153,44 +2181,136 @@ try {
     updateSectionButtons();
   }, { passive: true });
 
-  function handleViewportResize() {
-    syncViewportGeometry();
-    const vv = window.visualViewport;
-    const w = vv ? vv.width : window.innerWidth;
-    const h = vv ? vv.height : window.innerHeight;
-    if (Math.abs(w - lastViewportWidth) < 1 && Math.abs(h - lastViewportHeight) < 1) return;
-
-    if (!resizeAnchor) {
-      resizeAnchor = lastStablePosition || readReaderState() || captureReadingPosition();
+  function handleLayoutViewportChange() {
+    /*
+      A native two-finger pinch changes VisualViewport but normally does not
+      change the layout viewport. Ignore it completely so the page does not
+      recalculate width or fight the browser's native zoom.
+    */
+    if (isPinchZoomActive()) {
+      pinchZoomSession = true;
+      return;
     }
 
+    const { width: w, height: h } = layoutViewportSize();
+
+    /*
+      When pinch zoom returns to scale 1, VisualViewport may emit another
+      resize. If the layout viewport itself did not change, this was only zoom,
+      so do nothing.
+    */
+    const layoutChanged =
+      Math.abs(w - lastViewportWidth) >= 1 ||
+      Math.abs(h - lastViewportHeight) >= 1;
+
+    if (!layoutChanged) {
+      pinchZoomSession = false;
+      return;
+    }
+
+    pinchZoomSession = false;
+
+    if (!resizeAnchor) {
+      resizeAnchor =
+        lastStablePosition ||
+        readReaderState() ||
+        captureReadingPosition();
+    }
+
+    /*
+      Only a real layout change, such as portrait <-> landscape, updates
+      --app-viewport-width.
+    */
+    syncViewportGeometry();
     lastViewportWidth = w;
     lastViewportHeight = h;
-    if (resizeAnchor) settleRestore(resizeAnchor, [0, 50, 140, 300]);
+
+    if (resizeAnchor) {
+      settleRestore(resizeAnchor, [0, 50, 140, 300]);
+    }
 
     clearTimeout(resizeRestoreTimer);
     resizeRestoreTimer = window.setTimeout(() => {
-      if (resizeAnchor) settleRestore(resizeAnchor, [0, 80, 220]);
+      if (resizeAnchor) {
+        settleRestore(resizeAnchor, [0, 80, 220]);
+      }
+
       window.setTimeout(() => {
-        lastStablePosition = resizeAnchor || captureReadingPosition();
-        if (lastStablePosition) saveReaderState(lastStablePosition);
+        lastStablePosition =
+          resizeAnchor ||
+          captureReadingPosition();
+
+        if (lastStablePosition) {
+          saveReaderState(lastStablePosition);
+        }
+
         resizeAnchor = null;
         updateSectionButtons();
       }, 320);
     }, 260);
   }
 
-  window.addEventListener('resize', handleViewportResize, { passive: true });
+  function handleVisualViewportResize() {
+    /*
+      visualViewport resize is the main signal used by Safari/WebKit while
+      pinch-zooming. At scale != 1 this is zoom, not a responsive-layout event.
+    */
+    if (isPinchZoomActive()) {
+      pinchZoomSession = true;
+      return;
+    }
+
+    handleLayoutViewportChange();
+  }
+
+  window.addEventListener(
+    'resize',
+    handleLayoutViewportChange,
+    { passive: true }
+  );
+
   window.addEventListener('orientationchange', () => {
-    resizeAnchor = lastStablePosition || readReaderState() || captureReadingPosition();
-    syncViewportGeometry();
-    handleViewportResize();
+    /*
+      Rotation is a genuine layout change. Use the stored logical reading
+      position, then wait for iOS to finish updating its layout viewport.
+    */
+    resizeAnchor =
+      lastStablePosition ||
+      readReaderState() ||
+      captureReadingPosition();
+
+    [40, 120, 280].forEach(delay => {
+      window.setTimeout(() => {
+        if (isPinchZoomActive()) return;
+
+        const size = layoutViewportSize();
+        syncViewportGeometry();
+
+        if (
+          Math.abs(size.width - lastViewportWidth) >= 1 ||
+          Math.abs(size.height - lastViewportHeight) >= 1
+        ) {
+          lastViewportWidth = size.width;
+          lastViewportHeight = size.height;
+        }
+
+        if (resizeAnchor) {
+          settleRestore(resizeAnchor, [0, 70, 180]);
+        }
+      }, delay);
+    });
+
     window.setTimeout(() => {
-      syncViewportGeometry();
-      if (resizeAnchor) settleRestore(resizeAnchor, [0, 60, 160, 340]);
-    }, 120);
+      resizeAnchor = null;
+      updateSectionButtons();
+    }, 620);
   }, { passive: true });
-  window.visualViewport?.addEventListener('resize', handleViewportResize, { passive: true });
+
+  window.visualViewport?.addEventListener(
+    'resize',
+    handleVisualViewportResize,
+    { passive: true }
+  );
 
   function saveLifecycleState() {
     const state = captureReadingPosition() || lastStablePosition;
