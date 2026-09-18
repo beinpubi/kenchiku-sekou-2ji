@@ -5,11 +5,12 @@
 <meta charset="UTF-8"/>
 <meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
 <meta content="dark light" name="color-scheme"/>
-<meta name="study-template-version" content="test-2.0-reader-anchor"/>
+<meta name="study-template-version" content="test-2.1-responsive-landscape"/>
 <title>施工計画 重要項目｜Book page 123-132｜Bản dịch tiếng Việt</title>
 
 <style>
 :root {
+  --app-viewport-width: 100vw;
   --font-vi: Arial, "Helvetica Neue", Helvetica, sans-serif;
   --font-ja: "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic UI", "Yu Gothic", Meiryo, sans-serif;
   --base-font-size: 16px;
@@ -395,14 +396,17 @@ html[data-study-mode="keywords"] .recall-source .item-label { color: var(--headi
 }
 
 /*
-  Rotation-stable reading geometry for iPad/iPhone.
-  vmin is unchanged when portrait/landscape are swapped, therefore the
-  effective reading width and line wrapping stay much more stable.
+  Responsive reading geometry for iPad/iPhone.
+  The page follows the actual Visual Viewport width. When rotating to
+  landscape it expands across the wider screen instead of staying at
+  portrait width. Reader-anchor JS below restores the same logical text
+  position after the reflow.
 */
 @media (pointer: coarse) {
   body > main,
   body > .page-shell {
-    width: min(calc(100vmin - 16px), 900px) !important;
+    width: min(calc(var(--app-viewport-width, 100vw) - 16px), 1320px) !important;
+    max-width: 1320px !important;
   }
 
   .study-grid,
@@ -421,6 +425,13 @@ html[data-study-mode="keywords"] .recall-source .item-label { color: var(--headi
   .topic,
   .aggregate-section {
     padding: 1rem !important;
+  }
+}
+
+@media (pointer: coarse) and (orientation: landscape) {
+  body > main,
+  body > .page-shell {
+    width: min(calc(var(--app-viewport-width, 100dvw) - 20px), 1320px) !important;
   }
 }
 
@@ -1705,6 +1716,16 @@ try {
 
   rememberCurrentPage();
 
+  /* ---------- Actual visual viewport geometry ---------- */
+
+  function syncViewportGeometry() {
+    const vv = window.visualViewport;
+    const width = vv && Number.isFinite(vv.width) ? vv.width : window.innerWidth;
+    root.style.setProperty('--app-viewport-width', `${Math.round(width * 100) / 100}px`);
+  }
+
+  syncViewportGeometry();
+
   /* ---------- Reader anchors ---------- */
 
   function rebuildReaderAnchors() {
@@ -2100,6 +2121,7 @@ try {
   }, { passive: true });
 
   function handleViewportResize() {
+    syncViewportGeometry();
     const vv = window.visualViewport;
     const w = vv ? vv.width : window.innerWidth;
     const h = vv ? vv.height : window.innerHeight;
@@ -2128,7 +2150,12 @@ try {
   window.addEventListener('resize', handleViewportResize, { passive: true });
   window.addEventListener('orientationchange', () => {
     resizeAnchor = lastStablePosition || readReaderState() || captureReadingPosition();
+    syncViewportGeometry();
     handleViewportResize();
+    window.setTimeout(() => {
+      syncViewportGeometry();
+      if (resizeAnchor) settleRestore(resizeAnchor, [0, 60, 160, 340]);
+    }, 120);
   }, { passive: true });
   window.visualViewport?.addEventListener('resize', handleViewportResize, { passive: true });
 
