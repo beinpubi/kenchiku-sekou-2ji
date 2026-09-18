@@ -1,14 +1,16 @@
 <!DOCTYPE html>
+<!DOCTYPE html>
 
 <html data-study-mode="full" data-theme="dark" lang="vi">
 <head>
-<meta charset="UTF-8"/>
+<meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
 <meta content="dark light" name="color-scheme"/>
-<title>最新問題一括要約 BOOK015-024 - Bản Việt ngữ</title>
-
+<meta content="test-2.1-responsive-landscape" name="study-template-version"/>
+<title>1級建築施工管理技術検定 第二次検定 最新問題の一括要約リスト</title>
 <style>
 :root {
+  --app-viewport-width: 100vw;
   --font-vi: Arial, "Helvetica Neue", Helvetica, sans-serif;
   --font-ja: "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic UI", "Yu Gothic", Meiryo, sans-serif;
   --base-font-size: 16px;
@@ -78,7 +80,7 @@ html {
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
 }
-body {
+body { overflow-anchor: none;
   margin: 0;
   background: var(--bg);
   color: var(--text);
@@ -271,88 +273,169 @@ html[data-study-mode="keywords"] .recall-source .item-label { color: var(--headi
 
 .backlink, .back-toc, .back { display: inline-block; margin-top: .8rem; font-size: .9rem; }
 
-/* Compact study controls */
-.nav-dock-left,
-.settings-dock-right {
+/* Collapsible study controls: one launcher at bottom-left. */
+.control-cluster {
   position: fixed;
-  bottom: max(14px, env(safe-area-inset-bottom));
-  z-index: 1900;
-  padding: 5px;
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  background: var(--dock-bg);
-  box-shadow: 0 8px 24px var(--shadow);
-  -webkit-backdrop-filter: blur(10px);
-  backdrop-filter: blur(10px);
-  user-select: none;
-}
-
-.nav-dock-left {
-  left: max(10px, env(safe-area-inset-left));
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.settings-dock-right {
-  right: max(10px, env(safe-area-inset-right));
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 4px;
-}
-
-.nav-dock-left button,
-.nav-dock-left a,
-.settings-dock-right button,
-.settings-dock-right a {
+  left: max(8px, env(safe-area-inset-left));
+  bottom: max(10px, env(safe-area-inset-bottom));
+  z-index: 2200;
   width: 38px;
   height: 38px;
-  min-width: 38px;
-  min-height: 38px;
-  display: flex;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.control-launcher,
+.control-panel button {
+  display: inline-flex;
   align-items: center;
   justify-content: center;
+  flex: 0 0 auto;
+  width: 32px;
+  height: 32px;
+  min-width: 32px;
+  min-height: 32px;
+  padding: 0;
   border: 1px solid var(--border);
   border-radius: 8px;
   background: var(--surface-alt);
   color: var(--text);
-  font-family: var(--font-vi);
-  font-size: .96rem;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
   font-weight: 700;
   line-height: 1;
-  text-decoration: none;
   cursor: pointer;
   touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
 }
 
-.nav-dock-left button:active,
-.nav-dock-left a:active,
-.settings-dock-right button:active,
-.settings-dock-right a:active {
-  transform: translateY(1px);
+.control-launcher {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  z-index: 2;
+  width: 38px;
+  height: 38px;
+  min-width: 38px;
+  min-height: 38px;
+  border-radius: 11px;
+  background: var(--dock-bg);
+  box-shadow: 0 6px 18px var(--shadow);
+  font-size: 20px;
+  letter-spacing: 1px;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
 }
 
-.nav-dock-left button:hover,
-.nav-dock-left a:hover,
-.settings-dock-right button:hover,
-.settings-dock-right a:hover {
+.control-panel {
+  position: absolute;
+  left: 43px;
+  bottom: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 2px;
+  width: max-content;
+  max-width: calc(100dvw - max(59px, env(safe-area-inset-left) + 59px) - max(8px, env(safe-area-inset-right)));
+  padding: 3px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  overscroll-behavior-x: contain;
+  scrollbar-width: none;
+  border: 1px solid var(--border);
+  border-radius: 11px;
+  background: var(--dock-bg);
+  box-shadow: 0 6px 18px var(--shadow);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateX(-10px) scale(.98);
+  transform-origin: left bottom;
+  transition: opacity .14s ease, transform .14s ease, visibility .14s ease;
+}
+
+.control-panel::-webkit-scrollbar { display: none; }
+
+.control-cluster.open .control-panel {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateX(0) scale(1);
+}
+
+.control-cluster.open .control-launcher {
   border-color: var(--link);
 }
 
-.settings-dock-right .font-reset {
-  font-size: .66rem;
+.control-panel button:active,
+.control-launcher:active { transform: translateY(1px); }
+
+.control-panel button:hover,
+.control-launcher:hover { border-color: var(--link); }
+
+.control-panel button:disabled {
+  opacity: .36;
+  cursor: default;
+}
+
+.control-panel .font-reset {
+  width: 38px;
+  min-width: 38px;
+  font-size: 9px;
   letter-spacing: -.03em;
 }
 
-.settings-dock-right .mode-toggle {
-  font-size: 1.02rem;
+.control-panel .mode-toggle { font-size: 14px; }
+
+.control-panel .home-icon svg {
+  width: 17px;
+  height: 17px;
+  display: block;
 }
 
+/*
+  Responsive reading geometry for iPad/iPhone.
+  The page follows the actual Visual Viewport width. When rotating to
+  landscape it expands across the wider screen instead of staying at
+  portrait width. Reader-anchor JS below restores the same logical text
+  position after the reflow.
+*/
 @media (pointer: coarse) {
-  .nav-dock-left button,
-  .settings-dock-right button {
-    -webkit-tap-highlight-color: transparent;
+  body > main,
+  body > .page-shell {
+    width: min(calc(var(--app-viewport-width, 100vw) - 16px), 1320px) !important;
+    max-width: 1320px !important;
+  }
+
+
+  .hero {
+    padding: 1rem !important;
+  }
+
+  body > main > section:not(#toc),
+  body > .page-shell > section:not(#toc),
+  body > .page-shell > main > section,
+  .topic,
+  .aggregate-section {
+    padding: 1rem !important;
+  }
+}
+
+
+@media (pointer: coarse) and (orientation: portrait) {
+  .study-grid,
+  .lang-grid,
+  .bilingual-note {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+@media (pointer: coarse) and (orientation: landscape) {
+  body > main,
+  body > .page-shell {
+    width: min(calc(var(--app-viewport-width, 100dvw) - 20px), 1320px) !important;
   }
 }
 
@@ -432,19 +515,39 @@ body.toc-open { overflow: hidden; }
   body > .page-shell > section:not(#toc),
   body > .page-shell > main > section,
   .topic, .aggregate-section { padding: 1rem; border-radius: 12px; }
-  .study-dock { grid-template-columns: repeat(3, 44px); }
-  .study-dock button, .study-dock a { width: 44px; height: 44px; }
 }
 
-@media (orientation: landscape) and (pointer: coarse) {
-  .study-dock {
-    left: max(20px, env(safe-area-inset-left));
-    bottom: max(20px, env(safe-area-inset-bottom));
+
+/*
+  iPad/tablet landscape:
+  Japanese and Vietnamese return to two side-by-side columns.
+  The min-height condition avoids forcing ordinary phone landscape into
+  two columns that would be too narrow.
+*/
+@media (pointer: coarse) and (orientation: landscape) and (min-width: 700px) and (min-height: 600px) {
+  body > main,
+  body > .page-shell {
+    width: min(calc(var(--app-viewport-width, 100dvw) - 20px), 1320px) !important;
+    max-width: 1320px !important;
+  }
+
+  .study-grid,
+  .lang-grid,
+  .bilingual-note {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important;
+    gap: clamp(.75rem, 1.4vw, 1rem) !important;
+    align-items: start;
+  }
+
+  .study-card,
+  .lang-card,
+  .note-pane {
+    min-width: 0;
   }
 }
 
 @media print {
-  .nav-dock-left, .settings-dock-right { display: none !important; }
+  .control-cluster { display: none !important; }
   :root,
   html[data-theme="dark"],
   html[data-theme="light"] {
@@ -470,7 +573,7 @@ body.toc-open { overflow: hidden; }
     --shadow: transparent;
   }
   body { background: #fff; color: #111; font-size: 11pt; padding-bottom: 0; }
-  .study-dock, .toc-overlay, .toc-drawer-head { display: none !important; }
+  .control-cluster, .toc-overlay, .toc-drawer-head { display: none !important; }
   #toc {
     position: static !important;
     transform: none !important;
@@ -488,95 +591,76 @@ body.toc-open { overflow: hidden; }
   .backlink, .back-toc, .back { display: none; }
 }
 </style><script>
+try {
+  if ("scrollRestoration" in history) {
+    history.scrollRestoration = "manual";
+  }
+} catch (e) {}
 (function () {
   const root = document.documentElement;
   try {
     const savedTheme = localStorage.getItem('study-theme');
-    const systemDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-    root.dataset.theme = savedTheme || (systemDark ? 'dark' : 'light');
+    root.dataset.theme = savedTheme === 'light' ? 'light' : 'dark';
 
     const savedMode = localStorage.getItem('study-mode');
     root.dataset.studyMode = savedMode === 'keywords' ? 'keywords' : 'full';
 
     const savedScale = Number(localStorage.getItem('study-font-scale'));
-    const valid = [80, 90, 100, 110, 120, 130, 140];
-    const scale = valid.includes(savedScale) ? savedScale : 100;
+    const scale = Number.isFinite(savedScale) && savedScale >= 50 && savedScale <= 150 && savedScale % 5 === 0
+      ? savedScale : 100;
     root.style.setProperty('--base-font-size', (16 * scale / 100) + 'px');
   } catch (e) {
     root.dataset.theme = 'dark';
     root.dataset.studyMode = 'full';
+    root.style.setProperty('--base-font-size', '16px');
   }
 })();
 </script></head>
-<body><nav aria-label="Điều hướng học tập" class="nav-dock-left">
+<body>
+<!--
+HTML TEMPLATE CONTRACT 2.3
+- Based on latest pinch-zoom-safe test.html.
+- Default theme: dark; persistent Dark/Light toggle.
+- Font: 50%-150%, 5% step; persistent.
+- Native two-finger pinch zoom MUST NOT trigger responsive reflow.
+- Real orientation change MAY update layout and restore logical reading position.
+- iPad/tablet portrait: one-column bilingual flow.
+- iPad/tablet landscape: Japanese/Vietnamese side-by-side.
+- Controls: collapsed by default at bottom-left; tap to expand horizontally.
+- Home button: index.html.
+- Back/Next: TOC item navigation, not browser history.
+- Do not redesign CSS/JS/control behavior per lesson.
+-->
+<div class="control-cluster" id="control-cluster">
+<button aria-controls="control-panel" aria-expanded="false" aria-label="Mở công cụ" class="control-launcher" id="controls-toggle" title="Mở công cụ" type="button">⋯</button>
+<div aria-label="Công cụ học tập" class="control-panel" id="control-panel" role="toolbar">
 <button aria-controls="toc" aria-expanded="false" aria-label="Mục lục" id="toc-toggle" title="Mục lục" type="button">☰</button>
-<button aria-label="Mục trước" id="section-prev" title="Back" type="button">‹</button>
-<button aria-label="Mục tiếp theo" id="section-next" title="Next" type="button">›</button>
-</nav>
-<nav aria-label="Thiết lập hiển thị" class="settings-dock-right">
+<button aria-label="Mục trước" id="section-prev" title="Mục trước" type="button">‹</button>
+<button aria-label="Mục tiếp theo" id="section-next" title="Mục tiếp theo" type="button">›</button>
 <button aria-label="Đổi Dark/Light" aria-pressed="false" id="theme-toggle" title="Đổi Dark/Light" type="button">☀</button>
 <button aria-label="Đổi Full/Keywords" aria-pressed="false" class="mode-toggle" id="mode-toggle" title="Đổi Full/Keywords" type="button">🎯</button>
+<button aria-label="Giảm cỡ chữ" id="font-down" title="Giảm cỡ chữ 5%" type="button">A−</button>
 <button aria-label="Đặt lại cỡ chữ 100%" class="font-reset" id="font-reset" title="Đặt lại cỡ chữ 100%" type="button">100%</button>
-<button aria-label="Giảm cỡ chữ" id="font-down" title="Giảm cỡ chữ" type="button">A−</button>
-<button aria-label="Tăng cỡ chữ" id="font-up" title="Tăng cỡ chữ" type="button">A+</button>
-</nav><div aria-hidden="true" class="toc-overlay" id="toc-overlay"></div>
-
-<main class="study-content">
+<button aria-label="Tăng cỡ chữ" id="font-up" title="Tăng cỡ chữ 5%" type="button">A+</button>
+<button aria-label="Top Page" class="home-icon" id="home-button" title="Top Page" type="button"><svg aria-hidden="true" fill="none" viewbox="0 0 24 24"><path d="M3.5 10.5 12 3.8l8.5 6.7v9.2h-5.3v-6H8.8v6H3.5z" stroke="currentColor" stroke-linejoin="round" stroke-width="1.8"></path></svg></button>
+</div>
+</div><div aria-hidden="true" class="toc-overlay" id="toc-overlay"></div>
+<div class="page-shell">
 <header class="hero" id="top">
-<div class="eyebrow">完全合格のための学習法 1-10</div>
-<h1>1級建築施工管理技術検定 第二次検定<br/>最新問題の一括要約リスト</h1>
-<p class="subtitle">Tổng hợp song ngữ Nhật - Việt, Book page 15-24</p>
-<div class="summary-grid">
-<div class="summary-item"><b>10</b>Book pages</div>
-<div class="summary-item"><b>5</b>Nhóm câu hỏi: 問題2-6</div>
-<div class="summary-item"><b>5</b>PDF nguồn canonical</div>
-<div class="summary-item"><b>Offline</b>Dark/Light + Full/Keywords</div>
-</div>
-<ul class="source-list">
-<li>F003: 00c_最新問題一括要約_施工計画_p015.pdf - Book page 15</li>
-<li>F004/F005: 施工管理・躯体工事 - Book page 16-19</li>
-<li>F006: 00f_最新問題一括要約_仕上げ工事_p020-022.pdf - Book page 20-22</li>
-<li>F007: 00g_最新問題一括要約_建築法規_p023-024.pdf - Book page 23-24</li>
-</ul>
+<h1>1級建築施工管理技術検定 第二次検定 最新問題の一括要約リスト</h1>
 </header>
-<section id="toc"><div class="toc-drawer-head"><strong>Mục lục</strong><button aria-label="Đóng mục lục" class="toc-close" id="toc-close" type="button">×</button></div>
-<h2>Mục lục / 目次</h2>
-<div class="toc-grid">
-<ol>
-<li><a href="#p2">問題2 施工計画</a>
-<ol>
-<li><a href="#p2-install">仮設物の設置計画</a></li>
-<li><a href="#p2-accident">労働災害防止対策</a></li>
-<li><a href="#p2-equip">仮設備の安全管理</a></li>
-</ol>
-</li>
-<li><a href="#p3">問題3 施工管理（ネットワーク工程表）</a>
-<ol><li><a href="#p3-network">出題実績と解答方法</a></li></ol>
-</li>
-<li><a href="#p4">問題4 躯体工事</a>
-<ol>
-<li><a href="#p4-select">語句選択・訂正形式</a></li>
-<li><a href="#p4-desc">施工上の留意事項記述形式</a></li>
-</ol>
-</li>
-</ol>
-<ol start="4">
-<li><a href="#p5">問題5 仕上げ工事</a>
-<ol>
-<li><a href="#p5-select">語句選択・訂正形式</a></li>
-<li><a href="#p5-desc">施工上の留意事項記述形式</a></li>
-</ol>
-</li>
-<li><a href="#p6">問題6 建築法規</a>
-<ol><li><a href="#p6-law">各法令の文章の空欄補充</a></li></ol>
-</li>
-<li><a href="#glossary">Thuật ngữ chuyên môn</a></li>
-<li><a href="#background">Kiến thức nền cần biết</a></li>
-<li><a href="#memory">Điểm cần nhớ và mẹo nhớ</a></li>
-</ol>
+<nav aria-label="Mục lục" class="toc" id="toc">
+<div class="toc-drawer-head">
+<strong>Mục lục</strong>
+<button aria-label="Đóng mục lục" class="toc-close" id="toc-close" type="button">×</button>
 </div>
-</section>
-<section id="intro"><h2>Lưu ý của tài liệu / 本書の注意</h2><div class="bilingual-note warning">
+<h2>Mục lục</h2>
+<!-- TOC_ITEMS_START -->
+
+<!-- TOC_ITEMS_END -->
+<ol><li><a href="#intro">Lưu ý của tài liệu / 本書の注意</a></li><li><a href="#p2">問題2 施工計画 / Câu 2: Kế hoạch thi công</a><ol><li><a href="#p2-install">2.1 施工計画（仮設物の設置計画） / Kế hoạch bố trí công trình tạm</a></li><li><a href="#p2-accident">2.2 施工計画（労働災害防止対策） / Biện pháp phòng ngừa tai nạn lao động</a></li><li><a href="#p2-equip">2.3 施工計画（仮設備の安全管理） / Quản lý an toàn thiết bị tạm</a></li></ol></li><li><a href="#p3">問題3 施工管理（ネットワーク工程表） / Câu 3: Quản lý thi công bằng sơ đồ tiến độ mạng</a><ol><li><a href="#p3-network">3.1 出題実績と解答方法 / Trọng điểm đề thi và cách giải</a></li></ol></li><li><a href="#p4">問題4 躯体工事 / Câu 4: Công tác kết cấu</a><ol><li><a href="#p4-select">4.1 適当な語句を選択または誤りの語句を訂正する出題形式（8問） / Dạng chọn từ thích hợp hoặc sửa từ ngữ sai, 8 câu</a></li><li><a href="#p4-desc">4.2 施工上の留意事項などを記述する出題形式（4問） / Dạng viết các điểm cần lưu ý khi thi công, 4 câu</a></li></ol></li><li><a href="#p5">問題5 仕上げ工事 / Câu 5: Công tác hoàn thiện</a><ol><li><a href="#p5-select">5.1 適当な語句を選択または誤りの語句を訂正する出題形式（8問） / Dạng chọn từ thích hợp hoặc sửa từ ngữ sai, 8 câu</a></li><li><a href="#p5-desc">5.2 施工上の留意事項などを記述する出題形式（4問） / Dạng viết các điểm cần lưu ý khi thi công, 4 câu</a></li></ol></li><li><a href="#p6">問題6 建築法規 / Câu 6: Pháp quy xây dựng</a><ol><li><a href="#p6-law">6.1 各法令の文章の空欄を埋める出題形式 / Dạng điền chỗ trống trong câu văn của từng văn bản pháp luật</a></li></ol></li><li><a href="#glossary">Thuật ngữ chuyên môn / 専門用語</a></li><li><a href="#background">Background knowledge</a></li><li><a href="#memory">Key points and memory aids</a></li></ol></nav>
+<!-- CONTENT_START -->
+<main id="lesson"><section id="intro"><h2>Lưu ý của tài liệu / 本書の注意</h2><div class="bilingual-note warning">
 <div class="note-pane original-cell" lang="ja"><div class="card-title">原文</div><div>※ここに書かれている内容は、解答の要点をできる限り短縮してまとめたものなので、一部の表現が必ずしも正確ではない可能性（前提条件や例外規定を省略しているなど）があります。詳細な解説については、必要に応じて本書の当該年度の最新問題解説を参照してください。</div></div>
 <div class="note-pane translation-cell" lang="vi"><div class="card-title">Bản dịch tiếng Việt</div><div>Nội dung ghi tại đây là phần tóm lược các điểm trọng yếu của đáp án đến mức ngắn nhất có thể, vì vậy một số cách diễn đạt có khả năng không hoàn toàn chính xác, chẳng hạn do đã lược bỏ điều kiện tiền đề hoặc quy định ngoại lệ. Khi cần giải thích chi tiết, hãy tham khảo phần giải thích đề mới nhất của năm tương ứng trong sách.</div></div>
 </div><p class="back"><a href="#toc">↑ Mục lục</a></p></section><section id="p2"><h2>問題2 施工計画 / Câu 2: Kế hoạch thi công</h2><p class="source-ref">Nguồn: Book page 15</p><div class="info-box">Bảng tổng hợp Câu 2 được tổ chức thành ba nhóm: kế hoạch bố trí công trình tạm, biện pháp phòng ngừa tai nạn lao động và quản lý an toàn thiết bị tạm. Mỗi dòng giữ lại trọng điểm của đề và đáp án.</div><h3 id="p2-install">2.1 施工計画（仮設物の設置計画） / Kế hoạch bố trí công trình tạm</h3><div class="table-wrap"><table class="study-table"><thead><tr><th>年</th><th>原文: 出題の要点</th><th>原文: 解答の要点</th><th>Bản dịch: Trọng điểm</th><th>Bản dịch: Trọng điểm đáp án</th></tr></thead><tbody class="recall-source"><tr><td class="meta" data-label="年">R7</td><td class="jp-topic original-cell" data-label="原文・出題の要点" lang="ja"><strong class="kw">①仮設ゴンドラ</strong></td><td class="jp-answer original-cell" data-label="原文・解答の要点" lang="ja">①柵の設置（立入禁止）、<strong class="kw">絶縁用防具</strong>の装着（感電防止）</td><td class="vn-topic translation-cell" data-label="Bản dịch・Trọng điểm" lang="vi"><strong class="kw">① Gondola tạm</strong></td><td class="vn-answer translation-cell" data-label="Bản dịch・Đáp án" lang="vi">① Lắp hàng rào để cấm vào; trang bị <strong class="kw">phương tiện cách điện</strong> để phòng điện giật</td></tr><tr><td class="meta" data-label="年">R7</td><td class="jp-topic original-cell" data-label="原文・出題の要点" lang="ja"><strong class="kw">②起伏式タワークレーン</strong></td><td class="jp-answer original-cell" data-label="原文・解答の要点" lang="ja">②<strong class="kw">航空障害灯</strong>（航空機の安全）、<strong class="kw">電波障害調査</strong>（苦情防止）</td><td class="vn-topic translation-cell" data-label="Bản dịch・Trọng điểm" lang="vi"><strong class="kw">② Cẩu tháp cần nâng hạ góc</strong></td><td class="vn-answer translation-cell" data-label="Bản dịch・Đáp án" lang="vi">② Đèn cảnh báo chướng ngại hàng không để bảo đảm an toàn hàng không; <strong class="kw">khảo sát nhiễu sóng</strong> để phòng khiếu nại</td></tr><tr><td class="meta" data-label="年">R7</td><td class="jp-topic original-cell" data-label="原文・出題の要点" lang="ja"><strong class="kw">③枠組足場を用いた棚足場</strong></td><td class="jp-answer original-cell" data-label="原文・解答の要点" lang="ja">③<strong class="kw">交差筋交い</strong>（墜落防止）、<strong class="kw">根がらみ</strong>（滑動や沈下の防止）</td><td class="vn-topic translation-cell" data-label="Bản dịch・Trọng điểm" lang="vi"><strong class="kw">③ Giàn giáo sàn dùng giàn giáo khung</strong></td><td class="vn-answer translation-cell" data-label="Bản dịch・Đáp án" lang="vi">③ Giằng chéo để chống ngã; <strong class="kw">giằng chân</strong> để chống trượt hoặc lún</td></tr><tr><td class="meta" data-label="年">R5</td><td class="jp-topic original-cell" data-label="原文・出題の要点" lang="ja"><strong class="kw">①くさび緊結式足場</strong></td><td class="jp-answer original-cell" data-label="原文・解答の要点" lang="ja">①<strong class="kw">支柱の間隔</strong>（桁行・梁間）、<strong class="kw">壁つなぎ間隔</strong>（垂直・水平）</td><td class="vn-topic translation-cell" data-label="Bản dịch・Trọng điểm" lang="vi"><strong class="kw">① Giàn giáo liên kết kiểu nêm</strong></td><td class="vn-answer translation-cell" data-label="Bản dịch・Đáp án" lang="vi">① Khoảng cách cột đứng theo phương dọc và phương ngang; <strong class="kw">khoảng cách liên kết với tường</strong> theo phương đứng và ngang</td></tr><tr><td class="meta" data-label="年">R5</td><td class="jp-topic original-cell" data-label="原文・出題の要点" lang="ja"><strong class="kw">②建設用リフト</strong></td><td class="jp-answer original-cell" data-label="原文・解答の要点" lang="ja">②巻上ワイヤロープの標識と警報装置、立入禁止措置</td><td class="vn-topic translation-cell" data-label="Bản dịch・Trọng điểm" lang="vi"><strong class="kw">② Vận thăng xây dựng</strong></td><td class="vn-answer translation-cell" data-label="Bản dịch・Đáp án" lang="vi">② Dấu hiệu trên cáp nâng và thiết bị cảnh báo; biện pháp cấm người vào</td></tr><tr><td class="meta" data-label="年">R5</td><td class="jp-topic original-cell" data-label="原文・出題の要点" lang="ja"><strong class="kw">③場内仮設道路</strong></td><td class="jp-answer original-cell" data-label="原文・解答の要点" lang="ja">③労働者と車両の交差防止、車両の<strong class="kw">幅</strong>と重量の考慮</td><td class="vn-topic translation-cell" data-label="Bản dịch・Trọng điểm" lang="vi"><strong class="kw">③ Đường tạm trong công trường</strong></td><td class="vn-answer translation-cell" data-label="Bản dịch・Đáp án" lang="vi">③ Ngăn giao cắt giữa người lao động và xe; xem xét <strong class="kw">chiều rộng</strong> và trọng lượng xe</td></tr><tr><td class="meta" data-label="年">R3</td><td class="jp-topic original-cell" data-label="原文・出題の要点" lang="ja"><strong class="kw">①仮設ゴンドラ</strong></td><td class="jp-answer original-cell" data-label="原文・解答の要点" lang="ja">①立入禁止柵の設置、充電電路の感電防止措置</td><td class="vn-topic translation-cell" data-label="Bản dịch・Trọng điểm" lang="vi"><strong class="kw">① Gondola tạm</strong></td><td class="vn-answer translation-cell" data-label="Bản dịch・Đáp án" lang="vi">① Lắp hàng rào cấm vào; biện pháp phòng điện giật đối với <strong class="kw">mạch</strong> điện đang mang điện</td></tr><tr><td class="meta" data-label="年">R3</td><td class="jp-topic original-cell" data-label="原文・出題の要点" lang="ja"><strong class="kw">②場内仮設事務所</strong></td><td class="jp-answer original-cell" data-label="原文・解答の要点" lang="ja">②施工者用と監理者用の分離、使用水量の確保</td><td class="vn-topic translation-cell" data-label="Bản dịch・Trọng điểm" lang="vi"><strong class="kw">② Văn phòng tạm trong công trường</strong></td><td class="vn-answer translation-cell" data-label="Bản dịch・Đáp án" lang="vi">② Tách khu dùng cho nhà thầu thi công và khu dùng cho bên giám sát; bảo đảm lượng nước sử dụng</td></tr><tr><td class="meta" data-label="年">R3</td><td class="jp-topic original-cell" data-label="原文・出題の要点" lang="ja"><strong class="kw">③工事ゲート（車両出入口）</strong></td><td class="jp-answer original-cell" data-label="原文・解答の要点" lang="ja">③空荷時の生コン車の<strong class="kw">高さ</strong>、門扉の上部の網張り</td><td class="vn-topic translation-cell" data-label="Bản dịch・Trọng điểm" lang="vi"><strong class="kw">③ Cổng công trường, lối xe ra vào</strong></td><td class="vn-answer translation-cell" data-label="Bản dịch・Đáp án" lang="vi">③ Xét <strong class="kw">chiều cao</strong> xe bê tông tươi khi không tải; căng lưới ở phần trên cánh cổng</td></tr><tr><td class="meta" data-label="年">R元</td><td class="jp-topic original-cell" data-label="原文・出題の要点" lang="ja"><strong class="kw">①荷受け構台</strong></td><td class="jp-answer original-cell" data-label="原文・解答の要点" lang="ja">①材料の取込みができる位置、階段や動線の配置</td><td class="vn-topic translation-cell" data-label="Bản dịch・Trọng điểm" lang="vi"><strong class="kw">① Sàn nhận vật liệu</strong></td><td class="vn-answer translation-cell" data-label="Bản dịch・Đáp án" lang="vi">① Bố trí tại vị trí có thể tiếp nhận vật liệu; bố trí cầu thang và tuyến di chuyển</td></tr><tr><td class="meta" data-label="年">R元</td><td class="jp-topic original-cell" data-label="原文・出題の要点" lang="ja"><strong class="kw">②鋼板製仮囲い</strong></td><td class="jp-answer original-cell" data-label="原文・解答の要点" lang="ja">②<strong class="kw">高さ</strong>を<mark class="critical">1.8m以上</mark>とする、強風に対する安全確保</td><td class="vn-topic translation-cell" data-label="Bản dịch・Trọng điểm" lang="vi"><strong class="kw">② Hàng rào tạm bằng tấm thép</strong></td><td class="vn-answer translation-cell" data-label="Bản dịch・Đáp án" lang="vi">② Chiều cao từ<mark class="critical"> 1,8 m trở lên</mark>; bảo đảm an toàn trước gió mạnh</td></tr><tr><td class="meta" data-label="年">R元</td><td class="jp-topic original-cell" data-label="原文・出題の要点" lang="ja"><strong class="kw">③工事用エレベーター</strong></td><td class="jp-answer original-cell" data-label="原文・解答の要点" lang="ja">③資材搬入動線に接する位置、<strong class="kw">積載荷重</strong>の表示</td><td class="vn-topic translation-cell" data-label="Bản dịch・Trọng điểm" lang="vi"><strong class="kw">③ Thang máy công trường</strong></td><td class="vn-answer translation-cell" data-label="Bản dịch・Đáp án" lang="vi">③ Bố trí tiếp giáp tuyến vận chuyển vật liệu; hiển thị <strong class="kw">tải trọng cho phép</strong></td></tr><tr><td class="meta" data-label="年">H29</td><td class="jp-topic original-cell" data-label="原文・出題の要点" lang="ja"><strong class="kw">①吊り足場</strong></td><td class="jp-answer original-cell" data-label="原文・解答の要点" lang="ja">①足場下面への<strong class="kw">防網</strong>設置、最大荷重の表示</td><td class="vn-topic translation-cell" data-label="Bản dịch・Trọng điểm" lang="vi"><strong class="kw">① Giàn giáo treo</strong></td><td class="vn-answer translation-cell" data-label="Bản dịch・Đáp án" lang="vi">① Lắp <strong class="kw">lưới bảo vệ</strong> phía dưới giàn giáo; hiển thị tải trọng tối đa</td></tr><tr><td class="meta" data-label="年">H29</td><td class="jp-topic original-cell" data-label="原文・出題の要点" lang="ja"><strong class="kw">②起伏式タワークレーン</strong></td><td class="jp-answer original-cell" data-label="原文・解答の要点" lang="ja">②クレーンの水平設置、過負荷防止装置の確認</td><td class="vn-topic translation-cell" data-label="Bản dịch・Trọng điểm" lang="vi"><strong class="kw">② Cẩu tháp cần nâng hạ góc</strong></td><td class="vn-answer translation-cell" data-label="Bản dịch・Đáp án" lang="vi">② Lắp cẩu theo phương ngang; xác nhận thiết bị phòng quá tải</td></tr><tr><td class="meta" data-label="年">H29</td><td class="jp-topic original-cell" data-label="原文・出題の要点" lang="ja"><strong class="kw">③仮設ゴンドラ</strong></td><td class="jp-answer original-cell" data-label="原文・解答の要点" lang="ja">③立入禁止柵の設置、検査証と制動装置の確認</td><td class="vn-topic translation-cell" data-label="Bản dịch・Trọng điểm" lang="vi"><strong class="kw">③ Gondola tạm</strong></td><td class="vn-answer translation-cell" data-label="Bản dịch・Đáp án" lang="vi">③ Lắp hàng rào cấm vào; xác nhận giấy chứng nhận kiểm định và thiết bị phanh</td></tr></tbody></table></div><p class="back"><a href="#toc">↑ Mục lục</a></p><h3 id="p2-accident">2.2 施工計画（労働災害防止対策） / Biện pháp phòng ngừa tai nạn lao động</h3><div class="bilingual-note note">
@@ -609,38 +693,68 @@ body.toc-open { overflow: hidden; }
 </div><h4 id="p6-construction-business"><span lang="ja">建設業法</span><span class="slash">/</span>Luật Kinh doanh xây dựng</h4><div class="table-wrap"><table class="study-table"><thead><tr><th>年</th><th>条項</th><th>原文: 出題の要点</th><th>原文: 解答の要点</th><th>Bản dịch: Trọng điểm</th><th>Bản dịch: Trọng điểm đáp án</th></tr></thead><tbody class="recall-source"><tr><td class="meta" data-label="年">H30</td><td class="meta" data-label="条項">第20条</td><td class="jp-topic original-cell" data-label="原文・出題の要点" lang="ja"><strong class="kw">建設工事の見積り</strong></td><td class="jp-answer original-cell" data-label="原文・解答の要点" lang="ja">建設工事の請負契約を締結するときは、経費の内訳を明らかにする。</td><td class="vn-topic translation-cell" data-label="Bản dịch・Trọng điểm" lang="vi"><strong class="kw">Dự toán công trình xây dựng</strong></td><td class="vn-answer translation-cell" data-label="Bản dịch・Đáp án" lang="vi">Khi ký hợp đồng nhận thầu xây dựng, phải làm rõ chi tiết cấu thành các khoản chi phí.</td></tr><tr><td class="meta" data-label="年">R3</td><td class="meta" data-label="条項">第24条</td><td class="jp-topic original-cell" data-label="原文・出題の要点" lang="ja"><strong class="kw">請負契約とみなす場合</strong></td><td class="jp-answer original-cell" data-label="原文・解答の要点" lang="ja">委託などの名義を問わず、報酬を得て建設工事の完成を目的として締結する契約は、建設工事の請負契約とみなす。</td><td class="vn-topic translation-cell" data-label="Bản dịch・Trọng điểm" lang="vi"><strong class="kw">Trường hợp được coi là hợp đồng nhận thầu</strong></td><td class="vn-answer translation-cell" data-label="Bản dịch・Đáp án" lang="vi">Không phụ thuộc tên gọi như “ủy thác”, nếu hợp đồng được ký để nhận thù lao và nhằm hoàn thành công trình xây dựng thì được coi là hợp đồng nhận thầu xây dựng.</td></tr><tr><td class="meta" data-label="年">R5</td><td class="meta" data-label="条項">第24条の3</td><td class="jp-topic original-cell" data-label="原文・出題の要点" lang="ja"><strong class="kw">下請代金の支払</strong></td><td class="jp-answer original-cell" data-label="原文・解答の要点" lang="ja">出来形部分の支払を受けた元請負人は、下請代金を<mark class="critical">1月以内</mark>に支払う。（労務費に相当する部分は現金で支払う）</td><td class="vn-topic translation-cell" data-label="Bản dịch・Trọng điểm" lang="vi"><strong class="kw">Thanh toán tiền thầu phụ</strong></td><td class="vn-answer translation-cell" data-label="Bản dịch・Đáp án" lang="vi">Khi <strong class="kw">nhà thầu chính</strong> nhận được tiền thanh toán cho phần công việc đã hoàn thành, phải thanh toán tiền thầu phụ trong vòng<mark class="critical"> 1 tháng</mark>. Phần tương ứng với chi phí lao động phải thanh toán bằng tiền mặt.</td></tr><tr><td class="meta" data-label="年">R2</td><td class="meta" data-label="条項">第24条の4</td><td class="jp-topic original-cell" data-label="原文・出題の要点" lang="ja"><strong class="kw">検査及び引渡し</strong></td><td class="jp-answer original-cell" data-label="原文・解答の要点" lang="ja">完成検査は、通知を受けた日から<mark class="critical">20日以内</mark>に行う。工事目的物の引渡しは、下請負人の申出後、<span class="trap">直ちに受ける。ただし、特約がされている場合は除く</span>。</td><td class="vn-topic translation-cell" data-label="Bản dịch・Trọng điểm" lang="vi"><strong class="kw">Kiểm tra và bàn giao</strong></td><td class="vn-answer translation-cell" data-label="Bản dịch・Đáp án" lang="vi">Kiểm tra hoàn thành phải thực hiện trong vòng<mark class="critical"> 20 ngày</mark> kể từ ngày nhận thông báo. Sau khi nhà thầu phụ đề nghị bàn giao, <strong class="kw">nhà thầu chính</strong> phải nhận bàn giao đối tượng công trình ngay, <span class="trap">trừ trường hợp có thỏa thuận đặc biệt</span>.</td></tr><tr><td class="meta" data-label="年">R4</td><td class="meta" data-label="条項">第24条の6</td><td class="jp-topic original-cell" data-label="原文・出題の要点" lang="ja"><strong class="kw">下請代金の支払期日</strong></td><td class="jp-answer original-cell" data-label="原文・解答の要点" lang="ja">特定建設業者が注文者となった下請契約では、引渡しの申出の日から<mark class="critical">50日</mark>を経過する日以前に、下請代金を支払う。</td><td class="vn-topic translation-cell" data-label="Bản dịch・Trọng điểm" lang="vi"><strong class="kw">Hạn thanh toán tiền thầu phụ</strong></td><td class="vn-answer translation-cell" data-label="Bản dịch・Đáp án" lang="vi">Với hợp đồng thầu phụ mà 特定建設業者 là bên đặt hàng, phải thanh toán tiền thầu phụ trước ngày vượt quá<mark class="critical"> 50 ngày</mark> kể từ ngày đề nghị bàn giao.</td></tr><tr><td class="meta" data-label="年">R6</td><td class="meta" data-label="条項">第24条の8</td><td class="jp-topic original-cell" data-label="原文・出題の要点" lang="ja"><strong class="kw">施工体制台帳と体系図</strong></td><td class="jp-answer original-cell" data-label="原文・解答の要点" lang="ja"><strong class="kw">施工体制台帳</strong>には、下請負人に係る建設工事の内容・工期を記載する。<strong class="kw">施工体系図</strong>には、施工の分担関係を表示する。</td><td class="vn-topic translation-cell" data-label="Bản dịch・Trọng điểm" lang="vi"><strong class="kw">Sổ hệ thống thi công và sơ đồ hệ thống</strong></td><td class="vn-answer translation-cell" data-label="Bản dịch・Đáp án" lang="vi">施工体制台帳 phải ghi nội dung và thời hạn thi công của công việc xây dựng liên quan đến nhà thầu phụ. 施工体系図 phải thể hiện quan hệ phân công thi công.</td></tr><tr><td class="meta" data-label="年">H29</td><td class="meta" data-label="条項">第24条の8</td><td class="jp-topic original-cell" data-label="原文・出題の要点" lang="ja"><strong class="kw">施工体系図</strong></td><td class="jp-answer original-cell" data-label="原文・解答の要点" lang="ja">特定建設業者は、各下請負人の施工の分担関係を表示した<strong class="kw">施工体系図</strong>を作成する。</td><td class="vn-topic translation-cell" data-label="Bản dịch・Trọng điểm" lang="vi"><strong class="kw">Sơ đồ hệ thống thi công</strong></td><td class="vn-answer translation-cell" data-label="Bản dịch・Đáp án" lang="vi">特定建設業者 phải lập 施工体系図 thể hiện quan hệ phân công thi công của từng nhà thầu phụ.</td></tr><tr><td class="meta" data-label="年">R7</td><td class="meta" data-label="条項">第25条の27</td><td class="jp-topic original-cell" data-label="原文・出題の要点" lang="ja"><strong class="kw">施工技術の確保</strong></td><td class="jp-answer original-cell" data-label="原文・解答の要点" lang="ja">建設業者は、建設工事の担い手の育成および確保に努める。建設工事の従事者は、建設工事を適正に実施するために必要な知識・技術・技能の向上に努める。</td><td class="vn-topic translation-cell" data-label="Bản dịch・Trọng điểm" lang="vi"><strong class="kw">Bảo đảm kỹ thuật thi công</strong></td><td class="vn-answer translation-cell" data-label="Bản dịch・Đáp án" lang="vi">Doanh nghiệp xây dựng phải nỗ lực đào tạo và bảo đảm nguồn nhân lực thực hiện công trình. Người tham gia công tác xây dựng phải nỗ lực nâng cao kiến thức, kỹ thuật và kỹ năng cần thiết để thi công đúng quy định.</td></tr><tr><td class="meta" data-label="年">R元</td><td class="meta" data-label="条項">第26条の4</td><td class="jp-topic original-cell" data-label="原文・出題の要点" lang="ja"><strong class="kw">主任技術者</strong></td><td class="jp-answer original-cell" data-label="原文・解答の要点" lang="ja"><strong class="kw">主任技術者</strong>・<strong class="kw">監理技術者</strong>は、施工計画・工程管理・品質管理・技術上の指導監督などの職務を行う。</td><td class="vn-topic translation-cell" data-label="Bản dịch・Trọng điểm" lang="vi"><strong class="kw">主任技術者</strong></td><td class="vn-answer translation-cell" data-label="Bản dịch・Đáp án" lang="vi">主任技術者 và 監理技術者 thực hiện các nhiệm vụ như lập kế hoạch thi công, quản lý tiến độ, quản lý chất lượng và chỉ đạo, giám sát về kỹ thuật.</td></tr><tr><td class="meta" data-label="年">H28</td><td class="meta" data-label="条項">第26条の4</td><td class="jp-topic original-cell" data-label="原文・出題の要点" lang="ja"><strong class="kw">主任技術者</strong></td><td class="jp-answer original-cell" data-label="原文・解答の要点" lang="ja"><strong class="kw">主任技術者</strong>・<strong class="kw">監理技術者</strong>は、施工計画・工程管理・品質管理・技術上の指導監督などの職務を行う。</td><td class="vn-topic translation-cell" data-label="Bản dịch・Trọng điểm" lang="vi"><strong class="kw">主任技術者</strong></td><td class="vn-answer translation-cell" data-label="Bản dịch・Đáp án" lang="vi">主任技術者 và 監理技術者 thực hiện các nhiệm vụ như lập kế hoạch thi công, quản lý tiến độ, quản lý chất lượng và chỉ đạo, giám sát về kỹ thuật.</td></tr></tbody></table></div><h4 id="p6-building-standard"><span lang="ja">建築基準法施行令</span><span class="slash">/</span>Nghị định thi hành Luật Tiêu chuẩn xây dựng</h4><div class="table-wrap"><table class="study-table"><thead><tr><th>年</th><th>条項</th><th>原文: 出題の要点</th><th>原文: 解答の要点</th><th>Bản dịch: Trọng điểm</th><th>Bản dịch: Trọng điểm đáp án</th></tr></thead><tbody class="recall-source"><tr><td class="meta" data-label="年">H30</td><td class="meta" data-label="条項">第136条の2の20</td><td class="jp-topic original-cell" data-label="原文・出題の要点" lang="ja"><strong class="kw">仮囲い</strong></td><td class="jp-answer original-cell" data-label="原文・解答の要点" lang="ja">木造以外の建築物で<mark class="critical">2以上</mark>の階数を有するものには、工事現場の地盤面（周辺地盤面よりも低い場合は周辺地盤面）から<mark class="critical">1.8m以上</mark>の<strong class="kw">高さ</strong>がある<strong class="kw">仮囲い</strong>を設ける。</td><td class="vn-topic translation-cell" data-label="Bản dịch・Trọng điểm" lang="vi"><strong class="kw">Hàng rào tạm</strong></td><td class="vn-answer translation-cell" data-label="Bản dịch・Đáp án" lang="vi">Với công trình không phải kết cấu gỗ và có từ<mark class="critical"> 2 </mark>tầng trở lên, phải bố trí hàng rào tạm cao <mark class="critical">≥ 1,8 m</mark> tính từ mặt đất công trường; nếu mặt đất công trường thấp hơn mặt đất xung quanh thì tính từ mặt đất xung quanh.</td></tr><tr><td class="meta" data-label="年">R7</td><td class="meta" data-label="条項">第136条の3</td><td class="jp-topic original-cell" data-label="原文・出題の要点" lang="ja"><strong class="kw">危害の防止</strong></td><td class="jp-answer original-cell" data-label="原文・解答の要点" lang="ja">深い<strong class="kw">根切り</strong>工事は、地盤調査（地層・地下水の状況）により作成した施工図に基づいて行う。建築物に近接する<strong class="kw">根切り</strong>工事では、傾斜や倒壊を防止するため、<span class="trap">急激な排水を避ける</span>。</td><td class="vn-topic translation-cell" data-label="Bản dịch・Trọng điểm" lang="vi"><strong class="kw">Phòng ngừa nguy hiểm</strong></td><td class="vn-answer translation-cell" data-label="Bản dịch・Đáp án" lang="vi">Công tác đào sâu phải thực hiện theo bản vẽ thi công được lập dựa trên khảo sát nền đất, gồm tình trạng địa tầng và nước ngầm. Khi đào gần công trình hiện hữu, phải <span class="trap">tránh thoát nước đột ngột</span> để phòng nghiêng hoặc sập công trình.</td></tr><tr><td class="meta" data-label="年">R5</td><td class="meta" data-label="条項">第136条の3</td><td class="jp-topic original-cell" data-label="原文・出題の要点" lang="ja"><strong class="kw">危害の防止</strong></td><td class="jp-answer original-cell" data-label="原文・解答の要点" lang="ja"><strong class="kw">深さ</strong><mark class="critical">1.5m以上</mark>の<strong class="kw">根切り</strong>工事では、<strong class="kw">山留め</strong>を設ける。<strong class="kw">山留め</strong>の<strong class="kw">矢板</strong>等の抜取りに際しては、周辺地盤の沈下を防止する。</td><td class="vn-topic translation-cell" data-label="Bản dịch・Trọng điểm" lang="vi"><strong class="kw">Phòng ngừa nguy hiểm</strong></td><td class="vn-answer translation-cell" data-label="Bản dịch・Đáp án" lang="vi">Khi đào có chiều sâu <mark class="critical">≥ 1,5 m</mark>, phải bố trí hệ chắn đất. Khi rút <strong class="kw">sheet pile</strong> hoặc cấu kiện tương tự của hệ chắn đất phải phòng ngừa lún nền đất xung quanh.</td></tr><tr><td class="meta" data-label="年">R2</td><td class="meta" data-label="条項">第136条の3</td><td class="jp-topic original-cell" data-label="原文・出題の要点" lang="ja"><strong class="kw">危害の防止</strong></td><td class="jp-answer original-cell" data-label="原文・解答の要点" lang="ja"><strong class="kw">山留め</strong>工事中は、点検を行い、<strong class="kw">山留め</strong>を補強し、排水を行う。<strong class="kw">矢板</strong>等の抜取りに際しては、地盤沈下を防止する。</td><td class="vn-topic translation-cell" data-label="Bản dịch・Trọng điểm" lang="vi"><strong class="kw">Phòng ngừa nguy hiểm</strong></td><td class="vn-answer translation-cell" data-label="Bản dịch・Đáp án" lang="vi">Trong khi thi công hệ chắn đất phải kiểm tra, gia cường hệ chắn đất và thực hiện thoát nước. Khi rút <strong class="kw">sheet pile</strong> hoặc cấu kiện tương tự phải phòng ngừa lún nền đất.</td></tr><tr><td class="meta" data-label="年">H29</td><td class="meta" data-label="条項">第136条の3</td><td class="jp-topic original-cell" data-label="原文・出題の要点" lang="ja"><strong class="kw">危害の防止</strong></td><td class="jp-answer original-cell" data-label="原文・解答の要点" lang="ja"><strong class="kw">山留め</strong>工事では、<strong class="kw">山留め</strong>を補強し、排水を適当に行う。<strong class="kw">矢板</strong>等の抜取りに際して、地盤沈下を防止する。</td><td class="vn-topic translation-cell" data-label="Bản dịch・Trọng điểm" lang="vi"><strong class="kw">Phòng ngừa nguy hiểm</strong></td><td class="vn-answer translation-cell" data-label="Bản dịch・Đáp án" lang="vi">Khi thi công hệ chắn đất phải gia cường và thoát nước thích hợp. Khi rút <strong class="kw">sheet pile</strong> hoặc cấu kiện tương tự phải phòng ngừa lún nền đất.</td></tr><tr><td class="meta" data-label="年">R4</td><td class="meta" data-label="条項">第136条の5</td><td class="jp-topic original-cell" data-label="原文・出題の要点" lang="ja"><strong class="kw">落下物に対する防護</strong></td><td class="jp-answer original-cell" data-label="原文・解答の要点" lang="ja">現場境界線からの距離が<mark class="critical">5m以内</mark>かつ<strong class="kw">高さ</strong>が<mark class="critical">7m以上</mark>の場所で工事をするときは、必要な部分を鉄網又は帆布で覆う。</td><td class="vn-topic translation-cell" data-label="Bản dịch・Trọng điểm" lang="vi"><strong class="kw">Bảo vệ chống vật rơi</strong></td><td class="vn-answer translation-cell" data-label="Bản dịch・Đáp án" lang="vi">Nếu vị trí thi công cách ranh giới công trường <mark class="critical">≤ 5 m</mark> và ở độ cao <mark class="critical">≥ 7 m</mark>, phải che phần cần thiết bằng lưới sắt hoặc bạt.</td></tr><tr><td class="meta" data-label="年">R元</td><td class="meta" data-label="条項">第136条の5</td><td class="jp-topic original-cell" data-label="原文・出題の要点" lang="ja"><strong class="kw">落下物に対する防護</strong></td><td class="jp-answer original-cell" data-label="原文・解答の要点" lang="ja">現場境界線からの距離が<mark class="critical">5m以内</mark>かつ<strong class="kw">高さ</strong>が<mark class="critical">7m以上</mark>の作業場所では、必要な部分を鉄網又は帆布で覆う。</td><td class="vn-topic translation-cell" data-label="Bản dịch・Trọng điểm" lang="vi"><strong class="kw">Bảo vệ chống vật rơi</strong></td><td class="vn-answer translation-cell" data-label="Bản dịch・Đáp án" lang="vi">Tại nơi làm việc cách ranh giới công trường <mark class="critical">≤ 5 m</mark> và cao <mark class="critical">≥ 7 m</mark>, phải che phần cần thiết bằng lưới sắt hoặc bạt.</td></tr><tr><td class="meta" data-label="年">R6</td><td class="meta" data-label="条項">第136条の6</td><td class="jp-topic original-cell" data-label="原文・出題の要点" lang="ja"><strong class="kw">建て方</strong></td><td class="jp-answer original-cell" data-label="原文・解答の要点" lang="ja">建築物の建て方では、<strong class="kw">仮筋かい</strong>を取り付ける。鉄骨造の建て方の<strong class="kw">仮締</strong>は、荷重・外力に対して安全なものとする。</td><td class="vn-topic translation-cell" data-label="Bản dịch・Trọng điểm" lang="vi"><strong class="kw">Lắp dựng kết cấu</strong></td><td class="vn-answer translation-cell" data-label="Bản dịch・Đáp án" lang="vi">Khi lắp dựng công trình phải lắp <strong class="kw">giằng tạm</strong>. Việc <strong class="kw">siết tạm</strong> khi lắp dựng kết cấu thép phải bảo đảm an toàn đối với tải trọng và ngoại lực.</td></tr><tr><td class="meta" data-label="年">R3</td><td class="meta" data-label="条項">第136条の6</td><td class="jp-topic original-cell" data-label="原文・出題の要点" lang="ja"><strong class="kw">建て方</strong></td><td class="jp-answer original-cell" data-label="原文・解答の要点" lang="ja">荷重又は外力による倒壊を防止するための措置を講じる。鉄骨造の<strong class="kw">仮締</strong>は、荷重及び外力に対して安全なものとする。</td><td class="vn-topic translation-cell" data-label="Bản dịch・Trọng điểm" lang="vi"><strong class="kw">Lắp dựng kết cấu</strong></td><td class="vn-answer translation-cell" data-label="Bản dịch・Đáp án" lang="vi">Phải thực hiện biện pháp ngăn ngừa sụp đổ do tải trọng hoặc ngoại lực. Việc <strong class="kw">siết tạm</strong> kết cấu thép phải bảo đảm an toàn đối với tải trọng và ngoại lực.</td></tr><tr><td class="meta" data-label="年">H28</td><td class="meta" data-label="条項">第136条の6</td><td class="jp-topic original-cell" data-label="原文・出題の要点" lang="ja"><strong class="kw">建て方</strong></td><td class="jp-answer original-cell" data-label="原文・解答の要点" lang="ja">建築物の建て方では、<strong class="kw">仮筋かい</strong>を取り付ける等、倒壊を防止するための措置を講じる。</td><td class="vn-topic translation-cell" data-label="Bản dịch・Trọng điểm" lang="vi"><strong class="kw">Lắp dựng kết cấu</strong></td><td class="vn-answer translation-cell" data-label="Bản dịch・Đáp án" lang="vi">Khi lắp dựng phải bố trí <strong class="kw">giằng tạm</strong> và các biện pháp khác để ngăn ngừa sụp đổ.</td></tr></tbody></table></div><h4 id="p6-osh"><span lang="ja">労働安全衛生法</span><span class="slash">/</span>Luật An toàn và Sức khỏe lao động</h4><div class="table-wrap"><table class="study-table"><thead><tr><th>年</th><th>条項</th><th>原文: 出題の要点</th><th>原文: 解答の要点</th><th>Bản dịch: Trọng điểm</th><th>Bản dịch: Trọng điểm đáp án</th></tr></thead><tbody class="recall-source"><tr><td class="meta" data-label="年">H30</td><td class="meta" data-label="条項">第3条</td><td class="jp-topic original-cell" data-label="原文・出題の要点" lang="ja"><strong class="kw">事業者等の責務</strong></td><td class="jp-answer original-cell" data-label="原文・解答の要点" lang="ja">事業者等は、施工方法・工期等について、安全で衛生的な作業を損なう<span class="trap">条件を附してはならない</span>。</td><td class="vn-topic translation-cell" data-label="Bản dịch・Trọng điểm" lang="vi"><strong class="kw">Trách nhiệm của doanh nghiệp, v.v.</strong></td><td class="vn-answer translation-cell" data-label="Bản dịch・Đáp án" lang="vi">Đối với phương pháp thi công, thời hạn thi công, doanh nghiệp <span class="trap">không được đặt ra những điều kiện</span> làm ảnh hưởng đến việc thực hiện công việc một cách an toàn và vệ sinh.</td></tr><tr><td class="meta" data-label="年">R5</td><td class="meta" data-label="条項">第10条</td><td class="jp-topic original-cell" data-label="原文・出題の要点" lang="ja"><strong class="kw">総括安全衛生管理者</strong></td><td class="jp-answer original-cell" data-label="原文・解答の要点" lang="ja"><strong class="kw">総括安全衛生管理者</strong>は、労働者の危険や健康障害を防止し、労働災害の原因調査や再発防止対策を統括管理する。</td><td class="vn-topic translation-cell" data-label="Bản dịch・Trọng điểm" lang="vi"><strong class="kw">Tổng quản lý an toàn vệ sinh</strong></td><td class="vn-answer translation-cell" data-label="Bản dịch・Đáp án" lang="vi">総括安全衛生管理者 phải phòng ngừa nguy hiểm và tổn hại sức khỏe cho người lao động, đồng thời quản lý tổng thể việc điều tra nguyên nhân tai nạn lao động và biện pháp phòng ngừa tái diễn.</td></tr><tr><td class="meta" data-label="年">R2</td><td class="meta" data-label="条項">第10条</td><td class="jp-topic original-cell" data-label="原文・出題の要点" lang="ja"><strong class="kw">総括安全衛生管理者</strong></td><td class="jp-answer original-cell" data-label="原文・解答の要点" lang="ja"><strong class="kw">総括安全衛生管理者</strong>は、労働者の危険や健康障害を防止し、労働者の安全又は衛生のための教育を実施する。</td><td class="vn-topic translation-cell" data-label="Bản dịch・Trọng điểm" lang="vi"><strong class="kw">Tổng quản lý an toàn vệ sinh</strong></td><td class="vn-answer translation-cell" data-label="Bản dịch・Đáp án" lang="vi">総括安全衛生管理者 phải phòng ngừa nguy hiểm và tổn hại sức khỏe, đồng thời thực hiện giáo dục về an toàn hoặc vệ sinh cho người lao động.</td></tr><tr><td class="meta" data-label="年">R3</td><td class="meta" data-label="条項">第29条</td><td class="jp-topic original-cell" data-label="原文・出題の要点" lang="ja"><strong class="kw">元方事業者の措置</strong></td><td class="jp-answer original-cell" data-label="原文・解答の要点" lang="ja"><strong class="kw">元方事業者</strong>は、<strong class="kw">関係請負人</strong>が労働安全衛生法に違反しないよう、必要な指導を行い、是正のため必要な指示を行う。</td><td class="vn-topic translation-cell" data-label="Bản dịch・Trọng điểm" lang="vi"><strong class="kw">Biện pháp của nhà thầu chính về an toàn lao động</strong></td><td class="vn-answer translation-cell" data-label="Bản dịch・Đáp án" lang="vi">元方事業者 phải thực hiện chỉ đạo cần thiết để các <strong class="kw">nhà thầu liên quan</strong> không vi phạm Luật An toàn và Sức khỏe lao động, đồng thời đưa ra chỉ thị cần thiết để khắc phục.</td></tr><tr><td class="meta" data-label="年">R4</td><td class="meta" data-label="条項">第29条の2</td><td class="jp-topic original-cell" data-label="原文・出題の要点" lang="ja"><strong class="kw">元方事業者の措置</strong></td><td class="jp-answer original-cell" data-label="原文・解答の要点" lang="ja"><strong class="kw">元方事業者</strong>は、<strong class="kw">関係請負人</strong>の労働者が仕事をするときは、危険を防止する措置として、技術上の指導などを行う。</td><td class="vn-topic translation-cell" data-label="Bản dịch・Trọng điểm" lang="vi"><strong class="kw">Biện pháp của 元方事業者</strong></td><td class="vn-answer translation-cell" data-label="Bản dịch・Đáp án" lang="vi">Khi người lao động của <strong class="kw">nhà thầu liên quan</strong> làm việc, 元方事業者 phải thực hiện các biện pháp như chỉ đạo kỹ thuật nhằm phòng ngừa nguy hiểm.</td></tr><tr><td class="meta" data-label="年">R7</td><td class="meta" data-label="条項">第30条</td><td class="jp-topic original-cell" data-label="原文・出題の要点" lang="ja"><strong class="kw">特定元方事業者の措置</strong></td><td class="jp-answer original-cell" data-label="原文・解答の要点" lang="ja"><strong class="kw">特定元方事業者</strong>は、自社と<strong class="kw">関係請負人</strong>の労働者の作業が同一の場所で行われることによる労働災害を防止するため、<strong class="kw">関係請負人</strong>が行う<strong class="kw">安全衛生教育</strong>の指導および援助を行う。</td><td class="vn-topic translation-cell" data-label="Bản dịch・Trọng điểm" lang="vi"><strong class="kw">Biện pháp của 特定元方事業者</strong></td><td class="vn-answer translation-cell" data-label="Bản dịch・Đáp án" lang="vi">Để phòng ngừa tai nạn lao động do người lao động của doanh nghiệp mình và các <strong class="kw">nhà thầu liên quan</strong> cùng làm việc tại một địa điểm, 特定元方事業者 phải chỉ đạo và hỗ trợ công tác <strong class="kw">giáo dục an toàn vệ sinh</strong> do các <strong class="kw">nhà thầu liên quan</strong> thực hiện.</td></tr><tr><td class="meta" data-label="年">R元</td><td class="meta" data-label="条項">第30条</td><td class="jp-topic original-cell" data-label="原文・出題の要点" lang="ja"><strong class="kw">特定元方事業者の措置</strong></td><td class="jp-answer original-cell" data-label="原文・解答の要点" lang="ja"><strong class="kw">特定元方事業者</strong>は、自社と<strong class="kw">関係請負人</strong>の労働者の作業が同一の場所で行われることによる労働災害を防止するため、<strong class="kw">協議組織</strong>の設置・運営を行う。</td><td class="vn-topic translation-cell" data-label="Bản dịch・Trọng điểm" lang="vi"><strong class="kw">Biện pháp của 特定元方事業者</strong></td><td class="vn-answer translation-cell" data-label="Bản dịch・Đáp án" lang="vi">Để phòng ngừa tai nạn lao động khi người lao động của các bên cùng làm việc tại một địa điểm, 特定元方事業者 phải thành lập và vận hành <strong class="kw">tổ chức phối hợp</strong>.</td></tr><tr><td class="meta" data-label="年">H29</td><td class="meta" data-label="条項">第60条</td><td class="jp-topic original-cell" data-label="原文・出題の要点" lang="ja"><strong class="kw">安全衛生教育</strong></td><td class="jp-answer original-cell" data-label="原文・解答の要点" lang="ja">労働者を直接指導・監督する者には、労働災害を防止するために必要な事項について、<strong class="kw">安全衛生教育</strong>を行う。</td><td class="vn-topic translation-cell" data-label="Bản dịch・Trọng điểm" lang="vi"><strong class="kw">Giáo dục an toàn vệ sinh</strong></td><td class="vn-answer translation-cell" data-label="Bản dịch・Đáp án" lang="vi">Người trực tiếp chỉ đạo, giám sát người lao động phải được <strong class="kw">giáo dục an toàn vệ sinh</strong> về những nội dung cần thiết để phòng ngừa tai nạn lao động.</td></tr><tr><td class="meta" data-label="年">H28</td><td class="meta" data-label="条項">第66条</td><td class="jp-topic original-cell" data-label="原文・出題の要点" lang="ja"><strong class="kw">健康診断</strong></td><td class="jp-answer original-cell" data-label="原文・解答の要点" lang="ja">有害な業務に従事する労働者には、医師による特別の項目についての<strong class="kw">健康診断</strong>を行う。</td><td class="vn-topic translation-cell" data-label="Bản dịch・Trọng điểm" lang="vi"><strong class="kw">Khám sức khỏe</strong></td><td class="vn-answer translation-cell" data-label="Bản dịch・Đáp án" lang="vi">Người lao động làm công việc có yếu tố độc hại phải được bác sĩ <strong class="kw">khám sức khỏe</strong> theo các hạng mục đặc biệt.</td></tr><tr><td class="meta" data-label="年">R6</td><td class="meta" data-label="条項">第71条の2</td><td class="jp-topic original-cell" data-label="原文・出題の要点" lang="ja"><strong class="kw">事業者の講ずる措置</strong></td><td class="jp-answer original-cell" data-label="原文・解答の要点" lang="ja">事業者は、作業環境を快適な状態に維持管理するなどの措置を講じて、快適な職場環境を形成するように努める。</td><td class="vn-topic translation-cell" data-label="Bản dịch・Trọng điểm" lang="vi"><strong class="kw">Biện pháp doanh nghiệp phải thực hiện</strong></td><td class="vn-answer translation-cell" data-label="Bản dịch・Đáp án" lang="vi">Doanh nghiệp phải nỗ lực hình thành môi trường làm việc thoải mái bằng các biện pháp như duy trì, quản lý môi trường làm việc ở trạng thái phù hợp, dễ chịu.</td></tr></tbody></table></div><div class="bilingual-note note">
 <div class="note-pane original-cell" lang="ja"><div class="card-title">原文</div><div>※「各法令の文章の空欄を埋める出題形式」の問題は、令和2年度以前の実地試験では記述式であったが、令和3年度以降の第二次検定では五肢択一式（空欄に当てはまる正しい語句又は数値を選択する形式）に変更されている。</div></div>
 <div class="note-pane translation-cell" lang="vi"><div class="card-title">Bản dịch tiếng Việt</div><div>Đến R2 trở về trước, dạng điền chỗ trống trong câu văn của luật là tự luận. Từ R3 trở đi chuyển thành trắc nghiệm 5 lựa chọn, chọn từ hoặc trị số đúng để điền vào ô trống.</div></div>
-</div><p class="back"><a href="#toc">↑ Mục lục</a></p></section><section id="glossary"><h2>Thuật ngữ chuyên môn / 専門用語</h2><p class="source-ref">Tổng hợp và loại bỏ trùng lặp từ toàn bộ Book page 15-24.</p><div class="table-wrap"><table class="glossary-table"><thead><tr><th>日本語</th><th>読み方</th><th>Tiếng Việt</th><th>Giải thích</th><th>Liên quan</th></tr></thead><tbody><tr><td lang="ja">仮設物</td><td lang="ja">かせつぶつ</td><td>Công trình, thiết bị tạm</td><td>Hạng mục phục vụ thi công và thường được tháo bỏ sau khi hoàn thành.</td><td>仮囲い・足場・構台</td></tr><tr><td lang="ja">くさび緊結式足場</td><td lang="ja">くさびきんけつしきあしば</td><td>Giàn giáo liên kết kiểu nêm</td><td>Hệ giàn giáo liên kết các cấu kiện bằng mối nối dạng nêm.</td><td>支柱・壁つなぎ</td></tr><tr><td lang="ja">荷受け構台</td><td lang="ja">にうけこうだい</td><td>Sàn nhận vật liệu</td><td>Sàn tạm dùng tiếp nhận và trung chuyển vật liệu giữa thiết bị nâng và công trình.</td><td>動線・積載荷重</td></tr><tr><td lang="ja">根がらみ</td><td lang="ja">ねがらみ</td><td>Giằng chân</td><td>Cấu kiện liên kết phần chân cột giàn giáo hoặc cột chống để hạn chế trượt và lún.</td><td>交差筋交い</td></tr><tr><td lang="ja">絶縁用防護具</td><td lang="ja">ぜつえんようぼうごぐ</td><td>Phương tiện bảo vệ cách điện</td><td>Phương tiện dùng ngăn nguy hiểm do tiếp xúc hoặc tiếp cận phần mang điện.</td><td>感電防止</td></tr><tr><td lang="ja">アウトリガー</td><td lang="ja">アウトリガー</td><td>Chân chống outrigger</td><td>Bộ phận mở rộng diện tích chống đỡ để tăng ổn định cho cẩu hoặc xe nâng người.</td><td>移動式クレーン・高所作業車</td></tr><tr><td lang="ja">ネットワーク工程表</td><td lang="ja">ネットワークこうていひょう</td><td>Sơ đồ tiến độ mạng</td><td>Biểu diễn quan hệ trước sau giữa các công việc bằng network.</td><td>クリティカルパス</td></tr><tr><td lang="ja">最早開始時期</td><td lang="ja">さいそうかいしじき</td><td>Thời điểm bắt đầu sớm nhất, ES</td><td>Thời điểm sớm nhất một công việc có thể bắt đầu.</td><td>最遅開始時期</td></tr><tr><td lang="ja">最遅開始時期</td><td lang="ja">さいちかいしじき</td><td>Thời điểm bắt đầu muộn nhất, LS</td><td>Thời điểm muộn nhất có thể bắt đầu mà không làm chậm tiến độ yêu cầu.</td><td>最遅完了時期</td></tr><tr><td lang="ja">最遅完了時期</td><td lang="ja">さいちかんりょうじき</td><td>Thời điểm hoàn thành muộn nhất, LF</td><td>Giá trị dùng để tính LS và Total Float.</td><td>トータルフロート</td></tr><tr><td lang="ja">トータルフロート</td><td lang="ja">トータルフロート</td><td>Total Float, tổng dự trữ</td><td>Khoảng dự trữ không làm thay đổi thời hạn hoàn thành toàn bộ.</td><td>クリティカルパス</td></tr><tr><td lang="ja">フリーフロート</td><td lang="ja">フリーフロート</td><td>Free Float, dự trữ tự do</td><td>Khoảng có thể trì hoãn mà không làm chậm thời điểm bắt đầu của công việc kế tiếp.</td><td>後続作業</td></tr><tr><td lang="ja">クリティカルパス</td><td lang="ja">クリティカルパス</td><td>Đường găng</td><td>Chuỗi công việc có Total Float bằng 0 theo cách xác định của tài liệu.</td><td>総所要日数</td></tr><tr><td lang="ja">墨出し</td><td lang="ja">すみだし</td><td>Định vị, bật mực</td><td>Chuyển vị trí, trục và kích thước thiết kế ra hiện trường.</td><td>躯体工事・内装工事</td></tr><tr><td lang="ja">平板載荷試験</td><td lang="ja">へいばんさいかしけん</td><td>Thí nghiệm bàn nén phẳng</td><td>Thí nghiệm đặt tải lên tấm tròn và đo độ lún.</td><td>地業工事</td></tr><tr><td lang="ja">床付け面</td><td lang="ja">とこづけめん</td><td>Mặt đáy đào hoàn thiện</td><td>Mặt đất cuối cùng sau khi đào đến cao độ thiết kế.</td><td>根切り</td></tr><tr><td lang="ja">クイックサンド</td><td lang="ja">クイックサンド</td><td>Quicksand</td><td>Hiện tượng liên quan đến dòng thấm hướng lên theo cách phân loại trong sách.</td><td>ボイリング</td></tr><tr><td lang="ja">ボイリング</td><td lang="ja">ボイリング</td><td>Boiling</td><td>Phá hoại dạng sôi tại đáy hố đào.</td><td>掘削底面</td></tr><tr><td lang="ja">盤ぶくれ</td><td lang="ja">ばんぶくれ</td><td>Trồi đáy do nước ngầm có áp</td><td>Đáy hố đào bị nâng lên dưới tác dụng của nước ngầm có áp.</td><td>被圧地下水</td></tr><tr><td lang="ja">ディープウェル工法</td><td lang="ja">ディープウェルこうほう</td><td>Phương pháp deep well</td><td>Phương pháp xử lý hoặc hạ nước ngầm bằng giếng sâu.</td><td>帯水層</td></tr><tr><td lang="ja">オールケーシング工法</td><td lang="ja">オールケーシングこうほう</td><td>Phương pháp all casing</td><td>Công pháp cọc khoan tại chỗ sử dụng casing tube.</td><td>場所打ち杭</td></tr><tr><td lang="ja">杭心ずれ</td><td lang="ja">くいしんずれ</td><td>Độ lệch tâm cọc</td><td>Sai lệch giữa tâm cọc thi công và vị trí tâm quy định.</td><td>鉛直精度</td></tr><tr><td lang="ja">ケリーバー</td><td lang="ja">ケリーバー</td><td>Kelly bar</td><td>Thanh truyền của máy earth drill được căn tâm với vị trí cọc.</td><td>アースドリル</td></tr><tr><td lang="ja">ガス圧接</td><td lang="ja">ガスあっせつ</td><td>Hàn ép khí</td><td>Nối cốt thép bằng gia nhiệt và ép hai đầu thanh.</td><td>圧接部の膨らみ</td></tr><tr><td lang="ja">型枠支保工</td><td lang="ja">かたわくしほこう</td><td>Hệ chống đỡ ván khuôn</td><td>Hệ cột chống, giằng và cấu kiện chịu tải cho ván khuôn.</td><td>水平つなぎ</td></tr><tr><td lang="ja">せき板</td><td lang="ja">せきいた</td><td>Tấm ván khuôn</td><td>Bề mặt trực tiếp tiếp xúc với bê tông.</td><td>側圧</td></tr><tr><td lang="ja">側圧</td><td lang="ja">そくあつ</td><td>Áp lực ngang</td><td>Áp lực bê tông tươi tác dụng ngang lên ván khuôn.</td><td>型枠</td></tr><tr><td lang="ja">寒中コンクリート</td><td lang="ja">かんちゅうコンクリート</td><td>Bê tông mùa lạnh</td><td>Bê tông thi công trong điều kiện nhiệt độ thấp.</td><td>初期養生</td></tr><tr><td lang="ja">暑中コンクリート</td><td lang="ja">しょちゅうコンクリート</td><td>Bê tông mùa nóng</td><td>Bê tông thi công trong điều kiện nhiệt độ cao.</td><td>荷卸し温度</td></tr><tr><td lang="ja">完全溶込み溶接</td><td lang="ja">かんぜんとけこみようせつ</td><td>Hàn ngấu hoàn toàn</td><td>Mối hàn có độ ngấu xuyên toàn bộ chiều dày phần liên kết.</td><td>余盛</td></tr><tr><td lang="ja">余盛</td><td lang="ja">よもり</td><td>Phần gia cường mối hàn</td><td>Phần kim loại hàn nhô cao hơn bề mặt vật liệu cơ bản.</td><td>突合せ継手</td></tr><tr><td lang="ja">スタッド</td><td lang="ja">スタッド</td><td>Stud</td><td>Chốt hàn dùng phổ biến trong liên kết thép với bê tông.</td><td>曲げ検査</td></tr><tr><td lang="ja">スライム</td><td lang="ja">スライム</td><td>Slime, cặn đáy hố khoan</td><td>Đất mịn, bùn và cặn lắng ở đáy lỗ khoan cọc.</td><td>底ざらい</td></tr><tr><td lang="ja">安定液</td><td lang="ja">あんていえき</td><td>Dung dịch ổn định</td><td>Dung dịch dùng giữ ổn định thành lỗ khoan.</td><td>造壁性</td></tr><tr><td lang="ja">底ざらいバケット</td><td lang="ja">そこざらいバケット</td><td>Bucket nạo vét đáy</td><td>Thiết bị lấy slime khỏi đáy hố khoan.</td><td>一次処理</td></tr><tr><td lang="ja">切梁</td><td lang="ja">きりばり</td><td>Thanh chống ngang</td><td>Cấu kiện chống ngang cho hệ tường chắn đất.</td><td>腹起し</td></tr><tr><td lang="ja">腹起し</td><td lang="ja">はらおこし</td><td>Waler</td><td>Thanh phân phối lực dọc theo tường chắn đất.</td><td>切梁・火打梁</td></tr><tr><td lang="ja">地盤アンカー</td><td lang="ja">じばんアンカー</td><td>Ground anchor, neo đất</td><td>Hệ neo truyền lực từ tường chắn vào nền đất.</td><td>グラウト</td></tr><tr><td lang="ja">バーサポート</td><td lang="ja">バーサポート</td><td>Bar support</td><td>Cấu kiện đỡ để duy trì vị trí cốt thép.</td><td>スペーサー</td></tr><tr><td lang="ja">スペーサー</td><td lang="ja">スペーサー</td><td>Spacer</td><td>Cấu kiện giữ vị trí và lớp bảo vệ cốt thép.</td><td>かぶり厚</td></tr><tr><td lang="ja">コールドジョイント</td><td lang="ja">コールドジョイント</td><td>Cold joint, mạch ngừng lạnh</td><td>Mặt tiếp giáp không liền khối do khoảng thời gian giữa hai đợt đổ quá dài.</td><td>打重ね時間</td></tr><tr><td lang="ja">建入れ直し</td><td lang="ja">たていれなおし</td><td>Chỉnh độ thẳng đứng</td><td>Điều chỉnh vị trí và độ thẳng đứng của kết cấu thép sau dựng.</td><td>鉄骨工事</td></tr><tr><td lang="ja">吹付けロックウール</td><td lang="ja">ふきつけロックウール</td><td>Rock wool phun</td><td>Vật liệu phun tạo lớp bảo vệ chống cháy cho kết cấu thép.</td><td>耐火被覆</td></tr><tr><td lang="ja">トルシア形高力ボルト</td><td lang="ja">トルシアがたこうりょくボルト</td><td>Bu lông cường độ cao torshear</td><td>Bu lông kiểm soát lực siết thông qua việc cắt pin tail.</td><td>ピンテール</td></tr><tr><td lang="ja">転倒工法</td><td lang="ja">てんとうこうほう</td><td>Phương pháp phá dỡ bằng lật đổ</td><td>Cho phần kết cấu đổ có kiểm soát trong quá trình phá dỡ.</td><td>解体工事</td></tr><tr><td lang="ja">ガラ</td><td lang="ja">ガラ</td><td>Phế liệu phá dỡ</td><td>Bê tông, gạch và vật liệu vỡ phát sinh khi phá dỡ.</td><td>クッション材</td></tr><tr><td lang="ja">増張り</td><td lang="ja">ましばり</td><td>Dán gia cường bổ sung</td><td>Bổ sung một lớp sheet tại vị trí cần tăng khả năng chống thấm.</td><td>出入隅部</td></tr><tr><td lang="ja">常温粘着工法</td><td lang="ja">じょうおんねんちゃくこうほう</td><td>Phương pháp tự dính ở nhiệt độ thường</td><td>Công pháp sheet chống thấm không cần gia nhiệt nóng tại hiện trường.</td><td>防水工事</td></tr><tr><td lang="ja">まぐさ</td><td lang="ja">まぐさ</td><td>Lanh tô</td><td>Cấu kiện phía trên cửa hoặc lỗ mở.</td><td>庇</td></tr><tr><td lang="ja">庇</td><td lang="ja">ひさし</td><td>Mái hắt</td><td>Phần nhô ra khỏi mặt đứng để che mưa, nắng.</td><td>タイル工事</td></tr><tr><td lang="ja">下葺き</td><td lang="ja">したぶき</td><td>Lớp lót mái</td><td>Lớp nằm dưới vật liệu lợp chính.</td><td>ルーフィング</td></tr><tr><td lang="ja">けらば</td><td lang="ja">けらば</td><td>Mép hồi mái</td><td>Mép mái phía đầu hồi.</td><td>けらば包み</td></tr><tr><td lang="ja">タイトフレーム</td><td lang="ja">タイトフレーム</td><td>Tight frame</td><td>Cấu kiện đỡ và cố định tấm mái kim loại.</td><td>折板屋根</td></tr><tr><td lang="ja">ルーフィング</td><td lang="ja">ルーフィング</td><td>Roofing, tấm lót mái</td><td>Lớp lót chống nước phía dưới lớp mái.</td><td>重ね幅</td></tr><tr><td lang="ja">野縁</td><td lang="ja">のぶち</td><td>Thanh furring trần</td><td>Thanh phụ trong hệ khung trần.</td><td>軽量鉄骨天井</td></tr><tr><td lang="ja">ランナー</td><td lang="ja">ランナー</td><td>Runner, thanh ray</td><td>Thanh ray trên và dưới của hệ khung tường thép nhẹ.</td><td>軽量鉄骨壁下地</td></tr><tr><td lang="ja">金ごて仕上げ</td><td lang="ja">かなごてしあげ</td><td>Hoàn thiện bằng bay thép</td><td>Tạo bề mặt tương đối nhẵn và kín.</td><td>壁紙・接着剤張り下地</td></tr><tr><td lang="ja">木ごて仕上げ</td><td lang="ja">きごてしあげ</td><td>Hoàn thiện bằng bay gỗ</td><td>Tạo bề mặt có độ nhám phù hợp cho lớp hoàn thiện sau.</td><td>タイル張付け下地</td></tr><tr><td lang="ja">吸水調整材</td><td lang="ja">きゅうすいちょうせいざい</td><td>Chất điều chỉnh hút nước</td><td>Điều chỉnh khả năng hút nước của nền trước khi thi công mortar.</td><td>左官工事</td></tr><tr><td lang="ja">防煙シャッター</td><td lang="ja">ぼうえんシャッター</td><td>Cửa cuốn ngăn khói</td><td>Cửa cuốn có chức năng hạn chế lan truyền khói.</td><td>漏煙抑制構造</td></tr><tr><td lang="ja">研磨紙ずり</td><td lang="ja">けんましずり</td><td>Chà giấy nhám</td><td>Công tác làm phẳng nền hoặc lớp sơn.</td><td>塗装工事</td></tr><tr><td lang="ja">パテかい</td><td lang="ja">パテかい</td><td>Xử lý putty cục bộ</td><td>Xử lý riêng các chỗ lõm, khe hoặc khuyết tật.</td><td>パテ付け</td></tr><tr><td lang="ja">スウェイ方式</td><td lang="ja">スウェイほうしき</td><td>Phương thức sway</td><td>Cấu tạo curtain wall cho phép một đầu trượt để hấp thụ chuyển vị.</td><td>カーテンウォール</td></tr><tr><td lang="ja">樹脂注入工法</td><td lang="ja">じゅしちゅうにゅうこうほう</td><td>Phương pháp bơm nhựa</td><td>Bơm vật liệu resin vào vết nứt bê tông.</td><td>ひび割れ</td></tr><tr><td lang="ja">平場部</td><td lang="ja">ひらばぶ</td><td>Phần phẳng</td><td>Phần bề mặt tương đối bằng phẳng của mái hoặc sàn.</td><td>防水保護層</td></tr><tr><td lang="ja">伸縮目地</td><td lang="ja">しんしゅくめじ</td><td>Khe co giãn</td><td>Khe cho phép lớp hoàn thiện co giãn.</td><td>保護コンクリート</td></tr><tr><td lang="ja">水下側</td><td lang="ja">みずしもがわ</td><td>Phía hạ lưu mái</td><td>Phía thấp theo hướng nước chảy.</td><td>水上側</td></tr><tr><td lang="ja">水上側</td><td lang="ja">みずかみがわ</td><td>Phía thượng lưu mái</td><td>Phía cao theo hướng nước chảy.</td><td>水下側</td></tr><tr><td lang="ja">笠木</td><td lang="ja">かさぎ</td><td>Coping, nắp đỉnh tường</td><td>Cấu kiện bảo vệ đỉnh parapet hoặc tường.</td><td>パラペット</td></tr><tr><td lang="ja">嵌め合い</td><td lang="ja">はめあい</td><td>Lắp ăn khớp</td><td>Lắp hai cấu kiện bằng hình dạng khớp với nhau.</td><td>固定金具</td></tr><tr><td lang="ja">櫛目</td><td lang="ja">くしめ</td><td>Rãnh keo dạng răng lược</td><td>Vệt keo tạo bởi bay răng cưa.</td><td>有機系接着剤</td></tr><tr><td lang="ja">裏あし</td><td lang="ja">うらあし</td><td>Chân hoặc rãnh mặt sau tile</td><td>Phần gân nổi ở mặt sau viên tile.</td><td>櫛目方向</td></tr><tr><td lang="ja">改良圧着張り</td><td lang="ja">かいりょうあっちゃくばり</td><td>Phương pháp dán ép cải tiến</td><td>Phương pháp dán tile bằng mortar có xử lý cả phía nền và mặt sau tile.</td><td>張付けモルタル</td></tr><tr><td lang="ja">不陸</td><td lang="ja">ふりく</td><td>Độ không phẳng</td><td>Sai lệch cao độ trên bề mặt.</td><td>目違い</td></tr><tr><td lang="ja">目違い</td><td lang="ja">めちがい</td><td>Lệch mép, lippage</td><td>Hai vật liệu liền kề không nằm cùng mặt phẳng.</td><td>不陸</td></tr><tr><td lang="ja">隠し釘留め</td><td lang="ja">かくしくぎどめ</td><td>Đóng đinh giấu</td><td>Đinh được đóng tại vị trí không lộ ra mặt hoàn thiện.</td><td>フローリング</td></tr><tr><td lang="ja">施工体制台帳</td><td lang="ja">せこうたいせいだいちょう</td><td>Sổ hệ thống tổ chức thi công</td><td>Hồ sơ quản lý cơ cấu và nội dung công việc của các nhà thầu tham gia.</td><td>施工体系図</td></tr><tr><td lang="ja">施工体系図</td><td lang="ja">せこうたいけいず</td><td>Sơ đồ hệ thống thi công</td><td>Sơ đồ thể hiện quan hệ phân công giữa các nhà thầu.</td><td>下請負人</td></tr><tr><td lang="ja">主任技術者</td><td lang="ja">しゅにんぎじゅつしゃ</td><td>Kỹ sư phụ trách</td><td>Chức danh kỹ thuật theo Luật Kinh doanh xây dựng.</td><td>監理技術者</td></tr><tr><td lang="ja">監理技術者</td><td lang="ja">かんりぎじゅつしゃ</td><td>Kỹ sư quản lý</td><td>Chức danh kỹ thuật quản lý thi công theo Luật Kinh doanh xây dựng.</td><td>主任技術者</td></tr><tr><td lang="ja">仮囲い</td><td lang="ja">かりがこい</td><td>Hàng rào tạm công trường</td><td>Hàng rào ngăn cách công trường với khu vực bên ngoài.</td><td>建築基準法施行令</td></tr><tr><td lang="ja">根切り</td><td lang="ja">ねぎり</td><td>Đào đất móng</td><td>Công tác đào đất tạo không gian thi công móng hoặc tầng hầm.</td><td>山留め</td></tr><tr><td lang="ja">山留め</td><td lang="ja">やまどめ</td><td>Hệ chắn giữ đất</td><td>Hệ tường và chống đỡ dùng ổn định thành hố đào.</td><td>矢板・切梁</td></tr><tr><td lang="ja">仮筋かい</td><td lang="ja">かりすじかい</td><td>Giằng tạm</td><td>Giằng dùng tạm thời để ổn định kết cấu trong quá trình lắp dựng.</td><td>仮締</td></tr><tr><td lang="ja">仮締</td><td lang="ja">かりじめ</td><td>Siết tạm</td><td>Siết liên kết tạm thời trước khi siết chính thức.</td><td>鉄骨建て方</td></tr><tr><td lang="ja">総括安全衛生管理者</td><td lang="ja">そうかつあんぜんえいせいかんりしゃ</td><td>Tổng quản lý an toàn vệ sinh</td><td>Chức danh quản lý tổng thể về an toàn và sức khỏe lao động.</td><td>労働安全衛生法第10条</td></tr><tr><td lang="ja">元方事業者</td><td lang="ja">もとかたじぎょうしゃ</td><td>Doanh nghiệp hoặc nhà thầu chính</td><td>Chủ thể giao công việc cho các nhà thầu liên quan và có trách nhiệm an toàn nhất định.</td><td>関係請負人</td></tr><tr><td lang="ja">特定元方事業者</td><td lang="ja">とくていもとかたじぎょうしゃ</td><td>Doanh nghiệp chính thuộc diện đặc định</td><td>Chủ thể có nghĩa vụ điều phối an toàn đặc biệt khi nhiều bên cùng làm việc tại một địa điểm.</td><td>協議組織</td></tr><tr><td lang="ja">協議組織</td><td lang="ja">きょうぎそしき</td><td>Tổ chức phối hợp</td><td>Cơ chế phối hợp an toàn giữa nhà thầu chính và các nhà thầu liên quan.</td><td>特定元方事業者</td></tr><tr><td lang="ja">鉄筋相互の空き</td><td lang="ja">てっきんそうごのあき</td><td>Khoảng hở giữa các thanh cốt thép</td><td>Khoảng cách thông thủy giữa hai thanh cốt thép liền kề.</td><td>粗骨材最大寸法</td></tr><tr><td lang="ja">かぶり厚</td><td lang="ja">かぶりあつ</td><td>Chiều dày lớp bê tông bảo vệ</td><td>Khoảng bê tông từ bề mặt cốt thép đến bề mặt cấu kiện.</td><td>鉄筋</td></tr><tr><td lang="ja">漏煙抑制構造</td><td lang="ja">ろうえんよくせいこうぞう</td><td>Kết cấu hạn chế rò khói</td><td>Cấu tạo nhằm giảm lượng khói lọt qua khe của cửa cuốn ngăn khói.</td><td>防煙シャッター</td></tr><tr><td lang="ja">自重受け鋼材</td><td lang="ja">じじゅううけこうざい</td><td>Thép đỡ tự trọng</td><td>Cấu kiện thép tiếp nhận tự trọng của panel.</td><td>ALCパネル</td></tr><tr><td lang="ja">溶接金網</td><td lang="ja">ようせつかなあみ</td><td>Lưới thép hàn</td><td>Lưới thép được hàn tại các giao điểm.</td><td>防水保護層</td></tr><tr><td lang="ja">請負契約</td><td lang="ja">うけおいけいやく</td><td>Hợp đồng nhận thầu</td><td>Hợp đồng trong đó bên nhận thầu có nghĩa vụ hoàn thành công việc.</td><td>建設業法</td></tr><tr><td lang="ja">元請負人</td><td lang="ja">もとうけおいにん</td><td>Nhà thầu chính</td><td>Bên nhận hợp đồng trực tiếp rồi giao một phần công việc cho thầu phụ.</td><td>下請負人</td></tr><tr><td lang="ja">下請負人</td><td lang="ja">したうけおいにん</td><td>Nhà thầu phụ</td><td>Bên thực hiện công việc theo hợp đồng thầu phụ.</td><td>元請負人</td></tr><tr><td lang="ja">矢板</td><td lang="ja">やいた</td><td>Sheet pile hoặc ván cừ</td><td>Cấu kiện giữ đất thuộc hệ chắn đất.</td><td>山留め</td></tr><tr><td lang="ja">帆布</td><td lang="ja">はんぷ</td><td>Vải bạt</td><td>Vật liệu che chắn dùng trong biện pháp bảo vệ chống vật rơi.</td><td>鉄網</td></tr><tr><td lang="ja">建て方</td><td lang="ja">たてかた</td><td>Lắp dựng kết cấu</td><td>Công tác dựng cột, dầm và khung kết cấu vào vị trí.</td><td>仮筋かい・仮締</td></tr><tr><td lang="ja">関係請負人</td><td lang="ja">かんけいうけおいにん</td><td>Nhà thầu liên quan</td><td>Các nhà thầu thực hiện công việc trong hệ thống của nhà thầu chính.</td><td>元方事業者</td></tr><tr><td lang="ja">安全衛生教育</td><td lang="ja">あんぜんえいせいきょういく</td><td>Giáo dục an toàn vệ sinh</td><td>Đào tạo nội dung cần thiết để phòng ngừa tai nạn và ảnh hưởng sức khỏe.</td><td>労働安全衛生法</td></tr><tr><td lang="ja">有害な業務</td><td lang="ja">ゆうがいなぎょうむ</td><td>Công việc có yếu tố độc hại</td><td>Công việc có nguy cơ gây ảnh hưởng đến sức khỏe người lao động.</td><td>特別健康診断</td></tr></tbody></table></div><p class="back"><a href="#toc">↑ Mục lục</a></p></section><section id="background"><h2>Kiến thức nền cần biết</h2>
-<p class="source-ref">Phần giải thích kỹ thuật tổng hợp từ nội dung đã dịch, tách biệt với nguyên văn của sách.</p>
-<h3 id="background-network">1. Công thức cơ bản của sơ đồ tiến độ mạng</h3>
-<div class="info-box">
+</div><p class="back"><a href="#toc">↑ Mục lục</a></p></section><section id="glossary"><h2>Thuật ngữ chuyên môn / 専門用語</h2><p class="source-ref">Tổng hợp và loại bỏ trùng lặp từ toàn bộ Book page 15-24.</p><div class="table-wrap"><table class="glossary-table"><thead><tr><th>日本語</th><th>読み方</th><th>Tiếng Việt</th><th>Giải thích</th><th>Liên quan</th></tr></thead><tbody><tr><td lang="ja">仮設物</td><td lang="ja">かせつぶつ</td><td>Công trình, thiết bị tạm</td><td>Hạng mục phục vụ thi công và thường được tháo bỏ sau khi hoàn thành.</td><td>仮囲い・足場・構台</td></tr><tr><td lang="ja">くさび緊結式足場</td><td lang="ja">くさびきんけつしきあしば</td><td>Giàn giáo liên kết kiểu nêm</td><td>Hệ giàn giáo liên kết các cấu kiện bằng mối nối dạng nêm.</td><td>支柱・壁つなぎ</td></tr><tr><td lang="ja">荷受け構台</td><td lang="ja">にうけこうだい</td><td>Sàn nhận vật liệu</td><td>Sàn tạm dùng tiếp nhận và trung chuyển vật liệu giữa thiết bị nâng và công trình.</td><td>動線・積載荷重</td></tr><tr><td lang="ja">根がらみ</td><td lang="ja">ねがらみ</td><td>Giằng chân</td><td>Cấu kiện liên kết phần chân cột giàn giáo hoặc cột chống để hạn chế trượt và lún.</td><td>交差筋交い</td></tr><tr><td lang="ja">絶縁用防護具</td><td lang="ja">ぜつえんようぼうごぐ</td><td>Phương tiện bảo vệ cách điện</td><td>Phương tiện dùng ngăn nguy hiểm do tiếp xúc hoặc tiếp cận phần mang điện.</td><td>感電防止</td></tr><tr><td lang="ja">アウトリガー</td><td lang="ja">アウトリガー</td><td>Chân chống outrigger</td><td>Bộ phận mở rộng diện tích chống đỡ để tăng ổn định cho cẩu hoặc xe nâng người.</td><td>移動式クレーン・高所作業車</td></tr><tr><td lang="ja">ネットワーク工程表</td><td lang="ja">ネットワークこうていひょう</td><td>Sơ đồ tiến độ mạng</td><td>Biểu diễn quan hệ trước sau giữa các công việc bằng network.</td><td>クリティカルパス</td></tr><tr><td lang="ja">最早開始時期</td><td lang="ja">さいそうかいしじき</td><td>Thời điểm bắt đầu sớm nhất, ES</td><td>Thời điểm sớm nhất một công việc có thể bắt đầu.</td><td>最遅開始時期</td></tr><tr><td lang="ja">最遅開始時期</td><td lang="ja">さいちかいしじき</td><td>Thời điểm bắt đầu muộn nhất, LS</td><td>Thời điểm muộn nhất có thể bắt đầu mà không làm chậm tiến độ yêu cầu.</td><td>最遅完了時期</td></tr><tr><td lang="ja">最遅完了時期</td><td lang="ja">さいちかんりょうじき</td><td>Thời điểm hoàn thành muộn nhất, LF</td><td>Giá trị dùng để tính LS và Total Float.</td><td>トータルフロート</td></tr><tr><td lang="ja">トータルフロート</td><td lang="ja">トータルフロート</td><td>Total Float, tổng dự trữ</td><td>Khoảng dự trữ không làm thay đổi thời hạn hoàn thành toàn bộ.</td><td>クリティカルパス</td></tr><tr><td lang="ja">フリーフロート</td><td lang="ja">フリーフロート</td><td>Free Float, dự trữ tự do</td><td>Khoảng có thể trì hoãn mà không làm chậm thời điểm bắt đầu của công việc kế tiếp.</td><td>後続作業</td></tr><tr><td lang="ja">クリティカルパス</td><td lang="ja">クリティカルパス</td><td>Đường găng</td><td>Chuỗi công việc có Total Float bằng 0 theo cách xác định của tài liệu.</td><td>総所要日数</td></tr><tr><td lang="ja">墨出し</td><td lang="ja">すみだし</td><td>Định vị, bật mực</td><td>Chuyển vị trí, trục và kích thước thiết kế ra hiện trường.</td><td>躯体工事・内装工事</td></tr><tr><td lang="ja">平板載荷試験</td><td lang="ja">へいばんさいかしけん</td><td>Thí nghiệm bàn nén phẳng</td><td>Thí nghiệm đặt tải lên tấm tròn và đo độ lún.</td><td>地業工事</td></tr><tr><td lang="ja">床付け面</td><td lang="ja">とこづけめん</td><td>Mặt đáy đào hoàn thiện</td><td>Mặt đất cuối cùng sau khi đào đến cao độ thiết kế.</td><td>根切り</td></tr><tr><td lang="ja">クイックサンド</td><td lang="ja">クイックサンド</td><td>Quicksand</td><td>Hiện tượng liên quan đến dòng thấm hướng lên theo cách phân loại trong sách.</td><td>ボイリング</td></tr><tr><td lang="ja">ボイリング</td><td lang="ja">ボイリング</td><td>Boiling</td><td>Phá hoại dạng sôi tại đáy hố đào.</td><td>掘削底面</td></tr><tr><td lang="ja">盤ぶくれ</td><td lang="ja">ばんぶくれ</td><td>Trồi đáy do nước ngầm có áp</td><td>Đáy hố đào bị nâng lên dưới tác dụng của nước ngầm có áp.</td><td>被圧地下水</td></tr><tr><td lang="ja">ディープウェル工法</td><td lang="ja">ディープウェルこうほう</td><td>Phương pháp deep well</td><td>Phương pháp xử lý hoặc hạ nước ngầm bằng giếng sâu.</td><td>帯水層</td></tr><tr><td lang="ja">オールケーシング工法</td><td lang="ja">オールケーシングこうほう</td><td>Phương pháp all casing</td><td>Công pháp cọc khoan tại chỗ sử dụng casing tube.</td><td>場所打ち杭</td></tr><tr><td lang="ja">杭心ずれ</td><td lang="ja">くいしんずれ</td><td>Độ lệch tâm cọc</td><td>Sai lệch giữa tâm cọc thi công và vị trí tâm quy định.</td><td>鉛直精度</td></tr><tr><td lang="ja">ケリーバー</td><td lang="ja">ケリーバー</td><td>Kelly bar</td><td>Thanh truyền của máy earth drill được căn tâm với vị trí cọc.</td><td>アースドリル</td></tr><tr><td lang="ja">ガス圧接</td><td lang="ja">ガスあっせつ</td><td>Hàn ép khí</td><td>Nối cốt thép bằng gia nhiệt và ép hai đầu thanh.</td><td>圧接部の膨らみ</td></tr><tr><td lang="ja">型枠支保工</td><td lang="ja">かたわくしほこう</td><td>Hệ chống đỡ ván khuôn</td><td>Hệ cột chống, giằng và cấu kiện chịu tải cho ván khuôn.</td><td>水平つなぎ</td></tr><tr><td lang="ja">せき板</td><td lang="ja">せきいた</td><td>Tấm ván khuôn</td><td>Bề mặt trực tiếp tiếp xúc với bê tông.</td><td>側圧</td></tr><tr><td lang="ja">側圧</td><td lang="ja">そくあつ</td><td>Áp lực ngang</td><td>Áp lực bê tông tươi tác dụng ngang lên ván khuôn.</td><td>型枠</td></tr><tr><td lang="ja">寒中コンクリート</td><td lang="ja">かんちゅうコンクリート</td><td>Bê tông mùa lạnh</td><td>Bê tông thi công trong điều kiện nhiệt độ thấp.</td><td>初期養生</td></tr><tr><td lang="ja">暑中コンクリート</td><td lang="ja">しょちゅうコンクリート</td><td>Bê tông mùa nóng</td><td>Bê tông thi công trong điều kiện nhiệt độ cao.</td><td>荷卸し温度</td></tr><tr><td lang="ja">完全溶込み溶接</td><td lang="ja">かんぜんとけこみようせつ</td><td>Hàn ngấu hoàn toàn</td><td>Mối hàn có độ ngấu xuyên toàn bộ chiều dày phần liên kết.</td><td>余盛</td></tr><tr><td lang="ja">余盛</td><td lang="ja">よもり</td><td>Phần gia cường mối hàn</td><td>Phần kim loại hàn nhô cao hơn bề mặt vật liệu cơ bản.</td><td>突合せ継手</td></tr><tr><td lang="ja">スタッド</td><td lang="ja">スタッド</td><td>Stud</td><td>Chốt hàn dùng phổ biến trong liên kết thép với bê tông.</td><td>曲げ検査</td></tr><tr><td lang="ja">スライム</td><td lang="ja">スライム</td><td>Slime, cặn đáy hố khoan</td><td>Đất mịn, bùn và cặn lắng ở đáy lỗ khoan cọc.</td><td>底ざらい</td></tr><tr><td lang="ja">安定液</td><td lang="ja">あんていえき</td><td>Dung dịch ổn định</td><td>Dung dịch dùng giữ ổn định thành lỗ khoan.</td><td>造壁性</td></tr><tr><td lang="ja">底ざらいバケット</td><td lang="ja">そこざらいバケット</td><td>Bucket nạo vét đáy</td><td>Thiết bị lấy slime khỏi đáy hố khoan.</td><td>一次処理</td></tr><tr><td lang="ja">切梁</td><td lang="ja">きりばり</td><td>Thanh chống ngang</td><td>Cấu kiện chống ngang cho hệ tường chắn đất.</td><td>腹起し</td></tr><tr><td lang="ja">腹起し</td><td lang="ja">はらおこし</td><td>Waler</td><td>Thanh phân phối lực dọc theo tường chắn đất.</td><td>切梁・火打梁</td></tr><tr><td lang="ja">地盤アンカー</td><td lang="ja">じばんアンカー</td><td>Ground anchor, neo đất</td><td>Hệ neo truyền lực từ tường chắn vào nền đất.</td><td>グラウト</td></tr><tr><td lang="ja">バーサポート</td><td lang="ja">バーサポート</td><td>Bar support</td><td>Cấu kiện đỡ để duy trì vị trí cốt thép.</td><td>スペーサー</td></tr><tr><td lang="ja">スペーサー</td><td lang="ja">スペーサー</td><td>Spacer</td><td>Cấu kiện giữ vị trí và lớp bảo vệ cốt thép.</td><td>かぶり厚</td></tr><tr><td lang="ja">コールドジョイント</td><td lang="ja">コールドジョイント</td><td>Cold joint, mạch ngừng lạnh</td><td>Mặt tiếp giáp không liền khối do khoảng thời gian giữa hai đợt đổ quá dài.</td><td>打重ね時間</td></tr><tr><td lang="ja">建入れ直し</td><td lang="ja">たていれなおし</td><td>Chỉnh độ thẳng đứng</td><td>Điều chỉnh vị trí và độ thẳng đứng của kết cấu thép sau dựng.</td><td>鉄骨工事</td></tr><tr><td lang="ja">吹付けロックウール</td><td lang="ja">ふきつけロックウール</td><td>Rock wool phun</td><td>Vật liệu phun tạo lớp bảo vệ chống cháy cho kết cấu thép.</td><td>耐火被覆</td></tr><tr><td lang="ja">トルシア形高力ボルト</td><td lang="ja">トルシアがたこうりょくボルト</td><td>Bu lông cường độ cao torshear</td><td>Bu lông kiểm soát lực siết thông qua việc cắt pin tail.</td><td>ピンテール</td></tr><tr><td lang="ja">転倒工法</td><td lang="ja">てんとうこうほう</td><td>Phương pháp phá dỡ bằng lật đổ</td><td>Cho phần kết cấu đổ có kiểm soát trong quá trình phá dỡ.</td><td>解体工事</td></tr><tr><td lang="ja">ガラ</td><td lang="ja">ガラ</td><td>Phế liệu phá dỡ</td><td>Bê tông, gạch và vật liệu vỡ phát sinh khi phá dỡ.</td><td>クッション材</td></tr><tr><td lang="ja">増張り</td><td lang="ja">ましばり</td><td>Dán gia cường bổ sung</td><td>Bổ sung một lớp sheet tại vị trí cần tăng khả năng chống thấm.</td><td>出入隅部</td></tr><tr><td lang="ja">常温粘着工法</td><td lang="ja">じょうおんねんちゃくこうほう</td><td>Phương pháp tự dính ở nhiệt độ thường</td><td>Công pháp sheet chống thấm không cần gia nhiệt nóng tại hiện trường.</td><td>防水工事</td></tr><tr><td lang="ja">まぐさ</td><td lang="ja">まぐさ</td><td>Lanh tô</td><td>Cấu kiện phía trên cửa hoặc lỗ mở.</td><td>庇</td></tr><tr><td lang="ja">庇</td><td lang="ja">ひさし</td><td>Mái hắt</td><td>Phần nhô ra khỏi mặt đứng để che mưa, nắng.</td><td>タイル工事</td></tr><tr><td lang="ja">下葺き</td><td lang="ja">したぶき</td><td>Lớp lót mái</td><td>Lớp nằm dưới vật liệu lợp chính.</td><td>ルーフィング</td></tr><tr><td lang="ja">けらば</td><td lang="ja">けらば</td><td>Mép hồi mái</td><td>Mép mái phía đầu hồi.</td><td>けらば包み</td></tr><tr><td lang="ja">タイトフレーム</td><td lang="ja">タイトフレーム</td><td>Tight frame</td><td>Cấu kiện đỡ và cố định tấm mái kim loại.</td><td>折板屋根</td></tr><tr><td lang="ja">ルーフィング</td><td lang="ja">ルーフィング</td><td>Roofing, tấm lót mái</td><td>Lớp lót chống nước phía dưới lớp mái.</td><td>重ね幅</td></tr><tr><td lang="ja">野縁</td><td lang="ja">のぶち</td><td>Thanh furring trần</td><td>Thanh phụ trong hệ khung trần.</td><td>軽量鉄骨天井</td></tr><tr><td lang="ja">ランナー</td><td lang="ja">ランナー</td><td>Runner, thanh ray</td><td>Thanh ray trên và dưới của hệ khung tường thép nhẹ.</td><td>軽量鉄骨壁下地</td></tr><tr><td lang="ja">金ごて仕上げ</td><td lang="ja">かなごてしあげ</td><td>Hoàn thiện bằng bay thép</td><td>Tạo bề mặt tương đối nhẵn và kín.</td><td>壁紙・接着剤張り下地</td></tr><tr><td lang="ja">木ごて仕上げ</td><td lang="ja">きごてしあげ</td><td>Hoàn thiện bằng bay gỗ</td><td>Tạo bề mặt có độ nhám phù hợp cho lớp hoàn thiện sau.</td><td>タイル張付け下地</td></tr><tr><td lang="ja">吸水調整材</td><td lang="ja">きゅうすいちょうせいざい</td><td>Chất điều chỉnh hút nước</td><td>Điều chỉnh khả năng hút nước của nền trước khi thi công mortar.</td><td>左官工事</td></tr><tr><td lang="ja">防煙シャッター</td><td lang="ja">ぼうえんシャッター</td><td>Cửa cuốn ngăn khói</td><td>Cửa cuốn có chức năng hạn chế lan truyền khói.</td><td>漏煙抑制構造</td></tr><tr><td lang="ja">研磨紙ずり</td><td lang="ja">けんましずり</td><td>Chà giấy nhám</td><td>Công tác làm phẳng nền hoặc lớp sơn.</td><td>塗装工事</td></tr><tr><td lang="ja">パテかい</td><td lang="ja">パテかい</td><td>Xử lý putty cục bộ</td><td>Xử lý riêng các chỗ lõm, khe hoặc khuyết tật.</td><td>パテ付け</td></tr><tr><td lang="ja">スウェイ方式</td><td lang="ja">スウェイほうしき</td><td>Phương thức sway</td><td>Cấu tạo curtain wall cho phép một đầu trượt để hấp thụ chuyển vị.</td><td>カーテンウォール</td></tr><tr><td lang="ja">樹脂注入工法</td><td lang="ja">じゅしちゅうにゅうこうほう</td><td>Phương pháp bơm nhựa</td><td>Bơm vật liệu resin vào vết nứt bê tông.</td><td>ひび割れ</td></tr><tr><td lang="ja">平場部</td><td lang="ja">ひらばぶ</td><td>Phần phẳng</td><td>Phần bề mặt tương đối bằng phẳng của mái hoặc sàn.</td><td>防水保護層</td></tr><tr><td lang="ja">伸縮目地</td><td lang="ja">しんしゅくめじ</td><td>Khe co giãn</td><td>Khe cho phép lớp hoàn thiện co giãn.</td><td>保護コンクリート</td></tr><tr><td lang="ja">水下側</td><td lang="ja">みずしもがわ</td><td>Phía hạ lưu mái</td><td>Phía thấp theo hướng nước chảy.</td><td>水上側</td></tr><tr><td lang="ja">水上側</td><td lang="ja">みずかみがわ</td><td>Phía thượng lưu mái</td><td>Phía cao theo hướng nước chảy.</td><td>水下側</td></tr><tr><td lang="ja">笠木</td><td lang="ja">かさぎ</td><td>Coping, nắp đỉnh tường</td><td>Cấu kiện bảo vệ đỉnh parapet hoặc tường.</td><td>パラペット</td></tr><tr><td lang="ja">嵌め合い</td><td lang="ja">はめあい</td><td>Lắp ăn khớp</td><td>Lắp hai cấu kiện bằng hình dạng khớp với nhau.</td><td>固定金具</td></tr><tr><td lang="ja">櫛目</td><td lang="ja">くしめ</td><td>Rãnh keo dạng răng lược</td><td>Vệt keo tạo bởi bay răng cưa.</td><td>有機系接着剤</td></tr><tr><td lang="ja">裏あし</td><td lang="ja">うらあし</td><td>Chân hoặc rãnh mặt sau tile</td><td>Phần gân nổi ở mặt sau viên tile.</td><td>櫛目方向</td></tr><tr><td lang="ja">改良圧着張り</td><td lang="ja">かいりょうあっちゃくばり</td><td>Phương pháp dán ép cải tiến</td><td>Phương pháp dán tile bằng mortar có xử lý cả phía nền và mặt sau tile.</td><td>張付けモルタル</td></tr><tr><td lang="ja">不陸</td><td lang="ja">ふりく</td><td>Độ không phẳng</td><td>Sai lệch cao độ trên bề mặt.</td><td>目違い</td></tr><tr><td lang="ja">目違い</td><td lang="ja">めちがい</td><td>Lệch mép, lippage</td><td>Hai vật liệu liền kề không nằm cùng mặt phẳng.</td><td>不陸</td></tr><tr><td lang="ja">隠し釘留め</td><td lang="ja">かくしくぎどめ</td><td>Đóng đinh giấu</td><td>Đinh được đóng tại vị trí không lộ ra mặt hoàn thiện.</td><td>フローリング</td></tr><tr><td lang="ja">施工体制台帳</td><td lang="ja">せこうたいせいだいちょう</td><td>Sổ hệ thống tổ chức thi công</td><td>Hồ sơ quản lý cơ cấu và nội dung công việc của các nhà thầu tham gia.</td><td>施工体系図</td></tr><tr><td lang="ja">施工体系図</td><td lang="ja">せこうたいけいず</td><td>Sơ đồ hệ thống thi công</td><td>Sơ đồ thể hiện quan hệ phân công giữa các nhà thầu.</td><td>下請負人</td></tr><tr><td lang="ja">主任技術者</td><td lang="ja">しゅにんぎじゅつしゃ</td><td>Kỹ sư phụ trách</td><td>Chức danh kỹ thuật theo Luật Kinh doanh xây dựng.</td><td>監理技術者</td></tr><tr><td lang="ja">監理技術者</td><td lang="ja">かんりぎじゅつしゃ</td><td>Kỹ sư quản lý</td><td>Chức danh kỹ thuật quản lý thi công theo Luật Kinh doanh xây dựng.</td><td>主任技術者</td></tr><tr><td lang="ja">仮囲い</td><td lang="ja">かりがこい</td><td>Hàng rào tạm công trường</td><td>Hàng rào ngăn cách công trường với khu vực bên ngoài.</td><td>建築基準法施行令</td></tr><tr><td lang="ja">根切り</td><td lang="ja">ねぎり</td><td>Đào đất móng</td><td>Công tác đào đất tạo không gian thi công móng hoặc tầng hầm.</td><td>山留め</td></tr><tr><td lang="ja">山留め</td><td lang="ja">やまどめ</td><td>Hệ chắn giữ đất</td><td>Hệ tường và chống đỡ dùng ổn định thành hố đào.</td><td>矢板・切梁</td></tr><tr><td lang="ja">仮筋かい</td><td lang="ja">かりすじかい</td><td>Giằng tạm</td><td>Giằng dùng tạm thời để ổn định kết cấu trong quá trình lắp dựng.</td><td>仮締</td></tr><tr><td lang="ja">仮締</td><td lang="ja">かりじめ</td><td>Siết tạm</td><td>Siết liên kết tạm thời trước khi siết chính thức.</td><td>鉄骨建て方</td></tr><tr><td lang="ja">総括安全衛生管理者</td><td lang="ja">そうかつあんぜんえいせいかんりしゃ</td><td>Tổng quản lý an toàn vệ sinh</td><td>Chức danh quản lý tổng thể về an toàn và sức khỏe lao động.</td><td>労働安全衛生法第10条</td></tr><tr><td lang="ja">元方事業者</td><td lang="ja">もとかたじぎょうしゃ</td><td>Doanh nghiệp hoặc nhà thầu chính</td><td>Chủ thể giao công việc cho các nhà thầu liên quan và có trách nhiệm an toàn nhất định.</td><td>関係請負人</td></tr><tr><td lang="ja">特定元方事業者</td><td lang="ja">とくていもとかたじぎょうしゃ</td><td>Doanh nghiệp chính thuộc diện đặc định</td><td>Chủ thể có nghĩa vụ điều phối an toàn đặc biệt khi nhiều bên cùng làm việc tại một địa điểm.</td><td>協議組織</td></tr><tr><td lang="ja">協議組織</td><td lang="ja">きょうぎそしき</td><td>Tổ chức phối hợp</td><td>Cơ chế phối hợp an toàn giữa nhà thầu chính và các nhà thầu liên quan.</td><td>特定元方事業者</td></tr><tr><td lang="ja">鉄筋相互の空き</td><td lang="ja">てっきんそうごのあき</td><td>Khoảng hở giữa các thanh cốt thép</td><td>Khoảng cách thông thủy giữa hai thanh cốt thép liền kề.</td><td>粗骨材最大寸法</td></tr><tr><td lang="ja">かぶり厚</td><td lang="ja">かぶりあつ</td><td>Chiều dày lớp bê tông bảo vệ</td><td>Khoảng bê tông từ bề mặt cốt thép đến bề mặt cấu kiện.</td><td>鉄筋</td></tr><tr><td lang="ja">漏煙抑制構造</td><td lang="ja">ろうえんよくせいこうぞう</td><td>Kết cấu hạn chế rò khói</td><td>Cấu tạo nhằm giảm lượng khói lọt qua khe của cửa cuốn ngăn khói.</td><td>防煙シャッター</td></tr><tr><td lang="ja">自重受け鋼材</td><td lang="ja">じじゅううけこうざい</td><td>Thép đỡ tự trọng</td><td>Cấu kiện thép tiếp nhận tự trọng của panel.</td><td>ALCパネル</td></tr><tr><td lang="ja">溶接金網</td><td lang="ja">ようせつかなあみ</td><td>Lưới thép hàn</td><td>Lưới thép được hàn tại các giao điểm.</td><td>防水保護層</td></tr><tr><td lang="ja">請負契約</td><td lang="ja">うけおいけいやく</td><td>Hợp đồng nhận thầu</td><td>Hợp đồng trong đó bên nhận thầu có nghĩa vụ hoàn thành công việc.</td><td>建設業法</td></tr><tr><td lang="ja">元請負人</td><td lang="ja">もとうけおいにん</td><td>Nhà thầu chính</td><td>Bên nhận hợp đồng trực tiếp rồi giao một phần công việc cho thầu phụ.</td><td>下請負人</td></tr><tr><td lang="ja">下請負人</td><td lang="ja">したうけおいにん</td><td>Nhà thầu phụ</td><td>Bên thực hiện công việc theo hợp đồng thầu phụ.</td><td>元請負人</td></tr><tr><td lang="ja">矢板</td><td lang="ja">やいた</td><td>Sheet pile hoặc ván cừ</td><td>Cấu kiện giữ đất thuộc hệ chắn đất.</td><td>山留め</td></tr><tr><td lang="ja">帆布</td><td lang="ja">はんぷ</td><td>Vải bạt</td><td>Vật liệu che chắn dùng trong biện pháp bảo vệ chống vật rơi.</td><td>鉄網</td></tr><tr><td lang="ja">建て方</td><td lang="ja">たてかた</td><td>Lắp dựng kết cấu</td><td>Công tác dựng cột, dầm và khung kết cấu vào vị trí.</td><td>仮筋かい・仮締</td></tr><tr><td lang="ja">関係請負人</td><td lang="ja">かんけいうけおいにん</td><td>Nhà thầu liên quan</td><td>Các nhà thầu thực hiện công việc trong hệ thống của nhà thầu chính.</td><td>元方事業者</td></tr><tr><td lang="ja">安全衛生教育</td><td lang="ja">あんぜんえいせいきょういく</td><td>Giáo dục an toàn vệ sinh</td><td>Đào tạo nội dung cần thiết để phòng ngừa tai nạn và ảnh hưởng sức khỏe.</td><td>労働安全衛生法</td></tr><tr><td lang="ja">有害な業務</td><td lang="ja">ゆうがいなぎょうむ</td><td>Công việc có yếu tố độc hại</td><td>Công việc có nguy cơ gây ảnh hưởng đến sức khỏe người lao động.</td><td>特別健康診断</td></tr></tbody></table></div><p class="back"><a href="#toc">↑ Mục lục</a></p></section></main>
+<!-- CONTENT_END -->
+
+<section id="background">
+<h2>Kiến thức nền cần biết</h2><p class="source-ref">Phần giải thích kỹ thuật tổng hợp từ nội dung đã dịch, tách biệt với nguyên văn của sách.</p><h3 id="background-network">1. Công thức cơ bản của sơ đồ tiến độ mạng</h3><div class="info-box">
 <div class="formula"><strong>ES</strong> = max(thời điểm event trước + thời lượng)</div>
 <div class="formula"><strong>LS</strong> = LF - thời lượng</div>
 <div class="formula"><strong>TF</strong> = LF - (ES + thời lượng)</div>
 <div class="formula"><strong>FF</strong> = thời điểm bắt đầu công việc kế tiếp - (ES + thời lượng)</div>
 <p><strong>Total Float</strong> xét ảnh hưởng đến thời hạn hoàn thành toàn bộ. <strong>Free Float</strong> xét ảnh hưởng đến thời điểm bắt đầu của công việc kế tiếp. Công việc trên <strong>Critical Path</strong> có Total Float bằng 0 theo cách xác định trong tài liệu.</p>
-</div>
-<h3 id="background-excavation">2. Phân biệt hiện tượng tại đáy hố đào</h3>
-<div class="mini-grid">
+</div><h3 id="background-excavation">2. Phân biệt hiện tượng tại đáy hố đào</h3><div class="mini-grid">
 <div class="mini-card"><strong>上向きの浸透流 → クイックサンド</strong><br/>Dòng thấm hướng lên được dùng để nhận biết quicksand trong bảng tóm tắt.</div>
 <div class="mini-card"><strong>沸騰状の破壊 → ボイリング</strong><br/>Phá hoại dạng sôi được dùng để nhận biết boiling.</div>
 <div class="mini-card"><strong>被圧地下水 → 盤ぶくれ</strong><br/>Nước ngầm có áp làm đáy hố đào bị nâng lên.</div>
 <div class="mini-card"><strong>帯水層が深い・砂礫 → ディープウェル工法</strong><br/>Điều kiện lựa chọn công pháp được trình bày trong bảng đề cũ.</div>
-</div>
-<h3 id="background-law">3. Chủ thể pháp lý và nghĩa vụ tương ứng</h3>
-<div class="info-box">
+</div><h3 id="background-law">3. Chủ thể pháp lý và nghĩa vụ tương ứng</h3><div class="info-box">
 <p><strong>主任技術者・監理技術者</strong>: kế hoạch thi công, quản lý tiến độ, quản lý chất lượng, chỉ đạo và giám sát kỹ thuật.</p>
 <p><strong>元方事業者</strong>: chỉ đạo cần thiết và yêu cầu khắc phục đối với nhà thầu liên quan.</p>
 <p><strong>特定元方事業者</strong>: điều phối an toàn khi nhiều đơn vị cùng làm việc tại một địa điểm, gồm hỗ trợ giáo dục an toàn vệ sinh và vận hành tổ chức phối hợp.</p>
 <p><strong>総括安全衛生管理者</strong>: quản lý tổng thể việc phòng ngừa nguy hiểm, tổn hại sức khỏe, điều tra nguyên nhân và phòng ngừa tái diễn tai nạn.</p>
-</div><p class="back"><a href="#toc">↑ Mục lục</a></p></section><section id="memory"><h2>Điểm cần nhớ và mẹo nhớ</h2><p class="source-ref">Các trị số và quan hệ được nhóm theo chủ đề để ôn tập. Không thay thế nội dung đầy đủ ở phần bài học.</p><div class="memory-box"><strong>Nguyên tắc ôn:</strong> luôn nhớ theo cặp <em>đối tượng hoặc parameter → trị số, điều kiện hoặc hành động</em>. Không học riêng dãy số vì dễ đảo nhầm dấu ≥, ≤, 以内 và 未満.</div><div class="table-wrap"><table class="memory-table"><thead><tr><th>Nhóm</th><th>Đối tượng / parameter</th><th>Trị số hoặc quan hệ</th><th>Ý nghĩa</th></tr></thead><tbody><tr><td>仮設・安全</td><td><strong>鋼板製仮囲い / hàng rào tạm</strong></td><td><mark class="critical">1.8m以上 / ≥ 1,8 m</mark></td><td>Chiều cao hàng rào tạm.</td></tr><tr><td>仮設・安全</td><td><strong>歩み板の幅 / ván đi</strong></td><td><mark class="critical">30cm以上 / ≥ 30 cm</mark></td><td>Phòng ngã xuyên mái hoặc lối đi.</td></tr><tr><td>仮設・安全</td><td><strong>脚立の角度 / góc thang chữ A</strong></td><td><mark class="critical">75度以下 / ≤ 75°</mark></td><td>Không đảo dấu giới hạn.</td></tr><tr><td>仮設・安全</td><td><strong>高圧線との離隔 / cách đường dây cao áp</strong></td><td><mark class="critical">1.2m以上 / ≥ 1,2 m</mark></td><td>Ví dụ đối với cẩu di động.</td></tr><tr><td>仮設・安全</td><td><strong>長尺エレベーターの昇降速度</strong></td><td><mark class="critical">10m/分未満</mark></td><td>Tốc độ nâng hạ nhỏ hơn 10 m/phút.</td></tr><tr><td>躯体</td><td><strong>吊り足場の安全係数</strong></td><td><mark class="critical">10以上</mark></td><td>Cáp treo và dây thép treo.</td></tr><tr><td>躯体</td><td><strong>平板載荷試験の円板</strong></td><td><mark class="critical">直径30cm以上</mark></td><td>Chiều sâu đánh giá khoảng 2,0 lần đường kính.</td></tr><tr><td>躯体</td><td><strong>杭心ずれ量</strong></td><td><mark class="critical">D/4以下かつ100mm以下</mark></td><td>Hai điều kiện phải đồng thời thỏa mãn.</td></tr><tr><td>躯体</td><td><strong>杭の鉛直精度</strong></td><td><mark class="critical">1/100以内</mark></td><td>Giới hạn độ lệch phương đứng.</td></tr><tr><td>躯体</td><td><strong>圧接端面間の隙間</strong></td><td><mark class="critical">2mm以下</mark></td><td>Hàn ép khí thủ công.</td></tr><tr><td>躯体</td><td><strong>圧接部の膨らみ</strong></td><td><mark class="critical">主筋径の1.4倍以上</mark></td><td>Đường kính phần phình.</td></tr><tr><td>躯体</td><td><strong>型枠支柱</strong></td><td><mark class="critical">3.5mを超える → 水平つなぎ</mark></td><td>Điều kiện bố trí giằng ngang.</td></tr><tr><td>躯体</td><td><strong>コンクリート打込み速度</strong></td><td><mark class="critical">20～30m³/h</mark></td><td>Năng lực đầm dùi 10～15m³/h.</td></tr><tr><td>躯体</td><td><strong>寒中コンクリート</strong></td><td><mark class="critical">荷卸し10～20℃ / 5N/mm²まで初期養生</mark></td><td>Nhiệt độ và cường độ dưỡng hộ ban đầu.</td></tr><tr><td>躯体</td><td><strong>暑中コンクリート</strong></td><td><mark class="critical">荷卸し35℃以下 / 90分以内</mark></td><td>Nhiệt độ và thời hạn đổ.</td></tr><tr><td>躯体</td><td><strong>斜めシュート</strong></td><td><mark class="critical">30度以上</mark></td><td>Góc so với phương ngang.</td></tr><tr><td>躯体</td><td><strong>スタッド検査</strong></td><td><mark class="critical">100本/ロット・±2mm・5度以内</mark></td><td>Lô, chiều cao hoàn thiện, độ nghiêng.</td></tr><tr><td>躯体</td><td><strong>既製杭のオーガーヘッド</strong></td><td><mark class="critical">杭径+100mm</mark></td><td>Khoảng cách tâm cọc tối thiểu 2,0D.</td></tr><tr><td>躯体</td><td><strong>コールドジョイント</strong></td><td><mark class="critical">25℃超 → 120分以内</mark></td><td>Cắm đầm vào lớp dưới khoảng 10 cm.</td></tr><tr><td>躯体</td><td><strong>吹付けロックウール</strong></td><td><mark class="critical">5m²ごと</mark></td><td>Chu kỳ đo chiều dày khi thi công.</td></tr><tr><td>仕上げ</td><td><strong>防水増張り</strong></td><td><mark class="critical">出入隅300mm / 打継ぎ100mm</mark></td><td>Gia cường góc và mạch ngừng.</td></tr><tr><td>仕上げ</td><td><strong>PVCシート接合幅</strong></td><td><mark class="critical">40mm以上</mark></td><td>Mối nối sheet PVC.</td></tr><tr><td>仕上げ</td><td><strong>常温粘着工法</strong></td><td><mark class="critical">立上り際500mm程度</mark></td><td>Phạm vi dán lớp thứ nhất.</td></tr><tr><td>仕上げ</td><td><strong>環境対応アスファルト</strong></td><td><mark class="critical">240℃</mark></td><td>Giới hạn nhiệt độ nóng chảy.</td></tr><tr><td>仕上げ</td><td><strong>まぐさ・庇下部</strong></td><td><mark class="critical">φ0.6mm以上・24時間以上</mark></td><td>Dây inox ủ mềm và thời gian đỡ giữ.</td></tr><tr><td>仕上げ</td><td><strong>下葺き</strong></td><td><mark class="critical">縦100mm / 横200mm / 仮留め900mm</mark></td><td>Chồng mí và cố định tạm.</td></tr><tr><td>仕上げ</td><td><strong>軽量鉄骨天井</strong></td><td><mark class="critical">端150mm / 野縁360mm・225mm</mark></td><td>Bu lông treo và khoảng cách 野縁.</td></tr><tr><td>仕上げ</td><td><strong>防煙シャッター</strong></td><td><mark class="critical">噛み合わせ90mm以上</mark></td><td>Slat dạng overlapping.</td></tr><tr><td>仕上げ</td><td><strong>アルミ建具アンカー</strong></td><td><mark class="critical">500mm以下</mark></td><td>Ngưỡng cửa dày 1,5 mm.</td></tr><tr><td>仕上げ</td><td><strong>石膏ボード</strong></td><td><mark class="critical">周辺200mm / ねじ余長10mm以上</mark></td><td>Khoảng cách vít và chiều dài dư.</td></tr><tr><td>仕上げ</td><td><strong>セルフレベリング養生</strong></td><td><mark class="critical">7日以上 / 低温14日以上</mark></td><td>Tránh thông gió trong thời gian dưỡng hộ.</td></tr><tr><td>仕上げ</td><td><strong>改良圧着張り</strong></td><td><mark class="critical">下地4～6mm / タイル裏3～4mm / 60分以内</mark></td><td>Chiều dày mortar và thời hạn sử dụng.</td></tr><tr><td>仕上げ</td><td><strong>硬質ウレタンフォーム</strong></td><td><mark class="critical">コンクリート面5℃以上 / 1回30mm以下</mark></td><td>Nhiệt độ bề mặt và chiều dày mỗi lần phun.</td></tr><tr><td>法規</td><td><strong>下請代金支払</strong></td><td><mark class="critical">1月以内</mark></td><td>Sau khi nhà thầu chính nhận thanh toán phần hoàn thành.</td></tr><tr><td>法規</td><td><strong>完成検査</strong></td><td><mark class="critical">通知から20日以内</mark></td><td>Theo Điều 24-4.</td></tr><tr><td>法規</td><td><strong>特定建設業者の支払</strong></td><td><mark class="critical">申出から50日以前</mark></td><td>Thời hạn thanh toán tiền thầu phụ.</td></tr><tr><td>法規</td><td><strong>根切りと山留め</strong></td><td><mark class="critical">深さ1.5m以上 → 山留め</mark></td><td>Điều kiện bắt buộc bố trí hệ chắn đất.</td></tr><tr><td>法規</td><td><strong>落下物防護</strong></td><td><mark class="critical">境界5m以内かつ高さ7m以上</mark></td><td>Che phần cần thiết bằng lưới sắt hoặc bạt.</td></tr></tbody></table></div><p class="back"><a href="#toc">↑ Mục lục</a></p></section></main>
-
+</div><p class="back"><a href="#toc">↑ Mục lục</a></p></section>
+<section id="memory">
+<h2>Điểm cần nhớ và mẹo nhớ</h2><p class="source-ref">Các trị số và quan hệ được nhóm theo chủ đề để ôn tập. Không thay thế nội dung đầy đủ ở phần bài học.</p><div class="memory-box"><strong>Nguyên tắc ôn:</strong> luôn nhớ theo cặp <em>đối tượng hoặc parameter → trị số, điều kiện hoặc hành động</em>. Không học riêng dãy số vì dễ đảo nhầm dấu ≥, ≤, 以内 và 未満.</div><div class="table-wrap"><table class="memory-table"><thead><tr><th>Nhóm</th><th>Đối tượng / parameter</th><th>Trị số hoặc quan hệ</th><th>Ý nghĩa</th></tr></thead><tbody><tr><td>仮設・安全</td><td><strong>鋼板製仮囲い / hàng rào tạm</strong></td><td><mark class="critical">1.8m以上 / ≥ 1,8 m</mark></td><td>Chiều cao hàng rào tạm.</td></tr><tr><td>仮設・安全</td><td><strong>歩み板の幅 / ván đi</strong></td><td><mark class="critical">30cm以上 / ≥ 30 cm</mark></td><td>Phòng ngã xuyên mái hoặc lối đi.</td></tr><tr><td>仮設・安全</td><td><strong>脚立の角度 / góc thang chữ A</strong></td><td><mark class="critical">75度以下 / ≤ 75°</mark></td><td>Không đảo dấu giới hạn.</td></tr><tr><td>仮設・安全</td><td><strong>高圧線との離隔 / cách đường dây cao áp</strong></td><td><mark class="critical">1.2m以上 / ≥ 1,2 m</mark></td><td>Ví dụ đối với cẩu di động.</td></tr><tr><td>仮設・安全</td><td><strong>長尺エレベーターの昇降速度</strong></td><td><mark class="critical">10m/分未満</mark></td><td>Tốc độ nâng hạ nhỏ hơn 10 m/phút.</td></tr><tr><td>躯体</td><td><strong>吊り足場の安全係数</strong></td><td><mark class="critical">10以上</mark></td><td>Cáp treo và dây thép treo.</td></tr><tr><td>躯体</td><td><strong>平板載荷試験の円板</strong></td><td><mark class="critical">直径30cm以上</mark></td><td>Chiều sâu đánh giá khoảng 2,0 lần đường kính.</td></tr><tr><td>躯体</td><td><strong>杭心ずれ量</strong></td><td><mark class="critical">D/4以下かつ100mm以下</mark></td><td>Hai điều kiện phải đồng thời thỏa mãn.</td></tr><tr><td>躯体</td><td><strong>杭の鉛直精度</strong></td><td><mark class="critical">1/100以内</mark></td><td>Giới hạn độ lệch phương đứng.</td></tr><tr><td>躯体</td><td><strong>圧接端面間の隙間</strong></td><td><mark class="critical">2mm以下</mark></td><td>Hàn ép khí thủ công.</td></tr><tr><td>躯体</td><td><strong>圧接部の膨らみ</strong></td><td><mark class="critical">主筋径の1.4倍以上</mark></td><td>Đường kính phần phình.</td></tr><tr><td>躯体</td><td><strong>型枠支柱</strong></td><td><mark class="critical">3.5mを超える → 水平つなぎ</mark></td><td>Điều kiện bố trí giằng ngang.</td></tr><tr><td>躯体</td><td><strong>コンクリート打込み速度</strong></td><td><mark class="critical">20～30m³/h</mark></td><td>Năng lực đầm dùi 10～15m³/h.</td></tr><tr><td>躯体</td><td><strong>寒中コンクリート</strong></td><td><mark class="critical">荷卸し10～20℃ / 5N/mm²まで初期養生</mark></td><td>Nhiệt độ và cường độ dưỡng hộ ban đầu.</td></tr><tr><td>躯体</td><td><strong>暑中コンクリート</strong></td><td><mark class="critical">荷卸し35℃以下 / 90分以内</mark></td><td>Nhiệt độ và thời hạn đổ.</td></tr><tr><td>躯体</td><td><strong>斜めシュート</strong></td><td><mark class="critical">30度以上</mark></td><td>Góc so với phương ngang.</td></tr><tr><td>躯体</td><td><strong>スタッド検査</strong></td><td><mark class="critical">100本/ロット・±2mm・5度以内</mark></td><td>Lô, chiều cao hoàn thiện, độ nghiêng.</td></tr><tr><td>躯体</td><td><strong>既製杭のオーガーヘッド</strong></td><td><mark class="critical">杭径+100mm</mark></td><td>Khoảng cách tâm cọc tối thiểu 2,0D.</td></tr><tr><td>躯体</td><td><strong>コールドジョイント</strong></td><td><mark class="critical">25℃超 → 120分以内</mark></td><td>Cắm đầm vào lớp dưới khoảng 10 cm.</td></tr><tr><td>躯体</td><td><strong>吹付けロックウール</strong></td><td><mark class="critical">5m²ごと</mark></td><td>Chu kỳ đo chiều dày khi thi công.</td></tr><tr><td>仕上げ</td><td><strong>防水増張り</strong></td><td><mark class="critical">出入隅300mm / 打継ぎ100mm</mark></td><td>Gia cường góc và mạch ngừng.</td></tr><tr><td>仕上げ</td><td><strong>PVCシート接合幅</strong></td><td><mark class="critical">40mm以上</mark></td><td>Mối nối sheet PVC.</td></tr><tr><td>仕上げ</td><td><strong>常温粘着工法</strong></td><td><mark class="critical">立上り際500mm程度</mark></td><td>Phạm vi dán lớp thứ nhất.</td></tr><tr><td>仕上げ</td><td><strong>環境対応アスファルト</strong></td><td><mark class="critical">240℃</mark></td><td>Giới hạn nhiệt độ nóng chảy.</td></tr><tr><td>仕上げ</td><td><strong>まぐさ・庇下部</strong></td><td><mark class="critical">φ0.6mm以上・24時間以上</mark></td><td>Dây inox ủ mềm và thời gian đỡ giữ.</td></tr><tr><td>仕上げ</td><td><strong>下葺き</strong></td><td><mark class="critical">縦100mm / 横200mm / 仮留め900mm</mark></td><td>Chồng mí và cố định tạm.</td></tr><tr><td>仕上げ</td><td><strong>軽量鉄骨天井</strong></td><td><mark class="critical">端150mm / 野縁360mm・225mm</mark></td><td>Bu lông treo và khoảng cách 野縁.</td></tr><tr><td>仕上げ</td><td><strong>防煙シャッター</strong></td><td><mark class="critical">噛み合わせ90mm以上</mark></td><td>Slat dạng overlapping.</td></tr><tr><td>仕上げ</td><td><strong>アルミ建具アンカー</strong></td><td><mark class="critical">500mm以下</mark></td><td>Ngưỡng cửa dày 1,5 mm.</td></tr><tr><td>仕上げ</td><td><strong>石膏ボード</strong></td><td><mark class="critical">周辺200mm / ねじ余長10mm以上</mark></td><td>Khoảng cách vít và chiều dài dư.</td></tr><tr><td>仕上げ</td><td><strong>セルフレベリング養生</strong></td><td><mark class="critical">7日以上 / 低温14日以上</mark></td><td>Tránh thông gió trong thời gian dưỡng hộ.</td></tr><tr><td>仕上げ</td><td><strong>改良圧着張り</strong></td><td><mark class="critical">下地4～6mm / タイル裏3～4mm / 60分以内</mark></td><td>Chiều dày mortar và thời hạn sử dụng.</td></tr><tr><td>仕上げ</td><td><strong>硬質ウレタンフォーム</strong></td><td><mark class="critical">コンクリート面5℃以上 / 1回30mm以下</mark></td><td>Nhiệt độ bề mặt và chiều dày mỗi lần phun.</td></tr><tr><td>法規</td><td><strong>下請代金支払</strong></td><td><mark class="critical">1月以内</mark></td><td>Sau khi nhà thầu chính nhận thanh toán phần hoàn thành.</td></tr><tr><td>法規</td><td><strong>完成検査</strong></td><td><mark class="critical">通知から20日以内</mark></td><td>Theo Điều 24-4.</td></tr><tr><td>法規</td><td><strong>特定建設業者の支払</strong></td><td><mark class="critical">申出から50日以前</mark></td><td>Thời hạn thanh toán tiền thầu phụ.</td></tr><tr><td>法規</td><td><strong>根切りと山留め</strong></td><td><mark class="critical">深さ1.5m以上 → 山留め</mark></td><td>Điều kiện bắt buộc bố trí hệ chắn đất.</td></tr><tr><td>法規</td><td><strong>落下物防護</strong></td><td><mark class="critical">境界5m以内かつ高さ7m以上</mark></td><td>Che phần cần thiết bằng lưới sắt hoặc bạt.</td></tr></tbody></table></div><p class="back"><a href="#toc">↑ Mục lục</a></p></section>
+<template id="component-library">
+<div class="table-wrap">
+<table>
+<caption>{{TABLE_CAPTION}}</caption>
+<thead><tr><th>{{HEADER_1}}</th><th>{{HEADER_2}}</th></tr></thead>
+<tbody><tr><td><strong class="kw">{{ROW_KEY}}</strong></td><td><span class="relation">{{ROW_RELATION}}</span></td></tr></tbody>
+</table>
+</div>
+<figure class="figure-card">
+<img alt="{{IMAGE_ALT}}" height="{{IMAGE_HEIGHT}}" src="{{IMAGE_SOURCE}}" width="{{IMAGE_WIDTH}}"/>
+<figcaption>{{IMAGE_CAPTION}}</figcaption>
+</figure>
+<div class="figure-grid">
+<figure class="figure-card">
+<img alt="{{IMAGE_ALT_1}}" height="{{IMAGE_HEIGHT_1}}" src="{{IMAGE_SOURCE_1}}" width="{{IMAGE_WIDTH_1}}"/>
+<figcaption>{{IMAGE_CAPTION_1}}</figcaption>
+</figure>
+<figure class="figure-card">
+<img alt="{{IMAGE_ALT_2}}" height="{{IMAGE_HEIGHT_2}}" src="{{IMAGE_SOURCE_2}}" width="{{IMAGE_WIDTH_2}}"/>
+<figcaption>{{IMAGE_CAPTION_2}}</figcaption>
+</figure>
+</div>
+<section class="note-box"><h3>{{NOTE_TITLE}}</h3><p>{{NOTE_CONTENT}}</p></section>
+<section class="warning-box"><h3>{{WARNING_TITLE}}</h3><p>{{WARNING_CONTENT}}</p></section>
+<section class="memory-box"><h3>{{MEMORY_TITLE}}</h3><p>{{MEMORY_ITEM}}</p></section>
+</template>
+</div>
 <script>
 (function () {
+  'use strict';
+
   const root = document.documentElement;
   const body = document.body;
-  const FONT_LEVELS = [80, 90, 100, 110, 120, 130, 140];
-
   const q = id => document.getElementById(id);
+  const FONT_LEVELS = Array.from({ length: 21 }, (_, i) => 50 + i * 5);
+
+  const controls = q('control-cluster');
+  const controlsToggle = q('controls-toggle');
+  const controlPanel = q('control-panel');
   const themeButton = q('theme-toggle');
   const modeButton = q('mode-toggle');
   const fontDown = q('font-down');
@@ -651,10 +765,302 @@ body.toc-open { overflow: hidden; }
   const overlay = q('toc-overlay');
   const prevButton = q('section-prev');
   const nextButton = q('section-next');
+  const homeButton = q('home-button');
+
+  const pageKey = location.pathname + location.search;
+  const readerStateKey = 'study-reader-position:' + pageKey;
+  const lastPageKey = 'study-last-page';
+  const explicitHomeKey = 'study-explicit-home';
+  const anchorSelector = [
+    '.page-shell h1', '.page-shell h2', '.page-shell h3', '.page-shell h4',
+    '.page-shell p', '.page-shell li', '.page-shell td', '.page-shell th',
+    '.page-shell figcaption', '.page-shell .card-title'
+  ].join(', ');
+
+  let anchorElements = [];
+  let lastStablePosition = null;
+  let scrollSaveTimer = 0;
+  let resizeRestoreTimer = 0;
+  let resizeAnchor = null;
+  let suppressScrollSaveUntil = 0;
+  function layoutViewportSize() {
+    const de = document.documentElement;
+    return {
+      width: de.clientWidth || window.innerWidth,
+      height: de.clientHeight || window.innerHeight
+    };
+  }
+
+  function visualViewportScale() {
+    const vv = window.visualViewport;
+    return vv && Number.isFinite(vv.scale) ? vv.scale : 1;
+  }
+
+  function isPinchZoomActive() {
+    return Math.abs(visualViewportScale() - 1) > 0.015;
+  }
+
+  const initialLayoutViewport = layoutViewportSize();
+  let lastViewportWidth = initialLayoutViewport.width;
+  let lastViewportHeight = initialLayoutViewport.height;
+  let pinchZoomSession = false;
+
+  try {
+    if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+  } catch (e) {}
+
+  function safeGet(key, fallback = null) {
+    try {
+      const value = localStorage.getItem(key);
+      return value === null ? fallback : value;
+    } catch (e) {
+      return fallback;
+    }
+  }
 
   function safeSet(key, value) {
     try { localStorage.setItem(key, value); } catch (e) {}
   }
+
+  function safeRemove(key) {
+    try { localStorage.removeItem(key); } catch (e) {}
+  }
+
+  /* ---------- Persistent page / PWA resume metadata ---------- */
+
+  function rememberCurrentPage() {
+    safeSet(lastPageKey, pageKey);
+    safeSet('study-last-active-at', String(Date.now()));
+  }
+
+  rememberCurrentPage();
+
+  /* ---------- Layout viewport geometry ---------- */
+
+  /*
+    Pinch zoom changes visualViewport.width / height / scale.
+    It must NOT change the document layout width.
+
+    Therefore --app-viewport-width is derived only from the layout viewport
+    (documentElement.clientWidth / innerWidth), never from visualViewport.width.
+  */
+  function syncViewportGeometry() {
+    const { width } = layoutViewportSize();
+    root.style.setProperty(
+      '--app-viewport-width',
+      `${Math.round(width * 100) / 100}px`
+    );
+  }
+
+  syncViewportGeometry();
+
+  /* ---------- Reader anchors ---------- */
+
+  function rebuildReaderAnchors() {
+    anchorElements = Array.from(document.querySelectorAll(anchorSelector));
+    anchorElements.forEach((el, index) => {
+      el.dataset.readerKey = 'r' + index;
+    });
+  }
+
+  function closestReaderElement(node) {
+    if (!node) return null;
+    const el = node.nodeType === Node.ELEMENT_NODE ? node : node.parentElement;
+    return el ? el.closest('[data-reader-key]') : null;
+  }
+
+  function caretAtPoint(x, y) {
+    try {
+      if (document.caretPositionFromPoint) {
+        const pos = document.caretPositionFromPoint(x, y);
+        if (!pos || !pos.offsetNode) return null;
+        return { node: pos.offsetNode, offset: pos.offset };
+      }
+      if (document.caretRangeFromPoint) {
+        const range = document.caretRangeFromPoint(x, y);
+        if (!range) return null;
+        return { node: range.startContainer, offset: range.startOffset };
+      }
+    } catch (e) {}
+    return null;
+  }
+
+  function textOffsetFromElementStart(element, node, offset) {
+    try {
+      const range = document.createRange();
+      range.setStart(element, 0);
+      range.setEnd(node, offset);
+      return range.toString().length;
+    } catch (e) {
+      return 0;
+    }
+  }
+
+  function domPositionFromTextOffset(element, targetOffset) {
+    const walker = document.createTreeWalker(element, NodeFilter.SHOW_TEXT);
+    let remaining = Math.max(0, targetOffset);
+    let node = walker.nextNode();
+    let last = null;
+
+    while (node) {
+      last = node;
+      const len = node.nodeValue ? node.nodeValue.length : 0;
+      if (remaining <= len) {
+        return { node, offset: remaining };
+      }
+      remaining -= len;
+      node = walker.nextNode();
+    }
+
+    if (last) return { node: last, offset: last.nodeValue ? last.nodeValue.length : 0 };
+    return { node: element, offset: 0 };
+  }
+
+  function characterRect(node, offset) {
+    try {
+      if (node.nodeType !== Node.TEXT_NODE) {
+        const r = node.getBoundingClientRect ? node.getBoundingClientRect() : null;
+        return r && r.height ? r : null;
+      }
+
+      const len = node.nodeValue ? node.nodeValue.length : 0;
+      if (!len) return node.parentElement ? node.parentElement.getBoundingClientRect() : null;
+
+      let start = Math.max(0, Math.min(offset, len - 1));
+      let end = Math.min(len, start + 1);
+      if (offset >= len && len > 0) {
+        start = len - 1;
+        end = len;
+      }
+
+      const range = document.createRange();
+      range.setStart(node, start);
+      range.setEnd(node, end);
+      const rects = range.getClientRects();
+      return rects.length ? rects[0] : range.getBoundingClientRect();
+    } catch (e) {
+      return null;
+    }
+  }
+
+  function captureReadingPosition() {
+    if (!anchorElements.length) rebuildReaderAnchors();
+    if (!anchorElements.length) return null;
+
+    const vv = window.visualViewport;
+    const viewportWidth = vv ? vv.width : window.innerWidth;
+    const topProbe = 6;
+    const ys = [topProbe, 12, 18, 26, 36, 50];
+    const xs = [];
+
+    for (let x = 12; x <= Math.min(viewportWidth - 12, 220); x += 16) xs.push(x);
+    xs.push(viewportWidth * .25, viewportWidth * .5, viewportWidth * .75);
+
+    for (const y of ys) {
+      for (const x of xs) {
+        if (x <= 0 || x >= viewportWidth) continue;
+        const caret = caretAtPoint(x, y);
+        if (!caret) continue;
+        const element = closestReaderElement(caret.node);
+        if (!element || !document.querySelector('.page-shell')?.contains(element)) continue;
+
+        const offset = textOffsetFromElementStart(element, caret.node, caret.offset);
+        const rect = characterRect(caret.node, caret.offset);
+        const key = element.dataset.readerKey;
+        if (key && rect && Number.isFinite(rect.top)) {
+          return { key, offset, top: rect.top };
+        }
+      }
+    }
+
+    /* Fallback: nearest textual block to the top edge. */
+    let best = null;
+    let bestDistance = Infinity;
+    for (const element of anchorElements) {
+      const rect = element.getBoundingClientRect();
+      if (rect.bottom < 0 || rect.top > (vv ? vv.height : window.innerHeight)) continue;
+      const distance = Math.abs(rect.top);
+      if (distance < bestDistance) {
+        bestDistance = distance;
+        best = { key: element.dataset.readerKey, offset: 0, top: rect.top };
+      }
+    }
+    return best;
+  }
+
+  function restoreReadingPosition(state) {
+    if (!state || !state.key) return false;
+    if (!anchorElements.length) rebuildReaderAnchors();
+
+    const element = document.querySelector('[data-reader-key="' + CSS.escape(state.key) + '"]');
+    if (!element) return false;
+
+    const pos = domPositionFromTextOffset(element, Number(state.offset) || 0);
+    const rect = characterRect(pos.node, pos.offset);
+    if (!rect || !Number.isFinite(rect.top)) return false;
+
+    const desiredTop = Number.isFinite(Number(state.top)) ? Number(state.top) : 6;
+    const delta = rect.top - desiredTop;
+    if (Math.abs(delta) < .5) return true;
+
+    suppressScrollSaveUntil = Date.now() + 700;
+    const oldBehavior = root.style.scrollBehavior;
+    root.style.scrollBehavior = 'auto';
+    window.scrollBy(0, delta);
+    root.style.scrollBehavior = oldBehavior;
+    return true;
+  }
+
+  function saveReaderState(state) {
+    if (!state) return;
+    lastStablePosition = state;
+    safeSet(readerStateKey, JSON.stringify(state));
+  }
+
+  function readReaderState() {
+    try {
+      const raw = safeGet(readerStateKey);
+      return raw ? JSON.parse(raw) : null;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  function settleRestore(state, delays = [0, 60, 180, 420]) {
+    if (!state) return;
+    suppressScrollSaveUntil = Date.now() + Math.max(...delays) + 350;
+    delays.forEach(delay => {
+      window.setTimeout(() => {
+        requestAnimationFrame(() => restoreReadingPosition(state));
+      }, delay);
+    });
+    window.setTimeout(() => {
+      saveReaderState(state);
+    }, Math.max(...delays) + 120);
+  }
+
+  function preserveReadingPosition(mutator) {
+    const state = captureReadingPosition() || lastStablePosition || readReaderState();
+    if (state) saveReaderState(state);
+    mutator();
+    rebuildReaderAnchors();
+    settleRestore(state);
+  }
+
+  function scheduleReaderSave() {
+    if (Date.now() < suppressScrollSaveUntil) return;
+    clearTimeout(scrollSaveTimer);
+    scrollSaveTimer = window.setTimeout(() => {
+      if (Date.now() < suppressScrollSaveUntil) return;
+      const state = captureReadingPosition();
+      if (state) saveReaderState(state);
+    }, 130);
+  }
+
+  rebuildReaderAnchors();
+  lastStablePosition = readReaderState();
+
+  /* ---------- Theme ---------- */
 
   function applyTheme(theme) {
     theme = theme === 'light' ? 'light' : 'dark';
@@ -667,6 +1073,8 @@ body.toc-open { overflow: hidden; }
       themeButton.setAttribute('aria-pressed', theme === 'light' ? 'true' : 'false');
     }
   }
+
+  /* ---------- Full / Keywords ---------- */
 
   function applyMode(mode) {
     mode = mode === 'keywords' ? 'keywords' : 'full';
@@ -681,17 +1089,18 @@ body.toc-open { overflow: hidden; }
     }
   }
 
+  /* ---------- Font 50-150%, step 5% ---------- */
+
   function currentScale() {
-    try {
-      const saved = Number(localStorage.getItem('study-font-scale'));
-      return FONT_LEVELS.includes(saved) ? saved : 100;
-    } catch (e) { return 100; }
+    const saved = Number(safeGet('study-font-scale', '100'));
+    return FONT_LEVELS.includes(saved) ? saved : 100;
   }
 
   function applyFontScale(scale) {
     if (!FONT_LEVELS.includes(scale)) scale = 100;
     root.style.setProperty('--base-font-size', (16 * scale / 100) + 'px');
     safeSet('study-font-scale', String(scale));
+
     if (fontReset) {
       fontReset.textContent = scale + '%';
       fontReset.title = 'Cỡ chữ hiện tại ' + scale + '%. Chạm để về 100%';
@@ -701,40 +1110,72 @@ body.toc-open { overflow: hidden; }
     if (fontUp) fontUp.disabled = scale === FONT_LEVELS[FONT_LEVELS.length - 1];
   }
 
+  /* ---------- Collapsible controls ---------- */
+
+  function setControlsOpen(open) {
+    if (!controls) return;
+    controls.classList.toggle('open', open);
+    controlsToggle?.setAttribute('aria-expanded', String(open));
+    controlsToggle?.setAttribute('aria-label', open ? 'Đóng công cụ' : 'Mở công cụ');
+    controlsToggle?.setAttribute('title', open ? 'Đóng công cụ' : 'Mở công cụ');
+  }
+
+  controlsToggle?.addEventListener('click', event => {
+    event.stopPropagation();
+    setControlsOpen(!controls.classList.contains('open'));
+  });
+
+  controlPanel?.addEventListener('click', event => event.stopPropagation());
+  document.addEventListener('pointerdown', event => {
+    if (controls?.classList.contains('open') && !controls.contains(event.target)) setControlsOpen(false);
+  });
+
+  /* ---------- TOC ---------- */
+
   function openToc() {
     body.classList.add('toc-open');
-    if (tocButton) tocButton.setAttribute('aria-expanded', 'true');
+    tocButton?.setAttribute('aria-expanded', 'true');
+    setControlsOpen(false);
   }
+
   function closeToc() {
     body.classList.remove('toc-open');
-    if (tocButton) tocButton.setAttribute('aria-expanded', 'false');
+    tocButton?.setAttribute('aria-expanded', 'false');
   }
 
-  applyTheme(root.dataset.theme || 'dark');
-  applyMode(root.dataset.studyMode || 'full');
-  applyFontScale(currentScale());
+  tocButton?.addEventListener('click', openToc);
+  tocClose?.addEventListener('click', closeToc);
+  overlay?.addEventListener('click', closeToc);
 
-  if (themeButton) themeButton.addEventListener('click', () => applyTheme(root.dataset.theme === 'dark' ? 'light' : 'dark'));
-  if (modeButton) modeButton.addEventListener('click', () => applyMode(root.dataset.studyMode === 'keywords' ? 'full' : 'keywords'));
-  if (fontDown) fontDown.addEventListener('click', () => {
-    const i = FONT_LEVELS.indexOf(currentScale());
-    if (i > 0) applyFontScale(FONT_LEVELS[i - 1]);
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape') {
+      closeToc();
+      setControlsOpen(false);
+    }
   });
-  if (fontUp) fontUp.addEventListener('click', () => {
-    const i = FONT_LEVELS.indexOf(currentScale());
-    if (i >= 0 && i < FONT_LEVELS.length - 1) applyFontScale(FONT_LEVELS[i + 1]);
-  });
-  if (fontReset) fontReset.addEventListener('click', () => applyFontScale(100));
-
-  if (tocButton) tocButton.addEventListener('click', openToc);
-  if (tocClose) tocClose.addEventListener('click', closeToc);
-  if (overlay) overlay.addEventListener('click', closeToc);
-  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeToc(); });
 
   document.querySelectorAll('a[href="#toc"]').forEach(a => {
-    a.addEventListener('click', e => { e.preventDefault(); openToc(); });
+    a.addEventListener('click', event => {
+      event.preventDefault();
+      openToc();
+    });
   });
-  document.querySelectorAll('#toc a[href^="#"]').forEach(a => a.addEventListener('click', () => setTimeout(closeToc, 0)));
+
+  /* TOC navigation does not add hash-history entries. */
+  document.querySelectorAll('#toc a[href^="#"]').forEach(a => {
+    a.addEventListener('click', event => {
+      const href = a.getAttribute('href');
+      if (!href || href === '#toc') return;
+      const target = document.getElementById(decodeURIComponent(href.slice(1)));
+      if (!target) return;
+      event.preventDefault();
+      closeToc();
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      window.setTimeout(scheduleReaderSave, 450);
+    });
+  });
+
+  /* ---------- Previous / next lesson item ---------- */
 
   const tocTargets = Array.from(document.querySelectorAll('#toc a[href^="#"]'))
     .map(a => document.getElementById(decodeURIComponent(a.getAttribute('href').slice(1))))
@@ -742,19 +1183,238 @@ body.toc-open { overflow: hidden; }
 
   function currentSectionIndex() {
     let idx = -1;
-    const threshold = 130;
+    const threshold = 24;
     tocTargets.forEach((el, i) => {
       if (el.getBoundingClientRect().top <= threshold) idx = i;
     });
     return idx;
   }
+
+  function updateSectionButtons() {
+    const i = currentSectionIndex();
+    if (prevButton) prevButton.disabled = !tocTargets.length || i <= 0;
+    if (nextButton) nextButton.disabled = !tocTargets.length || i >= tocTargets.length - 1;
+  }
+
   function goToIndex(i) {
     if (!tocTargets.length) return;
     i = Math.max(0, Math.min(tocTargets.length - 1, i));
     tocTargets[i].scrollIntoView({ behavior: 'smooth', block: 'start' });
+    window.setTimeout(() => {
+      const state = captureReadingPosition();
+      if (state) saveReaderState(state);
+      updateSectionButtons();
+    }, 450);
   }
-  if (prevButton) prevButton.addEventListener('click', () => goToIndex(Math.max(0, currentSectionIndex() - 1)));
-  if (nextButton) nextButton.addEventListener('click', () => goToIndex(Math.min(tocTargets.length - 1, currentSectionIndex() + 1)));
+
+  prevButton?.addEventListener('click', () => goToIndex(Math.max(0, currentSectionIndex() - 1)));
+  nextButton?.addEventListener('click', () => goToIndex(Math.min(tocTargets.length - 1, currentSectionIndex() + 1)));
+
+  /* ---------- Home ---------- */
+
+  homeButton?.addEventListener('click', () => {
+    const state = captureReadingPosition();
+    if (state) saveReaderState(state);
+    safeSet(explicitHomeKey, '1');
+    safeSet('study-home-click-at', String(Date.now()));
+    window.location.href = new URL('index.html', window.location.href).href;
+  });
+
+  /* ---------- Initialize state ---------- */
+
+  applyTheme(root.dataset.theme === 'light' ? 'light' : 'dark');
+  applyMode(root.dataset.studyMode || 'full');
+  applyFontScale(currentScale());
+
+  themeButton?.addEventListener('click', () => applyTheme(root.dataset.theme === 'dark' ? 'light' : 'dark'));
+  modeButton?.addEventListener('click', () => applyMode(root.dataset.studyMode === 'keywords' ? 'full' : 'keywords'));
+
+  fontDown?.addEventListener('click', () => {
+    const i = FONT_LEVELS.indexOf(currentScale());
+    if (i > 0) preserveReadingPosition(() => applyFontScale(FONT_LEVELS[i - 1]));
+  });
+
+  fontUp?.addEventListener('click', () => {
+    const i = FONT_LEVELS.indexOf(currentScale());
+    if (i >= 0 && i < FONT_LEVELS.length - 1) preserveReadingPosition(() => applyFontScale(FONT_LEVELS[i + 1]));
+  });
+
+  fontReset?.addEventListener('click', () => preserveReadingPosition(() => applyFontScale(100)));
+
+  /* ---------- Scroll / rotation / resize persistence ---------- */
+
+  window.addEventListener('scroll', () => {
+    scheduleReaderSave();
+    updateSectionButtons();
+  }, { passive: true });
+
+  function handleLayoutViewportChange() {
+    /*
+      A native two-finger pinch changes VisualViewport but normally does not
+      change the layout viewport. Ignore it completely so the page does not
+      recalculate width or fight the browser's native zoom.
+    */
+    if (isPinchZoomActive()) {
+      pinchZoomSession = true;
+      return;
+    }
+
+    const { width: w, height: h } = layoutViewportSize();
+
+    /*
+      When pinch zoom returns to scale 1, VisualViewport may emit another
+      resize. If the layout viewport itself did not change, this was only zoom,
+      so do nothing.
+    */
+    const layoutChanged =
+      Math.abs(w - lastViewportWidth) >= 1 ||
+      Math.abs(h - lastViewportHeight) >= 1;
+
+    if (!layoutChanged) {
+      pinchZoomSession = false;
+      return;
+    }
+
+    pinchZoomSession = false;
+
+    if (!resizeAnchor) {
+      resizeAnchor =
+        lastStablePosition ||
+        readReaderState() ||
+        captureReadingPosition();
+    }
+
+    /*
+      Only a real layout change, such as portrait <-> landscape, updates
+      --app-viewport-width.
+    */
+    syncViewportGeometry();
+    lastViewportWidth = w;
+    lastViewportHeight = h;
+
+    if (resizeAnchor) {
+      settleRestore(resizeAnchor, [0, 50, 140, 300]);
+    }
+
+    clearTimeout(resizeRestoreTimer);
+    resizeRestoreTimer = window.setTimeout(() => {
+      if (resizeAnchor) {
+        settleRestore(resizeAnchor, [0, 80, 220]);
+      }
+
+      window.setTimeout(() => {
+        lastStablePosition =
+          resizeAnchor ||
+          captureReadingPosition();
+
+        if (lastStablePosition) {
+          saveReaderState(lastStablePosition);
+        }
+
+        resizeAnchor = null;
+        updateSectionButtons();
+      }, 320);
+    }, 260);
+  }
+
+  function handleVisualViewportResize() {
+    /*
+      visualViewport resize is the main signal used by Safari/WebKit while
+      pinch-zooming. At scale != 1 this is zoom, not a responsive-layout event.
+    */
+    if (isPinchZoomActive()) {
+      pinchZoomSession = true;
+      return;
+    }
+
+    handleLayoutViewportChange();
+  }
+
+  window.addEventListener(
+    'resize',
+    handleLayoutViewportChange,
+    { passive: true }
+  );
+
+  window.addEventListener('orientationchange', () => {
+    /*
+      Rotation is a genuine layout change. Use the stored logical reading
+      position, then wait for iOS to finish updating its layout viewport.
+    */
+    resizeAnchor =
+      lastStablePosition ||
+      readReaderState() ||
+      captureReadingPosition();
+
+    [40, 120, 280].forEach(delay => {
+      window.setTimeout(() => {
+        if (isPinchZoomActive()) return;
+
+        const size = layoutViewportSize();
+        syncViewportGeometry();
+
+        if (
+          Math.abs(size.width - lastViewportWidth) >= 1 ||
+          Math.abs(size.height - lastViewportHeight) >= 1
+        ) {
+          lastViewportWidth = size.width;
+          lastViewportHeight = size.height;
+        }
+
+        if (resizeAnchor) {
+          settleRestore(resizeAnchor, [0, 70, 180]);
+        }
+      }, delay);
+    });
+
+    window.setTimeout(() => {
+      resizeAnchor = null;
+      updateSectionButtons();
+    }, 620);
+  }, { passive: true });
+
+  window.visualViewport?.addEventListener(
+    'resize',
+    handleVisualViewportResize,
+    { passive: true }
+  );
+
+  function saveLifecycleState() {
+    const state = captureReadingPosition() || lastStablePosition;
+    if (state) saveReaderState(state);
+    rememberCurrentPage();
+  }
+
+  document.addEventListener('visibilitychange', () => {
+    if (document.visibilityState === 'hidden') saveLifecycleState();
+    else {
+      rememberCurrentPage();
+      const state = readReaderState();
+      if (state) settleRestore(state, [0, 80, 220]);
+    }
+  });
+
+  window.addEventListener('pagehide', saveLifecycleState);
+  window.addEventListener('beforeunload', saveLifecycleState);
+
+  window.addEventListener('pageshow', () => {
+    rememberCurrentPage();
+    rebuildReaderAnchors();
+    const state = readReaderState();
+    if (!location.hash && state) settleRestore(state, [0, 80, 220, 500]);
+    window.setTimeout(updateSectionButtons, 80);
+  });
+
+  window.addEventListener('load', () => {
+    rebuildReaderAnchors();
+    const state = readReaderState();
+    if (!location.hash && state) settleRestore(state, [0, 80, 220, 500]);
+    else {
+      const current = captureReadingPosition();
+      if (current) saveReaderState(current);
+    }
+    updateSectionButtons();
+  });
 })();
 </script></body>
 </html>

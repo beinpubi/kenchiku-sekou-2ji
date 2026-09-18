@@ -1,24 +1,20 @@
 <!DOCTYPE html>
-<html lang="vi" data-theme="dark">
+<!DOCTYPE html>
+
+<html data-study-mode="full" data-theme="dark" lang="vi">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<meta name="color-scheme" content="dark light">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<meta content="dark light" name="color-scheme"/>
+<meta content="test-2.1-responsive-landscape" name="study-template-version"/>
 <title>令和5年度 問題3 施工管理｜Book 244-252</title>
-
 <style>
-/* =========================================================
-   FIXED DESIGN TOKENS
-   Do not redesign these values per lesson.
-   ========================================================= */
-
 :root {
-  --font-vi: Arial, Helvetica, sans-serif;
-  --font-ja: "Hiragino Sans", "Yu Gothic", "Yu Gothic UI", Meiryo, sans-serif;
+  --app-viewport-width: 100vw;
+  --font-vi: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  --font-ja: "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic UI", "Yu Gothic", Meiryo, sans-serif;
   --base-font-size: 16px;
-  --content-width: 1320px;
-  --control-size: 38px;
-  --control-gap: 4px;
+  color-scheme: dark;
 }
 
 html[data-theme="dark"] {
@@ -36,16 +32,17 @@ html[data-theme="dark"] {
   --note-bg: #1C2028;
   --memory-bg: #20231C;
   --keyword: #74D7FF;
-  --keyword-bg: rgba(75, 190, 255, .10);
+  --keyword-bg: rgba(75, 190, 255, 0.10);
   --critical-bg: #594613;
   --critical-text: #FFE39A;
   --trap: #FF8585;
   --trap-underline: #FF5F5F;
-  --relation-bg: rgba(139, 126, 255, .12);
+  --relation-bg: rgba(139, 126, 255, 0.12);
   --relation-border: #8F86FF;
   --shadow: rgba(0, 0, 0, .28);
   --dock-bg: rgba(23, 27, 34, .94);
-  --overlay: rgba(0, 0, 0, .46);
+  --overlay: rgba(0, 0, 0, .48);
+  color-scheme: dark;
 }
 
 html[data-theme="light"] {
@@ -72,586 +69,239 @@ html[data-theme="light"] {
   --relation-border: #6C5CE7;
   --shadow: rgba(31, 38, 49, .12);
   --dock-bg: rgba(255, 255, 255, .94);
-  --overlay: rgba(20, 24, 30, .32);
+  --overlay: rgba(19, 26, 35, .28);
+  color-scheme: light;
 }
 
-/* =========================================================
-   BASE
-   ========================================================= */
-
 * { box-sizing: border-box; }
-
 html {
   scroll-behavior: smooth;
   font-size: var(--base-font-size);
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
-
-body {
+body { overflow-anchor: none;
   margin: 0;
-  min-height: 100vh;
   background: var(--bg);
   color: var(--text);
   font-family: var(--font-vi);
   font-size: 1rem;
   line-height: 1.72;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
+  padding-bottom: 11rem;
 }
+:lang(vi), .translation, .translation-cell, .vn-topic, .vn-answer { font-family: var(--font-vi); }
+:lang(ja), .original, .original-cell, .jp-topic, .jp-answer { font-family: var(--font-ja); }
+strong, b { font-weight: 700; }
+a { color: var(--link); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+a:hover { text-decoration-thickness: 2px; }
+h1, h2, h3, h4 { color: var(--heading); line-height: 1.35; }
+h1 { font-size: clamp(1.8rem, 4vw, 2.8rem); margin: 0 0 .55rem; }
+h2 { font-size: clamp(1.38rem, 2.8vw, 2rem); margin: 0; }
+h3 { font-size: clamp(1.12rem, 2vw, 1.48rem); }
+h4 { font-size: 1.02rem; }
+[id] { scroll-margin-top: 22px; }
+p { margin: .62rem 0; }
+ul, ol { padding-left: 1.5rem; }
+li { margin: .34rem 0; }
 
-:lang(vi) {
-  font-family: var(--font-vi);
-}
-
-:lang(ja) {
-  font-family: var(--font-ja);
-}
-
-a {
-  color: var(--link);
-  text-decoration-thickness: 1px;
-  text-underline-offset: 3px;
-}
-
-a:hover {
-  text-decoration-thickness: 2px;
-}
-
-button {
-  font: inherit;
-}
-
-h1, h2, h3, h4 {
-  color: var(--heading);
-  line-height: 1.35;
-}
-
-h1 {
-  margin: 0 0 .35rem;
-  font-size: clamp(1.75rem, 4vw, 2.7rem);
-}
-
-h2 {
-  margin: 2.5rem 0 1rem;
-  padding-bottom: .42rem;
-  border-bottom: 1px solid var(--border);
-  font-size: clamp(1.42rem, 3vw, 2rem);
-}
-
-h3 {
-  margin: 1.9rem 0 .75rem;
-  font-size: clamp(1.16rem, 2.4vw, 1.5rem);
-}
-
-h4 {
-  margin: 1.2rem 0 .45rem;
-  font-size: 1rem;
-}
-
-p {
-  margin: .58rem 0;
-}
-
-ul, ol {
-  padding-left: 1.45rem;
-}
-
-li {
-  margin: .3rem 0;
-}
-
-[id] {
-  scroll-margin-top: 18px;
-}
-
-/* =========================================================
-   PAGE LAYOUT
-   ========================================================= */
-
-.page-shell {
-  width: min(var(--content-width), calc(100% - 28px));
+body > main,
+body > .page-shell {
+  width: min(1320px, calc(100% - 32px));
   margin: 0 auto;
-  padding: 18px 0 112px;
+  padding: 26px 0 70px;
 }
+body > .page-shell > main { width: 100%; margin: 0; padding: 0; }
 
-.hero,
-.toc-card,
-.study-section,
-.aggregate-section {
+.hero {
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: 16px;
   box-shadow: 0 8px 28px var(--shadow);
+  padding: clamp(22px, 4vw, 42px);
+  margin: 0 0 24px;
 }
-
-.hero {
-  margin-bottom: 22px;
-  padding: clamp(22px, 3vw, 40px);
-}
-
-.hero-subtitle {
-  margin: 0;
+.eyebrow, .hero-subtitle, .subtitle, .meta-line, .source-ref, .mini-label, .small, .meta-label {
   color: var(--text-muted);
-  font-size: 1.06rem;
 }
+.eyebrow { font-size: .82rem; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; }
+.hero-subtitle, .subtitle { font-size: 1.08rem; }
+.source-ref, .mini-label, .small, .meta-label { font-size: .86rem; }
 
-.meta-grid {
+.summary-grid, .meta-grid, .mini-grid, .coverage {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(195px, 1fr));
-  gap: 10px;
-  margin-top: 16px;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: .72rem;
+  margin-top: 1rem;
 }
-
-.meta-item {
-  padding: 10px 12px;
+.summary-card, .summary-item, .meta-item, .mini-card, .coverage > div {
   background: var(--surface-alt);
   border: 1px solid var(--border);
   border-radius: 10px;
+  padding: .75rem .85rem;
 }
+.summary-item b, .summary-card strong { color: var(--heading); }
+.source-list { color: var(--text-muted); }
 
-.meta-label {
-  display: block;
-  margin-bottom: 2px;
-  color: var(--text-muted);
-  font-size: .8rem;
-}
-
-.study-section,
+body > main > section:not(#toc),
+body > .page-shell > section:not(#toc),
+body > .page-shell > main > section,
+.topic,
 .aggregate-section {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  box-shadow: 0 7px 22px var(--shadow);
+  padding: clamp(18px, 3vw, 30px);
   margin: 22px 0;
-  padding: clamp(18px, 2.6vw, 30px);
 }
-
-.section-head {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 12px;
-  margin-bottom: 16px;
-  padding-bottom: 10px;
+.subsection { margin: 1.7rem 0 2.1rem; }
+.subsection-title, .section-head {
   border-bottom: 1px solid var(--border);
+  padding-bottom: .65rem;
+  margin-bottom: 1rem;
 }
+.section-head { display: flex; gap: 12px; align-items: baseline; justify-content: space-between; }
 
-.section-head h2,
-.section-head h3 {
-  margin: 0;
-  padding: 0;
-  border: 0;
-}
-
-.source-ref {
-  color: var(--text-muted);
-  font-size: .84rem;
-  white-space: nowrap;
-}
-
-.subsection {
-  margin: 26px 0 32px;
-}
-
-.subsection:first-child {
-  margin-top: 0;
-}
-
-.study-grid {
+.study-grid, .lang-grid, .bilingual-note {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  gap: 14px;
+  gap: 1rem;
   align-items: start;
 }
-
-.study-card {
-  min-width: 0;
-  overflow: hidden;
+.study-card, .lang-card, .note-pane {
   border: 1px solid var(--border);
   border-radius: 12px;
+  overflow: hidden;
+  min-width: 0;
+  background: var(--surface-alt);
 }
-
-.study-card.original {
-  background: var(--original-bg);
-}
-
-.study-card.translation {
-  background: var(--translation-bg);
-}
-
+.study-card.original, .lang-card.original, .original-cell, .jp-topic, .jp-answer { background: var(--original-bg); }
+.study-card.translation, .lang-card.translation, .translation-cell, .vn-topic, .vn-answer { background: var(--translation-bg); }
 .card-title {
-  padding: 9px 13px;
+  padding: .62rem .85rem;
   background: var(--surface-alt);
   border-bottom: 1px solid var(--border);
   color: var(--heading);
-  font-weight: 800;
+  font-weight: 700;
   letter-spacing: .02em;
 }
+.card-body, .recall-source { padding: .9rem 1rem; }
+.card-body.recall-source { padding: 1rem 1.05rem; }
+.item-block { border-top: 1px dashed var(--border); padding-top: .72rem; margin-top: .72rem; }
+.item-block:first-child { border-top: 0; padding-top: 0; margin-top: 0; }
+.item-label { font-weight: 700; color: var(--heading); margin-right: .35em; }
 
-.recall-source {
-  padding: 14px 16px 16px;
-  transition: color .15s ease;
-}
+.table-wrap { overflow-x: auto; margin: .9rem 0; border: 1px solid var(--border); border-radius: 10px; }
+table { width: 100%; border-collapse: collapse; min-width: 650px; background: var(--surface); }
+th, td { border: 1px solid var(--border); padding: .62rem .7rem; vertical-align: top; text-align: left; }
+th { background: var(--surface-alt); color: var(--heading); font-weight: 700; }
+caption { text-align: left; font-weight: 700; color: var(--heading); padding: .58rem .7rem; background: var(--surface-alt); caption-side: top; }
+.compact th, .compact td { padding: .48rem .55rem; }
+.study-table { min-width: 1040px; }
+.study-table .meta { white-space: nowrap; text-align: center; background: var(--surface-alt); }
+.glossary-table { min-width: 920px; }
+.memory-table, .number-table, .num-table { min-width: 760px; }
 
-.recall-source > :first-child {
-  margin-top: 0;
-}
-
-.recall-source > :last-child {
-  margin-bottom: 0;
-}
-
-/* =========================================================
-   CONTENT COMPONENTS
-   ========================================================= */
-
-.table-wrap {
-  overflow-x: auto;
-  margin: 12px 0 18px;
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  -webkit-overflow-scrolling: touch;
-}
-
-table {
-  width: 100%;
-  min-width: 640px;
-  border-collapse: collapse;
-  background: var(--surface);
-}
-
-th,
-td {
-  padding: 9px 11px;
-  border-right: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
-  vertical-align: top;
-  text-align: left;
-}
-
-th:last-child,
-td:last-child {
-  border-right: 0;
-}
-
-tr:last-child td {
-  border-bottom: 0;
-}
-
-th {
-  background: var(--surface-alt);
-  color: var(--heading);
-  font-weight: 800;
-}
-
-caption {
-  padding: 9px 11px;
-  background: var(--surface-alt);
-  color: var(--heading);
-  font-weight: 800;
-  text-align: left;
-  caption-side: top;
-}
-
-.summary-box,
-.note-box,
-.memory-box,
-.warning-box,
-.figure-box,
-.formula-box,
-.comparison-box {
-  margin: 14px 0;
-  padding: 13px 15px;
-  background: var(--note-bg);
+.summary-box, .note-box, .note, .info-box, .background-box, .exam-note, .memory-box, .warning-box, .warning, .figure-box, .figure-card {
   border: 1px solid var(--border);
   border-left-width: 4px;
   border-radius: 10px;
+  padding: .9rem 1rem;
+  margin: 1rem 0;
+  background: var(--note-bg);
 }
+.summary-box, .note-box, .note, .info-box, .background-box { border-left-color: var(--link); }
+.memory-box, .exam-note { background: var(--memory-bg); border-left-color: var(--critical-text); }
+.warning-box, .warning { border-left-color: var(--trap); }
+.figure-box, .figure-card { border-left-color: var(--relation-border); }
+.figure-card { overflow: hidden; padding: 0; }
+.figure-card img { display: block; width: 100%; height: auto; background: #fff; }
+.figure-card figcaption, .figure-explain { padding: .8rem 1rem; }
 
-.summary-box,
-.note-box {
-  border-left-color: var(--link);
-}
-
-.memory-box {
-  background: var(--memory-bg);
-  border-left-color: var(--critical-text);
-}
-
-.warning-box {
-  border-left-color: var(--trap);
-}
-
-.figure-box,
-.formula-box,
-.comparison-box {
-  border-left-color: var(--relation-border);
-}
-
-.figure-card {
-  margin: 15px 0 20px;
-  overflow: hidden;
-  background: var(--surface-alt);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-}
-
-.figure-card img {
-  display: block;
-  width: 100%;
-  height: auto;
-  background: #fff;
-}
-
-.figure-card figcaption {
-  padding: 10px 13px 12px;
-  color: var(--text-muted);
-  font-size: .9rem;
-}
-
-.figure-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 12px;
-  margin: 15px 0 20px;
-}
-
-.figure-grid .figure-card {
-  margin: 0;
-}
-
-.item-block {
-  margin-top: 11px;
-  padding-top: 11px;
-  border-top: 1px dashed var(--border);
-}
-
-.item-block:first-child {
-  margin-top: 0;
-  padding-top: 0;
-  border-top: 0;
-}
-
-.item-label {
-  margin-right: .3em;
-  color: var(--heading);
-  font-weight: 800;
-}
-
-.formula-line {
+.formula, .formula-line {
   display: flex;
   flex-wrap: wrap;
+  gap: .45rem;
   align-items: center;
-  gap: 6px;
-}
-
-.flow-node {
-  padding: 5px 8px;
-  background: var(--surface);
+  padding: .75rem;
+  background: var(--surface-alt);
   border: 1px solid var(--border);
-  border-radius: 7px;
-  font-weight: 700;
+  border-radius: 9px;
+  margin: .75rem 0;
 }
-
-.flow-arrow {
-  color: var(--text-muted);
-  font-weight: 800;
-}
-
-/* =========================================================
-   SEMANTIC HIGHLIGHTING
-   ========================================================= */
+.flow-node { border: 1px solid var(--border); border-radius: 7px; padding: .35rem .55rem; background: var(--surface); font-weight: 700; }
+.flow-arrow { color: var(--text-muted); font-weight: 700; }
 
 .kw {
-  padding: .02em .16em;
-  background: var(--keyword-bg);
-  color: var(--keyword);
-  border-radius: .2em;
-  font-weight: 750;
-}
-
-.critical {
-  padding: .04em .22em;
-  background: var(--critical-bg);
-  color: var(--critical-text);
-  border-radius: .22em;
-  font-weight: 750;
-}
-
-.trap {
-  color: var(--trap);
   font-weight: 700;
+  color: var(--keyword);
+  background: var(--keyword-bg);
+  padding: .02em .16em;
+  border-radius: .2em;
+}
+.critical {
+  font-weight: 700;
+  color: var(--critical-text);
+  background: var(--critical-bg);
+  padding: .04em .22em;
+  border-radius: .22em;
+}
+.trap {
+  font-weight: 700;
+  color: var(--trap);
   text-decoration-line: underline;
   text-decoration-color: var(--trap-underline);
   text-decoration-thickness: 2px;
   text-underline-offset: 3px;
 }
-
 .relation {
-  padding: .02em .14em;
-  background: var(--relation-bg);
+  font-weight: 600;
   color: var(--text);
+  background: var(--relation-bg);
   border-bottom: 2px solid var(--relation-border);
-  font-weight: 650;
+  padding: .02em .14em;
 }
 
-/* Only recall-source is dimmed in Keywords mode. */
-body.keyword-focus .recall-source {
-  color: var(--focus-muted);
-}
+html[data-study-mode="keywords"] .recall-source { color: var(--focus-muted); }
+html[data-study-mode="keywords"] .recall-source .kw { color: var(--keyword); background: var(--keyword-bg); }
+html[data-study-mode="keywords"] .recall-source .critical { color: var(--critical-text); background: var(--critical-bg); }
+html[data-study-mode="keywords"] .recall-source .trap { color: var(--trap); }
+html[data-study-mode="keywords"] .recall-source .relation { color: var(--text); background: var(--relation-bg); }
+html[data-study-mode="keywords"] .recall-source th,
+html[data-study-mode="keywords"] .recall-source .card-title,
+html[data-study-mode="keywords"] .recall-source .item-label { color: var(--heading); }
 
-body.keyword-focus .recall-source .kw {
-  color: var(--keyword);
-  background: var(--keyword-bg);
-}
+.backlink, .back-toc, .back { display: inline-block; margin-top: .8rem; font-size: .9rem; }
 
-body.keyword-focus .recall-source .critical {
-  color: var(--critical-text);
-  background: var(--critical-bg);
-}
-
-body.keyword-focus .recall-source .trap {
-  color: var(--trap);
-}
-
-body.keyword-focus .recall-source .relation {
-  color: var(--text);
-  background: var(--relation-bg);
-}
-
-body.keyword-focus .recall-source th,
-body.keyword-focus .recall-source .item-label {
-  color: var(--heading);
-}
-
-/* =========================================================
-   TOC DRAWER
-   ========================================================= */
-
-.toc-overlay {
+/* Collapsible study controls: one launcher at bottom-left. */
+.control-cluster {
   position: fixed;
-  inset: 0;
-  z-index: 1990;
-  visibility: hidden;
-  opacity: 0;
-  background: var(--overlay);
-  transition: opacity .18s ease, visibility .18s ease;
-}
-
-.toc-drawer {
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  z-index: 2000;
-  width: min(78vw, 360px);
-  padding: max(14px, env(safe-area-inset-top)) 14px
-           max(18px, env(safe-area-inset-bottom))
-           max(14px, env(safe-area-inset-left));
-  overflow-y: auto;
-  background: var(--surface);
-  border-right: 1px solid var(--border);
-  box-shadow: 14px 0 36px var(--shadow);
-  transform: translateX(-103%);
-  transition: transform .2s ease;
-  -webkit-overflow-scrolling: touch;
-}
-
-body.toc-open .toc-overlay {
-  visibility: visible;
-  opacity: 1;
-}
-
-body.toc-open .toc-drawer {
-  transform: translateX(0);
-}
-
-.toc-drawer-head {
-  position: sticky;
-  top: 0;
-  z-index: 1;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 10px;
-  padding: 4px 0 10px;
-  background: var(--surface);
-  border-bottom: 1px solid var(--border);
-}
-
-.toc-drawer-head h2 {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  font-size: 1.2rem;
-}
-
-.toc-close {
-  width: 34px;
-  height: 34px;
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  background: var(--surface-alt);
-  color: var(--text);
-  cursor: pointer;
-}
-
-.toc-list {
-  margin: 12px 0 0;
-  padding-left: 1.2rem;
-}
-
-.toc-list ol {
-  margin-top: 4px;
-}
-
-/* =========================================================
-   COMPACT CONTROLS
-   Left: vertical TOC / Back / Next
-   Right: horizontal display controls
-   ========================================================= */
-
-.nav-dock-left,
-.settings-dock-right {
-  position: fixed;
-  bottom: max(14px, env(safe-area-inset-bottom));
-  z-index: 1900;
-  padding: 5px;
-  background: var(--dock-bg);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  box-shadow: 0 8px 24px var(--shadow);
-  -webkit-backdrop-filter: blur(10px);
-  backdrop-filter: blur(10px);
+  left: max(8px, env(safe-area-inset-left));
+  bottom: max(10px, env(safe-area-inset-bottom));
+  z-index: 2200;
+  width: 38px;
+  height: 38px;
   user-select: none;
+  -webkit-user-select: none;
 }
 
-.nav-dock-left {
-  left: max(10px, env(safe-area-inset-left));
-  display: flex;
-  flex-direction: column;
-  gap: var(--control-gap);
-}
-
-.settings-dock-right {
-  right: max(10px, env(safe-area-inset-right));
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: var(--control-gap);
-}
-
-.nav-dock-left button,
-.settings-dock-right button {
-  display: flex;
+.control-launcher,
+.control-panel button {
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: var(--control-size);
-  height: var(--control-size);
-  min-width: var(--control-size);
-  min-height: var(--control-size);
+  flex: 0 0 auto;
+  width: 32px;
+  height: 32px;
+  min-width: 32px;
+  min-height: 32px;
   padding: 0;
-  background: var(--surface-alt);
-  color: var(--text);
   border: 1px solid var(--border);
   border-radius: 8px;
-  font-family: var(--font-vi);
-  font-size: .96rem;
+  background: var(--surface-alt);
+  color: var(--text);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
   font-weight: 700;
   line-height: 1;
   cursor: pointer;
@@ -659,98 +309,246 @@ body.toc-open .toc-drawer {
   -webkit-tap-highlight-color: transparent;
 }
 
-.nav-dock-left button:hover,
-.settings-dock-right button:hover {
+.control-launcher {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  z-index: 2;
+  width: 38px;
+  height: 38px;
+  min-width: 38px;
+  min-height: 38px;
+  border-radius: 11px;
+  background: var(--dock-bg);
+  box-shadow: 0 6px 18px var(--shadow);
+  font-size: 20px;
+  letter-spacing: 1px;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+}
+
+.control-panel {
+  position: absolute;
+  left: 43px;
+  bottom: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 2px;
+  width: max-content;
+  max-width: calc(100dvw - max(59px, env(safe-area-inset-left) + 59px) - max(8px, env(safe-area-inset-right)));
+  padding: 3px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  overscroll-behavior-x: contain;
+  scrollbar-width: none;
+  border: 1px solid var(--border);
+  border-radius: 11px;
+  background: var(--dock-bg);
+  box-shadow: 0 6px 18px var(--shadow);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateX(-10px) scale(.98);
+  transform-origin: left bottom;
+  transition: opacity .14s ease, transform .14s ease, visibility .14s ease;
+}
+
+.control-panel::-webkit-scrollbar { display: none; }
+
+.control-cluster.open .control-panel {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateX(0) scale(1);
+}
+
+.control-cluster.open .control-launcher {
   border-color: var(--link);
 }
 
-.nav-dock-left button:active,
-.settings-dock-right button:active {
-  transform: translateY(1px);
-}
+.control-panel button:active,
+.control-launcher:active { transform: translateY(1px); }
 
-.nav-dock-left button:disabled {
-  opacity: .38;
+.control-panel button:hover,
+.control-launcher:hover { border-color: var(--link); }
+
+.control-panel button:disabled {
+  opacity: .36;
   cursor: default;
 }
 
-.settings-dock-right .font-reset {
-  font-size: .66rem;
+.control-panel .font-reset {
+  width: 38px;
+  min-width: 38px;
+  font-size: 9px;
   letter-spacing: -.03em;
 }
 
-.settings-dock-right .mode-toggle {
-  font-size: 1.02rem;
+.control-panel .mode-toggle { font-size: 14px; }
+
+.control-panel .home-icon svg {
+  width: 17px;
+  height: 17px;
+  display: block;
 }
 
-/* =========================================================
-   RESPONSIVE
-   ========================================================= */
+/*
+  Responsive reading geometry for iPad/iPhone.
+  The page follows the actual Visual Viewport width. When rotating to
+  landscape it expands across the wider screen instead of staying at
+  portrait width. Reader-anchor JS below restores the same logical text
+  position after the reflow.
+*/
+@media (pointer: coarse) {
+  body > main,
+  body > .page-shell {
+    width: min(calc(var(--app-viewport-width, 100vw) - 16px), 1320px) !important;
+    max-width: 1320px !important;
+  }
+
+
+  .hero {
+    padding: 1rem !important;
+  }
+
+  body > main > section:not(#toc),
+  body > .page-shell > section:not(#toc),
+  body > .page-shell > main > section,
+  .topic,
+  .aggregate-section {
+    padding: 1rem !important;
+  }
+}
+
+
+@media (pointer: coarse) and (orientation: portrait) {
+  .study-grid,
+  .lang-grid,
+  .bilingual-note {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+@media (pointer: coarse) and (orientation: landscape) {
+  body > main,
+  body > .page-shell {
+    width: min(calc(var(--app-viewport-width, 100dvw) - 20px), 1320px) !important;
+  }
+}
+
+/* TOC drawer */
+#toc {
+  position: fixed !important;
+  left: 0 !important;
+  top: 0 !important;
+  bottom: 0 !important;
+  z-index: 2100 !important;
+  width: min(82vw, 390px) !important;
+  max-height: 100dvh !important;
+  overflow-y: auto !important;
+  margin: 0 !important;
+  padding: 74px 20px 28px !important;
+  background: var(--surface) !important;
+  border: 0 !important;
+  border-right: 1px solid var(--border) !important;
+  border-radius: 0 16px 16px 0 !important;
+  box-shadow: 10px 0 30px var(--shadow) !important;
+  transform: translateX(-105%);
+  transition: transform .2s ease;
+}
+body.toc-open #toc { transform: translateX(0); }
+#toc .toc-grid { columns: 1 !important; display: block !important; }
+#toc ol { margin-top: .35rem; }
+.toc-drawer-head {
+  position: sticky;
+  top: -74px;
+  margin: -74px -20px 18px;
+  padding: 13px 14px;
+  min-height: 58px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  z-index: 2;
+}
+.toc-drawer-head strong { color: var(--heading); }
+.toc-close {
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  background: var(--surface-alt);
+  color: var(--text);
+  font: 700 1.25rem var(--font-vi);
+  cursor: pointer;
+}
+.toc-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  background: var(--overlay);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .2s ease;
+}
+body.toc-open .toc-overlay { opacity: 1; pointer-events: auto; }
+body.toc-open { overflow: hidden; }
 
 @media (max-width: 900px) {
-  .study-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .page-shell {
-    width: min(100% - 18px, 760px);
-  }
-
-  .section-head {
-    display: block;
-  }
-
-  .source-ref {
-    display: block;
-    margin-top: 6px;
-    white-space: normal;
-  }
+  .study-grid, .lang-grid, .bilingual-note { grid-template-columns: 1fr; }
+  body > main, body > .page-shell { width: min(100% - 20px, 780px); padding-top: 14px; }
+  .section-head { display: block; }
+  .source-ref { display: block; margin-top: .45rem; }
+  table { min-width: 620px; }
 }
 
 @media (max-width: 560px) {
-  body {
-    font-size: .96rem;
-  }
-
-  .hero,
-  .study-section,
-  .aggregate-section {
-    border-radius: 12px;
-  }
-
-  .recall-source {
-    padding: 12px 13px 14px;
-  }
-
-  :root {
-    --control-size: 36px;
-  }
-
-  .settings-dock-right {
-    right: max(7px, env(safe-area-inset-right));
-  }
-
-  .nav-dock-left {
-    left: max(7px, env(safe-area-inset-left));
-  }
+  body { font-size: 1rem; }
+  body > main, body > .page-shell { width: calc(100% - 14px); }
+  .hero { padding: 1rem; border-radius: 12px; }
+  body > main > section:not(#toc),
+  body > .page-shell > section:not(#toc),
+  body > .page-shell > main > section,
+  .topic, .aggregate-section { padding: 1rem; border-radius: 12px; }
 }
 
-@media (orientation: landscape) and (pointer: coarse) {
-  .nav-dock-left {
-    left: max(14px, env(safe-area-inset-left));
+
+/*
+  iPad/tablet landscape:
+  Japanese and Vietnamese return to two side-by-side columns.
+  The min-height condition avoids forcing ordinary phone landscape into
+  two columns that would be too narrow.
+*/
+@media (pointer: coarse) and (orientation: landscape) and (min-width: 700px) and (min-height: 600px) {
+  body > main,
+  body > .page-shell {
+    width: min(calc(var(--app-viewport-width, 100dvw) - 20px), 1320px) !important;
+    max-width: 1320px !important;
   }
 
-  .settings-dock-right {
-    right: max(14px, env(safe-area-inset-right));
+  .study-grid,
+  .lang-grid,
+  .bilingual-note {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important;
+    gap: clamp(.75rem, 1.4vw, 1rem) !important;
+    align-items: start;
+  }
+
+  .study-card,
+  .lang-card,
+  .note-pane {
+    min-width: 0;
   }
 }
-
-/* =========================================================
-   PRINT
-   ========================================================= */
 
 @media print {
-  html,
+  .control-cluster { display: none !important; }
+  :root,
   html[data-theme="dark"],
   html[data-theme="light"] {
     --bg: #FFFFFF;
@@ -772,1026 +570,839 @@ body.toc-open .toc-drawer {
     --trap-underline: #9E1B12;
     --relation-bg: #F0EDFF;
     --relation-border: #5B4FD6;
+    --shadow: transparent;
   }
-
-  body {
-    background: #fff;
-    color: #111;
-    font-size: 11pt;
+  body { background: #fff; color: #111; font-size: 11pt; padding-bottom: 0; }
+  .control-cluster, .toc-overlay, .toc-drawer-head { display: none !important; }
+  #toc {
+    position: static !important;
+    transform: none !important;
+    width: auto !important;
+    max-height: none !important;
+    padding: 1rem !important;
+    border: 1px solid var(--border) !important;
+    border-radius: 10px !important;
+    box-shadow: none !important;
+    margin: 1rem 0 !important;
   }
-
-  .page-shell {
-    width: 100%;
-    padding: 0;
-  }
-
-  .nav-dock-left,
-  .settings-dock-right,
-  .toc-drawer,
-  .toc-overlay {
-    display: none !important;
-  }
-
-  .hero,
-  .study-card,
-  .summary-box,
-  .note-box,
-  .memory-box,
-  .warning-box,
-  .figure-card {
-    break-inside: avoid;
-  }
-
-  a {
-    color: #000;
-    text-decoration: none;
-  }
+  body > main, body > .page-shell { width: 100%; padding: 0; }
+  .hero, .study-card, .lang-card, .summary-box, .note-box, .note, .memory-box, .warning-box, .figure-box, .figure-card { break-inside: avoid; }
+  a { color: #000; text-decoration: none; }
+  .backlink, .back-toc, .back { display: none; }
 }
-</style>
-
-<script>
-/* Apply saved theme before body paint to reduce flashing. */
-(function () {
-  try {
-    const saved = localStorage.getItem("study-theme");
-    const systemDark = window.matchMedia &&
-      window.matchMedia("(prefers-color-scheme: dark)").matches;
-    document.documentElement.dataset.theme =
-      saved || (systemDark ? "dark" : "light");
-  } catch (e) {
-    document.documentElement.dataset.theme = "dark";
+</style><script>
+try {
+  if ("scrollRestoration" in history) {
+    history.scrollRestoration = "manual";
   }
-
+} catch (e) {}
+(function () {
+  const root = document.documentElement;
   try {
-    const savedScale = Number(localStorage.getItem("study-font-scale")) || 100;
-    const clampedScale = Math.max(80, Math.min(140, savedScale));
-    document.documentElement.style.setProperty(
-      "--base-font-size",
-      `${16 * clampedScale / 100}px`
-    );
-  } catch (e) {}
+    const savedTheme = localStorage.getItem('study-theme');
+    root.dataset.theme = savedTheme === 'light' ? 'light' : 'dark';
+
+    const savedMode = localStorage.getItem('study-mode');
+    root.dataset.studyMode = savedMode === 'keywords' ? 'keywords' : 'full';
+
+    const savedScale = Number(localStorage.getItem('study-font-scale'));
+    const scale = Number.isFinite(savedScale) && savedScale >= 50 && savedScale <= 150 && savedScale % 5 === 0
+      ? savedScale : 100;
+    root.style.setProperty('--base-font-size', (16 * scale / 100) + 'px');
+  } catch (e) {
+    root.dataset.theme = 'dark';
+    root.dataset.studyMode = 'full';
+    root.style.setProperty('--base-font-size', '16px');
+  }
 })();
-</script>
-</head>
-
+</script></head>
 <body>
-
-<!-- =======================================================
-     TOC DRAWER
-     Replace only the list contents.
-     ======================================================= -->
-<div class="toc-overlay" id="toc-overlay" aria-hidden="true"></div>
-
-<aside class="toc-drawer" id="toc-drawer" aria-label="Mục lục">
-  <div class="toc-drawer-head">
-    <h2>Mục lục</h2>
-    <button class="toc-close" id="toc-close" type="button" aria-label="Đóng mục lục">×</button>
-  </div>
-
-  <!-- TOC_ITEMS_START -->
-
-  <ol class="toc-list">
-    <li><a href="#problem">令和5年度 問題3 施工管理</a>
-      <ol>
-        <li><a href="#problem-statement">Đề bài và điều kiện</a></li>
-        <li><a href="#initial-network">Bảng công tác và network ban đầu</a></li>
-      </ol>
-    </li>
-    <li><a href="#q1">問い1 作業内容</a>
-      <ol>
-        <li><a href="#q1-formwork">④ 梁型枠組立て</a></li>
-        <li><a href="#q1-rebar">⑦ 柱配筋</a></li>
-      </ol>
-    </li>
-    <li><a href="#q2">問い2 最早開始時期 EST</a>
-      <ol>
-        <li><a href="#dummy-arrows">Hai Dummy Arrow</a></li>
-        <li><a href="#est-calc">Quy tắc và kết quả EST</a></li>
-        <li><a href="#timescale">Giải bằng Time Scale</a></li>
-      </ol>
-    </li>
-    <li><a href="#q3">問い3 フリーフロート</a>
-      <ol>
-        <li><a href="#ff-definition">Định nghĩa và công thức</a></li>
-        <li><a href="#ff-results">FF⑥ = 5 ngày / FF⑩ = 0 ngày</a></li>
-      </ol>
-    </li>
-    <li><a href="#q4">問い4 工程変更</a>
-      <ol>
-        <li><a href="#duration-change">Thay đổi duration</a></li>
-        <li><a href="#schedule-result">Tổng thời gian = 24 ngày</a></li>
-      </ol>
-    </li>
-    <li><a href="#sequence">型枠工事と鉄筋工事の工程上の関係</a>
-      <ol>
-        <li><a href="#standard-sequence">Trình tự tiêu chuẩn</a></li>
-        <li><a href="#naming-rule">Quy tắc ghi tên công tác</a></li>
-        <li><a href="#sashikin">差筋</a></li>
-      </ol>
-    </li>
-    <li><a href="#terms">Thuật ngữ chuyên môn</a></li>
-    <li><a href="#background">Kiến thức nền cần biết</a></li>
-    <li><a href="#memory">Điểm cần nhớ và mẹo nhớ</a></li>
-  </ol>
-  <!-- TOC_ITEMS_END -->
-</aside>
-
-<!-- =======================================================
-     FIXED NAVIGATION CONTROLS
-     Left bottom: vertical.
-     Do not add a Top button.
-     ======================================================= -->
-<nav class="nav-dock-left" aria-label="Điều hướng học tập">
-  <button id="toc-toggle" type="button" aria-label="Mục lục" title="Mục lục"
-          aria-controls="toc-drawer" aria-expanded="false">☰</button>
-  <button id="section-prev" type="button" aria-label="Mục trước" title="Back">‹</button>
-  <button id="section-next" type="button" aria-label="Mục tiếp theo" title="Next">›</button>
-</nav>
-
-<!-- =======================================================
-     FIXED DISPLAY CONTROLS
-     Right bottom: horizontal.
-     ======================================================= -->
-<nav class="settings-dock-right" aria-label="Thiết lập hiển thị">
-  <button id="theme-toggle" type="button" aria-label="Đổi Dark/Light"
-          title="Đổi Dark/Light" aria-pressed="false">☀</button>
-  <button id="mode-toggle" class="mode-toggle" type="button"
-          aria-label="Đổi Full/Keywords" title="Đổi Full/Keywords"
-          aria-pressed="false">🎯</button>
-  <button id="font-reset" class="font-reset" type="button"
-          aria-label="Đặt lại cỡ chữ 100%" title="Đặt lại cỡ chữ 100%">100%</button>
-  <button id="font-down" type="button" aria-label="Giảm cỡ chữ"
-          title="Giảm cỡ chữ">A−</button>
-  <button id="font-up" type="button" aria-label="Tăng cỡ chữ"
-          title="Tăng cỡ chữ">A+</button>
-</nav>
-
+<!--
+HTML TEMPLATE CONTRACT 2.3
+- Based on latest pinch-zoom-safe test.html.
+- Default theme: dark; persistent Dark/Light toggle.
+- Font: 50%-150%, 5% step; persistent.
+- Native two-finger pinch zoom MUST NOT trigger responsive reflow.
+- Real orientation change MAY update layout and restore logical reading position.
+- iPad/tablet portrait: one-column bilingual flow.
+- iPad/tablet landscape: Japanese/Vietnamese side-by-side.
+- Controls: collapsed by default at bottom-left; tap to expand horizontally.
+- Home button: index.html.
+- Back/Next: TOC item navigation, not browser history.
+- Do not redesign CSS/JS/control behavior per lesson.
+-->
+<div class="control-cluster" id="control-cluster">
+<button aria-controls="control-panel" aria-expanded="false" aria-label="Mở công cụ" class="control-launcher" id="controls-toggle" title="Mở công cụ" type="button">⋯</button>
+<div aria-label="Công cụ học tập" class="control-panel" id="control-panel" role="toolbar">
+<button aria-controls="toc" aria-expanded="false" aria-label="Mục lục" id="toc-toggle" title="Mục lục" type="button">☰</button>
+<button aria-label="Mục trước" id="section-prev" title="Mục trước" type="button">‹</button>
+<button aria-label="Mục tiếp theo" id="section-next" title="Mục tiếp theo" type="button">›</button>
+<button aria-label="Đổi Dark/Light" aria-pressed="false" id="theme-toggle" title="Đổi Dark/Light" type="button">☀</button>
+<button aria-label="Đổi Full/Keywords" aria-pressed="false" class="mode-toggle" id="mode-toggle" title="Đổi Full/Keywords" type="button">🎯</button>
+<button aria-label="Giảm cỡ chữ" id="font-down" title="Giảm cỡ chữ 5%" type="button">A−</button>
+<button aria-label="Đặt lại cỡ chữ 100%" class="font-reset" id="font-reset" title="Đặt lại cỡ chữ 100%" type="button">100%</button>
+<button aria-label="Tăng cỡ chữ" id="font-up" title="Tăng cỡ chữ 5%" type="button">A+</button>
+<button aria-label="Top Page" class="home-icon" id="home-button" title="Top Page" type="button"><svg aria-hidden="true" fill="none" viewbox="0 0 24 24"><path d="M3.5 10.5 12 3.8l8.5 6.7v9.2h-5.3v-6H8.8v6H3.5z" stroke="currentColor" stroke-linejoin="round" stroke-width="1.8"></path></svg></button>
+</div>
+</div><div aria-hidden="true" class="toc-overlay" id="toc-overlay"></div>
 <div class="page-shell">
+<header class="hero" id="top">
+<h1>令和5年度 問題3 施工管理｜Book 244-252</h1>
+</header>
+<nav aria-label="Mục lục" class="toc" id="toc">
+<div class="toc-drawer-head">
+<strong>Mục lục</strong>
+<button aria-label="Đóng mục lục" class="toc-close" id="toc-close" type="button">×</button>
+</div>
+<h2>Mục lục</h2>
+<!-- TOC_ITEMS_START -->
 
-  <!-- =====================================================
-       DOCUMENT HEADER
-       Replace title/subtitle/meta values only.
-       ===================================================== -->
-  <header class="hero" id="top">
-    <h1>令和5年度 問題3 施工管理｜Book 244-252</h1>
-    <p class="hero-subtitle">Mạng tiến độ công tác kết cấu RC: nội dung công tác, EST, Free Float, Critical Path và thay đổi tiến độ</p>
-
-    <div class="meta-grid">
-      <div class="meta-item">
-        <span class="meta-label">PDF nguồn</span>
-        03d_施工管理_R05_p244-253.pdf
-      </div>
-      <div class="meta-item">
-        <span class="meta-label">File ID</span>
-        file_000000006fc881f581848ab8b478db2d
-      </div>
-      <div class="meta-item">
-        <span class="meta-label">Phạm vi</span>
-        Book page 244-252 / PDF P1-P9
-      </div>
-      <div class="meta-item">
-        <span class="meta-label">Chế độ</span>
-        Song ngữ Nhật-Việt / Dark-Light / Full-Keywords / Font 80-140%
-      </div>
-    </div>
-  </header>
-
-  <!-- =====================================================
-       CONTENT_START
-       AI may freely repeat/reorder approved content components.
-       Global CSS/JS/control structure must not be redesigned.
-       ===================================================== -->
-  <main id="lesson">
-
-    <section class="study-section" id="problem">
-      <div class="section-head">
-        <h2>令和5年度 問題3 施工管理</h2>
-        <span class="source-ref">Nguồn: Book page 244-245</span>
-      </div>
-
-      <section class="subsection" id="problem-statement">
-        <h3>Đề bài và các điều kiện thi công</h3>
-        <div class="study-grid">
-          <article class="study-card original">
-            <div class="card-title">原文</div>
-            <div class="recall-source" lang="ja">
-              <p>市街地での事務所ビル新築工事について、右の<strong class="kw">基準階の躯体工事工程表及び作業内容表</strong>を読み解き、次の1.から4.の問いに答えなさい。</p>
-              <p>工程表は工事着手時のもので、各工種の作業内容は作業内容表のとおりであり、<strong class="kw">型枠工事の作業④</strong>と、<strong class="kw">鉄筋工事の作業⑦</strong>については作業内容を記載していない。</p>
-              <p>基準階の施工は<strong class="kw">型枠工10人、鉄筋工6人のそれぞれ1班</strong>で施工し、<span class="relation">③柱型枠、壁型枠返しは、⑧壁配筋が完了してから開始</span>するものとし、<span class="relation">⑨梁配筋（圧接共）は、⑤床型枠組立て（階段を含む）が完了してから開始</span>するものとする。</p>
-              <p>なお、仮設工事、設備工事及び検査は、墨出し、型枠工事、鉄筋工事、コンクリート工事の進捗に合わせ行われることとし、<span class="trap">作業手順、作業日数の検討事項には含めない</span>ものとする。</p>
-              <h4>〔工事概要〕</h4>
-              <ul>
-                <li>用途：事務所</li>
-                <li>構造・規模：鉄筋コンクリート造、地上6階、延べ面積3,000m²、基準階面積480m²</li>
-              </ul>
-              <ol>
-                <li>型枠工事の作業④及び鉄筋工事の作業⑦の作業内容を記述しなさい。</li>
-                <li>型枠工事の③柱型枠、壁型枠返しの<strong class="kw">最早開始時期（EST）</strong>を記入しなさい。</li>
-                <li>型枠工事の⑥型枠締固め及び鉄筋工事の⑩床配筋の<strong class="kw">フリーフロート</strong>を記入しなさい。</li>
-                <li>ある基準階において、②片壁型枠建込み及び③柱型枠、壁型枠返しについて、当初計画した型枠工の人数が確保できず、<strong class="kw">②片壁型枠建込み</strong>では<mark class="critical">2日増加</mark>、<strong class="kw">③柱型枠、壁型枠返し</strong>では<mark class="critical">1日増加</mark>することとなった。このとき、墨出しからコンクリート打込み完了までの総所要日数は［　］日となる。</li>
-              </ol>
-            </div>
-          </article>
-
-          <article class="study-card translation">
-            <div class="card-title">Bản dịch tiếng Việt</div>
-            <div class="recall-source" lang="vi">
-              <p>Đối với công trình xây mới một tòa nhà văn phòng trong khu đô thị, hãy đọc và phân tích <strong class="kw">bảng tiến độ thi công phần kết cấu của tầng điển hình và bảng nội dung công tác</strong> ở bên phải, sau đó trả lời các câu hỏi từ 1 đến 4.</p>
-              <p>Bảng tiến độ là kế hoạch tại thời điểm bắt đầu thi công. Nội dung của từng loại công tác được thể hiện trong bảng nội dung công tác, nhưng <strong class="kw">công tác ④ của công tác cốp pha</strong> và <strong class="kw">công tác ⑦ của công tác cốt thép</strong> chưa ghi nội dung cụ thể.</p>
-              <p>Thi công tầng điển hình được thực hiện bởi <strong class="kw">1 tổ 10 công nhân cốp pha và 1 tổ 6 công nhân cốt thép</strong>. <span class="relation">③ lắp cốp pha cột và lắp mặt cốp pha tường phía còn lại chỉ được bắt đầu sau khi ⑧ bố trí cốt thép tường hoàn thành</span>; <span class="relation">⑨ bố trí cốt thép dầm, bao gồm nối ép áp lực, chỉ được bắt đầu sau khi ⑤ lắp ráp cốp pha sàn, bao gồm cầu thang, hoàn thành</span>.</p>
-              <p>Công tác tạm, công tác thiết bị MEP và kiểm tra được thực hiện phù hợp với tiến độ của công tác lấy dấu, cốp pha, cốt thép và bê tông, nhưng <span class="trap">không đưa vào nội dung xem xét trình tự công việc và số ngày thi công</span>.</p>
-              <h4>Tổng quan công trình</h4>
-              <ul>
-                <li>Công năng: văn phòng.</li>
-                <li>Kết cấu và quy mô: bê tông cốt thép, 6 tầng nổi, tổng diện tích sàn 3.000 m², diện tích tầng điển hình 480 m².</li>
-              </ul>
-              <ol>
-                <li>Ghi nội dung công tác ④ của cốp pha và công tác ⑦ của cốt thép.</li>
-                <li>Ghi <strong class="kw">thời điểm bắt đầu sớm nhất, EST</strong> của công tác ③.</li>
-                <li>Ghi <strong class="kw">Free Float, thời gian dự trữ tự do</strong> của công tác ⑥ và ⑩.</li>
-                <li>Do không đủ công nhân cốp pha như kế hoạch, <strong class="kw">② lắp dựng cốp pha một mặt tường</strong> tăng <mark class="critical">2 ngày</mark>, <strong class="kw">③ lắp cốp pha cột và mặt cốp pha tường phía còn lại</strong> tăng <mark class="critical">1 ngày</mark>. Hãy xác định tổng thời gian từ lấy dấu đến hoàn thành đổ bê tông.</li>
-              </ol>
-            </div>
-          </article>
-        </div>
-        <div class="warning-box">
-          <strong>Điểm dễ nhầm trong Câu 4</strong>
-          <p><code>2日増加</code> và <code>1日増加</code> là số ngày <strong>tăng thêm</strong>, không phải thời gian mới của công tác.</p>
-        </div>
-      </section>
-
-      <section class="subsection" id="initial-network">
-        <h3>Bảng công tác và network ban đầu</h3>
-        <div class="study-grid">
-          <article class="study-card original">
-            <div class="card-title">原文</div>
-            <div class="recall-source" lang="ja">
-              <h4>基準階の躯体工事工程表（当該階の柱及び壁、上階の床及び梁）</h4>
-              <p>凡例：②片壁型枠建込み作業の所要日数が2日であることを表している。</p>
-              <p>※工程表に<span class="trap">ダミーアローは記載していない</span>。</p>
-              <div class="table-wrap">
-                <table>
-                  <caption>作業内容表（所要日数には仮設、運搬を含む）</caption>
-                  <thead><tr><th>工種</th><th>番号</th><th>作業内容</th><th>所要日数（日）</th></tr></thead>
-                  <tbody>
-                    <tr><td>墨出し</td><td>①</td><td><strong class="kw">墨出し</strong></td><td>1</td></tr>
-                    <tr><td rowspan="5">型枠工事</td><td>②</td><td><strong class="kw">片壁型枠建込み</strong></td><td>2</td></tr>
-                    <tr><td>③</td><td><strong class="kw">柱型枠、壁型枠返し</strong></td><td>3</td></tr>
-                    <tr><td>④</td><td><span class="trap">［空欄］</span></td><td>3</td></tr>
-                    <tr><td>⑤</td><td><strong class="kw">床型枠組立て（階段を含む）</strong></td><td>3</td></tr>
-                    <tr><td>⑥</td><td><strong class="kw">型枠締固め</strong></td><td>3</td></tr>
-                    <tr><td rowspan="5">鉄筋工事</td><td>⑦</td><td><span class="trap">［空欄］</span></td><td>3</td></tr>
-                    <tr><td>⑧</td><td><strong class="kw">壁配筋</strong></td><td>1</td></tr>
-                    <tr><td>⑨</td><td><strong class="kw">梁配筋（圧接共）</strong></td><td>4</td></tr>
-                    <tr><td>⑩</td><td><strong class="kw">床配筋</strong></td><td>3</td></tr>
-                    <tr><td>⑪</td><td><strong class="kw">差し筋</strong></td><td>1</td></tr>
-                    <tr><td>コンクリート工事</td><td>⑫</td><td><strong class="kw">コンクリート打込み</strong></td><td>1</td></tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </article>
-
-          <article class="study-card translation">
-            <div class="card-title">Bản dịch tiếng Việt</div>
-            <div class="recall-source" lang="vi">
-              <h4>Bảng tiến độ công tác kết cấu tầng điển hình, gồm cột và tường của tầng đang xét, sàn và dầm của tầng trên</h4>
-              <p>Chú giải: ký hiệu của công tác ② cho biết lắp dựng cốp pha một mặt tường có thời gian 2 ngày.</p>
-              <p>※ Trong sơ đồ <span class="trap">chưa thể hiện Dummy Arrow</span>.</p>
-              <div class="table-wrap">
-                <table>
-                  <caption>Bảng nội dung công tác, số ngày đã bao gồm công tác tạm và vận chuyển</caption>
-                  <thead><tr><th>Loại công tác</th><th>STT</th><th>Nội dung</th><th>Thời gian</th></tr></thead>
-                  <tbody>
-                    <tr><td>Lấy dấu</td><td>①</td><td><strong class="kw">Lấy dấu định vị</strong></td><td>1 ngày</td></tr>
-                    <tr><td rowspan="5">Cốp pha</td><td>②</td><td><strong class="kw">Lắp dựng cốp pha một mặt tường</strong></td><td>2 ngày</td></tr>
-                    <tr><td>③</td><td><strong class="kw">Lắp cốp pha cột và mặt cốp pha tường phía còn lại</strong></td><td>3 ngày</td></tr>
-                    <tr><td>④</td><td><span class="trap">Chưa cho, phải suy ra</span></td><td>3 ngày</td></tr>
-                    <tr><td>⑤</td><td><strong class="kw">Lắp ráp cốp pha sàn, bao gồm cầu thang</strong></td><td>3 ngày</td></tr>
-                    <tr><td>⑥</td><td><strong class="kw">Siết và cố định cốp pha</strong></td><td>3 ngày</td></tr>
-                    <tr><td rowspan="5">Cốt thép</td><td>⑦</td><td><span class="trap">Chưa cho, phải suy ra</span></td><td>3 ngày</td></tr>
-                    <tr><td>⑧</td><td><strong class="kw">Bố trí cốt thép tường</strong></td><td>1 ngày</td></tr>
-                    <tr><td>⑨</td><td><strong class="kw">Bố trí cốt thép dầm, gồm nối ép áp lực</strong></td><td>4 ngày</td></tr>
-                    <tr><td>⑩</td><td><strong class="kw">Bố trí cốt thép sàn</strong></td><td>3 ngày</td></tr>
-                    <tr><td>⑪</td><td><strong class="kw">Thép chờ</strong></td><td>1 ngày</td></tr>
-                    <tr><td>Bê tông</td><td>⑫</td><td><strong class="kw">Đổ bê tông</strong></td><td>1 ngày</td></tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </article>
-        </div>
-        <div class="note-box">
-          <strong>Giải thích kỹ thuật</strong>
-          <p>Sơ đồ in sẵn chưa phải network hoàn chỉnh. Hai ràng buộc bằng câu chữ ở Book 244 phải được chuyển thành hai Dummy Arrow trước khi tính EST, Float hoặc tổng thời gian.</p>
-        </div>
-        <p><a href="#toc">↑ Mục lục</a></p>
-      </section>
-    </section>
-
-    <section class="study-section" id="q1">
-      <div class="section-head">
-        <h2>問い1. 作業内容の特定</h2>
-        <span class="source-ref">Nguồn: Book page 246-247</span>
-      </div>
-
-      <section class="subsection" id="q1-formwork">
-        <h3>型枠工事の作業④：梁型枠組立て</h3>
-        <div class="study-grid">
-          <article class="study-card original">
-            <div class="card-title">原文</div>
-            <div class="recall-source" lang="ja">
-              <p><strong class="kw">解答：型枠工事の作業④の作業内容</strong>　<mark class="critical">梁型枠組立て</mark></p>
-              <p>① 鉄筋コンクリート造の建築物の新築工事では、柱・壁・梁・床の各部位について、型枠工事（型枠建込み作業または型枠組立て作業）と鉄筋工事（配筋作業）が必要になる。</p>
-              <p>② 作業内容表のうち、型枠工事に着目して、柱・壁・梁・床のすべての部位について、型枠工事に関する作業内容が書かれているかどうかを確認する。</p>
-              <ul>
-                <li>柱の型枠工事は、「③柱型枠・壁型枠返し」の欄に書かれている。</li>
-                <li>壁の型枠工事は、「②片壁型枠建込み」と「③柱型枠・壁型枠返し」の欄に書かれている。</li>
-                <li><strong class="kw">梁の型枠工事</strong>は、<span class="trap">どの欄にも書かれていない</span>。</li>
-                <li>床の型枠工事は、「⑤床型枠組立て（階段を含む）」の欄に書かれている。</li>
-              </ul>
-              <p>③ 鉄筋コンクリート造の建築物の新築工事において、<strong class="kw">梁の型枠工事は絶対に必要</strong>である。したがって、「型枠工事の作業④の作業内容」は、「梁型枠」に関する作業内容である。</p>
-              <p>④ 「梁型枠」は作業内容の名称ではなく部位の名称なので、<span class="trap">そのまま解答にすることはできない</span>。作業内容表を見ると、型枠工事に関する作業内容の名称は、「建込み」と「組立て」が使い分けられている。</p>
-              <p><span class="relation">柱・壁のように型枠を垂直に設置する作業は「型枠建込み」</span>、<span class="relation">梁・床のように型枠を水平に設置する作業は「型枠組立て」</span>と呼ばれる。</p>
-              <p>したがって、型枠工事の作業④は、<mark class="critical">「梁型枠組立て」</mark>と答えるのが正解である。※「梁型枠」や「梁型枠建込み」と解答すると、<span class="trap">不正解として扱われる</span>。</p>
-            </div>
-          </article>
-
-          <article class="study-card translation">
-            <div class="card-title">Bản dịch tiếng Việt</div>
-            <div class="recall-source" lang="vi">
-              <p><strong class="kw">Đáp án: nội dung công tác ④ của cốp pha</strong>　<mark class="critical">Lắp ráp cốp pha dầm（梁型枠組立て）</mark></p>
-              <p>① Trong công trình mới bằng bê tông cốt thép, đối với cột, tường, dầm và sàn đều cần công tác cốp pha, tức lắp dựng hoặc lắp ráp cốp pha, và công tác cốt thép, tức bố trí cốt thép.</p>
-              <p>② Xét bảng nội dung công tác và kiểm tra xem công tác cốp pha của cột, tường, dầm và sàn đã được ghi đầy đủ hay chưa.</p>
-              <ul>
-                <li>Cốp pha cột đã có tại ③.</li>
-                <li>Cốp pha tường đã có tại ② và ③.</li>
-                <li><strong class="kw">Cốp pha dầm</strong> <span class="trap">không xuất hiện ở bất kỳ mục nào</span>.</li>
-                <li>Cốp pha sàn đã có tại ⑤.</li>
-              </ul>
-              <p>③ Trong công trình mới bằng bê tông cốt thép, <strong class="kw">công tác cốp pha dầm là bắt buộc</strong>. Vì vậy công tác ④ phải là công tác liên quan đến cốp pha dầm.</p>
-              <p>④ `梁型枠` chỉ là tên bộ phận, <span class="trap">không thể dùng nguyên dạng làm tên thao tác trong đáp án</span>. Bảng công tác phân biệt `建込み` và `組立て`.</p>
-              <p><span class="relation">Cấu kiện đứng như cột, tường dùng 「建込み」</span>; <span class="relation">cấu kiện ngang như dầm, sàn dùng 「組立て」</span>.</p>
-              <p>Vì vậy công tác ④ phải trả lời <mark class="critical">「梁型枠組立て」</mark>. Nếu trả lời `梁型枠` hoặc `梁型枠建込み` thì theo sách <span class="trap">bị coi là sai</span>.</p>
-            </div>
-          </article>
-        </div>
-      </section>
-
-      <section class="subsection" id="q1-rebar">
-        <h3>鉄筋工事の作業⑦：柱配筋</h3>
-        <div class="study-grid">
-          <article class="study-card original">
-            <div class="card-title">原文</div>
-            <div class="recall-source" lang="ja">
-              <p>⑤ 作業内容表のうち、鉄筋工事に着目して、柱・壁・梁・床のすべての部位について、鉄筋工事に関する作業内容が書かれているかどうかを確認する。</p>
-              <ul>
-                <li><strong class="kw">柱の鉄筋工事</strong>は、<span class="trap">どの欄にも書かれていない</span>。</li>
-                <li>壁の鉄筋工事は、「⑧壁配筋」の欄に書かれている。</li>
-                <li>梁の鉄筋工事は、「⑨梁配筋（圧接共）」の欄に書かれている。</li>
-                <li>床の鉄筋工事は、「⑩床配筋」の欄に書かれている。</li>
-              </ul>
-              <p>⑥ 鉄筋コンクリート造の建築物の新築工事において、<strong class="kw">柱の鉄筋工事は絶対に必要</strong>である。したがって、「鉄筋工事の作業⑦の作業内容」は、「柱鉄筋」に関する作業内容である。</p>
-              <p>⑦ 「柱鉄筋」は作業内容の名称ではなく部位の名称なので、<span class="trap">そのまま解答にすることはできない</span>。作業内容表を見ると、鉄筋工事に関する作業内容の名称は、すべて「配筋」になっている。</p>
-              <p>したがって、「鉄筋工事の作業⑦の作業内容」は、<mark class="critical">「柱配筋」</mark>と答えるのが正解である。</p>
-            </div>
-          </article>
-          <article class="study-card translation">
-            <div class="card-title">Bản dịch tiếng Việt</div>
-            <div class="recall-source" lang="vi">
-              <p>⑤ Xét bảng nội dung công tác cốt thép và kiểm tra lần lượt cột, tường, dầm và sàn.</p>
-              <ul>
-                <li><strong class="kw">Cốt thép cột</strong> <span class="trap">không được ghi ở bất kỳ hàng nào</span>.</li>
-                <li>Cốt thép tường đã có tại ⑧.</li>
-                <li>Cốt thép dầm đã có tại ⑨.</li>
-                <li>Cốt thép sàn đã có tại ⑩.</li>
-              </ul>
-              <p>⑥ Trong công trình mới bằng bê tông cốt thép, <strong class="kw">công tác cốt thép cột là bắt buộc</strong>. Do đó công tác ⑦ phải liên quan đến cốt thép cột.</p>
-              <p>⑦ `柱鉄筋` chỉ là tên bộ phận, <span class="trap">không thể dùng nguyên dạng làm tên công tác</span>. Trong bảng, các công tác cốt thép đều dùng từ `配筋`.</p>
-              <p>Vì vậy, nội dung công tác ⑦ là <mark class="critical">「柱配筋」, bố trí cốt thép cột</mark>.</p>
-            </div>
-          </article>
-        </div>
-        <p><a href="#toc">↑ Mục lục</a></p>
-      </section>
-    </section>
-
-    <section class="study-section" id="q2">
-      <div class="section-head">
-        <h2>問い2. 最早開始時期（EST）</h2>
-        <span class="source-ref">Nguồn: Book page 247-250</span>
-      </div>
-
-      <section class="subsection" id="dummy-arrows">
-        <h3>Network hoàn chỉnh và hai Dummy Arrow</h3>
-        <div class="study-grid">
-          <article class="study-card original">
-            <div class="card-title">原文</div>
-            <div class="recall-source" lang="ja">
-              <p><strong class="kw">解答：③柱型枠・壁型枠返しの最早開始時期</strong>　<mark class="critical">5日目</mark></p>
-              <p>基準階の躯体工事工程表について、ネットワーク工程表を完成させて<strong class="kw">最早開始時期（EST / Earliest Start Time）</strong>を計算する。</p>
-              <p>工程表には<span class="trap">ダミーアロー（作業順序を示すための破線矢印）は記載していない</span>ので、最初に問題文を読み込んでダミーアローを記載する。</p>
-              <ul>
-                <li><span class="relation">「⑧壁配筋の完了点」から「③柱型枠・壁型枠返しの開始点」へダミーアロー</span>を記載する。</li>
-                <li><span class="relation">「⑤床型枠組立ての完了点」から「⑨梁配筋の開始点」へダミーアロー</span>を記載する。</li>
-              </ul>
-            </div>
-          </article>
-          <article class="study-card translation">
-            <div class="card-title">Bản dịch tiếng Việt</div>
-            <div class="recall-source" lang="vi">
-              <p><strong class="kw">Đáp án: EST của ③ lắp cốp pha cột và mặt cốp pha tường còn lại</strong>　<mark class="critical">ngày thứ 5</mark></p>
-              <p>Đối với bảng tiến độ kết cấu tầng điển hình, trước hết phải hoàn chỉnh network rồi mới tính <strong class="kw">EST, Earliest Start Time, thời điểm bắt đầu sớm nhất</strong>.</p>
-              <p>Đề ghi rõ <span class="trap">Dummy Arrow chưa được thể hiện trong sơ đồ</span>, vì vậy phải đọc điều kiện bằng câu chữ và bổ sung chúng.</p>
-              <ul>
-                <li><span class="relation">Từ điểm hoàn thành ⑧ bố trí cốt thép tường đến điểm bắt đầu ③ lắp cốp pha cột và mặt tường còn lại: Dummy Arrow</span>.</li>
-                <li><span class="relation">Từ điểm hoàn thành ⑤ lắp cốp pha sàn đến điểm bắt đầu ⑨ bố trí cốt thép dầm: Dummy Arrow</span>.</li>
-              </ul>
-            </div>
-          </article>
-        </div>
-        <div class="formula-box">
-          <div class="formula-line"><span class="flow-node">⑧ 壁配筋完了</span><span class="flow-arrow">→</span><span class="flow-node">Dummy ① / 0日</span><span class="flow-arrow">→</span><span class="flow-node">③ 開始</span></div>
-          <div class="formula-line"><span class="flow-node">⑤ 床型枠組立て完了</span><span class="flow-arrow">→</span><span class="flow-node">Dummy ② / 0日</span><span class="flow-arrow">→</span><span class="flow-node">⑨ 開始</span></div>
-        </div>
-      </section>
-
-      <section class="subsection" id="est-calc">
-        <h3>Quy tắc tính EST và kết quả</h3>
-        <div class="study-grid">
-          <article class="study-card original">
-            <div class="card-title">原文</div>
-            <div class="recall-source" lang="ja">
-              <p>ネットワーク工程表において、各イベント（各作業の開始点）の最早開始時期を計算するときの手順は、次の通りである。</p>
-              <ol>
-                <li><strong class="kw">工事の出発点</strong>であるイベント（始）の最早開始時期を<mark class="critical">0日</mark>とする。</li>
-                <li><strong class="kw">ダミーアロー</strong>は、<mark class="critical">所要日数0日</mark>の作業として扱う。</li>
-                <li>各イベントの最早開始時期は、<span class="relation">「直前のイベントの最早開始時期＋所要日数」</span>とする。</li>
-                <li>複数の矢線が流入するイベントの最早開始時期は、計算された値のうちの<strong class="kw">最大値</strong>とする。</li>
-              </ol>
-              <p>「③の開始点」に該当するイベントの最早開始時期は<mark class="critical">5</mark>である。したがって、③柱型枠・壁型枠返しの最早開始時期は<mark class="critical">5日目</mark>である。なお、「5日」と答えても正解になる。</p>
-            </div>
-          </article>
-          <article class="study-card translation">
-            <div class="card-title">Bản dịch tiếng Việt</div>
-            <div class="recall-source" lang="vi">
-              <p>Trình tự tính thời điểm bắt đầu sớm nhất của từng Event như sau.</p>
-              <ol>
-                <li>Đặt EST của <strong class="kw">Event xuất phát</strong> bằng <mark class="critical">0 ngày</mark>.</li>
-                <li><strong class="kw">Dummy Arrow</strong> được coi là công tác có <mark class="critical">thời gian 0 ngày</mark>.</li>
-                <li>EST của mỗi Event được tính theo <span class="relation">EST của Event ngay trước + thời gian công tác</span>.</li>
-                <li>Nếu nhiều mũi tên cùng đi vào một Event, lấy <strong class="kw">giá trị lớn nhất</strong>.</li>
-              </ol>
-              <p>EST tại điểm bắt đầu ③ bằng <mark class="critical">5</mark>. Vì vậy EST của ③ là <mark class="critical">ngày thứ 5</mark>. Trả lời `5日` cũng được coi là đúng.</p>
-            </div>
-          </article>
-        </div>
-        <div class="note-box">
-          <strong>Giải thích kỹ thuật</strong>
-          <p>Hai phép lấy giá trị lớn nhất quyết định network: tại điểm bắt đầu ③, lấy <code>max(3,5)=5</code>; tại điểm bắt đầu ⑨, lấy <code>max(5,14)=14</code>.</p>
-        </div>
-      </section>
-
-      <section class="subsection" id="timescale">
-        <h3>ネットワーク工程表検討用（タイムスケール表示）を活用する解答方法</h3>
-        <div class="study-grid">
-          <article class="study-card original">
-            <div class="card-title">原文</div>
-            <div class="recall-source" lang="ja">
-              <p>この問題の問い2.から問い4.までは、解答用紙にある<strong class="kw">ネットワーク工程表検討用（タイムスケール表示）</strong>を活用すると、まとめて解くことができる。</p>
-              <p>最早開始時期・フロート・総所要日数を求めるためには、ネットワークの作成条件が示されていなければならない。次の3つの条件を基にして、ダミーの位置と方向を決定することで、ネットワークが一義的に定まる。</p>
-              <ol>
-                <li><strong class="kw">型枠工1班（10人）・鉄筋工1班（6人）</strong>の各1班体制で施工する。</li>
-                <li><span class="relation">③柱型枠・壁型枠返しは、⑧壁配筋の完了後に開始</span>する。（ダミー①）</li>
-                <li><span class="relation">⑨梁配筋（圧接共）は、⑤床型枠組立て（階段を含む）の完了後に開始</span>する。（ダミー②）</li>
-              </ol>
-              <p>そのネットワークに日数を入れて最早開始時期を計算すれば、③柱型枠・壁型枠返しの最早開始時期ESTを求めることができる。</p>
-              <p>タイムスケール表示では、波線は<strong class="kw">フロート</strong>、太線は<strong class="kw">クリティカルパス</strong>を示し、工期は<mark class="critical">23日</mark>である。</p>
-              <p>以上により、③柱型枠・壁型枠返しの最早開始時期は<mark class="critical">EST＝5日</mark>である。</p>
-            </div>
-          </article>
-          <article class="study-card translation">
-            <div class="card-title">Bản dịch tiếng Việt</div>
-            <div class="recall-source" lang="vi">
-              <p>Các câu từ Câu 2 đến Câu 4 có thể giải đồng thời bằng <strong class="kw">bảng network dạng Time Scale</strong> trên phiếu trả lời.</p>
-              <p>Muốn xác định EST, Float và tổng thời gian, phải có các điều kiện tạo network. Từ ba điều kiện sau, vị trí và hướng của Dummy được xác định duy nhất.</p>
-              <ol>
-                <li>Thi công bằng <strong class="kw">1 tổ cốp pha 10 người và 1 tổ cốt thép 6 người</strong>.</li>
-                <li><span class="relation">③ chỉ bắt đầu sau khi ⑧ hoàn thành</span>. Đây là Dummy ①.</li>
-                <li><span class="relation">⑨ chỉ bắt đầu sau khi ⑤ hoàn thành</span>. Đây là Dummy ②.</li>
-              </ol>
-              <p>Đưa duration vào network và tính EST sẽ cho EST của công tác ③.</p>
-              <p>Trong biểu diễn Time Scale, đường lượn sóng là <strong class="kw">Float</strong>, đường đậm là <strong class="kw">Critical Path</strong>, và tổng thời gian ban đầu là <mark class="critical">23 ngày</mark>.</p>
-              <p>Kết quả: <mark class="critical">EST của ③ = 5 ngày</mark>.</p>
-            </div>
-          </article>
-        </div>
-        <p><a href="#toc">↑ Mục lục</a></p>
-      </section>
-    </section>
-
-    <section class="study-section" id="q3">
-      <div class="section-head">
-        <h2>問い3. フリーフロート</h2>
-        <span class="source-ref">Nguồn: Book page 248-251</span>
-      </div>
-
-      <section class="subsection" id="ff-definition">
-        <h3>Định nghĩa và công thức Free Float</h3>
-        <div class="study-grid">
-          <article class="study-card original">
-            <div class="card-title">原文</div>
-            <div class="recall-source" lang="ja">
-              <p><strong class="kw">フリーフロート</strong>とは、その作業に固有の、<span class="relation">その作業で使い切っても他の作業の余裕時間に影響しない余裕時間</span>である。</p>
-              <p>各作業のフリーフロートは、「その作業の完了日」と「次の作業の開始日」との間に存在する日数に等しい。</p>
-              <p><span class="relation">フリーフロート＝（次の作業の最早開始時期）－（その作業の最早開始時期＋その作業の所要日数）</span></p>
-            </div>
-          </article>
-          <article class="study-card translation">
-            <div class="card-title">Bản dịch tiếng Việt</div>
-            <div class="recall-source" lang="vi">
-              <p><strong class="kw">Free Float</strong> là khoảng dự trữ riêng của công tác đó, <span class="relation">có thể sử dụng hết mà không ảnh hưởng tới khoảng dự trữ của công tác khác</span>.</p>
-              <p>Free Float bằng số ngày nằm giữa thời điểm hoàn thành công tác hiện tại và thời điểm bắt đầu công tác tiếp theo.</p>
-              <p><span class="relation">Free Float = EST của công tác tiếp theo − (EST của công tác hiện tại + duration của công tác hiện tại)</span></p>
-            </div>
-          </article>
-        </div>
-      </section>
-
-      <section class="subsection" id="ff-results">
-        <h3>Kết quả: FF⑥ = 5 ngày, FF⑩ = 0 ngày</h3>
-        <div class="study-grid">
-          <article class="study-card original">
-            <div class="card-title">原文</div>
-            <div class="recall-source" lang="ja">
-              <p>型枠工事の<strong class="kw">⑥型枠締固め</strong>は、最早開始時期が<mark class="critical">14日目</mark>、所要日数が<mark class="critical">3日</mark>、次の作業（⑫コンクリート打込み）の最早開始時期が<mark class="critical">22日目</mark>である。</p>
-              <p>したがって、<span class="relation">（22日目）－（14日目＋3日）＝5日</span>により、⑥型枠締固めのフリーフロートは<mark class="critical">5日</mark>である。</p>
-              <p>鉄筋工事の<strong class="kw">⑩床配筋</strong>は、最早開始時期が<mark class="critical">18日目</mark>、所要日数が<mark class="critical">3日</mark>、次の作業（⑪差筋）の最早開始時期が<mark class="critical">21日目</mark>である。</p>
-              <p>したがって、<span class="relation">（21日目）－（18日目＋3日）＝0日</span>により、⑩床配筋のフリーフロートは<mark class="critical">0日</mark>である。</p>
-              <p>タイムスケール表示の図より、⑩床配筋作業は<strong class="kw">クリティカルパス上の作業</strong>であるために、フロートは存在しない。</p>
-            </div>
-          </article>
-          <article class="study-card translation">
-            <div class="card-title">Bản dịch tiếng Việt</div>
-            <div class="recall-source" lang="vi">
-              <p><strong class="kw">⑥ siết và cố định cốp pha</strong> có EST <mark class="critical">ngày 14</mark>, duration <mark class="critical">3 ngày</mark>, và EST của công tác kế tiếp ⑫ đổ bê tông là <mark class="critical">ngày 22</mark>.</p>
-              <p>Do đó, <span class="relation">22 − (14 + 3) = 5 ngày</span>, nên Free Float của ⑥ là <mark class="critical">5 ngày</mark>.</p>
-              <p><strong class="kw">⑩ bố trí cốt thép sàn</strong> có EST <mark class="critical">ngày 18</mark>, duration <mark class="critical">3 ngày</mark>, và EST của công tác kế tiếp ⑪ thép chờ là <mark class="critical">ngày 21</mark>.</p>
-              <p>Do đó, <span class="relation">21 − (18 + 3) = 0 ngày</span>, nên Free Float của ⑩ là <mark class="critical">0 ngày</mark>.</p>
-              <p>Trên Time Scale, ⑩ nằm trên <strong class="kw">Critical Path</strong>, vì vậy không tồn tại Float.</p>
-            </div>
-          </article>
-        </div>
-        <p><a href="#toc">↑ Mục lục</a></p>
-      </section>
-    </section>
-
-    <section class="study-section" id="q4">
-      <div class="section-head">
-        <h2>問い4. 工程変更後の総所要日数</h2>
-        <span class="source-ref">Nguồn: Book page 249-251</span>
-      </div>
-
-      <section class="subsection" id="duration-change">
-        <h3>Thay đổi thời gian của ② và ③</h3>
-        <div class="study-grid">
-          <article class="study-card original">
-            <div class="card-title">原文</div>
-            <div class="recall-source" lang="ja">
-              <p>問い4.では、当初計画した型枠工の人数が確保できなかったために、作業日数に次の変更が生じた。</p>
-              <ul>
-                <li><strong class="kw">②片壁型枠建込み</strong>の所要日数が<mark class="critical">2日増加</mark>し、<span class="relation">2日から4日</span>になった。</li>
-                <li><strong class="kw">③柱型枠・壁型枠返し</strong>の所要日数が<mark class="critical">1日増加</mark>し、<span class="relation">3日から4日</span>になった。</li>
-              </ul>
-              <p>ネットワーク工程表において各作業の所要日数が変更されたときには、所要日数を書き換えた後に、<strong class="kw">各イベントの最早開始時期の計算をもう一度行う必要がある</strong>。</p>
-            </div>
-          </article>
-          <article class="study-card translation">
-            <div class="card-title">Bản dịch tiếng Việt</div>
-            <div class="recall-source" lang="vi">
-              <p>Trong Câu 4, do không thể đảm bảo đủ số công nhân cốp pha theo kế hoạch ban đầu, duration thay đổi như sau.</p>
-              <ul>
-                <li><strong class="kw">② lắp dựng cốp pha một mặt tường</strong> tăng <mark class="critical">2 ngày</mark>, tức <span class="relation">từ 2 ngày thành 4 ngày</span>.</li>
-                <li><strong class="kw">③ lắp cốp pha cột và mặt cốp pha tường phía còn lại</strong> tăng <mark class="critical">1 ngày</mark>, tức <span class="relation">từ 3 ngày thành 4 ngày</span>.</li>
-              </ul>
-              <p>Khi duration của công tác trong network thay đổi, sau khi sửa duration phải <strong class="kw">tính lại thời điểm bắt đầu sớm nhất của các Event</strong>.</p>
-            </div>
-          </article>
-        </div>
-      </section>
-
-      <section class="subsection" id="schedule-result">
-        <h3>Kết quả: tổng thời gian 24 ngày</h3>
-        <div class="study-grid">
-          <article class="study-card original">
-            <div class="card-title">原文</div>
-            <div class="recall-source" lang="ja">
-              <p>工事全体の総所要日数（工期）は、工事の完成点であるイベント「終」の最早開始時期に等しい。したがって、作業日数が増加した場合の墨出しからコンクリート打込み完了までの総所要日数は<mark class="critical">24日</mark>となる。</p>
-              <p>問い4.の解答欄には「24日」ではなく<mark class="critical">「24」</mark>と記入しなければならない。解答欄に「日」まで記入すると「24日日」となり、減点となるおそれがある。</p>
-              <p>タイムスケール表示では、<strong class="kw">②の2日の遅れ</strong>は<span class="relation">フロートの2日を使用して打ち消される</span>。</p>
-              <p><strong class="kw">③はクリティカルパス上の作業</strong>であるため、<span class="relation">1日の遅れが総所要日数の1日の増加に繋がる</span>。したがって、<span class="relation">23日＋1日＝24日</span>となる。</p>
-            </div>
-          </article>
-          <article class="study-card translation">
-            <div class="card-title">Bản dịch tiếng Việt</div>
-            <div class="recall-source" lang="vi">
-              <p>Tổng thời gian của toàn công trình bằng EST của Event kết thúc. Vì vậy tổng thời gian từ lấy dấu đến hoàn thành đổ bê tông sau khi duration thay đổi là <mark class="critical">24 ngày</mark>.</p>
-              <p>Trong ô trả lời của Câu 4 phải ghi <mark class="critical">「24」</mark>, không ghi `24日`. Nếu ghi thêm chữ `日`, câu sẽ thành `24日日` và có nguy cơ bị trừ điểm.</p>
-              <p>Trên Time Scale, <strong class="kw">② chậm 2 ngày</strong> nhưng <span class="relation">được hấp thụ hết bởi 2 ngày Float</span>.</p>
-              <p><strong class="kw">③ nằm trên Critical Path</strong>, nên <span class="relation">chậm 1 ngày làm tổng thời gian tăng 1 ngày</span>. Vì vậy <span class="relation">23 + 1 = 24 ngày</span>.</p>
-            </div>
-          </article>
-        </div>
-        <div class="comparison-box">
-          <div class="table-wrap">
-            <table>
-              <caption>Ảnh hưởng của hai thay đổi duration</caption>
-              <thead><tr><th>Công tác</th><th>Thay đổi</th><th>Trạng thái network</th><th>Ảnh hưởng tổng tiến độ</th></tr></thead>
-              <tbody>
-                <tr><td><strong class="kw">② 片壁型枠建込み</strong></td><td>+2 ngày</td><td>Float 2 ngày</td><td><span class="relation">Không làm tăng tổng tiến độ</span></td></tr>
-                <tr><td><strong class="kw">③ 柱型枠・壁型枠返し</strong></td><td>+1 ngày</td><td>Critical Path</td><td><span class="relation">Tăng tổng tiến độ 1 ngày</span></td></tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-        <p><a href="#toc">↑ Mục lục</a></p>
-      </section>
-    </section>
-
-    <section class="study-section" id="sequence">
-      <div class="section-head">
-        <h2>型枠工事と鉄筋工事の工程上の関係と作業名の記述</h2>
-        <span class="source-ref">Nguồn: Book page 251-252</span>
-      </div>
-
-      <section class="subsection" id="standard-sequence">
-        <h3>RC造躯体の標準的な流れ</h3>
-        <div class="study-grid">
-          <article class="study-card original">
-            <div class="card-title">原文</div>
-            <div class="recall-source" lang="ja">
-              <p>型枠工事を中心としたRC造（鉄筋コンクリート造）躯体の流れは、次の通りである。</p>
-              <div class="table-wrap">
-                <table>
-                  <caption>型枠の手順</caption>
-                  <thead><tr><th>No.</th><th>作業内容</th></tr></thead>
-                  <tbody>
-                    <tr><td>①</td><td>型枠図・材料拾い出し</td></tr>
-                    <tr><td>②</td><td>型枠工場加工・製作</td></tr>
-                    <tr><td>③</td><td><strong class="kw">位置線引き・墨出し</strong></td></tr>
-                    <tr><td>④</td><td>脚部水平桟・台付け</td></tr>
-                    <tr><td>⑤</td><td><strong class="kw">柱面枠建込み・柱建込み</strong></td></tr>
-                    <tr><td>⑥</td><td><strong class="kw">外壁型枠建込み・外壁建込み</strong></td></tr>
-                    <tr><td>⑦</td><td><strong class="kw">内壁型枠建込み・返し壁建込み</strong></td></tr>
-                    <tr><td>⑧</td><td><strong class="kw">梁型枠組立・梁型枠組立て</strong></td></tr>
-                    <tr><td>⑨</td><td><strong class="kw">スラブ型枠・スラブ型枠組立て</strong></td></tr>
-                    <tr><td>⑩</td><td>コンクリート打込み仕上げ・コンクリート打込み・打設面仕上げ</td></tr>
-                    <tr><td>⑪</td><td>コンクリート養生・コンクリート湿潤養生・強度確認</td></tr>
-                    <tr><td>⑫</td><td>型枠取外し・部位別養生終了後に取外し</td></tr>
-                  </tbody>
-                </table>
-              </div>
-              <div class="table-wrap">
-                <table>
-                  <caption>鉄筋の手順</caption>
-                  <thead><tr><th>No.</th><th>作業内容</th></tr></thead>
-                  <tbody>
-                    <tr><td>A</td><td><strong class="kw">柱鉄筋組立て・柱配筋</strong></td></tr>
-                    <tr><td>B</td><td><strong class="kw">壁鉄筋組立て・壁配筋</strong></td></tr>
-                    <tr><td>C</td><td><strong class="kw">梁鉄筋組立て・梁配筋</strong></td></tr>
-                    <tr><td>D</td><td><strong class="kw">スラブ鉄筋組立て・スラブ配筋</strong></td></tr>
-                  </tbody>
-                </table>
-              </div>
-              <p>特に、第二次検定のネットワーク工程表の問題における合否のポイントは、<strong class="kw">型枠と鉄筋の作業順序についての理解の有無</strong>にあると思われる。</p>
-              <p>これは、あくまで<strong class="kw">標準的なもの</strong>である。現実の現場では、並行作業を行うことが多いので、<span class="trap">必ずしもこの順序ではない場合がある</span>。</p>
-            </div>
-          </article>
-
-          <article class="study-card translation">
-            <div class="card-title">Bản dịch tiếng Việt</div>
-            <div class="recall-source" lang="vi">
-              <p>Trình tự phần kết cấu RC, lấy công tác cốp pha làm trung tâm, được trình bày như sau.</p>
-              <div class="table-wrap">
-                <table>
-                  <caption>Trình tự cốp pha</caption>
-                  <thead><tr><th>STT</th><th>Nội dung</th></tr></thead>
-                  <tbody>
-                    <tr><td>①</td><td>Triển khai bản vẽ cốp pha và bóc vật liệu</td></tr>
-                    <tr><td>②</td><td>Gia công, chế tạo cốp pha tại xưởng</td></tr>
-                    <tr><td>③</td><td><strong class="kw">Vạch vị trí, lấy dấu định vị</strong></td></tr>
-                    <tr><td>④</td><td>Lắp các cấu kiện chuẩn bị tại chân cốp pha</td></tr>
-                    <tr><td>⑤</td><td><strong class="kw">Lắp dựng cốp pha cột</strong></td></tr>
-                    <tr><td>⑥</td><td><strong class="kw">Lắp dựng cốp pha tường ngoài</strong></td></tr>
-                    <tr><td>⑦</td><td><strong class="kw">Lắp dựng cốp pha tường trong, mặt tường còn lại</strong></td></tr>
-                    <tr><td>⑧</td><td><strong class="kw">Lắp ráp cốp pha dầm</strong></td></tr>
-                    <tr><td>⑨</td><td><strong class="kw">Lắp ráp cốp pha sàn</strong></td></tr>
-                    <tr><td>⑩</td><td>Đổ bê tông và hoàn thiện bề mặt sau đổ</td></tr>
-                    <tr><td>⑪</td><td>Bảo dưỡng bê tông, bảo dưỡng ẩm và xác nhận cường độ</td></tr>
-                    <tr><td>⑫</td><td>Tháo cốp pha sau khi kết thúc bảo dưỡng tương ứng từng bộ phận</td></tr>
-                  </tbody>
-                </table>
-              </div>
-              <div class="table-wrap">
-                <table>
-                  <caption>Trình tự cốt thép</caption>
-                  <thead><tr><th>Ký hiệu</th><th>Nội dung</th></tr></thead>
-                  <tbody>
-                    <tr><td>A</td><td><strong class="kw">Lắp, bố trí cốt thép cột</strong></td></tr>
-                    <tr><td>B</td><td><strong class="kw">Lắp, bố trí cốt thép tường</strong></td></tr>
-                    <tr><td>C</td><td><strong class="kw">Lắp, bố trí cốt thép dầm</strong></td></tr>
-                    <tr><td>D</td><td><strong class="kw">Lắp, bố trí cốt thép sàn</strong></td></tr>
-                  </tbody>
-                </table>
-              </div>
-              <p>Đối với câu network của kỳ thi lần hai, sách cho rằng một điểm then chốt là <strong class="kw">hiểu trình tự tương đối giữa công tác cốp pha và công tác cốt thép</strong>.</p>
-              <p>Đây chỉ là <strong class="kw">trình tự tiêu chuẩn</strong>. Trên công trường thực tế thường có công tác song song nên <span class="trap">không phải lúc nào cũng theo đúng thứ tự này</span>.</p>
-            </div>
-          </article>
-        </div>
-      </section>
-
-      <section class="subsection" id="naming-rule">
-        <h3>作業名を記述するときの注意</h3>
-        <div class="study-grid">
-          <article class="study-card original">
-            <div class="card-title">原文</div>
-            <div class="recall-source" lang="ja">
-              <p>工程表から作業名を類推して記述する設問では、上記の用語は一般的なものであり、<span class="trap">試験問題で要求されている用語と一致しないこともある</span>。</p>
-              <p>工程表の作業名一覧に挙げられている用語の語尾には、「組立て」や「建込み」が付いているので、<strong class="kw">作業名の語尾には神経を使う必要がある</strong>。</p>
-              <p>原則的には、<span class="relation">梁・スラブなどの水平材には「組立て」</span>、<span class="relation">柱・壁などの垂直材には「建込み」</span>を付けて表すようである。</p>
-              <p>これも原則であって、あくまで<strong class="kw">出題表の記述の例に沿って記述することが大切</strong>である。</p>
-              <p>記述問題では<strong class="kw">「ただし」や「なお」</strong>の語句で、記述する内容を限定していることが多い。例えば、「安全管理を除く」の条件が付いている場合、<span class="trap">「安全管理」に関する記述は一切含めない</span>ようにすることが望ましい。</p>
-            </div>
-          </article>
-          <article class="study-card translation">
-            <div class="card-title">Bản dịch tiếng Việt</div>
-            <div class="recall-source" lang="vi">
-              <p>Trong câu hỏi yêu cầu suy luận tên công tác từ bảng tiến độ, thuật ngữ thông thường ở trên <span class="trap">có thể không trùng với đúng thuật ngữ mà đề thi yêu cầu</span>.</p>
-              <p>Trong bảng tiến độ, tên công tác thường kết thúc bằng `組立て` hoặc `建込み`, vì vậy <strong class="kw">phải đặc biệt chú ý phần đuôi của tên công tác</strong>.</p>
-              <p>Về nguyên tắc, <span class="relation">dầm và sàn, tức cấu kiện ngang, dùng 「組立て」</span>; <span class="relation">cột và tường, tức cấu kiện đứng, dùng 「建込み」</span>.</p>
-              <p>Đây vẫn chỉ là nguyên tắc; quan trọng là <strong class="kw">bám theo cách viết được dùng trong chính bảng của đề thi</strong>.</p>
-              <p>Trong câu tự luận, các từ <strong class="kw">「ただし」 và 「なお」</strong> thường giới hạn nội dung được phép viết. Ví dụ nếu đề ghi “loại trừ quản lý an toàn” thì <span class="trap">không đưa nội dung về quản lý an toàn vào đáp án</span>.</p>
-            </div>
-          </article>
-        </div>
-      </section>
-
-      <section class="subsection" id="sashikin">
-        <h3>差筋</h3>
-        <div class="study-grid">
-          <article class="study-card original">
-            <div class="card-title">原文</div>
-            <div class="recall-source" lang="ja">
-              <p>この問題で使われている用語である<strong class="kw">「差筋」</strong>とは、専門的に言うと、<span class="relation">基礎から立ち上げる壁の鉄筋を固定するための鉄筋</span>である。</p>
-              <p>一般に、壁鉄筋に先がけて基礎から立ち上げることで、壁鉄筋を固定し、<strong class="kw">定着長さや重ね継手長さを確保するため</strong>に用いられる。</p>
-              <p>なお、<span class="trap">JASSには差筋の規定はない</span>ため、この用語は種々の使われ方をする場合がある。</p>
-              <p>※差筋は、新コンクリートと旧コンクリートを一体化させるため、階段の先打ちコンクリート（旧コンクリート）に対しては、鉄筋を水平方向に挿入する。</p>
-              <p><strong class="kw">差筋は壁の縦筋を固定するアンカーである。</strong></p>
-            </div>
-          </article>
-          <article class="study-card translation">
-            <div class="card-title">Bản dịch tiếng Việt</div>
-            <div class="recall-source" lang="vi">
-              <p>Trong bài này, <strong class="kw">差筋（さしきん）</strong> là <span class="relation">thanh cốt thép dùng để cố định cốt thép tường dựng lên từ móng</span>.</p>
-              <p>Thông thường, thanh này được dựng từ móng trước cốt thép tường để cố định cốt thép tường và <strong class="kw">đảm bảo chiều dài neo cùng chiều dài nối chồng</strong>.</p>
-              <p>Do <span class="trap">JASS không có quy định riêng về 差筋</span>, thuật ngữ này có thể được sử dụng theo nhiều cách khác nhau.</p>
-              <p>Đối với trường hợp liên kết bê tông mới với bê tông cũ, ví dụ bê tông cầu thang đổ trước, 差筋 được cắm theo phương ngang vào phần bê tông cũ.</p>
-              <p><strong class="kw">差筋 là thanh neo dùng để cố định cốt thép đứng của tường.</strong></p>
-            </div>
-          </article>
-        </div>
-        <div class="note-box">
-          <strong>Giải thích hình ở Book 252</strong>
-          <p>Hình thể hiện móng ở dưới, cốt thép đứng của tường phía trên và các thanh 差筋 nhô từ móng lên để định vị, giữ cốt thép tường. Cột được vẽ ở phía bên phải để cho thấy quan hệ vị trí giữa tường, cột và móng.</p>
-        </div>
-        <p><a href="#toc">↑ Mục lục</a></p>
-      </section>
-    </section>
-
-  </main>
-  <!-- CONTENT_END -->
-
-  <!-- =====================================================
-       NON-DIMMED STUDY SUPPORT SECTIONS
-       These sections stay normally readable in Keywords mode.
-       ===================================================== -->
-
-  <section class="aggregate-section" id="terms">
-    <div class="section-head">
-      <h2>Thuật ngữ chuyên môn</h2>
-    </div>
-    
+<!-- TOC_ITEMS_END -->
+<ol><li><a href="#problem">令和5年度 問題3 施工管理</a><ol><li><a href="#problem-statement">Đề bài và các điều kiện thi công</a></li><li><a href="#initial-network">Bảng công tác và network ban đầu</a></li></ol></li><li><a href="#q1">問い1. 作業内容の特定</a><ol><li><a href="#q1-formwork">型枠工事の作業④：梁型枠組立て</a></li><li><a href="#q1-rebar">鉄筋工事の作業⑦：柱配筋</a></li></ol></li><li><a href="#q2">問い2. 最早開始時期（EST）</a><ol><li><a href="#dummy-arrows">Network hoàn chỉnh và hai Dummy Arrow</a></li><li><a href="#est-calc">Quy tắc tính EST và kết quả</a></li><li><a href="#timescale">ネットワーク工程表検討用（タイムスケール表示）を活用する解答方法</a></li></ol></li><li><a href="#q3">問い3. フリーフロート</a><ol><li><a href="#ff-definition">Định nghĩa và công thức Free Float</a></li><li><a href="#ff-results">Kết quả: FF⑥ = 5 ngày, FF⑩ = 0 ngày</a></li></ol></li><li><a href="#q4">問い4. 工程変更後の総所要日数</a><ol><li><a href="#duration-change">Thay đổi thời gian của ② và ③</a></li><li><a href="#schedule-result">Kết quả: tổng thời gian 24 ngày</a></li></ol></li><li><a href="#sequence">型枠工事と鉄筋工事の工程上の関係と作業名の記述</a><ol><li><a href="#standard-sequence">RC造躯体の標準的な流れ</a></li><li><a href="#naming-rule">作業名を記述するときの注意</a></li><li><a href="#sashikin">差筋</a></li></ol></li><li><a href="#terms">Professional terminology</a></li><li><a href="#background">Background knowledge</a></li><li><a href="#memory">Key points and memory aids</a></li></ol></nav>
+<!-- CONTENT_START -->
+<main id="lesson"><section class="study-section" id="problem">
+<div class="section-head">
+<h2>令和5年度 問題3 施工管理</h2>
+<span class="source-ref">Nguồn: Book page 244-245</span>
+</div>
+<section class="subsection" id="problem-statement">
+<h3>Đề bài và các điều kiện thi công</h3>
+<div class="study-grid">
+<article class="study-card original">
+<div class="card-title">原文</div>
+<div class="recall-source" lang="ja">
+<p>市街地での事務所ビル新築工事について、右の<strong class="kw">基準階の躯体工事工程表及び作業内容表</strong>を読み解き、次の1.から4.の問いに答えなさい。</p>
+<p>工程表は工事着手時のもので、各工種の作業内容は作業内容表のとおりであり、<strong class="kw">型枠工事の作業④</strong>と、<strong class="kw">鉄筋工事の作業⑦</strong>については作業内容を記載していない。</p>
+<p>基準階の施工は<strong class="kw">型枠工10人、鉄筋工6人のそれぞれ1班</strong>で施工し、<span class="relation">③柱型枠、壁型枠返しは、⑧壁配筋が完了してから開始</span>するものとし、<span class="relation">⑨梁配筋（圧接共）は、⑤床型枠組立て（階段を含む）が完了してから開始</span>するものとする。</p>
+<p>なお、仮設工事、設備工事及び検査は、墨出し、型枠工事、鉄筋工事、コンクリート工事の進捗に合わせ行われることとし、<span class="trap">作業手順、作業日数の検討事項には含めない</span>ものとする。</p>
+<h4>〔工事概要〕</h4>
+<ul>
+<li>用途：事務所</li>
+<li>構造・規模：鉄筋コンクリート造、地上6階、延べ面積3,000m²、基準階面積480m²</li>
+</ul>
+<ol>
+<li>型枠工事の作業④及び鉄筋工事の作業⑦の作業内容を記述しなさい。</li>
+<li>型枠工事の③柱型枠、壁型枠返しの<strong class="kw">最早開始時期（EST）</strong>を記入しなさい。</li>
+<li>型枠工事の⑥型枠締固め及び鉄筋工事の⑩床配筋の<strong class="kw">フリーフロート</strong>を記入しなさい。</li>
+<li>ある基準階において、②片壁型枠建込み及び③柱型枠、壁型枠返しについて、当初計画した型枠工の人数が確保できず、<strong class="kw">②片壁型枠建込み</strong>では<mark class="critical">2日増加</mark>、<strong class="kw">③柱型枠、壁型枠返し</strong>では<mark class="critical">1日増加</mark>することとなった。このとき、墨出しからコンクリート打込み完了までの総所要日数は［　］日となる。</li>
+</ol>
+</div>
+</article>
+<article class="study-card translation">
+<div class="card-title">Bản dịch tiếng Việt</div>
+<div class="recall-source" lang="vi">
+<p>Đối với công trình xây mới một tòa nhà văn phòng trong khu đô thị, hãy đọc và phân tích <strong class="kw">bảng tiến độ thi công phần kết cấu của tầng điển hình và bảng nội dung công tác</strong> ở bên phải, sau đó trả lời các câu hỏi từ 1 đến 4.</p>
+<p>Bảng tiến độ là kế hoạch tại thời điểm bắt đầu thi công. Nội dung của từng loại công tác được thể hiện trong bảng nội dung công tác, nhưng <strong class="kw">công tác ④ của công tác cốp pha</strong> và <strong class="kw">công tác ⑦ của công tác cốt thép</strong> chưa ghi nội dung cụ thể.</p>
+<p>Thi công tầng điển hình được thực hiện bởi <strong class="kw">1 tổ 10 công nhân cốp pha và 1 tổ 6 công nhân cốt thép</strong>. <span class="relation">③ lắp cốp pha cột và lắp mặt cốp pha tường phía còn lại chỉ được bắt đầu sau khi ⑧ bố trí cốt thép tường hoàn thành</span>; <span class="relation">⑨ bố trí cốt thép dầm, bao gồm nối ép áp lực, chỉ được bắt đầu sau khi ⑤ lắp ráp cốp pha sàn, bao gồm cầu thang, hoàn thành</span>.</p>
+<p>Công tác tạm, công tác thiết bị MEP và kiểm tra được thực hiện phù hợp với tiến độ của công tác lấy dấu, cốp pha, cốt thép và bê tông, nhưng <span class="trap">không đưa vào nội dung xem xét trình tự công việc và số ngày thi công</span>.</p>
+<h4>Tổng quan công trình</h4>
+<ul>
+<li>Công năng: văn phòng.</li>
+<li>Kết cấu và quy mô: bê tông cốt thép, 6 tầng nổi, tổng diện tích sàn 3.000 m², diện tích tầng điển hình 480 m².</li>
+</ul>
+<ol>
+<li>Ghi nội dung công tác ④ của cốp pha và công tác ⑦ của cốt thép.</li>
+<li>Ghi <strong class="kw">thời điểm bắt đầu sớm nhất, EST</strong> của công tác ③.</li>
+<li>Ghi <strong class="kw">Free Float, thời gian dự trữ tự do</strong> của công tác ⑥ và ⑩.</li>
+<li>Do không đủ công nhân cốp pha như kế hoạch, <strong class="kw">② lắp dựng cốp pha một mặt tường</strong> tăng <mark class="critical">2 ngày</mark>, <strong class="kw">③ lắp cốp pha cột và mặt cốp pha tường phía còn lại</strong> tăng <mark class="critical">1 ngày</mark>. Hãy xác định tổng thời gian từ lấy dấu đến hoàn thành đổ bê tông.</li>
+</ol>
+</div>
+</article>
+</div>
+<div class="warning-box">
+<strong>Điểm dễ nhầm trong Câu 4</strong>
+<p><code>2日増加</code> và <code>1日増加</code> là số ngày <strong>tăng thêm</strong>, không phải thời gian mới của công tác.</p>
+</div>
+</section>
+<section class="subsection" id="initial-network">
+<h3>Bảng công tác và network ban đầu</h3>
+<div class="study-grid">
+<article class="study-card original">
+<div class="card-title">原文</div>
+<div class="recall-source" lang="ja">
+<h4>基準階の躯体工事工程表（当該階の柱及び壁、上階の床及び梁）</h4>
+<p>凡例：②片壁型枠建込み作業の所要日数が2日であることを表している。</p>
+<p>※工程表に<span class="trap">ダミーアローは記載していない</span>。</p>
 <div class="table-wrap">
-  <table>
-    <caption>Thuật ngữ tổng hợp Book 244-252</caption>
-    <thead><tr><th>日本語</th><th>読み方</th><th>Tiếng Việt</th><th>Giải thích</th><th>Liên quan</th></tr></thead>
-    <tbody>
-      <tr><td>基準階</td><td>きじゅんかい</td><td>Tầng điển hình</td><td>Tầng có bố trí, quy trình thi công lặp lại và được dùng làm tầng chuẩn.</td><td>躯体工事</td></tr>
-      <tr><td>躯体工事</td><td>くたいこうじ</td><td>Công tác kết cấu</td><td>Công tác hình thành phần kết cấu chính của công trình.</td><td>RC造</td></tr>
-      <tr><td>墨出し</td><td>すみだし</td><td>Lấy dấu, định vị</td><td>Chuyển trục, tim, cao độ và vị trí cấu kiện ra hiện trường.</td><td>①</td></tr>
-      <tr><td>片壁型枠建込み</td><td>かたかべかたわくたてこみ</td><td>Lắp dựng cốp pha một mặt tường</td><td>Mặt cốp pha đầu tiên của tường trước khi hoàn thành phía còn lại.</td><td>②</td></tr>
-      <tr><td>壁型枠返し</td><td>かべかたわくかえし</td><td>Lắp mặt cốp pha tường phía còn lại</td><td>Đóng mặt cốp pha còn lại sau các công tác bên trong tường.</td><td>③</td></tr>
-      <tr><td>梁型枠組立て</td><td>はりかたわくくみたて</td><td>Lắp ráp cốp pha dầm</td><td>Đáp án chính xác của công tác ④ trong bài.</td><td>組立て</td></tr>
-      <tr><td>柱配筋</td><td>はしらはいきん</td><td>Bố trí cốt thép cột</td><td>Đáp án chính xác của công tác ⑦ trong bài.</td><td>配筋</td></tr>
-      <tr><td>型枠締固め</td><td>かたわくしめかため</td><td>Siết, cố định cốp pha</td><td>Công tác ⑥ của nhánh cốp pha.</td><td>Free Float</td></tr>
-      <tr><td>最早開始時期</td><td>さいそうかいしじき</td><td>Thời điểm bắt đầu sớm nhất</td><td>EST, Earliest Start Time.</td><td>Network</td></tr>
-      <tr><td>ダミーアロー</td><td>だみーあろー</td><td>Dummy Arrow, mũi tên giả</td><td>Biểu diễn quan hệ logic, thời gian thực hiện bằng 0.</td><td>先行・後続</td></tr>
-      <tr><td>フリーフロート</td><td>ふりーふろーと</td><td>Free Float, dự trữ tự do</td><td>Khoảng dự trữ có thể dùng mà không làm chậm EST của công tác sau.</td><td>FF</td></tr>
-      <tr><td>クリティカルパス</td><td>くりてぃかるぱす</td><td>Critical Path</td><td>Chuỗi công tác quyết định tổng thời gian của network.</td><td>工期</td></tr>
-      <tr><td>先行作業</td><td>せんこうさぎょう</td><td>Công tác trước</td><td>Công tác phải hoàn thành trước khi công tác phụ thuộc có thể bắt đầu.</td><td>後続作業</td></tr>
-      <tr><td>後続作業</td><td>こうぞくさぎょう</td><td>Công tác sau</td><td>Công tác phụ thuộc vào việc hoàn thành công tác trước.</td><td>先行作業</td></tr>
-      <tr><td>タイムスケール表示</td><td>たいむすけーるひょうじ</td><td>Biểu diễn theo thang thời gian</td><td>Đặt network trên trục ngày để nhìn trực tiếp EST, Float và Critical Path.</td><td>ネットワーク工程表検討用</td></tr>
-      <tr><td>組立て</td><td>くみたて</td><td>Lắp ráp</td><td>Trong bài này, về nguyên tắc dùng cho cấu kiện ngang như dầm và sàn.</td><td>梁・スラブ</td></tr>
-      <tr><td>建込み</td><td>たてこみ</td><td>Lắp dựng</td><td>Trong bài này, về nguyên tắc dùng cho cấu kiện đứng như cột và tường.</td><td>柱・壁</td></tr>
-      <tr><td>差筋</td><td>さしきん</td><td>Thép chờ / thép cắm liên kết</td><td>Trong bài này dùng để cố định cốt thép đứng của tường; JASS không quy định thống nhất thuật ngữ này.</td><td>定着長さ・重ね継手長さ</td></tr>
-      <tr><td>定着長さ</td><td>ていちゃくながさ</td><td>Chiều dài neo</td><td>Chiều dài cần thiết để cốt thép truyền lực và được neo giữ trong bê tông.</td><td>差筋</td></tr>
-      <tr><td>重ね継手長さ</td><td>かさねつぎてながさ</td><td>Chiều dài nối chồng</td><td>Chiều dài chồng của hai thanh cốt thép tại mối nối chồng.</td><td>差筋</td></tr>
-    </tbody>
-  </table>
+<table>
+<caption>作業内容表（所要日数には仮設、運搬を含む）</caption>
+<thead><tr><th>工種</th><th>番号</th><th>作業内容</th><th>所要日数（日）</th></tr></thead>
+<tbody>
+<tr><td>墨出し</td><td>①</td><td><strong class="kw">墨出し</strong></td><td>1</td></tr>
+<tr><td rowspan="5">型枠工事</td><td>②</td><td><strong class="kw">片壁型枠建込み</strong></td><td>2</td></tr>
+<tr><td>③</td><td><strong class="kw">柱型枠、壁型枠返し</strong></td><td>3</td></tr>
+<tr><td>④</td><td><span class="trap">［空欄］</span></td><td>3</td></tr>
+<tr><td>⑤</td><td><strong class="kw">床型枠組立て（階段を含む）</strong></td><td>3</td></tr>
+<tr><td>⑥</td><td><strong class="kw">型枠締固め</strong></td><td>3</td></tr>
+<tr><td rowspan="5">鉄筋工事</td><td>⑦</td><td><span class="trap">［空欄］</span></td><td>3</td></tr>
+<tr><td>⑧</td><td><strong class="kw">壁配筋</strong></td><td>1</td></tr>
+<tr><td>⑨</td><td><strong class="kw">梁配筋（圧接共）</strong></td><td>4</td></tr>
+<tr><td>⑩</td><td><strong class="kw">床配筋</strong></td><td>3</td></tr>
+<tr><td>⑪</td><td><strong class="kw">差し筋</strong></td><td>1</td></tr>
+<tr><td>コンクリート工事</td><td>⑫</td><td><strong class="kw">コンクリート打込み</strong></td><td>1</td></tr>
+</tbody>
+</table>
 </div>
-
-  </section>
-
-  <section class="aggregate-section" id="background">
-    <div class="section-head">
-      <h2>Kiến thức nền cần biết</h2>
-    </div>
-    
+</div>
+</article>
+<article class="study-card translation">
+<div class="card-title">Bản dịch tiếng Việt</div>
+<div class="recall-source" lang="vi">
+<h4>Bảng tiến độ công tác kết cấu tầng điển hình, gồm cột và tường của tầng đang xét, sàn và dầm của tầng trên</h4>
+<p>Chú giải: ký hiệu của công tác ② cho biết lắp dựng cốp pha một mặt tường có thời gian 2 ngày.</p>
+<p>※ Trong sơ đồ <span class="trap">chưa thể hiện Dummy Arrow</span>.</p>
+<div class="table-wrap">
+<table>
+<caption>Bảng nội dung công tác, số ngày đã bao gồm công tác tạm và vận chuyển</caption>
+<thead><tr><th>Loại công tác</th><th>STT</th><th>Nội dung</th><th>Thời gian</th></tr></thead>
+<tbody>
+<tr><td>Lấy dấu</td><td>①</td><td><strong class="kw">Lấy dấu định vị</strong></td><td>1 ngày</td></tr>
+<tr><td rowspan="5">Cốp pha</td><td>②</td><td><strong class="kw">Lắp dựng cốp pha một mặt tường</strong></td><td>2 ngày</td></tr>
+<tr><td>③</td><td><strong class="kw">Lắp cốp pha cột và mặt cốp pha tường phía còn lại</strong></td><td>3 ngày</td></tr>
+<tr><td>④</td><td><span class="trap">Chưa cho, phải suy ra</span></td><td>3 ngày</td></tr>
+<tr><td>⑤</td><td><strong class="kw">Lắp ráp cốp pha sàn, bao gồm cầu thang</strong></td><td>3 ngày</td></tr>
+<tr><td>⑥</td><td><strong class="kw">Siết và cố định cốp pha</strong></td><td>3 ngày</td></tr>
+<tr><td rowspan="5">Cốt thép</td><td>⑦</td><td><span class="trap">Chưa cho, phải suy ra</span></td><td>3 ngày</td></tr>
+<tr><td>⑧</td><td><strong class="kw">Bố trí cốt thép tường</strong></td><td>1 ngày</td></tr>
+<tr><td>⑨</td><td><strong class="kw">Bố trí cốt thép dầm, gồm nối ép áp lực</strong></td><td>4 ngày</td></tr>
+<tr><td>⑩</td><td><strong class="kw">Bố trí cốt thép sàn</strong></td><td>3 ngày</td></tr>
+<tr><td>⑪</td><td><strong class="kw">Thép chờ</strong></td><td>1 ngày</td></tr>
+<tr><td>Bê tông</td><td>⑫</td><td><strong class="kw">Đổ bê tông</strong></td><td>1 ngày</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+</article>
+</div>
 <div class="note-box">
-  <strong>1. Network phải được hoàn chỉnh trước khi tính</strong>
-  <p>Hai nhánh cốp pha và cốt thép không độc lập. Phải bổ sung quan hệ ⑧ hoàn thành trước ③ và ⑤ hoàn thành trước ⑨ bằng Dummy Arrow 0 ngày.</p>
+<strong>Giải thích kỹ thuật</strong>
+<p>Sơ đồ in sẵn chưa phải network hoàn chỉnh. Hai ràng buộc bằng câu chữ ở Book 244 phải được chuyển thành hai Dummy Arrow trước khi tính EST, Float hoặc tổng thời gian.</p>
+</div>
+<p><a href="#toc">↑ Mục lục</a></p>
+</section>
+</section><section class="study-section" id="q1">
+<div class="section-head">
+<h2>問い1. 作業内容の特定</h2>
+<span class="source-ref">Nguồn: Book page 246-247</span>
+</div>
+<section class="subsection" id="q1-formwork">
+<h3>型枠工事の作業④：梁型枠組立て</h3>
+<div class="study-grid">
+<article class="study-card original">
+<div class="card-title">原文</div>
+<div class="recall-source" lang="ja">
+<p><strong class="kw">解答：型枠工事の作業④の作業内容</strong>　<mark class="critical">梁型枠組立て</mark></p>
+<p>① 鉄筋コンクリート造の建築物の新築工事では、柱・壁・梁・床の各部位について、型枠工事（型枠建込み作業または型枠組立て作業）と鉄筋工事（配筋作業）が必要になる。</p>
+<p>② 作業内容表のうち、型枠工事に着目して、柱・壁・梁・床のすべての部位について、型枠工事に関する作業内容が書かれているかどうかを確認する。</p>
+<ul>
+<li>柱の型枠工事は、「③柱型枠・壁型枠返し」の欄に書かれている。</li>
+<li>壁の型枠工事は、「②片壁型枠建込み」と「③柱型枠・壁型枠返し」の欄に書かれている。</li>
+<li><strong class="kw">梁の型枠工事</strong>は、<span class="trap">どの欄にも書かれていない</span>。</li>
+<li>床の型枠工事は、「⑤床型枠組立て（階段を含む）」の欄に書かれている。</li>
+</ul>
+<p>③ 鉄筋コンクリート造の建築物の新築工事において、<strong class="kw">梁の型枠工事は絶対に必要</strong>である。したがって、「型枠工事の作業④の作業内容」は、「梁型枠」に関する作業内容である。</p>
+<p>④ 「梁型枠」は作業内容の名称ではなく部位の名称なので、<span class="trap">そのまま解答にすることはできない</span>。作業内容表を見ると、型枠工事に関する作業内容の名称は、「建込み」と「組立て」が使い分けられている。</p>
+<p><span class="relation">柱・壁のように型枠を垂直に設置する作業は「型枠建込み」</span>、<span class="relation">梁・床のように型枠を水平に設置する作業は「型枠組立て」</span>と呼ばれる。</p>
+<p>したがって、型枠工事の作業④は、<mark class="critical">「梁型枠組立て」</mark>と答えるのが正解である。※「梁型枠」や「梁型枠建込み」と解答すると、<span class="trap">不正解として扱われる</span>。</p>
+</div>
+</article>
+<article class="study-card translation">
+<div class="card-title">Bản dịch tiếng Việt</div>
+<div class="recall-source" lang="vi">
+<p><strong class="kw">Đáp án: nội dung công tác ④ của cốp pha</strong>　<mark class="critical">Lắp ráp cốp pha dầm（梁型枠組立て）</mark></p>
+<p>① Trong công trình mới bằng bê tông cốt thép, đối với cột, tường, dầm và sàn đều cần công tác cốp pha, tức lắp dựng hoặc lắp ráp cốp pha, và công tác cốt thép, tức bố trí cốt thép.</p>
+<p>② Xét bảng nội dung công tác và kiểm tra xem công tác cốp pha của cột, tường, dầm và sàn đã được ghi đầy đủ hay chưa.</p>
+<ul>
+<li>Cốp pha cột đã có tại ③.</li>
+<li>Cốp pha tường đã có tại ② và ③.</li>
+<li><strong class="kw">Cốp pha dầm</strong> <span class="trap">không xuất hiện ở bất kỳ mục nào</span>.</li>
+<li>Cốp pha sàn đã có tại ⑤.</li>
+</ul>
+<p>③ Trong công trình mới bằng bê tông cốt thép, <strong class="kw">công tác cốp pha dầm là bắt buộc</strong>. Vì vậy công tác ④ phải là công tác liên quan đến cốp pha dầm.</p>
+<p>④ `梁型枠` chỉ là tên bộ phận, <span class="trap">không thể dùng nguyên dạng làm tên thao tác trong đáp án</span>. Bảng công tác phân biệt `建込み` và `組立て`.</p>
+<p><span class="relation">Cấu kiện đứng như cột, tường dùng 「建込み」</span>; <span class="relation">cấu kiện ngang như dầm, sàn dùng 「組立て」</span>.</p>
+<p>Vì vậy công tác ④ phải trả lời <mark class="critical">「梁型枠組立て」</mark>. Nếu trả lời `梁型枠` hoặc `梁型枠建込み` thì theo sách <span class="trap">bị coi là sai</span>.</p>
+</div>
+</article>
+</div>
+</section>
+<section class="subsection" id="q1-rebar">
+<h3>鉄筋工事の作業⑦：柱配筋</h3>
+<div class="study-grid">
+<article class="study-card original">
+<div class="card-title">原文</div>
+<div class="recall-source" lang="ja">
+<p>⑤ 作業内容表のうち、鉄筋工事に着目して、柱・壁・梁・床のすべての部位について、鉄筋工事に関する作業内容が書かれているかどうかを確認する。</p>
+<ul>
+<li><strong class="kw">柱の鉄筋工事</strong>は、<span class="trap">どの欄にも書かれていない</span>。</li>
+<li>壁の鉄筋工事は、「⑧壁配筋」の欄に書かれている。</li>
+<li>梁の鉄筋工事は、「⑨梁配筋（圧接共）」の欄に書かれている。</li>
+<li>床の鉄筋工事は、「⑩床配筋」の欄に書かれている。</li>
+</ul>
+<p>⑥ 鉄筋コンクリート造の建築物の新築工事において、<strong class="kw">柱の鉄筋工事は絶対に必要</strong>である。したがって、「鉄筋工事の作業⑦の作業内容」は、「柱鉄筋」に関する作業内容である。</p>
+<p>⑦ 「柱鉄筋」は作業内容の名称ではなく部位の名称なので、<span class="trap">そのまま解答にすることはできない</span>。作業内容表を見ると、鉄筋工事に関する作業内容の名称は、すべて「配筋」になっている。</p>
+<p>したがって、「鉄筋工事の作業⑦の作業内容」は、<mark class="critical">「柱配筋」</mark>と答えるのが正解である。</p>
+</div>
+</article>
+<article class="study-card translation">
+<div class="card-title">Bản dịch tiếng Việt</div>
+<div class="recall-source" lang="vi">
+<p>⑤ Xét bảng nội dung công tác cốt thép và kiểm tra lần lượt cột, tường, dầm và sàn.</p>
+<ul>
+<li><strong class="kw">Cốt thép cột</strong> <span class="trap">không được ghi ở bất kỳ hàng nào</span>.</li>
+<li>Cốt thép tường đã có tại ⑧.</li>
+<li>Cốt thép dầm đã có tại ⑨.</li>
+<li>Cốt thép sàn đã có tại ⑩.</li>
+</ul>
+<p>⑥ Trong công trình mới bằng bê tông cốt thép, <strong class="kw">công tác cốt thép cột là bắt buộc</strong>. Do đó công tác ⑦ phải liên quan đến cốt thép cột.</p>
+<p>⑦ `柱鉄筋` chỉ là tên bộ phận, <span class="trap">không thể dùng nguyên dạng làm tên công tác</span>. Trong bảng, các công tác cốt thép đều dùng từ `配筋`.</p>
+<p>Vì vậy, nội dung công tác ⑦ là <mark class="critical">「柱配筋」, bố trí cốt thép cột</mark>.</p>
+</div>
+</article>
+</div>
+<p><a href="#toc">↑ Mục lục</a></p>
+</section>
+</section><section class="study-section" id="q2">
+<div class="section-head">
+<h2>問い2. 最早開始時期（EST）</h2>
+<span class="source-ref">Nguồn: Book page 247-250</span>
+</div>
+<section class="subsection" id="dummy-arrows">
+<h3>Network hoàn chỉnh và hai Dummy Arrow</h3>
+<div class="study-grid">
+<article class="study-card original">
+<div class="card-title">原文</div>
+<div class="recall-source" lang="ja">
+<p><strong class="kw">解答：③柱型枠・壁型枠返しの最早開始時期</strong>　<mark class="critical">5日目</mark></p>
+<p>基準階の躯体工事工程表について、ネットワーク工程表を完成させて<strong class="kw">最早開始時期（EST / Earliest Start Time）</strong>を計算する。</p>
+<p>工程表には<span class="trap">ダミーアロー（作業順序を示すための破線矢印）は記載していない</span>ので、最初に問題文を読み込んでダミーアローを記載する。</p>
+<ul>
+<li><span class="relation">「⑧壁配筋の完了点」から「③柱型枠・壁型枠返しの開始点」へダミーアロー</span>を記載する。</li>
+<li><span class="relation">「⑤床型枠組立ての完了点」から「⑨梁配筋の開始点」へダミーアロー</span>を記載する。</li>
+</ul>
+</div>
+</article>
+<article class="study-card translation">
+<div class="card-title">Bản dịch tiếng Việt</div>
+<div class="recall-source" lang="vi">
+<p><strong class="kw">Đáp án: EST của ③ lắp cốp pha cột và mặt cốp pha tường còn lại</strong>　<mark class="critical">ngày thứ 5</mark></p>
+<p>Đối với bảng tiến độ kết cấu tầng điển hình, trước hết phải hoàn chỉnh network rồi mới tính <strong class="kw">EST, Earliest Start Time, thời điểm bắt đầu sớm nhất</strong>.</p>
+<p>Đề ghi rõ <span class="trap">Dummy Arrow chưa được thể hiện trong sơ đồ</span>, vì vậy phải đọc điều kiện bằng câu chữ và bổ sung chúng.</p>
+<ul>
+<li><span class="relation">Từ điểm hoàn thành ⑧ bố trí cốt thép tường đến điểm bắt đầu ③ lắp cốp pha cột và mặt tường còn lại: Dummy Arrow</span>.</li>
+<li><span class="relation">Từ điểm hoàn thành ⑤ lắp cốp pha sàn đến điểm bắt đầu ⑨ bố trí cốt thép dầm: Dummy Arrow</span>.</li>
+</ul>
+</div>
+</article>
+</div>
+<div class="formula-box">
+<div class="formula-line"><span class="flow-node">⑧ 壁配筋完了</span><span class="flow-arrow">→</span><span class="flow-node">Dummy ① / 0日</span><span class="flow-arrow">→</span><span class="flow-node">③ 開始</span></div>
+<div class="formula-line"><span class="flow-node">⑤ 床型枠組立て完了</span><span class="flow-arrow">→</span><span class="flow-node">Dummy ② / 0日</span><span class="flow-arrow">→</span><span class="flow-node">⑨ 開始</span></div>
+</div>
+</section>
+<section class="subsection" id="est-calc">
+<h3>Quy tắc tính EST và kết quả</h3>
+<div class="study-grid">
+<article class="study-card original">
+<div class="card-title">原文</div>
+<div class="recall-source" lang="ja">
+<p>ネットワーク工程表において、各イベント（各作業の開始点）の最早開始時期を計算するときの手順は、次の通りである。</p>
+<ol>
+<li><strong class="kw">工事の出発点</strong>であるイベント（始）の最早開始時期を<mark class="critical">0日</mark>とする。</li>
+<li><strong class="kw">ダミーアロー</strong>は、<mark class="critical">所要日数0日</mark>の作業として扱う。</li>
+<li>各イベントの最早開始時期は、<span class="relation">「直前のイベントの最早開始時期＋所要日数」</span>とする。</li>
+<li>複数の矢線が流入するイベントの最早開始時期は、計算された値のうちの<strong class="kw">最大値</strong>とする。</li>
+</ol>
+<p>「③の開始点」に該当するイベントの最早開始時期は<mark class="critical">5</mark>である。したがって、③柱型枠・壁型枠返しの最早開始時期は<mark class="critical">5日目</mark>である。なお、「5日」と答えても正解になる。</p>
+</div>
+</article>
+<article class="study-card translation">
+<div class="card-title">Bản dịch tiếng Việt</div>
+<div class="recall-source" lang="vi">
+<p>Trình tự tính thời điểm bắt đầu sớm nhất của từng Event như sau.</p>
+<ol>
+<li>Đặt EST của <strong class="kw">Event xuất phát</strong> bằng <mark class="critical">0 ngày</mark>.</li>
+<li><strong class="kw">Dummy Arrow</strong> được coi là công tác có <mark class="critical">thời gian 0 ngày</mark>.</li>
+<li>EST của mỗi Event được tính theo <span class="relation">EST của Event ngay trước + thời gian công tác</span>.</li>
+<li>Nếu nhiều mũi tên cùng đi vào một Event, lấy <strong class="kw">giá trị lớn nhất</strong>.</li>
+</ol>
+<p>EST tại điểm bắt đầu ③ bằng <mark class="critical">5</mark>. Vì vậy EST của ③ là <mark class="critical">ngày thứ 5</mark>. Trả lời `5日` cũng được coi là đúng.</p>
+</div>
+</article>
 </div>
 <div class="note-box">
-  <strong>2. Ý nghĩa của EST</strong>
-  <p>EST là thời điểm sớm nhất mà một công tác có thể bắt đầu sau khi toàn bộ điều kiện trước đó đã thỏa mãn. Khi nhiều nhánh cùng hội tụ, giá trị chi phối là giá trị lớn nhất.</p>
+<strong>Giải thích kỹ thuật</strong>
+<p>Hai phép lấy giá trị lớn nhất quyết định network: tại điểm bắt đầu ③, lấy <code>max(3,5)=5</code>; tại điểm bắt đầu ⑨, lấy <code>max(5,14)=14</code>.</p>
 </div>
-<div class="note-box">
-  <strong>3. Float và Critical Path</strong>
-  <p>Float là khoảng dự trữ trong tiến độ. Công tác nằm trên Critical Path không có dự trữ để hấp thụ chậm trễ theo cách thể hiện trong bài này; vì vậy sự chậm trễ của ③ làm tăng trực tiếp tổng thời gian.</p>
+</section>
+<section class="subsection" id="timescale">
+<h3>ネットワーク工程表検討用（タイムスケール表示）を活用する解答方法</h3>
+<div class="study-grid">
+<article class="study-card original">
+<div class="card-title">原文</div>
+<div class="recall-source" lang="ja">
+<p>この問題の問い2.から問い4.までは、解答用紙にある<strong class="kw">ネットワーク工程表検討用（タイムスケール表示）</strong>を活用すると、まとめて解くことができる。</p>
+<p>最早開始時期・フロート・総所要日数を求めるためには、ネットワークの作成条件が示されていなければならない。次の3つの条件を基にして、ダミーの位置と方向を決定することで、ネットワークが一義的に定まる。</p>
+<ol>
+<li><strong class="kw">型枠工1班（10人）・鉄筋工1班（6人）</strong>の各1班体制で施工する。</li>
+<li><span class="relation">③柱型枠・壁型枠返しは、⑧壁配筋の完了後に開始</span>する。（ダミー①）</li>
+<li><span class="relation">⑨梁配筋（圧接共）は、⑤床型枠組立て（階段を含む）の完了後に開始</span>する。（ダミー②）</li>
+</ol>
+<p>そのネットワークに日数を入れて最早開始時期を計算すれば、③柱型枠・壁型枠返しの最早開始時期ESTを求めることができる。</p>
+<p>タイムスケール表示では、波線は<strong class="kw">フロート</strong>、太線は<strong class="kw">クリティカルパス</strong>を示し、工期は<mark class="critical">23日</mark>である。</p>
+<p>以上により、③柱型枠・壁型枠返しの最早開始時期は<mark class="critical">EST＝5日</mark>である。</p>
 </div>
-<div class="note-box">
-  <strong>4. Trình tự cốp pha và cốt thép</strong>
-  <p>Để suy luận ô trống trong bảng công tác RC, cần kiểm tra đủ bốn bộ phận cột, tường, dầm, sàn đối với cả cốp pha và cốt thép. Phần bị thiếu trong chuỗi tiêu chuẩn chính là ứng viên của ô trống.</p>
+</article>
+<article class="study-card translation">
+<div class="card-title">Bản dịch tiếng Việt</div>
+<div class="recall-source" lang="vi">
+<p>Các câu từ Câu 2 đến Câu 4 có thể giải đồng thời bằng <strong class="kw">bảng network dạng Time Scale</strong> trên phiếu trả lời.</p>
+<p>Muốn xác định EST, Float và tổng thời gian, phải có các điều kiện tạo network. Từ ba điều kiện sau, vị trí và hướng của Dummy được xác định duy nhất.</p>
+<ol>
+<li>Thi công bằng <strong class="kw">1 tổ cốp pha 10 người và 1 tổ cốt thép 6 người</strong>.</li>
+<li><span class="relation">③ chỉ bắt đầu sau khi ⑧ hoàn thành</span>. Đây là Dummy ①.</li>
+<li><span class="relation">⑨ chỉ bắt đầu sau khi ⑤ hoàn thành</span>. Đây là Dummy ②.</li>
+</ol>
+<p>Đưa duration vào network và tính EST sẽ cho EST của công tác ③.</p>
+<p>Trong biểu diễn Time Scale, đường lượn sóng là <strong class="kw">Float</strong>, đường đậm là <strong class="kw">Critical Path</strong>, và tổng thời gian ban đầu là <mark class="critical">23 ngày</mark>.</p>
+<p>Kết quả: <mark class="critical">EST của ③ = 5 ngày</mark>.</p>
 </div>
-
-  </section>
-
-  <section class="aggregate-section" id="memory">
-    <div class="section-head">
-      <h2>Điểm cần nhớ và mẹo nhớ</h2>
-    </div>
-    
-<div class="memory-box">
-  <strong>Đáp án toàn bài</strong>
-  <p><strong>④ 梁型枠組立て</strong> / <strong>⑦ 柱配筋</strong> / <mark class="critical">EST③ = 5日</mark> / <mark class="critical">FF⑥ = 5日</mark> / <mark class="critical">FF⑩ = 0日</mark> / <mark class="critical">工程変更後 = 24日</mark>.</p>
+</article>
+</div>
+<p><a href="#toc">↑ Mục lục</a></p>
+</section>
+</section><section class="study-section" id="q3">
+<div class="section-head">
+<h2>問い3. フリーフロート</h2>
+<span class="source-ref">Nguồn: Book page 248-251</span>
+</div>
+<section class="subsection" id="ff-definition">
+<h3>Định nghĩa và công thức Free Float</h3>
+<div class="study-grid">
+<article class="study-card original">
+<div class="card-title">原文</div>
+<div class="recall-source" lang="ja">
+<p><strong class="kw">フリーフロート</strong>とは、その作業に固有の、<span class="relation">その作業で使い切っても他の作業の余裕時間に影響しない余裕時間</span>である。</p>
+<p>各作業のフリーフロートは、「その作業の完了日」と「次の作業の開始日」との間に存在する日数に等しい。</p>
+<p><span class="relation">フリーフロート＝（次の作業の最早開始時期）－（その作業の最早開始時期＋その作業の所要日数）</span></p>
+</div>
+</article>
+<article class="study-card translation">
+<div class="card-title">Bản dịch tiếng Việt</div>
+<div class="recall-source" lang="vi">
+<p><strong class="kw">Free Float</strong> là khoảng dự trữ riêng của công tác đó, <span class="relation">có thể sử dụng hết mà không ảnh hưởng tới khoảng dự trữ của công tác khác</span>.</p>
+<p>Free Float bằng số ngày nằm giữa thời điểm hoàn thành công tác hiện tại và thời điểm bắt đầu công tác tiếp theo.</p>
+<p><span class="relation">Free Float = EST của công tác tiếp theo − (EST của công tác hiện tại + duration của công tác hiện tại)</span></p>
+</div>
+</article>
+</div>
+</section>
+<section class="subsection" id="ff-results">
+<h3>Kết quả: FF⑥ = 5 ngày, FF⑩ = 0 ngày</h3>
+<div class="study-grid">
+<article class="study-card original">
+<div class="card-title">原文</div>
+<div class="recall-source" lang="ja">
+<p>型枠工事の<strong class="kw">⑥型枠締固め</strong>は、最早開始時期が<mark class="critical">14日目</mark>、所要日数が<mark class="critical">3日</mark>、次の作業（⑫コンクリート打込み）の最早開始時期が<mark class="critical">22日目</mark>である。</p>
+<p>したがって、<span class="relation">（22日目）－（14日目＋3日）＝5日</span>により、⑥型枠締固めのフリーフロートは<mark class="critical">5日</mark>である。</p>
+<p>鉄筋工事の<strong class="kw">⑩床配筋</strong>は、最早開始時期が<mark class="critical">18日目</mark>、所要日数が<mark class="critical">3日</mark>、次の作業（⑪差筋）の最早開始時期が<mark class="critical">21日目</mark>である。</p>
+<p>したがって、<span class="relation">（21日目）－（18日目＋3日）＝0日</span>により、⑩床配筋のフリーフロートは<mark class="critical">0日</mark>である。</p>
+<p>タイムスケール表示の図より、⑩床配筋作業は<strong class="kw">クリティカルパス上の作業</strong>であるために、フロートは存在しない。</p>
+</div>
+</article>
+<article class="study-card translation">
+<div class="card-title">Bản dịch tiếng Việt</div>
+<div class="recall-source" lang="vi">
+<p><strong class="kw">⑥ siết và cố định cốp pha</strong> có EST <mark class="critical">ngày 14</mark>, duration <mark class="critical">3 ngày</mark>, và EST của công tác kế tiếp ⑫ đổ bê tông là <mark class="critical">ngày 22</mark>.</p>
+<p>Do đó, <span class="relation">22 − (14 + 3) = 5 ngày</span>, nên Free Float của ⑥ là <mark class="critical">5 ngày</mark>.</p>
+<p><strong class="kw">⑩ bố trí cốt thép sàn</strong> có EST <mark class="critical">ngày 18</mark>, duration <mark class="critical">3 ngày</mark>, và EST của công tác kế tiếp ⑪ thép chờ là <mark class="critical">ngày 21</mark>.</p>
+<p>Do đó, <span class="relation">21 − (18 + 3) = 0 ngày</span>, nên Free Float của ⑩ là <mark class="critical">0 ngày</mark>.</p>
+<p>Trên Time Scale, ⑩ nằm trên <strong class="kw">Critical Path</strong>, vì vậy không tồn tại Float.</p>
+</div>
+</article>
+</div>
+<p><a href="#toc">↑ Mục lục</a></p>
+</section>
+</section><section class="study-section" id="q4">
+<div class="section-head">
+<h2>問い4. 工程変更後の総所要日数</h2>
+<span class="source-ref">Nguồn: Book page 249-251</span>
+</div>
+<section class="subsection" id="duration-change">
+<h3>Thay đổi thời gian của ② và ③</h3>
+<div class="study-grid">
+<article class="study-card original">
+<div class="card-title">原文</div>
+<div class="recall-source" lang="ja">
+<p>問い4.では、当初計画した型枠工の人数が確保できなかったために、作業日数に次の変更が生じた。</p>
+<ul>
+<li><strong class="kw">②片壁型枠建込み</strong>の所要日数が<mark class="critical">2日増加</mark>し、<span class="relation">2日から4日</span>になった。</li>
+<li><strong class="kw">③柱型枠・壁型枠返し</strong>の所要日数が<mark class="critical">1日増加</mark>し、<span class="relation">3日から4日</span>になった。</li>
+</ul>
+<p>ネットワーク工程表において各作業の所要日数が変更されたときには、所要日数を書き換えた後に、<strong class="kw">各イベントの最早開始時期の計算をもう一度行う必要がある</strong>。</p>
+</div>
+</article>
+<article class="study-card translation">
+<div class="card-title">Bản dịch tiếng Việt</div>
+<div class="recall-source" lang="vi">
+<p>Trong Câu 4, do không thể đảm bảo đủ số công nhân cốp pha theo kế hoạch ban đầu, duration thay đổi như sau.</p>
+<ul>
+<li><strong class="kw">② lắp dựng cốp pha một mặt tường</strong> tăng <mark class="critical">2 ngày</mark>, tức <span class="relation">từ 2 ngày thành 4 ngày</span>.</li>
+<li><strong class="kw">③ lắp cốp pha cột và mặt cốp pha tường phía còn lại</strong> tăng <mark class="critical">1 ngày</mark>, tức <span class="relation">từ 3 ngày thành 4 ngày</span>.</li>
+</ul>
+<p>Khi duration của công tác trong network thay đổi, sau khi sửa duration phải <strong class="kw">tính lại thời điểm bắt đầu sớm nhất của các Event</strong>.</p>
+</div>
+</article>
+</div>
+</section>
+<section class="subsection" id="schedule-result">
+<h3>Kết quả: tổng thời gian 24 ngày</h3>
+<div class="study-grid">
+<article class="study-card original">
+<div class="card-title">原文</div>
+<div class="recall-source" lang="ja">
+<p>工事全体の総所要日数（工期）は、工事の完成点であるイベント「終」の最早開始時期に等しい。したがって、作業日数が増加した場合の墨出しからコンクリート打込み完了までの総所要日数は<mark class="critical">24日</mark>となる。</p>
+<p>問い4.の解答欄には「24日」ではなく<mark class="critical">「24」</mark>と記入しなければならない。解答欄に「日」まで記入すると「24日日」となり、減点となるおそれがある。</p>
+<p>タイムスケール表示では、<strong class="kw">②の2日の遅れ</strong>は<span class="relation">フロートの2日を使用して打ち消される</span>。</p>
+<p><strong class="kw">③はクリティカルパス上の作業</strong>であるため、<span class="relation">1日の遅れが総所要日数の1日の増加に繋がる</span>。したがって、<span class="relation">23日＋1日＝24日</span>となる。</p>
+</div>
+</article>
+<article class="study-card translation">
+<div class="card-title">Bản dịch tiếng Việt</div>
+<div class="recall-source" lang="vi">
+<p>Tổng thời gian của toàn công trình bằng EST của Event kết thúc. Vì vậy tổng thời gian từ lấy dấu đến hoàn thành đổ bê tông sau khi duration thay đổi là <mark class="critical">24 ngày</mark>.</p>
+<p>Trong ô trả lời của Câu 4 phải ghi <mark class="critical">「24」</mark>, không ghi `24日`. Nếu ghi thêm chữ `日`, câu sẽ thành `24日日` và có nguy cơ bị trừ điểm.</p>
+<p>Trên Time Scale, <strong class="kw">② chậm 2 ngày</strong> nhưng <span class="relation">được hấp thụ hết bởi 2 ngày Float</span>.</p>
+<p><strong class="kw">③ nằm trên Critical Path</strong>, nên <span class="relation">chậm 1 ngày làm tổng thời gian tăng 1 ngày</span>. Vì vậy <span class="relation">23 + 1 = 24 ngày</span>.</p>
+</div>
+</article>
 </div>
 <div class="comparison-box">
-  <div class="table-wrap">
-    <table>
-      <caption>Quy tắc cần nhớ</caption>
-      <thead><tr><th>Chủ đề</th><th>Recall cue</th></tr></thead>
-      <tbody>
-        <tr><td>Dummy Arrow</td><td><span class="relation">⑧完了 → ③開始 / ⑤完了 → ⑨開始</span></td></tr>
-        <tr><td>EST</td><td><span class="relation">Một đường vào: cộng thời gian / nhiều đường vào: lấy MAX</span></td></tr>
-        <tr><td>Free Float</td><td><span class="relation">FF = EST sau − (EST hiện tại + duration)</span></td></tr>
-        <tr><td>② chậm 2 ngày</td><td><span class="relation">Float 2 ngày hấp thụ hết → tổng tiến độ không đổi</span></td></tr>
-        <tr><td>③ chậm 1 ngày</td><td><span class="relation">Critical Path → tổng tiến độ +1 ngày</span></td></tr>
-        <tr><td>Tên cốp pha</td><td><span class="relation">梁・スラブ → 組立て / 柱・壁 → 建込み</span>, nhưng ưu tiên cách ghi trong chính đề.</td></tr>
-        <tr><td>Điều kiện đề</td><td><strong>ただし / なお</strong> thường giới hạn phạm vi đáp án, phải đọc trước khi viết.</td></tr>
-      </tbody>
-    </table>
-  </div>
+<div class="table-wrap">
+<table>
+<caption>Ảnh hưởng của hai thay đổi duration</caption>
+<thead><tr><th>Công tác</th><th>Thay đổi</th><th>Trạng thái network</th><th>Ảnh hưởng tổng tiến độ</th></tr></thead>
+<tbody>
+<tr><td><strong class="kw">② 片壁型枠建込み</strong></td><td>+2 ngày</td><td>Float 2 ngày</td><td><span class="relation">Không làm tăng tổng tiến độ</span></td></tr>
+<tr><td><strong class="kw">③ 柱型枠・壁型枠返し</strong></td><td>+1 ngày</td><td>Critical Path</td><td><span class="relation">Tăng tổng tiến độ 1 ngày</span></td></tr>
+</tbody>
+</table>
 </div>
-<div class="warning-box">
-  <strong>Bẫy ghi đáp án</strong>
-  <p>Câu 4: ô trống đã có chữ <code>日</code> phía sau, vì vậy ghi <strong>24</strong>, không ghi <strong>24日</strong>.</p>
 </div>
-
-  </section>
-
+<p><a href="#toc">↑ Mục lục</a></p>
+</section>
+</section><section class="study-section" id="sequence">
+<div class="section-head">
+<h2>型枠工事と鉄筋工事の工程上の関係と作業名の記述</h2>
+<span class="source-ref">Nguồn: Book page 251-252</span>
 </div>
-
-<!-- =======================================================
-     APPROVED COMPONENT LIBRARY
-     Hidden. AI may copy/repeat these components into CONTENT.
-     Do not create a new visual system unless strictly necessary.
-     ======================================================= -->
+<section class="subsection" id="standard-sequence">
+<h3>RC造躯体の標準的な流れ</h3>
+<div class="study-grid">
+<article class="study-card original">
+<div class="card-title">原文</div>
+<div class="recall-source" lang="ja">
+<p>型枠工事を中心としたRC造（鉄筋コンクリート造）躯体の流れは、次の通りである。</p>
+<div class="table-wrap">
+<table>
+<caption>型枠の手順</caption>
+<thead><tr><th>No.</th><th>作業内容</th></tr></thead>
+<tbody>
+<tr><td>①</td><td>型枠図・材料拾い出し</td></tr>
+<tr><td>②</td><td>型枠工場加工・製作</td></tr>
+<tr><td>③</td><td><strong class="kw">位置線引き・墨出し</strong></td></tr>
+<tr><td>④</td><td>脚部水平桟・台付け</td></tr>
+<tr><td>⑤</td><td><strong class="kw">柱面枠建込み・柱建込み</strong></td></tr>
+<tr><td>⑥</td><td><strong class="kw">外壁型枠建込み・外壁建込み</strong></td></tr>
+<tr><td>⑦</td><td><strong class="kw">内壁型枠建込み・返し壁建込み</strong></td></tr>
+<tr><td>⑧</td><td><strong class="kw">梁型枠組立・梁型枠組立て</strong></td></tr>
+<tr><td>⑨</td><td><strong class="kw">スラブ型枠・スラブ型枠組立て</strong></td></tr>
+<tr><td>⑩</td><td>コンクリート打込み仕上げ・コンクリート打込み・打設面仕上げ</td></tr>
+<tr><td>⑪</td><td>コンクリート養生・コンクリート湿潤養生・強度確認</td></tr>
+<tr><td>⑫</td><td>型枠取外し・部位別養生終了後に取外し</td></tr>
+</tbody>
+</table>
+</div>
+<div class="table-wrap">
+<table>
+<caption>鉄筋の手順</caption>
+<thead><tr><th>No.</th><th>作業内容</th></tr></thead>
+<tbody>
+<tr><td>A</td><td><strong class="kw">柱鉄筋組立て・柱配筋</strong></td></tr>
+<tr><td>B</td><td><strong class="kw">壁鉄筋組立て・壁配筋</strong></td></tr>
+<tr><td>C</td><td><strong class="kw">梁鉄筋組立て・梁配筋</strong></td></tr>
+<tr><td>D</td><td><strong class="kw">スラブ鉄筋組立て・スラブ配筋</strong></td></tr>
+</tbody>
+</table>
+</div>
+<p>特に、第二次検定のネットワーク工程表の問題における合否のポイントは、<strong class="kw">型枠と鉄筋の作業順序についての理解の有無</strong>にあると思われる。</p>
+<p>これは、あくまで<strong class="kw">標準的なもの</strong>である。現実の現場では、並行作業を行うことが多いので、<span class="trap">必ずしもこの順序ではない場合がある</span>。</p>
+</div>
+</article>
+<article class="study-card translation">
+<div class="card-title">Bản dịch tiếng Việt</div>
+<div class="recall-source" lang="vi">
+<p>Trình tự phần kết cấu RC, lấy công tác cốp pha làm trung tâm, được trình bày như sau.</p>
+<div class="table-wrap">
+<table>
+<caption>Trình tự cốp pha</caption>
+<thead><tr><th>STT</th><th>Nội dung</th></tr></thead>
+<tbody>
+<tr><td>①</td><td>Triển khai bản vẽ cốp pha và bóc vật liệu</td></tr>
+<tr><td>②</td><td>Gia công, chế tạo cốp pha tại xưởng</td></tr>
+<tr><td>③</td><td><strong class="kw">Vạch vị trí, lấy dấu định vị</strong></td></tr>
+<tr><td>④</td><td>Lắp các cấu kiện chuẩn bị tại chân cốp pha</td></tr>
+<tr><td>⑤</td><td><strong class="kw">Lắp dựng cốp pha cột</strong></td></tr>
+<tr><td>⑥</td><td><strong class="kw">Lắp dựng cốp pha tường ngoài</strong></td></tr>
+<tr><td>⑦</td><td><strong class="kw">Lắp dựng cốp pha tường trong, mặt tường còn lại</strong></td></tr>
+<tr><td>⑧</td><td><strong class="kw">Lắp ráp cốp pha dầm</strong></td></tr>
+<tr><td>⑨</td><td><strong class="kw">Lắp ráp cốp pha sàn</strong></td></tr>
+<tr><td>⑩</td><td>Đổ bê tông và hoàn thiện bề mặt sau đổ</td></tr>
+<tr><td>⑪</td><td>Bảo dưỡng bê tông, bảo dưỡng ẩm và xác nhận cường độ</td></tr>
+<tr><td>⑫</td><td>Tháo cốp pha sau khi kết thúc bảo dưỡng tương ứng từng bộ phận</td></tr>
+</tbody>
+</table>
+</div>
+<div class="table-wrap">
+<table>
+<caption>Trình tự cốt thép</caption>
+<thead><tr><th>Ký hiệu</th><th>Nội dung</th></tr></thead>
+<tbody>
+<tr><td>A</td><td><strong class="kw">Lắp, bố trí cốt thép cột</strong></td></tr>
+<tr><td>B</td><td><strong class="kw">Lắp, bố trí cốt thép tường</strong></td></tr>
+<tr><td>C</td><td><strong class="kw">Lắp, bố trí cốt thép dầm</strong></td></tr>
+<tr><td>D</td><td><strong class="kw">Lắp, bố trí cốt thép sàn</strong></td></tr>
+</tbody>
+</table>
+</div>
+<p>Đối với câu network của kỳ thi lần hai, sách cho rằng một điểm then chốt là <strong class="kw">hiểu trình tự tương đối giữa công tác cốp pha và công tác cốt thép</strong>.</p>
+<p>Đây chỉ là <strong class="kw">trình tự tiêu chuẩn</strong>. Trên công trường thực tế thường có công tác song song nên <span class="trap">không phải lúc nào cũng theo đúng thứ tự này</span>.</p>
+</div>
+</article>
+</div>
+</section>
+<section class="subsection" id="naming-rule">
+<h3>作業名を記述するときの注意</h3>
+<div class="study-grid">
+<article class="study-card original">
+<div class="card-title">原文</div>
+<div class="recall-source" lang="ja">
+<p>工程表から作業名を類推して記述する設問では、上記の用語は一般的なものであり、<span class="trap">試験問題で要求されている用語と一致しないこともある</span>。</p>
+<p>工程表の作業名一覧に挙げられている用語の語尾には、「組立て」や「建込み」が付いているので、<strong class="kw">作業名の語尾には神経を使う必要がある</strong>。</p>
+<p>原則的には、<span class="relation">梁・スラブなどの水平材には「組立て」</span>、<span class="relation">柱・壁などの垂直材には「建込み」</span>を付けて表すようである。</p>
+<p>これも原則であって、あくまで<strong class="kw">出題表の記述の例に沿って記述することが大切</strong>である。</p>
+<p>記述問題では<strong class="kw">「ただし」や「なお」</strong>の語句で、記述する内容を限定していることが多い。例えば、「安全管理を除く」の条件が付いている場合、<span class="trap">「安全管理」に関する記述は一切含めない</span>ようにすることが望ましい。</p>
+</div>
+</article>
+<article class="study-card translation">
+<div class="card-title">Bản dịch tiếng Việt</div>
+<div class="recall-source" lang="vi">
+<p>Trong câu hỏi yêu cầu suy luận tên công tác từ bảng tiến độ, thuật ngữ thông thường ở trên <span class="trap">có thể không trùng với đúng thuật ngữ mà đề thi yêu cầu</span>.</p>
+<p>Trong bảng tiến độ, tên công tác thường kết thúc bằng `組立て` hoặc `建込み`, vì vậy <strong class="kw">phải đặc biệt chú ý phần đuôi của tên công tác</strong>.</p>
+<p>Về nguyên tắc, <span class="relation">dầm và sàn, tức cấu kiện ngang, dùng 「組立て」</span>; <span class="relation">cột và tường, tức cấu kiện đứng, dùng 「建込み」</span>.</p>
+<p>Đây vẫn chỉ là nguyên tắc; quan trọng là <strong class="kw">bám theo cách viết được dùng trong chính bảng của đề thi</strong>.</p>
+<p>Trong câu tự luận, các từ <strong class="kw">「ただし」 và 「なお」</strong> thường giới hạn nội dung được phép viết. Ví dụ nếu đề ghi “loại trừ quản lý an toàn” thì <span class="trap">không đưa nội dung về quản lý an toàn vào đáp án</span>.</p>
+</div>
+</article>
+</div>
+</section>
+<section class="subsection" id="sashikin">
+<h3>差筋</h3>
+<div class="study-grid">
+<article class="study-card original">
+<div class="card-title">原文</div>
+<div class="recall-source" lang="ja">
+<p>この問題で使われている用語である<strong class="kw">「差筋」</strong>とは、専門的に言うと、<span class="relation">基礎から立ち上げる壁の鉄筋を固定するための鉄筋</span>である。</p>
+<p>一般に、壁鉄筋に先がけて基礎から立ち上げることで、壁鉄筋を固定し、<strong class="kw">定着長さや重ね継手長さを確保するため</strong>に用いられる。</p>
+<p>なお、<span class="trap">JASSには差筋の規定はない</span>ため、この用語は種々の使われ方をする場合がある。</p>
+<p>※差筋は、新コンクリートと旧コンクリートを一体化させるため、階段の先打ちコンクリート（旧コンクリート）に対しては、鉄筋を水平方向に挿入する。</p>
+<p><strong class="kw">差筋は壁の縦筋を固定するアンカーである。</strong></p>
+</div>
+</article>
+<article class="study-card translation">
+<div class="card-title">Bản dịch tiếng Việt</div>
+<div class="recall-source" lang="vi">
+<p>Trong bài này, <strong class="kw">差筋（さしきん）</strong> là <span class="relation">thanh cốt thép dùng để cố định cốt thép tường dựng lên từ móng</span>.</p>
+<p>Thông thường, thanh này được dựng từ móng trước cốt thép tường để cố định cốt thép tường và <strong class="kw">đảm bảo chiều dài neo cùng chiều dài nối chồng</strong>.</p>
+<p>Do <span class="trap">JASS không có quy định riêng về 差筋</span>, thuật ngữ này có thể được sử dụng theo nhiều cách khác nhau.</p>
+<p>Đối với trường hợp liên kết bê tông mới với bê tông cũ, ví dụ bê tông cầu thang đổ trước, 差筋 được cắm theo phương ngang vào phần bê tông cũ.</p>
+<p><strong class="kw">差筋 là thanh neo dùng để cố định cốt thép đứng của tường.</strong></p>
+</div>
+</article>
+</div>
+<div class="note-box">
+<strong>Giải thích hình ở Book 252</strong>
+<p>Hình thể hiện móng ở dưới, cốt thép đứng của tường phía trên và các thanh 差筋 nhô từ móng lên để định vị, giữ cốt thép tường. Cột được vẽ ở phía bên phải để cho thấy quan hệ vị trí giữa tường, cột và móng.</p>
+</div>
+<p><a href="#toc">↑ Mục lục</a></p>
+</section>
+</section></main>
+<!-- CONTENT_END -->
+<section id="terms">
+<h2>Thuật ngữ chuyên môn</h2><div class="section-head">
+<h2>Thuật ngữ chuyên môn</h2>
+</div><div class="table-wrap">
+<table>
+<caption>Thuật ngữ tổng hợp Book 244-252</caption>
+<thead><tr><th>日本語</th><th>読み方</th><th>Tiếng Việt</th><th>Giải thích</th><th>Liên quan</th></tr></thead>
+<tbody>
+<tr><td>基準階</td><td>きじゅんかい</td><td>Tầng điển hình</td><td>Tầng có bố trí, quy trình thi công lặp lại và được dùng làm tầng chuẩn.</td><td>躯体工事</td></tr>
+<tr><td>躯体工事</td><td>くたいこうじ</td><td>Công tác kết cấu</td><td>Công tác hình thành phần kết cấu chính của công trình.</td><td>RC造</td></tr>
+<tr><td>墨出し</td><td>すみだし</td><td>Lấy dấu, định vị</td><td>Chuyển trục, tim, cao độ và vị trí cấu kiện ra hiện trường.</td><td>①</td></tr>
+<tr><td>片壁型枠建込み</td><td>かたかべかたわくたてこみ</td><td>Lắp dựng cốp pha một mặt tường</td><td>Mặt cốp pha đầu tiên của tường trước khi hoàn thành phía còn lại.</td><td>②</td></tr>
+<tr><td>壁型枠返し</td><td>かべかたわくかえし</td><td>Lắp mặt cốp pha tường phía còn lại</td><td>Đóng mặt cốp pha còn lại sau các công tác bên trong tường.</td><td>③</td></tr>
+<tr><td>梁型枠組立て</td><td>はりかたわくくみたて</td><td>Lắp ráp cốp pha dầm</td><td>Đáp án chính xác của công tác ④ trong bài.</td><td>組立て</td></tr>
+<tr><td>柱配筋</td><td>はしらはいきん</td><td>Bố trí cốt thép cột</td><td>Đáp án chính xác của công tác ⑦ trong bài.</td><td>配筋</td></tr>
+<tr><td>型枠締固め</td><td>かたわくしめかため</td><td>Siết, cố định cốp pha</td><td>Công tác ⑥ của nhánh cốp pha.</td><td>Free Float</td></tr>
+<tr><td>最早開始時期</td><td>さいそうかいしじき</td><td>Thời điểm bắt đầu sớm nhất</td><td>EST, Earliest Start Time.</td><td>Network</td></tr>
+<tr><td>ダミーアロー</td><td>だみーあろー</td><td>Dummy Arrow, mũi tên giả</td><td>Biểu diễn quan hệ logic, thời gian thực hiện bằng 0.</td><td>先行・後続</td></tr>
+<tr><td>フリーフロート</td><td>ふりーふろーと</td><td>Free Float, dự trữ tự do</td><td>Khoảng dự trữ có thể dùng mà không làm chậm EST của công tác sau.</td><td>FF</td></tr>
+<tr><td>クリティカルパス</td><td>くりてぃかるぱす</td><td>Critical Path</td><td>Chuỗi công tác quyết định tổng thời gian của network.</td><td>工期</td></tr>
+<tr><td>先行作業</td><td>せんこうさぎょう</td><td>Công tác trước</td><td>Công tác phải hoàn thành trước khi công tác phụ thuộc có thể bắt đầu.</td><td>後続作業</td></tr>
+<tr><td>後続作業</td><td>こうぞくさぎょう</td><td>Công tác sau</td><td>Công tác phụ thuộc vào việc hoàn thành công tác trước.</td><td>先行作業</td></tr>
+<tr><td>タイムスケール表示</td><td>たいむすけーるひょうじ</td><td>Biểu diễn theo thang thời gian</td><td>Đặt network trên trục ngày để nhìn trực tiếp EST, Float và Critical Path.</td><td>ネットワーク工程表検討用</td></tr>
+<tr><td>組立て</td><td>くみたて</td><td>Lắp ráp</td><td>Trong bài này, về nguyên tắc dùng cho cấu kiện ngang như dầm và sàn.</td><td>梁・スラブ</td></tr>
+<tr><td>建込み</td><td>たてこみ</td><td>Lắp dựng</td><td>Trong bài này, về nguyên tắc dùng cho cấu kiện đứng như cột và tường.</td><td>柱・壁</td></tr>
+<tr><td>差筋</td><td>さしきん</td><td>Thép chờ / thép cắm liên kết</td><td>Trong bài này dùng để cố định cốt thép đứng của tường; JASS không quy định thống nhất thuật ngữ này.</td><td>定着長さ・重ね継手長さ</td></tr>
+<tr><td>定着長さ</td><td>ていちゃくながさ</td><td>Chiều dài neo</td><td>Chiều dài cần thiết để cốt thép truyền lực và được neo giữ trong bê tông.</td><td>差筋</td></tr>
+<tr><td>重ね継手長さ</td><td>かさねつぎてながさ</td><td>Chiều dài nối chồng</td><td>Chiều dài chồng của hai thanh cốt thép tại mối nối chồng.</td><td>差筋</td></tr>
+</tbody>
+</table>
+</div></section>
+<section id="background">
+<h2>Kiến thức nền cần biết</h2><div class="section-head">
+<h2>Kiến thức nền cần biết</h2>
+</div><div class="note-box">
+<strong>1. Network phải được hoàn chỉnh trước khi tính</strong>
+<p>Hai nhánh cốp pha và cốt thép không độc lập. Phải bổ sung quan hệ ⑧ hoàn thành trước ③ và ⑤ hoàn thành trước ⑨ bằng Dummy Arrow 0 ngày.</p>
+</div><div class="note-box">
+<strong>2. Ý nghĩa của EST</strong>
+<p>EST là thời điểm sớm nhất mà một công tác có thể bắt đầu sau khi toàn bộ điều kiện trước đó đã thỏa mãn. Khi nhiều nhánh cùng hội tụ, giá trị chi phối là giá trị lớn nhất.</p>
+</div><div class="note-box">
+<strong>3. Float và Critical Path</strong>
+<p>Float là khoảng dự trữ trong tiến độ. Công tác nằm trên Critical Path không có dự trữ để hấp thụ chậm trễ theo cách thể hiện trong bài này; vì vậy sự chậm trễ của ③ làm tăng trực tiếp tổng thời gian.</p>
+</div><div class="note-box">
+<strong>4. Trình tự cốp pha và cốt thép</strong>
+<p>Để suy luận ô trống trong bảng công tác RC, cần kiểm tra đủ bốn bộ phận cột, tường, dầm, sàn đối với cả cốp pha và cốt thép. Phần bị thiếu trong chuỗi tiêu chuẩn chính là ứng viên của ô trống.</p>
+</div></section>
+<section id="memory">
+<h2>Điểm cần nhớ và mẹo nhớ</h2><div class="section-head">
+<h2>Điểm cần nhớ và mẹo nhớ</h2>
+</div><div class="memory-box">
+<strong>Đáp án toàn bài</strong>
+<p><strong>④ 梁型枠組立て</strong> / <strong>⑦ 柱配筋</strong> / <mark class="critical">EST③ = 5日</mark> / <mark class="critical">FF⑥ = 5日</mark> / <mark class="critical">FF⑩ = 0日</mark> / <mark class="critical">工程変更後 = 24日</mark>.</p>
+</div><div class="comparison-box">
+<div class="table-wrap">
+<table>
+<caption>Quy tắc cần nhớ</caption>
+<thead><tr><th>Chủ đề</th><th>Recall cue</th></tr></thead>
+<tbody>
+<tr><td>Dummy Arrow</td><td><span class="relation">⑧完了 → ③開始 / ⑤完了 → ⑨開始</span></td></tr>
+<tr><td>EST</td><td><span class="relation">Một đường vào: cộng thời gian / nhiều đường vào: lấy MAX</span></td></tr>
+<tr><td>Free Float</td><td><span class="relation">FF = EST sau − (EST hiện tại + duration)</span></td></tr>
+<tr><td>② chậm 2 ngày</td><td><span class="relation">Float 2 ngày hấp thụ hết → tổng tiến độ không đổi</span></td></tr>
+<tr><td>③ chậm 1 ngày</td><td><span class="relation">Critical Path → tổng tiến độ +1 ngày</span></td></tr>
+<tr><td>Tên cốp pha</td><td><span class="relation">梁・スラブ → 組立て / 柱・壁 → 建込み</span>, nhưng ưu tiên cách ghi trong chính đề.</td></tr>
+<tr><td>Điều kiện đề</td><td><strong>ただし / なお</strong> thường giới hạn phạm vi đáp án, phải đọc trước khi viết.</td></tr>
+</tbody>
+</table>
+</div>
+</div><div class="warning-box">
+<strong>Bẫy ghi đáp án</strong>
+<p>Câu 4: ô trống đã có chữ <code>日</code> phía sau, vì vậy ghi <strong>24</strong>, không ghi <strong>24日</strong>.</p>
+</div></section>
 <template id="component-library">
-
-  <!-- FIGURE -->
-  <figure class="figure-card">
-    <img src="{{IMAGE_SOURCE}}" alt="{{IMAGE_ALT}}">
-    <figcaption>{{FIGURE_CAPTION}}</figcaption>
-  </figure>
-
-  <!-- MULTIPLE FIGURES -->
-  <div class="figure-grid">
-    <figure class="figure-card">
-      <img src="{{IMAGE_SOURCE_1}}" alt="{{IMAGE_ALT_1}}">
-      <figcaption>{{FIGURE_CAPTION_1}}</figcaption>
-    </figure>
-    <figure class="figure-card">
-      <img src="{{IMAGE_SOURCE_2}}" alt="{{IMAGE_ALT_2}}">
-      <figcaption>{{FIGURE_CAPTION_2}}</figcaption>
-    </figure>
-  </div>
-
-  <!-- TABLE -->
-  <div class="table-wrap">
-    <table>
-      <caption>{{TABLE_CAPTION}}</caption>
-      <thead>
-        <tr><th>{{HEADER_1}}</th><th>{{HEADER_2}}</th></tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><strong class="kw">{{ROW_SUBJECT}}</strong></td>
-          <td><span class="relation">{{ROW_RECALL_CUE}}</span></td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-
-  <!-- NOTE -->
-  <div class="note-box">
-    <strong>{{NOTE_TITLE}}</strong>
-    <p>{{NOTE_CONTENT}}</p>
-  </div>
-
-  <!-- WARNING -->
-  <div class="warning-box">
-    <strong>{{WARNING_TITLE}}</strong>
-    <p>{{WARNING_CONTENT}}</p>
-  </div>
-
-  <!-- MEMORY -->
-  <div class="memory-box">
-    <strong>{{MEMORY_TITLE}}</strong>
-    <p>
-<div class="memory-box">
-  <strong>Đáp án toàn bài</strong>
-  <p><strong>④ 梁型枠組立て</strong> / <strong>⑦ 柱配筋</strong> / <mark class="critical">EST③ = 5日</mark> / <mark class="critical">FF⑥ = 5日</mark> / <mark class="critical">FF⑩ = 0日</mark> / <mark class="critical">工程変更後 = 24日</mark>.</p>
+<div class="table-wrap">
+<table>
+<caption>{{TABLE_CAPTION}}</caption>
+<thead><tr><th>{{HEADER_1}}</th><th>{{HEADER_2}}</th></tr></thead>
+<tbody><tr><td><strong class="kw">{{ROW_KEY}}</strong></td><td><span class="relation">{{ROW_RELATION}}</span></td></tr></tbody>
+</table>
 </div>
-<div class="comparison-box">
-  <div class="table-wrap">
-    <table>
-      <caption>Quy tắc cần nhớ</caption>
-      <thead><tr><th>Chủ đề</th><th>Recall cue</th></tr></thead>
-      <tbody>
-        <tr><td>Dummy Arrow</td><td><span class="relation">⑧完了 → ③開始 / ⑤完了 → ⑨開始</span></td></tr>
-        <tr><td>EST</td><td><span class="relation">Một đường vào: cộng thời gian / nhiều đường vào: lấy MAX</span></td></tr>
-        <tr><td>Free Float</td><td><span class="relation">FF = EST sau − (EST hiện tại + duration)</span></td></tr>
-        <tr><td>② chậm 2 ngày</td><td><span class="relation">Float 2 ngày hấp thụ hết → tổng tiến độ không đổi</span></td></tr>
-        <tr><td>③ chậm 1 ngày</td><td><span class="relation">Critical Path → tổng tiến độ +1 ngày</span></td></tr>
-        <tr><td>Tên cốp pha</td><td><span class="relation">梁・スラブ → 組立て / 柱・壁 → 建込み</span>, nhưng ưu tiên cách ghi trong chính đề.</td></tr>
-        <tr><td>Điều kiện đề</td><td><strong>ただし / なお</strong> thường giới hạn phạm vi đáp án, phải đọc trước khi viết.</td></tr>
-      </tbody>
-    </table>
-  </div>
+<figure class="figure-card">
+<img alt="{{IMAGE_ALT}}" height="{{IMAGE_HEIGHT}}" src="{{IMAGE_SOURCE}}" width="{{IMAGE_WIDTH}}"/>
+<figcaption>{{IMAGE_CAPTION}}</figcaption>
+</figure>
+<div class="figure-grid">
+<figure class="figure-card">
+<img alt="{{IMAGE_ALT_1}}" height="{{IMAGE_HEIGHT_1}}" src="{{IMAGE_SOURCE_1}}" width="{{IMAGE_WIDTH_1}}"/>
+<figcaption>{{IMAGE_CAPTION_1}}</figcaption>
+</figure>
+<figure class="figure-card">
+<img alt="{{IMAGE_ALT_2}}" height="{{IMAGE_HEIGHT_2}}" src="{{IMAGE_SOURCE_2}}" width="{{IMAGE_WIDTH_2}}"/>
+<figcaption>{{IMAGE_CAPTION_2}}</figcaption>
+</figure>
 </div>
-<div class="warning-box">
-  <strong>Bẫy ghi đáp án</strong>
-  <p>Câu 4: ô trống đã có chữ <code>日</code> phía sau, vì vậy ghi <strong>24</strong>, không ghi <strong>24日</strong>.</p>
-</div>
-</p>
-  </div>
-
-  <!-- FORMULA / FLOW -->
-  <div class="formula-box">
-    <div class="formula-line">
-      <span class="flow-node">{{NODE_1}}</span>
-      <span class="flow-arrow">→</span>
-      <span class="flow-node">{{NODE_2}}</span>
-      <span class="flow-arrow">→</span>
-      <span class="flow-node">{{NODE_3}}</span>
-    </div>
-  </div>
-
+<section class="note-box"><h3>{{NOTE_TITLE}}</h3><p>{{NOTE_CONTENT}}</p></section>
+<section class="warning-box"><h3>{{WARNING_TITLE}}</h3><p>{{WARNING_CONTENT}}</p></section>
+<section class="memory-box"><h3>{{MEMORY_TITLE}}</h3><p>{{MEMORY_ITEM}}</p></section>
 </template>
-
+</div>
 <script>
-(() => {
-  "use strict";
+(function () {
+  'use strict';
 
   const root = document.documentElement;
   const body = document.body;
+  const q = id => document.getElementById(id);
+  const FONT_LEVELS = Array.from({ length: 21 }, (_, i) => 50 + i * 5);
 
-  const themeToggle = document.getElementById("theme-toggle");
-  const modeToggle = document.getElementById("mode-toggle");
-  const fontDown = document.getElementById("font-down");
-  const fontReset = document.getElementById("font-reset");
-  const fontUp = document.getElementById("font-up");
+  const controls = q('control-cluster');
+  const controlsToggle = q('controls-toggle');
+  const controlPanel = q('control-panel');
+  const themeButton = q('theme-toggle');
+  const modeButton = q('mode-toggle');
+  const fontDown = q('font-down');
+  const fontUp = q('font-up');
+  const fontReset = q('font-reset');
+  const tocButton = q('toc-toggle');
+  const tocClose = q('toc-close');
+  const overlay = q('toc-overlay');
+  const prevButton = q('section-prev');
+  const nextButton = q('section-next');
+  const homeButton = q('home-button');
 
-  const tocToggle = document.getElementById("toc-toggle");
-  const tocClose = document.getElementById("toc-close");
-  const tocOverlay = document.getElementById("toc-overlay");
-  const tocDrawer = document.getElementById("toc-drawer");
+  const pageKey = location.pathname + location.search;
+  const readerStateKey = 'study-reader-position:' + pageKey;
+  const lastPageKey = 'study-last-page';
+  const explicitHomeKey = 'study-explicit-home';
+  const anchorSelector = [
+    '.page-shell h1', '.page-shell h2', '.page-shell h3', '.page-shell h4',
+    '.page-shell p', '.page-shell li', '.page-shell td', '.page-shell th',
+    '.page-shell figcaption', '.page-shell .card-title'
+  ].join(', ');
 
-  const prevButton = document.getElementById("section-prev");
-  const nextButton = document.getElementById("section-next");
+  let anchorElements = [];
+  let lastStablePosition = null;
+  let scrollSaveTimer = 0;
+  let resizeRestoreTimer = 0;
+  let resizeAnchor = null;
+  let suppressScrollSaveUntil = 0;
+  function layoutViewportSize() {
+    const de = document.documentElement;
+    return {
+      width: de.clientWidth || window.innerWidth,
+      height: de.clientHeight || window.innerHeight
+    };
+  }
 
-  const FONT_LEVELS = [80, 90, 100, 110, 120, 130, 140];
+  function visualViewportScale() {
+    const vv = window.visualViewport;
+    return vv && Number.isFinite(vv.scale) ? vv.scale : 1;
+  }
+
+  function isPinchZoomActive() {
+    return Math.abs(visualViewportScale() - 1) > 0.015;
+  }
+
+  const initialLayoutViewport = layoutViewportSize();
+  let lastViewportWidth = initialLayoutViewport.width;
+  let lastViewportHeight = initialLayoutViewport.height;
+  let pinchZoomSession = false;
+
+  try {
+    if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+  } catch (e) {}
 
   function safeGet(key, fallback = null) {
     try {
@@ -1803,210 +1414,602 @@ body.toc-open .toc-drawer {
   }
 
   function safeSet(key, value) {
-    try {
-      localStorage.setItem(key, value);
-    } catch (e) {}
+    try { localStorage.setItem(key, value); } catch (e) {}
   }
+
+  function safeRemove(key) {
+    try { localStorage.removeItem(key); } catch (e) {}
+  }
+
+  /* ---------- Persistent page / PWA resume metadata ---------- */
+
+  function rememberCurrentPage() {
+    safeSet(lastPageKey, pageKey);
+    safeSet('study-last-active-at', String(Date.now()));
+  }
+
+  rememberCurrentPage();
+
+  /* ---------- Layout viewport geometry ---------- */
+
+  /*
+    Pinch zoom changes visualViewport.width / height / scale.
+    It must NOT change the document layout width.
+
+    Therefore --app-viewport-width is derived only from the layout viewport
+    (documentElement.clientWidth / innerWidth), never from visualViewport.width.
+  */
+  function syncViewportGeometry() {
+    const { width } = layoutViewportSize();
+    root.style.setProperty(
+      '--app-viewport-width',
+      `${Math.round(width * 100) / 100}px`
+    );
+  }
+
+  syncViewportGeometry();
+
+  /* ---------- Reader anchors ---------- */
+
+  function rebuildReaderAnchors() {
+    anchorElements = Array.from(document.querySelectorAll(anchorSelector));
+    anchorElements.forEach((el, index) => {
+      el.dataset.readerKey = 'r' + index;
+    });
+  }
+
+  function closestReaderElement(node) {
+    if (!node) return null;
+    const el = node.nodeType === Node.ELEMENT_NODE ? node : node.parentElement;
+    return el ? el.closest('[data-reader-key]') : null;
+  }
+
+  function caretAtPoint(x, y) {
+    try {
+      if (document.caretPositionFromPoint) {
+        const pos = document.caretPositionFromPoint(x, y);
+        if (!pos || !pos.offsetNode) return null;
+        return { node: pos.offsetNode, offset: pos.offset };
+      }
+      if (document.caretRangeFromPoint) {
+        const range = document.caretRangeFromPoint(x, y);
+        if (!range) return null;
+        return { node: range.startContainer, offset: range.startOffset };
+      }
+    } catch (e) {}
+    return null;
+  }
+
+  function textOffsetFromElementStart(element, node, offset) {
+    try {
+      const range = document.createRange();
+      range.setStart(element, 0);
+      range.setEnd(node, offset);
+      return range.toString().length;
+    } catch (e) {
+      return 0;
+    }
+  }
+
+  function domPositionFromTextOffset(element, targetOffset) {
+    const walker = document.createTreeWalker(element, NodeFilter.SHOW_TEXT);
+    let remaining = Math.max(0, targetOffset);
+    let node = walker.nextNode();
+    let last = null;
+
+    while (node) {
+      last = node;
+      const len = node.nodeValue ? node.nodeValue.length : 0;
+      if (remaining <= len) {
+        return { node, offset: remaining };
+      }
+      remaining -= len;
+      node = walker.nextNode();
+    }
+
+    if (last) return { node: last, offset: last.nodeValue ? last.nodeValue.length : 0 };
+    return { node: element, offset: 0 };
+  }
+
+  function characterRect(node, offset) {
+    try {
+      if (node.nodeType !== Node.TEXT_NODE) {
+        const r = node.getBoundingClientRect ? node.getBoundingClientRect() : null;
+        return r && r.height ? r : null;
+      }
+
+      const len = node.nodeValue ? node.nodeValue.length : 0;
+      if (!len) return node.parentElement ? node.parentElement.getBoundingClientRect() : null;
+
+      let start = Math.max(0, Math.min(offset, len - 1));
+      let end = Math.min(len, start + 1);
+      if (offset >= len && len > 0) {
+        start = len - 1;
+        end = len;
+      }
+
+      const range = document.createRange();
+      range.setStart(node, start);
+      range.setEnd(node, end);
+      const rects = range.getClientRects();
+      return rects.length ? rects[0] : range.getBoundingClientRect();
+    } catch (e) {
+      return null;
+    }
+  }
+
+  function captureReadingPosition() {
+    if (!anchorElements.length) rebuildReaderAnchors();
+    if (!anchorElements.length) return null;
+
+    const vv = window.visualViewport;
+    const viewportWidth = vv ? vv.width : window.innerWidth;
+    const topProbe = 6;
+    const ys = [topProbe, 12, 18, 26, 36, 50];
+    const xs = [];
+
+    for (let x = 12; x <= Math.min(viewportWidth - 12, 220); x += 16) xs.push(x);
+    xs.push(viewportWidth * .25, viewportWidth * .5, viewportWidth * .75);
+
+    for (const y of ys) {
+      for (const x of xs) {
+        if (x <= 0 || x >= viewportWidth) continue;
+        const caret = caretAtPoint(x, y);
+        if (!caret) continue;
+        const element = closestReaderElement(caret.node);
+        if (!element || !document.querySelector('.page-shell')?.contains(element)) continue;
+
+        const offset = textOffsetFromElementStart(element, caret.node, caret.offset);
+        const rect = characterRect(caret.node, caret.offset);
+        const key = element.dataset.readerKey;
+        if (key && rect && Number.isFinite(rect.top)) {
+          return { key, offset, top: rect.top };
+        }
+      }
+    }
+
+    /* Fallback: nearest textual block to the top edge. */
+    let best = null;
+    let bestDistance = Infinity;
+    for (const element of anchorElements) {
+      const rect = element.getBoundingClientRect();
+      if (rect.bottom < 0 || rect.top > (vv ? vv.height : window.innerHeight)) continue;
+      const distance = Math.abs(rect.top);
+      if (distance < bestDistance) {
+        bestDistance = distance;
+        best = { key: element.dataset.readerKey, offset: 0, top: rect.top };
+      }
+    }
+    return best;
+  }
+
+  function restoreReadingPosition(state) {
+    if (!state || !state.key) return false;
+    if (!anchorElements.length) rebuildReaderAnchors();
+
+    const element = document.querySelector('[data-reader-key="' + CSS.escape(state.key) + '"]');
+    if (!element) return false;
+
+    const pos = domPositionFromTextOffset(element, Number(state.offset) || 0);
+    const rect = characterRect(pos.node, pos.offset);
+    if (!rect || !Number.isFinite(rect.top)) return false;
+
+    const desiredTop = Number.isFinite(Number(state.top)) ? Number(state.top) : 6;
+    const delta = rect.top - desiredTop;
+    if (Math.abs(delta) < .5) return true;
+
+    suppressScrollSaveUntil = Date.now() + 700;
+    const oldBehavior = root.style.scrollBehavior;
+    root.style.scrollBehavior = 'auto';
+    window.scrollBy(0, delta);
+    root.style.scrollBehavior = oldBehavior;
+    return true;
+  }
+
+  function saveReaderState(state) {
+    if (!state) return;
+    lastStablePosition = state;
+    safeSet(readerStateKey, JSON.stringify(state));
+  }
+
+  function readReaderState() {
+    try {
+      const raw = safeGet(readerStateKey);
+      return raw ? JSON.parse(raw) : null;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  function settleRestore(state, delays = [0, 60, 180, 420]) {
+    if (!state) return;
+    suppressScrollSaveUntil = Date.now() + Math.max(...delays) + 350;
+    delays.forEach(delay => {
+      window.setTimeout(() => {
+        requestAnimationFrame(() => restoreReadingPosition(state));
+      }, delay);
+    });
+    window.setTimeout(() => {
+      saveReaderState(state);
+    }, Math.max(...delays) + 120);
+  }
+
+  function preserveReadingPosition(mutator) {
+    const state = captureReadingPosition() || lastStablePosition || readReaderState();
+    if (state) saveReaderState(state);
+    mutator();
+    rebuildReaderAnchors();
+    settleRestore(state);
+  }
+
+  function scheduleReaderSave() {
+    if (Date.now() < suppressScrollSaveUntil) return;
+    clearTimeout(scrollSaveTimer);
+    scrollSaveTimer = window.setTimeout(() => {
+      if (Date.now() < suppressScrollSaveUntil) return;
+      const state = captureReadingPosition();
+      if (state) saveReaderState(state);
+    }, 130);
+  }
+
+  rebuildReaderAnchors();
+  lastStablePosition = readReaderState();
 
   /* ---------- Theme ---------- */
 
   function applyTheme(theme) {
-    const next = theme === "light" ? "light" : "dark";
-    root.dataset.theme = next;
-
-    if (themeToggle) {
-      const dark = next === "dark";
-      themeToggle.textContent = dark ? "☀" : "☾";
-      themeToggle.title = dark ? "Chuyển sang Light" : "Chuyển sang Dark";
-      themeToggle.setAttribute("aria-pressed", String(!dark));
+    theme = theme === 'light' ? 'light' : 'dark';
+    root.dataset.theme = theme;
+    safeSet('study-theme', theme);
+    if (themeButton) {
+      themeButton.textContent = theme === 'dark' ? '☀' : '☾';
+      themeButton.title = theme === 'dark' ? 'Chuyển sang Light theme' : 'Chuyển sang Dark theme';
+      themeButton.setAttribute('aria-label', themeButton.title);
+      themeButton.setAttribute('aria-pressed', theme === 'light' ? 'true' : 'false');
     }
-
-    safeSet("study-theme", next);
   }
-
-  const initialTheme =
-    safeGet("study-theme") ||
-    (window.matchMedia &&
-     window.matchMedia("(prefers-color-scheme: dark)").matches
-      ? "dark"
-      : "light");
-
-  applyTheme(initialTheme);
-
-  themeToggle?.addEventListener("click", () => {
-    applyTheme(root.dataset.theme === "dark" ? "light" : "dark");
-  });
 
   /* ---------- Full / Keywords ---------- */
 
   function applyMode(mode) {
-    const keywords = mode === "keywords";
-    body.classList.toggle("keyword-focus", keywords);
-
-    if (modeToggle) {
-      modeToggle.textContent = keywords ? "📖" : "🎯";
-      modeToggle.title = keywords ? "Chuyển sang Full" : "Chuyển sang Keywords";
-      modeToggle.setAttribute("aria-pressed", String(keywords));
+    mode = mode === 'keywords' ? 'keywords' : 'full';
+    root.dataset.studyMode = mode;
+    body.classList.toggle('keyword-focus', mode === 'keywords');
+    safeSet('study-mode', mode);
+    if (modeButton) {
+      modeButton.textContent = mode === 'full' ? '🎯' : '📖';
+      modeButton.title = mode === 'full' ? 'Chuyển sang Keywords mode' : 'Trở lại Full mode';
+      modeButton.setAttribute('aria-label', modeButton.title);
+      modeButton.setAttribute('aria-pressed', mode === 'keywords' ? 'true' : 'false');
     }
-
-    safeSet("study-mode", keywords ? "keywords" : "full");
   }
 
-  applyMode(safeGet("study-mode", "full"));
+  /* ---------- Font 50-150%, step 5% ---------- */
 
-  modeToggle?.addEventListener("click", () => {
-    applyMode(body.classList.contains("keyword-focus") ? "full" : "keywords");
-  });
-
-  /* ---------- Font scale ---------- */
-
-  let fontScale = Number(safeGet("study-font-scale", "100"));
-  if (!FONT_LEVELS.includes(fontScale)) {
-    fontScale = 100;
+  function currentScale() {
+    const saved = Number(safeGet('study-font-scale', '100'));
+    return FONT_LEVELS.includes(saved) ? saved : 100;
   }
 
   function applyFontScale(scale) {
-    fontScale = FONT_LEVELS.includes(scale) ? scale : 100;
-
-    root.style.setProperty(
-      "--base-font-size",
-      `${16 * fontScale / 100}px`
-    );
+    if (!FONT_LEVELS.includes(scale)) scale = 100;
+    root.style.setProperty('--base-font-size', (16 * scale / 100) + 'px');
+    safeSet('study-font-scale', String(scale));
 
     if (fontReset) {
-      fontReset.textContent = `${fontScale}%`;
-      fontReset.title =
-        fontScale === 100
-          ? "Cỡ chữ hiện tại 100%"
-          : `Cỡ chữ hiện tại ${fontScale}%, bấm để về 100%`;
+      fontReset.textContent = scale + '%';
+      fontReset.title = 'Cỡ chữ hiện tại ' + scale + '%. Chạm để về 100%';
+      fontReset.setAttribute('aria-label', fontReset.title);
     }
-
-    if (fontDown) {
-      fontDown.disabled = fontScale === FONT_LEVELS[0];
-    }
-
-    if (fontUp) {
-      fontUp.disabled = fontScale === FONT_LEVELS[FONT_LEVELS.length - 1];
-    }
-
-    safeSet("study-font-scale", String(fontScale));
+    if (fontDown) fontDown.disabled = scale === FONT_LEVELS[0];
+    if (fontUp) fontUp.disabled = scale === FONT_LEVELS[FONT_LEVELS.length - 1];
   }
 
-  applyFontScale(fontScale);
+  /* ---------- Collapsible controls ---------- */
 
-  fontDown?.addEventListener("click", () => {
-    const index = FONT_LEVELS.indexOf(fontScale);
-    if (index > 0) {
-      applyFontScale(FONT_LEVELS[index - 1]);
-    }
-  });
-
-  fontUp?.addEventListener("click", () => {
-    const index = FONT_LEVELS.indexOf(fontScale);
-    if (index >= 0 && index < FONT_LEVELS.length - 1) {
-      applyFontScale(FONT_LEVELS[index + 1]);
-    }
-  });
-
-  fontReset?.addEventListener("click", () => {
-    applyFontScale(100);
-  });
-
-  /* ---------- TOC drawer ---------- */
-
-  function setToc(open) {
-    body.classList.toggle("toc-open", open);
-    tocToggle?.setAttribute("aria-expanded", String(open));
-    tocOverlay?.setAttribute("aria-hidden", String(!open));
-
-    if (open) {
-      requestAnimationFrame(() => tocClose?.focus());
-    }
+  function setControlsOpen(open) {
+    if (!controls) return;
+    controls.classList.toggle('open', open);
+    controlsToggle?.setAttribute('aria-expanded', String(open));
+    controlsToggle?.setAttribute('aria-label', open ? 'Đóng công cụ' : 'Mở công cụ');
+    controlsToggle?.setAttribute('title', open ? 'Đóng công cụ' : 'Mở công cụ');
   }
 
-  tocToggle?.addEventListener("click", () => {
-    setToc(!body.classList.contains("toc-open"));
+  controlsToggle?.addEventListener('click', event => {
+    event.stopPropagation();
+    setControlsOpen(!controls.classList.contains('open'));
   });
 
-  tocClose?.addEventListener("click", () => setToc(false));
-  tocOverlay?.addEventListener("click", () => setToc(false));
-
-  tocDrawer?.querySelectorAll("a[href^='#']").forEach(link => {
-    link.addEventListener("click", () => setToc(false));
+  controlPanel?.addEventListener('click', event => event.stopPropagation());
+  document.addEventListener('pointerdown', event => {
+    if (controls?.classList.contains('open') && !controls.contains(event.target)) setControlsOpen(false);
   });
 
-  document.addEventListener("keydown", event => {
-    if (event.key === "Escape" && body.classList.contains("toc-open")) {
-      setToc(false);
-      tocToggle?.focus();
+  /* ---------- TOC ---------- */
+
+  function openToc() {
+    body.classList.add('toc-open');
+    tocButton?.setAttribute('aria-expanded', 'true');
+    setControlsOpen(false);
+  }
+
+  function closeToc() {
+    body.classList.remove('toc-open');
+    tocButton?.setAttribute('aria-expanded', 'false');
+  }
+
+  tocButton?.addEventListener('click', openToc);
+  tocClose?.addEventListener('click', closeToc);
+  overlay?.addEventListener('click', closeToc);
+
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape') {
+      closeToc();
+      setControlsOpen(false);
     }
   });
 
-  /* ---------- Back / Next section ---------- */
+  document.querySelectorAll('a[href="#toc"]').forEach(a => {
+    a.addEventListener('click', event => {
+      event.preventDefault();
+      openToc();
+    });
+  });
 
-  const studySections = Array.from(
-    document.querySelectorAll("main .study-section[id]")
-  );
+  /* TOC navigation does not add hash-history entries. */
+  document.querySelectorAll('#toc a[href^="#"]').forEach(a => {
+    a.addEventListener('click', event => {
+      const href = a.getAttribute('href');
+      if (!href || href === '#toc') return;
+      const target = document.getElementById(decodeURIComponent(href.slice(1)));
+      if (!target) return;
+      event.preventDefault();
+      closeToc();
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      window.setTimeout(scheduleReaderSave, 450);
+    });
+  });
+
+  /* ---------- Previous / next lesson item ---------- */
+
+  const tocTargets = Array.from(document.querySelectorAll('#toc a[href^="#"]'))
+    .map(a => document.getElementById(decodeURIComponent(a.getAttribute('href').slice(1))))
+    .filter((el, i, arr) => el && el.id !== 'toc' && arr.indexOf(el) === i);
 
   function currentSectionIndex() {
-    if (!studySections.length) return -1;
-
-    const referenceY = window.scrollY + Math.min(window.innerHeight * 0.32, 220);
-    let index = 0;
-
-    for (let i = 0; i < studySections.length; i++) {
-      if (studySections[i].offsetTop <= referenceY) {
-        index = i;
-      } else {
-        break;
-      }
-    }
-    return index;
+    let idx = -1;
+    const threshold = 24;
+    tocTargets.forEach((el, i) => {
+      if (el.getBoundingClientRect().top <= threshold) idx = i;
+    });
+    return idx;
   }
 
-  function updateNavState() {
-    if (!studySections.length) {
-      if (prevButton) prevButton.disabled = true;
-      if (nextButton) nextButton.disabled = true;
+  function updateSectionButtons() {
+    const i = currentSectionIndex();
+    if (prevButton) prevButton.disabled = !tocTargets.length || i <= 0;
+    if (nextButton) nextButton.disabled = !tocTargets.length || i >= tocTargets.length - 1;
+  }
+
+  function goToIndex(i) {
+    if (!tocTargets.length) return;
+    i = Math.max(0, Math.min(tocTargets.length - 1, i));
+    tocTargets[i].scrollIntoView({ behavior: 'smooth', block: 'start' });
+    window.setTimeout(() => {
+      const state = captureReadingPosition();
+      if (state) saveReaderState(state);
+      updateSectionButtons();
+    }, 450);
+  }
+
+  prevButton?.addEventListener('click', () => goToIndex(Math.max(0, currentSectionIndex() - 1)));
+  nextButton?.addEventListener('click', () => goToIndex(Math.min(tocTargets.length - 1, currentSectionIndex() + 1)));
+
+  /* ---------- Home ---------- */
+
+  homeButton?.addEventListener('click', () => {
+    const state = captureReadingPosition();
+    if (state) saveReaderState(state);
+    safeSet(explicitHomeKey, '1');
+    safeSet('study-home-click-at', String(Date.now()));
+    window.location.href = new URL('index.html', window.location.href).href;
+  });
+
+  /* ---------- Initialize state ---------- */
+
+  applyTheme(root.dataset.theme === 'light' ? 'light' : 'dark');
+  applyMode(root.dataset.studyMode || 'full');
+  applyFontScale(currentScale());
+
+  themeButton?.addEventListener('click', () => applyTheme(root.dataset.theme === 'dark' ? 'light' : 'dark'));
+  modeButton?.addEventListener('click', () => applyMode(root.dataset.studyMode === 'keywords' ? 'full' : 'keywords'));
+
+  fontDown?.addEventListener('click', () => {
+    const i = FONT_LEVELS.indexOf(currentScale());
+    if (i > 0) preserveReadingPosition(() => applyFontScale(FONT_LEVELS[i - 1]));
+  });
+
+  fontUp?.addEventListener('click', () => {
+    const i = FONT_LEVELS.indexOf(currentScale());
+    if (i >= 0 && i < FONT_LEVELS.length - 1) preserveReadingPosition(() => applyFontScale(FONT_LEVELS[i + 1]));
+  });
+
+  fontReset?.addEventListener('click', () => preserveReadingPosition(() => applyFontScale(100)));
+
+  /* ---------- Scroll / rotation / resize persistence ---------- */
+
+  window.addEventListener('scroll', () => {
+    scheduleReaderSave();
+    updateSectionButtons();
+  }, { passive: true });
+
+  function handleLayoutViewportChange() {
+    /*
+      A native two-finger pinch changes VisualViewport but normally does not
+      change the layout viewport. Ignore it completely so the page does not
+      recalculate width or fight the browser's native zoom.
+    */
+    if (isPinchZoomActive()) {
+      pinchZoomSession = true;
       return;
     }
 
-    const index = currentSectionIndex();
-    if (prevButton) prevButton.disabled = index <= 0;
-    if (nextButton) nextButton.disabled = index >= studySections.length - 1;
-  }
+    const { width: w, height: h } = layoutViewportSize();
 
-  function moveSection(delta) {
-    const index = currentSectionIndex();
-    const targetIndex = Math.max(
-      0,
-      Math.min(studySections.length - 1, index + delta)
-    );
+    /*
+      When pinch zoom returns to scale 1, VisualViewport may emit another
+      resize. If the layout viewport itself did not change, this was only zoom,
+      so do nothing.
+    */
+    const layoutChanged =
+      Math.abs(w - lastViewportWidth) >= 1 ||
+      Math.abs(h - lastViewportHeight) >= 1;
 
-    studySections[targetIndex]?.scrollIntoView({
-      behavior: "smooth",
-      block: "start"
-    });
-  }
-
-  prevButton?.addEventListener("click", () => moveSection(-1));
-  nextButton?.addEventListener("click", () => moveSection(1));
-
-  let ticking = false;
-  window.addEventListener("scroll", () => {
-    if (!ticking) {
-      requestAnimationFrame(() => {
-        updateNavState();
-        ticking = false;
-      });
-      ticking = true;
+    if (!layoutChanged) {
+      pinchZoomSession = false;
+      return;
     }
+
+    pinchZoomSession = false;
+
+    if (!resizeAnchor) {
+      resizeAnchor =
+        lastStablePosition ||
+        readReaderState() ||
+        captureReadingPosition();
+    }
+
+    /*
+      Only a real layout change, such as portrait <-> landscape, updates
+      --app-viewport-width.
+    */
+    syncViewportGeometry();
+    lastViewportWidth = w;
+    lastViewportHeight = h;
+
+    if (resizeAnchor) {
+      settleRestore(resizeAnchor, [0, 50, 140, 300]);
+    }
+
+    clearTimeout(resizeRestoreTimer);
+    resizeRestoreTimer = window.setTimeout(() => {
+      if (resizeAnchor) {
+        settleRestore(resizeAnchor, [0, 80, 220]);
+      }
+
+      window.setTimeout(() => {
+        lastStablePosition =
+          resizeAnchor ||
+          captureReadingPosition();
+
+        if (lastStablePosition) {
+          saveReaderState(lastStablePosition);
+        }
+
+        resizeAnchor = null;
+        updateSectionButtons();
+      }, 320);
+    }, 260);
+  }
+
+  function handleVisualViewportResize() {
+    /*
+      visualViewport resize is the main signal used by Safari/WebKit while
+      pinch-zooming. At scale != 1 this is zoom, not a responsive-layout event.
+    */
+    if (isPinchZoomActive()) {
+      pinchZoomSession = true;
+      return;
+    }
+
+    handleLayoutViewportChange();
+  }
+
+  window.addEventListener(
+    'resize',
+    handleLayoutViewportChange,
+    { passive: true }
+  );
+
+  window.addEventListener('orientationchange', () => {
+    /*
+      Rotation is a genuine layout change. Use the stored logical reading
+      position, then wait for iOS to finish updating its layout viewport.
+    */
+    resizeAnchor =
+      lastStablePosition ||
+      readReaderState() ||
+      captureReadingPosition();
+
+    [40, 120, 280].forEach(delay => {
+      window.setTimeout(() => {
+        if (isPinchZoomActive()) return;
+
+        const size = layoutViewportSize();
+        syncViewportGeometry();
+
+        if (
+          Math.abs(size.width - lastViewportWidth) >= 1 ||
+          Math.abs(size.height - lastViewportHeight) >= 1
+        ) {
+          lastViewportWidth = size.width;
+          lastViewportHeight = size.height;
+        }
+
+        if (resizeAnchor) {
+          settleRestore(resizeAnchor, [0, 70, 180]);
+        }
+      }, delay);
+    });
+
+    window.setTimeout(() => {
+      resizeAnchor = null;
+      updateSectionButtons();
+    }, 620);
   }, { passive: true });
 
-  window.addEventListener("resize", updateNavState);
-  updateNavState();
-})();
-</script>
+  window.visualViewport?.addEventListener(
+    'resize',
+    handleVisualViewportResize,
+    { passive: true }
+  );
 
-</body>
+  function saveLifecycleState() {
+    const state = captureReadingPosition() || lastStablePosition;
+    if (state) saveReaderState(state);
+    rememberCurrentPage();
+  }
+
+  document.addEventListener('visibilitychange', () => {
+    if (document.visibilityState === 'hidden') saveLifecycleState();
+    else {
+      rememberCurrentPage();
+      const state = readReaderState();
+      if (state) settleRestore(state, [0, 80, 220]);
+    }
+  });
+
+  window.addEventListener('pagehide', saveLifecycleState);
+  window.addEventListener('beforeunload', saveLifecycleState);
+
+  window.addEventListener('pageshow', () => {
+    rememberCurrentPage();
+    rebuildReaderAnchors();
+    const state = readReaderState();
+    if (!location.hash && state) settleRestore(state, [0, 80, 220, 500]);
+    window.setTimeout(updateSectionButtons, 80);
+  });
+
+  window.addEventListener('load', () => {
+    rebuildReaderAnchors();
+    const state = readReaderState();
+    if (!location.hash && state) settleRestore(state, [0, 80, 220, 500]);
+    else {
+      const current = captureReadingPosition();
+      if (current) saveReaderState(current);
+    }
+    updateSectionButtons();
+  });
+})();
+</script></body>
 </html>

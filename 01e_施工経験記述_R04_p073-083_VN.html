@@ -1,24 +1,20 @@
 <!DOCTYPE html>
-<html lang="vi" data-theme="dark">
+<!DOCTYPE html>
+
+<html data-study-mode="full" data-theme="dark" lang="vi">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<meta name="color-scheme" content="dark light">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<meta content="dark light" name="color-scheme"/>
+<meta content="test-2.1-responsive-landscape" name="study-template-version"/>
 <title>令和4年度 問題1 施工経験記述</title>
-
 <style>
-/* =========================================================
-   FIXED DESIGN TOKENS
-   Do not redesign these values per lesson.
-   ========================================================= */
-
 :root {
-  --font-vi: Arial, Helvetica, sans-serif;
-  --font-ja: "Hiragino Sans", "Yu Gothic", "Yu Gothic UI", Meiryo, sans-serif;
+  --app-viewport-width: 100vw;
+  --font-vi: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  --font-ja: "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic UI", "Yu Gothic", Meiryo, sans-serif;
   --base-font-size: 16px;
-  --content-width: 1320px;
-  --control-size: 38px;
-  --control-gap: 4px;
+  color-scheme: dark;
 }
 
 html[data-theme="dark"] {
@@ -36,16 +32,17 @@ html[data-theme="dark"] {
   --note-bg: #1C2028;
   --memory-bg: #20231C;
   --keyword: #74D7FF;
-  --keyword-bg: rgba(75, 190, 255, .10);
+  --keyword-bg: rgba(75, 190, 255, 0.10);
   --critical-bg: #594613;
   --critical-text: #FFE39A;
   --trap: #FF8585;
   --trap-underline: #FF5F5F;
-  --relation-bg: rgba(139, 126, 255, .12);
+  --relation-bg: rgba(139, 126, 255, 0.12);
   --relation-border: #8F86FF;
   --shadow: rgba(0, 0, 0, .28);
   --dock-bg: rgba(23, 27, 34, .94);
-  --overlay: rgba(0, 0, 0, .46);
+  --overlay: rgba(0, 0, 0, .48);
+  color-scheme: dark;
 }
 
 html[data-theme="light"] {
@@ -72,586 +69,239 @@ html[data-theme="light"] {
   --relation-border: #6C5CE7;
   --shadow: rgba(31, 38, 49, .12);
   --dock-bg: rgba(255, 255, 255, .94);
-  --overlay: rgba(20, 24, 30, .32);
+  --overlay: rgba(19, 26, 35, .28);
+  color-scheme: light;
 }
 
-/* =========================================================
-   BASE
-   ========================================================= */
-
 * { box-sizing: border-box; }
-
 html {
   scroll-behavior: smooth;
   font-size: var(--base-font-size);
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
-
-body {
+body { overflow-anchor: none;
   margin: 0;
-  min-height: 100vh;
   background: var(--bg);
   color: var(--text);
   font-family: var(--font-vi);
   font-size: 1rem;
   line-height: 1.72;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
+  padding-bottom: 11rem;
 }
+:lang(vi), .translation, .translation-cell, .vn-topic, .vn-answer { font-family: var(--font-vi); }
+:lang(ja), .original, .original-cell, .jp-topic, .jp-answer { font-family: var(--font-ja); }
+strong, b { font-weight: 700; }
+a { color: var(--link); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+a:hover { text-decoration-thickness: 2px; }
+h1, h2, h3, h4 { color: var(--heading); line-height: 1.35; }
+h1 { font-size: clamp(1.8rem, 4vw, 2.8rem); margin: 0 0 .55rem; }
+h2 { font-size: clamp(1.38rem, 2.8vw, 2rem); margin: 0; }
+h3 { font-size: clamp(1.12rem, 2vw, 1.48rem); }
+h4 { font-size: 1.02rem; }
+[id] { scroll-margin-top: 22px; }
+p { margin: .62rem 0; }
+ul, ol { padding-left: 1.5rem; }
+li { margin: .34rem 0; }
 
-:lang(vi) {
-  font-family: var(--font-vi);
-}
-
-:lang(ja) {
-  font-family: var(--font-ja);
-}
-
-a {
-  color: var(--link);
-  text-decoration-thickness: 1px;
-  text-underline-offset: 3px;
-}
-
-a:hover {
-  text-decoration-thickness: 2px;
-}
-
-button {
-  font: inherit;
-}
-
-h1, h2, h3, h4 {
-  color: var(--heading);
-  line-height: 1.35;
-}
-
-h1 {
-  margin: 0 0 .35rem;
-  font-size: clamp(1.75rem, 4vw, 2.7rem);
-}
-
-h2 {
-  margin: 2.5rem 0 1rem;
-  padding-bottom: .42rem;
-  border-bottom: 1px solid var(--border);
-  font-size: clamp(1.42rem, 3vw, 2rem);
-}
-
-h3 {
-  margin: 1.9rem 0 .75rem;
-  font-size: clamp(1.16rem, 2.4vw, 1.5rem);
-}
-
-h4 {
-  margin: 1.2rem 0 .45rem;
-  font-size: 1rem;
-}
-
-p {
-  margin: .58rem 0;
-}
-
-ul, ol {
-  padding-left: 1.45rem;
-}
-
-li {
-  margin: .3rem 0;
-}
-
-[id] {
-  scroll-margin-top: 18px;
-}
-
-/* =========================================================
-   PAGE LAYOUT
-   ========================================================= */
-
-.page-shell {
-  width: min(var(--content-width), calc(100% - 28px));
+body > main,
+body > .page-shell {
+  width: min(1320px, calc(100% - 32px));
   margin: 0 auto;
-  padding: 18px 0 112px;
+  padding: 26px 0 70px;
 }
+body > .page-shell > main { width: 100%; margin: 0; padding: 0; }
 
-.hero,
-.toc-card,
-.study-section,
-.aggregate-section {
+.hero {
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: 16px;
   box-shadow: 0 8px 28px var(--shadow);
+  padding: clamp(22px, 4vw, 42px);
+  margin: 0 0 24px;
 }
-
-.hero {
-  margin-bottom: 22px;
-  padding: clamp(22px, 3vw, 40px);
-}
-
-.hero-subtitle {
-  margin: 0;
+.eyebrow, .hero-subtitle, .subtitle, .meta-line, .source-ref, .mini-label, .small, .meta-label {
   color: var(--text-muted);
-  font-size: 1.06rem;
 }
+.eyebrow { font-size: .82rem; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; }
+.hero-subtitle, .subtitle { font-size: 1.08rem; }
+.source-ref, .mini-label, .small, .meta-label { font-size: .86rem; }
 
-.meta-grid {
+.summary-grid, .meta-grid, .mini-grid, .coverage {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(195px, 1fr));
-  gap: 10px;
-  margin-top: 16px;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: .72rem;
+  margin-top: 1rem;
 }
-
-.meta-item {
-  padding: 10px 12px;
+.summary-card, .summary-item, .meta-item, .mini-card, .coverage > div {
   background: var(--surface-alt);
   border: 1px solid var(--border);
   border-radius: 10px;
+  padding: .75rem .85rem;
 }
+.summary-item b, .summary-card strong { color: var(--heading); }
+.source-list { color: var(--text-muted); }
 
-.meta-label {
-  display: block;
-  margin-bottom: 2px;
-  color: var(--text-muted);
-  font-size: .8rem;
-}
-
-.study-section,
+body > main > section:not(#toc),
+body > .page-shell > section:not(#toc),
+body > .page-shell > main > section,
+.topic,
 .aggregate-section {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  box-shadow: 0 7px 22px var(--shadow);
+  padding: clamp(18px, 3vw, 30px);
   margin: 22px 0;
-  padding: clamp(18px, 2.6vw, 30px);
 }
-
-.section-head {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 12px;
-  margin-bottom: 16px;
-  padding-bottom: 10px;
+.subsection { margin: 1.7rem 0 2.1rem; }
+.subsection-title, .section-head {
   border-bottom: 1px solid var(--border);
+  padding-bottom: .65rem;
+  margin-bottom: 1rem;
 }
+.section-head { display: flex; gap: 12px; align-items: baseline; justify-content: space-between; }
 
-.section-head h2,
-.section-head h3 {
-  margin: 0;
-  padding: 0;
-  border: 0;
-}
-
-.source-ref {
-  color: var(--text-muted);
-  font-size: .84rem;
-  white-space: nowrap;
-}
-
-.subsection {
-  margin: 26px 0 32px;
-}
-
-.subsection:first-child {
-  margin-top: 0;
-}
-
-.study-grid {
+.study-grid, .lang-grid, .bilingual-note {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  gap: 14px;
+  gap: 1rem;
   align-items: start;
 }
-
-.study-card {
-  min-width: 0;
-  overflow: hidden;
+.study-card, .lang-card, .note-pane {
   border: 1px solid var(--border);
   border-radius: 12px;
+  overflow: hidden;
+  min-width: 0;
+  background: var(--surface-alt);
 }
-
-.study-card.original {
-  background: var(--original-bg);
-}
-
-.study-card.translation {
-  background: var(--translation-bg);
-}
-
+.study-card.original, .lang-card.original, .original-cell, .jp-topic, .jp-answer { background: var(--original-bg); }
+.study-card.translation, .lang-card.translation, .translation-cell, .vn-topic, .vn-answer { background: var(--translation-bg); }
 .card-title {
-  padding: 9px 13px;
+  padding: .62rem .85rem;
   background: var(--surface-alt);
   border-bottom: 1px solid var(--border);
   color: var(--heading);
-  font-weight: 800;
+  font-weight: 700;
   letter-spacing: .02em;
 }
+.card-body, .recall-source { padding: .9rem 1rem; }
+.card-body.recall-source { padding: 1rem 1.05rem; }
+.item-block { border-top: 1px dashed var(--border); padding-top: .72rem; margin-top: .72rem; }
+.item-block:first-child { border-top: 0; padding-top: 0; margin-top: 0; }
+.item-label { font-weight: 700; color: var(--heading); margin-right: .35em; }
 
-.recall-source {
-  padding: 14px 16px 16px;
-  transition: color .15s ease;
-}
+.table-wrap { overflow-x: auto; margin: .9rem 0; border: 1px solid var(--border); border-radius: 10px; }
+table { width: 100%; border-collapse: collapse; min-width: 650px; background: var(--surface); }
+th, td { border: 1px solid var(--border); padding: .62rem .7rem; vertical-align: top; text-align: left; }
+th { background: var(--surface-alt); color: var(--heading); font-weight: 700; }
+caption { text-align: left; font-weight: 700; color: var(--heading); padding: .58rem .7rem; background: var(--surface-alt); caption-side: top; }
+.compact th, .compact td { padding: .48rem .55rem; }
+.study-table { min-width: 1040px; }
+.study-table .meta { white-space: nowrap; text-align: center; background: var(--surface-alt); }
+.glossary-table { min-width: 920px; }
+.memory-table, .number-table, .num-table { min-width: 760px; }
 
-.recall-source > :first-child {
-  margin-top: 0;
-}
-
-.recall-source > :last-child {
-  margin-bottom: 0;
-}
-
-/* =========================================================
-   CONTENT COMPONENTS
-   ========================================================= */
-
-.table-wrap {
-  overflow-x: auto;
-  margin: 12px 0 18px;
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  -webkit-overflow-scrolling: touch;
-}
-
-table {
-  width: 100%;
-  min-width: 640px;
-  border-collapse: collapse;
-  background: var(--surface);
-}
-
-th,
-td {
-  padding: 9px 11px;
-  border-right: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
-  vertical-align: top;
-  text-align: left;
-}
-
-th:last-child,
-td:last-child {
-  border-right: 0;
-}
-
-tr:last-child td {
-  border-bottom: 0;
-}
-
-th {
-  background: var(--surface-alt);
-  color: var(--heading);
-  font-weight: 800;
-}
-
-caption {
-  padding: 9px 11px;
-  background: var(--surface-alt);
-  color: var(--heading);
-  font-weight: 800;
-  text-align: left;
-  caption-side: top;
-}
-
-.summary-box,
-.note-box,
-.memory-box,
-.warning-box,
-.figure-box,
-.formula-box,
-.comparison-box {
-  margin: 14px 0;
-  padding: 13px 15px;
-  background: var(--note-bg);
+.summary-box, .note-box, .note, .info-box, .background-box, .exam-note, .memory-box, .warning-box, .warning, .figure-box, .figure-card {
   border: 1px solid var(--border);
   border-left-width: 4px;
   border-radius: 10px;
+  padding: .9rem 1rem;
+  margin: 1rem 0;
+  background: var(--note-bg);
 }
+.summary-box, .note-box, .note, .info-box, .background-box { border-left-color: var(--link); }
+.memory-box, .exam-note { background: var(--memory-bg); border-left-color: var(--critical-text); }
+.warning-box, .warning { border-left-color: var(--trap); }
+.figure-box, .figure-card { border-left-color: var(--relation-border); }
+.figure-card { overflow: hidden; padding: 0; }
+.figure-card img { display: block; width: 100%; height: auto; background: #fff; }
+.figure-card figcaption, .figure-explain { padding: .8rem 1rem; }
 
-.summary-box,
-.note-box {
-  border-left-color: var(--link);
-}
-
-.memory-box {
-  background: var(--memory-bg);
-  border-left-color: var(--critical-text);
-}
-
-.warning-box {
-  border-left-color: var(--trap);
-}
-
-.figure-box,
-.formula-box,
-.comparison-box {
-  border-left-color: var(--relation-border);
-}
-
-.figure-card {
-  margin: 15px 0 20px;
-  overflow: hidden;
-  background: var(--surface-alt);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-}
-
-.figure-card img {
-  display: block;
-  width: 100%;
-  height: auto;
-  background: #fff;
-}
-
-.figure-card figcaption {
-  padding: 10px 13px 12px;
-  color: var(--text-muted);
-  font-size: .9rem;
-}
-
-.figure-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 12px;
-  margin: 15px 0 20px;
-}
-
-.figure-grid .figure-card {
-  margin: 0;
-}
-
-.item-block {
-  margin-top: 11px;
-  padding-top: 11px;
-  border-top: 1px dashed var(--border);
-}
-
-.item-block:first-child {
-  margin-top: 0;
-  padding-top: 0;
-  border-top: 0;
-}
-
-.item-label {
-  margin-right: .3em;
-  color: var(--heading);
-  font-weight: 800;
-}
-
-.formula-line {
+.formula, .formula-line {
   display: flex;
   flex-wrap: wrap;
+  gap: .45rem;
   align-items: center;
-  gap: 6px;
-}
-
-.flow-node {
-  padding: 5px 8px;
-  background: var(--surface);
+  padding: .75rem;
+  background: var(--surface-alt);
   border: 1px solid var(--border);
-  border-radius: 7px;
-  font-weight: 700;
+  border-radius: 9px;
+  margin: .75rem 0;
 }
-
-.flow-arrow {
-  color: var(--text-muted);
-  font-weight: 800;
-}
-
-/* =========================================================
-   SEMANTIC HIGHLIGHTING
-   ========================================================= */
+.flow-node { border: 1px solid var(--border); border-radius: 7px; padding: .35rem .55rem; background: var(--surface); font-weight: 700; }
+.flow-arrow { color: var(--text-muted); font-weight: 700; }
 
 .kw {
-  padding: .02em .16em;
-  background: var(--keyword-bg);
-  color: var(--keyword);
-  border-radius: .2em;
-  font-weight: 750;
-}
-
-.critical {
-  padding: .04em .22em;
-  background: var(--critical-bg);
-  color: var(--critical-text);
-  border-radius: .22em;
-  font-weight: 750;
-}
-
-.trap {
-  color: var(--trap);
   font-weight: 700;
+  color: var(--keyword);
+  background: var(--keyword-bg);
+  padding: .02em .16em;
+  border-radius: .2em;
+}
+.critical {
+  font-weight: 700;
+  color: var(--critical-text);
+  background: var(--critical-bg);
+  padding: .04em .22em;
+  border-radius: .22em;
+}
+.trap {
+  font-weight: 700;
+  color: var(--trap);
   text-decoration-line: underline;
   text-decoration-color: var(--trap-underline);
   text-decoration-thickness: 2px;
   text-underline-offset: 3px;
 }
-
 .relation {
-  padding: .02em .14em;
-  background: var(--relation-bg);
+  font-weight: 600;
   color: var(--text);
+  background: var(--relation-bg);
   border-bottom: 2px solid var(--relation-border);
-  font-weight: 650;
+  padding: .02em .14em;
 }
 
-/* Only recall-source is dimmed in Keywords mode. */
-body.keyword-focus .recall-source {
-  color: var(--focus-muted);
-}
+html[data-study-mode="keywords"] .recall-source { color: var(--focus-muted); }
+html[data-study-mode="keywords"] .recall-source .kw { color: var(--keyword); background: var(--keyword-bg); }
+html[data-study-mode="keywords"] .recall-source .critical { color: var(--critical-text); background: var(--critical-bg); }
+html[data-study-mode="keywords"] .recall-source .trap { color: var(--trap); }
+html[data-study-mode="keywords"] .recall-source .relation { color: var(--text); background: var(--relation-bg); }
+html[data-study-mode="keywords"] .recall-source th,
+html[data-study-mode="keywords"] .recall-source .card-title,
+html[data-study-mode="keywords"] .recall-source .item-label { color: var(--heading); }
 
-body.keyword-focus .recall-source .kw {
-  color: var(--keyword);
-  background: var(--keyword-bg);
-}
+.backlink, .back-toc, .back { display: inline-block; margin-top: .8rem; font-size: .9rem; }
 
-body.keyword-focus .recall-source .critical {
-  color: var(--critical-text);
-  background: var(--critical-bg);
-}
-
-body.keyword-focus .recall-source .trap {
-  color: var(--trap);
-}
-
-body.keyword-focus .recall-source .relation {
-  color: var(--text);
-  background: var(--relation-bg);
-}
-
-body.keyword-focus .recall-source th,
-body.keyword-focus .recall-source .item-label {
-  color: var(--heading);
-}
-
-/* =========================================================
-   TOC DRAWER
-   ========================================================= */
-
-.toc-overlay {
+/* Collapsible study controls: one launcher at bottom-left. */
+.control-cluster {
   position: fixed;
-  inset: 0;
-  z-index: 1990;
-  visibility: hidden;
-  opacity: 0;
-  background: var(--overlay);
-  transition: opacity .18s ease, visibility .18s ease;
-}
-
-.toc-drawer {
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  z-index: 2000;
-  width: min(78vw, 360px);
-  padding: max(14px, env(safe-area-inset-top)) 14px
-           max(18px, env(safe-area-inset-bottom))
-           max(14px, env(safe-area-inset-left));
-  overflow-y: auto;
-  background: var(--surface);
-  border-right: 1px solid var(--border);
-  box-shadow: 14px 0 36px var(--shadow);
-  transform: translateX(-103%);
-  transition: transform .2s ease;
-  -webkit-overflow-scrolling: touch;
-}
-
-body.toc-open .toc-overlay {
-  visibility: visible;
-  opacity: 1;
-}
-
-body.toc-open .toc-drawer {
-  transform: translateX(0);
-}
-
-.toc-drawer-head {
-  position: sticky;
-  top: 0;
-  z-index: 1;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 10px;
-  padding: 4px 0 10px;
-  background: var(--surface);
-  border-bottom: 1px solid var(--border);
-}
-
-.toc-drawer-head h2 {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  font-size: 1.2rem;
-}
-
-.toc-close {
-  width: 34px;
-  height: 34px;
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  background: var(--surface-alt);
-  color: var(--text);
-  cursor: pointer;
-}
-
-.toc-list {
-  margin: 12px 0 0;
-  padding-left: 1.2rem;
-}
-
-.toc-list ol {
-  margin-top: 4px;
-}
-
-/* =========================================================
-   COMPACT CONTROLS
-   Left: vertical TOC / Back / Next
-   Right: horizontal display controls
-   ========================================================= */
-
-.nav-dock-left,
-.settings-dock-right {
-  position: fixed;
-  bottom: max(14px, env(safe-area-inset-bottom));
-  z-index: 1900;
-  padding: 5px;
-  background: var(--dock-bg);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  box-shadow: 0 8px 24px var(--shadow);
-  -webkit-backdrop-filter: blur(10px);
-  backdrop-filter: blur(10px);
+  left: max(8px, env(safe-area-inset-left));
+  bottom: max(10px, env(safe-area-inset-bottom));
+  z-index: 2200;
+  width: 38px;
+  height: 38px;
   user-select: none;
+  -webkit-user-select: none;
 }
 
-.nav-dock-left {
-  left: max(10px, env(safe-area-inset-left));
-  display: flex;
-  flex-direction: column;
-  gap: var(--control-gap);
-}
-
-.settings-dock-right {
-  right: max(10px, env(safe-area-inset-right));
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: var(--control-gap);
-}
-
-.nav-dock-left button,
-.settings-dock-right button {
-  display: flex;
+.control-launcher,
+.control-panel button {
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: var(--control-size);
-  height: var(--control-size);
-  min-width: var(--control-size);
-  min-height: var(--control-size);
+  flex: 0 0 auto;
+  width: 32px;
+  height: 32px;
+  min-width: 32px;
+  min-height: 32px;
   padding: 0;
-  background: var(--surface-alt);
-  color: var(--text);
   border: 1px solid var(--border);
   border-radius: 8px;
-  font-family: var(--font-vi);
-  font-size: .96rem;
+  background: var(--surface-alt);
+  color: var(--text);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
   font-weight: 700;
   line-height: 1;
   cursor: pointer;
@@ -659,98 +309,246 @@ body.toc-open .toc-drawer {
   -webkit-tap-highlight-color: transparent;
 }
 
-.nav-dock-left button:hover,
-.settings-dock-right button:hover {
+.control-launcher {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  z-index: 2;
+  width: 38px;
+  height: 38px;
+  min-width: 38px;
+  min-height: 38px;
+  border-radius: 11px;
+  background: var(--dock-bg);
+  box-shadow: 0 6px 18px var(--shadow);
+  font-size: 20px;
+  letter-spacing: 1px;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+}
+
+.control-panel {
+  position: absolute;
+  left: 43px;
+  bottom: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 2px;
+  width: max-content;
+  max-width: calc(100dvw - max(59px, env(safe-area-inset-left) + 59px) - max(8px, env(safe-area-inset-right)));
+  padding: 3px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  overscroll-behavior-x: contain;
+  scrollbar-width: none;
+  border: 1px solid var(--border);
+  border-radius: 11px;
+  background: var(--dock-bg);
+  box-shadow: 0 6px 18px var(--shadow);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateX(-10px) scale(.98);
+  transform-origin: left bottom;
+  transition: opacity .14s ease, transform .14s ease, visibility .14s ease;
+}
+
+.control-panel::-webkit-scrollbar { display: none; }
+
+.control-cluster.open .control-panel {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateX(0) scale(1);
+}
+
+.control-cluster.open .control-launcher {
   border-color: var(--link);
 }
 
-.nav-dock-left button:active,
-.settings-dock-right button:active {
-  transform: translateY(1px);
-}
+.control-panel button:active,
+.control-launcher:active { transform: translateY(1px); }
 
-.nav-dock-left button:disabled {
-  opacity: .38;
+.control-panel button:hover,
+.control-launcher:hover { border-color: var(--link); }
+
+.control-panel button:disabled {
+  opacity: .36;
   cursor: default;
 }
 
-.settings-dock-right .font-reset {
-  font-size: .66rem;
+.control-panel .font-reset {
+  width: 38px;
+  min-width: 38px;
+  font-size: 9px;
   letter-spacing: -.03em;
 }
 
-.settings-dock-right .mode-toggle {
-  font-size: 1.02rem;
+.control-panel .mode-toggle { font-size: 14px; }
+
+.control-panel .home-icon svg {
+  width: 17px;
+  height: 17px;
+  display: block;
 }
 
-/* =========================================================
-   RESPONSIVE
-   ========================================================= */
+/*
+  Responsive reading geometry for iPad/iPhone.
+  The page follows the actual Visual Viewport width. When rotating to
+  landscape it expands across the wider screen instead of staying at
+  portrait width. Reader-anchor JS below restores the same logical text
+  position after the reflow.
+*/
+@media (pointer: coarse) {
+  body > main,
+  body > .page-shell {
+    width: min(calc(var(--app-viewport-width, 100vw) - 16px), 1320px) !important;
+    max-width: 1320px !important;
+  }
+
+
+  .hero {
+    padding: 1rem !important;
+  }
+
+  body > main > section:not(#toc),
+  body > .page-shell > section:not(#toc),
+  body > .page-shell > main > section,
+  .topic,
+  .aggregate-section {
+    padding: 1rem !important;
+  }
+}
+
+
+@media (pointer: coarse) and (orientation: portrait) {
+  .study-grid,
+  .lang-grid,
+  .bilingual-note {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+@media (pointer: coarse) and (orientation: landscape) {
+  body > main,
+  body > .page-shell {
+    width: min(calc(var(--app-viewport-width, 100dvw) - 20px), 1320px) !important;
+  }
+}
+
+/* TOC drawer */
+#toc {
+  position: fixed !important;
+  left: 0 !important;
+  top: 0 !important;
+  bottom: 0 !important;
+  z-index: 2100 !important;
+  width: min(82vw, 390px) !important;
+  max-height: 100dvh !important;
+  overflow-y: auto !important;
+  margin: 0 !important;
+  padding: 74px 20px 28px !important;
+  background: var(--surface) !important;
+  border: 0 !important;
+  border-right: 1px solid var(--border) !important;
+  border-radius: 0 16px 16px 0 !important;
+  box-shadow: 10px 0 30px var(--shadow) !important;
+  transform: translateX(-105%);
+  transition: transform .2s ease;
+}
+body.toc-open #toc { transform: translateX(0); }
+#toc .toc-grid { columns: 1 !important; display: block !important; }
+#toc ol { margin-top: .35rem; }
+.toc-drawer-head {
+  position: sticky;
+  top: -74px;
+  margin: -74px -20px 18px;
+  padding: 13px 14px;
+  min-height: 58px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  z-index: 2;
+}
+.toc-drawer-head strong { color: var(--heading); }
+.toc-close {
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  background: var(--surface-alt);
+  color: var(--text);
+  font: 700 1.25rem var(--font-vi);
+  cursor: pointer;
+}
+.toc-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  background: var(--overlay);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .2s ease;
+}
+body.toc-open .toc-overlay { opacity: 1; pointer-events: auto; }
+body.toc-open { overflow: hidden; }
 
 @media (max-width: 900px) {
-  .study-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .page-shell {
-    width: min(100% - 18px, 760px);
-  }
-
-  .section-head {
-    display: block;
-  }
-
-  .source-ref {
-    display: block;
-    margin-top: 6px;
-    white-space: normal;
-  }
+  .study-grid, .lang-grid, .bilingual-note { grid-template-columns: 1fr; }
+  body > main, body > .page-shell { width: min(100% - 20px, 780px); padding-top: 14px; }
+  .section-head { display: block; }
+  .source-ref { display: block; margin-top: .45rem; }
+  table { min-width: 620px; }
 }
 
 @media (max-width: 560px) {
-  body {
-    font-size: .96rem;
-  }
-
-  .hero,
-  .study-section,
-  .aggregate-section {
-    border-radius: 12px;
-  }
-
-  .recall-source {
-    padding: 12px 13px 14px;
-  }
-
-  :root {
-    --control-size: 36px;
-  }
-
-  .settings-dock-right {
-    right: max(7px, env(safe-area-inset-right));
-  }
-
-  .nav-dock-left {
-    left: max(7px, env(safe-area-inset-left));
-  }
+  body { font-size: 1rem; }
+  body > main, body > .page-shell { width: calc(100% - 14px); }
+  .hero { padding: 1rem; border-radius: 12px; }
+  body > main > section:not(#toc),
+  body > .page-shell > section:not(#toc),
+  body > .page-shell > main > section,
+  .topic, .aggregate-section { padding: 1rem; border-radius: 12px; }
 }
 
-@media (orientation: landscape) and (pointer: coarse) {
-  .nav-dock-left {
-    left: max(14px, env(safe-area-inset-left));
+
+/*
+  iPad/tablet landscape:
+  Japanese and Vietnamese return to two side-by-side columns.
+  The min-height condition avoids forcing ordinary phone landscape into
+  two columns that would be too narrow.
+*/
+@media (pointer: coarse) and (orientation: landscape) and (min-width: 700px) and (min-height: 600px) {
+  body > main,
+  body > .page-shell {
+    width: min(calc(var(--app-viewport-width, 100dvw) - 20px), 1320px) !important;
+    max-width: 1320px !important;
   }
 
-  .settings-dock-right {
-    right: max(14px, env(safe-area-inset-right));
+  .study-grid,
+  .lang-grid,
+  .bilingual-note {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important;
+    gap: clamp(.75rem, 1.4vw, 1rem) !important;
+    align-items: start;
+  }
+
+  .study-card,
+  .lang-card,
+  .note-pane {
+    min-width: 0;
   }
 }
-
-/* =========================================================
-   PRINT
-   ========================================================= */
 
 @media print {
-  html,
+  .control-cluster { display: none !important; }
+  :root,
   html[data-theme="dark"],
   html[data-theme="light"] {
     --bg: #FFFFFF;
@@ -772,266 +570,189 @@ body.toc-open .toc-drawer {
     --trap-underline: #9E1B12;
     --relation-bg: #F0EDFF;
     --relation-border: #5B4FD6;
+    --shadow: transparent;
   }
-
-  body {
-    background: #fff;
-    color: #111;
-    font-size: 11pt;
+  body { background: #fff; color: #111; font-size: 11pt; padding-bottom: 0; }
+  .control-cluster, .toc-overlay, .toc-drawer-head { display: none !important; }
+  #toc {
+    position: static !important;
+    transform: none !important;
+    width: auto !important;
+    max-height: none !important;
+    padding: 1rem !important;
+    border: 1px solid var(--border) !important;
+    border-radius: 10px !important;
+    box-shadow: none !important;
+    margin: 1rem 0 !important;
   }
-
-  .page-shell {
-    width: 100%;
-    padding: 0;
-  }
-
-  .nav-dock-left,
-  .settings-dock-right,
-  .toc-drawer,
-  .toc-overlay {
-    display: none !important;
-  }
-
-  .hero,
-  .study-card,
-  .summary-box,
-  .note-box,
-  .memory-box,
-  .warning-box,
-  .figure-card {
-    break-inside: avoid;
-  }
-
-  a {
-    color: #000;
-    text-decoration: none;
-  }
+  body > main, body > .page-shell { width: 100%; padding: 0; }
+  .hero, .study-card, .lang-card, .summary-box, .note-box, .note, .memory-box, .warning-box, .figure-box, .figure-card { break-inside: avoid; }
+  a { color: #000; text-decoration: none; }
+  .backlink, .back-toc, .back { display: none; }
 }
-</style>
-
-<script>
-/* Apply saved theme before body paint to reduce flashing. */
-(function () {
-  try {
-    const saved = localStorage.getItem("study-theme");
-    const systemDark = window.matchMedia &&
-      window.matchMedia("(prefers-color-scheme: dark)").matches;
-    document.documentElement.dataset.theme =
-      saved || (systemDark ? "dark" : "light");
-  } catch (e) {
-    document.documentElement.dataset.theme = "dark";
+</style><script>
+try {
+  if ("scrollRestoration" in history) {
+    history.scrollRestoration = "manual";
   }
-
+} catch (e) {}
+(function () {
+  const root = document.documentElement;
   try {
-    const savedScale = Number(localStorage.getItem("study-font-scale")) || 100;
-    const clampedScale = Math.max(80, Math.min(140, savedScale));
-    document.documentElement.style.setProperty(
-      "--base-font-size",
-      `${16 * clampedScale / 100}px`
-    );
-  } catch (e) {}
+    const savedTheme = localStorage.getItem('study-theme');
+    root.dataset.theme = savedTheme === 'light' ? 'light' : 'dark';
+
+    const savedMode = localStorage.getItem('study-mode');
+    root.dataset.studyMode = savedMode === 'keywords' ? 'keywords' : 'full';
+
+    const savedScale = Number(localStorage.getItem('study-font-scale'));
+    const scale = Number.isFinite(savedScale) && savedScale >= 50 && savedScale <= 150 && savedScale % 5 === 0
+      ? savedScale : 100;
+    root.style.setProperty('--base-font-size', (16 * scale / 100) + 'px');
+  } catch (e) {
+    root.dataset.theme = 'dark';
+    root.dataset.studyMode = 'full';
+    root.style.setProperty('--base-font-size', '16px');
+  }
 })();
-</script>
-</head>
-
+</script></head>
 <body>
-
-<!-- =======================================================
-     TOC DRAWER
-     Replace only the list contents.
-     ======================================================= -->
-<div id="toc" aria-hidden="true"></div>
-<div class="toc-overlay" id="toc-overlay" aria-hidden="true"></div>
-
-<aside class="toc-drawer" id="toc-drawer" aria-label="Mục lục">
-  <div class="toc-drawer-head">
-    <h2>Mục lục</h2>
-    <button class="toc-close" id="toc-close" type="button" aria-label="Đóng mục lục">×</button>
-  </div>
-
-  <!-- TOC_ITEMS_START -->
-<ol class="toc-list">
-<li><a href="#section-problem">令和4年度 問題1 施工経験記述</a><ol><li><a href="#problem-intro">問題文</a></li><li><a href="#problem-overview">工事概要</a></li><li><a href="#problem-q1">問い1：現場作業の軽減</a></li><li><a href="#problem-q2">問い2：労働者の確保</a></li></ol></li>
-<li><a href="#section-example1">解答例①：基礎的事項</a><ol><li><a href="#ex1-overview">工事概要</a></li><li><a href="#ex1-case1">型枠工事</a></li><li><a href="#ex1-case2">タイル工事</a></li><li><a href="#ex1-case3">塗装工事</a></li><li><a href="#ex1-q2">労働者の確保</a></li></ol></li>
-<li><a href="#section-example2">解答例②：躯体工事</a><ol><li><a href="#ex2-overview">工事概要</a></li><li><a href="#ex2-case1">鉄筋工事</a></li><li><a href="#ex2-case2">型枠工事</a></li><li><a href="#ex2-case3">鉄骨工事</a></li><li><a href="#ex2-q2">労働者の確保</a></li></ol></li>
-<li><a href="#section-example3">解答例③：仕上げ工事</a><ol><li><a href="#ex3-overview">工事概要</a></li><li><a href="#ex3-case1">防水工事</a></li><li><a href="#ex3-case2">タイル工事</a></li><li><a href="#ex3-case3">左官工事</a></li><li><a href="#ex3-q2">労働者の確保</a></li></ol></li>
-<li><a href="#section-method">考え方・書き方</a><ol><li><a href="#method-background">背景と出題意図</a></li><li><a href="#method-worktype">工種名等</a></li><li><a href="#method-reduction">現場作業の軽減</a></li><li><a href="#method-reason">軽減が必要な理由</a></li><li><a href="#method-risk">低下が懸念された品質</a></li><li><a href="#method-quality">品質確保の留意事項</a></li><li><a href="#method-labor-problem">労働者確保の課題</a></li><li><a href="#method-labor-action">労働者確保の取組</a></li></ol></li>
-<li><a href="#terms">Thuật ngữ chuyên môn</a></li><li><a href="#background">Kiến thức nền cần biết</a></li><li><a href="#memory">Điểm cần nhớ và mẹo nhớ</a></li>
-</ol>
-<!-- TOC_ITEMS_END -->
-</aside>
-
-<!-- =======================================================
-     FIXED NAVIGATION CONTROLS
-     Left bottom: vertical.
-     Do not add a Top button.
-     ======================================================= -->
-<nav class="nav-dock-left" aria-label="Điều hướng học tập">
-  <button id="toc-toggle" type="button" aria-label="Mục lục" title="Mục lục"
-          aria-controls="toc-drawer" aria-expanded="false">☰</button>
-  <button id="section-prev" type="button" aria-label="Mục trước" title="Back">‹</button>
-  <button id="section-next" type="button" aria-label="Mục tiếp theo" title="Next">›</button>
-</nav>
-
-<!-- =======================================================
-     FIXED DISPLAY CONTROLS
-     Right bottom: horizontal.
-     ======================================================= -->
-<nav class="settings-dock-right" aria-label="Thiết lập hiển thị">
-  <button id="theme-toggle" type="button" aria-label="Đổi Dark/Light"
-          title="Đổi Dark/Light" aria-pressed="false">☀</button>
-  <button id="mode-toggle" class="mode-toggle" type="button"
-          aria-label="Đổi Full/Keywords" title="Đổi Full/Keywords"
-          aria-pressed="false">🎯</button>
-  <button id="font-reset" class="font-reset" type="button"
-          aria-label="Đặt lại cỡ chữ 100%" title="Đặt lại cỡ chữ 100%">100%</button>
-  <button id="font-down" type="button" aria-label="Giảm cỡ chữ"
-          title="Giảm cỡ chữ">A−</button>
-  <button id="font-up" type="button" aria-label="Tăng cỡ chữ"
-          title="Tăng cỡ chữ">A+</button>
-</nav>
-
+<!--
+HTML TEMPLATE CONTRACT 2.3
+- Based on latest pinch-zoom-safe test.html.
+- Default theme: dark; persistent Dark/Light toggle.
+- Font: 50%-150%, 5% step; persistent.
+- Native two-finger pinch zoom MUST NOT trigger responsive reflow.
+- Real orientation change MAY update layout and restore logical reading position.
+- iPad/tablet portrait: one-column bilingual flow.
+- iPad/tablet landscape: Japanese/Vietnamese side-by-side.
+- Controls: collapsed by default at bottom-left; tap to expand horizontally.
+- Home button: index.html.
+- Back/Next: TOC item navigation, not browser history.
+- Do not redesign CSS/JS/control behavior per lesson.
+-->
+<div class="control-cluster" id="control-cluster">
+<button aria-controls="control-panel" aria-expanded="false" aria-label="Mở công cụ" class="control-launcher" id="controls-toggle" title="Mở công cụ" type="button">⋯</button>
+<div aria-label="Công cụ học tập" class="control-panel" id="control-panel" role="toolbar">
+<button aria-controls="toc" aria-expanded="false" aria-label="Mục lục" id="toc-toggle" title="Mục lục" type="button">☰</button>
+<button aria-label="Mục trước" id="section-prev" title="Mục trước" type="button">‹</button>
+<button aria-label="Mục tiếp theo" id="section-next" title="Mục tiếp theo" type="button">›</button>
+<button aria-label="Đổi Dark/Light" aria-pressed="false" id="theme-toggle" title="Đổi Dark/Light" type="button">☀</button>
+<button aria-label="Đổi Full/Keywords" aria-pressed="false" class="mode-toggle" id="mode-toggle" title="Đổi Full/Keywords" type="button">🎯</button>
+<button aria-label="Giảm cỡ chữ" id="font-down" title="Giảm cỡ chữ 5%" type="button">A−</button>
+<button aria-label="Đặt lại cỡ chữ 100%" class="font-reset" id="font-reset" title="Đặt lại cỡ chữ 100%" type="button">100%</button>
+<button aria-label="Tăng cỡ chữ" id="font-up" title="Tăng cỡ chữ 5%" type="button">A+</button>
+<button aria-label="Top Page" class="home-icon" id="home-button" title="Top Page" type="button"><svg aria-hidden="true" fill="none" viewbox="0 0 24 24"><path d="M3.5 10.5 12 3.8l8.5 6.7v9.2h-5.3v-6H8.8v6H3.5z" stroke="currentColor" stroke-linejoin="round" stroke-width="1.8"></path></svg></button>
+</div>
+</div><div aria-hidden="true" class="toc-overlay" id="toc-overlay"></div>
 <div class="page-shell">
+<header class="hero" id="top">
+<h1>令和4年度 問題1 施工経験記述</h1>
+</header>
+<nav aria-label="Mục lục" class="toc" id="toc">
+<div class="toc-drawer-head">
+<strong>Mục lục</strong>
+<button aria-label="Đóng mục lục" class="toc-close" id="toc-close" type="button">×</button>
+</div>
+<h2>Mục lục</h2>
+<!-- TOC_ITEMS_START -->
 
-  <!-- =====================================================
-       DOCUMENT HEADER
-       Replace title/subtitle/meta values only.
-       ===================================================== -->
-  <header class="hero" id="top">
-    <h1>令和4年度 問題1 施工経験記述</h1>
-    <p class="hero-subtitle">Book page 73-82 | 問題文・解答例①②③・考え方／書き方</p>
-
-    <div class="meta-grid">
-      <div class="meta-item">
-        <span class="meta-label">PDF nguồn</span>
-        01e_施工経験記述_R04_p073-083.pdf
-      </div>
-      <div class="meta-item">
-        <span class="meta-label">File ID</span>
-        F012
-      </div>
-      <div class="meta-item">
-        <span class="meta-label">Phạm vi</span>
-        Book page 73-82 / PDF P1-P10
-      </div>
-      <div class="meta-item">
-        <span class="meta-label">Chế độ</span>
-        Song ngữ Nhật-Việt / Dark-Light / Full-Keywords / Font 80-140%
-      </div>
-    </div>
-  </header>
-
-  <!-- =====================================================
-       CONTENT_START
-       AI may freely repeat/reorder approved content components.
-       Global CSS/JS/control structure must not be redesigned.
-       ===================================================== -->
-  <main id="lesson">
-<section class="study-section" id="section-problem"><div class="section-head"><h2>令和4年度 問題1 施工経験記述</h2><span class="source-ref">Nguồn: Book page 73</span></div><section class="subsection" id="problem-intro"><h3>問題文</h3><div class="study-grid">
-  <article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja">
+<!-- TOC_ITEMS_END -->
+<ol><li><a href="#section-problem">令和4年度 問題1 施工経験記述</a><ol><li><a href="#problem-intro">問題文</a></li><li><a href="#problem-overview">〔工事概要〕</a></li><li><a href="#problem-q1">問い1：現場作業の軽減</a></li><li><a href="#problem-q2">問い2：労働者の確保</a></li></ol></li><li><a href="#section-example1">解答例①：基礎的な事項を重視</a><ol><li><a href="#ex1-overview">〔工事概要〕 基礎的な事項を重視</a></li><li><a href="#ex1-case1">事例1：型枠工事</a></li><li><a href="#ex1-case2">事例2：タイル工事</a></li><li><a href="#ex1-case3">事例3：塗装工事</a></li><li><a href="#ex1-q2">問い2：建設現場での労働者の確保</a></li></ol></li><li><a href="#section-example2">解答例②：躯体工事・専門的な事項を重視</a><ol><li><a href="#ex2-overview">〔工事概要〕 躯体工事・専門的な事項を重視</a></li><li><a href="#ex2-case1">事例1：鉄筋工事</a></li><li><a href="#ex2-case2">事例2：型枠工事</a></li><li><a href="#ex2-case3">事例3：鉄骨工事</a></li><li><a href="#ex2-q2">問い2：建設現場での労働者の確保</a></li></ol></li><li><a href="#section-example3">解答例③：仕上げ工事・専門的な事項を重視</a><ol><li><a href="#ex3-overview">〔工事概要〕 仕上げ工事・専門的な事項を重視</a></li><li><a href="#ex3-case1">事例1：防水工事</a></li><li><a href="#ex3-case2">事例2：タイル工事</a></li><li><a href="#ex3-case3">事例3：左官工事</a></li><li><a href="#ex3-q2">問い2：建設現場での労働者の確保</a></li></ol></li><li><a href="#section-method">令和4年度 問題1 施工経験記述の考え方・書き方</a><ol><li><a href="#method-background">背景と令和4年度の出題意図</a></li><li><a href="#method-worktype">「工種名等」の記述</a></li><li><a href="#method-reduction">「現場作業の軽減のために実施した内容」の記述</a></li><li><a href="#method-reason">「現場作業の軽減が必要になった具体的な理由」の記述</a></li><li><a href="#method-risk">「低下が懸念された品質」の記述</a></li><li><a href="#method-quality">「品質を確保するための施工上の留意事項」の記述</a></li><li><a href="#method-labor-problem">「労働者の確保を困難にしている課題や問題点」の記述</a></li><li><a href="#method-labor-action">「労働者の確保に効果がある取組や工夫」の記述</a></li></ol></li><li><a href="#terms">Professional terminology</a></li><li><a href="#background">Background knowledge</a></li><li><a href="#memory">Key points and memory aids</a></li></ol></nav>
+<!-- CONTENT_START -->
+<main id="lesson"><section class="study-section" id="section-problem"><div class="section-head"><h2>令和4年度 問題1 施工経験記述</h2><span class="source-ref">Nguồn: Book page 73</span></div><section class="subsection" id="problem-intro"><h3>問題文</h3><div class="study-grid">
+<article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja">
 <p>建設業を取り巻く環境の変化は著しく、<strong class="kw">労働生産性の向上</strong>や<strong class="kw">担い手の確保</strong>に対する取組は、建設現場において日々直面する課題となり、重要度が一層増している。</p>
 <p>あなたが経験した建築工事のうち、<strong class="kw">要求された品質を確保したうえで行った施工の合理化</strong>の中から、<span class="relation">労働生産性の向上に繋がる現場作業の軽減</span>を図った工事を1つ選び、工事概要を具体的に記入したうえで、次の1.及び2.の問いに答えなさい。</p>
 <p>なお、建築工事とは、建築基準法に定める建築物に係る工事とし、<span class="trap">建築設備工事を除く</span>ものとする。</p></div></article>
-  <article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi">
+<article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi">
 <p>Môi trường xung quanh ngành xây dựng đang thay đổi đáng kể. Các biện pháp nhằm <strong class="kw">nâng cao năng suất lao động</strong> và <strong class="kw">đảm bảo nguồn nhân lực đảm nhiệm ngành xây dựng</strong> đã trở thành những vấn đề phải đối mặt hằng ngày tại công trường và ngày càng quan trọng hơn.</p>
 <p>Trong số các công trình xây dựng đã có kinh nghiệm, hãy chọn một công trình đã <strong class="kw">hợp lý hóa thi công trong khi vẫn đảm bảo chất lượng yêu cầu</strong>, đồng thời <span class="relation">giảm công việc tại hiện trường nhằm nâng cao năng suất lao động</span>; sau đó ghi cụ thể khái quát công trình và trả lời câu 1 và câu 2.</p>
 <p>Ở đây, "công trình xây dựng" là công trình liên quan đến công trình kiến trúc được quy định trong Luật Tiêu chuẩn Xây dựng, <span class="trap">không bao gồm công tác thiết bị kỹ thuật công trình</span>.</p></div></article>
 </div><p><a href="#toc">↑ Mục lục</a></p></section><section class="subsection" id="problem-overview"><h3>〔工事概要〕</h3><div class="study-grid">
-  <article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja"><ul><li>イ．工事名</li><li>ロ．工事場所</li><li>ハ．工事の内容<ul><li>新築等の場合：建物用途、構造、階数、延べ面積又は施工数量、主な外部仕上げ、主要室の内部仕上げ</li><li>改修等の場合：建物用途、建物規模、主な改修内容及び施工数量</li></ul></li><li>ニ．工期等（工期又は工事に従事した期間を年号又は西暦で年月まで記入）</li><li>ホ．あなたの立場</li><li>ヘ．あなたの業務内容</li></ul></div></article>
-  <article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi"><ul><li>a. Tên công trình</li><li>b. Địa điểm công trình</li><li>c. Nội dung công trình<ul><li>Trường hợp xây mới: công năng, kết cấu, số tầng, tổng diện tích sàn hoặc khối lượng thi công, hoàn thiện ngoại thất chính, hoàn thiện nội thất của các phòng chính.</li><li>Trường hợp cải tạo: công năng, quy mô công trình, nội dung cải tạo chính và khối lượng thi công.</li></ul></li><li>d. Thời gian thi công, v.v. Ghi đến năm và tháng, bằng niên hiệu Nhật hoặc năm dương lịch.</li><li>e. Vị trí/chức vụ của người dự thi</li><li>f. Nội dung công việc phụ trách</li></ul></div></article>
+<article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja"><ul><li>イ．工事名</li><li>ロ．工事場所</li><li>ハ．工事の内容<ul><li>新築等の場合：建物用途、構造、階数、延べ面積又は施工数量、主な外部仕上げ、主要室の内部仕上げ</li><li>改修等の場合：建物用途、建物規模、主な改修内容及び施工数量</li></ul></li><li>ニ．工期等（工期又は工事に従事した期間を年号又は西暦で年月まで記入）</li><li>ホ．あなたの立場</li><li>ヘ．あなたの業務内容</li></ul></div></article>
+<article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi"><ul><li>a. Tên công trình</li><li>b. Địa điểm công trình</li><li>c. Nội dung công trình<ul><li>Trường hợp xây mới: công năng, kết cấu, số tầng, tổng diện tích sàn hoặc khối lượng thi công, hoàn thiện ngoại thất chính, hoàn thiện nội thất của các phòng chính.</li><li>Trường hợp cải tạo: công năng, quy mô công trình, nội dung cải tạo chính và khối lượng thi công.</li></ul></li><li>d. Thời gian thi công, v.v. Ghi đến năm và tháng, bằng niên hiệu Nhật hoặc năm dương lịch.</li><li>e. Vị trí/chức vụ của người dự thi</li><li>f. Nội dung công việc phụ trách</li></ul></div></article>
 </div><p><a href="#toc">↑ Mục lục</a></p></section><section class="subsection" id="problem-q1"><h3>問い1：現場作業の軽減</h3><div class="study-grid">
-  <article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja"><p>工事概要であげた工事において、あなたが実施した<strong class="kw">現場作業の軽減</strong>の事例を3つあげ、次の①から③について具体的に記述しなさい。</p><p>ただし、3つの事例の②及び③はそれぞれ<span class="trap">異なる内容</span>を記述するものとする。</p><ol><li>工種名等</li><li><strong class="kw">現場作業の軽減のために実施した内容</strong>と<strong class="kw">軽減が必要となった具体的な理由</strong></li><li><strong class="kw">低下が懸念された品質</strong>と<strong class="kw">品質を確保するための施工上の留意事項</strong></li></ol></div></article>
-  <article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi"><p>Đối với công trình nêu trong phần khái quát, hãy đưa ra 3 ví dụ về <strong class="kw">giảm công việc tại hiện trường</strong> đã thực hiện và mô tả cụ thể các nội dung ① đến ③.</p><p>Trong 3 ví dụ, nội dung của mục ② và ③ phải <span class="trap">khác nhau ở từng ví dụ</span>.</p><ol><li>Tên loại công tác, v.v.</li><li><strong class="kw">Nội dung đã thực hiện để giảm công việc tại hiện trường</strong> và <strong class="kw">lý do cụ thể khiến việc giảm đó trở nên cần thiết</strong>.</li><li><strong class="kw">Chất lượng có nguy cơ suy giảm</strong> và <strong class="kw">điểm cần lưu ý trong thi công để đảm bảo chất lượng</strong>.</li></ol></div></article>
+<article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja"><p>工事概要であげた工事において、あなたが実施した<strong class="kw">現場作業の軽減</strong>の事例を3つあげ、次の①から③について具体的に記述しなさい。</p><p>ただし、3つの事例の②及び③はそれぞれ<span class="trap">異なる内容</span>を記述するものとする。</p><ol><li>工種名等</li><li><strong class="kw">現場作業の軽減のために実施した内容</strong>と<strong class="kw">軽減が必要となった具体的な理由</strong></li><li><strong class="kw">低下が懸念された品質</strong>と<strong class="kw">品質を確保するための施工上の留意事項</strong></li></ol></div></article>
+<article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi"><p>Đối với công trình nêu trong phần khái quát, hãy đưa ra 3 ví dụ về <strong class="kw">giảm công việc tại hiện trường</strong> đã thực hiện và mô tả cụ thể các nội dung ① đến ③.</p><p>Trong 3 ví dụ, nội dung của mục ② và ③ phải <span class="trap">khác nhau ở từng ví dụ</span>.</p><ol><li>Tên loại công tác, v.v.</li><li><strong class="kw">Nội dung đã thực hiện để giảm công việc tại hiện trường</strong> và <strong class="kw">lý do cụ thể khiến việc giảm đó trở nên cần thiết</strong>.</li><li><strong class="kw">Chất lượng có nguy cơ suy giảm</strong> và <strong class="kw">điểm cần lưu ý trong thi công để đảm bảo chất lượng</strong>.</li></ol></div></article>
 </div><p><a href="#toc">↑ Mục lục</a></p></section><section class="subsection" id="problem-q2"><h3>問い2：労働者の確保</h3><div class="study-grid">
-  <article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja"><p>工事概要であげた工事にかかわらず、あなたの今日までの建築工事の経験を踏まえて、建設現場での<strong class="kw">労働者の確保</strong>に関して、次の①及び②について具体的に記述しなさい。</p><p>ただし、<span class="trap">労働者の給与や賃金に関する内容</span>及び<span class="trap">1.の②と同じ内容</span>の記述は不可とする。</p><ol><li>労働者の確保を困難にしている建設現場が直面している課題や問題点</li><li>①に効果があると考える建設現場での取組や工夫</li></ol><p>本テキストに示す解答例はすべて、考え方を示すもので、その要点だけを記述したものである。実際には解答用紙のスペース（行数等）に応じた字数で記述すること。</p></div></article>
-  <article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi"><p>Không giới hạn trong công trình nêu ở phần khái quát, dựa trên kinh nghiệm xây dựng cho đến nay, hãy trình bày cụ thể về <strong class="kw">việc đảm bảo nhân lực tại công trường</strong>.</p><p><span class="trap">Không được viết về tiền lương hoặc tiền công của người lao động</span>, đồng thời <span class="trap">không được sử dụng nội dung giống với mục 1-②</span>.</p><ol><li>Vấn đề hoặc khó khăn mà công trường đang đối mặt khiến việc đảm bảo lao động trở nên khó khăn.</li><li>Biện pháp hoặc sáng kiến tại công trường được cho là có hiệu quả đối với vấn đề trên.</li></ol><p>Các đáp án mẫu trong giáo trình chỉ nhằm thể hiện cách suy nghĩ và chỉ ghi các ý chính. Khi thi thực tế, phải viết với số lượng chữ phù hợp với không gian và số dòng của phiếu trả lời.</p></div></article>
-</div><p><a href="#toc">↑ Mục lục</a></p></section></section>
-<section class="study-section" id="section-example1"><div class="section-head"><h2>解答例①：基礎的な事項を重視</h2><span class="source-ref">Nguồn: Book page 74-75</span></div><section class="subsection" id="ex1-overview"><h3>〔工事概要〕 基礎的な事項を重視</h3><div class="study-grid">
-  <article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja"><div class="table-wrap"><table><tbody><tr><th>工事名</th><td>美里商事ビル新築工事（躯体工事および仕上げ工事）</td></tr><tr><th>工事場所</th><td>福島県美里市東花町丸山3丁目2-19</td></tr><tr><th>工事の内容</th><td>事務所ビル、鉄骨鉄筋コンクリート造、14階建、延べ面積8600m²、基礎：独立基礎、外壁：陶磁器質タイル、内壁：石膏ボード、床：合成樹脂塗り</td></tr><tr><th>工期等</th><td>2020年6月～2022年4月</td></tr><tr><th>あなたの立場</th><td>現場主任</td></tr><tr><th>あなたの業務内容</th><td>建築工事に係る施工管理</td></tr></tbody></table></div></div></article>
-  <article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi"><div class="table-wrap"><table><tbody><tr><th>Tên công trình</th><td>Công trình xây mới tòa nhà Misato Shoji, gồm công tác phần kết cấu và hoàn thiện</td></tr><tr><th>Địa điểm</th><td>3-2-19 Maruyama, Higashihana-cho, thành phố Misato, tỉnh Fukushima</td></tr><tr><th>Nội dung</th><td>Tòa nhà văn phòng, kết cấu SRC, 14 tầng, tổng diện tích sàn 8.600 m²; móng độc lập; tường ngoài ốp gạch ceramic; tường trong thạch cao; sàn phủ nhựa tổng hợp</td></tr><tr><th>Thời gian</th><td>06/2020 đến 04/2022</td></tr><tr><th>Vị trí</th><td>Chủ nhiệm hiện trường</td></tr><tr><th>Công việc</th><td>Quản lý thi công công trình xây dựng</td></tr></tbody></table></div></div></article>
+<article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja"><p>工事概要であげた工事にかかわらず、あなたの今日までの建築工事の経験を踏まえて、建設現場での<strong class="kw">労働者の確保</strong>に関して、次の①及び②について具体的に記述しなさい。</p><p>ただし、<span class="trap">労働者の給与や賃金に関する内容</span>及び<span class="trap">1.の②と同じ内容</span>の記述は不可とする。</p><ol><li>労働者の確保を困難にしている建設現場が直面している課題や問題点</li><li>①に効果があると考える建設現場での取組や工夫</li></ol><p>本テキストに示す解答例はすべて、考え方を示すもので、その要点だけを記述したものである。実際には解答用紙のスペース（行数等）に応じた字数で記述すること。</p></div></article>
+<article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi"><p>Không giới hạn trong công trình nêu ở phần khái quát, dựa trên kinh nghiệm xây dựng cho đến nay, hãy trình bày cụ thể về <strong class="kw">việc đảm bảo nhân lực tại công trường</strong>.</p><p><span class="trap">Không được viết về tiền lương hoặc tiền công của người lao động</span>, đồng thời <span class="trap">không được sử dụng nội dung giống với mục 1-②</span>.</p><ol><li>Vấn đề hoặc khó khăn mà công trường đang đối mặt khiến việc đảm bảo lao động trở nên khó khăn.</li><li>Biện pháp hoặc sáng kiến tại công trường được cho là có hiệu quả đối với vấn đề trên.</li></ol><p>Các đáp án mẫu trong giáo trình chỉ nhằm thể hiện cách suy nghĩ và chỉ ghi các ý chính. Khi thi thực tế, phải viết với số lượng chữ phù hợp với không gian và số dòng của phiếu trả lời.</p></div></article>
+</div><p><a href="#toc">↑ Mục lục</a></p></section></section><section class="study-section" id="section-example1"><div class="section-head"><h2>解答例①：基礎的な事項を重視</h2><span class="source-ref">Nguồn: Book page 74-75</span></div><section class="subsection" id="ex1-overview"><h3>〔工事概要〕 基礎的な事項を重視</h3><div class="study-grid">
+<article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja"><div class="table-wrap"><table><tbody><tr><th>工事名</th><td>美里商事ビル新築工事（躯体工事および仕上げ工事）</td></tr><tr><th>工事場所</th><td>福島県美里市東花町丸山3丁目2-19</td></tr><tr><th>工事の内容</th><td>事務所ビル、鉄骨鉄筋コンクリート造、14階建、延べ面積8600m²、基礎：独立基礎、外壁：陶磁器質タイル、内壁：石膏ボード、床：合成樹脂塗り</td></tr><tr><th>工期等</th><td>2020年6月～2022年4月</td></tr><tr><th>あなたの立場</th><td>現場主任</td></tr><tr><th>あなたの業務内容</th><td>建築工事に係る施工管理</td></tr></tbody></table></div></div></article>
+<article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi"><div class="table-wrap"><table><tbody><tr><th>Tên công trình</th><td>Công trình xây mới tòa nhà Misato Shoji, gồm công tác phần kết cấu và hoàn thiện</td></tr><tr><th>Địa điểm</th><td>3-2-19 Maruyama, Higashihana-cho, thành phố Misato, tỉnh Fukushima</td></tr><tr><th>Nội dung</th><td>Tòa nhà văn phòng, kết cấu SRC, 14 tầng, tổng diện tích sàn 8.600 m²; móng độc lập; tường ngoài ốp gạch ceramic; tường trong thạch cao; sàn phủ nhựa tổng hợp</td></tr><tr><th>Thời gian</th><td>06/2020 đến 04/2022</td></tr><tr><th>Vị trí</th><td>Chủ nhiệm hiện trường</td></tr><tr><th>Công việc</th><td>Quản lý thi công công trình xây dựng</td></tr></tbody></table></div></div></article>
 </div><p><a href="#toc">↑ Mục lục</a></p></section><section class="subsection" id="ex1-case1"><h3>事例1：型枠工事</h3><div class="study-grid">
-  <article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja"><p><strong>① 工種名等：</strong><strong class="kw">型枠工事（独立基礎の型枠工事）</strong></p><p><strong>② 実施内容：</strong><span class="relation">合板型枠 → ラス型枠（捨て型枠）</span>に変更し、<strong class="kw">型枠の撤去作業を省略</strong>できるようにした。</p><p><strong>必要理由：</strong><span class="relation">隣地境界線の不備による工事開始の遅れ → 独立基礎の型枠工事の工程短縮</span>が必要になった。</p><p><strong>③ 低下が懸念された品質：</strong><span class="relation">メッシュ状のラス型枠からモルタルが流出 → コンクリートのかぶり厚さ不足</span>が懸念された。</p><p><strong>品質確保：</strong><span class="relation">コンクリートのスランプを低下 + ラス型枠の取付け幅を正常に設定 → モルタル流出を低減</span>することに留意した。</p></div></article>
-  <article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi"><p><strong>① Loại công tác:</strong> <strong class="kw">Ván khuôn móng độc lập</strong>.</p><p><strong>② Biện pháp:</strong> <span class="relation">ván khuôn plywood → ván khuôn lath dạng để lại</span>, nhờ đó <strong class="kw">bỏ công tác tháo ván khuôn</strong>.</p><p><strong>Lý do:</strong> <span class="relation">vấn đề ranh giới khu đất làm chậm khởi công → cần rút ngắn tiến độ ván khuôn móng</span>.</p><p><strong>③ Rủi ro chất lượng:</strong> <span class="relation">mortar chảy qua lưới lath → thiếu chiều dày lớp bê tông bảo vệ cốt thép</span>.</p><p><strong>Đảm bảo chất lượng:</strong> <span class="relation">giảm slump bê tông + thiết lập đúng chiều rộng lắp đặt lath → giảm mortar chảy ra</span>.</p></div></article>
+<article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja"><p><strong>① 工種名等：</strong><strong class="kw">型枠工事（独立基礎の型枠工事）</strong></p><p><strong>② 実施内容：</strong><span class="relation">合板型枠 → ラス型枠（捨て型枠）</span>に変更し、<strong class="kw">型枠の撤去作業を省略</strong>できるようにした。</p><p><strong>必要理由：</strong><span class="relation">隣地境界線の不備による工事開始の遅れ → 独立基礎の型枠工事の工程短縮</span>が必要になった。</p><p><strong>③ 低下が懸念された品質：</strong><span class="relation">メッシュ状のラス型枠からモルタルが流出 → コンクリートのかぶり厚さ不足</span>が懸念された。</p><p><strong>品質確保：</strong><span class="relation">コンクリートのスランプを低下 + ラス型枠の取付け幅を正常に設定 → モルタル流出を低減</span>することに留意した。</p></div></article>
+<article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi"><p><strong>① Loại công tác:</strong> <strong class="kw">Ván khuôn móng độc lập</strong>.</p><p><strong>② Biện pháp:</strong> <span class="relation">ván khuôn plywood → ván khuôn lath dạng để lại</span>, nhờ đó <strong class="kw">bỏ công tác tháo ván khuôn</strong>.</p><p><strong>Lý do:</strong> <span class="relation">vấn đề ranh giới khu đất làm chậm khởi công → cần rút ngắn tiến độ ván khuôn móng</span>.</p><p><strong>③ Rủi ro chất lượng:</strong> <span class="relation">mortar chảy qua lưới lath → thiếu chiều dày lớp bê tông bảo vệ cốt thép</span>.</p><p><strong>Đảm bảo chất lượng:</strong> <span class="relation">giảm slump bê tông + thiết lập đúng chiều rộng lắp đặt lath → giảm mortar chảy ra</span>.</p></div></article>
 </div><p><a href="#toc">↑ Mục lục</a></p></section><section class="subsection" id="ex1-case2"><h3>事例2：タイル工事</h3><div class="study-grid">
-  <article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja"><p><strong>① 工種名等：</strong><strong class="kw">タイル工事（外壁の陶磁器質タイル張り）</strong></p><p><strong>② 実施内容：</strong><span class="relation">足場を用いた打診法 → ドローンを用いた赤外線装置法</span>に変更し、<strong class="kw">足場の設置作業を不要</strong>とした。</p><p><strong>必要理由：</strong><span class="relation">新型コロナウイルス感染症に伴う緊急事態宣言 → 一部作業員の確保が困難</span>になった。</p><p><strong>③ 低下が懸念された品質：</strong><span class="relation">天候や時刻によるタイル表面温度の変動 → タイルの浮き部を見逃す</span>ことが懸念された。</p><p><strong>品質確保：</strong><span class="relation">十分な日射 + 気温が安定した日 + ドローン操作に習熟した作業員</span>が測定するように留意した。</p></div></article>
-  <article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi"><p><strong>① Loại công tác:</strong> <strong class="kw">Ốp gạch ceramic tường ngoài</strong>.</p><p><strong>② Biện pháp:</strong> <span class="relation">phương pháp gõ kiểm tra dùng giàn giáo → phương pháp thiết bị hồng ngoại dùng drone</span>, qua đó <strong class="kw">không cần lắp giàn giáo phục vụ kiểm tra</strong>.</p><p><strong>Lý do:</strong> <span class="relation">tình trạng khẩn cấp do COVID-19 → khó đảm bảo một bộ phận công nhân</span>.</p><p><strong>③ Rủi ro chất lượng:</strong> <span class="relation">nhiệt độ bề mặt thay đổi theo thời tiết/thời điểm → có thể bỏ sót vùng gạch bong</span>.</p><p><strong>Đảm bảo chất lượng:</strong> <span class="relation">đủ bức xạ mặt trời + nhiệt độ ổn định + người thao tác drone thành thạo</span>.</p></div></article>
+<article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja"><p><strong>① 工種名等：</strong><strong class="kw">タイル工事（外壁の陶磁器質タイル張り）</strong></p><p><strong>② 実施内容：</strong><span class="relation">足場を用いた打診法 → ドローンを用いた赤外線装置法</span>に変更し、<strong class="kw">足場の設置作業を不要</strong>とした。</p><p><strong>必要理由：</strong><span class="relation">新型コロナウイルス感染症に伴う緊急事態宣言 → 一部作業員の確保が困難</span>になった。</p><p><strong>③ 低下が懸念された品質：</strong><span class="relation">天候や時刻によるタイル表面温度の変動 → タイルの浮き部を見逃す</span>ことが懸念された。</p><p><strong>品質確保：</strong><span class="relation">十分な日射 + 気温が安定した日 + ドローン操作に習熟した作業員</span>が測定するように留意した。</p></div></article>
+<article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi"><p><strong>① Loại công tác:</strong> <strong class="kw">Ốp gạch ceramic tường ngoài</strong>.</p><p><strong>② Biện pháp:</strong> <span class="relation">phương pháp gõ kiểm tra dùng giàn giáo → phương pháp thiết bị hồng ngoại dùng drone</span>, qua đó <strong class="kw">không cần lắp giàn giáo phục vụ kiểm tra</strong>.</p><p><strong>Lý do:</strong> <span class="relation">tình trạng khẩn cấp do COVID-19 → khó đảm bảo một bộ phận công nhân</span>.</p><p><strong>③ Rủi ro chất lượng:</strong> <span class="relation">nhiệt độ bề mặt thay đổi theo thời tiết/thời điểm → có thể bỏ sót vùng gạch bong</span>.</p><p><strong>Đảm bảo chất lượng:</strong> <span class="relation">đủ bức xạ mặt trời + nhiệt độ ổn định + người thao tác drone thành thạo</span>.</p></div></article>
 </div><p><a href="#toc">↑ Mục lục</a></p></section><section class="subsection" id="ex1-case3"><h3>事例3：塗装工事</h3><div class="study-grid">
-  <article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja"><p><strong>① 工種名等：</strong><strong class="kw">塗装工事（合成樹脂塗床の施工）</strong></p><p><strong>② 実施内容：</strong><span class="relation">ローラー刷毛によるコーティング仕上げ → セルフレベリング仕上げ</span>に変更した。</p><p><strong>必要理由：</strong>国土交通省の「建設業働き方改革加速化プログラム」の一環として、<span class="relation">長時間労働の是正 → 週休2日工事の拡大</span>に取り組むため。</p><p><strong>③ 低下が懸念された品質：</strong><span class="relation">低温 → 硬化不良</span>、<span class="relation">通風 → 皺の発生</span>が懸念された。</p><p><strong>品質確保：</strong>流し込み中および養生中は、<strong class="kw">施工場所の気温</strong>が<mark class="critical">5℃を超える</mark>ように保温し、窓や隙間を塞いで<strong class="kw">通風をなくす</strong>ように留意した。</p></div></article>
-  <article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi"><p><strong>① Loại công tác:</strong> <strong class="kw">Sàn phủ nhựa tổng hợp</strong>.</p><p><strong>② Biện pháp:</strong> <span class="relation">coating bằng con lăn/chổi → hoàn thiện self-leveling</span>.</p><p><strong>Lý do:</strong> trong khuôn khổ chương trình cải cách phương thức làm việc, <span class="relation">khắc phục lao động kéo dài → mở rộng công trình nghỉ 2 ngày/tuần</span>.</p><p><strong>③ Rủi ro chất lượng:</strong> <span class="relation">nhiệt độ thấp → đóng rắn không đạt</span>, <span class="relation">luồng gió → nếp nhăn</span>.</p><p><strong>Đảm bảo chất lượng:</strong> trong khi đổ và bảo dưỡng, duy trì <strong class="kw">nhiệt độ khu vực thi công</strong> <mark class="critical">trên 5°C</mark>, đồng thời <strong class="kw">loại bỏ luồng gió</strong> bằng cách bịt cửa sổ và khe hở.</p></div></article>
+<article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja"><p><strong>① 工種名等：</strong><strong class="kw">塗装工事（合成樹脂塗床の施工）</strong></p><p><strong>② 実施内容：</strong><span class="relation">ローラー刷毛によるコーティング仕上げ → セルフレベリング仕上げ</span>に変更した。</p><p><strong>必要理由：</strong>国土交通省の「建設業働き方改革加速化プログラム」の一環として、<span class="relation">長時間労働の是正 → 週休2日工事の拡大</span>に取り組むため。</p><p><strong>③ 低下が懸念された品質：</strong><span class="relation">低温 → 硬化不良</span>、<span class="relation">通風 → 皺の発生</span>が懸念された。</p><p><strong>品質確保：</strong>流し込み中および養生中は、<strong class="kw">施工場所の気温</strong>が<mark class="critical">5℃を超える</mark>ように保温し、窓や隙間を塞いで<strong class="kw">通風をなくす</strong>ように留意した。</p></div></article>
+<article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi"><p><strong>① Loại công tác:</strong> <strong class="kw">Sàn phủ nhựa tổng hợp</strong>.</p><p><strong>② Biện pháp:</strong> <span class="relation">coating bằng con lăn/chổi → hoàn thiện self-leveling</span>.</p><p><strong>Lý do:</strong> trong khuôn khổ chương trình cải cách phương thức làm việc, <span class="relation">khắc phục lao động kéo dài → mở rộng công trình nghỉ 2 ngày/tuần</span>.</p><p><strong>③ Rủi ro chất lượng:</strong> <span class="relation">nhiệt độ thấp → đóng rắn không đạt</span>, <span class="relation">luồng gió → nếp nhăn</span>.</p><p><strong>Đảm bảo chất lượng:</strong> trong khi đổ và bảo dưỡng, duy trì <strong class="kw">nhiệt độ khu vực thi công</strong> <mark class="critical">trên 5°C</mark>, đồng thời <strong class="kw">loại bỏ luồng gió</strong> bằng cách bịt cửa sổ và khe hở.</p></div></article>
 </div><p><a href="#toc">↑ Mục lục</a></p></section><section class="subsection" id="ex1-q2"><h3>問い2：建設現場での労働者の確保</h3><div class="study-grid">
-  <article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja"><p><strong>① 課題や問題点：</strong>工期に余裕がなく、新技術の導入に消極的であるために、長時間の肉体労働を強いられるので、<strong class="kw">若手の労働者が定着しない</strong>こと。</p><p><strong>② 取組や工夫：</strong><span class="relation">準備期間や作業不能日を考慮した適正な工期設定</span>に取り組むと共に、<span class="relation">電子技術を活用した生産性向上</span>のための工夫をすること。</p><p>※この解答例は、建築工事（躯体工事および仕上げ工事を総合的に実施した工事）の工程管理のうち、現場作業の軽減に関する基礎的な事項を重視し、各項目の要点をできる限り明確にして解答したものです。より専門的な事項を重視した解答例については、次ページ以降を参照してください。</p><p>※本書の最新問題解説に掲載されている施工経験記述の解答例は、いずれも工事場所が実存しないなどの<strong class="kw">架空の建築工事</strong>であるため、<span class="trap">本試験でそのまま転記すると不合格になります</span>。</p></div></article>
-  <article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi"><p><strong>① Vấn đề:</strong> tiến độ không có dư địa và công trường thụ động trong áp dụng công nghệ mới, khiến người lao động phải làm việc thể lực trong thời gian dài và <strong class="kw">lao động trẻ không gắn bó lâu dài</strong>.</p><p><strong>② Biện pháp:</strong> <span class="relation">thiết lập thời gian thi công hợp lý có tính đến thời gian chuẩn bị và ngày không thể thi công</span>, đồng thời <span class="relation">ứng dụng công nghệ điện tử để nâng cao năng suất</span>.</p><p>※ Đáp án mẫu này chú trọng các nội dung cơ bản về giảm công việc tại hiện trường trong quản lý tiến độ đối với công trình thực hiện tổng hợp phần kết cấu và hoàn thiện. Các đáp án mẫu chuyên môn hơn được trình bày ở các trang tiếp theo.</p><p>※ Các công trình trong đáp án mẫu của phần giải thích đề mới nhất đều là <strong class="kw">công trình hư cấu</strong>, ví dụ địa điểm không tồn tại; vì vậy <span class="trap">nếu chép nguyên văn vào kỳ thi thật sẽ bị đánh trượt</span>.</p></div></article>
-</div><p><a href="#toc">↑ Mục lục</a></p></section></section>
-<section class="study-section" id="section-example2"><div class="section-head"><h2>解答例②：躯体工事・専門的な事項を重視</h2><span class="source-ref">Nguồn: Book page 76-77</span></div><section class="subsection" id="ex2-overview"><h3>〔工事概要〕 躯体工事・専門的な事項を重視</h3><div class="study-grid">
-  <article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja"><div class="table-wrap"><table><tbody><tr><th>工事名</th><td>美里商事ビル新築工事</td></tr><tr><th>工事場所</th><td>福島県美里市東花町丸山3丁目2-19</td></tr><tr><th>工事の内容</th><td>事務所、鉄骨鉄筋コンクリート造、14階建、延床面積8600m²、外装：磁器タイル張り、内装：壁・天井石膏ボード張り及び床ウレタン樹脂塗り</td></tr><tr><th>工期等</th><td>令和2年6月～令和3年12月</td></tr><tr><th>あなたの立場</th><td>現場主任</td></tr><tr><th>あなたの業務内容</th><td>建築工事に係る施工管理</td></tr></tbody></table></div><p><strong>記述上のポイント：</strong>新築躯体工事の例。建物用途、構造、階数、外部仕上げ、内部仕上げを表示。年・月まで示す。誤字に注意。建築工事の施工管理。</p></div></article>
-  <article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi"><div class="table-wrap"><table><tbody><tr><th>Tên công trình</th><td>Công trình xây mới tòa nhà Misato Shoji</td></tr><tr><th>Địa điểm</th><td>3-2-19 Maruyama, Higashihana-cho, thành phố Misato, tỉnh Fukushima</td></tr><tr><th>Nội dung</th><td>Văn phòng, kết cấu SRC, 14 tầng, tổng diện tích sàn 8.600 m²; ngoại thất ốp gạch porcelain; nội thất tường và trần thạch cao, sàn phủ nhựa urethane</td></tr><tr><th>Thời gian</th><td>06/2020 đến 12/2021</td></tr><tr><th>Vị trí</th><td>Chủ nhiệm hiện trường</td></tr><tr><th>Công việc</th><td>Quản lý thi công công trình xây dựng</td></tr></tbody></table></div><p><strong>Điểm cần chú ý khi viết:</strong> đây là ví dụ công trình kết cấu xây mới; phải thể hiện công năng, kết cấu, số tầng, hoàn thiện ngoài, hoàn thiện trong; thời gian ghi đến năm và tháng; tránh viết sai chữ; nội dung nghiệp vụ là quản lý thi công công trình xây dựng.</p></div></article>
+<article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja"><p><strong>① 課題や問題点：</strong>工期に余裕がなく、新技術の導入に消極的であるために、長時間の肉体労働を強いられるので、<strong class="kw">若手の労働者が定着しない</strong>こと。</p><p><strong>② 取組や工夫：</strong><span class="relation">準備期間や作業不能日を考慮した適正な工期設定</span>に取り組むと共に、<span class="relation">電子技術を活用した生産性向上</span>のための工夫をすること。</p><p>※この解答例は、建築工事（躯体工事および仕上げ工事を総合的に実施した工事）の工程管理のうち、現場作業の軽減に関する基礎的な事項を重視し、各項目の要点をできる限り明確にして解答したものです。より専門的な事項を重視した解答例については、次ページ以降を参照してください。</p><p>※本書の最新問題解説に掲載されている施工経験記述の解答例は、いずれも工事場所が実存しないなどの<strong class="kw">架空の建築工事</strong>であるため、<span class="trap">本試験でそのまま転記すると不合格になります</span>。</p></div></article>
+<article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi"><p><strong>① Vấn đề:</strong> tiến độ không có dư địa và công trường thụ động trong áp dụng công nghệ mới, khiến người lao động phải làm việc thể lực trong thời gian dài và <strong class="kw">lao động trẻ không gắn bó lâu dài</strong>.</p><p><strong>② Biện pháp:</strong> <span class="relation">thiết lập thời gian thi công hợp lý có tính đến thời gian chuẩn bị và ngày không thể thi công</span>, đồng thời <span class="relation">ứng dụng công nghệ điện tử để nâng cao năng suất</span>.</p><p>※ Đáp án mẫu này chú trọng các nội dung cơ bản về giảm công việc tại hiện trường trong quản lý tiến độ đối với công trình thực hiện tổng hợp phần kết cấu và hoàn thiện. Các đáp án mẫu chuyên môn hơn được trình bày ở các trang tiếp theo.</p><p>※ Các công trình trong đáp án mẫu của phần giải thích đề mới nhất đều là <strong class="kw">công trình hư cấu</strong>, ví dụ địa điểm không tồn tại; vì vậy <span class="trap">nếu chép nguyên văn vào kỳ thi thật sẽ bị đánh trượt</span>.</p></div></article>
+</div><p><a href="#toc">↑ Mục lục</a></p></section></section><section class="study-section" id="section-example2"><div class="section-head"><h2>解答例②：躯体工事・専門的な事項を重視</h2><span class="source-ref">Nguồn: Book page 76-77</span></div><section class="subsection" id="ex2-overview"><h3>〔工事概要〕 躯体工事・専門的な事項を重視</h3><div class="study-grid">
+<article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja"><div class="table-wrap"><table><tbody><tr><th>工事名</th><td>美里商事ビル新築工事</td></tr><tr><th>工事場所</th><td>福島県美里市東花町丸山3丁目2-19</td></tr><tr><th>工事の内容</th><td>事務所、鉄骨鉄筋コンクリート造、14階建、延床面積8600m²、外装：磁器タイル張り、内装：壁・天井石膏ボード張り及び床ウレタン樹脂塗り</td></tr><tr><th>工期等</th><td>令和2年6月～令和3年12月</td></tr><tr><th>あなたの立場</th><td>現場主任</td></tr><tr><th>あなたの業務内容</th><td>建築工事に係る施工管理</td></tr></tbody></table></div><p><strong>記述上のポイント：</strong>新築躯体工事の例。建物用途、構造、階数、外部仕上げ、内部仕上げを表示。年・月まで示す。誤字に注意。建築工事の施工管理。</p></div></article>
+<article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi"><div class="table-wrap"><table><tbody><tr><th>Tên công trình</th><td>Công trình xây mới tòa nhà Misato Shoji</td></tr><tr><th>Địa điểm</th><td>3-2-19 Maruyama, Higashihana-cho, thành phố Misato, tỉnh Fukushima</td></tr><tr><th>Nội dung</th><td>Văn phòng, kết cấu SRC, 14 tầng, tổng diện tích sàn 8.600 m²; ngoại thất ốp gạch porcelain; nội thất tường và trần thạch cao, sàn phủ nhựa urethane</td></tr><tr><th>Thời gian</th><td>06/2020 đến 12/2021</td></tr><tr><th>Vị trí</th><td>Chủ nhiệm hiện trường</td></tr><tr><th>Công việc</th><td>Quản lý thi công công trình xây dựng</td></tr></tbody></table></div><p><strong>Điểm cần chú ý khi viết:</strong> đây là ví dụ công trình kết cấu xây mới; phải thể hiện công năng, kết cấu, số tầng, hoàn thiện ngoài, hoàn thiện trong; thời gian ghi đến năm và tháng; tránh viết sai chữ; nội dung nghiệp vụ là quản lý thi công công trình xây dựng.</p></div></article>
 </div><p><a href="#toc">↑ Mục lục</a></p></section><section class="subsection" id="ex2-case1"><h3>事例1：鉄筋工事</h3><div class="study-grid">
-  <article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja"><p><strong>① 工種名等：</strong><strong class="kw">鉄筋工事</strong></p><p><strong>② 実施内容：</strong><span class="relation">ガス圧接継手 → 機械式継手</span>に変更することで、現場作業を軽減した。</p><p><strong>必要理由：</strong><span class="relation">雨天日が多い → 降雨による工程遅延を防止 + 作業品質を確保</span>する必要があった。</p><p><strong>③ 低下が懸念された品質：</strong><strong class="kw">スリーブへの挿入長さ</strong>や<strong class="kw">充填グラウト</strong>の施工について品質低下が懸念された。</p><p><strong>品質確保：</strong><span class="relation">鉄筋の挿入長さ → マークを付けて管理</span>、<span class="relation">充填グラウト → フロー値を確保</span>するよう留意した。</p></div></article>
-  <article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi"><p><strong>① Loại công tác:</strong> <strong class="kw">Công tác cốt thép</strong>.</p><p><strong>② Biện pháp:</strong> <span class="relation">mối nối hàn ép khí → mối nối cơ khí</span>, qua đó giảm công việc tại hiện trường.</p><p><strong>Lý do:</strong> <span class="relation">nhiều ngày mưa → tránh chậm tiến độ do mưa + đảm bảo chất lượng công việc</span>.</p><p><strong>③ Rủi ro chất lượng:</strong> chất lượng liên quan đến <strong class="kw">chiều dài cốt thép cắm vào sleeve</strong> và <strong class="kw">grout chèn đầy</strong> có nguy cơ suy giảm.</p><p><strong>Đảm bảo chất lượng:</strong> <span class="relation">chiều dài cắm → quản lý bằng dấu đánh dấu</span>, <span class="relation">grout → đảm bảo giá trị flow</span>.</p></div></article>
+<article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja"><p><strong>① 工種名等：</strong><strong class="kw">鉄筋工事</strong></p><p><strong>② 実施内容：</strong><span class="relation">ガス圧接継手 → 機械式継手</span>に変更することで、現場作業を軽減した。</p><p><strong>必要理由：</strong><span class="relation">雨天日が多い → 降雨による工程遅延を防止 + 作業品質を確保</span>する必要があった。</p><p><strong>③ 低下が懸念された品質：</strong><strong class="kw">スリーブへの挿入長さ</strong>や<strong class="kw">充填グラウト</strong>の施工について品質低下が懸念された。</p><p><strong>品質確保：</strong><span class="relation">鉄筋の挿入長さ → マークを付けて管理</span>、<span class="relation">充填グラウト → フロー値を確保</span>するよう留意した。</p></div></article>
+<article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi"><p><strong>① Loại công tác:</strong> <strong class="kw">Công tác cốt thép</strong>.</p><p><strong>② Biện pháp:</strong> <span class="relation">mối nối hàn ép khí → mối nối cơ khí</span>, qua đó giảm công việc tại hiện trường.</p><p><strong>Lý do:</strong> <span class="relation">nhiều ngày mưa → tránh chậm tiến độ do mưa + đảm bảo chất lượng công việc</span>.</p><p><strong>③ Rủi ro chất lượng:</strong> chất lượng liên quan đến <strong class="kw">chiều dài cốt thép cắm vào sleeve</strong> và <strong class="kw">grout chèn đầy</strong> có nguy cơ suy giảm.</p><p><strong>Đảm bảo chất lượng:</strong> <span class="relation">chiều dài cắm → quản lý bằng dấu đánh dấu</span>, <span class="relation">grout → đảm bảo giá trị flow</span>.</p></div></article>
 </div><p><a href="#toc">↑ Mục lục</a></p></section><section class="subsection" id="ex2-case2"><h3>事例2：型枠工事</h3><div class="study-grid">
-  <article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja"><p><strong>① 工種名等：</strong><strong class="kw">型枠工事</strong></p><p><strong>② 実施内容：</strong><span class="relation">基礎型枠の合板型枠 → ラス型枠</span>に変更し、<strong class="kw">脱型作業を軽減</strong>した。</p><p><strong>必要理由：</strong><span class="relation">基礎工程の短縮要請 → 型枠工程の短縮 + 脱型作業の省力化</span>が必要であった。</p><p><strong>③ 低下が懸念された品質：</strong><span class="relation">ラス型枠 → モルタル流出による品質低下</span>が懸念された。</p><p><strong>品質確保：</strong>モルタルが漏出しないよう、<strong class="kw">コンクリートのスランプ値</strong>を<mark class="critical">2cm低下</mark>させて管理した。</p></div></article>
-  <article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi"><p><strong>① Loại công tác:</strong> <strong class="kw">Công tác ván khuôn</strong>.</p><p><strong>② Biện pháp:</strong> <span class="relation">ván khuôn plywood móng → ván khuôn lath</span>, qua đó <strong class="kw">giảm công tháo khuôn</strong>.</p><p><strong>Lý do:</strong> <span class="relation">yêu cầu rút ngắn tiến độ móng → rút ngắn công tác ván khuôn + giảm lao động tháo khuôn</span>.</p><p><strong>③ Rủi ro chất lượng:</strong> <span class="relation">ván khuôn lath → mortar chảy ra gây suy giảm chất lượng</span>.</p><p><strong>Đảm bảo chất lượng:</strong> quản lý bằng cách <strong class="kw">giảm giá trị slump của bê tông</strong> <mark class="critical">2 cm</mark>.</p></div></article>
+<article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja"><p><strong>① 工種名等：</strong><strong class="kw">型枠工事</strong></p><p><strong>② 実施内容：</strong><span class="relation">基礎型枠の合板型枠 → ラス型枠</span>に変更し、<strong class="kw">脱型作業を軽減</strong>した。</p><p><strong>必要理由：</strong><span class="relation">基礎工程の短縮要請 → 型枠工程の短縮 + 脱型作業の省力化</span>が必要であった。</p><p><strong>③ 低下が懸念された品質：</strong><span class="relation">ラス型枠 → モルタル流出による品質低下</span>が懸念された。</p><p><strong>品質確保：</strong>モルタルが漏出しないよう、<strong class="kw">コンクリートのスランプ値</strong>を<mark class="critical">2cm低下</mark>させて管理した。</p></div></article>
+<article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi"><p><strong>① Loại công tác:</strong> <strong class="kw">Công tác ván khuôn</strong>.</p><p><strong>② Biện pháp:</strong> <span class="relation">ván khuôn plywood móng → ván khuôn lath</span>, qua đó <strong class="kw">giảm công tháo khuôn</strong>.</p><p><strong>Lý do:</strong> <span class="relation">yêu cầu rút ngắn tiến độ móng → rút ngắn công tác ván khuôn + giảm lao động tháo khuôn</span>.</p><p><strong>③ Rủi ro chất lượng:</strong> <span class="relation">ván khuôn lath → mortar chảy ra gây suy giảm chất lượng</span>.</p><p><strong>Đảm bảo chất lượng:</strong> quản lý bằng cách <strong class="kw">giảm giá trị slump của bê tông</strong> <mark class="critical">2 cm</mark>.</p></div></article>
 </div><p><a href="#toc">↑ Mục lục</a></p></section><section class="subsection" id="ex2-case3"><h3>事例3：鉄骨工事</h3><div class="study-grid">
-  <article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja"><p><strong>① 工種名等：</strong><strong class="kw">鉄骨工事</strong></p><p><strong>② 実施内容：</strong><span class="relation">積上げ方式 → 建逃げ方式</span>に変更し、現場作業を軽減した。</p><p><strong>必要理由：</strong><span class="relation">用地取得の遅れ → 鉄骨組立作業の工程短縮</span>を要請された。</p><p><strong>③ 低下が懸念された品質：</strong><span class="relation">建逃げ方式 → 組立精度の確保が困難</span>であるため、所要の精度を確保できないことが懸念された。</p><p><strong>品質確保：</strong><span class="relation">現場溶接 → 工場溶接</span>とし、<strong class="kw">組立精度</strong>を確保するように留意した。</p></div></article>
-  <article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi"><p><strong>① Loại công tác:</strong> <strong class="kw">Công tác kết cấu thép</strong>.</p><p><strong>② Biện pháp:</strong> <span class="relation">phương thức lắp dựng tích tầng → phương thức 建逃げ</span>, qua đó giảm công việc tại hiện trường.</p><p><strong>Lý do:</strong> <span class="relation">chậm tiếp nhận khu đất → cần rút ngắn tiến độ lắp dựng thép</span>.</p><p><strong>③ Rủi ro chất lượng:</strong> <span class="relation">phương thức 建逃げ → khó đảm bảo độ chính xác lắp dựng</span>, nên có nguy cơ không đạt độ chính xác yêu cầu.</p><p><strong>Đảm bảo chất lượng:</strong> <span class="relation">hàn tại hiện trường → hàn tại nhà máy</span> nhằm đảm bảo <strong class="kw">độ chính xác lắp dựng</strong>.</p></div></article>
+<article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja"><p><strong>① 工種名等：</strong><strong class="kw">鉄骨工事</strong></p><p><strong>② 実施内容：</strong><span class="relation">積上げ方式 → 建逃げ方式</span>に変更し、現場作業を軽減した。</p><p><strong>必要理由：</strong><span class="relation">用地取得の遅れ → 鉄骨組立作業の工程短縮</span>を要請された。</p><p><strong>③ 低下が懸念された品質：</strong><span class="relation">建逃げ方式 → 組立精度の確保が困難</span>であるため、所要の精度を確保できないことが懸念された。</p><p><strong>品質確保：</strong><span class="relation">現場溶接 → 工場溶接</span>とし、<strong class="kw">組立精度</strong>を確保するように留意した。</p></div></article>
+<article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi"><p><strong>① Loại công tác:</strong> <strong class="kw">Công tác kết cấu thép</strong>.</p><p><strong>② Biện pháp:</strong> <span class="relation">phương thức lắp dựng tích tầng → phương thức 建逃げ</span>, qua đó giảm công việc tại hiện trường.</p><p><strong>Lý do:</strong> <span class="relation">chậm tiếp nhận khu đất → cần rút ngắn tiến độ lắp dựng thép</span>.</p><p><strong>③ Rủi ro chất lượng:</strong> <span class="relation">phương thức 建逃げ → khó đảm bảo độ chính xác lắp dựng</span>, nên có nguy cơ không đạt độ chính xác yêu cầu.</p><p><strong>Đảm bảo chất lượng:</strong> <span class="relation">hàn tại hiện trường → hàn tại nhà máy</span> nhằm đảm bảo <strong class="kw">độ chính xác lắp dựng</strong>.</p></div></article>
 </div><p><a href="#toc">↑ Mục lục</a></p></section><section class="subsection" id="ex2-q2"><h3>問い2：建設現場での労働者の確保</h3><div class="study-grid">
-  <article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja"><p><strong>① 課題や問題点：</strong>日常生活環境などの労働条件の改善のため、<strong class="kw">現場特有の生活環境改善</strong>をどのように促進するかが課題である。</p><p><strong>② 取組や工夫：</strong>条件は現場ごとに異なるが、具体的には、<span class="relation">トイレ・洗面・個室などの安全・保健・衛生備品の設置を義務化</span>する。</p></div></article>
-  <article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi"><p><strong>① Vấn đề:</strong> để cải thiện điều kiện lao động, vấn đề đặt ra là làm thế nào thúc đẩy <strong class="kw">cải thiện môi trường sinh hoạt đặc thù của công trường</strong>.</p><p><strong>② Biện pháp:</strong> tùy điều kiện từng công trường, cụ thể có thể <span class="relation">bắt buộc bố trí nhà vệ sinh, khu rửa mặt, phòng/khu riêng tư và các trang thiết bị an toàn, sức khỏe, vệ sinh</span>.</p></div></article>
-</div><p><a href="#toc">↑ Mục lục</a></p></section></section>
-<section class="study-section" id="section-example3"><div class="section-head"><h2>解答例③：仕上げ工事・専門的な事項を重視</h2><span class="source-ref">Nguồn: Book page 78-79</span></div><section class="subsection" id="ex3-overview"><h3>〔工事概要〕 仕上げ工事・専門的な事項を重視</h3><div class="study-grid">
-  <article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja"><div class="table-wrap"><table><tbody><tr><th>工事名</th><td>美里商事ビル新築工事</td></tr><tr><th>工事場所</th><td>福島県美里市東花町丸山3丁目2-19</td></tr><tr><th>工事の内容</th><td>事務所、鉄骨鉄筋コンクリート造、14階建、延床面積8600m²、外装：アスファルト防水・外壁タイル、内装：軽量鉄骨下地・床タイル・ビニル床・石膏ボード張り</td></tr><tr><th>工期等</th><td>令和2年10月～令和4年4月</td></tr><tr><th>あなたの立場</th><td>現場代理人</td></tr><tr><th>あなたの業務内容</th><td>建築工事に係る施工管理</td></tr></tbody></table></div><p><strong>記述上のポイント：</strong>新築仕上げ工事の例。建物用途、構造、階数、外部仕上げ、内部仕上げを示す。年・月まで示す。誤字に注意。建築工事の施工管理。</p></div></article>
-  <article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi"><div class="table-wrap"><table><tbody><tr><th>Tên công trình</th><td>Công trình xây mới tòa nhà Misato Shoji</td></tr><tr><th>Địa điểm</th><td>3-2-19 Maruyama, Higashihana-cho, thành phố Misato, tỉnh Fukushima</td></tr><tr><th>Nội dung</th><td>Văn phòng, kết cấu SRC, 14 tầng, tổng diện tích sàn 8.600 m²; ngoại thất: chống thấm asphalt, gạch tường ngoài; nội thất: khung thép nhẹ, gạch lát sàn, sàn vinyl, tấm thạch cao</td></tr><tr><th>Thời gian</th><td>10/2020 đến 04/2022</td></tr><tr><th>Vị trí</th><td>Đại diện hiện trường</td></tr><tr><th>Nội dung công việc</th><td>Quản lý thi công công trình xây dựng</td></tr></tbody></table></div><p><strong>Điểm cần chú ý khi viết:</strong> đây là ví dụ công tác hoàn thiện xây mới; thể hiện công năng, kết cấu, số tầng, hoàn thiện ngoài và trong; thời gian ghi đến năm và tháng; tránh lỗi chữ; nội dung nghiệp vụ là quản lý thi công công trình xây dựng.</p></div></article>
+<article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja"><p><strong>① 課題や問題点：</strong>日常生活環境などの労働条件の改善のため、<strong class="kw">現場特有の生活環境改善</strong>をどのように促進するかが課題である。</p><p><strong>② 取組や工夫：</strong>条件は現場ごとに異なるが、具体的には、<span class="relation">トイレ・洗面・個室などの安全・保健・衛生備品の設置を義務化</span>する。</p></div></article>
+<article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi"><p><strong>① Vấn đề:</strong> để cải thiện điều kiện lao động, vấn đề đặt ra là làm thế nào thúc đẩy <strong class="kw">cải thiện môi trường sinh hoạt đặc thù của công trường</strong>.</p><p><strong>② Biện pháp:</strong> tùy điều kiện từng công trường, cụ thể có thể <span class="relation">bắt buộc bố trí nhà vệ sinh, khu rửa mặt, phòng/khu riêng tư và các trang thiết bị an toàn, sức khỏe, vệ sinh</span>.</p></div></article>
+</div><p><a href="#toc">↑ Mục lục</a></p></section></section><section class="study-section" id="section-example3"><div class="section-head"><h2>解答例③：仕上げ工事・専門的な事項を重視</h2><span class="source-ref">Nguồn: Book page 78-79</span></div><section class="subsection" id="ex3-overview"><h3>〔工事概要〕 仕上げ工事・専門的な事項を重視</h3><div class="study-grid">
+<article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja"><div class="table-wrap"><table><tbody><tr><th>工事名</th><td>美里商事ビル新築工事</td></tr><tr><th>工事場所</th><td>福島県美里市東花町丸山3丁目2-19</td></tr><tr><th>工事の内容</th><td>事務所、鉄骨鉄筋コンクリート造、14階建、延床面積8600m²、外装：アスファルト防水・外壁タイル、内装：軽量鉄骨下地・床タイル・ビニル床・石膏ボード張り</td></tr><tr><th>工期等</th><td>令和2年10月～令和4年4月</td></tr><tr><th>あなたの立場</th><td>現場代理人</td></tr><tr><th>あなたの業務内容</th><td>建築工事に係る施工管理</td></tr></tbody></table></div><p><strong>記述上のポイント：</strong>新築仕上げ工事の例。建物用途、構造、階数、外部仕上げ、内部仕上げを示す。年・月まで示す。誤字に注意。建築工事の施工管理。</p></div></article>
+<article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi"><div class="table-wrap"><table><tbody><tr><th>Tên công trình</th><td>Công trình xây mới tòa nhà Misato Shoji</td></tr><tr><th>Địa điểm</th><td>3-2-19 Maruyama, Higashihana-cho, thành phố Misato, tỉnh Fukushima</td></tr><tr><th>Nội dung</th><td>Văn phòng, kết cấu SRC, 14 tầng, tổng diện tích sàn 8.600 m²; ngoại thất: chống thấm asphalt, gạch tường ngoài; nội thất: khung thép nhẹ, gạch lát sàn, sàn vinyl, tấm thạch cao</td></tr><tr><th>Thời gian</th><td>10/2020 đến 04/2022</td></tr><tr><th>Vị trí</th><td>Đại diện hiện trường</td></tr><tr><th>Nội dung công việc</th><td>Quản lý thi công công trình xây dựng</td></tr></tbody></table></div><p><strong>Điểm cần chú ý khi viết:</strong> đây là ví dụ công tác hoàn thiện xây mới; thể hiện công năng, kết cấu, số tầng, hoàn thiện ngoài và trong; thời gian ghi đến năm và tháng; tránh lỗi chữ; nội dung nghiệp vụ là quản lý thi công công trình xây dựng.</p></div></article>
 </div><p><a href="#toc">↑ Mục lục</a></p></section><section class="subsection" id="ex3-case1"><h3>事例1：防水工事</h3><div class="study-grid">
-  <article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja"><p><strong>① 工種名等：</strong><strong class="kw">防水工事</strong></p><p><strong>② 実施内容：</strong><span class="relation">アスファルト防水 → 改質アスファルトシート工法</span>に変更し、現場作業を軽減した。</p><p><strong>必要理由：</strong><span class="relation">躯体コンクリート工事の遅延 → 防水工事の工程短縮要請</span>があった。</p><p><strong>③ 低下が懸念された品質：</strong><strong class="kw">改質アスファルトと下地との接着力</strong>の確保の確認が不十分になることが懸念された。</p><p><strong>品質確保：</strong><span class="relation">下地材の加熱を先行 + シート裏面をあぶる + シートを端部からはみ出させる</span>ように留意した。</p></div></article>
-  <article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi"><p><strong>① Loại công tác:</strong> <strong class="kw">Công tác chống thấm</strong>.</p><p><strong>② Biện pháp:</strong> <span class="relation">chống thấm asphalt → phương pháp tấm asphalt cải tiến</span>, qua đó giảm công việc hiện trường.</p><p><strong>Lý do:</strong> <span class="relation">công tác bê tông kết cấu bị chậm → yêu cầu rút ngắn tiến độ chống thấm</span>.</p><p><strong>③ Rủi ro chất lượng:</strong> có nguy cơ việc xác nhận khả năng đảm bảo <strong class="kw">lực bám dính giữa asphalt cải tiến và lớp nền</strong> không đầy đủ.</p><p><strong>Đảm bảo chất lượng:</strong> <span class="relation">gia nhiệt lớp nền trước + hơ mặt sau tấm + để tấm nhô khỏi phần mép</span>.</p></div></article>
+<article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja"><p><strong>① 工種名等：</strong><strong class="kw">防水工事</strong></p><p><strong>② 実施内容：</strong><span class="relation">アスファルト防水 → 改質アスファルトシート工法</span>に変更し、現場作業を軽減した。</p><p><strong>必要理由：</strong><span class="relation">躯体コンクリート工事の遅延 → 防水工事の工程短縮要請</span>があった。</p><p><strong>③ 低下が懸念された品質：</strong><strong class="kw">改質アスファルトと下地との接着力</strong>の確保の確認が不十分になることが懸念された。</p><p><strong>品質確保：</strong><span class="relation">下地材の加熱を先行 + シート裏面をあぶる + シートを端部からはみ出させる</span>ように留意した。</p></div></article>
+<article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi"><p><strong>① Loại công tác:</strong> <strong class="kw">Công tác chống thấm</strong>.</p><p><strong>② Biện pháp:</strong> <span class="relation">chống thấm asphalt → phương pháp tấm asphalt cải tiến</span>, qua đó giảm công việc hiện trường.</p><p><strong>Lý do:</strong> <span class="relation">công tác bê tông kết cấu bị chậm → yêu cầu rút ngắn tiến độ chống thấm</span>.</p><p><strong>③ Rủi ro chất lượng:</strong> có nguy cơ việc xác nhận khả năng đảm bảo <strong class="kw">lực bám dính giữa asphalt cải tiến và lớp nền</strong> không đầy đủ.</p><p><strong>Đảm bảo chất lượng:</strong> <span class="relation">gia nhiệt lớp nền trước + hơ mặt sau tấm + để tấm nhô khỏi phần mép</span>.</p></div></article>
 </div><p><a href="#toc">↑ Mục lục</a></p></section><section class="subsection" id="ex3-case2"><h3>事例2：タイル工事</h3><div class="study-grid">
-  <article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja"><p><strong>① 工種名等：</strong><strong class="kw">タイル工事</strong></p><p><strong>② 実施内容：</strong><span class="relation">タイル全面打診検査 → 足場の不要な赤外線装置検査</span>に変更し、現場作業を軽減した。</p><p><strong>必要理由：</strong><span class="relation">足場の組立・解体に必要な作業時間を確保できない → 工程短縮</span>。</p><p><strong>③ 低下が懸念された品質：</strong><span class="relation">撮影条件に適合しない高所部位 → 撮影品質の低下</span>が懸念された。</p><p><strong>品質確保：</strong><span class="relation">高所の撮影困難部位 → ドローンを用いて適合条件を満たす</span>よう留意した。</p></div></article>
-  <article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi"><p><strong>① Loại công tác:</strong> <strong class="kw">Công tác gạch</strong>.</p><p><strong>② Biện pháp:</strong> <span class="relation">kiểm tra gõ toàn bộ bề mặt → kiểm tra hồng ngoại không cần giàn giáo</span>, qua đó giảm công việc tại hiện trường.</p><p><strong>Lý do:</strong> <span class="relation">không đủ thời gian lắp và tháo giàn giáo → cần rút ngắn tiến độ</span>.</p><p><strong>③ Rủi ro chất lượng:</strong> <span class="relation">vị trí cao không đáp ứng điều kiện chụp → chất lượng hình ảnh suy giảm</span>.</p><p><strong>Đảm bảo chất lượng:</strong> <span class="relation">vị trí cao khó chụp → sử dụng drone để đáp ứng điều kiện chụp phù hợp</span>.</p></div></article>
+<article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja"><p><strong>① 工種名等：</strong><strong class="kw">タイル工事</strong></p><p><strong>② 実施内容：</strong><span class="relation">タイル全面打診検査 → 足場の不要な赤外線装置検査</span>に変更し、現場作業を軽減した。</p><p><strong>必要理由：</strong><span class="relation">足場の組立・解体に必要な作業時間を確保できない → 工程短縮</span>。</p><p><strong>③ 低下が懸念された品質：</strong><span class="relation">撮影条件に適合しない高所部位 → 撮影品質の低下</span>が懸念された。</p><p><strong>品質確保：</strong><span class="relation">高所の撮影困難部位 → ドローンを用いて適合条件を満たす</span>よう留意した。</p></div></article>
+<article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi"><p><strong>① Loại công tác:</strong> <strong class="kw">Công tác gạch</strong>.</p><p><strong>② Biện pháp:</strong> <span class="relation">kiểm tra gõ toàn bộ bề mặt → kiểm tra hồng ngoại không cần giàn giáo</span>, qua đó giảm công việc tại hiện trường.</p><p><strong>Lý do:</strong> <span class="relation">không đủ thời gian lắp và tháo giàn giáo → cần rút ngắn tiến độ</span>.</p><p><strong>③ Rủi ro chất lượng:</strong> <span class="relation">vị trí cao không đáp ứng điều kiện chụp → chất lượng hình ảnh suy giảm</span>.</p><p><strong>Đảm bảo chất lượng:</strong> <span class="relation">vị trí cao khó chụp → sử dụng drone để đáp ứng điều kiện chụp phù hợp</span>.</p></div></article>
 </div><p><a href="#toc">↑ Mục lục</a></p></section><section class="subsection" id="ex3-case3"><h3>事例3：左官工事</h3><div class="study-grid">
-  <article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja"><p><strong>① 工種名等：</strong><strong class="kw">左官工事</strong></p><p><strong>② 実施内容：</strong><span class="relation">床コンクリート直均し仕上げ工法 → セルフレベリング工法</span>に変更し、現場作業を軽減した。</p><p><strong>必要理由：</strong><span class="relation">先行した床工事の遅れ → 遅延を回復</span>する必要があると判断された。</p><p><strong>③ 低下が懸念された品質：</strong><span class="relation">養生条件を得られない → 所要品質を確保できない</span>ことが懸念された。</p><p><strong>品質確保：</strong><span class="relation">養生中の通風 → 表面ひび割れ</span>のため、<strong class="kw">開口部を完全閉塞</strong>するよう留意した。</p></div></article>
-  <article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi"><p><strong>① Loại công tác:</strong> <strong class="kw">Công tác trát/láng</strong>.</p><p><strong>② Biện pháp:</strong> <span class="relation">hoàn thiện san phẳng trực tiếp bê tông sàn → self-leveling</span>, qua đó giảm công việc tại hiện trường.</p><p><strong>Lý do:</strong> <span class="relation">công tác sàn trước bị chậm → cần khắc phục phần chậm tiến độ</span>.</p><p><strong>③ Rủi ro chất lượng:</strong> <span class="relation">không đảm bảo điều kiện bảo dưỡng → không đạt chất lượng yêu cầu</span>.</p><p><strong>Đảm bảo chất lượng:</strong> vì <span class="relation">luồng gió khi bảo dưỡng → nứt bề mặt</span>, phải <strong class="kw">đóng kín hoàn toàn các ô mở</strong>.</p></div></article>
+<article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja"><p><strong>① 工種名等：</strong><strong class="kw">左官工事</strong></p><p><strong>② 実施内容：</strong><span class="relation">床コンクリート直均し仕上げ工法 → セルフレベリング工法</span>に変更し、現場作業を軽減した。</p><p><strong>必要理由：</strong><span class="relation">先行した床工事の遅れ → 遅延を回復</span>する必要があると判断された。</p><p><strong>③ 低下が懸念された品質：</strong><span class="relation">養生条件を得られない → 所要品質を確保できない</span>ことが懸念された。</p><p><strong>品質確保：</strong><span class="relation">養生中の通風 → 表面ひび割れ</span>のため、<strong class="kw">開口部を完全閉塞</strong>するよう留意した。</p></div></article>
+<article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi"><p><strong>① Loại công tác:</strong> <strong class="kw">Công tác trát/láng</strong>.</p><p><strong>② Biện pháp:</strong> <span class="relation">hoàn thiện san phẳng trực tiếp bê tông sàn → self-leveling</span>, qua đó giảm công việc tại hiện trường.</p><p><strong>Lý do:</strong> <span class="relation">công tác sàn trước bị chậm → cần khắc phục phần chậm tiến độ</span>.</p><p><strong>③ Rủi ro chất lượng:</strong> <span class="relation">không đảm bảo điều kiện bảo dưỡng → không đạt chất lượng yêu cầu</span>.</p><p><strong>Đảm bảo chất lượng:</strong> vì <span class="relation">luồng gió khi bảo dưỡng → nứt bề mặt</span>, phải <strong class="kw">đóng kín hoàn toàn các ô mở</strong>.</p></div></article>
 </div><p><a href="#toc">↑ Mục lục</a></p></section><section class="subsection" id="ex3-q2"><h3>問い2：建設現場での労働者の確保</h3><div class="study-grid">
-  <article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja"><p><strong>① 課題や問題点：</strong><span class="relation">下請・孫請労働者の教育機会を確保できない → 労働者の早期離職</span>が問題になっている。</p><p><strong>② 取組や工夫：</strong>労働者の質的改善のため、<span class="relation">一定期間労働した労働者 → 新技術の学習機会を付与 → 早期離職を抑制</span>する。</p></div></article>
-  <article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi"><p><strong>① Vấn đề:</strong> <span class="relation">không đảm bảo được cơ hội đào tạo cho lao động nhà thầu phụ và nhà thầu cấp dưới → nghỉ việc sớm</span>.</p><p><strong>② Biện pháp:</strong> để nâng cao chất lượng nguồn lao động, <span class="relation">người đã làm việc một thời gian nhất định → được tạo cơ hội học công nghệ mới → hạn chế nghỉ việc sớm</span>.</p></div></article>
-</div><p><a href="#toc">↑ Mục lục</a></p></section></section>
-<section class="study-section" id="section-method"><div class="section-head"><h2>令和4年度 問題1 施工経験記述の考え方・書き方</h2><span class="source-ref">Nguồn: Book page 80-82</span></div><section class="subsection" id="method-background"><h3>背景と令和4年度の出題意図</h3><div class="study-grid">
-  <article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja"><p>建設業界では、建設業を取り巻く環境の変化として、<strong class="kw">若手労働者の不足</strong>が深刻な問題になっている。建設業では、1997年から2016年までの20年間で、29歳以下の若手労働者の割合は約22％から約11％に減っているのに対し、55歳以上の高齢労働者の割合は約24％から約34％に増えている。</p><p>今後は、高齢労働者の退職により、建設業における労働力不足が、更に深刻化することが予想されている。この労働者不足に対応するために、建設現場においては、<strong class="kw">労働生産性の向上</strong>や、<strong class="kw">建設業の担い手の確保</strong>に対する取組が、日々直面する重要な課題となっている。</p><p>令和4年度の試験では、工程管理のうち、<span class="relation">労働生産性の向上に繋がる現場作業の軽減</span>に関することを記述することが指定されている。</p></div></article>
-  <article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi"><p>Trong ngành xây dựng, <strong class="kw">thiếu lao động trẻ</strong> đang là vấn đề nghiêm trọng. Theo số liệu trong sách, trong 20 năm từ 1997 đến 2016, tỷ lệ lao động 29 tuổi trở xuống giảm từ khoảng 22% xuống khoảng 11%, trong khi lao động từ 55 tuổi trở lên tăng từ khoảng 24% lên khoảng 34%.</p><p>Khi nhóm lao động lớn tuổi nghỉ việc, thiếu lao động được dự đoán sẽ nghiêm trọng hơn. Do đó, <strong class="kw">nâng cao năng suất lao động</strong> và <strong class="kw">đảm bảo nguồn nhân lực cho ngành xây dựng</strong> trở thành vấn đề quan trọng tại công trường.</p><p>Đề Reiwa 4 yêu cầu trong phạm vi quản lý tiến độ phải viết về <span class="relation">giảm công việc tại hiện trường dẫn tới nâng cao năng suất lao động</span>.</p></div></article>
+<article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja"><p><strong>① 課題や問題点：</strong><span class="relation">下請・孫請労働者の教育機会を確保できない → 労働者の早期離職</span>が問題になっている。</p><p><strong>② 取組や工夫：</strong>労働者の質的改善のため、<span class="relation">一定期間労働した労働者 → 新技術の学習機会を付与 → 早期離職を抑制</span>する。</p></div></article>
+<article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi"><p><strong>① Vấn đề:</strong> <span class="relation">không đảm bảo được cơ hội đào tạo cho lao động nhà thầu phụ và nhà thầu cấp dưới → nghỉ việc sớm</span>.</p><p><strong>② Biện pháp:</strong> để nâng cao chất lượng nguồn lao động, <span class="relation">người đã làm việc một thời gian nhất định → được tạo cơ hội học công nghệ mới → hạn chế nghỉ việc sớm</span>.</p></div></article>
+</div><p><a href="#toc">↑ Mục lục</a></p></section></section><section class="study-section" id="section-method"><div class="section-head"><h2>令和4年度 問題1 施工経験記述の考え方・書き方</h2><span class="source-ref">Nguồn: Book page 80-82</span></div><section class="subsection" id="method-background"><h3>背景と令和4年度の出題意図</h3><div class="study-grid">
+<article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja"><p>建設業界では、建設業を取り巻く環境の変化として、<strong class="kw">若手労働者の不足</strong>が深刻な問題になっている。建設業では、1997年から2016年までの20年間で、29歳以下の若手労働者の割合は約22％から約11％に減っているのに対し、55歳以上の高齢労働者の割合は約24％から約34％に増えている。</p><p>今後は、高齢労働者の退職により、建設業における労働力不足が、更に深刻化することが予想されている。この労働者不足に対応するために、建設現場においては、<strong class="kw">労働生産性の向上</strong>や、<strong class="kw">建設業の担い手の確保</strong>に対する取組が、日々直面する重要な課題となっている。</p><p>令和4年度の試験では、工程管理のうち、<span class="relation">労働生産性の向上に繋がる現場作業の軽減</span>に関することを記述することが指定されている。</p></div></article>
+<article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi"><p>Trong ngành xây dựng, <strong class="kw">thiếu lao động trẻ</strong> đang là vấn đề nghiêm trọng. Theo số liệu trong sách, trong 20 năm từ 1997 đến 2016, tỷ lệ lao động 29 tuổi trở xuống giảm từ khoảng 22% xuống khoảng 11%, trong khi lao động từ 55 tuổi trở lên tăng từ khoảng 24% lên khoảng 34%.</p><p>Khi nhóm lao động lớn tuổi nghỉ việc, thiếu lao động được dự đoán sẽ nghiêm trọng hơn. Do đó, <strong class="kw">nâng cao năng suất lao động</strong> và <strong class="kw">đảm bảo nguồn nhân lực cho ngành xây dựng</strong> trở thành vấn đề quan trọng tại công trường.</p><p>Đề Reiwa 4 yêu cầu trong phạm vi quản lý tiến độ phải viết về <span class="relation">giảm công việc tại hiện trường dẫn tới nâng cao năng suất lao động</span>.</p></div></article>
 </div><p><a href="#toc">↑ Mục lục</a></p></section><section class="subsection" id="method-worktype"><h3>「工種名等」の記述</h3><div class="study-grid">
-  <article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja"><p>工種名とは、型枠工事・鉄筋工事・防水工事・タイル工事などの工事の大まかな分類のことである。重要な注意点として、ここで採り上げる工種名は、<strong class="kw">工事概要の工事の内容で記述したものに関連</strong>していなければならない。</p><p>一例として、工事概要に「鉄筋コンクリート造」と記述した場合は、「鉄筋工事」「コンクリート工事」や、それに付随する「型枠工事」などを採り上げることはできるが、<span class="trap">「鉄骨工事」を採り上げることはできない</span>。</p><p>また、「基礎の型枠工事」を採り上げる場合は、工事の内容に、基礎の種類などを記述することが望ましい。</p></div></article>
-  <article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi"><p>工種名 là phân loại lớn của công tác như ván khuôn, cốt thép, chống thấm, gạch. Công tác được chọn phải <strong class="kw">có quan hệ với nội dung đã ghi trong phần khái quát công trình</strong>.</p><p>Ví dụ, nếu ghi công trình là kết cấu RC, có thể chọn công tác cốt thép, bê tông hoặc ván khuôn liên quan, nhưng <span class="trap">không thể chọn công tác kết cấu thép</span>.</p><p>Nếu chọn ván khuôn móng, sách khuyến nghị phần nội dung công trình cũng ghi loại móng.</p></div></article>
+<article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja"><p>工種名とは、型枠工事・鉄筋工事・防水工事・タイル工事などの工事の大まかな分類のことである。重要な注意点として、ここで採り上げる工種名は、<strong class="kw">工事概要の工事の内容で記述したものに関連</strong>していなければならない。</p><p>一例として、工事概要に「鉄筋コンクリート造」と記述した場合は、「鉄筋工事」「コンクリート工事」や、それに付随する「型枠工事」などを採り上げることはできるが、<span class="trap">「鉄骨工事」を採り上げることはできない</span>。</p><p>また、「基礎の型枠工事」を採り上げる場合は、工事の内容に、基礎の種類などを記述することが望ましい。</p></div></article>
+<article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi"><p>工種名 là phân loại lớn của công tác như ván khuôn, cốt thép, chống thấm, gạch. Công tác được chọn phải <strong class="kw">có quan hệ với nội dung đã ghi trong phần khái quát công trình</strong>.</p><p>Ví dụ, nếu ghi công trình là kết cấu RC, có thể chọn công tác cốt thép, bê tông hoặc ván khuôn liên quan, nhưng <span class="trap">không thể chọn công tác kết cấu thép</span>.</p><p>Nếu chọn ván khuôn móng, sách khuyến nghị phần nội dung công trình cũng ghi loại móng.</p></div></article>
 </div><p><a href="#toc">↑ Mục lục</a></p></section><section class="subsection" id="method-reduction"><h3>「現場作業の軽減のために実施した内容」の記述</h3><div class="study-grid">
-  <article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja"><p>現場作業の軽減のために実施した内容については、<span class="relation">現場作業が多い計画 → 現場作業が少ない計画</span>に変更したことを記述することが望ましい。</p><p><strong class="kw">打診法</strong>は、打診用ハンマーなどを用いてタイル張り壁面を打撃し、その反発音の違いを聞くことにより、タイルの浮きの有無を調査する方法である。この方法は、<strong class="kw">足場の組立て・解体</strong>に多大な現場作業が必要になる。</p><p><strong class="kw">赤外線装置法</strong>は、タイル張り壁面の表面温度を測定することにより、タイルの浮きの有無を調査する方法である。赤外線カメラなどで撮影するだけで済むので、<span class="relation">現場作業は打診法の数分の一</span>になる。</p><p>現場作業の軽減に直接寄与する計画変更が望ましい。しかし、工程短縮には寄与するが現場作業の軽減に直接寄与しない計画変更しか思いつかない場合は、それを記述してもよい。このような工程短縮のための内容は、間接的には現場作業の軽減に繋がるからである。</p></div></article>
-  <article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi"><p>Phần nội dung đã thực hiện để giảm công việc tại hiện trường nên thể hiện rõ <span class="relation">phương án cần nhiều công việc tại công trường → phương án cần ít công việc tại công trường</span>.</p><p><strong class="kw">Phương pháp gõ kiểm tra</strong> dùng búa kiểm tra để gõ bề mặt gạch và nghe khác biệt âm thanh phản hồi nhằm xác định bong/tách. Phương pháp này cần nhiều công việc cho <strong class="kw">lắp dựng và tháo dỡ giàn giáo</strong>.</p><p><strong class="kw">Phương pháp thiết bị hồng ngoại</strong> đo nhiệt độ bề mặt để xác định bong/tách. Chỉ cần chụp bằng camera hồng ngoại, nên <span class="relation">khối lượng công việc tại hiện trường chỉ còn một phần nhỏ so với phương pháp gõ</span>.</p><p>Nên ưu tiên thay đổi trực tiếp làm giảm công việc tại hiện trường. Nếu chỉ có biện pháp rút ngắn tiến độ nhưng không trực tiếp giảm công việc, vẫn có thể sử dụng vì nó gián tiếp liên quan đến giảm công việc hiện trường.</p></div></article>
+<article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja"><p>現場作業の軽減のために実施した内容については、<span class="relation">現場作業が多い計画 → 現場作業が少ない計画</span>に変更したことを記述することが望ましい。</p><p><strong class="kw">打診法</strong>は、打診用ハンマーなどを用いてタイル張り壁面を打撃し、その反発音の違いを聞くことにより、タイルの浮きの有無を調査する方法である。この方法は、<strong class="kw">足場の組立て・解体</strong>に多大な現場作業が必要になる。</p><p><strong class="kw">赤外線装置法</strong>は、タイル張り壁面の表面温度を測定することにより、タイルの浮きの有無を調査する方法である。赤外線カメラなどで撮影するだけで済むので、<span class="relation">現場作業は打診法の数分の一</span>になる。</p><p>現場作業の軽減に直接寄与する計画変更が望ましい。しかし、工程短縮には寄与するが現場作業の軽減に直接寄与しない計画変更しか思いつかない場合は、それを記述してもよい。このような工程短縮のための内容は、間接的には現場作業の軽減に繋がるからである。</p></div></article>
+<article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi"><p>Phần nội dung đã thực hiện để giảm công việc tại hiện trường nên thể hiện rõ <span class="relation">phương án cần nhiều công việc tại công trường → phương án cần ít công việc tại công trường</span>.</p><p><strong class="kw">Phương pháp gõ kiểm tra</strong> dùng búa kiểm tra để gõ bề mặt gạch và nghe khác biệt âm thanh phản hồi nhằm xác định bong/tách. Phương pháp này cần nhiều công việc cho <strong class="kw">lắp dựng và tháo dỡ giàn giáo</strong>.</p><p><strong class="kw">Phương pháp thiết bị hồng ngoại</strong> đo nhiệt độ bề mặt để xác định bong/tách. Chỉ cần chụp bằng camera hồng ngoại, nên <span class="relation">khối lượng công việc tại hiện trường chỉ còn một phần nhỏ so với phương pháp gõ</span>.</p><p>Nên ưu tiên thay đổi trực tiếp làm giảm công việc tại hiện trường. Nếu chỉ có biện pháp rút ngắn tiến độ nhưng không trực tiếp giảm công việc, vẫn có thể sử dụng vì nó gián tiếp liên quan đến giảm công việc hiện trường.</p></div></article>
 </div><p><a href="#toc">↑ Mục lục</a></p></section><section class="subsection" id="method-reason"><h3>「現場作業の軽減が必要になった具体的な理由」の記述</h3><div class="study-grid">
-  <article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja"><p>現場作業の軽減が必要になった具体的な理由については、単純に、<strong class="kw">工程短縮を余儀なくされた要因</strong>を記述すればよい。工事開始日の遅れや前工程の遅れなどの時間的な理由、作業員数の削減や労働生産性の向上などの理由を選択すると比較的記述しやすい。</p><p>この項目では、上記の現場作業の軽減のために実施した内容が、<span class="trap">工程短縮に繋がる理由を記述しない</span>ように注意する。それは「現場作業の軽減が必要になった理由」ではなく、「実施した内容が施工の合理化となる理由」である。</p></div></article>
-  <article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi"><p>Lý do cụ thể khiến cần giảm công việc tại hiện trường chỉ cần nêu <strong class="kw">nguyên nhân khiến việc rút ngắn tiến độ trở nên bắt buộc</strong>, như chậm ngày khởi công, chậm công đoạn trước, cần giảm số công nhân hoặc nâng cao năng suất lao động.</p><p>Ở mục này <span class="trap">không viết tại sao biện pháp đã chọn có thể rút ngắn tiến độ</span>. Đó là lý do biện pháp tạo ra hợp lý hóa, không phải lý do vì sao cần giảm công việc.</p></div></article>
+<article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja"><p>現場作業の軽減が必要になった具体的な理由については、単純に、<strong class="kw">工程短縮を余儀なくされた要因</strong>を記述すればよい。工事開始日の遅れや前工程の遅れなどの時間的な理由、作業員数の削減や労働生産性の向上などの理由を選択すると比較的記述しやすい。</p><p>この項目では、上記の現場作業の軽減のために実施した内容が、<span class="trap">工程短縮に繋がる理由を記述しない</span>ように注意する。それは「現場作業の軽減が必要になった理由」ではなく、「実施した内容が施工の合理化となる理由」である。</p></div></article>
+<article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi"><p>Lý do cụ thể khiến cần giảm công việc tại hiện trường chỉ cần nêu <strong class="kw">nguyên nhân khiến việc rút ngắn tiến độ trở nên bắt buộc</strong>, như chậm ngày khởi công, chậm công đoạn trước, cần giảm số công nhân hoặc nâng cao năng suất lao động.</p><p>Ở mục này <span class="trap">không viết tại sao biện pháp đã chọn có thể rút ngắn tiến độ</span>. Đó là lý do biện pháp tạo ra hợp lý hóa, không phải lý do vì sao cần giảm công việc.</p></div></article>
 </div><p><a href="#toc">↑ Mục lục</a></p></section><section class="subsection" id="method-risk"><h3>「低下が懸念された品質」の記述</h3><div class="study-grid">
-  <article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja"><p>現場作業が少ない計画は、施工品質の低下を引き起こしやすかったり、施工品質の低下を避けるために条件があったりするなど、何らかの<strong class="kw">欠点（デメリット）</strong>がある場合が多い。</p><p>低下が懸念された品質については、この欠点を記述すればよい。打診法の反発音は天候や時刻に影響されないが、赤外線装置法の表面温度測定結果は天候や時刻に影響されるため、<span class="relation">タイルの浮きの有無を確認する時間帯に制約</span>がある。</p><p>この項目では、<span class="trap">品質低下を防ぐための方法まで記述しない</span>ように注意する。基本的には、文末が「……が懸念された。」で終わる内容であることを確認すればよい。</p></div></article>
-  <article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi"><p>Phương án có ít công việc hiện trường thường có một <strong class="kw">nhược điểm</strong>, như dễ gây suy giảm chất lượng hoặc cần điều kiện nhất định để tránh suy giảm.</p><p>Phần chất lượng có nguy cơ giảm về cơ bản chính là viết nhược điểm đó. Âm thanh phản hồi của phương pháp gõ không phụ thuộc thời tiết/thời điểm, trong khi kết quả nhiệt độ của hồng ngoại phụ thuộc các yếu tố này, nên <span class="relation">thời gian có thể kiểm tra bong/tách bị hạn chế</span>.</p><p>Ở mục này <span class="trap">không viết luôn biện pháp phòng ngừa suy giảm chất lượng</span>. Câu trả lời về cơ bản phải có thể kết thúc bằng "có nguy cơ rằng...".</p></div></article>
+<article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja"><p>現場作業が少ない計画は、施工品質の低下を引き起こしやすかったり、施工品質の低下を避けるために条件があったりするなど、何らかの<strong class="kw">欠点（デメリット）</strong>がある場合が多い。</p><p>低下が懸念された品質については、この欠点を記述すればよい。打診法の反発音は天候や時刻に影響されないが、赤外線装置法の表面温度測定結果は天候や時刻に影響されるため、<span class="relation">タイルの浮きの有無を確認する時間帯に制約</span>がある。</p><p>この項目では、<span class="trap">品質低下を防ぐための方法まで記述しない</span>ように注意する。基本的には、文末が「……が懸念された。」で終わる内容であることを確認すればよい。</p></div></article>
+<article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi"><p>Phương án có ít công việc hiện trường thường có một <strong class="kw">nhược điểm</strong>, như dễ gây suy giảm chất lượng hoặc cần điều kiện nhất định để tránh suy giảm.</p><p>Phần chất lượng có nguy cơ giảm về cơ bản chính là viết nhược điểm đó. Âm thanh phản hồi của phương pháp gõ không phụ thuộc thời tiết/thời điểm, trong khi kết quả nhiệt độ của hồng ngoại phụ thuộc các yếu tố này, nên <span class="relation">thời gian có thể kiểm tra bong/tách bị hạn chế</span>.</p><p>Ở mục này <span class="trap">không viết luôn biện pháp phòng ngừa suy giảm chất lượng</span>. Câu trả lời về cơ bản phải có thể kết thúc bằng "có nguy cơ rằng...".</p></div></article>
 </div><p><a href="#toc">↑ Mục lục</a></p></section><section class="subsection" id="method-quality"><h3>「品質を確保するための施工上の留意事項」の記述</h3><div class="study-grid">
-  <article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja"><p>品質を確保するための施工上の留意事項については、上記の欠点を帳消しにするために、<strong class="kw">どのような方法で施工するか</strong>を記述すればよい。</p><p>赤外線装置による測定は、タイル張り壁面に直射日光が当たると、タイルの浮き部の温度が健全な接着部よりも大きく上昇する性質を利用している。直射日光が当たらない時間帯に観測すると、浮き部の温度が十分に上がらず、健全な接着部であると誤判定される。</p><p>誤判定を防ぐためには、<span class="relation">十分な日射がある時間帯 → 表面温度を測定</span>すればよい。そうすれば、天候や時刻に影響される赤外線装置法の欠点を帳消しにできる。</p></div></article>
-  <article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi"><p>Phần lưu ý thi công để đảm bảo chất lượng phải viết <strong class="kw">cách thi công nhằm triệt tiêu nhược điểm đã nêu</strong>.</p><p>Phương pháp hồng ngoại sử dụng tính chất khi ánh nắng trực tiếp chiếu vào tường ốp gạch, nhiệt độ vùng gạch bong tăng cao hơn vùng bám dính tốt. Nếu quan sát khi không có nắng trực tiếp, vùng bong không đủ nóng và có thể bị đánh giá nhầm là vùng tốt.</p><p>Để tránh đánh giá sai, thực hiện <span class="relation">thời gian có đủ bức xạ mặt trời → đo nhiệt độ bề mặt</span>. Nhờ đó khắc phục nhược điểm phụ thuộc thời tiết và thời điểm.</p></div></article>
+<article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja"><p>品質を確保するための施工上の留意事項については、上記の欠点を帳消しにするために、<strong class="kw">どのような方法で施工するか</strong>を記述すればよい。</p><p>赤外線装置による測定は、タイル張り壁面に直射日光が当たると、タイルの浮き部の温度が健全な接着部よりも大きく上昇する性質を利用している。直射日光が当たらない時間帯に観測すると、浮き部の温度が十分に上がらず、健全な接着部であると誤判定される。</p><p>誤判定を防ぐためには、<span class="relation">十分な日射がある時間帯 → 表面温度を測定</span>すればよい。そうすれば、天候や時刻に影響される赤外線装置法の欠点を帳消しにできる。</p></div></article>
+<article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi"><p>Phần lưu ý thi công để đảm bảo chất lượng phải viết <strong class="kw">cách thi công nhằm triệt tiêu nhược điểm đã nêu</strong>.</p><p>Phương pháp hồng ngoại sử dụng tính chất khi ánh nắng trực tiếp chiếu vào tường ốp gạch, nhiệt độ vùng gạch bong tăng cao hơn vùng bám dính tốt. Nếu quan sát khi không có nắng trực tiếp, vùng bong không đủ nóng và có thể bị đánh giá nhầm là vùng tốt.</p><p>Để tránh đánh giá sai, thực hiện <span class="relation">thời gian có đủ bức xạ mặt trời → đo nhiệt độ bề mặt</span>. Nhờ đó khắc phục nhược điểm phụ thuộc thời tiết và thời điểm.</p></div></article>
 </div><p><a href="#toc">↑ Mục lục</a></p></section><section class="subsection" id="method-labor-problem"><h3>「労働者の確保を困難にしている課題や問題点」の記述</h3><div class="study-grid">
-  <article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja"><p>建設現場において、労働者の確保を困難にしている課題や問題点には次のようなものがある。最大の課題や問題点は、労働者の給与や賃金が仕事内容に見合っていないことであるが、<span class="trap">その記述は不可</span>とあるので、それ以外から選択する。</p><ol><li><strong class="kw">長時間労働</strong>：建設業従事者の労働時間は他業界に比べて1.2倍程度とされ、肉体労働や酷暑などの悪環境下での作業も多く、離職を招きやすい。</li><li><strong class="kw">旧態依然とした体制</strong>：「上下関係が厳しい」「叱りながら教える」といった風潮が多く、電子技術活用などの生産性向上が図られにくい。</li><li><strong class="kw">不安定な雇用形態</strong>：特に下請業者では社会保障への未加入や福利厚生の少なさがある。<span class="trap">給与や賃金にも関係するため答案には記述しない方が無難</span>。</li><li><strong class="kw">危険を伴う労働</strong>：墜落災害など命の危険を伴う作業が多く、いわゆる3K（きつい・汚い・危険）と関連する。</li></ol></div></article>
-  <article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi"><p>Các vấn đề khiến khó đảm bảo lao động tại công trường gồm nhiều nhóm. Sách nêu vấn đề lớn nhất là tiền lương/tiền công không tương xứng với công việc, nhưng <span class="trap">đề cấm viết nội dung này</span>, nên phải chọn nhóm khác.</p><ol><li><strong class="kw">Thời gian lao động dài</strong>: theo sách, thời gian lao động ngành xây dựng khoảng 1,2 lần ngành khác; lao động thể lực và môi trường khắc nghiệt cũng nhiều, dễ dẫn tới nghỉ việc.</li><li><strong class="kw">Cơ chế cũ</strong>: còn tồn tại văn hóa cấp bậc nghiêm khắc, quát mắng khi dạy, khiến khó thúc đẩy ứng dụng công nghệ điện tử để tăng năng suất.</li><li><strong class="kw">Hình thức việc làm không ổn định</strong>: đặc biệt ở nhà thầu phụ, có trường hợp chưa tham gia an sinh xã hội hoặc ít phúc lợi. <span class="trap">Vì liên quan đến tiền lương/tiền công, sách khuyên không nên dùng trong bài thi</span>.</li><li><strong class="kw">Lao động có nguy hiểm</strong>: nhiều công việc có nguy cơ tới tính mạng như ngã cao, liên quan hình ảnh 3K: vất vả, bẩn, nguy hiểm.</li></ol></div></article>
+<article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja"><p>建設現場において、労働者の確保を困難にしている課題や問題点には次のようなものがある。最大の課題や問題点は、労働者の給与や賃金が仕事内容に見合っていないことであるが、<span class="trap">その記述は不可</span>とあるので、それ以外から選択する。</p><ol><li><strong class="kw">長時間労働</strong>：建設業従事者の労働時間は他業界に比べて1.2倍程度とされ、肉体労働や酷暑などの悪環境下での作業も多く、離職を招きやすい。</li><li><strong class="kw">旧態依然とした体制</strong>：「上下関係が厳しい」「叱りながら教える」といった風潮が多く、電子技術活用などの生産性向上が図られにくい。</li><li><strong class="kw">不安定な雇用形態</strong>：特に下請業者では社会保障への未加入や福利厚生の少なさがある。<span class="trap">給与や賃金にも関係するため答案には記述しない方が無難</span>。</li><li><strong class="kw">危険を伴う労働</strong>：墜落災害など命の危険を伴う作業が多く、いわゆる3K（きつい・汚い・危険）と関連する。</li></ol></div></article>
+<article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi"><p>Các vấn đề khiến khó đảm bảo lao động tại công trường gồm nhiều nhóm. Sách nêu vấn đề lớn nhất là tiền lương/tiền công không tương xứng với công việc, nhưng <span class="trap">đề cấm viết nội dung này</span>, nên phải chọn nhóm khác.</p><ol><li><strong class="kw">Thời gian lao động dài</strong>: theo sách, thời gian lao động ngành xây dựng khoảng 1,2 lần ngành khác; lao động thể lực và môi trường khắc nghiệt cũng nhiều, dễ dẫn tới nghỉ việc.</li><li><strong class="kw">Cơ chế cũ</strong>: còn tồn tại văn hóa cấp bậc nghiêm khắc, quát mắng khi dạy, khiến khó thúc đẩy ứng dụng công nghệ điện tử để tăng năng suất.</li><li><strong class="kw">Hình thức việc làm không ổn định</strong>: đặc biệt ở nhà thầu phụ, có trường hợp chưa tham gia an sinh xã hội hoặc ít phúc lợi. <span class="trap">Vì liên quan đến tiền lương/tiền công, sách khuyên không nên dùng trong bài thi</span>.</li><li><strong class="kw">Lao động có nguy hiểm</strong>: nhiều công việc có nguy cơ tới tính mạng như ngã cao, liên quan hình ảnh 3K: vất vả, bẩn, nguy hiểm.</li></ol></div></article>
 </div><p><a href="#toc">↑ Mục lục</a></p></section><section class="subsection" id="method-labor-action"><h3>「労働者の確保に効果がある取組や工夫」の記述</h3><div class="study-grid">
-  <article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja"><p>労働者を確保するための建設現場での取組や工夫の方針については、国土交通省から「建設業働き方改革加速化プログラム」が発表されている。解答には、下記の①～④からひとつ、<strong class="kw">上記の課題や問題点で選択したものと同じ番号</strong>を選択して記述するとよい。</p><ol><li><strong class="kw">長時間労働の是正</strong>：<span class="relation">週休2日制の導入 → 定着率向上</span>。発注者と受注者の間で、準備期間などの余裕を持たせた<strong class="kw">適正な工期設定</strong>ができるようにする。</li><li><strong class="kw">生産性の向上</strong>：<span class="relation">電子技術の活用 + 労働者への教育</span>を適切に実施する。</li><li><strong class="kw">労働者の処遇の改善</strong>：社会保障への加入を推進し、働きに見合った処遇を提供し、下請けや孫請けを保護する。<span class="trap">給与や賃金にも関係するため答案には記述しない方が無難</span>。</li><li><strong class="kw">建設業のイメージの向上</strong>：<span class="relation">安全対策の徹底 → 労働災害防止</span>、また、<span class="relation">冷暖房設備・休憩所・衛生設備の整備 → きつくて汚いイメージの改善</span>。</li></ol></div></article>
-  <article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi"><p>Về biện pháp đảm bảo lao động, sách dẫn "Chương trình thúc đẩy cải cách phương thức làm việc trong ngành xây dựng" của MLIT. Khi trả lời nên chọn biện pháp <strong class="kw">cùng số với vấn đề đã chọn ở phần trước</strong>.</p><ol><li><strong class="kw">Khắc phục lao động kéo dài</strong>: <span class="relation">thúc đẩy nghỉ 2 ngày/tuần → nâng tỷ lệ gắn bó</span>; đồng thời thiết lập <strong class="kw">thời gian thi công hợp lý</strong> có tính đến thời gian chuẩn bị.</li><li><strong class="kw">Nâng cao năng suất</strong>: <span class="relation">ứng dụng công nghệ điện tử + đào tạo người lao động</span>, ví dụ hỗ trợ học lấy chứng chỉ quản lý thi công.</li><li><strong class="kw">Cải thiện chế độ đối xử</strong>: thúc đẩy an sinh xã hội, cung cấp đãi ngộ phù hợp và bảo vệ nhà thầu phụ/cấp dưới. <span class="trap">Vì liên quan đến lương/tiền công, sách khuyên không nên dùng trong bài thi</span>.</li><li><strong class="kw">Cải thiện hình ảnh ngành xây dựng</strong>: <span class="relation">triệt để an toàn → phòng tai nạn</span>; đồng thời <span class="relation">bố trí sưởi/làm mát, chỗ nghỉ, nhà vệ sinh, vòi tắm → cải thiện hình ảnh vất vả và bẩn</span>.</li></ol></div></article>
-</div><p><a href="#toc">↑ Mục lục</a></p></section></section>
-</main>
+<article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja"><p>労働者を確保するための建設現場での取組や工夫の方針については、国土交通省から「建設業働き方改革加速化プログラム」が発表されている。解答には、下記の①～④からひとつ、<strong class="kw">上記の課題や問題点で選択したものと同じ番号</strong>を選択して記述するとよい。</p><ol><li><strong class="kw">長時間労働の是正</strong>：<span class="relation">週休2日制の導入 → 定着率向上</span>。発注者と受注者の間で、準備期間などの余裕を持たせた<strong class="kw">適正な工期設定</strong>ができるようにする。</li><li><strong class="kw">生産性の向上</strong>：<span class="relation">電子技術の活用 + 労働者への教育</span>を適切に実施する。</li><li><strong class="kw">労働者の処遇の改善</strong>：社会保障への加入を推進し、働きに見合った処遇を提供し、下請けや孫請けを保護する。<span class="trap">給与や賃金にも関係するため答案には記述しない方が無難</span>。</li><li><strong class="kw">建設業のイメージの向上</strong>：<span class="relation">安全対策の徹底 → 労働災害防止</span>、また、<span class="relation">冷暖房設備・休憩所・衛生設備の整備 → きつくて汚いイメージの改善</span>。</li></ol></div></article>
+<article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi"><p>Về biện pháp đảm bảo lao động, sách dẫn "Chương trình thúc đẩy cải cách phương thức làm việc trong ngành xây dựng" của MLIT. Khi trả lời nên chọn biện pháp <strong class="kw">cùng số với vấn đề đã chọn ở phần trước</strong>.</p><ol><li><strong class="kw">Khắc phục lao động kéo dài</strong>: <span class="relation">thúc đẩy nghỉ 2 ngày/tuần → nâng tỷ lệ gắn bó</span>; đồng thời thiết lập <strong class="kw">thời gian thi công hợp lý</strong> có tính đến thời gian chuẩn bị.</li><li><strong class="kw">Nâng cao năng suất</strong>: <span class="relation">ứng dụng công nghệ điện tử + đào tạo người lao động</span>, ví dụ hỗ trợ học lấy chứng chỉ quản lý thi công.</li><li><strong class="kw">Cải thiện chế độ đối xử</strong>: thúc đẩy an sinh xã hội, cung cấp đãi ngộ phù hợp và bảo vệ nhà thầu phụ/cấp dưới. <span class="trap">Vì liên quan đến lương/tiền công, sách khuyên không nên dùng trong bài thi</span>.</li><li><strong class="kw">Cải thiện hình ảnh ngành xây dựng</strong>: <span class="relation">triệt để an toàn → phòng tai nạn</span>; đồng thời <span class="relation">bố trí sưởi/làm mát, chỗ nghỉ, nhà vệ sinh, vòi tắm → cải thiện hình ảnh vất vả và bẩn</span>.</li></ol></div></article>
+</div><p><a href="#toc">↑ Mục lục</a></p></section></section></main>
 <!-- CONTENT_END -->
-
-  <!-- =====================================================
-       NON-DIMMED STUDY SUPPORT SECTIONS
-       These sections stay normally readable in Keywords mode.
-       ===================================================== -->
-
-  <section class="aggregate-section" id="terms">
-    <div class="section-head">
-      <h2>Thuật ngữ chuyên môn</h2>
-    </div>
-    <div class="table-wrap"><table><thead><tr><th>日本語</th><th>読み方</th><th>Tiếng Việt</th><th>Giải thích</th><th>Liên quan</th></tr></thead><tbody>
+<section id="terms">
+<h2>Thuật ngữ chuyên môn</h2><div class="section-head">
+<h2>Thuật ngữ chuyên môn</h2>
+</div><div class="table-wrap"><table><thead><tr><th>日本語</th><th>読み方</th><th>Tiếng Việt</th><th>Giải thích</th><th>Liên quan</th></tr></thead><tbody>
 <tr><td>施工経験記述</td><td>せこうけいけんきじゅつ</td><td>Bài tự luận kinh nghiệm thi công</td><td>Dạng câu hỏi yêu cầu trình bày kinh nghiệm và quản lý thi công bằng văn bản.</td><td>問題1</td></tr>
 <tr><td>施工の合理化</td><td>せこうのごうりか</td><td>Hợp lý hóa thi công</td><td>Thay đổi phương pháp, trình tự hoặc tổ chức thi công để tăng hiệu quả nhưng vẫn đảm bảo chất lượng.</td><td>現場作業の軽減</td></tr>
 <tr><td>現場作業の軽減</td><td>げんばさぎょうのけいげん</td><td>Giảm công việc tại hiện trường</td><td>Giảm khối lượng lao động hoặc công đoạn thực hiện trực tiếp tại công trường.</td><td>労働生産性</td></tr>
@@ -1057,141 +778,114 @@ body.toc-open .toc-drawer {
 <tr><td>改質アスファルトシート工法</td><td>かいしつアスファルトシートこうほう</td><td>Phương pháp tấm asphalt cải tiến</td><td>Phương pháp chống thấm bằng vật liệu asphalt cải tiến dạng tấm.</td><td>接着力</td></tr>
 <tr><td>左官工事</td><td>さかんこうじ</td><td>Công tác trát/láng</td><td>Nhóm công việc hoàn thiện bề mặt bằng vữa hoặc vật liệu dạng lỏng.</td><td>直均し・セルフレベリング</td></tr>
 <tr><td>孫請</td><td>まごうけ</td><td>Nhà thầu phụ cấp dưới</td><td>Nhà thầu nhận việc từ một nhà thầu phụ khác.</td><td>下請</td></tr>
-</tbody></table></div>
-  </section>
-
-  <section class="aggregate-section" id="background">
-    <div class="section-head">
-      <h2>Kiến thức nền cần biết</h2>
-    </div>
-    <div class="note-box"><strong>Logic của bài 施工経験記述</strong><p>Đề Reiwa 4 yêu cầu liên kết bốn lớp: biện pháp giảm công việc tại hiện trường, lý do cần giảm, rủi ro chất lượng phát sinh do phương pháp mới, và biện pháp đảm bảo chất lượng. Các phần này phải tách nhau rõ về chức năng.</p></div>
-<div class="comparison-box"><strong>Quan hệ giữa 工事概要 và 工種</strong><p>Công tác được chọn phải phù hợp với nội dung đã khai báo trong phần khái quát công trình. Ví dụ, khai báo RC thì có thể chọn cốt thép, bê tông, ván khuôn liên quan; không thể tự chuyển sang công tác kết cấu thép nếu phần công trình không hỗ trợ.</p></div>
-<div class="note-box"><strong>Kiểm tra gạch: 打診法 và 赤外線装置法</strong><p>打診法 cần nhiều công việc hiện trường do phải tiếp cận bề mặt và thường cần giàn giáo. 赤外線装置法 giảm công việc nhưng phụ thuộc điều kiện nhiệt và thời điểm đo, vì vậy rủi ro chất lượng và điều kiện đo phải được quản lý riêng.</p></div>
-  </section>
-
-  <section class="aggregate-section" id="memory">
-    <div class="section-head">
-      <h2>Điểm cần nhớ và mẹo nhớ</h2>
-    </div>
-    <div class="memory-box"><strong>Cấu trúc cốt lõi</strong><p><span class="relation">軽減策 → 必要理由 → 品質低下リスク → 品質確保策</span></p></div>
-<div class="table-wrap"><table><thead><tr><th>Ví dụ</th><th>Recall cue</th></tr></thead><tbody>
+</tbody></table></div></section>
+<section id="background">
+<h2>Kiến thức nền cần biết</h2><div class="section-head">
+<h2>Kiến thức nền cần biết</h2>
+</div><div class="note-box"><strong>Logic của bài 施工経験記述</strong><p>Đề Reiwa 4 yêu cầu liên kết bốn lớp: biện pháp giảm công việc tại hiện trường, lý do cần giảm, rủi ro chất lượng phát sinh do phương pháp mới, và biện pháp đảm bảo chất lượng. Các phần này phải tách nhau rõ về chức năng.</p></div><div class="comparison-box"><strong>Quan hệ giữa 工事概要 và 工種</strong><p>Công tác được chọn phải phù hợp với nội dung đã khai báo trong phần khái quát công trình. Ví dụ, khai báo RC thì có thể chọn cốt thép, bê tông, ván khuôn liên quan; không thể tự chuyển sang công tác kết cấu thép nếu phần công trình không hỗ trợ.</p></div><div class="note-box"><strong>Kiểm tra gạch: 打診法 và 赤外線装置法</strong><p>打診法 cần nhiều công việc hiện trường do phải tiếp cận bề mặt và thường cần giàn giáo. 赤外線装置法 giảm công việc nhưng phụ thuộc điều kiện nhiệt và thời điểm đo, vì vậy rủi ro chất lượng và điều kiện đo phải được quản lý riêng.</p></div></section>
+<section id="memory">
+<h2>Điểm cần nhớ và mẹo nhớ</h2><div class="section-head">
+<h2>Điểm cần nhớ và mẹo nhớ</h2>
+</div><div class="memory-box"><strong>Cấu trúc cốt lõi</strong><p><span class="relation">軽減策 → 必要理由 → 品質低下リスク → 品質確保策</span></p></div><div class="table-wrap"><table><thead><tr><th>Ví dụ</th><th>Recall cue</th></tr></thead><tbody>
 <tr><td>機械式継手</td><td><span class="relation">挿入長さ → マーク / グラウト → フロー値</span></td></tr>
 <tr><td>ラス型枠</td><td><span class="relation">モルタル流出 → スランプ管理</span></td></tr>
 <tr><td>建逃げ方式</td><td><span class="relation">組立精度 → 工場溶接</span></td></tr>
 <tr><td>防水</td><td><span class="relation">改質アスファルトシート → 接着品質 → 下地・シート加熱</span></td></tr>
 <tr><td>タイル</td><td><span class="relation">打診 → 赤外線 → 撮影/測定条件</span></td></tr>
 <tr><td>セルフレベリング</td><td><span class="relation">低温 → 硬化不良 / 通風 → 皺・ひび割れ</span></td></tr>
-</tbody></table></div>
-<div class="memory-box"><strong>労働者確保</strong><p><span class="relation">長時間労働 → 週休2日・適正工期</span><br><span class="relation">旧態依然 → 電子技術・教育</span><br><span class="relation">危険・3K → 安全対策・作業環境改善</span></p><p><span class="trap">不安定な雇用形態 / 処遇改善は給与・賃金と関係しやすいため、答案では避ける方が無難</span>。</p></div>
-<div class="memory-box"><strong>書き分け</strong><p><span class="relation">なぜ必要？ → 原因</span><br><span class="relation">何が悪くなる？ → リスク</span><br><span class="relation">どう防ぐ？ → 対策</span></p></div>
-  </section>
-
-</div>
-
-<!-- =======================================================
-     APPROVED COMPONENT LIBRARY
-     Hidden. AI may copy/repeat these components into CONTENT.
-     Do not create a new visual system unless strictly necessary.
-     ======================================================= -->
+</tbody></table></div><div class="memory-box"><strong>労働者確保</strong><p><span class="relation">長時間労働 → 週休2日・適正工期</span><br/><span class="relation">旧態依然 → 電子技術・教育</span><br/><span class="relation">危険・3K → 安全対策・作業環境改善</span></p><p><span class="trap">不安定な雇用形態 / 処遇改善は給与・賃金と関係しやすいため、答案では避ける方が無難</span>。</p></div><div class="memory-box"><strong>書き分け</strong><p><span class="relation">なぜ必要？ → 原因</span><br/><span class="relation">何が悪くなる？ → リスク</span><br/><span class="relation">どう防ぐ？ → 対策</span></p></div></section>
 <template id="component-library">
-
-  <!-- FIGURE -->
-  <figure class="figure-card">
-    <img src="" alt="">
-    <figcaption></figcaption>
-  </figure>
-
-  <!-- MULTIPLE FIGURES -->
-  <div class="figure-grid">
-    <figure class="figure-card">
-      <img src="" alt="">
-      <figcaption></figcaption>
-    </figure>
-    <figure class="figure-card">
-      <img src="" alt="">
-      <figcaption></figcaption>
-    </figure>
-  </div>
-
-  <!-- TABLE -->
-  <div class="table-wrap">
-    <table>
-      <caption></caption>
-      <thead>
-        <tr><th></th><th></th></tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><strong class="kw"></strong></td>
-          <td><span class="relation"></span></td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-
-  <!-- NOTE -->
-  <div class="note-box">
-    <strong></strong>
-    <p></p>
-  </div>
-
-  <!-- WARNING -->
-  <div class="warning-box">
-    <strong></strong>
-    <p></p>
-  </div>
-
-  <!-- MEMORY -->
-  <div class="memory-box">
-    <strong></strong>
-    <p><div class="memory-box"><strong>Cấu trúc cốt lõi</strong><p><span class="relation">軽減策 → 必要理由 → 品質低下リスク → 品質確保策</span></p></div>
-<div class="table-wrap"><table><thead><tr><th>Ví dụ</th><th>Recall cue</th></tr></thead><tbody>
-<tr><td>機械式継手</td><td><span class="relation">挿入長さ → マーク / グラウト → フロー値</span></td></tr>
-<tr><td>ラス型枠</td><td><span class="relation">モルタル流出 → スランプ管理</span></td></tr>
-<tr><td>建逃げ方式</td><td><span class="relation">組立精度 → 工場溶接</span></td></tr>
-<tr><td>防水</td><td><span class="relation">改質アスファルトシート → 接着品質 → 下地・シート加熱</span></td></tr>
-<tr><td>タイル</td><td><span class="relation">打診 → 赤外線 → 撮影/測定条件</span></td></tr>
-<tr><td>セルフレベリング</td><td><span class="relation">低温 → 硬化不良 / 通風 → 皺・ひび割れ</span></td></tr>
-</tbody></table></div>
-<div class="memory-box"><strong>労働者確保</strong><p><span class="relation">長時間労働 → 週休2日・適正工期</span><br><span class="relation">旧態依然 → 電子技術・教育</span><br><span class="relation">危険・3K → 安全対策・作業環境改善</span></p><p><span class="trap">不安定な雇用形態 / 処遇改善は給与・賃金と関係しやすいため、答案では避ける方が無難</span>。</p></div>
-<div class="memory-box"><strong>書き分け</strong><p><span class="relation">なぜ必要？ → 原因</span><br><span class="relation">何が悪くなる？ → リスク</span><br><span class="relation">どう防ぐ？ → 対策</span></p></div></p>
-  </div>
-
-  <!-- FORMULA / FLOW -->
-  <div class="formula-box">
-    <div class="formula-line">
-      <span class="flow-node"></span>
-      <span class="flow-arrow">→</span>
-      <span class="flow-node"></span>
-      <span class="flow-arrow">→</span>
-      <span class="flow-node"></span>
-    </div>
-  </div>
-
+<div class="table-wrap">
+<table>
+<caption>{{TABLE_CAPTION}}</caption>
+<thead><tr><th>{{HEADER_1}}</th><th>{{HEADER_2}}</th></tr></thead>
+<tbody><tr><td><strong class="kw">{{ROW_KEY}}</strong></td><td><span class="relation">{{ROW_RELATION}}</span></td></tr></tbody>
+</table>
+</div>
+<figure class="figure-card">
+<img alt="{{IMAGE_ALT}}" height="{{IMAGE_HEIGHT}}" src="{{IMAGE_SOURCE}}" width="{{IMAGE_WIDTH}}"/>
+<figcaption>{{IMAGE_CAPTION}}</figcaption>
+</figure>
+<div class="figure-grid">
+<figure class="figure-card">
+<img alt="{{IMAGE_ALT_1}}" height="{{IMAGE_HEIGHT_1}}" src="{{IMAGE_SOURCE_1}}" width="{{IMAGE_WIDTH_1}}"/>
+<figcaption>{{IMAGE_CAPTION_1}}</figcaption>
+</figure>
+<figure class="figure-card">
+<img alt="{{IMAGE_ALT_2}}" height="{{IMAGE_HEIGHT_2}}" src="{{IMAGE_SOURCE_2}}" width="{{IMAGE_WIDTH_2}}"/>
+<figcaption>{{IMAGE_CAPTION_2}}</figcaption>
+</figure>
+</div>
+<section class="note-box"><h3>{{NOTE_TITLE}}</h3><p>{{NOTE_CONTENT}}</p></section>
+<section class="warning-box"><h3>{{WARNING_TITLE}}</h3><p>{{WARNING_CONTENT}}</p></section>
+<section class="memory-box"><h3>{{MEMORY_TITLE}}</h3><p>{{MEMORY_ITEM}}</p></section>
 </template>
-
+</div>
 <script>
-(() => {
-  "use strict";
+(function () {
+  'use strict';
 
   const root = document.documentElement;
   const body = document.body;
+  const q = id => document.getElementById(id);
+  const FONT_LEVELS = Array.from({ length: 21 }, (_, i) => 50 + i * 5);
 
-  const themeToggle = document.getElementById("theme-toggle");
-  const modeToggle = document.getElementById("mode-toggle");
-  const fontDown = document.getElementById("font-down");
-  const fontReset = document.getElementById("font-reset");
-  const fontUp = document.getElementById("font-up");
+  const controls = q('control-cluster');
+  const controlsToggle = q('controls-toggle');
+  const controlPanel = q('control-panel');
+  const themeButton = q('theme-toggle');
+  const modeButton = q('mode-toggle');
+  const fontDown = q('font-down');
+  const fontUp = q('font-up');
+  const fontReset = q('font-reset');
+  const tocButton = q('toc-toggle');
+  const tocClose = q('toc-close');
+  const overlay = q('toc-overlay');
+  const prevButton = q('section-prev');
+  const nextButton = q('section-next');
+  const homeButton = q('home-button');
 
-  const tocToggle = document.getElementById("toc-toggle");
-  const tocClose = document.getElementById("toc-close");
-  const tocOverlay = document.getElementById("toc-overlay");
-  const tocDrawer = document.getElementById("toc-drawer");
+  const pageKey = location.pathname + location.search;
+  const readerStateKey = 'study-reader-position:' + pageKey;
+  const lastPageKey = 'study-last-page';
+  const explicitHomeKey = 'study-explicit-home';
+  const anchorSelector = [
+    '.page-shell h1', '.page-shell h2', '.page-shell h3', '.page-shell h4',
+    '.page-shell p', '.page-shell li', '.page-shell td', '.page-shell th',
+    '.page-shell figcaption', '.page-shell .card-title'
+  ].join(', ');
 
-  const prevButton = document.getElementById("section-prev");
-  const nextButton = document.getElementById("section-next");
+  let anchorElements = [];
+  let lastStablePosition = null;
+  let scrollSaveTimer = 0;
+  let resizeRestoreTimer = 0;
+  let resizeAnchor = null;
+  let suppressScrollSaveUntil = 0;
+  function layoutViewportSize() {
+    const de = document.documentElement;
+    return {
+      width: de.clientWidth || window.innerWidth,
+      height: de.clientHeight || window.innerHeight
+    };
+  }
 
-  const FONT_LEVELS = [80, 90, 100, 110, 120, 130, 140];
+  function visualViewportScale() {
+    const vv = window.visualViewport;
+    return vv && Number.isFinite(vv.scale) ? vv.scale : 1;
+  }
+
+  function isPinchZoomActive() {
+    return Math.abs(visualViewportScale() - 1) > 0.015;
+  }
+
+  const initialLayoutViewport = layoutViewportSize();
+  let lastViewportWidth = initialLayoutViewport.width;
+  let lastViewportHeight = initialLayoutViewport.height;
+  let pinchZoomSession = false;
+
+  try {
+    if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+  } catch (e) {}
 
   function safeGet(key, fallback = null) {
     try {
@@ -1203,210 +897,602 @@ body.toc-open .toc-drawer {
   }
 
   function safeSet(key, value) {
-    try {
-      localStorage.setItem(key, value);
-    } catch (e) {}
+    try { localStorage.setItem(key, value); } catch (e) {}
   }
+
+  function safeRemove(key) {
+    try { localStorage.removeItem(key); } catch (e) {}
+  }
+
+  /* ---------- Persistent page / PWA resume metadata ---------- */
+
+  function rememberCurrentPage() {
+    safeSet(lastPageKey, pageKey);
+    safeSet('study-last-active-at', String(Date.now()));
+  }
+
+  rememberCurrentPage();
+
+  /* ---------- Layout viewport geometry ---------- */
+
+  /*
+    Pinch zoom changes visualViewport.width / height / scale.
+    It must NOT change the document layout width.
+
+    Therefore --app-viewport-width is derived only from the layout viewport
+    (documentElement.clientWidth / innerWidth), never from visualViewport.width.
+  */
+  function syncViewportGeometry() {
+    const { width } = layoutViewportSize();
+    root.style.setProperty(
+      '--app-viewport-width',
+      `${Math.round(width * 100) / 100}px`
+    );
+  }
+
+  syncViewportGeometry();
+
+  /* ---------- Reader anchors ---------- */
+
+  function rebuildReaderAnchors() {
+    anchorElements = Array.from(document.querySelectorAll(anchorSelector));
+    anchorElements.forEach((el, index) => {
+      el.dataset.readerKey = 'r' + index;
+    });
+  }
+
+  function closestReaderElement(node) {
+    if (!node) return null;
+    const el = node.nodeType === Node.ELEMENT_NODE ? node : node.parentElement;
+    return el ? el.closest('[data-reader-key]') : null;
+  }
+
+  function caretAtPoint(x, y) {
+    try {
+      if (document.caretPositionFromPoint) {
+        const pos = document.caretPositionFromPoint(x, y);
+        if (!pos || !pos.offsetNode) return null;
+        return { node: pos.offsetNode, offset: pos.offset };
+      }
+      if (document.caretRangeFromPoint) {
+        const range = document.caretRangeFromPoint(x, y);
+        if (!range) return null;
+        return { node: range.startContainer, offset: range.startOffset };
+      }
+    } catch (e) {}
+    return null;
+  }
+
+  function textOffsetFromElementStart(element, node, offset) {
+    try {
+      const range = document.createRange();
+      range.setStart(element, 0);
+      range.setEnd(node, offset);
+      return range.toString().length;
+    } catch (e) {
+      return 0;
+    }
+  }
+
+  function domPositionFromTextOffset(element, targetOffset) {
+    const walker = document.createTreeWalker(element, NodeFilter.SHOW_TEXT);
+    let remaining = Math.max(0, targetOffset);
+    let node = walker.nextNode();
+    let last = null;
+
+    while (node) {
+      last = node;
+      const len = node.nodeValue ? node.nodeValue.length : 0;
+      if (remaining <= len) {
+        return { node, offset: remaining };
+      }
+      remaining -= len;
+      node = walker.nextNode();
+    }
+
+    if (last) return { node: last, offset: last.nodeValue ? last.nodeValue.length : 0 };
+    return { node: element, offset: 0 };
+  }
+
+  function characterRect(node, offset) {
+    try {
+      if (node.nodeType !== Node.TEXT_NODE) {
+        const r = node.getBoundingClientRect ? node.getBoundingClientRect() : null;
+        return r && r.height ? r : null;
+      }
+
+      const len = node.nodeValue ? node.nodeValue.length : 0;
+      if (!len) return node.parentElement ? node.parentElement.getBoundingClientRect() : null;
+
+      let start = Math.max(0, Math.min(offset, len - 1));
+      let end = Math.min(len, start + 1);
+      if (offset >= len && len > 0) {
+        start = len - 1;
+        end = len;
+      }
+
+      const range = document.createRange();
+      range.setStart(node, start);
+      range.setEnd(node, end);
+      const rects = range.getClientRects();
+      return rects.length ? rects[0] : range.getBoundingClientRect();
+    } catch (e) {
+      return null;
+    }
+  }
+
+  function captureReadingPosition() {
+    if (!anchorElements.length) rebuildReaderAnchors();
+    if (!anchorElements.length) return null;
+
+    const vv = window.visualViewport;
+    const viewportWidth = vv ? vv.width : window.innerWidth;
+    const topProbe = 6;
+    const ys = [topProbe, 12, 18, 26, 36, 50];
+    const xs = [];
+
+    for (let x = 12; x <= Math.min(viewportWidth - 12, 220); x += 16) xs.push(x);
+    xs.push(viewportWidth * .25, viewportWidth * .5, viewportWidth * .75);
+
+    for (const y of ys) {
+      for (const x of xs) {
+        if (x <= 0 || x >= viewportWidth) continue;
+        const caret = caretAtPoint(x, y);
+        if (!caret) continue;
+        const element = closestReaderElement(caret.node);
+        if (!element || !document.querySelector('.page-shell')?.contains(element)) continue;
+
+        const offset = textOffsetFromElementStart(element, caret.node, caret.offset);
+        const rect = characterRect(caret.node, caret.offset);
+        const key = element.dataset.readerKey;
+        if (key && rect && Number.isFinite(rect.top)) {
+          return { key, offset, top: rect.top };
+        }
+      }
+    }
+
+    /* Fallback: nearest textual block to the top edge. */
+    let best = null;
+    let bestDistance = Infinity;
+    for (const element of anchorElements) {
+      const rect = element.getBoundingClientRect();
+      if (rect.bottom < 0 || rect.top > (vv ? vv.height : window.innerHeight)) continue;
+      const distance = Math.abs(rect.top);
+      if (distance < bestDistance) {
+        bestDistance = distance;
+        best = { key: element.dataset.readerKey, offset: 0, top: rect.top };
+      }
+    }
+    return best;
+  }
+
+  function restoreReadingPosition(state) {
+    if (!state || !state.key) return false;
+    if (!anchorElements.length) rebuildReaderAnchors();
+
+    const element = document.querySelector('[data-reader-key="' + CSS.escape(state.key) + '"]');
+    if (!element) return false;
+
+    const pos = domPositionFromTextOffset(element, Number(state.offset) || 0);
+    const rect = characterRect(pos.node, pos.offset);
+    if (!rect || !Number.isFinite(rect.top)) return false;
+
+    const desiredTop = Number.isFinite(Number(state.top)) ? Number(state.top) : 6;
+    const delta = rect.top - desiredTop;
+    if (Math.abs(delta) < .5) return true;
+
+    suppressScrollSaveUntil = Date.now() + 700;
+    const oldBehavior = root.style.scrollBehavior;
+    root.style.scrollBehavior = 'auto';
+    window.scrollBy(0, delta);
+    root.style.scrollBehavior = oldBehavior;
+    return true;
+  }
+
+  function saveReaderState(state) {
+    if (!state) return;
+    lastStablePosition = state;
+    safeSet(readerStateKey, JSON.stringify(state));
+  }
+
+  function readReaderState() {
+    try {
+      const raw = safeGet(readerStateKey);
+      return raw ? JSON.parse(raw) : null;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  function settleRestore(state, delays = [0, 60, 180, 420]) {
+    if (!state) return;
+    suppressScrollSaveUntil = Date.now() + Math.max(...delays) + 350;
+    delays.forEach(delay => {
+      window.setTimeout(() => {
+        requestAnimationFrame(() => restoreReadingPosition(state));
+      }, delay);
+    });
+    window.setTimeout(() => {
+      saveReaderState(state);
+    }, Math.max(...delays) + 120);
+  }
+
+  function preserveReadingPosition(mutator) {
+    const state = captureReadingPosition() || lastStablePosition || readReaderState();
+    if (state) saveReaderState(state);
+    mutator();
+    rebuildReaderAnchors();
+    settleRestore(state);
+  }
+
+  function scheduleReaderSave() {
+    if (Date.now() < suppressScrollSaveUntil) return;
+    clearTimeout(scrollSaveTimer);
+    scrollSaveTimer = window.setTimeout(() => {
+      if (Date.now() < suppressScrollSaveUntil) return;
+      const state = captureReadingPosition();
+      if (state) saveReaderState(state);
+    }, 130);
+  }
+
+  rebuildReaderAnchors();
+  lastStablePosition = readReaderState();
 
   /* ---------- Theme ---------- */
 
   function applyTheme(theme) {
-    const next = theme === "light" ? "light" : "dark";
-    root.dataset.theme = next;
-
-    if (themeToggle) {
-      const dark = next === "dark";
-      themeToggle.textContent = dark ? "☀" : "☾";
-      themeToggle.title = dark ? "Chuyển sang Light" : "Chuyển sang Dark";
-      themeToggle.setAttribute("aria-pressed", String(!dark));
+    theme = theme === 'light' ? 'light' : 'dark';
+    root.dataset.theme = theme;
+    safeSet('study-theme', theme);
+    if (themeButton) {
+      themeButton.textContent = theme === 'dark' ? '☀' : '☾';
+      themeButton.title = theme === 'dark' ? 'Chuyển sang Light theme' : 'Chuyển sang Dark theme';
+      themeButton.setAttribute('aria-label', themeButton.title);
+      themeButton.setAttribute('aria-pressed', theme === 'light' ? 'true' : 'false');
     }
-
-    safeSet("study-theme", next);
   }
-
-  const initialTheme =
-    safeGet("study-theme") ||
-    (window.matchMedia &&
-     window.matchMedia("(prefers-color-scheme: dark)").matches
-      ? "dark"
-      : "light");
-
-  applyTheme(initialTheme);
-
-  themeToggle?.addEventListener("click", () => {
-    applyTheme(root.dataset.theme === "dark" ? "light" : "dark");
-  });
 
   /* ---------- Full / Keywords ---------- */
 
   function applyMode(mode) {
-    const keywords = mode === "keywords";
-    body.classList.toggle("keyword-focus", keywords);
-
-    if (modeToggle) {
-      modeToggle.textContent = keywords ? "📖" : "🎯";
-      modeToggle.title = keywords ? "Chuyển sang Full" : "Chuyển sang Keywords";
-      modeToggle.setAttribute("aria-pressed", String(keywords));
+    mode = mode === 'keywords' ? 'keywords' : 'full';
+    root.dataset.studyMode = mode;
+    body.classList.toggle('keyword-focus', mode === 'keywords');
+    safeSet('study-mode', mode);
+    if (modeButton) {
+      modeButton.textContent = mode === 'full' ? '🎯' : '📖';
+      modeButton.title = mode === 'full' ? 'Chuyển sang Keywords mode' : 'Trở lại Full mode';
+      modeButton.setAttribute('aria-label', modeButton.title);
+      modeButton.setAttribute('aria-pressed', mode === 'keywords' ? 'true' : 'false');
     }
-
-    safeSet("study-mode", keywords ? "keywords" : "full");
   }
 
-  applyMode(safeGet("study-mode", "full"));
+  /* ---------- Font 50-150%, step 5% ---------- */
 
-  modeToggle?.addEventListener("click", () => {
-    applyMode(body.classList.contains("keyword-focus") ? "full" : "keywords");
-  });
-
-  /* ---------- Font scale ---------- */
-
-  let fontScale = Number(safeGet("study-font-scale", "100"));
-  if (!FONT_LEVELS.includes(fontScale)) {
-    fontScale = 100;
+  function currentScale() {
+    const saved = Number(safeGet('study-font-scale', '100'));
+    return FONT_LEVELS.includes(saved) ? saved : 100;
   }
 
   function applyFontScale(scale) {
-    fontScale = FONT_LEVELS.includes(scale) ? scale : 100;
-
-    root.style.setProperty(
-      "--base-font-size",
-      `${16 * fontScale / 100}px`
-    );
+    if (!FONT_LEVELS.includes(scale)) scale = 100;
+    root.style.setProperty('--base-font-size', (16 * scale / 100) + 'px');
+    safeSet('study-font-scale', String(scale));
 
     if (fontReset) {
-      fontReset.textContent = `${fontScale}%`;
-      fontReset.title =
-        fontScale === 100
-          ? "Cỡ chữ hiện tại 100%"
-          : `Cỡ chữ hiện tại ${fontScale}%, bấm để về 100%`;
+      fontReset.textContent = scale + '%';
+      fontReset.title = 'Cỡ chữ hiện tại ' + scale + '%. Chạm để về 100%';
+      fontReset.setAttribute('aria-label', fontReset.title);
     }
-
-    if (fontDown) {
-      fontDown.disabled = fontScale === FONT_LEVELS[0];
-    }
-
-    if (fontUp) {
-      fontUp.disabled = fontScale === FONT_LEVELS[FONT_LEVELS.length - 1];
-    }
-
-    safeSet("study-font-scale", String(fontScale));
+    if (fontDown) fontDown.disabled = scale === FONT_LEVELS[0];
+    if (fontUp) fontUp.disabled = scale === FONT_LEVELS[FONT_LEVELS.length - 1];
   }
 
-  applyFontScale(fontScale);
+  /* ---------- Collapsible controls ---------- */
 
-  fontDown?.addEventListener("click", () => {
-    const index = FONT_LEVELS.indexOf(fontScale);
-    if (index > 0) {
-      applyFontScale(FONT_LEVELS[index - 1]);
-    }
-  });
-
-  fontUp?.addEventListener("click", () => {
-    const index = FONT_LEVELS.indexOf(fontScale);
-    if (index >= 0 && index < FONT_LEVELS.length - 1) {
-      applyFontScale(FONT_LEVELS[index + 1]);
-    }
-  });
-
-  fontReset?.addEventListener("click", () => {
-    applyFontScale(100);
-  });
-
-  /* ---------- TOC drawer ---------- */
-
-  function setToc(open) {
-    body.classList.toggle("toc-open", open);
-    tocToggle?.setAttribute("aria-expanded", String(open));
-    tocOverlay?.setAttribute("aria-hidden", String(!open));
-
-    if (open) {
-      requestAnimationFrame(() => tocClose?.focus());
-    }
+  function setControlsOpen(open) {
+    if (!controls) return;
+    controls.classList.toggle('open', open);
+    controlsToggle?.setAttribute('aria-expanded', String(open));
+    controlsToggle?.setAttribute('aria-label', open ? 'Đóng công cụ' : 'Mở công cụ');
+    controlsToggle?.setAttribute('title', open ? 'Đóng công cụ' : 'Mở công cụ');
   }
 
-  tocToggle?.addEventListener("click", () => {
-    setToc(!body.classList.contains("toc-open"));
+  controlsToggle?.addEventListener('click', event => {
+    event.stopPropagation();
+    setControlsOpen(!controls.classList.contains('open'));
   });
 
-  tocClose?.addEventListener("click", () => setToc(false));
-  tocOverlay?.addEventListener("click", () => setToc(false));
-
-  tocDrawer?.querySelectorAll("a[href^='#']").forEach(link => {
-    link.addEventListener("click", () => setToc(false));
+  controlPanel?.addEventListener('click', event => event.stopPropagation());
+  document.addEventListener('pointerdown', event => {
+    if (controls?.classList.contains('open') && !controls.contains(event.target)) setControlsOpen(false);
   });
 
-  document.addEventListener("keydown", event => {
-    if (event.key === "Escape" && body.classList.contains("toc-open")) {
-      setToc(false);
-      tocToggle?.focus();
+  /* ---------- TOC ---------- */
+
+  function openToc() {
+    body.classList.add('toc-open');
+    tocButton?.setAttribute('aria-expanded', 'true');
+    setControlsOpen(false);
+  }
+
+  function closeToc() {
+    body.classList.remove('toc-open');
+    tocButton?.setAttribute('aria-expanded', 'false');
+  }
+
+  tocButton?.addEventListener('click', openToc);
+  tocClose?.addEventListener('click', closeToc);
+  overlay?.addEventListener('click', closeToc);
+
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape') {
+      closeToc();
+      setControlsOpen(false);
     }
   });
 
-  /* ---------- Back / Next section ---------- */
+  document.querySelectorAll('a[href="#toc"]').forEach(a => {
+    a.addEventListener('click', event => {
+      event.preventDefault();
+      openToc();
+    });
+  });
 
-  const studySections = Array.from(
-    document.querySelectorAll("main .study-section[id]")
-  );
+  /* TOC navigation does not add hash-history entries. */
+  document.querySelectorAll('#toc a[href^="#"]').forEach(a => {
+    a.addEventListener('click', event => {
+      const href = a.getAttribute('href');
+      if (!href || href === '#toc') return;
+      const target = document.getElementById(decodeURIComponent(href.slice(1)));
+      if (!target) return;
+      event.preventDefault();
+      closeToc();
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      window.setTimeout(scheduleReaderSave, 450);
+    });
+  });
+
+  /* ---------- Previous / next lesson item ---------- */
+
+  const tocTargets = Array.from(document.querySelectorAll('#toc a[href^="#"]'))
+    .map(a => document.getElementById(decodeURIComponent(a.getAttribute('href').slice(1))))
+    .filter((el, i, arr) => el && el.id !== 'toc' && arr.indexOf(el) === i);
 
   function currentSectionIndex() {
-    if (!studySections.length) return -1;
-
-    const referenceY = window.scrollY + Math.min(window.innerHeight * 0.32, 220);
-    let index = 0;
-
-    for (let i = 0; i < studySections.length; i++) {
-      if (studySections[i].offsetTop <= referenceY) {
-        index = i;
-      } else {
-        break;
-      }
-    }
-    return index;
+    let idx = -1;
+    const threshold = 24;
+    tocTargets.forEach((el, i) => {
+      if (el.getBoundingClientRect().top <= threshold) idx = i;
+    });
+    return idx;
   }
 
-  function updateNavState() {
-    if (!studySections.length) {
-      if (prevButton) prevButton.disabled = true;
-      if (nextButton) nextButton.disabled = true;
+  function updateSectionButtons() {
+    const i = currentSectionIndex();
+    if (prevButton) prevButton.disabled = !tocTargets.length || i <= 0;
+    if (nextButton) nextButton.disabled = !tocTargets.length || i >= tocTargets.length - 1;
+  }
+
+  function goToIndex(i) {
+    if (!tocTargets.length) return;
+    i = Math.max(0, Math.min(tocTargets.length - 1, i));
+    tocTargets[i].scrollIntoView({ behavior: 'smooth', block: 'start' });
+    window.setTimeout(() => {
+      const state = captureReadingPosition();
+      if (state) saveReaderState(state);
+      updateSectionButtons();
+    }, 450);
+  }
+
+  prevButton?.addEventListener('click', () => goToIndex(Math.max(0, currentSectionIndex() - 1)));
+  nextButton?.addEventListener('click', () => goToIndex(Math.min(tocTargets.length - 1, currentSectionIndex() + 1)));
+
+  /* ---------- Home ---------- */
+
+  homeButton?.addEventListener('click', () => {
+    const state = captureReadingPosition();
+    if (state) saveReaderState(state);
+    safeSet(explicitHomeKey, '1');
+    safeSet('study-home-click-at', String(Date.now()));
+    window.location.href = new URL('index.html', window.location.href).href;
+  });
+
+  /* ---------- Initialize state ---------- */
+
+  applyTheme(root.dataset.theme === 'light' ? 'light' : 'dark');
+  applyMode(root.dataset.studyMode || 'full');
+  applyFontScale(currentScale());
+
+  themeButton?.addEventListener('click', () => applyTheme(root.dataset.theme === 'dark' ? 'light' : 'dark'));
+  modeButton?.addEventListener('click', () => applyMode(root.dataset.studyMode === 'keywords' ? 'full' : 'keywords'));
+
+  fontDown?.addEventListener('click', () => {
+    const i = FONT_LEVELS.indexOf(currentScale());
+    if (i > 0) preserveReadingPosition(() => applyFontScale(FONT_LEVELS[i - 1]));
+  });
+
+  fontUp?.addEventListener('click', () => {
+    const i = FONT_LEVELS.indexOf(currentScale());
+    if (i >= 0 && i < FONT_LEVELS.length - 1) preserveReadingPosition(() => applyFontScale(FONT_LEVELS[i + 1]));
+  });
+
+  fontReset?.addEventListener('click', () => preserveReadingPosition(() => applyFontScale(100)));
+
+  /* ---------- Scroll / rotation / resize persistence ---------- */
+
+  window.addEventListener('scroll', () => {
+    scheduleReaderSave();
+    updateSectionButtons();
+  }, { passive: true });
+
+  function handleLayoutViewportChange() {
+    /*
+      A native two-finger pinch changes VisualViewport but normally does not
+      change the layout viewport. Ignore it completely so the page does not
+      recalculate width or fight the browser's native zoom.
+    */
+    if (isPinchZoomActive()) {
+      pinchZoomSession = true;
       return;
     }
 
-    const index = currentSectionIndex();
-    if (prevButton) prevButton.disabled = index <= 0;
-    if (nextButton) nextButton.disabled = index >= studySections.length - 1;
-  }
+    const { width: w, height: h } = layoutViewportSize();
 
-  function moveSection(delta) {
-    const index = currentSectionIndex();
-    const targetIndex = Math.max(
-      0,
-      Math.min(studySections.length - 1, index + delta)
-    );
+    /*
+      When pinch zoom returns to scale 1, VisualViewport may emit another
+      resize. If the layout viewport itself did not change, this was only zoom,
+      so do nothing.
+    */
+    const layoutChanged =
+      Math.abs(w - lastViewportWidth) >= 1 ||
+      Math.abs(h - lastViewportHeight) >= 1;
 
-    studySections[targetIndex]?.scrollIntoView({
-      behavior: "smooth",
-      block: "start"
-    });
-  }
-
-  prevButton?.addEventListener("click", () => moveSection(-1));
-  nextButton?.addEventListener("click", () => moveSection(1));
-
-  let ticking = false;
-  window.addEventListener("scroll", () => {
-    if (!ticking) {
-      requestAnimationFrame(() => {
-        updateNavState();
-        ticking = false;
-      });
-      ticking = true;
+    if (!layoutChanged) {
+      pinchZoomSession = false;
+      return;
     }
+
+    pinchZoomSession = false;
+
+    if (!resizeAnchor) {
+      resizeAnchor =
+        lastStablePosition ||
+        readReaderState() ||
+        captureReadingPosition();
+    }
+
+    /*
+      Only a real layout change, such as portrait <-> landscape, updates
+      --app-viewport-width.
+    */
+    syncViewportGeometry();
+    lastViewportWidth = w;
+    lastViewportHeight = h;
+
+    if (resizeAnchor) {
+      settleRestore(resizeAnchor, [0, 50, 140, 300]);
+    }
+
+    clearTimeout(resizeRestoreTimer);
+    resizeRestoreTimer = window.setTimeout(() => {
+      if (resizeAnchor) {
+        settleRestore(resizeAnchor, [0, 80, 220]);
+      }
+
+      window.setTimeout(() => {
+        lastStablePosition =
+          resizeAnchor ||
+          captureReadingPosition();
+
+        if (lastStablePosition) {
+          saveReaderState(lastStablePosition);
+        }
+
+        resizeAnchor = null;
+        updateSectionButtons();
+      }, 320);
+    }, 260);
+  }
+
+  function handleVisualViewportResize() {
+    /*
+      visualViewport resize is the main signal used by Safari/WebKit while
+      pinch-zooming. At scale != 1 this is zoom, not a responsive-layout event.
+    */
+    if (isPinchZoomActive()) {
+      pinchZoomSession = true;
+      return;
+    }
+
+    handleLayoutViewportChange();
+  }
+
+  window.addEventListener(
+    'resize',
+    handleLayoutViewportChange,
+    { passive: true }
+  );
+
+  window.addEventListener('orientationchange', () => {
+    /*
+      Rotation is a genuine layout change. Use the stored logical reading
+      position, then wait for iOS to finish updating its layout viewport.
+    */
+    resizeAnchor =
+      lastStablePosition ||
+      readReaderState() ||
+      captureReadingPosition();
+
+    [40, 120, 280].forEach(delay => {
+      window.setTimeout(() => {
+        if (isPinchZoomActive()) return;
+
+        const size = layoutViewportSize();
+        syncViewportGeometry();
+
+        if (
+          Math.abs(size.width - lastViewportWidth) >= 1 ||
+          Math.abs(size.height - lastViewportHeight) >= 1
+        ) {
+          lastViewportWidth = size.width;
+          lastViewportHeight = size.height;
+        }
+
+        if (resizeAnchor) {
+          settleRestore(resizeAnchor, [0, 70, 180]);
+        }
+      }, delay);
+    });
+
+    window.setTimeout(() => {
+      resizeAnchor = null;
+      updateSectionButtons();
+    }, 620);
   }, { passive: true });
 
-  window.addEventListener("resize", updateNavState);
-  updateNavState();
-})();
-</script>
+  window.visualViewport?.addEventListener(
+    'resize',
+    handleVisualViewportResize,
+    { passive: true }
+  );
 
-</body>
+  function saveLifecycleState() {
+    const state = captureReadingPosition() || lastStablePosition;
+    if (state) saveReaderState(state);
+    rememberCurrentPage();
+  }
+
+  document.addEventListener('visibilitychange', () => {
+    if (document.visibilityState === 'hidden') saveLifecycleState();
+    else {
+      rememberCurrentPage();
+      const state = readReaderState();
+      if (state) settleRestore(state, [0, 80, 220]);
+    }
+  });
+
+  window.addEventListener('pagehide', saveLifecycleState);
+  window.addEventListener('beforeunload', saveLifecycleState);
+
+  window.addEventListener('pageshow', () => {
+    rememberCurrentPage();
+    rebuildReaderAnchors();
+    const state = readReaderState();
+    if (!location.hash && state) settleRestore(state, [0, 80, 220, 500]);
+    window.setTimeout(updateSectionButtons, 80);
+  });
+
+  window.addEventListener('load', () => {
+    rebuildReaderAnchors();
+    const state = readReaderState();
+    if (!location.hash && state) settleRestore(state, [0, 80, 220, 500]);
+    else {
+      const current = captureReadingPosition();
+      if (current) saveReaderState(current);
+    }
+    updateSectionButtons();
+  });
+})();
+</script></body>
 </html>

@@ -1,15 +1,16 @@
 <!DOCTYPE html>
+<!DOCTYPE html>
 
 <html data-study-mode="full" data-theme="dark" lang="vi">
 <head>
-<meta charset="UTF-8"/>
+<meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
 <meta content="dark light" name="color-scheme"/>
-<title>施工計画 R07 - Book 133-140 - Bản dịch tiếng Việt</title>
-
-
+<meta content="test-2.1-responsive-landscape" name="study-template-version"/>
+<title>2.2 施工計画 最新問題解説</title>
 <style>
 :root {
+  --app-viewport-width: 100vw;
   --font-vi: Arial, "Helvetica Neue", Helvetica, sans-serif;
   --font-ja: "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic UI", "Yu Gothic", Meiryo, sans-serif;
   --base-font-size: 16px;
@@ -79,7 +80,7 @@ html {
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
 }
-body {
+body { overflow-anchor: none;
   margin: 0;
   background: var(--bg);
   color: var(--text);
@@ -272,88 +273,169 @@ html[data-study-mode="keywords"] .recall-source .item-label { color: var(--headi
 
 .backlink, .back-toc, .back { display: inline-block; margin-top: .8rem; font-size: .9rem; }
 
-/* Compact study controls */
-.nav-dock-left,
-.settings-dock-right {
+/* Collapsible study controls: one launcher at bottom-left. */
+.control-cluster {
   position: fixed;
-  bottom: max(14px, env(safe-area-inset-bottom));
-  z-index: 1900;
-  padding: 5px;
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  background: var(--dock-bg);
-  box-shadow: 0 8px 24px var(--shadow);
-  -webkit-backdrop-filter: blur(10px);
-  backdrop-filter: blur(10px);
-  user-select: none;
-}
-
-.nav-dock-left {
-  left: max(10px, env(safe-area-inset-left));
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.settings-dock-right {
-  right: max(10px, env(safe-area-inset-right));
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 4px;
-}
-
-.nav-dock-left button,
-.nav-dock-left a,
-.settings-dock-right button,
-.settings-dock-right a {
+  left: max(8px, env(safe-area-inset-left));
+  bottom: max(10px, env(safe-area-inset-bottom));
+  z-index: 2200;
   width: 38px;
   height: 38px;
-  min-width: 38px;
-  min-height: 38px;
-  display: flex;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.control-launcher,
+.control-panel button {
+  display: inline-flex;
   align-items: center;
   justify-content: center;
+  flex: 0 0 auto;
+  width: 32px;
+  height: 32px;
+  min-width: 32px;
+  min-height: 32px;
+  padding: 0;
   border: 1px solid var(--border);
   border-radius: 8px;
   background: var(--surface-alt);
   color: var(--text);
-  font-family: var(--font-vi);
-  font-size: .96rem;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
   font-weight: 700;
   line-height: 1;
-  text-decoration: none;
   cursor: pointer;
   touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
 }
 
-.nav-dock-left button:active,
-.nav-dock-left a:active,
-.settings-dock-right button:active,
-.settings-dock-right a:active {
-  transform: translateY(1px);
+.control-launcher {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  z-index: 2;
+  width: 38px;
+  height: 38px;
+  min-width: 38px;
+  min-height: 38px;
+  border-radius: 11px;
+  background: var(--dock-bg);
+  box-shadow: 0 6px 18px var(--shadow);
+  font-size: 20px;
+  letter-spacing: 1px;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
 }
 
-.nav-dock-left button:hover,
-.nav-dock-left a:hover,
-.settings-dock-right button:hover,
-.settings-dock-right a:hover {
+.control-panel {
+  position: absolute;
+  left: 43px;
+  bottom: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 2px;
+  width: max-content;
+  max-width: calc(100dvw - max(59px, env(safe-area-inset-left) + 59px) - max(8px, env(safe-area-inset-right)));
+  padding: 3px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  overscroll-behavior-x: contain;
+  scrollbar-width: none;
+  border: 1px solid var(--border);
+  border-radius: 11px;
+  background: var(--dock-bg);
+  box-shadow: 0 6px 18px var(--shadow);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateX(-10px) scale(.98);
+  transform-origin: left bottom;
+  transition: opacity .14s ease, transform .14s ease, visibility .14s ease;
+}
+
+.control-panel::-webkit-scrollbar { display: none; }
+
+.control-cluster.open .control-panel {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateX(0) scale(1);
+}
+
+.control-cluster.open .control-launcher {
   border-color: var(--link);
 }
 
-.settings-dock-right .font-reset {
-  font-size: .66rem;
+.control-panel button:active,
+.control-launcher:active { transform: translateY(1px); }
+
+.control-panel button:hover,
+.control-launcher:hover { border-color: var(--link); }
+
+.control-panel button:disabled {
+  opacity: .36;
+  cursor: default;
+}
+
+.control-panel .font-reset {
+  width: 38px;
+  min-width: 38px;
+  font-size: 9px;
   letter-spacing: -.03em;
 }
 
-.settings-dock-right .mode-toggle {
-  font-size: 1.02rem;
+.control-panel .mode-toggle { font-size: 14px; }
+
+.control-panel .home-icon svg {
+  width: 17px;
+  height: 17px;
+  display: block;
 }
 
+/*
+  Responsive reading geometry for iPad/iPhone.
+  The page follows the actual Visual Viewport width. When rotating to
+  landscape it expands across the wider screen instead of staying at
+  portrait width. Reader-anchor JS below restores the same logical text
+  position after the reflow.
+*/
 @media (pointer: coarse) {
-  .nav-dock-left button,
-  .settings-dock-right button {
-    -webkit-tap-highlight-color: transparent;
+  body > main,
+  body > .page-shell {
+    width: min(calc(var(--app-viewport-width, 100vw) - 16px), 1320px) !important;
+    max-width: 1320px !important;
+  }
+
+
+  .hero {
+    padding: 1rem !important;
+  }
+
+  body > main > section:not(#toc),
+  body > .page-shell > section:not(#toc),
+  body > .page-shell > main > section,
+  .topic,
+  .aggregate-section {
+    padding: 1rem !important;
+  }
+}
+
+
+@media (pointer: coarse) and (orientation: portrait) {
+  .study-grid,
+  .lang-grid,
+  .bilingual-note {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+@media (pointer: coarse) and (orientation: landscape) {
+  body > main,
+  body > .page-shell {
+    width: min(calc(var(--app-viewport-width, 100dvw) - 20px), 1320px) !important;
   }
 }
 
@@ -433,19 +515,39 @@ body.toc-open { overflow: hidden; }
   body > .page-shell > section:not(#toc),
   body > .page-shell > main > section,
   .topic, .aggregate-section { padding: 1rem; border-radius: 12px; }
-  .study-dock { grid-template-columns: repeat(3, 44px); }
-  .study-dock button, .study-dock a { width: 44px; height: 44px; }
 }
 
-@media (orientation: landscape) and (pointer: coarse) {
-  .study-dock {
-    left: max(20px, env(safe-area-inset-left));
-    bottom: max(20px, env(safe-area-inset-bottom));
+
+/*
+  iPad/tablet landscape:
+  Japanese and Vietnamese return to two side-by-side columns.
+  The min-height condition avoids forcing ordinary phone landscape into
+  two columns that would be too narrow.
+*/
+@media (pointer: coarse) and (orientation: landscape) and (min-width: 700px) and (min-height: 600px) {
+  body > main,
+  body > .page-shell {
+    width: min(calc(var(--app-viewport-width, 100dvw) - 20px), 1320px) !important;
+    max-width: 1320px !important;
+  }
+
+  .study-grid,
+  .lang-grid,
+  .bilingual-note {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important;
+    gap: clamp(.75rem, 1.4vw, 1rem) !important;
+    align-items: start;
+  }
+
+  .study-card,
+  .lang-card,
+  .note-pane {
+    min-width: 0;
   }
 }
 
 @media print {
-  .nav-dock-left, .settings-dock-right { display: none !important; }
+  .control-cluster { display: none !important; }
   :root,
   html[data-theme="dark"],
   html[data-theme="light"] {
@@ -471,7 +573,7 @@ body.toc-open { overflow: hidden; }
     --shadow: transparent;
   }
   body { background: #fff; color: #111; font-size: 11pt; padding-bottom: 0; }
-  .study-dock, .toc-overlay, .toc-drawer-head { display: none !important; }
+  .control-cluster, .toc-overlay, .toc-drawer-head { display: none !important; }
   #toc {
     position: static !important;
     transform: none !important;
@@ -489,91 +591,76 @@ body.toc-open { overflow: hidden; }
   .backlink, .back-toc, .back { display: none; }
 }
 </style><script>
+try {
+  if ("scrollRestoration" in history) {
+    history.scrollRestoration = "manual";
+  }
+} catch (e) {}
 (function () {
   const root = document.documentElement;
   try {
     const savedTheme = localStorage.getItem('study-theme');
-    const systemDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-    root.dataset.theme = savedTheme || (systemDark ? 'dark' : 'light');
+    root.dataset.theme = savedTheme === 'light' ? 'light' : 'dark';
 
     const savedMode = localStorage.getItem('study-mode');
     root.dataset.studyMode = savedMode === 'keywords' ? 'keywords' : 'full';
 
     const savedScale = Number(localStorage.getItem('study-font-scale'));
-    const valid = [80, 90, 100, 110, 120, 130, 140];
-    const scale = valid.includes(savedScale) ? savedScale : 100;
+    const scale = Number.isFinite(savedScale) && savedScale >= 50 && savedScale <= 150 && savedScale % 5 === 0
+      ? savedScale : 100;
     root.style.setProperty('--base-font-size', (16 * scale / 100) + 'px');
   } catch (e) {
     root.dataset.theme = 'dark';
     root.dataset.studyMode = 'full';
+    root.style.setProperty('--base-font-size', '16px');
   }
 })();
 </script></head>
-<body><nav aria-label="Điều hướng học tập" class="nav-dock-left">
+<body>
+<!--
+HTML TEMPLATE CONTRACT 2.3
+- Based on latest pinch-zoom-safe test.html.
+- Default theme: dark; persistent Dark/Light toggle.
+- Font: 50%-150%, 5% step; persistent.
+- Native two-finger pinch zoom MUST NOT trigger responsive reflow.
+- Real orientation change MAY update layout and restore logical reading position.
+- iPad/tablet portrait: one-column bilingual flow.
+- iPad/tablet landscape: Japanese/Vietnamese side-by-side.
+- Controls: collapsed by default at bottom-left; tap to expand horizontally.
+- Home button: index.html.
+- Back/Next: TOC item navigation, not browser history.
+- Do not redesign CSS/JS/control behavior per lesson.
+-->
+<div class="control-cluster" id="control-cluster">
+<button aria-controls="control-panel" aria-expanded="false" aria-label="Mở công cụ" class="control-launcher" id="controls-toggle" title="Mở công cụ" type="button">⋯</button>
+<div aria-label="Công cụ học tập" class="control-panel" id="control-panel" role="toolbar">
 <button aria-controls="toc" aria-expanded="false" aria-label="Mục lục" id="toc-toggle" title="Mục lục" type="button">☰</button>
-<button aria-label="Mục trước" id="section-prev" title="Back" type="button">‹</button>
-<button aria-label="Mục tiếp theo" id="section-next" title="Next" type="button">›</button>
-</nav>
-<nav aria-label="Thiết lập hiển thị" class="settings-dock-right">
+<button aria-label="Mục trước" id="section-prev" title="Mục trước" type="button">‹</button>
+<button aria-label="Mục tiếp theo" id="section-next" title="Mục tiếp theo" type="button">›</button>
 <button aria-label="Đổi Dark/Light" aria-pressed="false" id="theme-toggle" title="Đổi Dark/Light" type="button">☀</button>
 <button aria-label="Đổi Full/Keywords" aria-pressed="false" class="mode-toggle" id="mode-toggle" title="Đổi Full/Keywords" type="button">🎯</button>
+<button aria-label="Giảm cỡ chữ" id="font-down" title="Giảm cỡ chữ 5%" type="button">A−</button>
 <button aria-label="Đặt lại cỡ chữ 100%" class="font-reset" id="font-reset" title="Đặt lại cỡ chữ 100%" type="button">100%</button>
-<button aria-label="Giảm cỡ chữ" id="font-down" title="Giảm cỡ chữ" type="button">A−</button>
-<button aria-label="Tăng cỡ chữ" id="font-up" title="Tăng cỡ chữ" type="button">A+</button>
-</nav><div aria-hidden="true" class="toc-overlay" id="toc-overlay"></div>
-
-<main>
+<button aria-label="Tăng cỡ chữ" id="font-up" title="Tăng cỡ chữ 5%" type="button">A+</button>
+<button aria-label="Top Page" class="home-icon" id="home-button" title="Top Page" type="button"><svg aria-hidden="true" fill="none" viewbox="0 0 24 24"><path d="M3.5 10.5 12 3.8l8.5 6.7v9.2h-5.3v-6H8.8v6H3.5z" stroke="currentColor" stroke-linejoin="round" stroke-width="1.8"></path></svg></button>
+</div>
+</div><div aria-hidden="true" class="toc-overlay" id="toc-overlay"></div>
+<div class="page-shell">
 <header class="hero" id="top">
-<p class="eyebrow">1級建築施工管理技術検定 第二次検定</p>
 <h1>2.2 施工計画 最新問題解説</h1>
-<p class="hero-subtitle">令和7年度 問題2 施工計画（仮設物の設置計画）</p>
-<p class="meta-line">Phạm vi: Book page 133-140 | PDF: 02b_施工計画_R07_p133-141.pdf | Ngôn ngữ: 日本語・Tiếng Việt</p>
-<div aria-label="Tóm tắt ba nhóm kiến thức" class="summary-grid">
-<div class="summary-card"><strong>仮設ゴンドラ</strong><p>Cấu tạo cáp treo, cáp neo, bộ phận đỡ phía mái; cấm người không liên quan; phòng điện giật.</p></div>
-<div class="summary-card"><strong>起伏式タワークレーン</strong><p>Đèn chướng ngại hàng không, nhiễu sóng, năng suất lắp thép và lối tiếp cận cabin.</p></div>
-<div class="summary-card"><strong>枠組足場を用いた棚足場</strong><p>Chống ngã, vật rơi, trượt và lún; ổn định giàn giáo tự đứng; các trị số trọng yếu.</p></div>
-</div>
 </header>
-<nav aria-labelledby="toc-title" class="toc" id="toc"><div class="toc-drawer-head"><strong>Mục lục</strong><button aria-label="Đóng mục lục" class="toc-close" id="toc-close" type="button">×</button></div>
-<h2 id="toc-title">Mục lục</h2>
-<div class="toc-grid">
-<ol>
-<li><a href="#sec-problem">Đề bài và ví dụ đáp án năm Reiwa 7</a>
-<ol>
-<li><a href="#sec-problem-statement">Đề bài</a></li>
-<li><a href="#sec-answer-examples">Ví dụ đáp án cho 3 công trình tạm</a></li>
-</ol>
-</li>
-<li><a href="#sec-gondola">1. 仮設ゴンドラ</a>
-<ol>
-<li><a href="#sec-gondola-definition">Khái niệm và phân loại</a></li>
-<li><a href="#sec-gondola-parts">Các bộ phận cấu thành</a></li>
-<li><a href="#sec-gondola-plan">Nội dung cần xem xét khi lắp đặt</a></li>
-<li><a href="#sec-gondola-writing">Cách chọn ý để viết đáp án</a></li>
-</ol>
-</li>
-<li><a href="#sec-crane">2. 起伏式（ジブ）タワークレーン</a>
-<ol>
-<li><a href="#sec-crane-definition">Khái niệm và phân loại</a></li>
-<li><a href="#sec-crane-plan">Nội dung cần xem xét khi bố trí</a></li>
-<li><a href="#sec-crane-operator">An toàn cho người vận hành</a></li>
-</ol>
-</li>
-<li><a href="#sec-scaffold">3. 枠組足場を用いた棚足場</a>
-<ol>
-<li><a href="#sec-scaffold-definition">Khái niệm và cấu tạo</a></li>
-<li><a href="#sec-scaffold-plan">Yêu cầu chung khi lập kế hoạch</a></li>
-<li><a href="#sec-scaffold-specific">Yêu cầu riêng của 棚足場</a></li>
-<li><a href="#sec-scaffold-alt-answer">Phương án đáp án chuyên môn</a></li>
-</ol>
-</li>
-<li><a href="#terms">Thuật ngữ chuyên môn</a></li>
-<li><a href="#background">Kiến thức nền cần biết</a></li>
-<li><a href="#memory">Điểm cần nhớ và mẹo nhớ</a></li>
-</ol>
+<nav aria-label="Mục lục" class="toc" id="toc">
+<div class="toc-drawer-head">
+<strong>Mục lục</strong>
+<button aria-label="Đóng mục lục" class="toc-close" id="toc-close" type="button">×</button>
 </div>
-</nav>
-<section class="topic" id="sec-problem">
+<h2>Mục lục</h2>
+<!-- TOC_ITEMS_START -->
+
+<!-- TOC_ITEMS_END -->
+<ol><li><a href="#sec-problem">Đề bài và ví dụ đáp án năm Reiwa 7</a><ol><li><a href="#sec-problem-statement">令和7年度 問題2 施工計画（仮設物の設置計画）</a></li><li><a href="#sec-answer-examples">令和7年度 問題2 の解答例</a></li></ol></li><li><a href="#sec-gondola">1. 仮設ゴンドラ</a><ol><li><a href="#sec-gondola-definition">(1) 仮設ゴンドラとはどのような仮設物であるか</a></li><li><a href="#sec-gondola-parts">(2) 仮設ゴンドラとそれを構成する部材</a></li><li><a href="#sec-gondola-plan">(3) 仮設ゴンドラの設置を計画する際に検討すべき事項とその理由</a></li><li><a href="#sec-gondola-writing">Cách chọn ý để viết đáp án</a></li></ol></li><li><a href="#sec-crane">2. 起伏式（ジブ）タワークレーン</a><ol><li><a href="#sec-crane-definition">(1) 起伏式（ジブ）タワークレーンとはどのような仮設物であるか</a></li><li><a href="#sec-crane-plan">(2) 起伏式（ジブ）タワークレーンの設置を計画する際に検討すべき事項とその理由</a></li><li><a href="#sec-crane-operator">(3) 起伏式（ジブ）タワークレーンの運転者の安全を確保するための検討事項</a></li></ol></li><li><a href="#sec-scaffold">3. 枠組足場を用いた棚足場</a><ol><li><a href="#sec-scaffold-definition">(1) 枠組足場を用いた棚足場とはどのような仮設物であるか</a></li><li><a href="#sec-scaffold-plan">(2) 枠組足場を用いた棚足場の設置を計画する際に検討すべき事項とその理由</a></li><li><a href="#sec-scaffold-specific">(3) 枠組足場を用いた棚足場に固有の検討事項</a></li><li><a href="#sec-scaffold-alt-answer">(4) 棚足場に固有の検討事項とその理由を記述する場合の別案</a></li></ol></li><li><a href="#terms">Professional terminology</a></li><li><a href="#background">Background knowledge</a></li><li><a href="#memory">Key points and memory aids</a></li></ol></nav>
+<!-- CONTENT_START -->
+<main id="lesson"><section class="topic" id="sec-problem">
 <div class="section-head">
 <h2>Đề bài và ví dụ đáp án năm Reiwa 7</h2>
 <span class="source-ref">Nguồn: Book page 133</span>
@@ -670,8 +757,7 @@ body.toc-open { overflow: hidden; }
 </div>
 <a class="back-toc" href="#toc">↑ Mục lục</a>
 </section>
-</section>
-<section class="topic" id="sec-gondola">
+</section><section class="topic" id="sec-gondola">
 <div class="section-head">
 <h2>1. 仮設ゴンドラ</h2>
 <span class="source-ref">Nguồn: Book page 134-136</span>
@@ -793,8 +879,7 @@ body.toc-open { overflow: hidden; }
 </div>
 <a class="back-toc" href="#toc">↑ Mục lục</a>
 </section>
-</section>
-<section class="topic" id="sec-crane">
+</section><section class="topic" id="sec-crane">
 <div class="section-head">
 <h2>2. 起伏式（ジブ）タワークレーン</h2>
 <span class="source-ref">Nguồn: Book page 136-137</span>
@@ -889,8 +974,7 @@ body.toc-open { overflow: hidden; }
 </div>
 <a class="back-toc" href="#toc">↑ Mục lục</a>
 </section>
-</section>
-<section class="topic" id="sec-scaffold">
+</section><section class="topic" id="sec-scaffold">
 <div class="section-head">
 <h2>3. 枠組足場を用いた棚足場</h2>
 <span class="source-ref">Nguồn: Book page 138-140</span>
@@ -1030,13 +1114,15 @@ body.toc-open { overflow: hidden; }
 </div>
 <a class="back-toc" href="#toc">↑ Mục lục</a>
 </section>
-</section>
-<section class="aggregate-section" id="terms">
-<div class="section-head">
+</section><footer>
+  Tài liệu học song ngữ tổng hợp từ Book page 133-140. File hoạt động offline, có chế độ Dark/Light và Full/Keywords.
+</footer></main>
+<!-- CONTENT_END -->
+<section id="terms">
+<h2>Thuật ngữ chuyên môn</h2><div class="section-head">
 <h2>Thuật ngữ chuyên môn</h2>
 <span class="source-ref">Tổng hợp Book page 133-140</span>
-</div>
-<div class="table-wrap">
+</div><div class="table-wrap">
 <table class="glossary-table">
 <thead><tr><th>日本語</th><th>読み方</th><th>Tiếng Việt</th><th>Giải thích</th><th>Liên quan</th></tr></thead>
 <tbody>
@@ -1090,43 +1176,35 @@ body.toc-open { overflow: hidden; }
 <tr><td>要求性能墜落制止用器具</td><td>ようきゅうせいのうついらくせいしようきぐ</td><td>Thiết bị ngăn rơi đáp ứng tính năng yêu cầu</td><td>Thiết bị bảo vệ cá nhân dùng để ngăn ngã cao, kết hợp điểm neo an toàn.</td><td>高所作業</td></tr>
 </tbody>
 </table>
-</div>
-<a class="back-toc" href="#toc">↑ Mục lục</a>
-</section>
-<section class="aggregate-section" id="background">
-<div class="section-head">
+</div><a class="back-toc" href="#toc">↑ Mục lục</a></section>
+<section id="background">
+<h2>Kiến thức nền cần biết</h2><div class="section-head">
 <h2>Kiến thức nền cần biết</h2>
 <span class="source-ref">Giải thích bổ sung dựa trên nội dung và hình trong sách</span>
-</div>
-<section class="subsection" id="background-gondola">
+</div><section class="subsection" id="background-gondola">
 <div class="subsection-title"><h3>1. Phân biệt chức năng các loại cáp và bộ phận đỡ gondola</h3></div>
 <div class="background-box">
 <p><strong>吊下げワイヤロープ</strong> trực tiếp treo sàn gondola. <strong>台付けワイヤロープ</strong> neo hệ cáp vào kết cấu công trình. <strong>アーム台・上部支持金具・跨座式突梁</strong> tạo và giữ vị trí treo phía mái. <strong>補助ロープ</strong> chống rơi cho các phụ kiện đỡ phía trên.</p>
 <p>Khoảng cách các điểm đỡ phía mái phải bằng <strong>吊心間隔</strong> của gondola để các cáp làm việc đúng vị trí và hạn chế gondola bị nghiêng khi nâng hạ.</p>
 </div>
-</section>
-<section class="subsection" id="background-crane">
+</section><section class="subsection" id="background-crane">
 <div class="subsection-title"><h3>2. Hai cơ chế đặc trưng của cẩu tháp jib nâng hạ</h3></div>
 <div class="background-box">
 <p><strong>起伏</strong> là thay đổi góc của jib để thay đổi tầm với. <strong>クライミング</strong> là nâng cao thân cẩu bằng cách tăng hoặc điều chỉnh hệ mast theo chiều cao công trình.</p>
 <p>Khi lập kế hoạch, cần đồng thời xét ảnh hưởng bên ngoài công trường, gồm hàng không và sóng vô tuyến, cùng năng suất cẩu để bảo đảm tiến độ lắp dựng thép.</p>
 </div>
-</section>
-<section class="subsection" id="background-scaffold">
+</section><section class="subsection" id="background-scaffold">
 <div class="subsection-title"><h3>3. Vì sao 棚足場 cần nhiều cấu kiện ổn định</h3></div>
 <div class="background-box">
 <p>Giàn giáo ngoài nhà thông thường có thể ổn định nhờ liên kết tường. 棚足場 trong hình là hệ tự đứng, nên toàn khối phải tự bảo đảm ổn định bằng <strong>水平材・大筋交い・根がらみ</strong>. Vì số cấu kiện nhiều và sàn rộng, thời gian lắp dựng dài hơn và việc vận chuyển vật liệu giữa mặt đất với stage phải được đưa vào kế hoạch.</p>
 <p>Đối với chân giàn giáo, tải trọng phải truyền theo chuỗi <strong>chân giàn giáo → base fitting → ván/gỗ kê → nền</strong>. Không bỏ base fitting và đặt trực tiếp cấu kiện đứng lên tấm kê.</p>
 </div>
-</section>
-<a class="back-toc" href="#toc">↑ Mục lục</a>
-</section>
-<section class="aggregate-section" id="memory">
-<div class="section-head">
+</section><a class="back-toc" href="#toc">↑ Mục lục</a></section>
+<section id="memory">
+<h2>Điểm cần nhớ và mẹo nhớ</h2><div class="section-head">
 <h2>Điểm cần nhớ và mẹo nhớ</h2>
 <span class="source-ref">Ôn tập Book page 133-140</span>
-</div>
-<section class="subsection" id="memory-numbers">
+</div><section class="subsection" id="memory-numbers">
 <div class="subsection-title"><h3>1. Bảng trị số trọng yếu</h3></div>
 <div class="table-wrap">
 <table class="number-table">
@@ -1152,8 +1230,7 @@ body.toc-open { overflow: hidden; }
 </tbody>
 </table>
 </div>
-</section>
-<section class="subsection" id="memory-comparisons">
+</section><section class="subsection" id="memory-comparisons">
 <div class="subsection-title"><h3>2. Các cặp dễ nhầm</h3></div>
 <div class="table-wrap">
 <table>
@@ -1168,8 +1245,7 @@ body.toc-open { overflow: hidden; }
 </tbody>
 </table>
 </div>
-</section>
-<section class="subsection" id="memory-chains">
+</section><section class="subsection" id="memory-chains">
 <div class="subsection-title"><h3>3. Chuỗi ghi nhớ</h3></div>
 <div class="memory-box">
 <h4>仮設ゴンドラ</h4>
@@ -1185,21 +1261,46 @@ body.toc-open { overflow: hidden; }
 <p><strong>Tự đứng → nhiều cấu kiện → lắp lâu → phải dự phòng thời gian.</strong></p>
 <p><strong>Stage ở trên cao → vận chuyển khó → kế hoạch phải gồm vận chuyển vật liệu và thiết bị.</strong></p>
 </div>
-</section>
-<a class="back-toc" href="#toc">↑ Mục lục</a>
-</section>
-<footer>
-  Tài liệu học song ngữ tổng hợp từ Book page 133-140. File hoạt động offline, có chế độ Dark/Light và Full/Keywords.
-</footer>
-</main>
-
+</section><a class="back-toc" href="#toc">↑ Mục lục</a></section>
+<template id="component-library">
+<div class="table-wrap">
+<table>
+<caption>{{TABLE_CAPTION}}</caption>
+<thead><tr><th>{{HEADER_1}}</th><th>{{HEADER_2}}</th></tr></thead>
+<tbody><tr><td><strong class="kw">{{ROW_KEY}}</strong></td><td><span class="relation">{{ROW_RELATION}}</span></td></tr></tbody>
+</table>
+</div>
+<figure class="figure-card">
+<img alt="{{IMAGE_ALT}}" height="{{IMAGE_HEIGHT}}" src="{{IMAGE_SOURCE}}" width="{{IMAGE_WIDTH}}"/>
+<figcaption>{{IMAGE_CAPTION}}</figcaption>
+</figure>
+<div class="figure-grid">
+<figure class="figure-card">
+<img alt="{{IMAGE_ALT_1}}" height="{{IMAGE_HEIGHT_1}}" src="{{IMAGE_SOURCE_1}}" width="{{IMAGE_WIDTH_1}}"/>
+<figcaption>{{IMAGE_CAPTION_1}}</figcaption>
+</figure>
+<figure class="figure-card">
+<img alt="{{IMAGE_ALT_2}}" height="{{IMAGE_HEIGHT_2}}" src="{{IMAGE_SOURCE_2}}" width="{{IMAGE_WIDTH_2}}"/>
+<figcaption>{{IMAGE_CAPTION_2}}</figcaption>
+</figure>
+</div>
+<section class="note-box"><h3>{{NOTE_TITLE}}</h3><p>{{NOTE_CONTENT}}</p></section>
+<section class="warning-box"><h3>{{WARNING_TITLE}}</h3><p>{{WARNING_CONTENT}}</p></section>
+<section class="memory-box"><h3>{{MEMORY_TITLE}}</h3><p>{{MEMORY_ITEM}}</p></section>
+</template>
+</div>
 <script>
 (function () {
+  'use strict';
+
   const root = document.documentElement;
   const body = document.body;
-  const FONT_LEVELS = [80, 90, 100, 110, 120, 130, 140];
-
   const q = id => document.getElementById(id);
+  const FONT_LEVELS = Array.from({ length: 21 }, (_, i) => 50 + i * 5);
+
+  const controls = q('control-cluster');
+  const controlsToggle = q('controls-toggle');
+  const controlPanel = q('control-panel');
   const themeButton = q('theme-toggle');
   const modeButton = q('mode-toggle');
   const fontDown = q('font-down');
@@ -1210,10 +1311,302 @@ body.toc-open { overflow: hidden; }
   const overlay = q('toc-overlay');
   const prevButton = q('section-prev');
   const nextButton = q('section-next');
+  const homeButton = q('home-button');
+
+  const pageKey = location.pathname + location.search;
+  const readerStateKey = 'study-reader-position:' + pageKey;
+  const lastPageKey = 'study-last-page';
+  const explicitHomeKey = 'study-explicit-home';
+  const anchorSelector = [
+    '.page-shell h1', '.page-shell h2', '.page-shell h3', '.page-shell h4',
+    '.page-shell p', '.page-shell li', '.page-shell td', '.page-shell th',
+    '.page-shell figcaption', '.page-shell .card-title'
+  ].join(', ');
+
+  let anchorElements = [];
+  let lastStablePosition = null;
+  let scrollSaveTimer = 0;
+  let resizeRestoreTimer = 0;
+  let resizeAnchor = null;
+  let suppressScrollSaveUntil = 0;
+  function layoutViewportSize() {
+    const de = document.documentElement;
+    return {
+      width: de.clientWidth || window.innerWidth,
+      height: de.clientHeight || window.innerHeight
+    };
+  }
+
+  function visualViewportScale() {
+    const vv = window.visualViewport;
+    return vv && Number.isFinite(vv.scale) ? vv.scale : 1;
+  }
+
+  function isPinchZoomActive() {
+    return Math.abs(visualViewportScale() - 1) > 0.015;
+  }
+
+  const initialLayoutViewport = layoutViewportSize();
+  let lastViewportWidth = initialLayoutViewport.width;
+  let lastViewportHeight = initialLayoutViewport.height;
+  let pinchZoomSession = false;
+
+  try {
+    if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+  } catch (e) {}
+
+  function safeGet(key, fallback = null) {
+    try {
+      const value = localStorage.getItem(key);
+      return value === null ? fallback : value;
+    } catch (e) {
+      return fallback;
+    }
+  }
 
   function safeSet(key, value) {
     try { localStorage.setItem(key, value); } catch (e) {}
   }
+
+  function safeRemove(key) {
+    try { localStorage.removeItem(key); } catch (e) {}
+  }
+
+  /* ---------- Persistent page / PWA resume metadata ---------- */
+
+  function rememberCurrentPage() {
+    safeSet(lastPageKey, pageKey);
+    safeSet('study-last-active-at', String(Date.now()));
+  }
+
+  rememberCurrentPage();
+
+  /* ---------- Layout viewport geometry ---------- */
+
+  /*
+    Pinch zoom changes visualViewport.width / height / scale.
+    It must NOT change the document layout width.
+
+    Therefore --app-viewport-width is derived only from the layout viewport
+    (documentElement.clientWidth / innerWidth), never from visualViewport.width.
+  */
+  function syncViewportGeometry() {
+    const { width } = layoutViewportSize();
+    root.style.setProperty(
+      '--app-viewport-width',
+      `${Math.round(width * 100) / 100}px`
+    );
+  }
+
+  syncViewportGeometry();
+
+  /* ---------- Reader anchors ---------- */
+
+  function rebuildReaderAnchors() {
+    anchorElements = Array.from(document.querySelectorAll(anchorSelector));
+    anchorElements.forEach((el, index) => {
+      el.dataset.readerKey = 'r' + index;
+    });
+  }
+
+  function closestReaderElement(node) {
+    if (!node) return null;
+    const el = node.nodeType === Node.ELEMENT_NODE ? node : node.parentElement;
+    return el ? el.closest('[data-reader-key]') : null;
+  }
+
+  function caretAtPoint(x, y) {
+    try {
+      if (document.caretPositionFromPoint) {
+        const pos = document.caretPositionFromPoint(x, y);
+        if (!pos || !pos.offsetNode) return null;
+        return { node: pos.offsetNode, offset: pos.offset };
+      }
+      if (document.caretRangeFromPoint) {
+        const range = document.caretRangeFromPoint(x, y);
+        if (!range) return null;
+        return { node: range.startContainer, offset: range.startOffset };
+      }
+    } catch (e) {}
+    return null;
+  }
+
+  function textOffsetFromElementStart(element, node, offset) {
+    try {
+      const range = document.createRange();
+      range.setStart(element, 0);
+      range.setEnd(node, offset);
+      return range.toString().length;
+    } catch (e) {
+      return 0;
+    }
+  }
+
+  function domPositionFromTextOffset(element, targetOffset) {
+    const walker = document.createTreeWalker(element, NodeFilter.SHOW_TEXT);
+    let remaining = Math.max(0, targetOffset);
+    let node = walker.nextNode();
+    let last = null;
+
+    while (node) {
+      last = node;
+      const len = node.nodeValue ? node.nodeValue.length : 0;
+      if (remaining <= len) {
+        return { node, offset: remaining };
+      }
+      remaining -= len;
+      node = walker.nextNode();
+    }
+
+    if (last) return { node: last, offset: last.nodeValue ? last.nodeValue.length : 0 };
+    return { node: element, offset: 0 };
+  }
+
+  function characterRect(node, offset) {
+    try {
+      if (node.nodeType !== Node.TEXT_NODE) {
+        const r = node.getBoundingClientRect ? node.getBoundingClientRect() : null;
+        return r && r.height ? r : null;
+      }
+
+      const len = node.nodeValue ? node.nodeValue.length : 0;
+      if (!len) return node.parentElement ? node.parentElement.getBoundingClientRect() : null;
+
+      let start = Math.max(0, Math.min(offset, len - 1));
+      let end = Math.min(len, start + 1);
+      if (offset >= len && len > 0) {
+        start = len - 1;
+        end = len;
+      }
+
+      const range = document.createRange();
+      range.setStart(node, start);
+      range.setEnd(node, end);
+      const rects = range.getClientRects();
+      return rects.length ? rects[0] : range.getBoundingClientRect();
+    } catch (e) {
+      return null;
+    }
+  }
+
+  function captureReadingPosition() {
+    if (!anchorElements.length) rebuildReaderAnchors();
+    if (!anchorElements.length) return null;
+
+    const vv = window.visualViewport;
+    const viewportWidth = vv ? vv.width : window.innerWidth;
+    const topProbe = 6;
+    const ys = [topProbe, 12, 18, 26, 36, 50];
+    const xs = [];
+
+    for (let x = 12; x <= Math.min(viewportWidth - 12, 220); x += 16) xs.push(x);
+    xs.push(viewportWidth * .25, viewportWidth * .5, viewportWidth * .75);
+
+    for (const y of ys) {
+      for (const x of xs) {
+        if (x <= 0 || x >= viewportWidth) continue;
+        const caret = caretAtPoint(x, y);
+        if (!caret) continue;
+        const element = closestReaderElement(caret.node);
+        if (!element || !document.querySelector('.page-shell')?.contains(element)) continue;
+
+        const offset = textOffsetFromElementStart(element, caret.node, caret.offset);
+        const rect = characterRect(caret.node, caret.offset);
+        const key = element.dataset.readerKey;
+        if (key && rect && Number.isFinite(rect.top)) {
+          return { key, offset, top: rect.top };
+        }
+      }
+    }
+
+    /* Fallback: nearest textual block to the top edge. */
+    let best = null;
+    let bestDistance = Infinity;
+    for (const element of anchorElements) {
+      const rect = element.getBoundingClientRect();
+      if (rect.bottom < 0 || rect.top > (vv ? vv.height : window.innerHeight)) continue;
+      const distance = Math.abs(rect.top);
+      if (distance < bestDistance) {
+        bestDistance = distance;
+        best = { key: element.dataset.readerKey, offset: 0, top: rect.top };
+      }
+    }
+    return best;
+  }
+
+  function restoreReadingPosition(state) {
+    if (!state || !state.key) return false;
+    if (!anchorElements.length) rebuildReaderAnchors();
+
+    const element = document.querySelector('[data-reader-key="' + CSS.escape(state.key) + '"]');
+    if (!element) return false;
+
+    const pos = domPositionFromTextOffset(element, Number(state.offset) || 0);
+    const rect = characterRect(pos.node, pos.offset);
+    if (!rect || !Number.isFinite(rect.top)) return false;
+
+    const desiredTop = Number.isFinite(Number(state.top)) ? Number(state.top) : 6;
+    const delta = rect.top - desiredTop;
+    if (Math.abs(delta) < .5) return true;
+
+    suppressScrollSaveUntil = Date.now() + 700;
+    const oldBehavior = root.style.scrollBehavior;
+    root.style.scrollBehavior = 'auto';
+    window.scrollBy(0, delta);
+    root.style.scrollBehavior = oldBehavior;
+    return true;
+  }
+
+  function saveReaderState(state) {
+    if (!state) return;
+    lastStablePosition = state;
+    safeSet(readerStateKey, JSON.stringify(state));
+  }
+
+  function readReaderState() {
+    try {
+      const raw = safeGet(readerStateKey);
+      return raw ? JSON.parse(raw) : null;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  function settleRestore(state, delays = [0, 60, 180, 420]) {
+    if (!state) return;
+    suppressScrollSaveUntil = Date.now() + Math.max(...delays) + 350;
+    delays.forEach(delay => {
+      window.setTimeout(() => {
+        requestAnimationFrame(() => restoreReadingPosition(state));
+      }, delay);
+    });
+    window.setTimeout(() => {
+      saveReaderState(state);
+    }, Math.max(...delays) + 120);
+  }
+
+  function preserveReadingPosition(mutator) {
+    const state = captureReadingPosition() || lastStablePosition || readReaderState();
+    if (state) saveReaderState(state);
+    mutator();
+    rebuildReaderAnchors();
+    settleRestore(state);
+  }
+
+  function scheduleReaderSave() {
+    if (Date.now() < suppressScrollSaveUntil) return;
+    clearTimeout(scrollSaveTimer);
+    scrollSaveTimer = window.setTimeout(() => {
+      if (Date.now() < suppressScrollSaveUntil) return;
+      const state = captureReadingPosition();
+      if (state) saveReaderState(state);
+    }, 130);
+  }
+
+  rebuildReaderAnchors();
+  lastStablePosition = readReaderState();
+
+  /* ---------- Theme ---------- */
 
   function applyTheme(theme) {
     theme = theme === 'light' ? 'light' : 'dark';
@@ -1226,6 +1619,8 @@ body.toc-open { overflow: hidden; }
       themeButton.setAttribute('aria-pressed', theme === 'light' ? 'true' : 'false');
     }
   }
+
+  /* ---------- Full / Keywords ---------- */
 
   function applyMode(mode) {
     mode = mode === 'keywords' ? 'keywords' : 'full';
@@ -1240,17 +1635,18 @@ body.toc-open { overflow: hidden; }
     }
   }
 
+  /* ---------- Font 50-150%, step 5% ---------- */
+
   function currentScale() {
-    try {
-      const saved = Number(localStorage.getItem('study-font-scale'));
-      return FONT_LEVELS.includes(saved) ? saved : 100;
-    } catch (e) { return 100; }
+    const saved = Number(safeGet('study-font-scale', '100'));
+    return FONT_LEVELS.includes(saved) ? saved : 100;
   }
 
   function applyFontScale(scale) {
     if (!FONT_LEVELS.includes(scale)) scale = 100;
     root.style.setProperty('--base-font-size', (16 * scale / 100) + 'px');
     safeSet('study-font-scale', String(scale));
+
     if (fontReset) {
       fontReset.textContent = scale + '%';
       fontReset.title = 'Cỡ chữ hiện tại ' + scale + '%. Chạm để về 100%';
@@ -1260,40 +1656,72 @@ body.toc-open { overflow: hidden; }
     if (fontUp) fontUp.disabled = scale === FONT_LEVELS[FONT_LEVELS.length - 1];
   }
 
+  /* ---------- Collapsible controls ---------- */
+
+  function setControlsOpen(open) {
+    if (!controls) return;
+    controls.classList.toggle('open', open);
+    controlsToggle?.setAttribute('aria-expanded', String(open));
+    controlsToggle?.setAttribute('aria-label', open ? 'Đóng công cụ' : 'Mở công cụ');
+    controlsToggle?.setAttribute('title', open ? 'Đóng công cụ' : 'Mở công cụ');
+  }
+
+  controlsToggle?.addEventListener('click', event => {
+    event.stopPropagation();
+    setControlsOpen(!controls.classList.contains('open'));
+  });
+
+  controlPanel?.addEventListener('click', event => event.stopPropagation());
+  document.addEventListener('pointerdown', event => {
+    if (controls?.classList.contains('open') && !controls.contains(event.target)) setControlsOpen(false);
+  });
+
+  /* ---------- TOC ---------- */
+
   function openToc() {
     body.classList.add('toc-open');
-    if (tocButton) tocButton.setAttribute('aria-expanded', 'true');
+    tocButton?.setAttribute('aria-expanded', 'true');
+    setControlsOpen(false);
   }
+
   function closeToc() {
     body.classList.remove('toc-open');
-    if (tocButton) tocButton.setAttribute('aria-expanded', 'false');
+    tocButton?.setAttribute('aria-expanded', 'false');
   }
 
-  applyTheme(root.dataset.theme || 'dark');
-  applyMode(root.dataset.studyMode || 'full');
-  applyFontScale(currentScale());
+  tocButton?.addEventListener('click', openToc);
+  tocClose?.addEventListener('click', closeToc);
+  overlay?.addEventListener('click', closeToc);
 
-  if (themeButton) themeButton.addEventListener('click', () => applyTheme(root.dataset.theme === 'dark' ? 'light' : 'dark'));
-  if (modeButton) modeButton.addEventListener('click', () => applyMode(root.dataset.studyMode === 'keywords' ? 'full' : 'keywords'));
-  if (fontDown) fontDown.addEventListener('click', () => {
-    const i = FONT_LEVELS.indexOf(currentScale());
-    if (i > 0) applyFontScale(FONT_LEVELS[i - 1]);
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape') {
+      closeToc();
+      setControlsOpen(false);
+    }
   });
-  if (fontUp) fontUp.addEventListener('click', () => {
-    const i = FONT_LEVELS.indexOf(currentScale());
-    if (i >= 0 && i < FONT_LEVELS.length - 1) applyFontScale(FONT_LEVELS[i + 1]);
-  });
-  if (fontReset) fontReset.addEventListener('click', () => applyFontScale(100));
-
-  if (tocButton) tocButton.addEventListener('click', openToc);
-  if (tocClose) tocClose.addEventListener('click', closeToc);
-  if (overlay) overlay.addEventListener('click', closeToc);
-  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeToc(); });
 
   document.querySelectorAll('a[href="#toc"]').forEach(a => {
-    a.addEventListener('click', e => { e.preventDefault(); openToc(); });
+    a.addEventListener('click', event => {
+      event.preventDefault();
+      openToc();
+    });
   });
-  document.querySelectorAll('#toc a[href^="#"]').forEach(a => a.addEventListener('click', () => setTimeout(closeToc, 0)));
+
+  /* TOC navigation does not add hash-history entries. */
+  document.querySelectorAll('#toc a[href^="#"]').forEach(a => {
+    a.addEventListener('click', event => {
+      const href = a.getAttribute('href');
+      if (!href || href === '#toc') return;
+      const target = document.getElementById(decodeURIComponent(href.slice(1)));
+      if (!target) return;
+      event.preventDefault();
+      closeToc();
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      window.setTimeout(scheduleReaderSave, 450);
+    });
+  });
+
+  /* ---------- Previous / next lesson item ---------- */
 
   const tocTargets = Array.from(document.querySelectorAll('#toc a[href^="#"]'))
     .map(a => document.getElementById(decodeURIComponent(a.getAttribute('href').slice(1))))
@@ -1301,19 +1729,238 @@ body.toc-open { overflow: hidden; }
 
   function currentSectionIndex() {
     let idx = -1;
-    const threshold = 130;
+    const threshold = 24;
     tocTargets.forEach((el, i) => {
       if (el.getBoundingClientRect().top <= threshold) idx = i;
     });
     return idx;
   }
+
+  function updateSectionButtons() {
+    const i = currentSectionIndex();
+    if (prevButton) prevButton.disabled = !tocTargets.length || i <= 0;
+    if (nextButton) nextButton.disabled = !tocTargets.length || i >= tocTargets.length - 1;
+  }
+
   function goToIndex(i) {
     if (!tocTargets.length) return;
     i = Math.max(0, Math.min(tocTargets.length - 1, i));
     tocTargets[i].scrollIntoView({ behavior: 'smooth', block: 'start' });
+    window.setTimeout(() => {
+      const state = captureReadingPosition();
+      if (state) saveReaderState(state);
+      updateSectionButtons();
+    }, 450);
   }
-  if (prevButton) prevButton.addEventListener('click', () => goToIndex(Math.max(0, currentSectionIndex() - 1)));
-  if (nextButton) nextButton.addEventListener('click', () => goToIndex(Math.min(tocTargets.length - 1, currentSectionIndex() + 1)));
+
+  prevButton?.addEventListener('click', () => goToIndex(Math.max(0, currentSectionIndex() - 1)));
+  nextButton?.addEventListener('click', () => goToIndex(Math.min(tocTargets.length - 1, currentSectionIndex() + 1)));
+
+  /* ---------- Home ---------- */
+
+  homeButton?.addEventListener('click', () => {
+    const state = captureReadingPosition();
+    if (state) saveReaderState(state);
+    safeSet(explicitHomeKey, '1');
+    safeSet('study-home-click-at', String(Date.now()));
+    window.location.href = new URL('index.html', window.location.href).href;
+  });
+
+  /* ---------- Initialize state ---------- */
+
+  applyTheme(root.dataset.theme === 'light' ? 'light' : 'dark');
+  applyMode(root.dataset.studyMode || 'full');
+  applyFontScale(currentScale());
+
+  themeButton?.addEventListener('click', () => applyTheme(root.dataset.theme === 'dark' ? 'light' : 'dark'));
+  modeButton?.addEventListener('click', () => applyMode(root.dataset.studyMode === 'keywords' ? 'full' : 'keywords'));
+
+  fontDown?.addEventListener('click', () => {
+    const i = FONT_LEVELS.indexOf(currentScale());
+    if (i > 0) preserveReadingPosition(() => applyFontScale(FONT_LEVELS[i - 1]));
+  });
+
+  fontUp?.addEventListener('click', () => {
+    const i = FONT_LEVELS.indexOf(currentScale());
+    if (i >= 0 && i < FONT_LEVELS.length - 1) preserveReadingPosition(() => applyFontScale(FONT_LEVELS[i + 1]));
+  });
+
+  fontReset?.addEventListener('click', () => preserveReadingPosition(() => applyFontScale(100)));
+
+  /* ---------- Scroll / rotation / resize persistence ---------- */
+
+  window.addEventListener('scroll', () => {
+    scheduleReaderSave();
+    updateSectionButtons();
+  }, { passive: true });
+
+  function handleLayoutViewportChange() {
+    /*
+      A native two-finger pinch changes VisualViewport but normally does not
+      change the layout viewport. Ignore it completely so the page does not
+      recalculate width or fight the browser's native zoom.
+    */
+    if (isPinchZoomActive()) {
+      pinchZoomSession = true;
+      return;
+    }
+
+    const { width: w, height: h } = layoutViewportSize();
+
+    /*
+      When pinch zoom returns to scale 1, VisualViewport may emit another
+      resize. If the layout viewport itself did not change, this was only zoom,
+      so do nothing.
+    */
+    const layoutChanged =
+      Math.abs(w - lastViewportWidth) >= 1 ||
+      Math.abs(h - lastViewportHeight) >= 1;
+
+    if (!layoutChanged) {
+      pinchZoomSession = false;
+      return;
+    }
+
+    pinchZoomSession = false;
+
+    if (!resizeAnchor) {
+      resizeAnchor =
+        lastStablePosition ||
+        readReaderState() ||
+        captureReadingPosition();
+    }
+
+    /*
+      Only a real layout change, such as portrait <-> landscape, updates
+      --app-viewport-width.
+    */
+    syncViewportGeometry();
+    lastViewportWidth = w;
+    lastViewportHeight = h;
+
+    if (resizeAnchor) {
+      settleRestore(resizeAnchor, [0, 50, 140, 300]);
+    }
+
+    clearTimeout(resizeRestoreTimer);
+    resizeRestoreTimer = window.setTimeout(() => {
+      if (resizeAnchor) {
+        settleRestore(resizeAnchor, [0, 80, 220]);
+      }
+
+      window.setTimeout(() => {
+        lastStablePosition =
+          resizeAnchor ||
+          captureReadingPosition();
+
+        if (lastStablePosition) {
+          saveReaderState(lastStablePosition);
+        }
+
+        resizeAnchor = null;
+        updateSectionButtons();
+      }, 320);
+    }, 260);
+  }
+
+  function handleVisualViewportResize() {
+    /*
+      visualViewport resize is the main signal used by Safari/WebKit while
+      pinch-zooming. At scale != 1 this is zoom, not a responsive-layout event.
+    */
+    if (isPinchZoomActive()) {
+      pinchZoomSession = true;
+      return;
+    }
+
+    handleLayoutViewportChange();
+  }
+
+  window.addEventListener(
+    'resize',
+    handleLayoutViewportChange,
+    { passive: true }
+  );
+
+  window.addEventListener('orientationchange', () => {
+    /*
+      Rotation is a genuine layout change. Use the stored logical reading
+      position, then wait for iOS to finish updating its layout viewport.
+    */
+    resizeAnchor =
+      lastStablePosition ||
+      readReaderState() ||
+      captureReadingPosition();
+
+    [40, 120, 280].forEach(delay => {
+      window.setTimeout(() => {
+        if (isPinchZoomActive()) return;
+
+        const size = layoutViewportSize();
+        syncViewportGeometry();
+
+        if (
+          Math.abs(size.width - lastViewportWidth) >= 1 ||
+          Math.abs(size.height - lastViewportHeight) >= 1
+        ) {
+          lastViewportWidth = size.width;
+          lastViewportHeight = size.height;
+        }
+
+        if (resizeAnchor) {
+          settleRestore(resizeAnchor, [0, 70, 180]);
+        }
+      }, delay);
+    });
+
+    window.setTimeout(() => {
+      resizeAnchor = null;
+      updateSectionButtons();
+    }, 620);
+  }, { passive: true });
+
+  window.visualViewport?.addEventListener(
+    'resize',
+    handleVisualViewportResize,
+    { passive: true }
+  );
+
+  function saveLifecycleState() {
+    const state = captureReadingPosition() || lastStablePosition;
+    if (state) saveReaderState(state);
+    rememberCurrentPage();
+  }
+
+  document.addEventListener('visibilitychange', () => {
+    if (document.visibilityState === 'hidden') saveLifecycleState();
+    else {
+      rememberCurrentPage();
+      const state = readReaderState();
+      if (state) settleRestore(state, [0, 80, 220]);
+    }
+  });
+
+  window.addEventListener('pagehide', saveLifecycleState);
+  window.addEventListener('beforeunload', saveLifecycleState);
+
+  window.addEventListener('pageshow', () => {
+    rememberCurrentPage();
+    rebuildReaderAnchors();
+    const state = readReaderState();
+    if (!location.hash && state) settleRestore(state, [0, 80, 220, 500]);
+    window.setTimeout(updateSectionButtons, 80);
+  });
+
+  window.addEventListener('load', () => {
+    rebuildReaderAnchors();
+    const state = readReaderState();
+    if (!location.hash && state) settleRestore(state, [0, 80, 220, 500]);
+    else {
+      const current = captureReadingPosition();
+      if (current) saveReaderState(current);
+    }
+    updateSectionButtons();
+  });
 })();
 </script></body>
 </html>

@@ -1,24 +1,20 @@
 <!DOCTYPE html>
-<html lang="vi" data-theme="dark">
+<!DOCTYPE html>
+
+<html data-study-mode="full" data-theme="dark" lang="vi">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<meta name="color-scheme" content="dark light">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<meta content="dark light" name="color-scheme"/>
+<meta content="test-2.1-responsive-landscape" name="study-template-version"/>
 <title>令和7年度 問題1 施工経験記述</title>
-
 <style>
-/* =========================================================
-   FIXED DESIGN TOKENS
-   Do not redesign these values per lesson.
-   ========================================================= */
-
 :root {
-  --font-vi: Arial, Helvetica, sans-serif;
-  --font-ja: "Hiragino Sans", "Yu Gothic", "Yu Gothic UI", Meiryo, sans-serif;
+  --app-viewport-width: 100vw;
+  --font-vi: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  --font-ja: "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic UI", "Yu Gothic", Meiryo, sans-serif;
   --base-font-size: 16px;
-  --content-width: 1320px;
-  --control-size: 38px;
-  --control-gap: 4px;
+  color-scheme: dark;
 }
 
 html[data-theme="dark"] {
@@ -36,16 +32,17 @@ html[data-theme="dark"] {
   --note-bg: #1C2028;
   --memory-bg: #20231C;
   --keyword: #74D7FF;
-  --keyword-bg: rgba(75, 190, 255, .10);
+  --keyword-bg: rgba(75, 190, 255, 0.10);
   --critical-bg: #594613;
   --critical-text: #FFE39A;
   --trap: #FF8585;
   --trap-underline: #FF5F5F;
-  --relation-bg: rgba(139, 126, 255, .12);
+  --relation-bg: rgba(139, 126, 255, 0.12);
   --relation-border: #8F86FF;
   --shadow: rgba(0, 0, 0, .28);
   --dock-bg: rgba(23, 27, 34, .94);
-  --overlay: rgba(0, 0, 0, .46);
+  --overlay: rgba(0, 0, 0, .48);
+  color-scheme: dark;
 }
 
 html[data-theme="light"] {
@@ -72,586 +69,239 @@ html[data-theme="light"] {
   --relation-border: #6C5CE7;
   --shadow: rgba(31, 38, 49, .12);
   --dock-bg: rgba(255, 255, 255, .94);
-  --overlay: rgba(20, 24, 30, .32);
+  --overlay: rgba(19, 26, 35, .28);
+  color-scheme: light;
 }
 
-/* =========================================================
-   BASE
-   ========================================================= */
-
 * { box-sizing: border-box; }
-
 html {
   scroll-behavior: smooth;
   font-size: var(--base-font-size);
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
-
-body {
+body { overflow-anchor: none;
   margin: 0;
-  min-height: 100vh;
   background: var(--bg);
   color: var(--text);
   font-family: var(--font-vi);
   font-size: 1rem;
   line-height: 1.72;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
+  padding-bottom: 11rem;
 }
+:lang(vi), .translation, .translation-cell, .vn-topic, .vn-answer { font-family: var(--font-vi); }
+:lang(ja), .original, .original-cell, .jp-topic, .jp-answer { font-family: var(--font-ja); }
+strong, b { font-weight: 700; }
+a { color: var(--link); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+a:hover { text-decoration-thickness: 2px; }
+h1, h2, h3, h4 { color: var(--heading); line-height: 1.35; }
+h1 { font-size: clamp(1.8rem, 4vw, 2.8rem); margin: 0 0 .55rem; }
+h2 { font-size: clamp(1.38rem, 2.8vw, 2rem); margin: 0; }
+h3 { font-size: clamp(1.12rem, 2vw, 1.48rem); }
+h4 { font-size: 1.02rem; }
+[id] { scroll-margin-top: 22px; }
+p { margin: .62rem 0; }
+ul, ol { padding-left: 1.5rem; }
+li { margin: .34rem 0; }
 
-:lang(vi) {
-  font-family: var(--font-vi);
-}
-
-:lang(ja) {
-  font-family: var(--font-ja);
-}
-
-a {
-  color: var(--link);
-  text-decoration-thickness: 1px;
-  text-underline-offset: 3px;
-}
-
-a:hover {
-  text-decoration-thickness: 2px;
-}
-
-button {
-  font: inherit;
-}
-
-h1, h2, h3, h4 {
-  color: var(--heading);
-  line-height: 1.35;
-}
-
-h1 {
-  margin: 0 0 .35rem;
-  font-size: clamp(1.75rem, 4vw, 2.7rem);
-}
-
-h2 {
-  margin: 2.5rem 0 1rem;
-  padding-bottom: .42rem;
-  border-bottom: 1px solid var(--border);
-  font-size: clamp(1.42rem, 3vw, 2rem);
-}
-
-h3 {
-  margin: 1.9rem 0 .75rem;
-  font-size: clamp(1.16rem, 2.4vw, 1.5rem);
-}
-
-h4 {
-  margin: 1.2rem 0 .45rem;
-  font-size: 1rem;
-}
-
-p {
-  margin: .58rem 0;
-}
-
-ul, ol {
-  padding-left: 1.45rem;
-}
-
-li {
-  margin: .3rem 0;
-}
-
-[id] {
-  scroll-margin-top: 18px;
-}
-
-/* =========================================================
-   PAGE LAYOUT
-   ========================================================= */
-
-.page-shell {
-  width: min(var(--content-width), calc(100% - 28px));
+body > main,
+body > .page-shell {
+  width: min(1320px, calc(100% - 32px));
   margin: 0 auto;
-  padding: 18px 0 112px;
+  padding: 26px 0 70px;
 }
+body > .page-shell > main { width: 100%; margin: 0; padding: 0; }
 
-.hero,
-.toc-card,
-.study-section,
-.aggregate-section {
+.hero {
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: 16px;
   box-shadow: 0 8px 28px var(--shadow);
+  padding: clamp(22px, 4vw, 42px);
+  margin: 0 0 24px;
 }
-
-.hero {
-  margin-bottom: 22px;
-  padding: clamp(22px, 3vw, 40px);
-}
-
-.hero-subtitle {
-  margin: 0;
+.eyebrow, .hero-subtitle, .subtitle, .meta-line, .source-ref, .mini-label, .small, .meta-label {
   color: var(--text-muted);
-  font-size: 1.06rem;
 }
+.eyebrow { font-size: .82rem; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; }
+.hero-subtitle, .subtitle { font-size: 1.08rem; }
+.source-ref, .mini-label, .small, .meta-label { font-size: .86rem; }
 
-.meta-grid {
+.summary-grid, .meta-grid, .mini-grid, .coverage {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(195px, 1fr));
-  gap: 10px;
-  margin-top: 16px;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: .72rem;
+  margin-top: 1rem;
 }
-
-.meta-item {
-  padding: 10px 12px;
+.summary-card, .summary-item, .meta-item, .mini-card, .coverage > div {
   background: var(--surface-alt);
   border: 1px solid var(--border);
   border-radius: 10px;
+  padding: .75rem .85rem;
 }
+.summary-item b, .summary-card strong { color: var(--heading); }
+.source-list { color: var(--text-muted); }
 
-.meta-label {
-  display: block;
-  margin-bottom: 2px;
-  color: var(--text-muted);
-  font-size: .8rem;
-}
-
-.study-section,
+body > main > section:not(#toc),
+body > .page-shell > section:not(#toc),
+body > .page-shell > main > section,
+.topic,
 .aggregate-section {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  box-shadow: 0 7px 22px var(--shadow);
+  padding: clamp(18px, 3vw, 30px);
   margin: 22px 0;
-  padding: clamp(18px, 2.6vw, 30px);
 }
-
-.section-head {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 12px;
-  margin-bottom: 16px;
-  padding-bottom: 10px;
+.subsection { margin: 1.7rem 0 2.1rem; }
+.subsection-title, .section-head {
   border-bottom: 1px solid var(--border);
+  padding-bottom: .65rem;
+  margin-bottom: 1rem;
 }
+.section-head { display: flex; gap: 12px; align-items: baseline; justify-content: space-between; }
 
-.section-head h2,
-.section-head h3 {
-  margin: 0;
-  padding: 0;
-  border: 0;
-}
-
-.source-ref {
-  color: var(--text-muted);
-  font-size: .84rem;
-  white-space: nowrap;
-}
-
-.subsection {
-  margin: 26px 0 32px;
-}
-
-.subsection:first-child {
-  margin-top: 0;
-}
-
-.study-grid {
+.study-grid, .lang-grid, .bilingual-note {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  gap: 14px;
+  gap: 1rem;
   align-items: start;
 }
-
-.study-card {
-  min-width: 0;
-  overflow: hidden;
+.study-card, .lang-card, .note-pane {
   border: 1px solid var(--border);
   border-radius: 12px;
+  overflow: hidden;
+  min-width: 0;
+  background: var(--surface-alt);
 }
-
-.study-card.original {
-  background: var(--original-bg);
-}
-
-.study-card.translation {
-  background: var(--translation-bg);
-}
-
+.study-card.original, .lang-card.original, .original-cell, .jp-topic, .jp-answer { background: var(--original-bg); }
+.study-card.translation, .lang-card.translation, .translation-cell, .vn-topic, .vn-answer { background: var(--translation-bg); }
 .card-title {
-  padding: 9px 13px;
+  padding: .62rem .85rem;
   background: var(--surface-alt);
   border-bottom: 1px solid var(--border);
   color: var(--heading);
-  font-weight: 800;
+  font-weight: 700;
   letter-spacing: .02em;
 }
+.card-body, .recall-source { padding: .9rem 1rem; }
+.card-body.recall-source { padding: 1rem 1.05rem; }
+.item-block { border-top: 1px dashed var(--border); padding-top: .72rem; margin-top: .72rem; }
+.item-block:first-child { border-top: 0; padding-top: 0; margin-top: 0; }
+.item-label { font-weight: 700; color: var(--heading); margin-right: .35em; }
 
-.recall-source {
-  padding: 14px 16px 16px;
-  transition: color .15s ease;
-}
+.table-wrap { overflow-x: auto; margin: .9rem 0; border: 1px solid var(--border); border-radius: 10px; }
+table { width: 100%; border-collapse: collapse; min-width: 650px; background: var(--surface); }
+th, td { border: 1px solid var(--border); padding: .62rem .7rem; vertical-align: top; text-align: left; }
+th { background: var(--surface-alt); color: var(--heading); font-weight: 700; }
+caption { text-align: left; font-weight: 700; color: var(--heading); padding: .58rem .7rem; background: var(--surface-alt); caption-side: top; }
+.compact th, .compact td { padding: .48rem .55rem; }
+.study-table { min-width: 1040px; }
+.study-table .meta { white-space: nowrap; text-align: center; background: var(--surface-alt); }
+.glossary-table { min-width: 920px; }
+.memory-table, .number-table, .num-table { min-width: 760px; }
 
-.recall-source > :first-child {
-  margin-top: 0;
-}
-
-.recall-source > :last-child {
-  margin-bottom: 0;
-}
-
-/* =========================================================
-   CONTENT COMPONENTS
-   ========================================================= */
-
-.table-wrap {
-  overflow-x: auto;
-  margin: 12px 0 18px;
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  -webkit-overflow-scrolling: touch;
-}
-
-table {
-  width: 100%;
-  min-width: 640px;
-  border-collapse: collapse;
-  background: var(--surface);
-}
-
-th,
-td {
-  padding: 9px 11px;
-  border-right: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
-  vertical-align: top;
-  text-align: left;
-}
-
-th:last-child,
-td:last-child {
-  border-right: 0;
-}
-
-tr:last-child td {
-  border-bottom: 0;
-}
-
-th {
-  background: var(--surface-alt);
-  color: var(--heading);
-  font-weight: 800;
-}
-
-caption {
-  padding: 9px 11px;
-  background: var(--surface-alt);
-  color: var(--heading);
-  font-weight: 800;
-  text-align: left;
-  caption-side: top;
-}
-
-.summary-box,
-.note-box,
-.memory-box,
-.warning-box,
-.figure-box,
-.formula-box,
-.comparison-box {
-  margin: 14px 0;
-  padding: 13px 15px;
-  background: var(--note-bg);
+.summary-box, .note-box, .note, .info-box, .background-box, .exam-note, .memory-box, .warning-box, .warning, .figure-box, .figure-card {
   border: 1px solid var(--border);
   border-left-width: 4px;
   border-radius: 10px;
+  padding: .9rem 1rem;
+  margin: 1rem 0;
+  background: var(--note-bg);
 }
+.summary-box, .note-box, .note, .info-box, .background-box { border-left-color: var(--link); }
+.memory-box, .exam-note { background: var(--memory-bg); border-left-color: var(--critical-text); }
+.warning-box, .warning { border-left-color: var(--trap); }
+.figure-box, .figure-card { border-left-color: var(--relation-border); }
+.figure-card { overflow: hidden; padding: 0; }
+.figure-card img { display: block; width: 100%; height: auto; background: #fff; }
+.figure-card figcaption, .figure-explain { padding: .8rem 1rem; }
 
-.summary-box,
-.note-box {
-  border-left-color: var(--link);
-}
-
-.memory-box {
-  background: var(--memory-bg);
-  border-left-color: var(--critical-text);
-}
-
-.warning-box {
-  border-left-color: var(--trap);
-}
-
-.figure-box,
-.formula-box,
-.comparison-box {
-  border-left-color: var(--relation-border);
-}
-
-.figure-card {
-  margin: 15px 0 20px;
-  overflow: hidden;
-  background: var(--surface-alt);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-}
-
-.figure-card img {
-  display: block;
-  width: 100%;
-  height: auto;
-  background: #fff;
-}
-
-.figure-card figcaption {
-  padding: 10px 13px 12px;
-  color: var(--text-muted);
-  font-size: .9rem;
-}
-
-.figure-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 12px;
-  margin: 15px 0 20px;
-}
-
-.figure-grid .figure-card {
-  margin: 0;
-}
-
-.item-block {
-  margin-top: 11px;
-  padding-top: 11px;
-  border-top: 1px dashed var(--border);
-}
-
-.item-block:first-child {
-  margin-top: 0;
-  padding-top: 0;
-  border-top: 0;
-}
-
-.item-label {
-  margin-right: .3em;
-  color: var(--heading);
-  font-weight: 800;
-}
-
-.formula-line {
+.formula, .formula-line {
   display: flex;
   flex-wrap: wrap;
+  gap: .45rem;
   align-items: center;
-  gap: 6px;
-}
-
-.flow-node {
-  padding: 5px 8px;
-  background: var(--surface);
+  padding: .75rem;
+  background: var(--surface-alt);
   border: 1px solid var(--border);
-  border-radius: 7px;
-  font-weight: 700;
+  border-radius: 9px;
+  margin: .75rem 0;
 }
-
-.flow-arrow {
-  color: var(--text-muted);
-  font-weight: 800;
-}
-
-/* =========================================================
-   SEMANTIC HIGHLIGHTING
-   ========================================================= */
+.flow-node { border: 1px solid var(--border); border-radius: 7px; padding: .35rem .55rem; background: var(--surface); font-weight: 700; }
+.flow-arrow { color: var(--text-muted); font-weight: 700; }
 
 .kw {
-  padding: .02em .16em;
-  background: var(--keyword-bg);
-  color: var(--keyword);
-  border-radius: .2em;
-  font-weight: 750;
-}
-
-.critical {
-  padding: .04em .22em;
-  background: var(--critical-bg);
-  color: var(--critical-text);
-  border-radius: .22em;
-  font-weight: 750;
-}
-
-.trap {
-  color: var(--trap);
   font-weight: 700;
+  color: var(--keyword);
+  background: var(--keyword-bg);
+  padding: .02em .16em;
+  border-radius: .2em;
+}
+.critical {
+  font-weight: 700;
+  color: var(--critical-text);
+  background: var(--critical-bg);
+  padding: .04em .22em;
+  border-radius: .22em;
+}
+.trap {
+  font-weight: 700;
+  color: var(--trap);
   text-decoration-line: underline;
   text-decoration-color: var(--trap-underline);
   text-decoration-thickness: 2px;
   text-underline-offset: 3px;
 }
-
 .relation {
-  padding: .02em .14em;
-  background: var(--relation-bg);
+  font-weight: 600;
   color: var(--text);
+  background: var(--relation-bg);
   border-bottom: 2px solid var(--relation-border);
-  font-weight: 650;
+  padding: .02em .14em;
 }
 
-/* Only recall-source is dimmed in Keywords mode. */
-body.keyword-focus .recall-source {
-  color: var(--focus-muted);
-}
+html[data-study-mode="keywords"] .recall-source { color: var(--focus-muted); }
+html[data-study-mode="keywords"] .recall-source .kw { color: var(--keyword); background: var(--keyword-bg); }
+html[data-study-mode="keywords"] .recall-source .critical { color: var(--critical-text); background: var(--critical-bg); }
+html[data-study-mode="keywords"] .recall-source .trap { color: var(--trap); }
+html[data-study-mode="keywords"] .recall-source .relation { color: var(--text); background: var(--relation-bg); }
+html[data-study-mode="keywords"] .recall-source th,
+html[data-study-mode="keywords"] .recall-source .card-title,
+html[data-study-mode="keywords"] .recall-source .item-label { color: var(--heading); }
 
-body.keyword-focus .recall-source .kw {
-  color: var(--keyword);
-  background: var(--keyword-bg);
-}
+.backlink, .back-toc, .back { display: inline-block; margin-top: .8rem; font-size: .9rem; }
 
-body.keyword-focus .recall-source .critical {
-  color: var(--critical-text);
-  background: var(--critical-bg);
-}
-
-body.keyword-focus .recall-source .trap {
-  color: var(--trap);
-}
-
-body.keyword-focus .recall-source .relation {
-  color: var(--text);
-  background: var(--relation-bg);
-}
-
-body.keyword-focus .recall-source th,
-body.keyword-focus .recall-source .item-label {
-  color: var(--heading);
-}
-
-/* =========================================================
-   TOC DRAWER
-   ========================================================= */
-
-.toc-overlay {
+/* Collapsible study controls: one launcher at bottom-left. */
+.control-cluster {
   position: fixed;
-  inset: 0;
-  z-index: 1990;
-  visibility: hidden;
-  opacity: 0;
-  background: var(--overlay);
-  transition: opacity .18s ease, visibility .18s ease;
-}
-
-.toc-drawer {
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  z-index: 2000;
-  width: min(78vw, 360px);
-  padding: max(14px, env(safe-area-inset-top)) 14px
-           max(18px, env(safe-area-inset-bottom))
-           max(14px, env(safe-area-inset-left));
-  overflow-y: auto;
-  background: var(--surface);
-  border-right: 1px solid var(--border);
-  box-shadow: 14px 0 36px var(--shadow);
-  transform: translateX(-103%);
-  transition: transform .2s ease;
-  -webkit-overflow-scrolling: touch;
-}
-
-body.toc-open .toc-overlay {
-  visibility: visible;
-  opacity: 1;
-}
-
-body.toc-open .toc-drawer {
-  transform: translateX(0);
-}
-
-.toc-drawer-head {
-  position: sticky;
-  top: 0;
-  z-index: 1;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 10px;
-  padding: 4px 0 10px;
-  background: var(--surface);
-  border-bottom: 1px solid var(--border);
-}
-
-.toc-drawer-head h2 {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  font-size: 1.2rem;
-}
-
-.toc-close {
-  width: 34px;
-  height: 34px;
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  background: var(--surface-alt);
-  color: var(--text);
-  cursor: pointer;
-}
-
-.toc-list {
-  margin: 12px 0 0;
-  padding-left: 1.2rem;
-}
-
-.toc-list ol {
-  margin-top: 4px;
-}
-
-/* =========================================================
-   COMPACT CONTROLS
-   Left: vertical TOC / Back / Next
-   Right: horizontal display controls
-   ========================================================= */
-
-.nav-dock-left,
-.settings-dock-right {
-  position: fixed;
-  bottom: max(14px, env(safe-area-inset-bottom));
-  z-index: 1900;
-  padding: 5px;
-  background: var(--dock-bg);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  box-shadow: 0 8px 24px var(--shadow);
-  -webkit-backdrop-filter: blur(10px);
-  backdrop-filter: blur(10px);
+  left: max(8px, env(safe-area-inset-left));
+  bottom: max(10px, env(safe-area-inset-bottom));
+  z-index: 2200;
+  width: 38px;
+  height: 38px;
   user-select: none;
+  -webkit-user-select: none;
 }
 
-.nav-dock-left {
-  left: max(10px, env(safe-area-inset-left));
-  display: flex;
-  flex-direction: column;
-  gap: var(--control-gap);
-}
-
-.settings-dock-right {
-  right: max(10px, env(safe-area-inset-right));
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: var(--control-gap);
-}
-
-.nav-dock-left button,
-.settings-dock-right button {
-  display: flex;
+.control-launcher,
+.control-panel button {
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: var(--control-size);
-  height: var(--control-size);
-  min-width: var(--control-size);
-  min-height: var(--control-size);
+  flex: 0 0 auto;
+  width: 32px;
+  height: 32px;
+  min-width: 32px;
+  min-height: 32px;
   padding: 0;
-  background: var(--surface-alt);
-  color: var(--text);
   border: 1px solid var(--border);
   border-radius: 8px;
-  font-family: var(--font-vi);
-  font-size: .96rem;
+  background: var(--surface-alt);
+  color: var(--text);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
   font-weight: 700;
   line-height: 1;
   cursor: pointer;
@@ -659,98 +309,246 @@ body.toc-open .toc-drawer {
   -webkit-tap-highlight-color: transparent;
 }
 
-.nav-dock-left button:hover,
-.settings-dock-right button:hover {
+.control-launcher {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  z-index: 2;
+  width: 38px;
+  height: 38px;
+  min-width: 38px;
+  min-height: 38px;
+  border-radius: 11px;
+  background: var(--dock-bg);
+  box-shadow: 0 6px 18px var(--shadow);
+  font-size: 20px;
+  letter-spacing: 1px;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+}
+
+.control-panel {
+  position: absolute;
+  left: 43px;
+  bottom: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 2px;
+  width: max-content;
+  max-width: calc(100dvw - max(59px, env(safe-area-inset-left) + 59px) - max(8px, env(safe-area-inset-right)));
+  padding: 3px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  overscroll-behavior-x: contain;
+  scrollbar-width: none;
+  border: 1px solid var(--border);
+  border-radius: 11px;
+  background: var(--dock-bg);
+  box-shadow: 0 6px 18px var(--shadow);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateX(-10px) scale(.98);
+  transform-origin: left bottom;
+  transition: opacity .14s ease, transform .14s ease, visibility .14s ease;
+}
+
+.control-panel::-webkit-scrollbar { display: none; }
+
+.control-cluster.open .control-panel {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateX(0) scale(1);
+}
+
+.control-cluster.open .control-launcher {
   border-color: var(--link);
 }
 
-.nav-dock-left button:active,
-.settings-dock-right button:active {
-  transform: translateY(1px);
-}
+.control-panel button:active,
+.control-launcher:active { transform: translateY(1px); }
 
-.nav-dock-left button:disabled {
-  opacity: .38;
+.control-panel button:hover,
+.control-launcher:hover { border-color: var(--link); }
+
+.control-panel button:disabled {
+  opacity: .36;
   cursor: default;
 }
 
-.settings-dock-right .font-reset {
-  font-size: .66rem;
+.control-panel .font-reset {
+  width: 38px;
+  min-width: 38px;
+  font-size: 9px;
   letter-spacing: -.03em;
 }
 
-.settings-dock-right .mode-toggle {
-  font-size: 1.02rem;
+.control-panel .mode-toggle { font-size: 14px; }
+
+.control-panel .home-icon svg {
+  width: 17px;
+  height: 17px;
+  display: block;
 }
 
-/* =========================================================
-   RESPONSIVE
-   ========================================================= */
+/*
+  Responsive reading geometry for iPad/iPhone.
+  The page follows the actual Visual Viewport width. When rotating to
+  landscape it expands across the wider screen instead of staying at
+  portrait width. Reader-anchor JS below restores the same logical text
+  position after the reflow.
+*/
+@media (pointer: coarse) {
+  body > main,
+  body > .page-shell {
+    width: min(calc(var(--app-viewport-width, 100vw) - 16px), 1320px) !important;
+    max-width: 1320px !important;
+  }
+
+
+  .hero {
+    padding: 1rem !important;
+  }
+
+  body > main > section:not(#toc),
+  body > .page-shell > section:not(#toc),
+  body > .page-shell > main > section,
+  .topic,
+  .aggregate-section {
+    padding: 1rem !important;
+  }
+}
+
+
+@media (pointer: coarse) and (orientation: portrait) {
+  .study-grid,
+  .lang-grid,
+  .bilingual-note {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+@media (pointer: coarse) and (orientation: landscape) {
+  body > main,
+  body > .page-shell {
+    width: min(calc(var(--app-viewport-width, 100dvw) - 20px), 1320px) !important;
+  }
+}
+
+/* TOC drawer */
+#toc {
+  position: fixed !important;
+  left: 0 !important;
+  top: 0 !important;
+  bottom: 0 !important;
+  z-index: 2100 !important;
+  width: min(82vw, 390px) !important;
+  max-height: 100dvh !important;
+  overflow-y: auto !important;
+  margin: 0 !important;
+  padding: 74px 20px 28px !important;
+  background: var(--surface) !important;
+  border: 0 !important;
+  border-right: 1px solid var(--border) !important;
+  border-radius: 0 16px 16px 0 !important;
+  box-shadow: 10px 0 30px var(--shadow) !important;
+  transform: translateX(-105%);
+  transition: transform .2s ease;
+}
+body.toc-open #toc { transform: translateX(0); }
+#toc .toc-grid { columns: 1 !important; display: block !important; }
+#toc ol { margin-top: .35rem; }
+.toc-drawer-head {
+  position: sticky;
+  top: -74px;
+  margin: -74px -20px 18px;
+  padding: 13px 14px;
+  min-height: 58px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  z-index: 2;
+}
+.toc-drawer-head strong { color: var(--heading); }
+.toc-close {
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  background: var(--surface-alt);
+  color: var(--text);
+  font: 700 1.25rem var(--font-vi);
+  cursor: pointer;
+}
+.toc-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  background: var(--overlay);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .2s ease;
+}
+body.toc-open .toc-overlay { opacity: 1; pointer-events: auto; }
+body.toc-open { overflow: hidden; }
 
 @media (max-width: 900px) {
-  .study-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .page-shell {
-    width: min(100% - 18px, 760px);
-  }
-
-  .section-head {
-    display: block;
-  }
-
-  .source-ref {
-    display: block;
-    margin-top: 6px;
-    white-space: normal;
-  }
+  .study-grid, .lang-grid, .bilingual-note { grid-template-columns: 1fr; }
+  body > main, body > .page-shell { width: min(100% - 20px, 780px); padding-top: 14px; }
+  .section-head { display: block; }
+  .source-ref { display: block; margin-top: .45rem; }
+  table { min-width: 620px; }
 }
 
 @media (max-width: 560px) {
-  body {
-    font-size: .96rem;
-  }
-
-  .hero,
-  .study-section,
-  .aggregate-section {
-    border-radius: 12px;
-  }
-
-  .recall-source {
-    padding: 12px 13px 14px;
-  }
-
-  :root {
-    --control-size: 36px;
-  }
-
-  .settings-dock-right {
-    right: max(7px, env(safe-area-inset-right));
-  }
-
-  .nav-dock-left {
-    left: max(7px, env(safe-area-inset-left));
-  }
+  body { font-size: 1rem; }
+  body > main, body > .page-shell { width: calc(100% - 14px); }
+  .hero { padding: 1rem; border-radius: 12px; }
+  body > main > section:not(#toc),
+  body > .page-shell > section:not(#toc),
+  body > .page-shell > main > section,
+  .topic, .aggregate-section { padding: 1rem; border-radius: 12px; }
 }
 
-@media (orientation: landscape) and (pointer: coarse) {
-  .nav-dock-left {
-    left: max(14px, env(safe-area-inset-left));
+
+/*
+  iPad/tablet landscape:
+  Japanese and Vietnamese return to two side-by-side columns.
+  The min-height condition avoids forcing ordinary phone landscape into
+  two columns that would be too narrow.
+*/
+@media (pointer: coarse) and (orientation: landscape) and (min-width: 700px) and (min-height: 600px) {
+  body > main,
+  body > .page-shell {
+    width: min(calc(var(--app-viewport-width, 100dvw) - 20px), 1320px) !important;
+    max-width: 1320px !important;
   }
 
-  .settings-dock-right {
-    right: max(14px, env(safe-area-inset-right));
+  .study-grid,
+  .lang-grid,
+  .bilingual-note {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important;
+    gap: clamp(.75rem, 1.4vw, 1rem) !important;
+    align-items: start;
+  }
+
+  .study-card,
+  .lang-card,
+  .note-pane {
+    min-width: 0;
   }
 }
-
-/* =========================================================
-   PRINT
-   ========================================================= */
 
 @media print {
-  html,
+  .control-cluster { display: none !important; }
+  :root,
   html[data-theme="dark"],
   html[data-theme="light"] {
     --bg: #FFFFFF;
@@ -772,177 +570,107 @@ body.toc-open .toc-drawer {
     --trap-underline: #9E1B12;
     --relation-bg: #F0EDFF;
     --relation-border: #5B4FD6;
+    --shadow: transparent;
   }
-
-  body {
-    background: #fff;
-    color: #111;
-    font-size: 11pt;
+  body { background: #fff; color: #111; font-size: 11pt; padding-bottom: 0; }
+  .control-cluster, .toc-overlay, .toc-drawer-head { display: none !important; }
+  #toc {
+    position: static !important;
+    transform: none !important;
+    width: auto !important;
+    max-height: none !important;
+    padding: 1rem !important;
+    border: 1px solid var(--border) !important;
+    border-radius: 10px !important;
+    box-shadow: none !important;
+    margin: 1rem 0 !important;
   }
-
-  .page-shell {
-    width: 100%;
-    padding: 0;
-  }
-
-  .nav-dock-left,
-  .settings-dock-right,
-  .toc-drawer,
-  .toc-overlay {
-    display: none !important;
-  }
-
-  .hero,
-  .study-card,
-  .summary-box,
-  .note-box,
-  .memory-box,
-  .warning-box,
-  .figure-card {
-    break-inside: avoid;
-  }
-
-  a {
-    color: #000;
-    text-decoration: none;
-  }
+  body > main, body > .page-shell { width: 100%; padding: 0; }
+  .hero, .study-card, .lang-card, .summary-box, .note-box, .note, .memory-box, .warning-box, .figure-box, .figure-card { break-inside: avoid; }
+  a { color: #000; text-decoration: none; }
+  .backlink, .back-toc, .back { display: none; }
 }
-</style>
-
-<script>
-/* Apply saved theme before body paint to reduce flashing. */
-(function () {
-  try {
-    const saved = localStorage.getItem("study-theme");
-    const systemDark = window.matchMedia &&
-      window.matchMedia("(prefers-color-scheme: dark)").matches;
-    document.documentElement.dataset.theme =
-      saved || (systemDark ? "dark" : "light");
-  } catch (e) {
-    document.documentElement.dataset.theme = "dark";
+</style><script>
+try {
+  if ("scrollRestoration" in history) {
+    history.scrollRestoration = "manual";
   }
-
+} catch (e) {}
+(function () {
+  const root = document.documentElement;
   try {
-    const savedScale = Number(localStorage.getItem("study-font-scale")) || 100;
-    const clampedScale = Math.max(80, Math.min(140, savedScale));
-    document.documentElement.style.setProperty(
-      "--base-font-size",
-      `${16 * clampedScale / 100}px`
-    );
-  } catch (e) {}
+    const savedTheme = localStorage.getItem('study-theme');
+    root.dataset.theme = savedTheme === 'light' ? 'light' : 'dark';
+
+    const savedMode = localStorage.getItem('study-mode');
+    root.dataset.studyMode = savedMode === 'keywords' ? 'keywords' : 'full';
+
+    const savedScale = Number(localStorage.getItem('study-font-scale'));
+    const scale = Number.isFinite(savedScale) && savedScale >= 50 && savedScale <= 150 && savedScale % 5 === 0
+      ? savedScale : 100;
+    root.style.setProperty('--base-font-size', (16 * scale / 100) + 'px');
+  } catch (e) {
+    root.dataset.theme = 'dark';
+    root.dataset.studyMode = 'full';
+    root.style.setProperty('--base-font-size', '16px');
+  }
 })();
-</script>
-</head>
-
+</script></head>
 <body>
-
-<!-- =======================================================
-     TOC DRAWER
-     Replace only the list contents.
-     ======================================================= -->
-<div class="toc-overlay" id="toc-overlay" aria-hidden="true"></div>
-
-<aside class="toc-drawer" id="toc-drawer" aria-label="Mục lục">
-  <div class="toc-drawer-head">
-    <h2>Mục lục</h2>
-    <button class="toc-close" id="toc-close" type="button" aria-label="Đóng mục lục">×</button>
-  </div>
-
-  <!-- TOC_ITEMS_START -->
-<ol class="toc-list">
-<li><a href="#sec-problem">令和7年度 問題1 施工経験記述</a><ol><li><a href="#problem-statement">Đề bài và yêu cầu trả lời</a></li></ol></li>
-<li><a href="#sec-overview">工事概要</a><ol><li><a href="#overview">Điều kiện công trình</a></li></ol></li>
-<li><a href="#sec-answer1">解答例①</a><ol><li><a href="#answer1-basic">PHC杭・H形鋼・EP塗装</a></li></ol></li>
-<li><a href="#sec-answer1-related">解答例① 関連図・問い2</a><ol><li><a href="#answer1-related">品質管理活動と関連図</a></li></ol></li>
-<li><a href="#sec-qc-table">エアスプレー施工と施工品質管理表</a><ol><li><a href="#air-qc">品質管理の関連事項</a></li></ol></li>
-<li><a href="#sec-answer2-intro">組織的品質管理の伝達と解答例②</a><ol><li><a href="#org-sharing">伝達・共有と躯体事例1</a></li></ol></li>
-<li><a href="#sec-structural-cases">解答例② 躯体工事</a><ol><li><a href="#struct-cases">事例2〜6</a></li><li><a href="#struct-diagrams">関連図 事例1〜6</a></li></ol></li>
-<li><a href="#sec-finishing-cases">解答例② 仕上げ工事</a><ol><li><a href="#finish-7-11">事例7〜11</a></li><li><a href="#finish-12-13">事例12〜13</a></li><li><a href="#finish-related-49">関連図・問い2</a></li></ol></li>
-<li><a href="#sec-writing">考え方・書き方</a><ol><li><a href="#writing-50">試験要点と品質計画</a></li><li><a href="#writing-51">品質要求・最終品質と施工途中品質</a></li></ol></li>
-<li><a href="#terms">Thuật ngữ chuyên môn</a></li>
-<li><a href="#background">Kiến thức nền cần biết</a></li>
-<li><a href="#memory">Điểm cần nhớ và mẹo nhớ</a></li>
-</ol>
-  <!-- TOC_ITEMS_END -->
-</aside>
-
-<!-- =======================================================
-     FIXED NAVIGATION CONTROLS
-     Left bottom: vertical.
-     Do not add a Top button.
-     ======================================================= -->
-<nav class="nav-dock-left" aria-label="Điều hướng học tập">
-  <button id="toc-toggle" type="button" aria-label="Mục lục" title="Mục lục"
-          aria-controls="toc-drawer" aria-expanded="false">☰</button>
-  <button id="section-prev" type="button" aria-label="Mục trước" title="Back">‹</button>
-  <button id="section-next" type="button" aria-label="Mục tiếp theo" title="Next">›</button>
-</nav>
-
-<!-- =======================================================
-     FIXED DISPLAY CONTROLS
-     Right bottom: horizontal.
-     ======================================================= -->
-<nav class="settings-dock-right" aria-label="Thiết lập hiển thị">
-  <button id="theme-toggle" type="button" aria-label="Đổi Dark/Light"
-          title="Đổi Dark/Light" aria-pressed="false">☀</button>
-  <button id="mode-toggle" class="mode-toggle" type="button"
-          aria-label="Đổi Full/Keywords" title="Đổi Full/Keywords"
-          aria-pressed="false">🎯</button>
-  <button id="font-reset" class="font-reset" type="button"
-          aria-label="Đặt lại cỡ chữ 100%" title="Đặt lại cỡ chữ 100%">100%</button>
-  <button id="font-down" type="button" aria-label="Giảm cỡ chữ"
-          title="Giảm cỡ chữ">A−</button>
-  <button id="font-up" type="button" aria-label="Tăng cỡ chữ"
-          title="Tăng cỡ chữ">A+</button>
-</nav>
-
+<!--
+HTML TEMPLATE CONTRACT 2.3
+- Based on latest pinch-zoom-safe test.html.
+- Default theme: dark; persistent Dark/Light toggle.
+- Font: 50%-150%, 5% step; persistent.
+- Native two-finger pinch zoom MUST NOT trigger responsive reflow.
+- Real orientation change MAY update layout and restore logical reading position.
+- iPad/tablet portrait: one-column bilingual flow.
+- iPad/tablet landscape: Japanese/Vietnamese side-by-side.
+- Controls: collapsed by default at bottom-left; tap to expand horizontally.
+- Home button: index.html.
+- Back/Next: TOC item navigation, not browser history.
+- Do not redesign CSS/JS/control behavior per lesson.
+-->
+<div class="control-cluster" id="control-cluster">
+<button aria-controls="control-panel" aria-expanded="false" aria-label="Mở công cụ" class="control-launcher" id="controls-toggle" title="Mở công cụ" type="button">⋯</button>
+<div aria-label="Công cụ học tập" class="control-panel" id="control-panel" role="toolbar">
+<button aria-controls="toc" aria-expanded="false" aria-label="Mục lục" id="toc-toggle" title="Mục lục" type="button">☰</button>
+<button aria-label="Mục trước" id="section-prev" title="Mục trước" type="button">‹</button>
+<button aria-label="Mục tiếp theo" id="section-next" title="Mục tiếp theo" type="button">›</button>
+<button aria-label="Đổi Dark/Light" aria-pressed="false" id="theme-toggle" title="Đổi Dark/Light" type="button">☀</button>
+<button aria-label="Đổi Full/Keywords" aria-pressed="false" class="mode-toggle" id="mode-toggle" title="Đổi Full/Keywords" type="button">🎯</button>
+<button aria-label="Giảm cỡ chữ" id="font-down" title="Giảm cỡ chữ 5%" type="button">A−</button>
+<button aria-label="Đặt lại cỡ chữ 100%" class="font-reset" id="font-reset" title="Đặt lại cỡ chữ 100%" type="button">100%</button>
+<button aria-label="Tăng cỡ chữ" id="font-up" title="Tăng cỡ chữ 5%" type="button">A+</button>
+<button aria-label="Top Page" class="home-icon" id="home-button" title="Top Page" type="button"><svg aria-hidden="true" fill="none" viewbox="0 0 24 24"><path d="M3.5 10.5 12 3.8l8.5 6.7v9.2h-5.3v-6H8.8v6H3.5z" stroke="currentColor" stroke-linejoin="round" stroke-width="1.8"></path></svg></button>
+</div>
+</div><div aria-hidden="true" class="toc-overlay" id="toc-overlay"></div>
 <div class="page-shell">
+<header class="hero" id="top">
+<h1>令和7年度 問題1 施工経験記述</h1>
+</header>
+<nav aria-label="Mục lục" class="toc" id="toc">
+<div class="toc-drawer-head">
+<strong>Mục lục</strong>
+<button aria-label="Đóng mục lục" class="toc-close" id="toc-close" type="button">×</button>
+</div>
+<h2>Mục lục</h2>
+<!-- TOC_ITEMS_START -->
 
-  <!-- =====================================================
-       DOCUMENT HEADER
-       Replace title/subtitle/meta values only.
-       ===================================================== -->
-  <header class="hero" id="top">
-    <h1>令和7年度 問題1 施工経験記述</h1>
-    <p class="hero-subtitle">Book page 39-51 | Bản học song ngữ Nhật-Việt</p>
-
-    <div class="meta-grid">
-      <div class="meta-item">
-        <span class="meta-label">PDF nguồn</span>
-        01b_施工経験記述_R07_p039-052.pdf
-      </div>
-      <div class="meta-item">
-        <span class="meta-label">File ID</span>
-        F009
-      </div>
-      <div class="meta-item">
-        <span class="meta-label">Phạm vi</span>
-        Book page 39-51 / PDF P1-P13
-      </div>
-      <div class="meta-item">
-        <span class="meta-label">Chế độ</span>
-        Song ngữ Nhật-Việt / Dark-Light / Full-Keywords / Font 80-140%
-      </div>
-    </div>
-  </header>
-
-  <!-- =====================================================
-       CONTENT_START
-       AI may freely repeat/reorder approved content components.
-       Global CSS/JS/control structure must not be redesigned.
-       ===================================================== -->
-  <main id="lesson">
-<section class="study-section" id="sec-problem">
-      <div class="section-head">
-        <h2>令和7年度 問題1 施工経験記述</h2>
-        <span class="source-ref">Nguồn: Book page 39</span>
-      </div>
-      <section class="subsection" id="problem-statement">
-      <h3>Đề bài và yêu cầu trả lời</h3>
-      <div class="study-grid">
-        <article class="study-card original">
-          <div class="card-title">原文</div>
-          <div class="recall-source" lang="ja">
+<!-- TOC_ITEMS_END -->
+<ol><li><a href="#sec-problem">令和7年度 問題1 施工経験記述</a><ol><li><a href="#problem-statement">Đề bài và yêu cầu trả lời</a></li></ol></li><li><a href="#sec-overview">工事概要</a><ol><li><a href="#overview">Điều kiện công trình dùng để lựa chọn ví dụ</a></li></ol></li><li><a href="#sec-answer1">令和7年度 問題1 施工経験記述 解答例①</a><ol><li><a href="#answer1-basic">問い1：特に重点を置くべき品質管理項目</a></li></ol></li><li><a href="#sec-answer1-related">解答例① 関連図・問い2</a><ol><li><a href="#answer1-related">品質管理活動と関連図</a></li></ol></li><li><a href="#sec-qc-table">エアスプレー施工と施工品質管理表</a><ol><li><a href="#air-qc">品質管理の関連事項</a></li></ol></li><li><a href="#sec-answer2-intro">組織的品質管理の伝達と解答例②</a><ol><li><a href="#org-sharing">伝達・共有と躯体事例1</a></li></ol></li><li><a href="#sec-structural-cases">解答例② 躯体工事の事例</a><ol><li><a href="#struct-cases">事例2〜6</a></li><li><a href="#struct-diagrams">関連図：事例1〜6</a></li></ol></li><li><a href="#sec-finishing-cases">解答例② 仕上げ工事の事例</a><ol><li><a href="#finish-7-11">事例7〜11</a></li><li><a href="#finish-12-13">事例12〜13・関連図</a></li><li><a href="#finish-related-49">関連図・問い2への接続</a></li></ol></li><li><a href="#sec-writing">令和7年度 施工経験記述の考え方・書き方</a><ol><li><a href="#writing-50">試験要点と品質計画</a></li><li><a href="#writing-51">品質要求・最終品質と施工途中品質</a></li></ol></li><li><a href="#terms">Professional terminology</a></li><li><a href="#background">Background knowledge</a></li><li><a href="#memory">Key points and memory aids</a></li></ol></nav>
+<!-- CONTENT_START -->
+<main id="lesson"><section class="study-section" id="sec-problem">
+<div class="section-head">
+<h2>令和7年度 問題1 施工経験記述</h2>
+<span class="source-ref">Nguồn: Book page 39</span>
+</div>
+<section class="subsection" id="problem-statement">
+<h3>Đề bài và yêu cầu trả lời</h3>
+<div class="study-grid">
+<article class="study-card original">
+<div class="card-title">原文</div>
+<div class="recall-source" lang="ja">
 <p><strong class="kw">建築工事の施工者</strong>は、設計図書等により工事目的物に要求される品質を把握し、<span class="relation">品質管理を的確に行う</span>ことが求められる。</p>
 <p>建築工事の現場を管理していくうえでのあなたの考えについて、今日までの経験を踏まえ、次の1.及び2.の問いに答えなさい。</p>
 <p>なお、<span class="trap">建築工事には、建築設備工事は含まれない</span>ものとする。</p>
@@ -964,10 +692,10 @@ body.toc-open .toc-drawer {
 </ol>
 <p>※令和6年度以降の試験問題では、令和5年度以前の試験問題とは異なり、「工事概要」が指定されるようになりました。なお、問題文中の「右の工事概要」は、本書の次頁に掲載しています。</p>
 <p>本テキストに示す解答例はすべて、考え方を示すもので、その要点だけを記述したものである。実際には解答用紙のスペース（行数等）に応じた字数で記述すること。</p></div>
-        </article>
-        <article class="study-card translation">
-          <div class="card-title">Bản dịch tiếng Việt</div>
-          <div class="recall-source" lang="vi">
+</article>
+<article class="study-card translation">
+<div class="card-title">Bản dịch tiếng Việt</div>
+<div class="recall-source" lang="vi">
 <p><strong class="kw">Người thi công công trình xây dựng</strong> phải nắm được chất lượng được yêu cầu đối với đối tượng công trình dựa trên hồ sơ thiết kế và <span class="relation">thực hiện quản lý chất lượng một cách chính xác</span>.</p>
 <p>Dựa trên kinh nghiệm cho đến nay, hãy trả lời câu 1 và câu 2 dưới đây về quan điểm khi quản lý hiện trường xây dựng.</p>
 <p>Trong phạm vi câu hỏi này, <span class="trap">công trình xây dựng không bao gồm công tác thiết bị kỹ thuật công trình</span>.</p>
@@ -988,22 +716,20 @@ body.toc-open .toc-drawer {
 <li>Ảnh hưởng tích cực do hoạt động quản lý chất lượng đó mang lại</li>
 </ol>
 <p>Từ kỳ thi Reiwa 6, <strong class="kw">工事概要</strong> được đề bài chỉ định sẵn. Các ví dụ trả lời trong giáo trình chỉ thể hiện cách tư duy và ý chính; khi thi thực tế phải điều chỉnh lượng chữ theo không gian của phiếu trả lời.</p></div>
-        </article>
-      </div>
-      
-    </section>
-    </section>
-<section class="study-section" id="sec-overview">
-      <div class="section-head">
-        <h2>工事概要</h2>
-        <span class="source-ref">Nguồn: Book page 40</span>
-      </div>
-      <section class="subsection" id="overview">
-      <h3>Điều kiện công trình dùng để lựa chọn ví dụ</h3>
-      <div class="study-grid">
-        <article class="study-card original">
-          <div class="card-title">原文</div>
-          <div class="recall-source" lang="ja">
+</article>
+</div>
+</section>
+</section><section class="study-section" id="sec-overview">
+<div class="section-head">
+<h2>工事概要</h2>
+<span class="source-ref">Nguồn: Book page 40</span>
+</div>
+<section class="subsection" id="overview">
+<h3>Điều kiện công trình dùng để lựa chọn ví dụ</h3>
+<div class="study-grid">
+<article class="study-card original">
+<div class="card-title">原文</div>
+<div class="recall-source" lang="ja">
 <p>（表中「○＋△＋□」は、○下地のうえ△層に□仕上げ等、下地と表面仕上げの関係を示す。）</p>
 <p>（EP：合成樹脂エマルションペイント、SOP：合成樹脂調合ペイント）</p>
 <h4>工事概要</h4>
@@ -1047,10 +773,10 @@ body.toc-open .toc-drawer {
 </tbody></table></div>
 <h4>主な外構仕様</h4>
 <p>駐車場：アスファルト舗装 普通車8台。アプローチ：インターロッキング舗装。敷地境界：アルミ製化粧フェンス。植栽：中木、低木混栽。</p></div>
-        </article>
-        <article class="study-card translation">
-          <div class="card-title">Bản dịch tiếng Việt</div>
-          <div class="recall-source" lang="vi">
+</article>
+<article class="study-card translation">
+<div class="card-title">Bản dịch tiếng Việt</div>
+<div class="recall-source" lang="vi">
 <p>Trong bảng, ký hiệu “○ + △ + □” biểu thị quan hệ giữa lớp nền và lớp hoàn thiện bề mặt. EP là sơn nhũ tương nhựa tổng hợp; SOP là sơn pha chế nhựa tổng hợp.</p>
 <h4>Tổng quan công trình</h4>
 <div class="table-wrap"><table><tbody>
@@ -1093,22 +819,20 @@ body.toc-open .toc-drawer {
 </tbody></table></div>
 <h4>Ngoại cấu</h4>
 <p>Bãi đỗ xe: lát asphalt cho 8 xe con. Lối tiếp cận: interlocking. Ranh giới: hàng rào nhôm trang trí. Cây xanh: hỗn hợp cây trung tầng và cây thấp.</p></div>
-        </article>
-      </div>
-      
-    </section>
-    </section>
-<section class="study-section" id="sec-answer1">
-      <div class="section-head">
-        <h2>令和7年度 問題1 施工経験記述 解答例①</h2>
-        <span class="source-ref">Nguồn: Book page 41</span>
-      </div>
-      <section class="subsection" id="answer1-basic">
-      <h3>問い1：特に重点を置くべき品質管理項目</h3>
-      <div class="study-grid">
-        <article class="study-card original">
-          <div class="card-title">原文</div>
-          <div class="recall-source" lang="ja">
+</article>
+</div>
+</section>
+</section><section class="study-section" id="sec-answer1">
+<div class="section-head">
+<h2>令和7年度 問題1 施工経験記述 解答例①</h2>
+<span class="source-ref">Nguồn: Book page 41</span>
+</div>
+<section class="subsection" id="answer1-basic">
+<h3>問い1：特に重点を置くべき品質管理項目</h3>
+<div class="study-grid">
+<article class="study-card original">
+<div class="card-title">原文</div>
+<div class="recall-source" lang="ja">
 <p>※解答例①は、建築工事の品質管理（特に重点を置くべき品質管理項目）に関する「基本的な事項」を重視し、各項目の要点をできる限り明確にして解答したものです。実際の試験では、「工種名」と「作業名」はどちらかを解答すればよい。より実務的な事項を重視した解答例については、後述の解答例②を参照してください。</p>
 <h4>1 既製コンクリート杭（PHC杭）</h4>
 <p><strong class="kw">杭工事（埋込み工法による既製コンクリート杭の施工）</strong></p>
@@ -1125,10 +849,10 @@ body.toc-open .toc-drawer {
 <p>合成樹脂エマルションペイント（EP）塗りについて、<strong class="kw">エアスプレーガンの壁面に対する運行方法</strong>を管理する。</p>
 <p>運行方法が不適切であると、塗膜の中央が密で周辺が疎になるなど、塗膜が不均一になりやすい。</p>
 <p>エアスプレーガンは、<strong class="kw">塗面から</strong><mark class="critical">30cm程度</mark>離し、<strong class="kw">塗面に対して直角</strong>に向け、<strong class="kw">毎秒</strong><mark class="critical">30cm程度</mark>の一定速度で平行に動かす。吹付け幅は一列ごとに<mark class="critical">約3分の1ずつ重なる</mark>ように吹き付ける。</p></div>
-        </article>
-        <article class="study-card translation">
-          <div class="card-title">Bản dịch tiếng Việt</div>
-          <div class="recall-source" lang="vi">
+</article>
+<article class="study-card translation">
+<div class="card-title">Bản dịch tiếng Việt</div>
+<div class="recall-source" lang="vi">
 <p>Ví dụ trả lời ① chú trọng các nội dung cơ bản của quản lý chất lượng. Trong kỳ thi thực tế, chỉ cần ghi một trong hai: tên loại công tác hoặc tên công việc. Ví dụ thực tiễn hơn nằm ở 解答例②.</p>
 <h4>1 Cọc bê tông đúc sẵn PHC</h4>
 <p><strong class="kw">Công tác cọc, thi công cọc bê tông đúc sẵn bằng công pháp hạ cọc kiểu 埋込み工法</strong>.</p>
@@ -1145,22 +869,20 @@ body.toc-open .toc-drawer {
 <p>Quản lý <strong class="kw">cách vận hành súng phun đối với bề mặt tường</strong>.</p>
 <p>Cách di chuyển không phù hợp làm màng sơn dễ không đồng đều, vùng giữa vệt phun dày hơn vùng mép.</p>
 <p>Súng phải <strong class="kw">cách bề mặt</strong> <mark class="critical">khoảng 30 cm</mark>, <strong class="kw">vuông góc với bề mặt</strong>, di chuyển song song với tốc độ <strong class="kw">khoảng</strong> <mark class="critical">30 cm/s</mark>; các dải phun phải <mark class="critical">chồng nhau khoảng 1/3 chiều rộng</mark>.</p></div>
-        </article>
-      </div>
-      
-    </section>
-    </section>
-<section class="study-section" id="sec-answer1-related">
-      <div class="section-head">
-        <h2>解答例① 関連図・問い2</h2>
-        <span class="source-ref">Nguồn: Book page 42</span>
-      </div>
-      <section class="subsection" id="answer1-related">
-      <h3>品質管理活動と関連図</h3>
-      <div class="study-grid">
-        <article class="study-card original">
-          <div class="card-title">原文</div>
-          <div class="recall-source" lang="ja">
+</article>
+</div>
+</section>
+</section><section class="study-section" id="sec-answer1-related">
+<div class="section-head">
+<h2>解答例① 関連図・問い2</h2>
+<span class="source-ref">Nguồn: Book page 42</span>
+</div>
+<section class="subsection" id="answer1-related">
+<h3>品質管理活動と関連図</h3>
+<div class="study-grid">
+<article class="study-card original">
+<div class="card-title">原文</div>
+<div class="recall-source" lang="ja">
 <h4>問い2. 建築工事の現場で行う組織的な品質管理活動</h4>
 <div class="table-wrap"><table><tbody>
 <tr><th>① 組織的な品質管理活動の内容</th><td><strong class="kw">工種別または部位別に、施工品質管理表を作成する。</strong>各管理項目は、管理担当者の分担を明確にし、作業の順序通りに並べる。</td></tr>
@@ -1175,10 +897,10 @@ body.toc-open .toc-drawer {
 <p><strong class="kw">正しい締付け順序</strong>は<span class="relation">継手の中央 → 継手の周辺</span>。</p>
 <p><span class="trap">群の周辺から中央に向かって締めると、締付けで生じた応力を端に逃がせず、接合部中央に残留応力が作用する。</span></p>
 <p>本締め後の適切な状態は<strong class="kw">ナットだけが回っている</strong>状態。確認事項は、共回り・軸回りがないこと、<strong class="kw">余長</strong><mark class="critical">1〜6山</mark>、<strong class="kw">平均回転角度</strong><mark class="critical">±30度</mark>。</p></div>
-        </article>
-        <article class="study-card translation">
-          <div class="card-title">Bản dịch tiếng Việt</div>
-          <div class="recall-source" lang="vi">
+</article>
+<article class="study-card translation">
+<div class="card-title">Bản dịch tiếng Việt</div>
+<div class="recall-source" lang="vi">
 <h4>Câu 2. Hoạt động quản lý chất lượng mang tính tổ chức</h4>
 <div class="table-wrap"><table><tbody>
 <tr><th>① Nội dung</th><td><strong class="kw">Lập bảng quản lý chất lượng thi công theo từng loại công tác hoặc bộ phận.</strong> Xác định rõ người phụ trách và sắp xếp hạng mục theo trình tự công việc.</td></tr>
@@ -1193,22 +915,20 @@ body.toc-open .toc-drawer {
 <p><strong class="kw">Thứ tự siết đúng</strong>: <span class="relation">trung tâm mối nối → vùng ngoài</span>.</p>
 <p><span class="trap">Nếu siết từ ngoài vào giữa, ứng suất sinh ra không thoát được về mép và có thể lưu lại ở trung tâm liên kết.</span></p>
 <p>Trạng thái đúng sau siết cuối là <strong class="kw">chỉ đai ốc quay</strong>. Các điểm kiểm tra: không 共回り/軸回り, <strong class="kw">ren nhô</strong> <mark class="critical">1〜6 vòng</mark>, <strong class="kw">góc quay trung bình</strong> <mark class="critical">±30°</mark>.</p></div>
-        </article>
-      </div>
-      
-    </section>
-    </section>
-<section class="study-section" id="sec-qc-table">
-      <div class="section-head">
-        <h2>エアスプレー施工と施工品質管理表</h2>
-        <span class="source-ref">Nguồn: Book page 43</span>
-      </div>
-      <section class="subsection" id="air-qc">
-      <h3>品質管理の関連事項</h3>
-      <div class="study-grid">
-        <article class="study-card original">
-          <div class="card-title">原文</div>
-          <div class="recall-source" lang="ja">
+</article>
+</div>
+</section>
+</section><section class="study-section" id="sec-qc-table">
+<div class="section-head">
+<h2>エアスプレー施工と施工品質管理表</h2>
+<span class="source-ref">Nguồn: Book page 43</span>
+</div>
+<section class="subsection" id="air-qc">
+<h3>品質管理の関連事項</h3>
+<div class="study-grid">
+<article class="study-card original">
+<div class="card-title">原文</div>
+<div class="recall-source" lang="ja">
 <h4>関連図［品質管理項目③］エアスプレーガンによる壁面の吹付け塗り</h4>
 <p>エアスプレーガンのノズルは、<strong class="kw">塗面に対して直角</strong>に向ける。ノズルと塗面との間に<mark class="critical">30cm程度</mark>の距離を保ち、塗面と<strong class="kw">平行（横方向）</strong>に移動させる。</p>
 <p>正：一列ごとに吹付け幅が<mark class="critical">約3分の1ずつ重なる</mark>ように吹き付ける。各列の周辺でも塗料が粗にならなくなる。</p>
@@ -1226,10 +946,10 @@ body.toc-open .toc-drawer {
 <li><strong class="kw">管理値を外れた場合の処置</strong>を定める。</li>
 <li><span class="trap">各作業の施工条件・施工数量を明記する必要はない。</span></li>
 </ol></div>
-        </article>
-        <article class="study-card translation">
-          <div class="card-title">Bản dịch tiếng Việt</div>
-          <div class="recall-source" lang="vi">
+</article>
+<article class="study-card translation">
+<div class="card-title">Bản dịch tiếng Việt</div>
+<div class="recall-source" lang="vi">
 <h4>Hình liên quan: phun sơn tường bằng air spray</h4>
 <p>Nozzle phải <strong class="kw">vuông góc với bề mặt sơn</strong>, giữ khoảng cách <mark class="critical">khoảng 30 cm</mark> và di chuyển <strong class="kw">song song theo phương ngang</strong>.</p>
 <p>Đúng: mỗi dải phun phải <mark class="critical">chồng lên dải trước khoảng 1/3 chiều rộng</mark>, nhờ đó vùng mép không bị quá thưa.</p>
@@ -1247,22 +967,20 @@ body.toc-open .toc-drawer {
 <li>Xác định <strong class="kw">biện pháp khi vượt giá trị quản lý</strong>.</li>
 <li><span class="trap">Không cần ghi rõ điều kiện thi công và khối lượng thi công của từng công việc.</span></li>
 </ol></div>
-        </article>
-      </div>
-      
-    </section>
-    </section>
-<section class="study-section" id="sec-answer2-intro">
-      <div class="section-head">
-        <h2>組織的品質管理の伝達と解答例②</h2>
-        <span class="source-ref">Nguồn: Book page 44</span>
-      </div>
-      <section class="subsection" id="org-sharing">
-      <h3>伝達・共有と躯体事例1</h3>
-      <div class="study-grid">
-        <article class="study-card original">
-          <div class="card-title">原文</div>
-          <div class="recall-source" lang="ja">
+</article>
+</div>
+</section>
+</section><section class="study-section" id="sec-answer2-intro">
+<div class="section-head">
+<h2>組織的品質管理の伝達と解答例②</h2>
+<span class="source-ref">Nguồn: Book page 44</span>
+</div>
+<section class="subsection" id="org-sharing">
+<h3>伝達・共有と躯体事例1</h3>
+<div class="study-grid">
+<article class="study-card original">
+<div class="card-title">原文</div>
+<div class="recall-source" lang="ja">
 <h4>組織的な品質管理活動の内容を協力会社などに伝達する手段と方法</h4>
 <p>組織的な品質管理活動は、「施工品質管理表」を完成させた段階で終わらせてはならない。内容が協力会社に確実かつ正確に伝わっていなければ、現場で徹底されない。</p>
 <ol>
@@ -1284,10 +1002,10 @@ body.toc-open .toc-drawer {
 <p><strong class="kw">鉄骨建方工事（梁：H形梁）</strong></p>
 <p>鉄骨梁の<strong class="kw">水平度</strong>を確保するため、その高低差を測定し、調整量を求めることが重要。</p>
 <p><span class="relation">レベルを梁中央に据える → 梁両端の高低差を求める → 調整量を求める → ワイヤーロープの引張力で調整する</span>。</p></div>
-        </article>
-        <article class="study-card translation">
-          <div class="card-title">Bản dịch tiếng Việt</div>
-          <div class="recall-source" lang="vi">
+</article>
+<article class="study-card translation">
+<div class="card-title">Bản dịch tiếng Việt</div>
+<div class="recall-source" lang="vi">
 <h4>Phương tiện và phương pháp truyền đạt cho công ty hợp tác</h4>
 <p>Không được kết thúc hoạt động quản lý chất lượng chỉ vì đã lập xong bảng QC. Nếu nội dung không được truyền đạt chắc chắn và chính xác đến công ty hợp tác thì các yêu cầu sẽ không được thực hiện triệt để tại hiện trường.</p>
 <ol>
@@ -1309,22 +1027,20 @@ body.toc-open .toc-drawer {
 <p><strong class="kw">Dựng kết cấu thép, dầm thép H</strong>.</p>
 <p>Hạng mục quản lý là <strong class="kw">độ nằm ngang của dầm</strong>; cần đo chênh cao và xác định lượng hiệu chỉnh.</p>
 <p><span class="relation">Đặt máy level ở giữa dầm → đo chênh cao hai đầu → xác định lượng hiệu chỉnh → điều chỉnh bằng lực kéo dây cáp thép</span>.</p></div>
-        </article>
-      </div>
-      
-    </section>
-    </section>
-<section class="study-section" id="sec-structural-cases">
-      <div class="section-head">
-        <h2>解答例② 躯体工事の事例</h2>
-        <span class="source-ref">Nguồn: Book page 45-46</span>
-      </div>
-      <section class="subsection" id="struct-cases">
-      <h3>事例2〜6</h3>
-      <div class="study-grid">
-        <article class="study-card original">
-          <div class="card-title">原文</div>
-          <div class="recall-source" lang="ja">
+</article>
+</div>
+</section>
+</section><section class="study-section" id="sec-structural-cases">
+<div class="section-head">
+<h2>解答例② 躯体工事の事例</h2>
+<span class="source-ref">Nguồn: Book page 45-46</span>
+</div>
+<section class="subsection" id="struct-cases">
+<h3>事例2〜6</h3>
+<div class="study-grid">
+<article class="study-card original">
+<div class="card-title">原文</div>
+<div class="recall-source" lang="ja">
 <h4>事例2 耐火材巻付け工事</h4>
 <p>巻付け耐火被覆材は雨水の影響を受けやすいため、<strong class="kw">施工時の材料品質</strong>を管理する。屋内の雨水が掛からない場所に保管し、施工図寸法に切断後、固定ピンで留め付ける。<span class="trap">雨が降る場合は作業を中止</span>する。</p>
 <h4>事例3 コンクリート立上り基礎工事（設備基礎）</h4>
@@ -1337,10 +1053,10 @@ body.toc-open .toc-drawer {
 <h4>事例6 構内舗装（アスファルト舗装）</h4>
 <p>基層を有さない普通自動車用駐車場の車道部は、<strong class="kw">表層厚</strong><mark class="critical">50mm以上</mark>とし、平坦性の許容差を管理する。</p>
 <p>施工後、<strong class="kw">舗装面の凹凸の平均値</strong>が<mark class="critical">3mm以内</mark>であることをレベルで測定する。</p></div>
-        </article>
-        <article class="study-card translation">
-          <div class="card-title">Bản dịch tiếng Việt</div>
-          <div class="recall-source" lang="vi">
+</article>
+<article class="study-card translation">
+<div class="card-title">Bản dịch tiếng Việt</div>
+<div class="recall-source" lang="vi">
 <h4>Ví dụ 2: Bọc vật liệu chống cháy</h4>
 <p>Vật liệu bọc chịu lửa dễ chịu ảnh hưởng của mưa nên quản lý <strong class="kw">chất lượng vật liệu trong lúc thi công</strong>. Bảo quản nơi trong nhà không bị mưa, cắt theo bản vẽ và cố định bằng pin. <span class="trap">Khi trời mưa phải dừng công việc</span>.</p>
 <h4>Ví dụ 3: Móng bê tông thiết bị</h4>
@@ -1353,15 +1069,14 @@ body.toc-open .toc-drawer {
 <h4>Ví dụ 6: Asphalt bãi xe</h4>
 <p>Phần đường bãi xe con không có lớp base course phải có <strong class="kw">chiều dày lớp mặt</strong> <mark class="critical">≥ 50 mm</mark> và quản lý độ bằng phẳng.</p>
 <p>Sau thi công, dùng level xác nhận <strong class="kw">giá trị trung bình độ lồi lõm</strong> <mark class="critical">≤ 3 mm</mark>.</p></div>
-        </article>
-      </div>
-      
-    </section><section class="subsection" id="struct-diagrams">
-      <h3>関連図：事例1〜6</h3>
-      <div class="study-grid">
-        <article class="study-card original">
-          <div class="card-title">原文</div>
-          <div class="recall-source" lang="ja">
+</article>
+</div>
+</section><section class="subsection" id="struct-diagrams">
+<h3>関連図：事例1〜6</h3>
+<div class="study-grid">
+<article class="study-card original">
+<div class="card-title">原文</div>
+<div class="recall-source" lang="ja">
 <h4>事例1 レベルによる調整量の測定</h4>
 <p>梁中央にレベルを据え、梁両端の高低差から<strong class="kw">調整量</strong>を求める。ワイヤーロープで鉛直・水平を確認する。</p>
 <h4>事例2 耐火材巻付け工法</h4>
@@ -1374,10 +1089,10 @@ body.toc-open .toc-drawer {
 <p>有資格者による<strong class="kw">自動焼抜栓溶接</strong>で接合する。図には三相200V、CO₂ガス流量調整器、延長ケーブル、アークスポットガン、プルフィーダ、ノンスパッタ液が示される。</p>
 <h4>事例6 アスファルト舗装の平坦性</h4>
 <p>駐車場各点の高さを<strong class="kw">レベルと標尺</strong>で測量し、高低差から平坦性を求めて品質を確認する。</p></div>
-        </article>
-        <article class="study-card translation">
-          <div class="card-title">Bản dịch tiếng Việt</div>
-          <div class="recall-source" lang="vi">
+</article>
+<article class="study-card translation">
+<div class="card-title">Bản dịch tiếng Việt</div>
+<div class="recall-source" lang="vi">
 <h4>Ví dụ 1: Đo lượng hiệu chỉnh</h4>
 <p>Đặt máy level ở giữa dầm, dùng chênh cao hai đầu để xác định <strong class="kw">lượng hiệu chỉnh</strong>; kiểm tra phương đứng và ngang bằng dây cáp thép.</p>
 <h4>Ví dụ 2: Bọc vật liệu chống cháy</h4>
@@ -1390,22 +1105,20 @@ body.toc-open .toc-drawer {
 <p>Liên kết bằng <strong class="kw">hàn nút xuyên tự động</strong> do người đủ tư cách thực hiện. Bộ thiết bị minh họa gồm nguồn ba pha 200 V, bộ điều chỉnh CO₂, cáp nối, súng arc spot, pull feeder và dung dịch chống bắn tóe.</p>
 <h4>Ví dụ 6: Độ bằng phẳng asphalt</h4>
 <p>Dùng <strong class="kw">máy level và mia</strong> đo cao độ nhiều điểm, từ chênh cao tính độ bằng phẳng và xác nhận chất lượng.</p></div>
-        </article>
-      </div>
-      
-    </section>
-    </section>
-<section class="study-section" id="sec-finishing-cases">
-      <div class="section-head">
-        <h2>解答例② 仕上げ工事の事例</h2>
-        <span class="source-ref">Nguồn: Book page 47-49</span>
-      </div>
-      <section class="subsection" id="finish-7-11">
-      <h3>事例7〜11</h3>
-      <div class="study-grid">
-        <article class="study-card original">
-          <div class="card-title">原文</div>
-          <div class="recall-source" lang="ja">
+</article>
+</div>
+</section>
+</section><section class="study-section" id="sec-finishing-cases">
+<div class="section-head">
+<h2>解答例② 仕上げ工事の事例</h2>
+<span class="source-ref">Nguồn: Book page 47-49</span>
+</div>
+<section class="subsection" id="finish-7-11">
+<h3>事例7〜11</h3>
+<div class="study-grid">
+<article class="study-card original">
+<div class="card-title">原文</div>
+<div class="recall-source" lang="ja">
 <h4>事例7 セルフレベリング作業</h4>
 <p>セルフレベリング材の<strong class="kw">塗厚</strong>にむらが生じると、塗厚の大きい箇所にひび割れが生じるおそれがある。下地コンクリート面の凹部をモルタルで補修し、下地面を平滑化して塗厚を均一にする。</p>
 <h4>事例8 アルミ製笠木取付け</h4>
@@ -1416,10 +1129,10 @@ body.toc-open .toc-drawer {
 <p><strong class="kw">入隅部の処理</strong>と<strong class="kw">絶縁シートの張り方</strong>を管理する。防水層張り後、成形緩衝材を入隅に設置し、断熱材を敷き、絶縁シートを<mark class="critical">100mm程度の重ね張り</mark>として保護コンクリートを打設する。</p>
 <h4>事例11 給湯室壁面の石膏ボード張り</h4>
 <p>石膏ボードは耐水性が低く吸水性が高い。下端からの吸上げによる軟化を防ぐため、<strong class="kw">石膏ボード下端</strong>に<mark class="critical">10mm程度の空隙</mark>を設け、水分と縁切りする。</p></div>
-        </article>
-        <article class="study-card translation">
-          <div class="card-title">Bản dịch tiếng Việt</div>
-          <div class="recall-source" lang="vi">
+</article>
+<article class="study-card translation">
+<div class="card-title">Bản dịch tiếng Việt</div>
+<div class="recall-source" lang="vi">
 <h4>Ví dụ 7: Self-leveling</h4>
 <p>Hạng mục quản lý là <strong class="kw">chiều dày lớp self-leveling</strong>. Nếu không đều, vị trí lớp dày có nguy cơ nứt. Sửa chỗ lõm nền bê tông bằng vữa và làm phẳng nền để chiều dày đồng đều.</p>
 <h4>Ví dụ 8: Mũ chụp nhôm</h4>
@@ -1430,15 +1143,14 @@ body.toc-open .toc-drawer {
 <p>Quản lý <strong class="kw">xử lý góc lõm</strong> và <strong class="kw">cách trải tấm cách ly</strong>. Sau lớp chống thấm, đặt vật liệu đệm góc, trải cách nhiệt, chồng mí tấm cách ly <mark class="critical">khoảng 100 mm</mark>, rồi đổ bê tông bảo vệ.</p>
 <h4>Ví dụ 11: Tấm thạch cao tường pantry</h4>
 <p>Thạch cao chịu nước kém và hút nước cao. Để tránh hút ẩm từ chân tấm, tạo <strong class="kw">khe dưới chân tấm</strong> <mark class="critical">khoảng 10 mm</mark> để cách ly nước/ẩm.</p></div>
-        </article>
-      </div>
-      
-    </section><section class="subsection" id="finish-12-13">
-      <h3>事例12〜13・関連図</h3>
-      <div class="study-grid">
-        <article class="study-card original">
-          <div class="card-title">原文</div>
-          <div class="recall-source" lang="ja">
+</article>
+</div>
+</section><section class="subsection" id="finish-12-13">
+<h3>事例12〜13・関連図</h3>
+<div class="study-grid">
+<article class="study-card original">
+<div class="card-title">原文</div>
+<div class="recall-source" lang="ja">
 <h4>事例12 鉄骨階段現しとSOP塗装工事</h4>
 <p>鉄鋼面の中塗り・上塗りにより防錆性能を確保するため、<strong class="kw">標準工程間隔時間</strong>と<strong class="kw">標準最終養生時間</strong>を管理する。SOP塗りでは、工程間隔を<mark class="critical">24時間以上</mark>、最終養生時間を<mark class="critical">48時間</mark>とする。</p>
 <h4>事例13 押出成形セメント板外壁の目地</h4>
@@ -1449,10 +1161,10 @@ body.toc-open .toc-drawer {
 <p>雨水排水のため<strong class="kw">笠木の天端勾配</strong>を確保し、固定金具の水平を確認して取り付ける。</p>
 <h4>関連図 事例9 材料の仮置</h4>
 <p>長尺ビニルシートの<strong class="kw">仮置時間</strong>は基本的な品質管理項目。接着剤塗布後のオープンタイムなど、<span class="relation">所定時間を待つこと → 品質確保</span>が重要である。</p></div>
-        </article>
-        <article class="study-card translation">
-          <div class="card-title">Bản dịch tiếng Việt</div>
-          <div class="recall-source" lang="vi">
+</article>
+<article class="study-card translation">
+<div class="card-title">Bản dịch tiếng Việt</div>
+<div class="recall-source" lang="vi">
 <h4>Ví dụ 12: Sơn SOP cầu thang thép để lộ</h4>
 <p>Quản lý <strong class="kw">thời gian giữa các công đoạn</strong> và <strong class="kw">thời gian dưỡng cuối</strong> để bảo đảm chống gỉ. Với SOP: <mark class="critical">≥ 24 giờ</mark> giữa các công đoạn và <mark class="critical">48 giờ</mark> dưỡng cuối.</p>
 <h4>Ví dụ 13: Khe tấm xi măng đùn ép</h4>
@@ -1463,15 +1175,14 @@ body.toc-open .toc-drawer {
 <p>Bảo đảm <strong class="kw">độ dốc mặt trên mũ chụp</strong> để thoát nước; kiểm tra giá cố định nằm ngang trước khi lắp.</p>
 <h4>Hình Ví dụ 9: Đặt tạm vật liệu</h4>
 <p><strong class="kw">Thời gian đặt tạm</strong> của vinyl sheet là hạng mục quản lý cơ bản. Với open time sau bôi keo, <span class="relation">chờ đủ thời gian quy định → bảo đảm chất lượng</span>.</p></div>
-        </article>
-      </div>
-      
-    </section><section class="subsection" id="finish-related-49">
-      <h3>関連図・問い2への接続</h3>
-      <div class="study-grid">
-        <article class="study-card original">
-          <div class="card-title">原文</div>
-          <div class="recall-source" lang="ja">
+</article>
+</div>
+</section><section class="subsection" id="finish-related-49">
+<h3>関連図・問い2への接続</h3>
+<div class="study-grid">
+<article class="study-card original">
+<div class="card-title">原文</div>
+<div class="recall-source" lang="ja">
 <h4>事例10 絶縁用シートの重ね長さ</h4>
 <p>断熱材敷き後、断熱材と現場打ちコンクリートとの縁を切るために絶縁用シートを敷く場合、<strong class="kw">絶縁用シートの重ね部分</strong>は<mark class="critical">100mm程度</mark>重ね敷く。</p>
 <h4>事例11 石膏ボード下端と床面との間隔</h4>
@@ -1482,10 +1193,10 @@ body.toc-open .toc-drawer {
 <p>押出成形セメント板の<strong class="kw">長辺方向の目地幅</strong>は<mark class="critical">8mm以上（一般には10mm）</mark>、<strong class="kw">短辺方向</strong>は<mark class="critical">15mm以上</mark>とする。</p>
 <h4>問い2 組織的な品質管理活動</h4>
 <p>品質管理を組織的に行うために、品質管理活動に必要な<strong class="kw">業務分担・責任・権限を明確</strong>にして、<strong class="kw">施工品質管理表を作成</strong>する。重点品質管理項目や品質管理目標は、<span class="relation">現場管理方針として文書化 → 現場全体に周知</span>する。</p></div>
-        </article>
-        <article class="study-card translation">
-          <div class="card-title">Bản dịch tiếng Việt</div>
-          <div class="recall-source" lang="vi">
+</article>
+<article class="study-card translation">
+<div class="card-title">Bản dịch tiếng Việt</div>
+<div class="recall-source" lang="vi">
 <h4>Ví dụ 10: Chồng mí tấm cách ly</h4>
 <p>Sau khi trải cách nhiệt, nếu dùng tấm cách ly giữa cách nhiệt và bê tông đổ tại chỗ, <strong class="kw">phần chồng mí tấm cách ly</strong> phải khoảng <mark class="critical">100 mm</mark>.</p>
 <h4>Ví dụ 11: Chân tấm thạch cao</h4>
@@ -1496,22 +1207,20 @@ body.toc-open .toc-drawer {
 <p>Tấm ECP có <strong class="kw">khe theo cạnh dài</strong> <mark class="critical">≥ 8 mm, thông thường 10 mm</mark>; <strong class="kw">khe theo cạnh ngắn</strong> <mark class="critical">≥ 15 mm</mark>.</p>
 <h4>Câu 2: Quản lý chất lượng mang tính tổ chức</h4>
 <p>Để quản lý có tổ chức, phải <strong class="kw">xác định rõ phân công nhiệm vụ, trách nhiệm và quyền hạn</strong>, đồng thời <strong class="kw">lập bảng quản lý chất lượng thi công</strong>. Hạng mục trọng điểm và mục tiêu chất lượng phải <span class="relation">văn bản hóa thành chính sách quản lý hiện trường → phổ biến toàn hiện trường</span>.</p></div>
-        </article>
-      </div>
-      
-    </section>
-    </section>
-<section class="study-section" id="sec-writing">
-      <div class="section-head">
-        <h2>令和7年度 施工経験記述の考え方・書き方</h2>
-        <span class="source-ref">Nguồn: Book page 50-51</span>
-      </div>
-      <section class="subsection" id="writing-50">
-      <h3>試験要点と品質計画</h3>
-      <div class="study-grid">
-        <article class="study-card original">
-          <div class="card-title">原文</div>
-          <div class="recall-source" lang="ja">
+</article>
+</div>
+</section>
+</section><section class="study-section" id="sec-writing">
+<div class="section-head">
+<h2>令和7年度 施工経験記述の考え方・書き方</h2>
+<span class="source-ref">Nguồn: Book page 50-51</span>
+</div>
+<section class="subsection" id="writing-50">
+<h3>試験要点と品質計画</h3>
+<div class="study-grid">
+<article class="study-card original">
+<div class="card-title">原文</div>
+<div class="recall-source" lang="ja">
 <h4>問い2 ② 品質管理活動によってもたらされる良い影響</h4>
 <p>品質管理の見落としによる手直しや、責任や権限の不明確さによる重複作業がなくなるので、<span class="relation">工期短縮・コスト削減に寄与 → 施工会社としての信頼性が向上</span>する。</p>
 <p>そして、要求された品質の確保が確実になるので、<span class="relation">会社の信用が上がる → 次の営業に繋がる</span>。</p>
@@ -1527,10 +1236,10 @@ body.toc-open .toc-drawer {
 <p>(4) 問い2では、近年一貫して<strong class="kw">組織的な品質管理活動の方法・伝達周知・良い効果</strong>が問われる。工事概要に関係なく記述できる。</p>
 <h4>品質管理に関する施工経験記述の書き方</h4>
 <p>品質管理は、顧客の建築物に対する品質要求事項（ニーズ）を満たすことを目的として定められる。顧客の要求事項に応えることが、<strong class="kw">品質管理の最終的な目標</strong>である。</p></div>
-        </article>
-        <article class="study-card translation">
-          <div class="card-title">Bản dịch tiếng Việt</div>
-          <div class="recall-source" lang="vi">
+</article>
+<article class="study-card translation">
+<div class="card-title">Bản dịch tiếng Việt</div>
+<div class="recall-source" lang="vi">
 <h4>Câu 2 ②: Ảnh hưởng tích cực</h4>
 <p>Giảm việc sửa/làm lại do bỏ sót quản lý chất lượng và giảm công việc trùng lặp do trách nhiệm/quyền hạn không rõ, từ đó <span class="relation">rút ngắn tiến độ + giảm chi phí → tăng độ tin cậy của công ty thi công</span>.</p>
 <p>Khi chất lượng yêu cầu được bảo đảm chắc chắn hơn, <span class="relation">uy tín doanh nghiệp tăng → tạo cơ hội kinh doanh tiếp theo</span>.</p>
@@ -1546,15 +1255,14 @@ body.toc-open .toc-drawer {
 <p>(4) Câu 2 trong các năm gần đây hỏi nhất quán về <strong class="kw">phương pháp quản lý chất lượng có tổ chức, truyền đạt/phổ biến và ảnh hưởng tích cực</strong>, không phụ thuộc công trình cụ thể.</p>
 <h4>Cách viết về quản lý chất lượng</h4>
 <p>Quản lý chất lượng nhằm đáp ứng yêu cầu chất lượng, tức nhu cầu của khách hàng đối với công trình. Đáp ứng các yêu cầu đó là <strong class="kw">mục tiêu cuối cùng của quản lý chất lượng</strong>.</p></div>
-        </article>
-      </div>
-      
-    </section><section class="subsection" id="writing-51">
-      <h3>品質要求・最終品質と施工途中品質</h3>
-      <div class="study-grid">
-        <article class="study-card original">
-          <div class="card-title">原文</div>
-          <div class="recall-source" lang="ja">
+</article>
+</div>
+</section><section class="subsection" id="writing-51">
+<h3>品質要求・最終品質と施工途中品質</h3>
+<div class="study-grid">
+<article class="study-card original">
+<div class="card-title">原文</div>
+<div class="recall-source" lang="ja">
 <h4>顧客が求める品質の例</h4>
 <ol>
 <li><strong class="kw">耐久性のある建築物</strong>：容易に劣化することなく、長期間の供用に耐えられる建築物。</li>
@@ -1575,10 +1283,10 @@ body.toc-open .toc-drawer {
 <p><strong class="kw">最終的な品質管理項目</strong>の例：平場部のアスファルトルーフィング類の<strong class="kw">相互の重ね幅</strong>を<mark class="critical">縦横共に100mm以上</mark>とする。</p>
 <p><strong class="kw">施工途中の品質管理項目</strong>の例：アスファルト防水下地となるコンクリート面の<strong class="kw">乾燥状態</strong>を<strong class="kw">高周波水分計で確認</strong>する。</p>
 <p>施工プロセスの各段階を区分して品質管理項目を部分的に記述できるため、記述内容の幅が広がったと考えられる。</p></div>
-        </article>
-        <article class="study-card translation">
-          <div class="card-title">Bản dịch tiếng Việt</div>
-          <div class="recall-source" lang="vi">
+</article>
+<article class="study-card translation">
+<div class="card-title">Bản dịch tiếng Việt</div>
+<div class="recall-source" lang="vi">
 <h4>Ví dụ về chất lượng khách hàng yêu cầu</h4>
 <ol>
 <li><strong class="kw">Độ bền lâu</strong>: không dễ xuống cấp và chịu được sử dụng dài hạn.</li>
@@ -1599,45 +1307,23 @@ body.toc-open .toc-drawer {
 <p>Ví dụ <strong class="kw">chất lượng cuối cùng</strong>: <strong class="kw">chiều rộng chồng mí roofing</strong> phải <mark class="critical">≥ 100 mm theo cả hai phương</mark>.</p>
 <p>Ví dụ <strong class="kw">quản lý trong quá trình</strong>: kiểm tra <strong class="kw">độ khô của bề mặt bê tông nền</strong> bằng <strong class="kw">máy đo độ ẩm cao tần</strong>.</p>
 <p>Do có thể chia quá trình thi công thành từng giai đoạn và chọn hạng mục quản lý ở từng giai đoạn, phạm vi nội dung có thể viết rộng hơn.</p></div>
-        </article>
-      </div>
-      
-    </section>
-    </section>
-  </main>
-  <!-- CONTENT_END -->
-
-  <!-- =====================================================
-       NON-DIMMED STUDY SUPPORT SECTIONS
-       These sections stay normally readable in Keywords mode.
-       ===================================================== -->
-
-  <section class="aggregate-section" id="terms">
-    <div class="section-head">
-      <h2>Thuật ngữ chuyên môn</h2>
-    </div>
-    <div class="table-wrap"><table><thead><tr><th>日本語</th><th>読み方</th><th>Tiếng Việt</th><th>Giải thích</th><th>Liên quan</th></tr></thead><tbody><tr><td>工事目的物</td><td lang="ja">こうじもくてきぶつ</td><td>đối tượng/công trình thành phẩm</td><td>Phần công trình phải đạt yêu cầu theo hồ sơ thiết kế.</td><td>品質管理</td></tr><tr><td>品質管理</td><td lang="ja">ひんしつかんり</td><td>quản lý chất lượng</td><td>Quản lý để bảo đảm các đặc tính và tiêu chuẩn chất lượng yêu cầu.</td><td>品質計画</td></tr><tr><td>統括的な施工の技術上の管理</td><td lang="ja">とうかつてきなせこうのぎじゅつじょうのかんり</td><td>quản lý tổng hợp về mặt kỹ thuật thi công</td><td>Quản lý tổng thể các hoạt động kỹ thuật thi công.</td><td>施工管理技士</td></tr><tr><td>施工品質管理表</td><td lang="ja">せこうひんしつかんりひょう</td><td>bảng quản lý chất lượng thi công</td><td>Bảng QC theo trình tự công việc, nêu người quản lý, phương pháp, tiêu chuẩn đạt và xử lý bất thường.</td><td>QC工程表</td></tr><tr><td>QC工程表</td><td lang="ja">キューシーこうていひょう</td><td>bảng quy trình QC</td><td>Tên gọi tương đương của 施工品質管理表 trong tài liệu.</td><td>施工品質管理表</td></tr><tr><td>杭心ずれ量</td><td lang="ja">くいしんずれりょう</td><td>độ lệch tim cọc</td><td>Khoảng cách ngang giữa tâm lỗ cọc và tâm cọc.</td><td>逃げ心</td></tr><tr><td>逃げ心</td><td lang="ja">にげしん</td><td>mốc tim phụ / offset point</td><td>Mốc tham chiếu đặt lệch khỏi tim thực để kiểm soát vị trí.</td><td>杭心ずれ量</td></tr><tr><td>トルシア形高力ボルト</td><td lang="ja">トルシアがたこうりょくボルト</td><td>bu lông cường độ cao torshear</td><td>Bu lông cường độ cao dùng trong liên kết kết cấu thép.</td><td>本締め</td></tr><tr><td>本締め</td><td lang="ja">ほんじめ</td><td>siết cuối</td><td>Giai đoạn siết hoàn thiện của liên kết bu lông.</td><td>共回り・軸回り</td></tr><tr><td>共回り</td><td lang="ja">ともまわり</td><td>quay đồng thời</td><td>Trạng thái không phù hợp khi vòng đệm hoặc cả bộ phận quay theo trong lúc siết.</td><td>本締め</td></tr><tr><td>軸回り</td><td lang="ja">じくまわり</td><td>quay thân bu lông</td><td>Trạng thái thân bu lông tự quay quanh trục.</td><td>本締め</td></tr><tr><td>余長</td><td lang="ja">よちょう</td><td>chiều dài ren nhô</td><td>Phần ren nhô ra ngoài đai ốc sau siết.</td><td>1〜6山</td></tr><tr><td>エアスプレーガン</td><td lang="ja">エアスプレーガン</td><td>súng phun sơn khí nén</td><td>Thiết bị phun sơn; quản lý góc, khoảng cách, tốc độ và overlap.</td><td>EP塗装</td></tr><tr><td>鉄骨建方</td><td lang="ja">てっこつたてかた</td><td>dựng kết cấu thép</td><td>Lắp dựng cột, dầm và cấu kiện thép tại hiện trường.</td><td>水平度</td></tr><tr><td>水平度</td><td lang="ja">すいへいど</td><td>độ nằm ngang</td><td>Mức độ sai lệch của dầm so với phương ngang chuẩn.</td><td>高低差</td></tr><tr><td>耐火材巻付け工法</td><td lang="ja">たいかざいまきつけこうほう</td><td>công pháp bọc vật liệu chịu lửa</td><td>Bọc cấu kiện thép bằng vật liệu chống cháy.</td><td>耐火被覆</td></tr><tr><td>防振ゴムパッド</td><td lang="ja">ぼうしんゴムパッド</td><td>đệm cao su chống rung</td><td>Cách ly rung từ thiết bị/móng sang kết cấu.</td><td>防振性能</td></tr><tr><td>自立形山留め</td><td lang="ja">じりつがたやまどめ</td><td>chắn đất tự đứng</td><td>Hệ chắn đất không dùng chống trong theo điều kiện thiết kế.</td><td>鋼矢板</td></tr><tr><td>根入れ深さ</td><td lang="ja">ねいれふかさ</td><td>chiều sâu cắm</td><td>Phần cừ/tường chắn nằm dưới đáy đào.</td><td>山留め</td></tr><tr><td>自動焼抜栓溶接</td><td lang="ja">じどうやきぬきせんようせつ</td><td>hàn nút xuyên tự động</td><td>Phương pháp liên kết deck plate với dầm thép.</td><td>合成デッキスラブ</td></tr><tr><td>平坦性</td><td lang="ja">へいたんせい</td><td>độ bằng phẳng</td><td>Mức độ lồi lõm của bề mặt hoàn thiện.</td><td>アスファルト舗装</td></tr><tr><td>セルフレベリング材</td><td lang="ja">セルフレベリングざい</td><td>vật liệu self-leveling</td><td>Vật liệu tự san phẳng nền.</td><td>塗厚</td></tr><tr><td>笠木</td><td lang="ja">かさぎ</td><td>mũ chụp đỉnh tường/parapet</td><td>Chi tiết che bảo vệ đỉnh tường; cần tạo độ dốc thoát nước.</td><td>天端勾配</td></tr><tr><td>長尺ビニル床シート</td><td lang="ja">ちょうじゃくビニルゆかシート</td><td>vinyl sàn khổ dài</td><td>Vật liệu sàn dạng cuộn; cần kiểm soát thời gian đặt tạm và dưỡng.</td><td>仮敷</td></tr><tr><td>入隅</td><td lang="ja">いりずみ</td><td>góc lõm trong</td><td>Góc trong cần xử lý trong hệ chống thấm.</td><td>成形緩衝材</td></tr><tr><td>縁切り</td><td lang="ja">えんぎり</td><td>tách cách ly</td><td>Ngăn truyền rung, ẩm hoặc liên kết trực tiếp giữa hai bộ phận.</td><td>防振・絶縁</td></tr><tr><td>標準工程間隔時間</td><td lang="ja">ひょうじゅんこうていかんかくじかん</td><td>thời gian tiêu chuẩn giữa công đoạn</td><td>Thời gian chờ giữa các lớp/công đoạn sơn.</td><td>最終養生時間</td></tr><tr><td>最終養生時間</td><td lang="ja">さいしゅうようじょうじかん</td><td>thời gian dưỡng cuối</td><td>Thời gian dưỡng sau lớp/công đoạn cuối.</td><td>SOP</td></tr><tr><td>変成シリコーン系シーリング材</td><td lang="ja">へんせいシリコーンけいシーリングざい</td><td>keo trám biến tính silicone</td><td>Vật liệu sealing cho khe tấm ECP.</td><td>押出成形セメント板</td></tr><tr><td>高周波水分計</td><td lang="ja">こうしゅうはすいぶんけい</td><td>máy đo độ ẩm cao tần</td><td>Dùng kiểm tra trạng thái khô của nền bê tông trước chống thấm.</td><td>施工途中品質管理</td></tr><tr><td>精度管理</td><td lang="ja">せいどかんり</td><td>quản lý độ chính xác</td><td>Kiểm soát kích thước, vị trí, cao độ, độ dốc và sai số.</td><td>品質管理</td></tr><tr><td>最終的な品質管理項目</td><td lang="ja">さいしゅうてきなひんしつかんりこうもく</td><td>hạng mục quản lý chất lượng cuối cùng</td><td>Kết quả/trị số cuối cùng cần đạt sau thi công.</td><td>施工途中品質管理</td></tr><tr><td>施工途中における作業工程の品質管理項目</td><td lang="ja">せこうとちゅうにおけるさぎょうこうていのひんしつかんりこうもく</td><td>hạng mục quản lý chất lượng trong quá trình thi công</td><td>Điểm kiểm soát trung gian nhằm bảo đảm chất lượng cuối cùng.</td><td>最終品質</td></tr></tbody></table></div>
-  </section>
-
-  <section class="aggregate-section" id="background">
-    <div class="section-head">
-      <h2>Kiến thức nền cần biết</h2>
-    </div>
-    
-<div class="note-box"><strong>1. Cấu trúc của kế hoạch chất lượng</strong><p><strong>品質目標 → 作業標準 → 資源の分配・管理</strong>. Tức là xác định cần đạt chất lượng gì, thi công theo tiêu chuẩn nào và dùng nguồn lực nào để đạt mục tiêu đó.</p></div>
-<div class="note-box"><strong>2. Hai tầng quản lý chất lượng trong cách ra đề gần đây</strong><p><strong>最終的な品質管理項目</strong> là kết quả chất lượng cuối cùng; <strong>施工途中における作業工程の品質管理項目</strong> là điểm kiểm soát trong quá trình nhằm tạo ra kết quả đó. Giáo trình cho rằng cả hai loại đều có thể trở thành nội dung được chấm điểm.</p></div>
-<div class="note-box"><strong>3. 精度 là một phần của 品質</strong><p>Các tiêu chuẩn như kích thước [mm], độ dốc [%], vị trí, cao độ là các chỉ tiêu độ chính xác. Vì 精度 là một bộ phận của chất lượng nên 精度管理 cũng được xem là 品質管理.</p></div>
-<div class="note-box"><strong>4. Quản lý chất lượng mang tính tổ chức</strong><p>Lập QC工程表 chưa đủ. Phải xác định trách nhiệm/quyền hạn, truyền đạt cho công ty hợp tác, lưu hồ sơ và tạo khả năng kiểm tra ngay tại hiện trường. Chuỗi này trực tiếp liên quan đến giảm biến động chất lượng, giảm làm lại, giảm trùng lặp và tăng độ tin cậy.</p></div>
-  </section>
-
-  <section class="aggregate-section" id="memory">
-    <div class="section-head">
-      <h2>Điểm cần nhớ và mẹo nhớ</h2>
-    </div>
-    
-<div class="summary-box"><strong>Khung trả lời Câu 1</strong><div class="formula-line"><span class="flow-node">工種・作業</span><span class="flow-arrow">→</span><span class="flow-node">品質管理項目＋理由</span><span class="flow-arrow">→</span><span class="flow-node">実施内容</span></div></div>
-<div class="summary-box"><strong>Khung trả lời Câu 2</strong><div class="formula-line"><span class="flow-node">組織活動</span><span class="flow-arrow">→</span><span class="flow-node">伝達・周知</span><span class="flow-arrow">→</span><span class="flow-node">良い影響</span></div></div>
-<div class="table-wrap"><table><caption>Các trị số cần ghi nhớ trong Book page 39-51</caption><thead><tr><th>Đối tượng</th><th>Recall cue</th></tr></thead><tbody>
+</article>
+</div>
+</section>
+</section></main>
+<!-- CONTENT_END -->
+<section id="terms">
+<h2>Thuật ngữ chuyên môn</h2><div class="section-head">
+<h2>Thuật ngữ chuyên môn</h2>
+</div><div class="table-wrap"><table><thead><tr><th>日本語</th><th>読み方</th><th>Tiếng Việt</th><th>Giải thích</th><th>Liên quan</th></tr></thead><tbody><tr><td>工事目的物</td><td lang="ja">こうじもくてきぶつ</td><td>đối tượng/công trình thành phẩm</td><td>Phần công trình phải đạt yêu cầu theo hồ sơ thiết kế.</td><td>品質管理</td></tr><tr><td>品質管理</td><td lang="ja">ひんしつかんり</td><td>quản lý chất lượng</td><td>Quản lý để bảo đảm các đặc tính và tiêu chuẩn chất lượng yêu cầu.</td><td>品質計画</td></tr><tr><td>統括的な施工の技術上の管理</td><td lang="ja">とうかつてきなせこうのぎじゅつじょうのかんり</td><td>quản lý tổng hợp về mặt kỹ thuật thi công</td><td>Quản lý tổng thể các hoạt động kỹ thuật thi công.</td><td>施工管理技士</td></tr><tr><td>施工品質管理表</td><td lang="ja">せこうひんしつかんりひょう</td><td>bảng quản lý chất lượng thi công</td><td>Bảng QC theo trình tự công việc, nêu người quản lý, phương pháp, tiêu chuẩn đạt và xử lý bất thường.</td><td>QC工程表</td></tr><tr><td>QC工程表</td><td lang="ja">キューシーこうていひょう</td><td>bảng quy trình QC</td><td>Tên gọi tương đương của 施工品質管理表 trong tài liệu.</td><td>施工品質管理表</td></tr><tr><td>杭心ずれ量</td><td lang="ja">くいしんずれりょう</td><td>độ lệch tim cọc</td><td>Khoảng cách ngang giữa tâm lỗ cọc và tâm cọc.</td><td>逃げ心</td></tr><tr><td>逃げ心</td><td lang="ja">にげしん</td><td>mốc tim phụ / offset point</td><td>Mốc tham chiếu đặt lệch khỏi tim thực để kiểm soát vị trí.</td><td>杭心ずれ量</td></tr><tr><td>トルシア形高力ボルト</td><td lang="ja">トルシアがたこうりょくボルト</td><td>bu lông cường độ cao torshear</td><td>Bu lông cường độ cao dùng trong liên kết kết cấu thép.</td><td>本締め</td></tr><tr><td>本締め</td><td lang="ja">ほんじめ</td><td>siết cuối</td><td>Giai đoạn siết hoàn thiện của liên kết bu lông.</td><td>共回り・軸回り</td></tr><tr><td>共回り</td><td lang="ja">ともまわり</td><td>quay đồng thời</td><td>Trạng thái không phù hợp khi vòng đệm hoặc cả bộ phận quay theo trong lúc siết.</td><td>本締め</td></tr><tr><td>軸回り</td><td lang="ja">じくまわり</td><td>quay thân bu lông</td><td>Trạng thái thân bu lông tự quay quanh trục.</td><td>本締め</td></tr><tr><td>余長</td><td lang="ja">よちょう</td><td>chiều dài ren nhô</td><td>Phần ren nhô ra ngoài đai ốc sau siết.</td><td>1〜6山</td></tr><tr><td>エアスプレーガン</td><td lang="ja">エアスプレーガン</td><td>súng phun sơn khí nén</td><td>Thiết bị phun sơn; quản lý góc, khoảng cách, tốc độ và overlap.</td><td>EP塗装</td></tr><tr><td>鉄骨建方</td><td lang="ja">てっこつたてかた</td><td>dựng kết cấu thép</td><td>Lắp dựng cột, dầm và cấu kiện thép tại hiện trường.</td><td>水平度</td></tr><tr><td>水平度</td><td lang="ja">すいへいど</td><td>độ nằm ngang</td><td>Mức độ sai lệch của dầm so với phương ngang chuẩn.</td><td>高低差</td></tr><tr><td>耐火材巻付け工法</td><td lang="ja">たいかざいまきつけこうほう</td><td>công pháp bọc vật liệu chịu lửa</td><td>Bọc cấu kiện thép bằng vật liệu chống cháy.</td><td>耐火被覆</td></tr><tr><td>防振ゴムパッド</td><td lang="ja">ぼうしんゴムパッド</td><td>đệm cao su chống rung</td><td>Cách ly rung từ thiết bị/móng sang kết cấu.</td><td>防振性能</td></tr><tr><td>自立形山留め</td><td lang="ja">じりつがたやまどめ</td><td>chắn đất tự đứng</td><td>Hệ chắn đất không dùng chống trong theo điều kiện thiết kế.</td><td>鋼矢板</td></tr><tr><td>根入れ深さ</td><td lang="ja">ねいれふかさ</td><td>chiều sâu cắm</td><td>Phần cừ/tường chắn nằm dưới đáy đào.</td><td>山留め</td></tr><tr><td>自動焼抜栓溶接</td><td lang="ja">じどうやきぬきせんようせつ</td><td>hàn nút xuyên tự động</td><td>Phương pháp liên kết deck plate với dầm thép.</td><td>合成デッキスラブ</td></tr><tr><td>平坦性</td><td lang="ja">へいたんせい</td><td>độ bằng phẳng</td><td>Mức độ lồi lõm của bề mặt hoàn thiện.</td><td>アスファルト舗装</td></tr><tr><td>セルフレベリング材</td><td lang="ja">セルフレベリングざい</td><td>vật liệu self-leveling</td><td>Vật liệu tự san phẳng nền.</td><td>塗厚</td></tr><tr><td>笠木</td><td lang="ja">かさぎ</td><td>mũ chụp đỉnh tường/parapet</td><td>Chi tiết che bảo vệ đỉnh tường; cần tạo độ dốc thoát nước.</td><td>天端勾配</td></tr><tr><td>長尺ビニル床シート</td><td lang="ja">ちょうじゃくビニルゆかシート</td><td>vinyl sàn khổ dài</td><td>Vật liệu sàn dạng cuộn; cần kiểm soát thời gian đặt tạm và dưỡng.</td><td>仮敷</td></tr><tr><td>入隅</td><td lang="ja">いりずみ</td><td>góc lõm trong</td><td>Góc trong cần xử lý trong hệ chống thấm.</td><td>成形緩衝材</td></tr><tr><td>縁切り</td><td lang="ja">えんぎり</td><td>tách cách ly</td><td>Ngăn truyền rung, ẩm hoặc liên kết trực tiếp giữa hai bộ phận.</td><td>防振・絶縁</td></tr><tr><td>標準工程間隔時間</td><td lang="ja">ひょうじゅんこうていかんかくじかん</td><td>thời gian tiêu chuẩn giữa công đoạn</td><td>Thời gian chờ giữa các lớp/công đoạn sơn.</td><td>最終養生時間</td></tr><tr><td>最終養生時間</td><td lang="ja">さいしゅうようじょうじかん</td><td>thời gian dưỡng cuối</td><td>Thời gian dưỡng sau lớp/công đoạn cuối.</td><td>SOP</td></tr><tr><td>変成シリコーン系シーリング材</td><td lang="ja">へんせいシリコーンけいシーリングざい</td><td>keo trám biến tính silicone</td><td>Vật liệu sealing cho khe tấm ECP.</td><td>押出成形セメント板</td></tr><tr><td>高周波水分計</td><td lang="ja">こうしゅうはすいぶんけい</td><td>máy đo độ ẩm cao tần</td><td>Dùng kiểm tra trạng thái khô của nền bê tông trước chống thấm.</td><td>施工途中品質管理</td></tr><tr><td>精度管理</td><td lang="ja">せいどかんり</td><td>quản lý độ chính xác</td><td>Kiểm soát kích thước, vị trí, cao độ, độ dốc và sai số.</td><td>品質管理</td></tr><tr><td>最終的な品質管理項目</td><td lang="ja">さいしゅうてきなひんしつかんりこうもく</td><td>hạng mục quản lý chất lượng cuối cùng</td><td>Kết quả/trị số cuối cùng cần đạt sau thi công.</td><td>施工途中品質管理</td></tr><tr><td>施工途中における作業工程の品質管理項目</td><td lang="ja">せこうとちゅうにおけるさぎょうこうていのひんしつかんりこうもく</td><td>hạng mục quản lý chất lượng trong quá trình thi công</td><td>Điểm kiểm soát trung gian nhằm bảo đảm chất lượng cuối cùng.</td><td>最終品質</td></tr></tbody></table></div></section>
+<section id="background">
+<h2>Kiến thức nền cần biết</h2><div class="section-head">
+<h2>Kiến thức nền cần biết</h2>
+</div><div class="note-box"><strong>1. Cấu trúc của kế hoạch chất lượng</strong><p><strong>品質目標 → 作業標準 → 資源の分配・管理</strong>. Tức là xác định cần đạt chất lượng gì, thi công theo tiêu chuẩn nào và dùng nguồn lực nào để đạt mục tiêu đó.</p></div><div class="note-box"><strong>2. Hai tầng quản lý chất lượng trong cách ra đề gần đây</strong><p><strong>最終的な品質管理項目</strong> là kết quả chất lượng cuối cùng; <strong>施工途中における作業工程の品質管理項目</strong> là điểm kiểm soát trong quá trình nhằm tạo ra kết quả đó. Giáo trình cho rằng cả hai loại đều có thể trở thành nội dung được chấm điểm.</p></div><div class="note-box"><strong>3. 精度 là một phần của 品質</strong><p>Các tiêu chuẩn như kích thước [mm], độ dốc [%], vị trí, cao độ là các chỉ tiêu độ chính xác. Vì 精度 là một bộ phận của chất lượng nên 精度管理 cũng được xem là 品質管理.</p></div><div class="note-box"><strong>4. Quản lý chất lượng mang tính tổ chức</strong><p>Lập QC工程表 chưa đủ. Phải xác định trách nhiệm/quyền hạn, truyền đạt cho công ty hợp tác, lưu hồ sơ và tạo khả năng kiểm tra ngay tại hiện trường. Chuỗi này trực tiếp liên quan đến giảm biến động chất lượng, giảm làm lại, giảm trùng lặp và tăng độ tin cậy.</p></div></section>
+<section id="memory">
+<h2>Điểm cần nhớ và mẹo nhớ</h2><div class="section-head">
+<h2>Điểm cần nhớ và mẹo nhớ</h2>
+</div><div class="table-wrap"><table><caption>Các trị số cần ghi nhớ trong Book page 39-51</caption><thead><tr><th>Đối tượng</th><th>Recall cue</th></tr></thead><tbody>
 <tr><td>杭心ずれ量</td><td>D/4以下 かつ 100mm以下</td></tr>
 <tr><td>杭の鉛直精度</td><td>1/100以下</td></tr>
 <tr><td>高力ボルト余長</td><td>1〜6山</td></tr>
@@ -1657,107 +1343,99 @@ body.toc-open .toc-drawer {
 <tr><td>ECP長辺方向目地</td><td>8mm以上（一般10mm）</td></tr>
 <tr><td>ECP短辺方向目地</td><td>15mm以上</td></tr>
 <tr><td>アスファルトルーフィング重ね幅</td><td>縦横共に100mm以上</td></tr>
-</tbody></table></div>
-<div class="warning-box"><strong>Điểm dễ đảo ngược</strong><p>QC工程表: <b>作業の順序通り</b>に並べる。<b>重要度の高い順ではない</b>。また、各作業の施工条件・施工数量を明記する必要はない。</p></div>
-<div class="memory-box"><strong>Hai dạng nội dung chất lượng</strong><p><b>途中</b>: コンクリート下地乾燥 → 高周波水分計。<br><b>完成</b>: ルーフィング重ね幅 → 縦横100mm以上。</p></div>
-  </section>
-
-</div>
-
-<!-- =======================================================
-     APPROVED COMPONENT LIBRARY
-     Hidden. AI may copy/repeat these components into CONTENT.
-     Do not create a new visual system unless strictly necessary.
-     ======================================================= -->
+</tbody></table></div><div class="warning-box"><strong>Điểm dễ đảo ngược</strong><p>QC工程表: <b>作業の順序通り</b>に並べる。<b>重要度の高い順ではない</b>。また、各作業の施工条件・施工数量を明記する必要はない。</p></div><div class="memory-box"><strong>Hai dạng nội dung chất lượng</strong><p><b>途中</b>: コンクリート下地乾燥 → 高周波水分計。<br/><b>完成</b>: ルーフィング重ね幅 → 縦横100mm以上。</p></div></section>
 <template id="component-library">
-
-  <!-- FIGURE -->
-  <figure class="figure-card">
-    <img src="{{IMAGE_SOURCE}}" alt="{{IMAGE_ALT}}">
-    <figcaption>{{FIGURE_CAPTION}}</figcaption>
-  </figure>
-
-  <!-- MULTIPLE FIGURES -->
-  <div class="figure-grid">
-    <figure class="figure-card">
-      <img src="{{IMAGE_SOURCE_1}}" alt="{{IMAGE_ALT_1}}">
-      <figcaption>{{FIGURE_CAPTION_1}}</figcaption>
-    </figure>
-    <figure class="figure-card">
-      <img src="{{IMAGE_SOURCE_2}}" alt="{{IMAGE_ALT_2}}">
-      <figcaption>{{FIGURE_CAPTION_2}}</figcaption>
-    </figure>
-  </div>
-
-  <!-- TABLE -->
-  <div class="table-wrap">
-    <table>
-      <caption>{{TABLE_CAPTION}}</caption>
-      <thead>
-        <tr><th>{{HEADER_1}}</th><th>{{HEADER_2}}</th></tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><strong class="kw">{{ROW_SUBJECT}}</strong></td>
-          <td><span class="relation">{{ROW_RECALL_CUE}}</span></td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-
-  <!-- NOTE -->
-  <div class="note-box">
-    <strong>{{NOTE_TITLE}}</strong>
-    <p>{{NOTE_CONTENT}}</p>
-  </div>
-
-  <!-- WARNING -->
-  <div class="warning-box">
-    <strong>{{WARNING_TITLE}}</strong>
-    <p>{{WARNING_CONTENT}}</p>
-  </div>
-
-  <!-- MEMORY -->
-  <div class="memory-box">
-    <strong>{{MEMORY_TITLE}}</strong>
-    <p>{{MEMORY_CONTENT}}</p>
-  </div>
-
-  <!-- FORMULA / FLOW -->
-  <div class="formula-box">
-    <div class="formula-line">
-      <span class="flow-node">{{NODE_1}}</span>
-      <span class="flow-arrow">→</span>
-      <span class="flow-node">{{NODE_2}}</span>
-      <span class="flow-arrow">→</span>
-      <span class="flow-node">{{NODE_3}}</span>
-    </div>
-  </div>
-
+<div class="table-wrap">
+<table>
+<caption>{{TABLE_CAPTION}}</caption>
+<thead><tr><th>{{HEADER_1}}</th><th>{{HEADER_2}}</th></tr></thead>
+<tbody><tr><td><strong class="kw">{{ROW_KEY}}</strong></td><td><span class="relation">{{ROW_RELATION}}</span></td></tr></tbody>
+</table>
+</div>
+<figure class="figure-card">
+<img alt="{{IMAGE_ALT}}" height="{{IMAGE_HEIGHT}}" src="{{IMAGE_SOURCE}}" width="{{IMAGE_WIDTH}}"/>
+<figcaption>{{IMAGE_CAPTION}}</figcaption>
+</figure>
+<div class="figure-grid">
+<figure class="figure-card">
+<img alt="{{IMAGE_ALT_1}}" height="{{IMAGE_HEIGHT_1}}" src="{{IMAGE_SOURCE_1}}" width="{{IMAGE_WIDTH_1}}"/>
+<figcaption>{{IMAGE_CAPTION_1}}</figcaption>
+</figure>
+<figure class="figure-card">
+<img alt="{{IMAGE_ALT_2}}" height="{{IMAGE_HEIGHT_2}}" src="{{IMAGE_SOURCE_2}}" width="{{IMAGE_WIDTH_2}}"/>
+<figcaption>{{IMAGE_CAPTION_2}}</figcaption>
+</figure>
+</div>
+<section class="note-box"><h3>{{NOTE_TITLE}}</h3><p>{{NOTE_CONTENT}}</p></section>
+<section class="warning-box"><h3>{{WARNING_TITLE}}</h3><p>{{WARNING_CONTENT}}</p></section>
+<section class="memory-box"><h3>{{MEMORY_TITLE}}</h3><p>{{MEMORY_ITEM}}</p></section>
 </template>
-
+</div>
 <script>
-(() => {
-  "use strict";
+(function () {
+  'use strict';
 
   const root = document.documentElement;
   const body = document.body;
+  const q = id => document.getElementById(id);
+  const FONT_LEVELS = Array.from({ length: 21 }, (_, i) => 50 + i * 5);
 
-  const themeToggle = document.getElementById("theme-toggle");
-  const modeToggle = document.getElementById("mode-toggle");
-  const fontDown = document.getElementById("font-down");
-  const fontReset = document.getElementById("font-reset");
-  const fontUp = document.getElementById("font-up");
+  const controls = q('control-cluster');
+  const controlsToggle = q('controls-toggle');
+  const controlPanel = q('control-panel');
+  const themeButton = q('theme-toggle');
+  const modeButton = q('mode-toggle');
+  const fontDown = q('font-down');
+  const fontUp = q('font-up');
+  const fontReset = q('font-reset');
+  const tocButton = q('toc-toggle');
+  const tocClose = q('toc-close');
+  const overlay = q('toc-overlay');
+  const prevButton = q('section-prev');
+  const nextButton = q('section-next');
+  const homeButton = q('home-button');
 
-  const tocToggle = document.getElementById("toc-toggle");
-  const tocClose = document.getElementById("toc-close");
-  const tocOverlay = document.getElementById("toc-overlay");
-  const tocDrawer = document.getElementById("toc-drawer");
+  const pageKey = location.pathname + location.search;
+  const readerStateKey = 'study-reader-position:' + pageKey;
+  const lastPageKey = 'study-last-page';
+  const explicitHomeKey = 'study-explicit-home';
+  const anchorSelector = [
+    '.page-shell h1', '.page-shell h2', '.page-shell h3', '.page-shell h4',
+    '.page-shell p', '.page-shell li', '.page-shell td', '.page-shell th',
+    '.page-shell figcaption', '.page-shell .card-title'
+  ].join(', ');
 
-  const prevButton = document.getElementById("section-prev");
-  const nextButton = document.getElementById("section-next");
+  let anchorElements = [];
+  let lastStablePosition = null;
+  let scrollSaveTimer = 0;
+  let resizeRestoreTimer = 0;
+  let resizeAnchor = null;
+  let suppressScrollSaveUntil = 0;
+  function layoutViewportSize() {
+    const de = document.documentElement;
+    return {
+      width: de.clientWidth || window.innerWidth,
+      height: de.clientHeight || window.innerHeight
+    };
+  }
 
-  const FONT_LEVELS = [80, 90, 100, 110, 120, 130, 140];
+  function visualViewportScale() {
+    const vv = window.visualViewport;
+    return vv && Number.isFinite(vv.scale) ? vv.scale : 1;
+  }
+
+  function isPinchZoomActive() {
+    return Math.abs(visualViewportScale() - 1) > 0.015;
+  }
+
+  const initialLayoutViewport = layoutViewportSize();
+  let lastViewportWidth = initialLayoutViewport.width;
+  let lastViewportHeight = initialLayoutViewport.height;
+  let pinchZoomSession = false;
+
+  try {
+    if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+  } catch (e) {}
 
   function safeGet(key, fallback = null) {
     try {
@@ -1769,210 +1447,602 @@ body.toc-open .toc-drawer {
   }
 
   function safeSet(key, value) {
-    try {
-      localStorage.setItem(key, value);
-    } catch (e) {}
+    try { localStorage.setItem(key, value); } catch (e) {}
   }
+
+  function safeRemove(key) {
+    try { localStorage.removeItem(key); } catch (e) {}
+  }
+
+  /* ---------- Persistent page / PWA resume metadata ---------- */
+
+  function rememberCurrentPage() {
+    safeSet(lastPageKey, pageKey);
+    safeSet('study-last-active-at', String(Date.now()));
+  }
+
+  rememberCurrentPage();
+
+  /* ---------- Layout viewport geometry ---------- */
+
+  /*
+    Pinch zoom changes visualViewport.width / height / scale.
+    It must NOT change the document layout width.
+
+    Therefore --app-viewport-width is derived only from the layout viewport
+    (documentElement.clientWidth / innerWidth), never from visualViewport.width.
+  */
+  function syncViewportGeometry() {
+    const { width } = layoutViewportSize();
+    root.style.setProperty(
+      '--app-viewport-width',
+      `${Math.round(width * 100) / 100}px`
+    );
+  }
+
+  syncViewportGeometry();
+
+  /* ---------- Reader anchors ---------- */
+
+  function rebuildReaderAnchors() {
+    anchorElements = Array.from(document.querySelectorAll(anchorSelector));
+    anchorElements.forEach((el, index) => {
+      el.dataset.readerKey = 'r' + index;
+    });
+  }
+
+  function closestReaderElement(node) {
+    if (!node) return null;
+    const el = node.nodeType === Node.ELEMENT_NODE ? node : node.parentElement;
+    return el ? el.closest('[data-reader-key]') : null;
+  }
+
+  function caretAtPoint(x, y) {
+    try {
+      if (document.caretPositionFromPoint) {
+        const pos = document.caretPositionFromPoint(x, y);
+        if (!pos || !pos.offsetNode) return null;
+        return { node: pos.offsetNode, offset: pos.offset };
+      }
+      if (document.caretRangeFromPoint) {
+        const range = document.caretRangeFromPoint(x, y);
+        if (!range) return null;
+        return { node: range.startContainer, offset: range.startOffset };
+      }
+    } catch (e) {}
+    return null;
+  }
+
+  function textOffsetFromElementStart(element, node, offset) {
+    try {
+      const range = document.createRange();
+      range.setStart(element, 0);
+      range.setEnd(node, offset);
+      return range.toString().length;
+    } catch (e) {
+      return 0;
+    }
+  }
+
+  function domPositionFromTextOffset(element, targetOffset) {
+    const walker = document.createTreeWalker(element, NodeFilter.SHOW_TEXT);
+    let remaining = Math.max(0, targetOffset);
+    let node = walker.nextNode();
+    let last = null;
+
+    while (node) {
+      last = node;
+      const len = node.nodeValue ? node.nodeValue.length : 0;
+      if (remaining <= len) {
+        return { node, offset: remaining };
+      }
+      remaining -= len;
+      node = walker.nextNode();
+    }
+
+    if (last) return { node: last, offset: last.nodeValue ? last.nodeValue.length : 0 };
+    return { node: element, offset: 0 };
+  }
+
+  function characterRect(node, offset) {
+    try {
+      if (node.nodeType !== Node.TEXT_NODE) {
+        const r = node.getBoundingClientRect ? node.getBoundingClientRect() : null;
+        return r && r.height ? r : null;
+      }
+
+      const len = node.nodeValue ? node.nodeValue.length : 0;
+      if (!len) return node.parentElement ? node.parentElement.getBoundingClientRect() : null;
+
+      let start = Math.max(0, Math.min(offset, len - 1));
+      let end = Math.min(len, start + 1);
+      if (offset >= len && len > 0) {
+        start = len - 1;
+        end = len;
+      }
+
+      const range = document.createRange();
+      range.setStart(node, start);
+      range.setEnd(node, end);
+      const rects = range.getClientRects();
+      return rects.length ? rects[0] : range.getBoundingClientRect();
+    } catch (e) {
+      return null;
+    }
+  }
+
+  function captureReadingPosition() {
+    if (!anchorElements.length) rebuildReaderAnchors();
+    if (!anchorElements.length) return null;
+
+    const vv = window.visualViewport;
+    const viewportWidth = vv ? vv.width : window.innerWidth;
+    const topProbe = 6;
+    const ys = [topProbe, 12, 18, 26, 36, 50];
+    const xs = [];
+
+    for (let x = 12; x <= Math.min(viewportWidth - 12, 220); x += 16) xs.push(x);
+    xs.push(viewportWidth * .25, viewportWidth * .5, viewportWidth * .75);
+
+    for (const y of ys) {
+      for (const x of xs) {
+        if (x <= 0 || x >= viewportWidth) continue;
+        const caret = caretAtPoint(x, y);
+        if (!caret) continue;
+        const element = closestReaderElement(caret.node);
+        if (!element || !document.querySelector('.page-shell')?.contains(element)) continue;
+
+        const offset = textOffsetFromElementStart(element, caret.node, caret.offset);
+        const rect = characterRect(caret.node, caret.offset);
+        const key = element.dataset.readerKey;
+        if (key && rect && Number.isFinite(rect.top)) {
+          return { key, offset, top: rect.top };
+        }
+      }
+    }
+
+    /* Fallback: nearest textual block to the top edge. */
+    let best = null;
+    let bestDistance = Infinity;
+    for (const element of anchorElements) {
+      const rect = element.getBoundingClientRect();
+      if (rect.bottom < 0 || rect.top > (vv ? vv.height : window.innerHeight)) continue;
+      const distance = Math.abs(rect.top);
+      if (distance < bestDistance) {
+        bestDistance = distance;
+        best = { key: element.dataset.readerKey, offset: 0, top: rect.top };
+      }
+    }
+    return best;
+  }
+
+  function restoreReadingPosition(state) {
+    if (!state || !state.key) return false;
+    if (!anchorElements.length) rebuildReaderAnchors();
+
+    const element = document.querySelector('[data-reader-key="' + CSS.escape(state.key) + '"]');
+    if (!element) return false;
+
+    const pos = domPositionFromTextOffset(element, Number(state.offset) || 0);
+    const rect = characterRect(pos.node, pos.offset);
+    if (!rect || !Number.isFinite(rect.top)) return false;
+
+    const desiredTop = Number.isFinite(Number(state.top)) ? Number(state.top) : 6;
+    const delta = rect.top - desiredTop;
+    if (Math.abs(delta) < .5) return true;
+
+    suppressScrollSaveUntil = Date.now() + 700;
+    const oldBehavior = root.style.scrollBehavior;
+    root.style.scrollBehavior = 'auto';
+    window.scrollBy(0, delta);
+    root.style.scrollBehavior = oldBehavior;
+    return true;
+  }
+
+  function saveReaderState(state) {
+    if (!state) return;
+    lastStablePosition = state;
+    safeSet(readerStateKey, JSON.stringify(state));
+  }
+
+  function readReaderState() {
+    try {
+      const raw = safeGet(readerStateKey);
+      return raw ? JSON.parse(raw) : null;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  function settleRestore(state, delays = [0, 60, 180, 420]) {
+    if (!state) return;
+    suppressScrollSaveUntil = Date.now() + Math.max(...delays) + 350;
+    delays.forEach(delay => {
+      window.setTimeout(() => {
+        requestAnimationFrame(() => restoreReadingPosition(state));
+      }, delay);
+    });
+    window.setTimeout(() => {
+      saveReaderState(state);
+    }, Math.max(...delays) + 120);
+  }
+
+  function preserveReadingPosition(mutator) {
+    const state = captureReadingPosition() || lastStablePosition || readReaderState();
+    if (state) saveReaderState(state);
+    mutator();
+    rebuildReaderAnchors();
+    settleRestore(state);
+  }
+
+  function scheduleReaderSave() {
+    if (Date.now() < suppressScrollSaveUntil) return;
+    clearTimeout(scrollSaveTimer);
+    scrollSaveTimer = window.setTimeout(() => {
+      if (Date.now() < suppressScrollSaveUntil) return;
+      const state = captureReadingPosition();
+      if (state) saveReaderState(state);
+    }, 130);
+  }
+
+  rebuildReaderAnchors();
+  lastStablePosition = readReaderState();
 
   /* ---------- Theme ---------- */
 
   function applyTheme(theme) {
-    const next = theme === "light" ? "light" : "dark";
-    root.dataset.theme = next;
-
-    if (themeToggle) {
-      const dark = next === "dark";
-      themeToggle.textContent = dark ? "☀" : "☾";
-      themeToggle.title = dark ? "Chuyển sang Light" : "Chuyển sang Dark";
-      themeToggle.setAttribute("aria-pressed", String(!dark));
+    theme = theme === 'light' ? 'light' : 'dark';
+    root.dataset.theme = theme;
+    safeSet('study-theme', theme);
+    if (themeButton) {
+      themeButton.textContent = theme === 'dark' ? '☀' : '☾';
+      themeButton.title = theme === 'dark' ? 'Chuyển sang Light theme' : 'Chuyển sang Dark theme';
+      themeButton.setAttribute('aria-label', themeButton.title);
+      themeButton.setAttribute('aria-pressed', theme === 'light' ? 'true' : 'false');
     }
-
-    safeSet("study-theme", next);
   }
-
-  const initialTheme =
-    safeGet("study-theme") ||
-    (window.matchMedia &&
-     window.matchMedia("(prefers-color-scheme: dark)").matches
-      ? "dark"
-      : "light");
-
-  applyTheme(initialTheme);
-
-  themeToggle?.addEventListener("click", () => {
-    applyTheme(root.dataset.theme === "dark" ? "light" : "dark");
-  });
 
   /* ---------- Full / Keywords ---------- */
 
   function applyMode(mode) {
-    const keywords = mode === "keywords";
-    body.classList.toggle("keyword-focus", keywords);
-
-    if (modeToggle) {
-      modeToggle.textContent = keywords ? "📖" : "🎯";
-      modeToggle.title = keywords ? "Chuyển sang Full" : "Chuyển sang Keywords";
-      modeToggle.setAttribute("aria-pressed", String(keywords));
+    mode = mode === 'keywords' ? 'keywords' : 'full';
+    root.dataset.studyMode = mode;
+    body.classList.toggle('keyword-focus', mode === 'keywords');
+    safeSet('study-mode', mode);
+    if (modeButton) {
+      modeButton.textContent = mode === 'full' ? '🎯' : '📖';
+      modeButton.title = mode === 'full' ? 'Chuyển sang Keywords mode' : 'Trở lại Full mode';
+      modeButton.setAttribute('aria-label', modeButton.title);
+      modeButton.setAttribute('aria-pressed', mode === 'keywords' ? 'true' : 'false');
     }
-
-    safeSet("study-mode", keywords ? "keywords" : "full");
   }
 
-  applyMode(safeGet("study-mode", "full"));
+  /* ---------- Font 50-150%, step 5% ---------- */
 
-  modeToggle?.addEventListener("click", () => {
-    applyMode(body.classList.contains("keyword-focus") ? "full" : "keywords");
-  });
-
-  /* ---------- Font scale ---------- */
-
-  let fontScale = Number(safeGet("study-font-scale", "100"));
-  if (!FONT_LEVELS.includes(fontScale)) {
-    fontScale = 100;
+  function currentScale() {
+    const saved = Number(safeGet('study-font-scale', '100'));
+    return FONT_LEVELS.includes(saved) ? saved : 100;
   }
 
   function applyFontScale(scale) {
-    fontScale = FONT_LEVELS.includes(scale) ? scale : 100;
-
-    root.style.setProperty(
-      "--base-font-size",
-      `${16 * fontScale / 100}px`
-    );
+    if (!FONT_LEVELS.includes(scale)) scale = 100;
+    root.style.setProperty('--base-font-size', (16 * scale / 100) + 'px');
+    safeSet('study-font-scale', String(scale));
 
     if (fontReset) {
-      fontReset.textContent = `${fontScale}%`;
-      fontReset.title =
-        fontScale === 100
-          ? "Cỡ chữ hiện tại 100%"
-          : `Cỡ chữ hiện tại ${fontScale}%, bấm để về 100%`;
+      fontReset.textContent = scale + '%';
+      fontReset.title = 'Cỡ chữ hiện tại ' + scale + '%. Chạm để về 100%';
+      fontReset.setAttribute('aria-label', fontReset.title);
     }
-
-    if (fontDown) {
-      fontDown.disabled = fontScale === FONT_LEVELS[0];
-    }
-
-    if (fontUp) {
-      fontUp.disabled = fontScale === FONT_LEVELS[FONT_LEVELS.length - 1];
-    }
-
-    safeSet("study-font-scale", String(fontScale));
+    if (fontDown) fontDown.disabled = scale === FONT_LEVELS[0];
+    if (fontUp) fontUp.disabled = scale === FONT_LEVELS[FONT_LEVELS.length - 1];
   }
 
-  applyFontScale(fontScale);
+  /* ---------- Collapsible controls ---------- */
 
-  fontDown?.addEventListener("click", () => {
-    const index = FONT_LEVELS.indexOf(fontScale);
-    if (index > 0) {
-      applyFontScale(FONT_LEVELS[index - 1]);
-    }
-  });
-
-  fontUp?.addEventListener("click", () => {
-    const index = FONT_LEVELS.indexOf(fontScale);
-    if (index >= 0 && index < FONT_LEVELS.length - 1) {
-      applyFontScale(FONT_LEVELS[index + 1]);
-    }
-  });
-
-  fontReset?.addEventListener("click", () => {
-    applyFontScale(100);
-  });
-
-  /* ---------- TOC drawer ---------- */
-
-  function setToc(open) {
-    body.classList.toggle("toc-open", open);
-    tocToggle?.setAttribute("aria-expanded", String(open));
-    tocOverlay?.setAttribute("aria-hidden", String(!open));
-
-    if (open) {
-      requestAnimationFrame(() => tocClose?.focus());
-    }
+  function setControlsOpen(open) {
+    if (!controls) return;
+    controls.classList.toggle('open', open);
+    controlsToggle?.setAttribute('aria-expanded', String(open));
+    controlsToggle?.setAttribute('aria-label', open ? 'Đóng công cụ' : 'Mở công cụ');
+    controlsToggle?.setAttribute('title', open ? 'Đóng công cụ' : 'Mở công cụ');
   }
 
-  tocToggle?.addEventListener("click", () => {
-    setToc(!body.classList.contains("toc-open"));
+  controlsToggle?.addEventListener('click', event => {
+    event.stopPropagation();
+    setControlsOpen(!controls.classList.contains('open'));
   });
 
-  tocClose?.addEventListener("click", () => setToc(false));
-  tocOverlay?.addEventListener("click", () => setToc(false));
-
-  tocDrawer?.querySelectorAll("a[href^='#']").forEach(link => {
-    link.addEventListener("click", () => setToc(false));
+  controlPanel?.addEventListener('click', event => event.stopPropagation());
+  document.addEventListener('pointerdown', event => {
+    if (controls?.classList.contains('open') && !controls.contains(event.target)) setControlsOpen(false);
   });
 
-  document.addEventListener("keydown", event => {
-    if (event.key === "Escape" && body.classList.contains("toc-open")) {
-      setToc(false);
-      tocToggle?.focus();
+  /* ---------- TOC ---------- */
+
+  function openToc() {
+    body.classList.add('toc-open');
+    tocButton?.setAttribute('aria-expanded', 'true');
+    setControlsOpen(false);
+  }
+
+  function closeToc() {
+    body.classList.remove('toc-open');
+    tocButton?.setAttribute('aria-expanded', 'false');
+  }
+
+  tocButton?.addEventListener('click', openToc);
+  tocClose?.addEventListener('click', closeToc);
+  overlay?.addEventListener('click', closeToc);
+
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape') {
+      closeToc();
+      setControlsOpen(false);
     }
   });
 
-  /* ---------- Back / Next section ---------- */
+  document.querySelectorAll('a[href="#toc"]').forEach(a => {
+    a.addEventListener('click', event => {
+      event.preventDefault();
+      openToc();
+    });
+  });
 
-  const studySections = Array.from(
-    document.querySelectorAll("main .study-section[id]")
-  );
+  /* TOC navigation does not add hash-history entries. */
+  document.querySelectorAll('#toc a[href^="#"]').forEach(a => {
+    a.addEventListener('click', event => {
+      const href = a.getAttribute('href');
+      if (!href || href === '#toc') return;
+      const target = document.getElementById(decodeURIComponent(href.slice(1)));
+      if (!target) return;
+      event.preventDefault();
+      closeToc();
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      window.setTimeout(scheduleReaderSave, 450);
+    });
+  });
+
+  /* ---------- Previous / next lesson item ---------- */
+
+  const tocTargets = Array.from(document.querySelectorAll('#toc a[href^="#"]'))
+    .map(a => document.getElementById(decodeURIComponent(a.getAttribute('href').slice(1))))
+    .filter((el, i, arr) => el && el.id !== 'toc' && arr.indexOf(el) === i);
 
   function currentSectionIndex() {
-    if (!studySections.length) return -1;
-
-    const referenceY = window.scrollY + Math.min(window.innerHeight * 0.32, 220);
-    let index = 0;
-
-    for (let i = 0; i < studySections.length; i++) {
-      if (studySections[i].offsetTop <= referenceY) {
-        index = i;
-      } else {
-        break;
-      }
-    }
-    return index;
+    let idx = -1;
+    const threshold = 24;
+    tocTargets.forEach((el, i) => {
+      if (el.getBoundingClientRect().top <= threshold) idx = i;
+    });
+    return idx;
   }
 
-  function updateNavState() {
-    if (!studySections.length) {
-      if (prevButton) prevButton.disabled = true;
-      if (nextButton) nextButton.disabled = true;
+  function updateSectionButtons() {
+    const i = currentSectionIndex();
+    if (prevButton) prevButton.disabled = !tocTargets.length || i <= 0;
+    if (nextButton) nextButton.disabled = !tocTargets.length || i >= tocTargets.length - 1;
+  }
+
+  function goToIndex(i) {
+    if (!tocTargets.length) return;
+    i = Math.max(0, Math.min(tocTargets.length - 1, i));
+    tocTargets[i].scrollIntoView({ behavior: 'smooth', block: 'start' });
+    window.setTimeout(() => {
+      const state = captureReadingPosition();
+      if (state) saveReaderState(state);
+      updateSectionButtons();
+    }, 450);
+  }
+
+  prevButton?.addEventListener('click', () => goToIndex(Math.max(0, currentSectionIndex() - 1)));
+  nextButton?.addEventListener('click', () => goToIndex(Math.min(tocTargets.length - 1, currentSectionIndex() + 1)));
+
+  /* ---------- Home ---------- */
+
+  homeButton?.addEventListener('click', () => {
+    const state = captureReadingPosition();
+    if (state) saveReaderState(state);
+    safeSet(explicitHomeKey, '1');
+    safeSet('study-home-click-at', String(Date.now()));
+    window.location.href = new URL('index.html', window.location.href).href;
+  });
+
+  /* ---------- Initialize state ---------- */
+
+  applyTheme(root.dataset.theme === 'light' ? 'light' : 'dark');
+  applyMode(root.dataset.studyMode || 'full');
+  applyFontScale(currentScale());
+
+  themeButton?.addEventListener('click', () => applyTheme(root.dataset.theme === 'dark' ? 'light' : 'dark'));
+  modeButton?.addEventListener('click', () => applyMode(root.dataset.studyMode === 'keywords' ? 'full' : 'keywords'));
+
+  fontDown?.addEventListener('click', () => {
+    const i = FONT_LEVELS.indexOf(currentScale());
+    if (i > 0) preserveReadingPosition(() => applyFontScale(FONT_LEVELS[i - 1]));
+  });
+
+  fontUp?.addEventListener('click', () => {
+    const i = FONT_LEVELS.indexOf(currentScale());
+    if (i >= 0 && i < FONT_LEVELS.length - 1) preserveReadingPosition(() => applyFontScale(FONT_LEVELS[i + 1]));
+  });
+
+  fontReset?.addEventListener('click', () => preserveReadingPosition(() => applyFontScale(100)));
+
+  /* ---------- Scroll / rotation / resize persistence ---------- */
+
+  window.addEventListener('scroll', () => {
+    scheduleReaderSave();
+    updateSectionButtons();
+  }, { passive: true });
+
+  function handleLayoutViewportChange() {
+    /*
+      A native two-finger pinch changes VisualViewport but normally does not
+      change the layout viewport. Ignore it completely so the page does not
+      recalculate width or fight the browser's native zoom.
+    */
+    if (isPinchZoomActive()) {
+      pinchZoomSession = true;
       return;
     }
 
-    const index = currentSectionIndex();
-    if (prevButton) prevButton.disabled = index <= 0;
-    if (nextButton) nextButton.disabled = index >= studySections.length - 1;
-  }
+    const { width: w, height: h } = layoutViewportSize();
 
-  function moveSection(delta) {
-    const index = currentSectionIndex();
-    const targetIndex = Math.max(
-      0,
-      Math.min(studySections.length - 1, index + delta)
-    );
+    /*
+      When pinch zoom returns to scale 1, VisualViewport may emit another
+      resize. If the layout viewport itself did not change, this was only zoom,
+      so do nothing.
+    */
+    const layoutChanged =
+      Math.abs(w - lastViewportWidth) >= 1 ||
+      Math.abs(h - lastViewportHeight) >= 1;
 
-    studySections[targetIndex]?.scrollIntoView({
-      behavior: "smooth",
-      block: "start"
-    });
-  }
-
-  prevButton?.addEventListener("click", () => moveSection(-1));
-  nextButton?.addEventListener("click", () => moveSection(1));
-
-  let ticking = false;
-  window.addEventListener("scroll", () => {
-    if (!ticking) {
-      requestAnimationFrame(() => {
-        updateNavState();
-        ticking = false;
-      });
-      ticking = true;
+    if (!layoutChanged) {
+      pinchZoomSession = false;
+      return;
     }
+
+    pinchZoomSession = false;
+
+    if (!resizeAnchor) {
+      resizeAnchor =
+        lastStablePosition ||
+        readReaderState() ||
+        captureReadingPosition();
+    }
+
+    /*
+      Only a real layout change, such as portrait <-> landscape, updates
+      --app-viewport-width.
+    */
+    syncViewportGeometry();
+    lastViewportWidth = w;
+    lastViewportHeight = h;
+
+    if (resizeAnchor) {
+      settleRestore(resizeAnchor, [0, 50, 140, 300]);
+    }
+
+    clearTimeout(resizeRestoreTimer);
+    resizeRestoreTimer = window.setTimeout(() => {
+      if (resizeAnchor) {
+        settleRestore(resizeAnchor, [0, 80, 220]);
+      }
+
+      window.setTimeout(() => {
+        lastStablePosition =
+          resizeAnchor ||
+          captureReadingPosition();
+
+        if (lastStablePosition) {
+          saveReaderState(lastStablePosition);
+        }
+
+        resizeAnchor = null;
+        updateSectionButtons();
+      }, 320);
+    }, 260);
+  }
+
+  function handleVisualViewportResize() {
+    /*
+      visualViewport resize is the main signal used by Safari/WebKit while
+      pinch-zooming. At scale != 1 this is zoom, not a responsive-layout event.
+    */
+    if (isPinchZoomActive()) {
+      pinchZoomSession = true;
+      return;
+    }
+
+    handleLayoutViewportChange();
+  }
+
+  window.addEventListener(
+    'resize',
+    handleLayoutViewportChange,
+    { passive: true }
+  );
+
+  window.addEventListener('orientationchange', () => {
+    /*
+      Rotation is a genuine layout change. Use the stored logical reading
+      position, then wait for iOS to finish updating its layout viewport.
+    */
+    resizeAnchor =
+      lastStablePosition ||
+      readReaderState() ||
+      captureReadingPosition();
+
+    [40, 120, 280].forEach(delay => {
+      window.setTimeout(() => {
+        if (isPinchZoomActive()) return;
+
+        const size = layoutViewportSize();
+        syncViewportGeometry();
+
+        if (
+          Math.abs(size.width - lastViewportWidth) >= 1 ||
+          Math.abs(size.height - lastViewportHeight) >= 1
+        ) {
+          lastViewportWidth = size.width;
+          lastViewportHeight = size.height;
+        }
+
+        if (resizeAnchor) {
+          settleRestore(resizeAnchor, [0, 70, 180]);
+        }
+      }, delay);
+    });
+
+    window.setTimeout(() => {
+      resizeAnchor = null;
+      updateSectionButtons();
+    }, 620);
   }, { passive: true });
 
-  window.addEventListener("resize", updateNavState);
-  updateNavState();
-})();
-</script>
+  window.visualViewport?.addEventListener(
+    'resize',
+    handleVisualViewportResize,
+    { passive: true }
+  );
 
-</body>
+  function saveLifecycleState() {
+    const state = captureReadingPosition() || lastStablePosition;
+    if (state) saveReaderState(state);
+    rememberCurrentPage();
+  }
+
+  document.addEventListener('visibilitychange', () => {
+    if (document.visibilityState === 'hidden') saveLifecycleState();
+    else {
+      rememberCurrentPage();
+      const state = readReaderState();
+      if (state) settleRestore(state, [0, 80, 220]);
+    }
+  });
+
+  window.addEventListener('pagehide', saveLifecycleState);
+  window.addEventListener('beforeunload', saveLifecycleState);
+
+  window.addEventListener('pageshow', () => {
+    rememberCurrentPage();
+    rebuildReaderAnchors();
+    const state = readReaderState();
+    if (!location.hash && state) settleRestore(state, [0, 80, 220, 500]);
+    window.setTimeout(updateSectionButtons, 80);
+  });
+
+  window.addEventListener('load', () => {
+    rebuildReaderAnchors();
+    const state = readReaderState();
+    if (!location.hash && state) settleRestore(state, [0, 80, 220, 500]);
+    else {
+      const current = captureReadingPosition();
+      if (current) saveReaderState(current);
+    }
+    updateSectionButtons();
+  });
+})();
+</script></body>
 </html>

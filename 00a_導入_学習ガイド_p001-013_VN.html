@@ -1,24 +1,20 @@
 <!DOCTYPE html>
-<html lang="vi" data-theme="dark">
+<!DOCTYPE html>
+
+<html data-study-mode="full" data-theme="dark" lang="vi">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<meta name="color-scheme" content="dark light">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<meta content="dark light" name="color-scheme"/>
+<meta content="test-2.1-responsive-landscape" name="study-template-version"/>
 <title>1級建築施工管理技術検定 第二次検定｜学習ガイド</title>
-
 <style>
-/* =========================================================
-   FIXED DESIGN TOKENS
-   Do not redesign these values per lesson.
-   ========================================================= */
-
 :root {
-  --font-vi: Arial, Helvetica, sans-serif;
-  --font-ja: "Hiragino Sans", "Yu Gothic", "Yu Gothic UI", Meiryo, sans-serif;
+  --app-viewport-width: 100vw;
+  --font-vi: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  --font-ja: "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic UI", "Yu Gothic", Meiryo, sans-serif;
   --base-font-size: 16px;
-  --content-width: 1320px;
-  --control-size: 38px;
-  --control-gap: 4px;
+  color-scheme: dark;
 }
 
 html[data-theme="dark"] {
@@ -36,16 +32,17 @@ html[data-theme="dark"] {
   --note-bg: #1C2028;
   --memory-bg: #20231C;
   --keyword: #74D7FF;
-  --keyword-bg: rgba(75, 190, 255, .10);
+  --keyword-bg: rgba(75, 190, 255, 0.10);
   --critical-bg: #594613;
   --critical-text: #FFE39A;
   --trap: #FF8585;
   --trap-underline: #FF5F5F;
-  --relation-bg: rgba(139, 126, 255, .12);
+  --relation-bg: rgba(139, 126, 255, 0.12);
   --relation-border: #8F86FF;
   --shadow: rgba(0, 0, 0, .28);
   --dock-bg: rgba(23, 27, 34, .94);
-  --overlay: rgba(0, 0, 0, .46);
+  --overlay: rgba(0, 0, 0, .48);
+  color-scheme: dark;
 }
 
 html[data-theme="light"] {
@@ -72,586 +69,239 @@ html[data-theme="light"] {
   --relation-border: #6C5CE7;
   --shadow: rgba(31, 38, 49, .12);
   --dock-bg: rgba(255, 255, 255, .94);
-  --overlay: rgba(20, 24, 30, .32);
+  --overlay: rgba(19, 26, 35, .28);
+  color-scheme: light;
 }
 
-/* =========================================================
-   BASE
-   ========================================================= */
-
 * { box-sizing: border-box; }
-
 html {
   scroll-behavior: smooth;
   font-size: var(--base-font-size);
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
-
-body {
+body { overflow-anchor: none;
   margin: 0;
-  min-height: 100vh;
   background: var(--bg);
   color: var(--text);
   font-family: var(--font-vi);
   font-size: 1rem;
   line-height: 1.72;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
+  padding-bottom: 11rem;
 }
+:lang(vi), .translation, .translation-cell, .vn-topic, .vn-answer { font-family: var(--font-vi); }
+:lang(ja), .original, .original-cell, .jp-topic, .jp-answer { font-family: var(--font-ja); }
+strong, b { font-weight: 700; }
+a { color: var(--link); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+a:hover { text-decoration-thickness: 2px; }
+h1, h2, h3, h4 { color: var(--heading); line-height: 1.35; }
+h1 { font-size: clamp(1.8rem, 4vw, 2.8rem); margin: 0 0 .55rem; }
+h2 { font-size: clamp(1.38rem, 2.8vw, 2rem); margin: 0; }
+h3 { font-size: clamp(1.12rem, 2vw, 1.48rem); }
+h4 { font-size: 1.02rem; }
+[id] { scroll-margin-top: 22px; }
+p { margin: .62rem 0; }
+ul, ol { padding-left: 1.5rem; }
+li { margin: .34rem 0; }
 
-:lang(vi) {
-  font-family: var(--font-vi);
-}
-
-:lang(ja) {
-  font-family: var(--font-ja);
-}
-
-a {
-  color: var(--link);
-  text-decoration-thickness: 1px;
-  text-underline-offset: 3px;
-}
-
-a:hover {
-  text-decoration-thickness: 2px;
-}
-
-button {
-  font: inherit;
-}
-
-h1, h2, h3, h4 {
-  color: var(--heading);
-  line-height: 1.35;
-}
-
-h1 {
-  margin: 0 0 .35rem;
-  font-size: clamp(1.75rem, 4vw, 2.7rem);
-}
-
-h2 {
-  margin: 2.5rem 0 1rem;
-  padding-bottom: .42rem;
-  border-bottom: 1px solid var(--border);
-  font-size: clamp(1.42rem, 3vw, 2rem);
-}
-
-h3 {
-  margin: 1.9rem 0 .75rem;
-  font-size: clamp(1.16rem, 2.4vw, 1.5rem);
-}
-
-h4 {
-  margin: 1.2rem 0 .45rem;
-  font-size: 1rem;
-}
-
-p {
-  margin: .58rem 0;
-}
-
-ul, ol {
-  padding-left: 1.45rem;
-}
-
-li {
-  margin: .3rem 0;
-}
-
-[id] {
-  scroll-margin-top: 18px;
-}
-
-/* =========================================================
-   PAGE LAYOUT
-   ========================================================= */
-
-.page-shell {
-  width: min(var(--content-width), calc(100% - 28px));
+body > main,
+body > .page-shell {
+  width: min(1320px, calc(100% - 32px));
   margin: 0 auto;
-  padding: 18px 0 112px;
+  padding: 26px 0 70px;
 }
+body > .page-shell > main { width: 100%; margin: 0; padding: 0; }
 
-.hero,
-.toc-card,
-.study-section,
-.aggregate-section {
+.hero {
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: 16px;
   box-shadow: 0 8px 28px var(--shadow);
+  padding: clamp(22px, 4vw, 42px);
+  margin: 0 0 24px;
 }
-
-.hero {
-  margin-bottom: 22px;
-  padding: clamp(22px, 3vw, 40px);
-}
-
-.hero-subtitle {
-  margin: 0;
+.eyebrow, .hero-subtitle, .subtitle, .meta-line, .source-ref, .mini-label, .small, .meta-label {
   color: var(--text-muted);
-  font-size: 1.06rem;
 }
+.eyebrow { font-size: .82rem; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; }
+.hero-subtitle, .subtitle { font-size: 1.08rem; }
+.source-ref, .mini-label, .small, .meta-label { font-size: .86rem; }
 
-.meta-grid {
+.summary-grid, .meta-grid, .mini-grid, .coverage {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(195px, 1fr));
-  gap: 10px;
-  margin-top: 16px;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: .72rem;
+  margin-top: 1rem;
 }
-
-.meta-item {
-  padding: 10px 12px;
+.summary-card, .summary-item, .meta-item, .mini-card, .coverage > div {
   background: var(--surface-alt);
   border: 1px solid var(--border);
   border-radius: 10px;
+  padding: .75rem .85rem;
 }
+.summary-item b, .summary-card strong { color: var(--heading); }
+.source-list { color: var(--text-muted); }
 
-.meta-label {
-  display: block;
-  margin-bottom: 2px;
-  color: var(--text-muted);
-  font-size: .8rem;
-}
-
-.study-section,
+body > main > section:not(#toc),
+body > .page-shell > section:not(#toc),
+body > .page-shell > main > section,
+.topic,
 .aggregate-section {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  box-shadow: 0 7px 22px var(--shadow);
+  padding: clamp(18px, 3vw, 30px);
   margin: 22px 0;
-  padding: clamp(18px, 2.6vw, 30px);
 }
-
-.section-head {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 12px;
-  margin-bottom: 16px;
-  padding-bottom: 10px;
+.subsection { margin: 1.7rem 0 2.1rem; }
+.subsection-title, .section-head {
   border-bottom: 1px solid var(--border);
+  padding-bottom: .65rem;
+  margin-bottom: 1rem;
 }
+.section-head { display: flex; gap: 12px; align-items: baseline; justify-content: space-between; }
 
-.section-head h2,
-.section-head h3 {
-  margin: 0;
-  padding: 0;
-  border: 0;
-}
-
-.source-ref {
-  color: var(--text-muted);
-  font-size: .84rem;
-  white-space: nowrap;
-}
-
-.subsection {
-  margin: 26px 0 32px;
-}
-
-.subsection:first-child {
-  margin-top: 0;
-}
-
-.study-grid {
+.study-grid, .lang-grid, .bilingual-note {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  gap: 14px;
+  gap: 1rem;
   align-items: start;
 }
-
-.study-card {
-  min-width: 0;
-  overflow: hidden;
+.study-card, .lang-card, .note-pane {
   border: 1px solid var(--border);
   border-radius: 12px;
+  overflow: hidden;
+  min-width: 0;
+  background: var(--surface-alt);
 }
-
-.study-card.original {
-  background: var(--original-bg);
-}
-
-.study-card.translation {
-  background: var(--translation-bg);
-}
-
+.study-card.original, .lang-card.original, .original-cell, .jp-topic, .jp-answer { background: var(--original-bg); }
+.study-card.translation, .lang-card.translation, .translation-cell, .vn-topic, .vn-answer { background: var(--translation-bg); }
 .card-title {
-  padding: 9px 13px;
+  padding: .62rem .85rem;
   background: var(--surface-alt);
   border-bottom: 1px solid var(--border);
   color: var(--heading);
-  font-weight: 800;
+  font-weight: 700;
   letter-spacing: .02em;
 }
+.card-body, .recall-source { padding: .9rem 1rem; }
+.card-body.recall-source { padding: 1rem 1.05rem; }
+.item-block { border-top: 1px dashed var(--border); padding-top: .72rem; margin-top: .72rem; }
+.item-block:first-child { border-top: 0; padding-top: 0; margin-top: 0; }
+.item-label { font-weight: 700; color: var(--heading); margin-right: .35em; }
 
-.recall-source {
-  padding: 14px 16px 16px;
-  transition: color .15s ease;
-}
+.table-wrap { overflow-x: auto; margin: .9rem 0; border: 1px solid var(--border); border-radius: 10px; }
+table { width: 100%; border-collapse: collapse; min-width: 650px; background: var(--surface); }
+th, td { border: 1px solid var(--border); padding: .62rem .7rem; vertical-align: top; text-align: left; }
+th { background: var(--surface-alt); color: var(--heading); font-weight: 700; }
+caption { text-align: left; font-weight: 700; color: var(--heading); padding: .58rem .7rem; background: var(--surface-alt); caption-side: top; }
+.compact th, .compact td { padding: .48rem .55rem; }
+.study-table { min-width: 1040px; }
+.study-table .meta { white-space: nowrap; text-align: center; background: var(--surface-alt); }
+.glossary-table { min-width: 920px; }
+.memory-table, .number-table, .num-table { min-width: 760px; }
 
-.recall-source > :first-child {
-  margin-top: 0;
-}
-
-.recall-source > :last-child {
-  margin-bottom: 0;
-}
-
-/* =========================================================
-   CONTENT COMPONENTS
-   ========================================================= */
-
-.table-wrap {
-  overflow-x: auto;
-  margin: 12px 0 18px;
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  -webkit-overflow-scrolling: touch;
-}
-
-table {
-  width: 100%;
-  min-width: 640px;
-  border-collapse: collapse;
-  background: var(--surface);
-}
-
-th,
-td {
-  padding: 9px 11px;
-  border-right: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
-  vertical-align: top;
-  text-align: left;
-}
-
-th:last-child,
-td:last-child {
-  border-right: 0;
-}
-
-tr:last-child td {
-  border-bottom: 0;
-}
-
-th {
-  background: var(--surface-alt);
-  color: var(--heading);
-  font-weight: 800;
-}
-
-caption {
-  padding: 9px 11px;
-  background: var(--surface-alt);
-  color: var(--heading);
-  font-weight: 800;
-  text-align: left;
-  caption-side: top;
-}
-
-.summary-box,
-.note-box,
-.memory-box,
-.warning-box,
-.figure-box,
-.formula-box,
-.comparison-box {
-  margin: 14px 0;
-  padding: 13px 15px;
-  background: var(--note-bg);
+.summary-box, .note-box, .note, .info-box, .background-box, .exam-note, .memory-box, .warning-box, .warning, .figure-box, .figure-card {
   border: 1px solid var(--border);
   border-left-width: 4px;
   border-radius: 10px;
+  padding: .9rem 1rem;
+  margin: 1rem 0;
+  background: var(--note-bg);
 }
+.summary-box, .note-box, .note, .info-box, .background-box { border-left-color: var(--link); }
+.memory-box, .exam-note { background: var(--memory-bg); border-left-color: var(--critical-text); }
+.warning-box, .warning { border-left-color: var(--trap); }
+.figure-box, .figure-card { border-left-color: var(--relation-border); }
+.figure-card { overflow: hidden; padding: 0; }
+.figure-card img { display: block; width: 100%; height: auto; background: #fff; }
+.figure-card figcaption, .figure-explain { padding: .8rem 1rem; }
 
-.summary-box,
-.note-box {
-  border-left-color: var(--link);
-}
-
-.memory-box {
-  background: var(--memory-bg);
-  border-left-color: var(--critical-text);
-}
-
-.warning-box {
-  border-left-color: var(--trap);
-}
-
-.figure-box,
-.formula-box,
-.comparison-box {
-  border-left-color: var(--relation-border);
-}
-
-.figure-card {
-  margin: 15px 0 20px;
-  overflow: hidden;
-  background: var(--surface-alt);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-}
-
-.figure-card img {
-  display: block;
-  width: 100%;
-  height: auto;
-  background: #fff;
-}
-
-.figure-card figcaption {
-  padding: 10px 13px 12px;
-  color: var(--text-muted);
-  font-size: .9rem;
-}
-
-.figure-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 12px;
-  margin: 15px 0 20px;
-}
-
-.figure-grid .figure-card {
-  margin: 0;
-}
-
-.item-block {
-  margin-top: 11px;
-  padding-top: 11px;
-  border-top: 1px dashed var(--border);
-}
-
-.item-block:first-child {
-  margin-top: 0;
-  padding-top: 0;
-  border-top: 0;
-}
-
-.item-label {
-  margin-right: .3em;
-  color: var(--heading);
-  font-weight: 800;
-}
-
-.formula-line {
+.formula, .formula-line {
   display: flex;
   flex-wrap: wrap;
+  gap: .45rem;
   align-items: center;
-  gap: 6px;
-}
-
-.flow-node {
-  padding: 5px 8px;
-  background: var(--surface);
+  padding: .75rem;
+  background: var(--surface-alt);
   border: 1px solid var(--border);
-  border-radius: 7px;
-  font-weight: 700;
+  border-radius: 9px;
+  margin: .75rem 0;
 }
-
-.flow-arrow {
-  color: var(--text-muted);
-  font-weight: 800;
-}
-
-/* =========================================================
-   SEMANTIC HIGHLIGHTING
-   ========================================================= */
+.flow-node { border: 1px solid var(--border); border-radius: 7px; padding: .35rem .55rem; background: var(--surface); font-weight: 700; }
+.flow-arrow { color: var(--text-muted); font-weight: 700; }
 
 .kw {
-  padding: .02em .16em;
-  background: var(--keyword-bg);
-  color: var(--keyword);
-  border-radius: .2em;
-  font-weight: 750;
-}
-
-.critical {
-  padding: .04em .22em;
-  background: var(--critical-bg);
-  color: var(--critical-text);
-  border-radius: .22em;
-  font-weight: 750;
-}
-
-.trap {
-  color: var(--trap);
   font-weight: 700;
+  color: var(--keyword);
+  background: var(--keyword-bg);
+  padding: .02em .16em;
+  border-radius: .2em;
+}
+.critical {
+  font-weight: 700;
+  color: var(--critical-text);
+  background: var(--critical-bg);
+  padding: .04em .22em;
+  border-radius: .22em;
+}
+.trap {
+  font-weight: 700;
+  color: var(--trap);
   text-decoration-line: underline;
   text-decoration-color: var(--trap-underline);
   text-decoration-thickness: 2px;
   text-underline-offset: 3px;
 }
-
 .relation {
-  padding: .02em .14em;
-  background: var(--relation-bg);
+  font-weight: 600;
   color: var(--text);
+  background: var(--relation-bg);
   border-bottom: 2px solid var(--relation-border);
-  font-weight: 650;
+  padding: .02em .14em;
 }
 
-/* Only recall-source is dimmed in Keywords mode. */
-body.keyword-focus .recall-source {
-  color: var(--focus-muted);
-}
+html[data-study-mode="keywords"] .recall-source { color: var(--focus-muted); }
+html[data-study-mode="keywords"] .recall-source .kw { color: var(--keyword); background: var(--keyword-bg); }
+html[data-study-mode="keywords"] .recall-source .critical { color: var(--critical-text); background: var(--critical-bg); }
+html[data-study-mode="keywords"] .recall-source .trap { color: var(--trap); }
+html[data-study-mode="keywords"] .recall-source .relation { color: var(--text); background: var(--relation-bg); }
+html[data-study-mode="keywords"] .recall-source th,
+html[data-study-mode="keywords"] .recall-source .card-title,
+html[data-study-mode="keywords"] .recall-source .item-label { color: var(--heading); }
 
-body.keyword-focus .recall-source .kw {
-  color: var(--keyword);
-  background: var(--keyword-bg);
-}
+.backlink, .back-toc, .back { display: inline-block; margin-top: .8rem; font-size: .9rem; }
 
-body.keyword-focus .recall-source .critical {
-  color: var(--critical-text);
-  background: var(--critical-bg);
-}
-
-body.keyword-focus .recall-source .trap {
-  color: var(--trap);
-}
-
-body.keyword-focus .recall-source .relation {
-  color: var(--text);
-  background: var(--relation-bg);
-}
-
-body.keyword-focus .recall-source th,
-body.keyword-focus .recall-source .item-label {
-  color: var(--heading);
-}
-
-/* =========================================================
-   TOC DRAWER
-   ========================================================= */
-
-.toc-overlay {
+/* Collapsible study controls: one launcher at bottom-left. */
+.control-cluster {
   position: fixed;
-  inset: 0;
-  z-index: 1990;
-  visibility: hidden;
-  opacity: 0;
-  background: var(--overlay);
-  transition: opacity .18s ease, visibility .18s ease;
-}
-
-.toc-drawer {
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  z-index: 2000;
-  width: min(78vw, 360px);
-  padding: max(14px, env(safe-area-inset-top)) 14px
-           max(18px, env(safe-area-inset-bottom))
-           max(14px, env(safe-area-inset-left));
-  overflow-y: auto;
-  background: var(--surface);
-  border-right: 1px solid var(--border);
-  box-shadow: 14px 0 36px var(--shadow);
-  transform: translateX(-103%);
-  transition: transform .2s ease;
-  -webkit-overflow-scrolling: touch;
-}
-
-body.toc-open .toc-overlay {
-  visibility: visible;
-  opacity: 1;
-}
-
-body.toc-open .toc-drawer {
-  transform: translateX(0);
-}
-
-.toc-drawer-head {
-  position: sticky;
-  top: 0;
-  z-index: 1;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 10px;
-  padding: 4px 0 10px;
-  background: var(--surface);
-  border-bottom: 1px solid var(--border);
-}
-
-.toc-drawer-head h2 {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  font-size: 1.2rem;
-}
-
-.toc-close {
-  width: 34px;
-  height: 34px;
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  background: var(--surface-alt);
-  color: var(--text);
-  cursor: pointer;
-}
-
-.toc-list {
-  margin: 12px 0 0;
-  padding-left: 1.2rem;
-}
-
-.toc-list ol {
-  margin-top: 4px;
-}
-
-/* =========================================================
-   COMPACT CONTROLS
-   Left: vertical TOC / Back / Next
-   Right: horizontal display controls
-   ========================================================= */
-
-.nav-dock-left,
-.settings-dock-right {
-  position: fixed;
-  bottom: max(14px, env(safe-area-inset-bottom));
-  z-index: 1900;
-  padding: 5px;
-  background: var(--dock-bg);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  box-shadow: 0 8px 24px var(--shadow);
-  -webkit-backdrop-filter: blur(10px);
-  backdrop-filter: blur(10px);
+  left: max(8px, env(safe-area-inset-left));
+  bottom: max(10px, env(safe-area-inset-bottom));
+  z-index: 2200;
+  width: 38px;
+  height: 38px;
   user-select: none;
+  -webkit-user-select: none;
 }
 
-.nav-dock-left {
-  left: max(10px, env(safe-area-inset-left));
-  display: flex;
-  flex-direction: column;
-  gap: var(--control-gap);
-}
-
-.settings-dock-right {
-  right: max(10px, env(safe-area-inset-right));
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: var(--control-gap);
-}
-
-.nav-dock-left button,
-.settings-dock-right button {
-  display: flex;
+.control-launcher,
+.control-panel button {
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: var(--control-size);
-  height: var(--control-size);
-  min-width: var(--control-size);
-  min-height: var(--control-size);
+  flex: 0 0 auto;
+  width: 32px;
+  height: 32px;
+  min-width: 32px;
+  min-height: 32px;
   padding: 0;
-  background: var(--surface-alt);
-  color: var(--text);
   border: 1px solid var(--border);
   border-radius: 8px;
-  font-family: var(--font-vi);
-  font-size: .96rem;
+  background: var(--surface-alt);
+  color: var(--text);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
   font-weight: 700;
   line-height: 1;
   cursor: pointer;
@@ -659,98 +309,246 @@ body.toc-open .toc-drawer {
   -webkit-tap-highlight-color: transparent;
 }
 
-.nav-dock-left button:hover,
-.settings-dock-right button:hover {
+.control-launcher {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  z-index: 2;
+  width: 38px;
+  height: 38px;
+  min-width: 38px;
+  min-height: 38px;
+  border-radius: 11px;
+  background: var(--dock-bg);
+  box-shadow: 0 6px 18px var(--shadow);
+  font-size: 20px;
+  letter-spacing: 1px;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+}
+
+.control-panel {
+  position: absolute;
+  left: 43px;
+  bottom: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 2px;
+  width: max-content;
+  max-width: calc(100dvw - max(59px, env(safe-area-inset-left) + 59px) - max(8px, env(safe-area-inset-right)));
+  padding: 3px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  overscroll-behavior-x: contain;
+  scrollbar-width: none;
+  border: 1px solid var(--border);
+  border-radius: 11px;
+  background: var(--dock-bg);
+  box-shadow: 0 6px 18px var(--shadow);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateX(-10px) scale(.98);
+  transform-origin: left bottom;
+  transition: opacity .14s ease, transform .14s ease, visibility .14s ease;
+}
+
+.control-panel::-webkit-scrollbar { display: none; }
+
+.control-cluster.open .control-panel {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateX(0) scale(1);
+}
+
+.control-cluster.open .control-launcher {
   border-color: var(--link);
 }
 
-.nav-dock-left button:active,
-.settings-dock-right button:active {
-  transform: translateY(1px);
-}
+.control-panel button:active,
+.control-launcher:active { transform: translateY(1px); }
 
-.nav-dock-left button:disabled {
-  opacity: .38;
+.control-panel button:hover,
+.control-launcher:hover { border-color: var(--link); }
+
+.control-panel button:disabled {
+  opacity: .36;
   cursor: default;
 }
 
-.settings-dock-right .font-reset {
-  font-size: .66rem;
+.control-panel .font-reset {
+  width: 38px;
+  min-width: 38px;
+  font-size: 9px;
   letter-spacing: -.03em;
 }
 
-.settings-dock-right .mode-toggle {
-  font-size: 1.02rem;
+.control-panel .mode-toggle { font-size: 14px; }
+
+.control-panel .home-icon svg {
+  width: 17px;
+  height: 17px;
+  display: block;
 }
 
-/* =========================================================
-   RESPONSIVE
-   ========================================================= */
+/*
+  Responsive reading geometry for iPad/iPhone.
+  The page follows the actual Visual Viewport width. When rotating to
+  landscape it expands across the wider screen instead of staying at
+  portrait width. Reader-anchor JS below restores the same logical text
+  position after the reflow.
+*/
+@media (pointer: coarse) {
+  body > main,
+  body > .page-shell {
+    width: min(calc(var(--app-viewport-width, 100vw) - 16px), 1320px) !important;
+    max-width: 1320px !important;
+  }
+
+
+  .hero {
+    padding: 1rem !important;
+  }
+
+  body > main > section:not(#toc),
+  body > .page-shell > section:not(#toc),
+  body > .page-shell > main > section,
+  .topic,
+  .aggregate-section {
+    padding: 1rem !important;
+  }
+}
+
+
+@media (pointer: coarse) and (orientation: portrait) {
+  .study-grid,
+  .lang-grid,
+  .bilingual-note {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+@media (pointer: coarse) and (orientation: landscape) {
+  body > main,
+  body > .page-shell {
+    width: min(calc(var(--app-viewport-width, 100dvw) - 20px), 1320px) !important;
+  }
+}
+
+/* TOC drawer */
+#toc {
+  position: fixed !important;
+  left: 0 !important;
+  top: 0 !important;
+  bottom: 0 !important;
+  z-index: 2100 !important;
+  width: min(82vw, 390px) !important;
+  max-height: 100dvh !important;
+  overflow-y: auto !important;
+  margin: 0 !important;
+  padding: 74px 20px 28px !important;
+  background: var(--surface) !important;
+  border: 0 !important;
+  border-right: 1px solid var(--border) !important;
+  border-radius: 0 16px 16px 0 !important;
+  box-shadow: 10px 0 30px var(--shadow) !important;
+  transform: translateX(-105%);
+  transition: transform .2s ease;
+}
+body.toc-open #toc { transform: translateX(0); }
+#toc .toc-grid { columns: 1 !important; display: block !important; }
+#toc ol { margin-top: .35rem; }
+.toc-drawer-head {
+  position: sticky;
+  top: -74px;
+  margin: -74px -20px 18px;
+  padding: 13px 14px;
+  min-height: 58px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  z-index: 2;
+}
+.toc-drawer-head strong { color: var(--heading); }
+.toc-close {
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  background: var(--surface-alt);
+  color: var(--text);
+  font: 700 1.25rem var(--font-vi);
+  cursor: pointer;
+}
+.toc-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  background: var(--overlay);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .2s ease;
+}
+body.toc-open .toc-overlay { opacity: 1; pointer-events: auto; }
+body.toc-open { overflow: hidden; }
 
 @media (max-width: 900px) {
-  .study-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .page-shell {
-    width: min(100% - 18px, 760px);
-  }
-
-  .section-head {
-    display: block;
-  }
-
-  .source-ref {
-    display: block;
-    margin-top: 6px;
-    white-space: normal;
-  }
+  .study-grid, .lang-grid, .bilingual-note { grid-template-columns: 1fr; }
+  body > main, body > .page-shell { width: min(100% - 20px, 780px); padding-top: 14px; }
+  .section-head { display: block; }
+  .source-ref { display: block; margin-top: .45rem; }
+  table { min-width: 620px; }
 }
 
 @media (max-width: 560px) {
-  body {
-    font-size: .96rem;
-  }
-
-  .hero,
-  .study-section,
-  .aggregate-section {
-    border-radius: 12px;
-  }
-
-  .recall-source {
-    padding: 12px 13px 14px;
-  }
-
-  :root {
-    --control-size: 36px;
-  }
-
-  .settings-dock-right {
-    right: max(7px, env(safe-area-inset-right));
-  }
-
-  .nav-dock-left {
-    left: max(7px, env(safe-area-inset-left));
-  }
+  body { font-size: 1rem; }
+  body > main, body > .page-shell { width: calc(100% - 14px); }
+  .hero { padding: 1rem; border-radius: 12px; }
+  body > main > section:not(#toc),
+  body > .page-shell > section:not(#toc),
+  body > .page-shell > main > section,
+  .topic, .aggregate-section { padding: 1rem; border-radius: 12px; }
 }
 
-@media (orientation: landscape) and (pointer: coarse) {
-  .nav-dock-left {
-    left: max(14px, env(safe-area-inset-left));
+
+/*
+  iPad/tablet landscape:
+  Japanese and Vietnamese return to two side-by-side columns.
+  The min-height condition avoids forcing ordinary phone landscape into
+  two columns that would be too narrow.
+*/
+@media (pointer: coarse) and (orientation: landscape) and (min-width: 700px) and (min-height: 600px) {
+  body > main,
+  body > .page-shell {
+    width: min(calc(var(--app-viewport-width, 100dvw) - 20px), 1320px) !important;
+    max-width: 1320px !important;
   }
 
-  .settings-dock-right {
-    right: max(14px, env(safe-area-inset-right));
+  .study-grid,
+  .lang-grid,
+  .bilingual-note {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important;
+    gap: clamp(.75rem, 1.4vw, 1rem) !important;
+    align-items: start;
+  }
+
+  .study-card,
+  .lang-card,
+  .note-pane {
+    min-width: 0;
   }
 }
-
-/* =========================================================
-   PRINT
-   ========================================================= */
 
 @media print {
-  html,
+  .control-cluster { display: none !important; }
+  :root,
   html[data-theme="dark"],
   html[data-theme="light"] {
     --bg: #FFFFFF;
@@ -772,737 +570,588 @@ body.toc-open .toc-drawer {
     --trap-underline: #9E1B12;
     --relation-bg: #F0EDFF;
     --relation-border: #5B4FD6;
+    --shadow: transparent;
   }
-
-  body {
-    background: #fff;
-    color: #111;
-    font-size: 11pt;
+  body { background: #fff; color: #111; font-size: 11pt; padding-bottom: 0; }
+  .control-cluster, .toc-overlay, .toc-drawer-head { display: none !important; }
+  #toc {
+    position: static !important;
+    transform: none !important;
+    width: auto !important;
+    max-height: none !important;
+    padding: 1rem !important;
+    border: 1px solid var(--border) !important;
+    border-radius: 10px !important;
+    box-shadow: none !important;
+    margin: 1rem 0 !important;
   }
-
-  .page-shell {
-    width: 100%;
-    padding: 0;
-  }
-
-  .nav-dock-left,
-  .settings-dock-right,
-  .toc-drawer,
-  .toc-overlay {
-    display: none !important;
-  }
-
-  .hero,
-  .study-card,
-  .summary-box,
-  .note-box,
-  .memory-box,
-  .warning-box,
-  .figure-card {
-    break-inside: avoid;
-  }
-
-  a {
-    color: #000;
-    text-decoration: none;
-  }
+  body > main, body > .page-shell { width: 100%; padding: 0; }
+  .hero, .study-card, .lang-card, .summary-box, .note-box, .note, .memory-box, .warning-box, .figure-box, .figure-card { break-inside: avoid; }
+  a { color: #000; text-decoration: none; }
+  .backlink, .back-toc, .back { display: none; }
 }
-</style>
-
-<script>
-/* Apply saved theme before body paint to reduce flashing. */
-(function () {
-  try {
-    const saved = localStorage.getItem("study-theme");
-    const systemDark = window.matchMedia &&
-      window.matchMedia("(prefers-color-scheme: dark)").matches;
-    document.documentElement.dataset.theme =
-      saved || (systemDark ? "dark" : "light");
-  } catch (e) {
-    document.documentElement.dataset.theme = "dark";
+</style><script>
+try {
+  if ("scrollRestoration" in history) {
+    history.scrollRestoration = "manual";
   }
-
+} catch (e) {}
+(function () {
+  const root = document.documentElement;
   try {
-    const savedScale = Number(localStorage.getItem("study-font-scale")) || 100;
-    const clampedScale = Math.max(80, Math.min(140, savedScale));
-    document.documentElement.style.setProperty(
-      "--base-font-size",
-      `${16 * clampedScale / 100}px`
-    );
-  } catch (e) {}
+    const savedTheme = localStorage.getItem('study-theme');
+    root.dataset.theme = savedTheme === 'light' ? 'light' : 'dark';
+
+    const savedMode = localStorage.getItem('study-mode');
+    root.dataset.studyMode = savedMode === 'keywords' ? 'keywords' : 'full';
+
+    const savedScale = Number(localStorage.getItem('study-font-scale'));
+    const scale = Number.isFinite(savedScale) && savedScale >= 50 && savedScale <= 150 && savedScale % 5 === 0
+      ? savedScale : 100;
+    root.style.setProperty('--base-font-size', (16 * scale / 100) + 'px');
+  } catch (e) {
+    root.dataset.theme = 'dark';
+    root.dataset.studyMode = 'full';
+    root.style.setProperty('--base-font-size', '16px');
+  }
 })();
-</script>
-</head>
-
+</script></head>
 <body>
-
-<!-- =======================================================
-     TOC DRAWER
-     Replace only the list contents.
-     ======================================================= -->
-<div class="toc-overlay" id="toc-overlay" aria-hidden="true"></div>
-
-<aside class="toc-drawer" id="toc-drawer" aria-label="Mục lục">
-  <div class="toc-drawer-head">
-    <h2>Mục lục</h2>
-    <button class="toc-close" id="toc-close" type="button" aria-label="Đóng mục lục">×</button>
-  </div>
-
-  <!-- TOC_ITEMS_START -->
-  <ol class="toc-list">
-    <li><a href="#sec-exam-content">2. 第二次検定の出題内容</a>
-      <ol>
-        <li><a href="#sec-exam-format">第二次検定の出題形式（予想）</a></li>
-        <li><a href="#sec-q1">問題1 施工経験記述</a></li>
-        <li><a href="#sec-q2">問題2 施工計画</a></li>
-        <li><a href="#sec-q3">問題3 施工管理</a></li>
-        <li><a href="#sec-structure">問題4/5 躯体工事</a></li>
-        <li><a href="#sec-finish">問題4/5 仕上げ工事</a></li>
-        <li><a href="#sec-law">問題6 建築法規</a></li>
-        <li><a href="#sec-scoring">評価基準（推定例）</a></li>
-      </ol>
-    </li>
-    <li><a href="#sec-standard-study">3. 初学者向けの標準的な学習手順</a>
-      <ol>
-        <li><a href="#sec-day1">1日目</a></li>
-        <li><a href="#sec-day2">2日目</a></li>
-        <li><a href="#sec-day3">3日目</a></li>
-        <li><a href="#sec-day4">4日目</a></li>
-        <li><a href="#sec-day5">5日目</a></li>
-      </ol>
-    </li>
-    <li><a href="#sec-study-notes">4. 学習手順の補足</a></li>
-    <li><a href="#sec-summary-list">5. 最新問題の一括要約リスト</a></li>
-    <li><a href="#sec-express-course">6. 超特急コースの学習手順</a></li>
-    <li><a href="#terms">Thuật ngữ chuyên môn</a></li>
-    <li><a href="#memory">Điểm cần nhớ và mẹo nhớ</a></li>
-  </ol>
-  <!-- TOC_ITEMS_END -->
-</aside>
-
-<!-- =======================================================
-     FIXED NAVIGATION CONTROLS
-     Left bottom: vertical.
-     Do not add a Top button.
-     ======================================================= -->
-<nav class="nav-dock-left" aria-label="Điều hướng học tập">
-  <button id="toc-toggle" type="button" aria-label="Mục lục" title="Mục lục"
-          aria-controls="toc-drawer" aria-expanded="false">☰</button>
-  <button id="section-prev" type="button" aria-label="Mục trước" title="Back">‹</button>
-  <button id="section-next" type="button" aria-label="Mục tiếp theo" title="Next">›</button>
-</nav>
-
-<!-- =======================================================
-     FIXED DISPLAY CONTROLS
-     Right bottom: horizontal.
-     ======================================================= -->
-<nav class="settings-dock-right" aria-label="Thiết lập hiển thị">
-  <button id="theme-toggle" type="button" aria-label="Đổi Dark/Light"
-          title="Đổi Dark/Light" aria-pressed="false">☀</button>
-  <button id="mode-toggle" class="mode-toggle" type="button"
-          aria-label="Đổi Full/Keywords" title="Đổi Full/Keywords"
-          aria-pressed="false">🎯</button>
-  <button id="font-reset" class="font-reset" type="button"
-          aria-label="Đặt lại cỡ chữ 100%" title="Đặt lại cỡ chữ 100%">100%</button>
-  <button id="font-down" type="button" aria-label="Giảm cỡ chữ"
-          title="Giảm cỡ chữ">A−</button>
-  <button id="font-up" type="button" aria-label="Tăng cỡ chữ"
-          title="Tăng cỡ chữ">A+</button>
-</nav>
-
-<div class="page-shell">
-
-  <!-- =====================================================
-       DOCUMENT HEADER
-       Replace title/subtitle/meta values only.
-       ===================================================== -->
-  <header class="hero" id="top">
-    <h1>1級建築施工管理技術検定 第二次検定｜学習ガイド</h1>
-    <p class="hero-subtitle">受検ガイダンス＆学び方講習｜Book page 8-12</p>
-
-    <div class="meta-grid">
-      <div class="meta-item">
-        <span class="meta-label">PDF nguồn</span>
-        00a_導入_学習ガイド_p001-013.pdf
-      </div>
-      <div class="meta-item">
-        <span class="meta-label">File ID</span>
-        F001
-      </div>
-      <div class="meta-item">
-        <span class="meta-label">Phạm vi</span>
-        Book page 8-12
-      </div>
-      <div class="meta-item">
-        <span class="meta-label">Chế độ</span>
-        Song ngữ Nhật-Việt / Dark-Light / Full-Keywords / Font 80-140%
-      </div>
-    </div>
-  </header>
-
-  <!-- =====================================================
-       CONTENT_START
-       AI may freely repeat/reorder approved content components.
-       Global CSS/JS/control structure must not be redesigned.
-       ===================================================== -->
-  <main id="lesson">
-
-    <div id="toc" aria-hidden="true"></div>
-
-    <section class="study-section" id="sec-exam-content">
-      <div class="section-head">
-        <h2>2　1級建築施工管理技術検定試験第二次検定の出題内容</h2>
-        <span class="source-ref">Nguồn: Book page 8-10</span>
-      </div>
-
-      <section class="subsection" id="sec-exam-format">
-        <h3>第二次検定の出題形式（予想）</h3>
-        <p class="source-ref">Nguồn: Book page 8</p>
-        <div class="study-grid">
-          <article class="study-card original">
-            <div class="card-title">原文</div>
-            <div class="recall-source" lang="ja">
-              <p>令和8年度の1級建築施工管理技術検定試験第二次検定の出題内容は、令和3年4月に改正された施工技術検定規則（建設業法施行令に基づく法律）および令和7年度～令和4年度の第二次検定の出題形式から分析すると、下表の<span class="relation">「偶数年度」に近いものになることが予想</span>されている。（出題形式は奇数年度と偶数年度では多少異なっている）</p>
-              <p>1級建築施工管理技士の資格は、<strong class="kw">「監理技術者」になるために必要</strong>なものであることから、<strong class="kw">建築一式工事の下請契約額</strong>が<mark class="critical">8000万円以上</mark>（令和7年1月31日以前の工事については<mark class="critical">7000万円以上</mark>）となる規模を想定した問題が出題されている。また、そうした立場での解答とすることが望ましい。</p>
-              <div class="table-wrap">
-                <table>
-                  <caption>第二次検定の出題形式（予想）</caption>
-                  <thead><tr><th>問題</th><th>年度</th><th>出題分野</th><th>予想配点</th><th>出題項目の例</th><th>解答形式</th></tr></thead>
-                  <tbody>
-                    <tr><td>問題1</td><td>共通</td><td><strong class="kw">施工経験記述</strong></td><td><mark class="critical">32点</mark></td><td>施工の合理化・品質管理・建設副産物</td><td><strong class="kw">記述式</strong></td></tr>
-                    <tr><td>問題2</td><td>共通</td><td><strong class="kw">施工計画</strong></td><td><mark class="critical">12点</mark></td><td>仮設計画の留意点・災害防止対策</td><td><strong class="kw">記述式</strong></td></tr>
-                    <tr><td>問題3</td><td>共通</td><td><strong class="kw">施工管理</strong></td><td><mark class="critical">12点</mark></td><td>ネットワークの読解・先行後続作業</td><td><strong class="kw">記述式</strong></td></tr>
-                    <tr><td>問題4</td><td><strong class="kw">奇数</strong></td><td>躯体工事</td><td><mark class="critical">16点</mark></td><td>躯体工事の施工上の留意事項を記述</td><td>記述式</td></tr>
-                    <tr><td>問題4</td><td><strong class="kw">偶数</strong></td><td><span class="relation">仕上げ工事</span></td><td><mark class="critical">16点</mark></td><td>仕上げ工事の施工上の留意事項を記述</td><td><strong class="kw">記述式</strong></td></tr>
-                    <tr><td>問題5</td><td><strong class="kw">奇数</strong></td><td>仕上げ工事</td><td><mark class="critical">16点</mark></td><td>仕上げ工事の文章に当てはまる語句を選択</td><td>五肢択一式</td></tr>
-                    <tr><td>問題5</td><td><strong class="kw">偶数</strong></td><td><span class="relation">躯体工事</span></td><td><mark class="critical">16点</mark></td><td>躯体工事の文章に当てはまる語句を選択</td><td><strong class="kw">五肢択一式</strong></td></tr>
-                    <tr><td>問題6</td><td>共通</td><td><strong class="kw">建築法規</strong></td><td><mark class="critical">12点</mark></td><td>建設業法・建築基準法・労働安全衛生法</td><td><strong class="kw">五肢択一式</strong></td></tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </article>
-          <article class="study-card translation">
-            <div class="card-title">Bản dịch tiếng Việt</div>
-            <div class="recall-source" lang="vi">
-              <p>Theo phân tích dựa trên Quy tắc kiểm định kỹ thuật thi công được sửa đổi vào tháng 4 năm Reiwa 3 (2021) và hình thức ra đề của kỳ kiểm định lần thứ hai từ năm Reiwa 4 đến Reiwa 7, nội dung thi của kỳ <strong class="kw">1級建築施工管理技術検定 第二次検定</strong> năm Reiwa 8 được dự đoán sẽ <span class="relation">gần với hình thức của năm chẵn</span> trong bảng dưới đây. Hình thức ra đề giữa năm lẻ và năm chẵn có một số khác biệt.</p>
-              <p>Do chứng chỉ 1級建築施工管理技士 là chứng chỉ <strong class="kw">cần thiết để trở thành 監理技術者</strong>, đề thi được xây dựng với giả định về quy mô của công trình thuộc loại <strong class="kw">建築一式工事, tổng giá trị hợp đồng thầu phụ</strong> từ <mark class="critical">80 triệu yên trở lên</mark>; đối với công trình trước ngày 31/01/Reiwa 7 thì từ <mark class="critical">70 triệu yên trở lên</mark>. Khi trả lời cũng nên đặt mình ở vị trí quản lý tương ứng với quy mô công trình như vậy.</p>
-              <div class="table-wrap">
-                <table>
-                  <caption>Hình thức ra đề kỳ kiểm định lần thứ hai, dự kiến</caption>
-                  <thead><tr><th>Câu</th><th>Năm</th><th>Lĩnh vực</th><th>Điểm dự kiến</th><th>Ví dụ nội dung ra đề</th><th>Hình thức trả lời</th></tr></thead>
-                  <tbody>
-                    <tr><td>Câu 1</td><td>Chung</td><td><strong class="kw">Mô tả kinh nghiệm thi công</strong></td><td><mark class="critical">32 điểm</mark></td><td>Hợp lý hóa thi công, quản lý chất lượng, sản phẩm phụ xây dựng</td><td><strong class="kw">Tự luận</strong></td></tr>
-                    <tr><td>Câu 2</td><td>Chung</td><td><strong class="kw">Kế hoạch thi công</strong></td><td><mark class="critical">12 điểm</mark></td><td>Điểm lưu ý trong kế hoạch công trình tạm, biện pháp phòng ngừa tai nạn</td><td><strong class="kw">Tự luận</strong></td></tr>
-                    <tr><td>Câu 3</td><td>Chung</td><td><strong class="kw">Quản lý thi công</strong></td><td><mark class="critical">12 điểm</mark></td><td>Đọc hiểu network schedule, công việc trước và sau</td><td><strong class="kw">Tự luận</strong></td></tr>
-                    <tr><td>Câu 4</td><td><strong class="kw">Năm lẻ</strong></td><td>Công tác phần thân</td><td><mark class="critical">16 điểm</mark></td><td>Viết các điểm cần lưu ý khi thi công phần thân</td><td>Tự luận</td></tr>
-                    <tr><td>Câu 4</td><td><strong class="kw">Năm chẵn</strong></td><td><span class="relation">Công tác hoàn thiện</span></td><td><mark class="critical">16 điểm</mark></td><td>Viết các điểm cần lưu ý khi thi công hoàn thiện</td><td><strong class="kw">Tự luận</strong></td></tr>
-                    <tr><td>Câu 5</td><td><strong class="kw">Năm lẻ</strong></td><td>Công tác hoàn thiện</td><td><mark class="critical">16 điểm</mark></td><td>Chọn từ ngữ phù hợp với câu mô tả về công tác hoàn thiện</td><td>Trắc nghiệm chọn 1 trong 5</td></tr>
-                    <tr><td>Câu 5</td><td><strong class="kw">Năm chẵn</strong></td><td><span class="relation">Công tác phần thân</span></td><td><mark class="critical">16 điểm</mark></td><td>Chọn từ ngữ phù hợp với câu mô tả về công tác phần thân</td><td><strong class="kw">Trắc nghiệm chọn 1 trong 5</strong></td></tr>
-                    <tr><td>Câu 6</td><td>Chung</td><td><strong class="kw">Pháp quy xây dựng</strong></td><td><mark class="critical">12 điểm</mark></td><td>Luật Xây dựng, Luật Tiêu chuẩn xây dựng, Luật An toàn và Vệ sinh lao động</td><td><strong class="kw">Trắc nghiệm chọn 1 trong 5</strong></td></tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </article>
-        </div>
-        <div class="note-box"><strong>Giải thích bảng</strong><p>Điểm dự kiến cộng lại thành <strong>100 điểm</strong>: Câu 1: 32 điểm; Câu 2: 12 điểm; Câu 3: 12 điểm; Câu 4: 16 điểm; Câu 5: 16 điểm; Câu 6: 12 điểm. Đối với <strong>Reiwa 8 là năm chẵn</strong>, bảng dự kiến đặt <strong>仕上げ工事 ở Câu 4</strong> và <strong>躯体工事 ở Câu 5</strong>.</p></div>
-        <p><a href="#toc">↑ Mục lục</a></p>
-      </section>
-
-      <section class="subsection" id="sec-q1">
-        <h3>問題1（施工経験記述：予想配点32点）</h3>
-        <p class="source-ref">Nguồn: Book page 8</p>
-        <div class="study-grid">
-          <article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja">
-            <p>施工経験記述の問題は、次の<strong class="kw">3項目</strong>から出題されることが多い。近年の施工管理技術検定試験では、前年度と同じ項目から出題されることも多かったので、確実に合格するためには、<span class="relation">この3項目すべてについて、施工経験記述を準備</span>しておく必要がある。</p>
-            <ol>
-              <li><strong class="kw">工程管理</strong>（施工の合理化・生産性の向上・工程短縮・現場作業の軽減・労働者の確保等）</li>
-              <li><strong class="kw">品質管理</strong>（顧客の要望を満たす品質確保・品質管理項目・品質管理活動等）</li>
-              <li><strong class="kw">建設副産物の具体的な対策</strong>（抑制・再使用・再生利用・適正処分等）</li>
-            </ol>
-            <p>問題文に示された工事概要の建築工事について、出題された①～③のいずれかの課題についての質問に対して、<span class="relation">受検者自身の今日までの建築工事の経験を踏まえて</span>、建築工事の現場を管理していく上での受検者自身の考えを、<strong class="kw">記述式</strong>で解答する。</p>
-            <p>※施工経験記述の出題方式に関する内容は、令和6年度以降の第二次検定に基づくものです。</p>
-          </div></article>
-          <article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi">
-            <p>Câu hỏi về mô tả kinh nghiệm thi công thường được ra từ <strong class="kw">3 nội dung</strong> sau. Trong những năm gần đây, kỳ kiểm định kỹ thuật quản lý thi công nhiều lần ra lại cùng nội dung với năm trước. Vì vậy, để bảo đảm khả năng đỗ, cần <span class="relation">chuẩn bị phần mô tả kinh nghiệm thi công cho cả 3 nội dung</span>.</p>
-            <ol>
-              <li><strong class="kw">Quản lý tiến độ</strong>: hợp lý hóa thi công, nâng cao năng suất, rút ngắn tiến độ, giảm công việc tại hiện trường, bảo đảm nhân lực...</li>
-              <li><strong class="kw">Quản lý chất lượng</strong>: bảo đảm chất lượng đáp ứng yêu cầu của khách hàng, hạng mục quản lý chất lượng, hoạt động quản lý chất lượng...</li>
-              <li><strong class="kw">Biện pháp cụ thể đối với sản phẩm phụ xây dựng</strong>: hạn chế phát sinh, tái sử dụng, tái chế, xử lý phù hợp...</li>
-            </ol>
-            <p>Đối với công trình xây dựng có phần tổng quan công trình được nêu trong đề, thí sinh sẽ trả lời bằng <strong class="kw">hình thức tự luận</strong> câu hỏi liên quan đến một trong ba chủ đề trên, <span class="relation">dựa trên kinh nghiệm xây dựng của chính thí sinh cho đến thời điểm hiện tại</span> và trình bày quan điểm của mình trong việc quản lý công trường xây dựng.</p>
-            <p>※ Nội dung về hình thức ra đề của phần mô tả kinh nghiệm thi công dựa trên kỳ kiểm định lần thứ hai từ năm Reiwa 6 trở đi.</p>
-          </div></article>
-        </div>
-      </section>
-
-      <section class="subsection" id="sec-q2">
-        <h3>問題2（施工計画：予想配点12点）</h3>
-        <p class="source-ref">Nguồn: Book page 8</p>
-        <div class="study-grid">
-          <article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja">
-            <p>施工計画の問題は、次の<strong class="kw">3項目</strong>から出題されることが多い。令和8年度の試験では、下記の<strong class="kw">②の項目</strong>に関する問題が、記述式で出題される可能性が比較的高いと思われるが、下記の<strong class="kw">③の項目</strong>に関する問題が、記述式で出題される可能性もあると思われる。</p>
-            <ol><li>仮設物の設置計画の留意点</li><li><strong class="kw">労働災害防止対策に関する留意点</strong></li><li><strong class="kw">仮設物使用中の安全点検・確認の留意点</strong></li></ol>
-          </div></article>
-          <article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi">
-            <p>Câu hỏi về kế hoạch thi công thường được ra từ <strong class="kw">3 nội dung</strong> sau. Đối với kỳ thi Reiwa 8, sách nhận định khả năng tương đối cao sẽ ra câu tự luận về <strong class="kw">mục ②</strong>; tuy nhiên cũng có khả năng ra câu tự luận về <strong class="kw">mục ③</strong>.</p>
-            <ol><li>Điểm cần lưu ý trong kế hoạch bố trí công trình tạm.</li><li><strong class="kw">Điểm cần lưu ý về biện pháp phòng ngừa tai nạn lao động.</strong></li><li><strong class="kw">Điểm cần lưu ý khi kiểm tra, xác nhận an toàn trong quá trình sử dụng công trình tạm.</strong></li></ol>
-          </div></article>
-        </div>
-        <p><a href="#toc">↑ Mục lục</a></p>
-      </section>
-
-      <section class="subsection" id="sec-q3">
-        <h3>問題3（施工管理：予想配点12点）</h3>
-        <p class="source-ref">Nguồn: Book page 9</p>
-        <div class="study-grid">
-          <article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja">
-            <p>施工管理の問題は、<span class="relation">平成28年度まではバーチャート工程表</span>からの出題であったが、<span class="relation">平成29年度以降はネットワーク工程表</span>からの出題となっている。令和8年度の試験でも、<strong class="kw">ネットワーク工程表の読解</strong>に関する問題が、記述式で出題されると思われる。</p>
-            <ol>
-              <li>躯体・仕上げの作業について、<strong class="kw">日程・先行作業・後続作業</strong>などから作業名を推定する。</li>
-              <li>工程表や各作業の施工条件から、<strong class="kw">ネットワーク工程表を修正する方法</strong>を理解する。</li>
-              <li>工程短縮や労働力不足による<strong class="kw">単列作業・並列作業の変更</strong>について、工程への影響を把握する。</li>
-              <li>各作業の<strong class="kw">フリーフロート・トータルフロート</strong>や、建設工事の<strong class="kw">総所要日数</strong>を求める。</li>
-            </ol>
-          </div></article>
-          <article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi">
-            <p>Cho đến năm Heisei 28, phần quản lý thi công được ra dưới dạng đọc <span class="relation">biểu đồ tiến độ bar chart</span>. Từ năm Heisei 29 trở đi, đề thi chuyển sang <span class="relation">network schedule</span>. Đối với kỳ thi Reiwa 8, sách dự đoán nội dung <strong class="kw">đọc hiểu network schedule</strong> tiếp tục được ra dưới dạng tự luận.</p>
-            <ol>
-              <li>Đối với công tác phần thân và công tác hoàn thiện, suy đoán tên công việc từ <strong class="kw">lịch trình, công việc trước, công việc sau</strong>...</li>
-              <li>Hiểu <strong class="kw">phương pháp sửa network schedule</strong> dựa trên biểu đồ tiến độ và điều kiện thi công của từng công việc.</li>
-              <li>Xác định ảnh hưởng đến tiến độ khi thay đổi giữa <strong class="kw">công việc thực hiện nối tiếp và công việc thực hiện song song</strong> do rút ngắn tiến độ hoặc thiếu nhân lực.</li>
-              <li>Tính <strong class="kw">free float, total float</strong> của từng công việc và <strong class="kw">tổng số ngày cần thiết của công trình</strong>.</li>
-            </ol>
-          </div></article>
-        </div>
-      </section>
-
-      <section class="subsection" id="sec-structure">
-        <h3>問題4 または 問題5（躯体工事：予想配点16点）</h3>
-        <p class="source-ref">Nguồn: Book page 9</p>
-        <div class="study-grid">
-          <article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja">
-            <p>躯体工事の問題は、次の2項目から隔年ごとに①または②の形式で出題されることが多い。令和8年度の試験では、<span class="relation">下記の②の出題形式となる可能性が比較的高い</span>と思われる。</p>
-            <ol>
-              <li><strong class="kw">躯体工事の施工上の留意事項（4工種）</strong>について、具体的な記述として解答する。（<strong class="kw">記述式</strong>）</li>
-              <li><strong class="kw">躯体工事の施工上の留意事項（8工種）</strong>について、文章中の空欄に当てはまる語句又は数値の組合せを解答する。（<strong class="kw">五肢択一式</strong>）</li>
-            </ol>
-            <p>※躯体工事の出題方式に関する内容は、令和4年度以降の第二次検定に基づくものです。</p>
-            <p>※令和3年度以前の試験における上記②の出題方式は、文章中にある不適当な語句又は数値を選択し、適当な語句又は数値を選択または記入するものになっていました。</p>
-          </div></article>
-          <article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi">
-            <p>Công tác phần thân thường được ra luân phiên theo năm bằng một trong hai hình thức sau. Đối với kỳ thi Reiwa 8, sách nhận định <span class="relation">khả năng tương đối cao sẽ sử dụng hình thức ②</span>.</p>
-            <ol>
-              <li>Đối với các điểm cần lưu ý trong thi công của <strong class="kw">4 loại công tác phần thân</strong>, trả lời bằng mô tả cụ thể. <strong class="kw">Tự luận</strong>.</li>
-              <li>Đối với các điểm cần lưu ý trong thi công của <strong class="kw">8 loại công tác phần thân</strong>, chọn tổ hợp từ ngữ hoặc trị số phù hợp với các ô trống trong câu. <strong class="kw">Trắc nghiệm chọn 1 trong 5</strong>.</li>
-            </ol>
-            <p>※ Nội dung này dựa trên hình thức ra đề từ kỳ kiểm định lần thứ hai năm Reiwa 4 trở đi.</p>
-            <p>※ Trong kỳ thi từ Reiwa 3 trở về trước, hình thức tương ứng với ② là chọn từ ngữ hoặc trị số không phù hợp trong câu, sau đó chọn hoặc tự ghi từ ngữ hay trị số phù hợp.</p>
-          </div></article>
-        </div>
-      </section>
-
-      <section class="subsection" id="sec-finish">
-        <h3>問題4 または 問題5（仕上げ工事：予想配点16点）</h3>
-        <p class="source-ref">Nguồn: Book page 9</p>
-        <div class="study-grid">
-          <article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja">
-            <p>仕上げ工事の問題は、次の2項目から隔年ごとに①または②の形式で出題されることが多い。令和8年度の試験では、<span class="relation">下記の①の出題形式となる可能性が比較的高い</span>と思われる。</p>
-            <ol>
-              <li><strong class="kw">仕上げ工事の施工上の留意事項（4工種）</strong>について、具体的な記述として解答する。（<strong class="kw">記述式</strong>）</li>
-              <li><strong class="kw">仕上げ工事の施工上の留意事項（8工種）</strong>について、文章中の空欄に当てはまる語句又は数値の組合せを解答する。（<strong class="kw">五肢択一式</strong>）</li>
-            </ol>
-            <p>※仕上げ工事の出題方式に関する内容は、令和4年度以降の第二次検定に基づくものです。</p>
-            <p>※令和3年度以前の試験における上記②の出題方式は、文章中にある不適当な語句又は数値を選択し、適当な語句又は数値を選択または記入するものになっていました。</p>
-          </div></article>
-          <article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi">
-            <p>Công tác hoàn thiện cũng thường được ra luân phiên bằng một trong hai hình thức. Đối với Reiwa 8, sách nhận định <span class="relation">khả năng tương đối cao sẽ dùng hình thức ①</span>.</p>
-            <ol>
-              <li>Đối với các điểm cần lưu ý trong thi công của <strong class="kw">4 loại công tác hoàn thiện</strong>, trả lời bằng mô tả cụ thể. <strong class="kw">Tự luận</strong>.</li>
-              <li>Đối với các điểm cần lưu ý trong thi công của <strong class="kw">8 loại công tác hoàn thiện</strong>, chọn tổ hợp từ ngữ hoặc trị số phù hợp với các ô trống trong câu. <strong class="kw">Trắc nghiệm chọn 1 trong 5</strong>.</li>
-            </ol>
-            <p>※ Cơ sở của nhận định là hình thức ra đề từ Reiwa 4 trở đi.</p>
-            <p>※ Từ Reiwa 3 trở về trước, hình thức ② là tìm từ ngữ hoặc trị số sai rồi chọn hoặc ghi nội dung đúng.</p>
-          </div></article>
-        </div>
-      </section>
-
-      <section class="subsection" id="sec-law">
-        <h3>問題6（建築法規：予想配点12点）</h3>
-        <p class="source-ref">Nguồn: Book page 9</p>
-        <div class="study-grid">
-          <article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja">
-            <p>建築法規の問題は、次の<strong class="kw">3つの法律</strong>に書かれている条文について、<strong class="kw">空欄に当てはまる正しい語句又は数値を選択</strong>する形式として出題される。</p>
-            <ol>
-              <li><strong class="kw">建設業法</strong>（請負契約・元請負人の義務・主任技術者の職務などに関する条文）</li>
-              <li><strong class="kw">建築基準法</strong>（施行令で定められている工事現場の危害防止などに関する条文）</li>
-              <li><strong class="kw">労働安全衛生法</strong>（目的・元方事業者の責務・安全衛生教育などに関する条文）</li>
-            </ol>
-            <p>※建築法規の出題方式に関する内容は、令和3年度以降の第二次検定に基づくものです。</p>
-            <p>※令和2年度以前の試験における建築法規の出題方式は、文章中の空欄に当てはまる語句又は数値を記入する（<span class="trap">五肢択一式ではなく記述式</span>の）ものになっていました。</p>
-          </div></article>
-          <article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi">
-            <p>Đề pháp quy xây dựng được ra theo hình thức <strong class="kw">chọn từ ngữ hoặc trị số đúng để điền vào ô trống</strong> trong các điều khoản thuộc <strong class="kw">ba luật</strong> sau:</p>
-            <ol>
-              <li><strong class="kw">建設業法 - Luật Kinh doanh xây dựng</strong>: các điều khoản về hợp đồng nhận thầu, nghĩa vụ của nhà thầu chính, nhiệm vụ của 主任技術者...</li>
-              <li><strong class="kw">建築基準法 - Luật Tiêu chuẩn xây dựng</strong>: các điều khoản về phòng ngừa nguy hiểm tại công trường được quy định trong Nghị định thi hành...</li>
-              <li><strong class="kw">労働安全衛生法 - Luật An toàn và Vệ sinh lao động</strong>: mục đích của luật, trách nhiệm của nhà thầu chính, giáo dục an toàn vệ sinh...</li>
-            </ol>
-            <p>※ Hình thức này dựa trên kỳ kiểm định lần thứ hai từ Reiwa 3 trở đi.</p>
-            <p>※ Từ Reiwa 2 trở về trước, thí sinh phải tự ghi từ ngữ hoặc trị số vào chỗ trống, tức là <span class="trap">hình thức tự luận chứ không phải trắc nghiệm chọn 1 trong 5</span>.</p>
-          </div></article>
-        </div>
-        <p><a href="#toc">↑ Mục lục</a></p>
-      </section>
-
-      <section class="subsection" id="sec-scoring">
-        <h3>1級建築施工管理技術検定試験第二次検定の評価基準（推定例）</h3>
-        <p class="source-ref">Nguồn: Book page 10</p>
-        <div class="study-grid">
-          <article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja">
-            <h4>問題1　施工経験記述</h4>
-            <p><strong class="kw">問題文に示された工事概要の建築工事について、適切な施工管理の方法を3つ記述</strong></p>
-            <div class="table-wrap"><table><thead><tr><th>区分</th><th>摘要</th><th>配点</th></tr></thead><tbody>
-              <tr><td>施工管理①</td><td>工種名・作業名</td><td>2</td></tr><tr><td></td><td>工程管理：施工管理の方策・その理由</td><td>3</td></tr><tr><td></td><td>品質管理：必要事項・実施事項・留意事項</td><td>3</td></tr><tr><td></td><td>建設副産物：※この項目の摘要は年度ごとに異なる。</td><td></td></tr><tr><td></td><td><strong class="kw">計</strong></td><td><mark class="critical">8点</mark></td></tr>
-              <tr><td>施工管理②</td><td>工種名・作業名 2点、工程管理 3点、品質管理 3点、建設副産物は年度により異なる。</td><td><mark class="critical">8点</mark></td></tr>
-              <tr><td>施工管理③</td><td>工種名・作業名 2点、工程管理 3点、品質管理 3点、建設副産物は年度により異なる。</td><td><mark class="critical">8点</mark></td></tr>
-              <tr><td>施工管理上行うべき内容など</td><td>時間外労働対策：施工管理上の問題・その理由 4点。品質管理活動：有効な取組・方法・その効果 4点。建設廃棄物対策：※この項目の摘要は年度ごとに異なる。</td><td><mark class="critical">8点</mark></td></tr>
-            </tbody></table></div>
-            <h4>問題2　施工計画</h4>
-            <div class="table-wrap"><table><thead><tr><th>分野</th><th>摘要</th><th>配点</th></tr></thead><tbody>
-              <tr><td>仮設物の設置</td><td>語句1：留意事項・検討・対策を記述</td><td>4</td></tr><tr><td>仮設物の安全</td><td>語句2：留意事項・検討・対策を記述</td><td>4</td></tr><tr><td>労働災害防止</td><td>語句3：留意事項・検討・対策を記述</td><td>4</td></tr><tr><td><strong class="kw">計</strong></td><td></td><td><mark class="critical">12点</mark></td></tr>
-            </tbody></table></div>
-            <h4>問題3　施工管理</h4>
-            <div class="table-wrap"><table><thead><tr><th>設問</th><th>摘要</th><th>配点</th></tr></thead><tbody>
-              <tr><td>設問1</td><td>作業内容</td><td>3</td></tr><tr><td>設問2</td><td>作業名・フリーフロート</td><td>3</td></tr><tr><td>設問3</td><td>作業日数・総所要日数</td><td>3</td></tr><tr><td>設問4</td><td>必要人数・作業順序・作業遅延</td><td>3</td></tr><tr><td><strong class="kw">計</strong></td><td>※この項目の摘要は年度ごとに異なる。</td><td><mark class="critical">12点</mark></td></tr>
-            </tbody></table></div>
-            <h4>問題4 または 問題5　躯体工事</h4>
-            <div class="table-wrap"><table><thead><tr><th>分野</th><th>摘要</th><th>配点</th></tr></thead><tbody>
-              <tr><td>仮設・土・杭</td><td>工事1：留意事項を具体的に記述</td><td>4</td></tr><tr><td>鉄筋・型枠</td><td>工事2：留意事項を具体的に記述</td><td>4</td></tr><tr><td>コンクリート</td><td>工事3：留意事項を具体的に記述</td><td>4</td></tr><tr><td>鉄骨</td><td>工事4：留意事項を具体的に記述</td><td>4</td></tr><tr><td><strong class="kw">計</strong></td><td>※項目は年度ごとに異なる。※偶数年度の試験では仕上げ工事の摘要と入れ替わる。</td><td><mark class="critical">16点</mark></td></tr>
-            </tbody></table></div>
-            <h4>問題4 または 問題5　仕上げ工事</h4>
-            <div class="table-wrap"><table><thead><tr><th>分野</th><th>摘要</th><th>配点</th></tr></thead><tbody>
-              <tr><td>防水・屋根</td><td>記述1：3つの空欄の語句（五肢択一）</td><td>2</td></tr><tr><td>防水・屋根</td><td>記述2：3つの空欄の語句（五肢択一）</td><td>2</td></tr><tr><td>左官・塗装</td><td>記述3：3つの空欄の語句（五肢択一）</td><td>2</td></tr><tr><td>左官・塗装</td><td>記述4：3つの空欄の語句（五肢択一）</td><td>2</td></tr><tr><td>金属・タイル</td><td>記述5：3つの空欄の語句（五肢択一）</td><td>2</td></tr><tr><td>金属・タイル</td><td>記述6：3つの空欄の語句（五肢択一）</td><td>2</td></tr><tr><td>内装・建具</td><td>記述7：3つの空欄の語句（五肢択一）</td><td>2</td></tr><tr><td>内装・建具</td><td>記述8：3つの空欄の語句（五肢択一）</td><td>2</td></tr><tr><td><strong class="kw">計</strong></td><td>※項目は年度ごとに異なる。※偶数年度の試験では躯体工事の摘要と入れ替わる。</td><td><mark class="critical">16点</mark></td></tr>
-            </tbody></table></div>
-            <h4>問題6　建築法規</h4>
-            <div class="table-wrap"><table><thead><tr><th>分野</th><th>摘要</th><th>配点</th></tr></thead><tbody>
-              <tr><td>建設業法</td><td>条文1：2つの空欄の語句（五肢択一）</td><td>4</td></tr><tr><td>建築基準法</td><td>条文2：2つの空欄の語句（五肢択一）</td><td>4</td></tr><tr><td>労働安全衛生法</td><td>条文3：2つの空欄の語句（五肢択一）</td><td>4</td></tr><tr><td><strong class="kw">計</strong></td><td></td><td><mark class="critical">12点</mark></td></tr>
-            </tbody></table></div>
-            <p><strong class="kw">合計</strong> <mark class="critical">100点</mark>（<strong class="kw">合格基準</strong> <mark class="critical">60点以上</mark>かつ<span class="trap">「不合格要件」に該当しない</span>）</p>
-          </div></article>
-          <article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi">
-            <h4>Câu 1. Mô tả kinh nghiệm thi công</h4>
-            <p><strong class="kw">Đối với công trình được nêu trong phần tổng quan công trình của đề bài, trình bày 3 phương pháp quản lý thi công phù hợp.</strong></p>
-            <div class="table-wrap"><table><thead><tr><th>Phần</th><th>Nội dung</th><th>Điểm</th></tr></thead><tbody>
-              <tr><td>Nội dung quản lý thi công ①</td><td>Tên loại công tác / tên công việc: 2 điểm</td><td></td></tr><tr><td></td><td>Quản lý tiến độ: phương án quản lý thi công và lý do</td><td>3</td></tr><tr><td></td><td>Quản lý chất lượng: nội dung cần thiết, nội dung thực hiện, điểm cần lưu ý</td><td>3</td></tr><tr><td></td><td>Sản phẩm phụ xây dựng: nội dung tóm tắt thay đổi tùy theo từng năm.</td><td></td></tr><tr><td></td><td><strong class="kw">Tổng</strong></td><td><mark class="critical">8 điểm</mark></td></tr>
-              <tr><td>Nội dung quản lý thi công ②</td><td>Cơ cấu điểm giống trên.</td><td><mark class="critical">8 điểm</mark></td></tr>
-              <tr><td>Nội dung quản lý thi công ③</td><td>Cơ cấu điểm giống trên.</td><td><mark class="critical">8 điểm</mark></td></tr>
-              <tr><td>Các nội dung cần thực hiện về mặt quản lý thi công</td><td>Biện pháp đối với lao động ngoài giờ: vấn đề trong quản lý thi công và lý do 4 điểm. Hoạt động quản lý chất lượng: biện pháp/phương pháp hiệu quả và hiệu quả đạt được 4 điểm. Biện pháp đối với chất thải xây dựng: nội dung tóm tắt thay đổi tùy năm.</td><td><mark class="critical">8 điểm</mark></td></tr>
-            </tbody></table></div>
-            <h4>Câu 2. Kế hoạch thi công</h4>
-            <div class="table-wrap"><table><thead><tr><th>Lĩnh vực</th><th>Nội dung đánh giá</th><th>Điểm</th></tr></thead><tbody>
-              <tr><td>Bố trí công trình tạm</td><td>Cụm 1: trình bày điểm lưu ý, nội dung xem xét, biện pháp</td><td>4</td></tr><tr><td>An toàn công trình tạm</td><td>Cụm 2: trình bày điểm lưu ý, nội dung xem xét, biện pháp</td><td>4</td></tr><tr><td>Phòng ngừa tai nạn lao động</td><td>Cụm 3: trình bày điểm lưu ý, nội dung xem xét, biện pháp</td><td>4</td></tr><tr><td><strong class="kw">Tổng</strong></td><td></td><td><mark class="critical">12 điểm</mark></td></tr>
-            </tbody></table></div>
-            <h4>Câu 3. Quản lý thi công</h4>
-            <div class="table-wrap"><table><thead><tr><th>Câu nhỏ</th><th>Nội dung</th><th>Điểm</th></tr></thead><tbody>
-              <tr><td>1</td><td>Nội dung công việc</td><td>3</td></tr><tr><td>2</td><td>Tên công việc, free float</td><td>3</td></tr><tr><td>3</td><td>Số ngày công việc, tổng số ngày cần thiết</td><td>3</td></tr><tr><td>4</td><td>Nhân lực cần thiết, trình tự công việc, chậm trễ công việc</td><td>3</td></tr><tr><td><strong class="kw">Tổng</strong></td><td>Chi tiết có thể thay đổi theo từng năm.</td><td><mark class="critical">12 điểm</mark></td></tr>
-            </tbody></table></div>
-            <h4>Câu 4 hoặc Câu 5. Công tác phần thân</h4>
-            <div class="table-wrap"><table><thead><tr><th>Nhóm công tác</th><th>Nội dung đánh giá</th><th>Điểm</th></tr></thead><tbody>
-              <tr><td>Công trình tạm, đất, cọc</td><td>Công tác 1: trình bày cụ thể điểm cần lưu ý</td><td>4</td></tr><tr><td>Cốt thép, cốp pha</td><td>Công tác 2: trình bày cụ thể điểm cần lưu ý</td><td>4</td></tr><tr><td>Bê tông</td><td>Công tác 3: trình bày cụ thể điểm cần lưu ý</td><td>4</td></tr><tr><td>Kết cấu thép</td><td>Công tác 4: trình bày cụ thể điểm cần lưu ý</td><td>4</td></tr><tr><td><strong class="kw">Tổng</strong></td><td>※ Hạng mục cụ thể thay đổi tùy năm. ※ Trong năm chẵn, nội dung đánh giá này được hoán đổi với phần công tác hoàn thiện.</td><td><mark class="critical">16 điểm</mark></td></tr>
-            </tbody></table></div>
-            <h4>Câu 4 hoặc Câu 5. Công tác hoàn thiện</h4>
-            <div class="table-wrap"><table><thead><tr><th>Nhóm công tác</th><th>Nội dung đánh giá</th><th>Điểm</th></tr></thead><tbody>
-              <tr><td>Chống thấm, mái</td><td>Mục 1: 3 ô trống, trắc nghiệm 5 lựa chọn</td><td>2</td></tr><tr><td>Chống thấm, mái</td><td>Mục 2: 3 ô trống, trắc nghiệm 5 lựa chọn</td><td>2</td></tr><tr><td>Trát, sơn</td><td>Mục 3: 3 ô trống, trắc nghiệm 5 lựa chọn</td><td>2</td></tr><tr><td>Trát, sơn</td><td>Mục 4: 3 ô trống, trắc nghiệm 5 lựa chọn</td><td>2</td></tr><tr><td>Kim loại, gạch ốp lát</td><td>Mục 5: 3 ô trống, trắc nghiệm 5 lựa chọn</td><td>2</td></tr><tr><td>Kim loại, gạch ốp lát</td><td>Mục 6: 3 ô trống, trắc nghiệm 5 lựa chọn</td><td>2</td></tr><tr><td>Nội thất, cửa</td><td>Mục 7: 3 ô trống, trắc nghiệm 5 lựa chọn</td><td>2</td></tr><tr><td>Nội thất, cửa</td><td>Mục 8: 3 ô trống, trắc nghiệm 5 lựa chọn</td><td>2</td></tr><tr><td><strong class="kw">Tổng</strong></td><td>※ Hạng mục thay đổi tùy năm. ※ Trong năm chẵn, nội dung đánh giá được hoán đổi với công tác phần thân.</td><td><mark class="critical">16 điểm</mark></td></tr>
-            </tbody></table></div>
-            <h4>Câu 6. Pháp quy xây dựng</h4>
-            <div class="table-wrap"><table><thead><tr><th>Luật</th><th>Nội dung đánh giá</th><th>Điểm</th></tr></thead><tbody>
-              <tr><td>建設業法</td><td>Điều khoản 1: 2 ô trống, trắc nghiệm 5 lựa chọn</td><td>4</td></tr><tr><td>建築基準法</td><td>Điều khoản 2: 2 ô trống, trắc nghiệm 5 lựa chọn</td><td>4</td></tr><tr><td>労働安全衛生法</td><td>Điều khoản 3: 2 ô trống, trắc nghiệm 5 lựa chọn</td><td>4</td></tr><tr><td><strong class="kw">Tổng</strong></td><td></td><td><mark class="critical">12 điểm</mark></td></tr>
-            </tbody></table></div>
-            <p><strong class="kw">Tổng điểm</strong>: <mark class="critical">100 điểm</mark>. <strong class="kw">Tiêu chuẩn đỗ</strong>: từ <mark class="critical">60 điểm trở lên</mark> và đồng thời <span class="trap">không thuộc trường hợp bị xác định là 「不合格要件」</span>.</p>
-          </div></article>
-        </div>
-        <div class="note-box"><strong>Giải thích bảng</strong><p>Bảng này được sách ghi rõ là <strong>推定例 - ví dụ ước tính</strong>, không phải bảng chấm điểm chính thức được khẳng định chắc chắn. Cấu trúc điểm dự kiến: <strong>32 + 12 + 12 + 16 + 16 + 12 = 100 điểm</strong>.</p></div>
-        <p><a href="#toc">↑ Mục lục</a></p>
-      </section>
-    </section>
-
-    <section class="study-section" id="sec-standard-study">
-      <div class="section-head"><h2>3　初学者向けの標準的な学習手順</h2><span class="source-ref">Nguồn: Book page 11</span></div>
-      <section class="subsection" id="sec-study-intro">
-        <div class="study-grid">
-          <article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja">
-            <p>※この勉強法は、初めて第二次検定を受ける方に向けたものです。これまでに1級建築施工管理技術検定試験第二次検定や実地試験（第二次検定の旧称）を受けたことがあるなど、既に自らの勉強法が定まっている方は、その方法を踏襲してください。しかし、この勉強法は本当に効率的なので、勉強法が定まっていない方は、活用することをお勧めします。</p>
-            <p>本書では、第二次検定を<strong class="kw">5日間の集中学習</strong>で完全攻略することを目標にしています。各学習日の学習時間は、<mark class="critical">5時間</mark>を想定しているので、長期休暇を利用して一気に学習することを推奨しますが、毎週末に少しずつ学習することもできます。</p>
-            <p>この学習手順は、第二次検定を初めて受検する方が、<strong class="kw">最短の学習時間で合格</strong>できるように構築されています。より詳しい学習手順については、「受検ガイダンス＆学び方講習」のYouTube動画講習を参照してください。なお、この学習手順は、<span class="relation">合格するために必要となる最小限の内容</span>になっています。学習時間に余裕のある受検者は、自らの学習計画に合わせて、学習範囲を更に広げてゆくことも検討してください。</p>
-          </div></article>
-          <article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi">
-            <p>※ Phương pháp học này dành cho người lần đầu dự kỳ kiểm định lần thứ hai. Người đã từng thi kỳ kiểm định lần thứ hai của 1級建築施工管理技術検定 hoặc đã từng thi 実地試験, tên cũ của kỳ kiểm định lần thứ hai, và đã có phương pháp học riêng thì nên tiếp tục sử dụng phương pháp đó. Tuy nhiên, sách cho rằng phương pháp này thực sự hiệu quả và khuyến nghị người chưa xác định được cách học nên áp dụng.</p>
-            <p>Mục tiêu của sách là hoàn thành việc chuẩn bị cho kỳ kiểm định lần thứ hai bằng <strong class="kw">5 ngày học tập trung</strong>. Mỗi ngày dự kiến học <mark class="critical">5 giờ</mark>. Sách khuyến nghị tận dụng kỳ nghỉ dài để học liên tục, nhưng cũng có thể chia nhỏ và học vào từng cuối tuần.</p>
-            <p>Trình tự học được xây dựng để người lần đầu dự thi có thể <strong class="kw">đỗ với thời gian học ngắn nhất</strong>. Muốn biết chi tiết hơn, tham khảo video YouTube 「受検ガイダンス＆学び方講習」. Trình tự này chỉ gồm <span class="relation">nội dung tối thiểu cần thiết để đỗ</span>. Người có nhiều thời gian hơn nên cân nhắc mở rộng phạm vi học theo kế hoạch của mình.</p>
-          </div></article>
-        </div>
-      </section>
-
-      <section class="subsection" id="sec-day1"><h3>1日目の学習手順（最新問題の重要ポイントを把握します）</h3><div class="study-grid">
-        <article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja"><ol><li>本書14ページに掲載されている<strong class="kw">「最新問題の一括要約リスト」</strong>を熟読してください。</li><li><strong class="kw">ネットワーク計算の解き方講習</strong>（YouTube動画講習）を視聴してください。</li></ol></div></article>
-        <article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi"><ol><li>Đọc kỹ <strong class="kw">「最新問題の一括要約リスト」</strong> ở trang 14.</li><li>Xem video <strong class="kw">ネットワーク計算の解き方講習</strong>, bài giảng về cách giải bài tính network.</li></ol></div></article>
-      </div></section>
-
-      <section class="subsection" id="sec-day2"><h3>2日目の学習手順（躯体工事・仕上げ工事を分野別に集中学習します）</h3><div class="study-grid">
-        <article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja"><ol><li>「虎の巻」解説講習（YouTube動画講習）の<strong class="kw">問題4・問題5</strong>を視聴してください。</li><li>虎の巻（精選模試）第一巻及び第二巻の<strong class="kw">問題4・問題5</strong>を学習してください。</li><li>本書の<strong class="kw">第4章「躯体工事」・第5章「仕上げ工事」</strong>を学習してください。</li></ol></div></article>
-        <article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi"><ol><li>Xem phần <strong class="kw">Câu 4 và Câu 5</strong> trong video giải thích 「虎の巻」.</li><li>Học <strong class="kw">Câu 4 và Câu 5</strong> trong quyển 1 và quyển 2 của 「虎の巻（精選模試）」.</li><li>Học <strong class="kw">Chương 4 躯体工事 và Chương 5 仕上げ工事</strong> của sách.</li></ol></div></article>
-      </div></section>
-
-      <section class="subsection" id="sec-day3"><h3>3日目の学習手順（施工計画・施工管理・建築法規を分野別に集中学習します）</h3><div class="study-grid">
-        <article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja"><ol><li>「虎の巻」解説講習（YouTube動画講習）の<strong class="kw">問題2・問題3・問題6</strong>を視聴してください。</li><li>虎の巻（精選模試）第一巻及び第二巻の<strong class="kw">問題2・問題3・問題6</strong>を学習してください。</li><li>本書の<strong class="kw">第2章「施工計画」・第3章「施工管理」・第6章「建築法規」</strong>を学習してください。</li></ol></div></article>
-        <article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi"><ol><li>Xem phần <strong class="kw">Câu 2, Câu 3, Câu 6</strong> trong video giải thích 「虎の巻」.</li><li>Học <strong class="kw">Câu 2, Câu 3, Câu 6</strong> trong quyển 1 và quyển 2 của 「虎の巻（精選模試）」.</li><li>Học <strong class="kw">Chương 2: 施工計画, Chương 3: 施工管理, Chương 6: 建築法規</strong>.</li></ol></div></article>
-      </div></section>
-
-      <section class="subsection" id="sec-day4"><h3>4日目の学習手順（施工経験記述の工事概要を理解して施工管理の方法の草案を考えます）</h3><div class="study-grid">
-        <article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja"><ol><li><strong class="kw">施工経験記述の考え方・書き方講習</strong>（YouTube動画講習）を視聴してください。</li><li>本書678ページの<strong class="kw">「工事概要」</strong>を閲覧し、自身の経験から類似した建築工事を選定してください。</li><li><strong class="kw">工程管理・品質管理・建設副産物</strong>の施工管理の方法について、草案を作成してください。</li></ol></div></article>
-        <article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi"><ol><li>Xem video <strong class="kw">施工経験記述の考え方・書き方講習</strong>.</li><li>Xem phần <strong class="kw">工事概要</strong> ở trang 678 và chọn một công trình xây dựng tương tự từ kinh nghiệm của bản thân.</li><li>Lập bản nháp phương pháp quản lý thi công đối với <strong class="kw">工程管理, 品質管理, 建設副産物</strong>.</li></ol></div></article>
-      </div></section>
-
-      <section class="subsection" id="sec-day5"><h3>5日目の学習手順（工程管理・品質管理・建設副産物の施工管理の方法を実際に書いてみます）</h3><div class="study-grid">
-        <article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja"><ol><li>本書679ページ～684ページの<strong class="kw">施工経験記述記入用紙</strong>をコピーしてください。</li><li><strong class="kw">工程管理・品質管理・建設副産物</strong>の各テーマについて、施工管理の方法を書き込んでください。</li></ol><p>※施工経験記述添削講座（有料）の受講をご希望の方は、本書の673ページをご覧ください。</p></div></article>
-        <article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi"><ol><li>Sao chép các <strong class="kw">phiếu điền 施工経験記述</strong> ở trang 679 đến 684.</li><li>Viết phương pháp quản lý thi công cho từng chủ đề: <strong class="kw">quản lý tiến độ, quản lý chất lượng, sản phẩm phụ xây dựng</strong>.</li></ol><p>※ Người muốn đăng ký khóa chữa bài 施工経験記述 có thu phí, xem trang 673.</p></div></article>
-      </div><p><a href="#toc">↑ Mục lục</a></p></section>
-    </section>
-
-    <section class="study-section" id="sec-study-notes">
-      <div class="section-head"><h2>4　学習手順の補足</h2><span class="source-ref">Nguồn: Book page 12</span></div>
-      <div class="study-grid">
-        <article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja">
-          <p>① 2日目の学習手順では、問題4（躯体工事分野）の<span class="relation">「動画講習視聴→虎の巻学習→本編学習」</span>を行ってから、問題5（仕上げ工事分野）の<span class="relation">「動画講習視聴→虎の巻学習→本編学習」</span>を行うと、分野別に学習を進めることができるので、より効果的です。3日目の学習手順についても同様です。</p>
-          <p>② 2日目と3日目の学習手順では、「虎の巻」解説講習（YouTube動画講習）を見てから、虎の巻（精選模試）を学習することになっていますが、この方法では、<span class="relation">虎の巻（精選模試）を自らの力だけで解いてみる前に、その答えが分かってしまいます</span>。これを避けたいと思う方は、<strong class="kw">動画を見る前に、自らの力だけで虎の巻（精選模試）に挑戦</strong>してみるという学習方法も考えられます。こちらの方法は、何度か第二次検定や実地試験（第二次検定の旧称）を受けたことがあるなど、既に学習経験のある方にお勧めです。</p>
-        </div></article>
-        <article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi">
-          <p><strong>① Cách học ngày 2</strong>: Ở ngày thứ 2, sẽ hiệu quả hơn nếu học trọn từng lĩnh vực theo thứ tự <span class="relation">Xem video bài giảng → học 虎の巻 → học phần chính trong sách</span> đối với Câu 4, 躯体工事, sau đó mới chuyển sang Câu 5, 仕上げ工事 theo cùng trình tự. Nhờ vậy có thể hoàn tất từng lĩnh vực một cách tập trung. Ngày thứ 3 cũng nên thực hiện theo cách tương tự.</p>
-          <p><strong>② Có thể đổi thứ tự giữa làm đề và xem video</strong>: Theo trình tự ngày 2 và ngày 3, sách hướng dẫn xem video giải thích 「虎の巻」 trước rồi mới học 「虎の巻（精選模試）」. Tuy nhiên, làm như vậy thì <span class="relation">đáp án đã được biết trước khi người học tự giải đề bằng năng lực của mình</span>. Người muốn tránh điều này có thể áp dụng cách khác: <strong class="kw">tự làm 精選模試 trước, sau đó mới xem video</strong>. Phương pháp này được sách khuyến nghị cho người đã có kinh nghiệm học, chẳng hạn đã dự kỳ kiểm định lần thứ hai hoặc 実地試験 nhiều lần.</p>
-        </div></article>
-      </div>
-      <p><a href="#toc">↑ Mục lục</a></p>
-    </section>
-
-    <section class="study-section" id="sec-summary-list">
-      <div class="section-head"><h2>5　最新問題の一括要約リスト（完全合格のための学習法）</h2><span class="source-ref">Nguồn: Book page 12</span></div>
-      <div class="study-grid">
-        <article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja">
-          <p>本書の14ページ～24ページでは、平成28年度以降に出題された<strong class="kw">施工計画分野・躯体工事分野・仕上げ工事分野・建築法規分野の全問題</strong>について、その要点を集約しています。これを数回通読すると、学習をより確かなものにすることができます。</p>
-          <p>1日目の学習手順でもある最新問題の一括要約リスト（完全合格のための学習法）は、YouTube動画講習としても提供しているため、手元にスマートフォンなどがあれば、<strong class="kw">ちょっとした隙間時間（通勤電車の中や休憩時間など）</strong>にも、<strong class="kw">過去10年間の出題内容</strong>をまとめて効率よく学習を進めてゆくことができます。</p>
-        </div></article>
-        <article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi">
-          <p>Trang 14 đến 24 của sách tổng hợp các điểm chính của toàn bộ câu hỏi từ năm Heisei 28 trở đi trong các lĩnh vực <strong class="kw">施工計画, 躯体工事, 仕上げ工事, 建築法規</strong>. Đọc toàn bộ phần này vài lần sẽ giúp củng cố việc học.</p>
-          <p>「最新問題の一括要約リスト（完全合格のための学習法）」, vốn là nội dung học ngày thứ 1, cũng được cung cấp dưới dạng video YouTube. Vì vậy, nếu có điện thoại thông minh, có thể tận dụng <strong class="kw">các khoảng thời gian ngắn như trên tàu khi đi làm hoặc trong giờ nghỉ</strong> để học hiệu quả nội dung đề thi của <strong class="kw">10 năm gần đây</strong>.</p>
-        </div></article>
-      </div>
-      <p><a href="#toc">↑ Mục lục</a></p>
-    </section>
-
-    <section class="study-section" id="sec-express-course">
-      <div class="section-head"><h2>6　超特急コースの学習手順</h2><span class="source-ref">Nguồn: Book page 12</span></div>
-      <div class="study-grid">
-        <article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja">
-          <p>この学習手順は、5日間の学習時間を取ることができない受検者のために、標準的な学習手順を更に短縮したものです。この学習手順では、本書の<strong class="kw">「最新問題の一括要約リスト」</strong>と重要度の高い<strong class="kw">「虎の巻（精選模試）」</strong>に絞り込んで学習を進めていきます。</p>
-          <h4>1日目の学習手順（施工経験記述を1日で学習します）</h4><p>本書の637ページに掲載されている<strong class="kw">虎の巻（精選模試）施工経験記述編</strong>を学習してください。</p>
-          <h4>2日目の学習手順（最新問題の重要ポイントを把握します）</h4><p>本書の14ページに掲載されている<strong class="kw">「最新問題の一括要約リスト」</strong>を学習してください。</p>
-          <h4>3日目の学習手順（最も重要度の高い問題だけを学習します）</h4><p>本書の648ページに掲載されている<strong class="kw">虎の巻（精選模試）第一巻</strong>を学習してください。</p>
-        </div></article>
-        <article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi">
-          <p>Đây là phiên bản rút ngắn hơn nữa của trình tự học tiêu chuẩn, dành cho người không thể bố trí đủ 5 ngày học. Khóa này giới hạn phạm vi vào <strong class="kw">「最新問題の一括要約リスト」</strong> và <strong class="kw">「虎の巻（精選模試）」 có mức độ quan trọng cao</strong>.</p>
-          <h4>Ngày 1: học 施工経験記述 trong một ngày</h4><p>Học phần <strong class="kw">虎の巻（精選模試）施工経験記述編</strong> ở trang 637.</p>
-          <h4>Ngày 2: nắm các điểm quan trọng của đề thi gần đây</h4><p>Học <strong class="kw">「最新問題の一括要約リスト」</strong> ở trang 14.</p>
-          <h4>Ngày 3: chỉ học những vấn đề có mức độ quan trọng cao nhất</h4><p>Học <strong class="kw">虎の巻（精選模試）第一巻</strong> ở trang 648.</p>
-        </div></article>
-      </div>
-      <p><a href="#toc">↑ Mục lục</a></p>
-    </section>
-
-  </main>
-  <!-- CONTENT_END -->
-
-  <!-- =====================================================
-       NON-DIMMED STUDY SUPPORT SECTIONS
-       These sections stay normally readable in Keywords mode.
-       ===================================================== -->
-
-  <section class="aggregate-section" id="terms">
-    <div class="section-head">
-      <h2>Thuật ngữ chuyên môn</h2>
-    </div>
-    
-    <div class="table-wrap">
-      <table>
-        <thead><tr><th>日本語</th><th>読み方</th><th>Tiếng Việt</th><th>Giải thích</th><th>Liên quan</th></tr></thead>
-        <tbody>
-          <tr><td>監理技術者</td><td>かんりぎじゅつしゃ</td><td>Kỹ sư quản lý kỹ thuật</td><td>Chức danh kỹ thuật phụ trách quản lý thi công đối với công trình thuộc phạm vi pháp luật quy định.</td><td>1級建築施工管理技士</td></tr>
-          <tr><td>建築一式工事</td><td>けんちくいっしきこうじ</td><td>Công trình xây dựng tổng hợp</td><td>Phân loại công trình trong 建設業法.</td><td>監理技術者</td></tr>
-          <tr><td>施工経験記述</td><td>せこうけいけんきじゅつ</td><td>Bài mô tả kinh nghiệm thi công</td><td>Phần tự luận yêu cầu trình bày phương pháp quản lý dựa trên kinh nghiệm thực tế.</td><td>工程管理・品質管理・建設副産物</td></tr>
-          <tr><td>建設副産物</td><td>けんせつふくさんぶつ</td><td>Sản phẩm phụ xây dựng</td><td>Vật chất phát sinh trong quá trình xây dựng, gồm đối tượng có thể tái sử dụng, tái chế hoặc cần xử lý.</td><td>発生抑制・再使用・再生利用・適正処分</td></tr>
-          <tr><td>五肢択一式</td><td>ごしたくいつしき</td><td>Trắc nghiệm chọn 1 trong 5</td><td>Chọn một đáp án đúng trong năm phương án.</td><td>躯体工事・仕上げ工事・建築法規</td></tr>
-          <tr><td>ネットワーク工程表</td><td>ネットワークこうていひょう</td><td>Network schedule</td><td>Biểu đồ tiến độ thể hiện quan hệ logic giữa các công việc.</td><td>先行作業・後続作業・フロート</td></tr>
-          <tr><td>先行作業</td><td>せんこうさぎょう</td><td>Công việc trước</td><td>Công việc phải được hoàn thành hoặc đạt điều kiện nhất định trước công việc sau.</td><td>後続作業</td></tr>
-          <tr><td>後続作業</td><td>こうぞくさぎょう</td><td>Công việc sau</td><td>Công việc phụ thuộc vào công việc trước.</td><td>先行作業</td></tr>
-          <tr><td>フリーフロート</td><td>－</td><td>Free float</td><td>Thời gian có thể trì hoãn mà không làm chậm thời điểm bắt đầu sớm của công việc kế tiếp.</td><td>ネットワーク工程表</td></tr>
-          <tr><td>トータルフロート</td><td>－</td><td>Total float</td><td>Thời gian có thể trì hoãn mà không làm chậm thời điểm hoàn thành toàn bộ dự án.</td><td>ネットワーク工程表</td></tr>
-          <tr><td>躯体工事</td><td>くたいこうじ</td><td>Công tác phần thân / kết cấu</td><td>Nhóm công tác tạo nên kết cấu chính của công trình.</td><td>仕上げ工事</td></tr>
-          <tr><td>虎の巻</td><td>とらのまき</td><td>Tài liệu trọng điểm / cẩm nang luyện thi</td><td>Tên bộ tài liệu luyện thi trọng điểm được sách sử dụng.</td><td>精選模試</td></tr>
-          <tr><td>精選模試</td><td>せいせんもし</td><td>Đề thi thử tuyển chọn</td><td>Các câu mô phỏng được chọn lọc theo mức độ quan trọng.</td><td>虎の巻</td></tr>
-          <tr><td>草案</td><td>そうあん</td><td>Bản nháp</td><td>Bản dự thảo câu trả lời trước khi viết hoàn chỉnh.</td><td>施工経験記述</td></tr>
-          <tr><td>添削講座</td><td>てんさくこうざ</td><td>Khóa chữa bài</td><td>Dịch vụ kiểm tra, nhận xét và sửa bài viết.</td><td>施工経験記述</td></tr>
-          <tr><td>通読</td><td>つうどく</td><td>Đọc xuyên suốt</td><td>Đọc toàn bộ tài liệu từ đầu đến cuối để nắm tổng thể và lặp lại kiến thức.</td><td>最新問題の一括要約リスト</td></tr>
-          <tr><td>隙間時間</td><td>すきまじかん</td><td>Thời gian trống ngắn</td><td>Các khoảng vài phút có thể tận dụng để học.</td><td>通勤・休憩</td></tr>
-          <tr><td>超特急コース</td><td>ちょうとっきゅうコース</td><td>Khóa siêu tốc</td><td>Phương án học rút ngắn khi không thể theo kế hoạch 5 ngày.</td><td>3日間</td></tr>
-        </tbody>
-      </table>
-    </div>
-
-  </section>
-<section class="aggregate-section" id="memory">
-    <div class="section-head">
-      <h2>Điểm cần nhớ và mẹo nhớ</h2>
-    </div>
-    
-    <div class="memory-box">
-      <strong>Cơ cấu điểm dự kiến</strong>
-      <p><strong>32 + 12 + 12 + 16 + 16 + 12 = 100 điểm.</strong> Mốc được sách nêu: <strong>từ 60 điểm trở lên</strong> và đồng thời không thuộc 「不合格要件」.</p>
-    </div>
-    <div class="comparison-box">
-      <div class="table-wrap">
-        <table>
-          <thead><tr><th>Nhóm cần nhớ</th><th>Recall cue</th></tr></thead>
-          <tbody>
-            <tr><td>施工経験記述</td><td><span class="relation">工程管理・品質管理・建設副産物</span> đều phải chuẩn bị.</td></tr>
-            <tr><td>Reiwa 8, năm chẵn</td><td><span class="relation">Câu 4 = 仕上げ工事, dạng tự luận</span>; <span class="relation">Câu 5 = 躯体工事, dạng 5 lựa chọn</span>.</td></tr>
-            <tr><td>施工管理</td><td><span class="relation">Tên công việc → quan hệ trước/sau → free float / total float → tổng thời gian</span>.</td></tr>
-            <tr><td>Lộ trình tiêu chuẩn</td><td><strong>5 ngày × 5 giờ = khoảng 25 giờ học tập trung.</strong></td></tr>
-            <tr><td>超特急コース</td><td><strong>3 ngày</strong>, giới hạn vào 最新問題の一括要約リスト và 虎の巻（精選模試） quan trọng.</td></tr>
-            <tr><td>Tự kiểm tra trước khi xem đáp án</td><td><span class="relation">Tự làm 精選模試 trước → sau đó xem video giải thích.</span></td></tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-
-  </section>
-
+<!--
+HTML TEMPLATE CONTRACT 2.3
+- Based on latest pinch-zoom-safe test.html.
+- Default theme: dark; persistent Dark/Light toggle.
+- Font: 50%-150%, 5% step; persistent.
+- Native two-finger pinch zoom MUST NOT trigger responsive reflow.
+- Real orientation change MAY update layout and restore logical reading position.
+- iPad/tablet portrait: one-column bilingual flow.
+- iPad/tablet landscape: Japanese/Vietnamese side-by-side.
+- Controls: collapsed by default at bottom-left; tap to expand horizontally.
+- Home button: index.html.
+- Back/Next: TOC item navigation, not browser history.
+- Do not redesign CSS/JS/control behavior per lesson.
+-->
+<div class="control-cluster" id="control-cluster">
+<button aria-controls="control-panel" aria-expanded="false" aria-label="Mở công cụ" class="control-launcher" id="controls-toggle" title="Mở công cụ" type="button">⋯</button>
+<div aria-label="Công cụ học tập" class="control-panel" id="control-panel" role="toolbar">
+<button aria-controls="toc" aria-expanded="false" aria-label="Mục lục" id="toc-toggle" title="Mục lục" type="button">☰</button>
+<button aria-label="Mục trước" id="section-prev" title="Mục trước" type="button">‹</button>
+<button aria-label="Mục tiếp theo" id="section-next" title="Mục tiếp theo" type="button">›</button>
+<button aria-label="Đổi Dark/Light" aria-pressed="false" id="theme-toggle" title="Đổi Dark/Light" type="button">☀</button>
+<button aria-label="Đổi Full/Keywords" aria-pressed="false" class="mode-toggle" id="mode-toggle" title="Đổi Full/Keywords" type="button">🎯</button>
+<button aria-label="Giảm cỡ chữ" id="font-down" title="Giảm cỡ chữ 5%" type="button">A−</button>
+<button aria-label="Đặt lại cỡ chữ 100%" class="font-reset" id="font-reset" title="Đặt lại cỡ chữ 100%" type="button">100%</button>
+<button aria-label="Tăng cỡ chữ" id="font-up" title="Tăng cỡ chữ 5%" type="button">A+</button>
+<button aria-label="Top Page" class="home-icon" id="home-button" title="Top Page" type="button"><svg aria-hidden="true" fill="none" viewbox="0 0 24 24"><path d="M3.5 10.5 12 3.8l8.5 6.7v9.2h-5.3v-6H8.8v6H3.5z" stroke="currentColor" stroke-linejoin="round" stroke-width="1.8"></path></svg></button>
 </div>
+</div><div aria-hidden="true" class="toc-overlay" id="toc-overlay"></div>
+<div class="page-shell">
+<header class="hero" id="top">
+<h1>1級建築施工管理技術検定 第二次検定｜学習ガイド</h1>
+</header>
+<nav aria-label="Mục lục" class="toc" id="toc">
+<div class="toc-drawer-head">
+<strong>Mục lục</strong>
+<button aria-label="Đóng mục lục" class="toc-close" id="toc-close" type="button">×</button>
+</div>
+<h2>Mục lục</h2>
+<!-- TOC_ITEMS_START -->
 
-<!-- =======================================================
-     APPROVED COMPONENT LIBRARY
-     Hidden. AI may copy/repeat these components into CONTENT.
-     Do not create a new visual system unless strictly necessary.
-     ======================================================= -->
+<!-- TOC_ITEMS_END -->
+<ol><li><a href="#sec-exam-content">2 1級建築施工管理技術検定試験第二次検定の出題内容</a><ol><li><a href="#sec-exam-format">第二次検定の出題形式（予想）</a></li><li><a href="#sec-q1">問題1（施工経験記述：予想配点32点）</a></li><li><a href="#sec-q2">問題2（施工計画：予想配点12点）</a></li><li><a href="#sec-q3">問題3（施工管理：予想配点12点）</a></li><li><a href="#sec-structure">問題4 または 問題5（躯体工事：予想配点16点）</a></li><li><a href="#sec-finish">問題4 または 問題5（仕上げ工事：予想配点16点）</a></li><li><a href="#sec-law">問題6（建築法規：予想配点12点）</a></li><li><a href="#sec-scoring">1級建築施工管理技術検定試験第二次検定の評価基準（推定例）</a></li></ol></li><li><a href="#sec-standard-study">3 初学者向けの標準的な学習手順</a><ol><li><a href="#sec-day1">1日目の学習手順（最新問題の重要ポイントを把握します）</a></li><li><a href="#sec-day2">2日目の学習手順（躯体工事・仕上げ工事を分野別に集中学習します）</a></li><li><a href="#sec-day3">3日目の学習手順（施工計画・施工管理・建築法規を分野別に集中学習します）</a></li><li><a href="#sec-day4">4日目の学習手順（施工経験記述の工事概要を理解して施工管理の方法の草案を考えます）</a></li><li><a href="#sec-day5">5日目の学習手順（工程管理・品質管理・建設副産物の施工管理の方法を実際に書いてみます）</a></li></ol></li><li><a href="#sec-study-notes">4 学習手順の補足</a></li><li><a href="#sec-summary-list">5 最新問題の一括要約リスト（完全合格のための学習法）</a></li><li><a href="#sec-express-course">6 超特急コースの学習手順</a></li><li><a href="#terms">Professional terminology</a></li><li><a href="#memory">Key points and memory aids</a></li></ol></nav>
+<!-- CONTENT_START -->
+<main id="lesson"><section class="study-section" id="sec-exam-content">
+<div class="section-head">
+<h2>2　1級建築施工管理技術検定試験第二次検定の出題内容</h2>
+<span class="source-ref">Nguồn: Book page 8-10</span>
+</div>
+<section class="subsection" id="sec-exam-format">
+<h3>第二次検定の出題形式（予想）</h3>
+<p class="source-ref">Nguồn: Book page 8</p>
+<div class="study-grid">
+<article class="study-card original">
+<div class="card-title">原文</div>
+<div class="recall-source" lang="ja">
+<p>令和8年度の1級建築施工管理技術検定試験第二次検定の出題内容は、令和3年4月に改正された施工技術検定規則（建設業法施行令に基づく法律）および令和7年度～令和4年度の第二次検定の出題形式から分析すると、下表の<span class="relation">「偶数年度」に近いものになることが予想</span>されている。（出題形式は奇数年度と偶数年度では多少異なっている）</p>
+<p>1級建築施工管理技士の資格は、<strong class="kw">「監理技術者」になるために必要</strong>なものであることから、<strong class="kw">建築一式工事の下請契約額</strong>が<mark class="critical">8000万円以上</mark>（令和7年1月31日以前の工事については<mark class="critical">7000万円以上</mark>）となる規模を想定した問題が出題されている。また、そうした立場での解答とすることが望ましい。</p>
+<div class="table-wrap">
+<table>
+<caption>第二次検定の出題形式（予想）</caption>
+<thead><tr><th>問題</th><th>年度</th><th>出題分野</th><th>予想配点</th><th>出題項目の例</th><th>解答形式</th></tr></thead>
+<tbody>
+<tr><td>問題1</td><td>共通</td><td><strong class="kw">施工経験記述</strong></td><td><mark class="critical">32点</mark></td><td>施工の合理化・品質管理・建設副産物</td><td><strong class="kw">記述式</strong></td></tr>
+<tr><td>問題2</td><td>共通</td><td><strong class="kw">施工計画</strong></td><td><mark class="critical">12点</mark></td><td>仮設計画の留意点・災害防止対策</td><td><strong class="kw">記述式</strong></td></tr>
+<tr><td>問題3</td><td>共通</td><td><strong class="kw">施工管理</strong></td><td><mark class="critical">12点</mark></td><td>ネットワークの読解・先行後続作業</td><td><strong class="kw">記述式</strong></td></tr>
+<tr><td>問題4</td><td><strong class="kw">奇数</strong></td><td>躯体工事</td><td><mark class="critical">16点</mark></td><td>躯体工事の施工上の留意事項を記述</td><td>記述式</td></tr>
+<tr><td>問題4</td><td><strong class="kw">偶数</strong></td><td><span class="relation">仕上げ工事</span></td><td><mark class="critical">16点</mark></td><td>仕上げ工事の施工上の留意事項を記述</td><td><strong class="kw">記述式</strong></td></tr>
+<tr><td>問題5</td><td><strong class="kw">奇数</strong></td><td>仕上げ工事</td><td><mark class="critical">16点</mark></td><td>仕上げ工事の文章に当てはまる語句を選択</td><td>五肢択一式</td></tr>
+<tr><td>問題5</td><td><strong class="kw">偶数</strong></td><td><span class="relation">躯体工事</span></td><td><mark class="critical">16点</mark></td><td>躯体工事の文章に当てはまる語句を選択</td><td><strong class="kw">五肢択一式</strong></td></tr>
+<tr><td>問題6</td><td>共通</td><td><strong class="kw">建築法規</strong></td><td><mark class="critical">12点</mark></td><td>建設業法・建築基準法・労働安全衛生法</td><td><strong class="kw">五肢択一式</strong></td></tr>
+</tbody>
+</table>
+</div>
+</div>
+</article>
+<article class="study-card translation">
+<div class="card-title">Bản dịch tiếng Việt</div>
+<div class="recall-source" lang="vi">
+<p>Theo phân tích dựa trên Quy tắc kiểm định kỹ thuật thi công được sửa đổi vào tháng 4 năm Reiwa 3 (2021) và hình thức ra đề của kỳ kiểm định lần thứ hai từ năm Reiwa 4 đến Reiwa 7, nội dung thi của kỳ <strong class="kw">1級建築施工管理技術検定 第二次検定</strong> năm Reiwa 8 được dự đoán sẽ <span class="relation">gần với hình thức của năm chẵn</span> trong bảng dưới đây. Hình thức ra đề giữa năm lẻ và năm chẵn có một số khác biệt.</p>
+<p>Do chứng chỉ 1級建築施工管理技士 là chứng chỉ <strong class="kw">cần thiết để trở thành 監理技術者</strong>, đề thi được xây dựng với giả định về quy mô của công trình thuộc loại <strong class="kw">建築一式工事, tổng giá trị hợp đồng thầu phụ</strong> từ <mark class="critical">80 triệu yên trở lên</mark>; đối với công trình trước ngày 31/01/Reiwa 7 thì từ <mark class="critical">70 triệu yên trở lên</mark>. Khi trả lời cũng nên đặt mình ở vị trí quản lý tương ứng với quy mô công trình như vậy.</p>
+<div class="table-wrap">
+<table>
+<caption>Hình thức ra đề kỳ kiểm định lần thứ hai, dự kiến</caption>
+<thead><tr><th>Câu</th><th>Năm</th><th>Lĩnh vực</th><th>Điểm dự kiến</th><th>Ví dụ nội dung ra đề</th><th>Hình thức trả lời</th></tr></thead>
+<tbody>
+<tr><td>Câu 1</td><td>Chung</td><td><strong class="kw">Mô tả kinh nghiệm thi công</strong></td><td><mark class="critical">32 điểm</mark></td><td>Hợp lý hóa thi công, quản lý chất lượng, sản phẩm phụ xây dựng</td><td><strong class="kw">Tự luận</strong></td></tr>
+<tr><td>Câu 2</td><td>Chung</td><td><strong class="kw">Kế hoạch thi công</strong></td><td><mark class="critical">12 điểm</mark></td><td>Điểm lưu ý trong kế hoạch công trình tạm, biện pháp phòng ngừa tai nạn</td><td><strong class="kw">Tự luận</strong></td></tr>
+<tr><td>Câu 3</td><td>Chung</td><td><strong class="kw">Quản lý thi công</strong></td><td><mark class="critical">12 điểm</mark></td><td>Đọc hiểu network schedule, công việc trước và sau</td><td><strong class="kw">Tự luận</strong></td></tr>
+<tr><td>Câu 4</td><td><strong class="kw">Năm lẻ</strong></td><td>Công tác phần thân</td><td><mark class="critical">16 điểm</mark></td><td>Viết các điểm cần lưu ý khi thi công phần thân</td><td>Tự luận</td></tr>
+<tr><td>Câu 4</td><td><strong class="kw">Năm chẵn</strong></td><td><span class="relation">Công tác hoàn thiện</span></td><td><mark class="critical">16 điểm</mark></td><td>Viết các điểm cần lưu ý khi thi công hoàn thiện</td><td><strong class="kw">Tự luận</strong></td></tr>
+<tr><td>Câu 5</td><td><strong class="kw">Năm lẻ</strong></td><td>Công tác hoàn thiện</td><td><mark class="critical">16 điểm</mark></td><td>Chọn từ ngữ phù hợp với câu mô tả về công tác hoàn thiện</td><td>Trắc nghiệm chọn 1 trong 5</td></tr>
+<tr><td>Câu 5</td><td><strong class="kw">Năm chẵn</strong></td><td><span class="relation">Công tác phần thân</span></td><td><mark class="critical">16 điểm</mark></td><td>Chọn từ ngữ phù hợp với câu mô tả về công tác phần thân</td><td><strong class="kw">Trắc nghiệm chọn 1 trong 5</strong></td></tr>
+<tr><td>Câu 6</td><td>Chung</td><td><strong class="kw">Pháp quy xây dựng</strong></td><td><mark class="critical">12 điểm</mark></td><td>Luật Xây dựng, Luật Tiêu chuẩn xây dựng, Luật An toàn và Vệ sinh lao động</td><td><strong class="kw">Trắc nghiệm chọn 1 trong 5</strong></td></tr>
+</tbody>
+</table>
+</div>
+</div>
+</article>
+</div>
+<div class="note-box"><strong>Giải thích bảng</strong><p>Điểm dự kiến cộng lại thành <strong>100 điểm</strong>: Câu 1: 32 điểm; Câu 2: 12 điểm; Câu 3: 12 điểm; Câu 4: 16 điểm; Câu 5: 16 điểm; Câu 6: 12 điểm. Đối với <strong>Reiwa 8 là năm chẵn</strong>, bảng dự kiến đặt <strong>仕上げ工事 ở Câu 4</strong> và <strong>躯体工事 ở Câu 5</strong>.</p></div>
+<p><a href="#toc">↑ Mục lục</a></p>
+</section>
+<section class="subsection" id="sec-q1">
+<h3>問題1（施工経験記述：予想配点32点）</h3>
+<p class="source-ref">Nguồn: Book page 8</p>
+<div class="study-grid">
+<article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja">
+<p>施工経験記述の問題は、次の<strong class="kw">3項目</strong>から出題されることが多い。近年の施工管理技術検定試験では、前年度と同じ項目から出題されることも多かったので、確実に合格するためには、<span class="relation">この3項目すべてについて、施工経験記述を準備</span>しておく必要がある。</p>
+<ol>
+<li><strong class="kw">工程管理</strong>（施工の合理化・生産性の向上・工程短縮・現場作業の軽減・労働者の確保等）</li>
+<li><strong class="kw">品質管理</strong>（顧客の要望を満たす品質確保・品質管理項目・品質管理活動等）</li>
+<li><strong class="kw">建設副産物の具体的な対策</strong>（抑制・再使用・再生利用・適正処分等）</li>
+</ol>
+<p>問題文に示された工事概要の建築工事について、出題された①～③のいずれかの課題についての質問に対して、<span class="relation">受検者自身の今日までの建築工事の経験を踏まえて</span>、建築工事の現場を管理していく上での受検者自身の考えを、<strong class="kw">記述式</strong>で解答する。</p>
+<p>※施工経験記述の出題方式に関する内容は、令和6年度以降の第二次検定に基づくものです。</p>
+</div></article>
+<article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi">
+<p>Câu hỏi về mô tả kinh nghiệm thi công thường được ra từ <strong class="kw">3 nội dung</strong> sau. Trong những năm gần đây, kỳ kiểm định kỹ thuật quản lý thi công nhiều lần ra lại cùng nội dung với năm trước. Vì vậy, để bảo đảm khả năng đỗ, cần <span class="relation">chuẩn bị phần mô tả kinh nghiệm thi công cho cả 3 nội dung</span>.</p>
+<ol>
+<li><strong class="kw">Quản lý tiến độ</strong>: hợp lý hóa thi công, nâng cao năng suất, rút ngắn tiến độ, giảm công việc tại hiện trường, bảo đảm nhân lực...</li>
+<li><strong class="kw">Quản lý chất lượng</strong>: bảo đảm chất lượng đáp ứng yêu cầu của khách hàng, hạng mục quản lý chất lượng, hoạt động quản lý chất lượng...</li>
+<li><strong class="kw">Biện pháp cụ thể đối với sản phẩm phụ xây dựng</strong>: hạn chế phát sinh, tái sử dụng, tái chế, xử lý phù hợp...</li>
+</ol>
+<p>Đối với công trình xây dựng có phần tổng quan công trình được nêu trong đề, thí sinh sẽ trả lời bằng <strong class="kw">hình thức tự luận</strong> câu hỏi liên quan đến một trong ba chủ đề trên, <span class="relation">dựa trên kinh nghiệm xây dựng của chính thí sinh cho đến thời điểm hiện tại</span> và trình bày quan điểm của mình trong việc quản lý công trường xây dựng.</p>
+<p>※ Nội dung về hình thức ra đề của phần mô tả kinh nghiệm thi công dựa trên kỳ kiểm định lần thứ hai từ năm Reiwa 6 trở đi.</p>
+</div></article>
+</div>
+</section>
+<section class="subsection" id="sec-q2">
+<h3>問題2（施工計画：予想配点12点）</h3>
+<p class="source-ref">Nguồn: Book page 8</p>
+<div class="study-grid">
+<article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja">
+<p>施工計画の問題は、次の<strong class="kw">3項目</strong>から出題されることが多い。令和8年度の試験では、下記の<strong class="kw">②の項目</strong>に関する問題が、記述式で出題される可能性が比較的高いと思われるが、下記の<strong class="kw">③の項目</strong>に関する問題が、記述式で出題される可能性もあると思われる。</p>
+<ol><li>仮設物の設置計画の留意点</li><li><strong class="kw">労働災害防止対策に関する留意点</strong></li><li><strong class="kw">仮設物使用中の安全点検・確認の留意点</strong></li></ol>
+</div></article>
+<article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi">
+<p>Câu hỏi về kế hoạch thi công thường được ra từ <strong class="kw">3 nội dung</strong> sau. Đối với kỳ thi Reiwa 8, sách nhận định khả năng tương đối cao sẽ ra câu tự luận về <strong class="kw">mục ②</strong>; tuy nhiên cũng có khả năng ra câu tự luận về <strong class="kw">mục ③</strong>.</p>
+<ol><li>Điểm cần lưu ý trong kế hoạch bố trí công trình tạm.</li><li><strong class="kw">Điểm cần lưu ý về biện pháp phòng ngừa tai nạn lao động.</strong></li><li><strong class="kw">Điểm cần lưu ý khi kiểm tra, xác nhận an toàn trong quá trình sử dụng công trình tạm.</strong></li></ol>
+</div></article>
+</div>
+<p><a href="#toc">↑ Mục lục</a></p>
+</section>
+<section class="subsection" id="sec-q3">
+<h3>問題3（施工管理：予想配点12点）</h3>
+<p class="source-ref">Nguồn: Book page 9</p>
+<div class="study-grid">
+<article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja">
+<p>施工管理の問題は、<span class="relation">平成28年度まではバーチャート工程表</span>からの出題であったが、<span class="relation">平成29年度以降はネットワーク工程表</span>からの出題となっている。令和8年度の試験でも、<strong class="kw">ネットワーク工程表の読解</strong>に関する問題が、記述式で出題されると思われる。</p>
+<ol>
+<li>躯体・仕上げの作業について、<strong class="kw">日程・先行作業・後続作業</strong>などから作業名を推定する。</li>
+<li>工程表や各作業の施工条件から、<strong class="kw">ネットワーク工程表を修正する方法</strong>を理解する。</li>
+<li>工程短縮や労働力不足による<strong class="kw">単列作業・並列作業の変更</strong>について、工程への影響を把握する。</li>
+<li>各作業の<strong class="kw">フリーフロート・トータルフロート</strong>や、建設工事の<strong class="kw">総所要日数</strong>を求める。</li>
+</ol>
+</div></article>
+<article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi">
+<p>Cho đến năm Heisei 28, phần quản lý thi công được ra dưới dạng đọc <span class="relation">biểu đồ tiến độ bar chart</span>. Từ năm Heisei 29 trở đi, đề thi chuyển sang <span class="relation">network schedule</span>. Đối với kỳ thi Reiwa 8, sách dự đoán nội dung <strong class="kw">đọc hiểu network schedule</strong> tiếp tục được ra dưới dạng tự luận.</p>
+<ol>
+<li>Đối với công tác phần thân và công tác hoàn thiện, suy đoán tên công việc từ <strong class="kw">lịch trình, công việc trước, công việc sau</strong>...</li>
+<li>Hiểu <strong class="kw">phương pháp sửa network schedule</strong> dựa trên biểu đồ tiến độ và điều kiện thi công của từng công việc.</li>
+<li>Xác định ảnh hưởng đến tiến độ khi thay đổi giữa <strong class="kw">công việc thực hiện nối tiếp và công việc thực hiện song song</strong> do rút ngắn tiến độ hoặc thiếu nhân lực.</li>
+<li>Tính <strong class="kw">free float, total float</strong> của từng công việc và <strong class="kw">tổng số ngày cần thiết của công trình</strong>.</li>
+</ol>
+</div></article>
+</div>
+</section>
+<section class="subsection" id="sec-structure">
+<h3>問題4 または 問題5（躯体工事：予想配点16点）</h3>
+<p class="source-ref">Nguồn: Book page 9</p>
+<div class="study-grid">
+<article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja">
+<p>躯体工事の問題は、次の2項目から隔年ごとに①または②の形式で出題されることが多い。令和8年度の試験では、<span class="relation">下記の②の出題形式となる可能性が比較的高い</span>と思われる。</p>
+<ol>
+<li><strong class="kw">躯体工事の施工上の留意事項（4工種）</strong>について、具体的な記述として解答する。（<strong class="kw">記述式</strong>）</li>
+<li><strong class="kw">躯体工事の施工上の留意事項（8工種）</strong>について、文章中の空欄に当てはまる語句又は数値の組合せを解答する。（<strong class="kw">五肢択一式</strong>）</li>
+</ol>
+<p>※躯体工事の出題方式に関する内容は、令和4年度以降の第二次検定に基づくものです。</p>
+<p>※令和3年度以前の試験における上記②の出題方式は、文章中にある不適当な語句又は数値を選択し、適当な語句又は数値を選択または記入するものになっていました。</p>
+</div></article>
+<article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi">
+<p>Công tác phần thân thường được ra luân phiên theo năm bằng một trong hai hình thức sau. Đối với kỳ thi Reiwa 8, sách nhận định <span class="relation">khả năng tương đối cao sẽ sử dụng hình thức ②</span>.</p>
+<ol>
+<li>Đối với các điểm cần lưu ý trong thi công của <strong class="kw">4 loại công tác phần thân</strong>, trả lời bằng mô tả cụ thể. <strong class="kw">Tự luận</strong>.</li>
+<li>Đối với các điểm cần lưu ý trong thi công của <strong class="kw">8 loại công tác phần thân</strong>, chọn tổ hợp từ ngữ hoặc trị số phù hợp với các ô trống trong câu. <strong class="kw">Trắc nghiệm chọn 1 trong 5</strong>.</li>
+</ol>
+<p>※ Nội dung này dựa trên hình thức ra đề từ kỳ kiểm định lần thứ hai năm Reiwa 4 trở đi.</p>
+<p>※ Trong kỳ thi từ Reiwa 3 trở về trước, hình thức tương ứng với ② là chọn từ ngữ hoặc trị số không phù hợp trong câu, sau đó chọn hoặc tự ghi từ ngữ hay trị số phù hợp.</p>
+</div></article>
+</div>
+</section>
+<section class="subsection" id="sec-finish">
+<h3>問題4 または 問題5（仕上げ工事：予想配点16点）</h3>
+<p class="source-ref">Nguồn: Book page 9</p>
+<div class="study-grid">
+<article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja">
+<p>仕上げ工事の問題は、次の2項目から隔年ごとに①または②の形式で出題されることが多い。令和8年度の試験では、<span class="relation">下記の①の出題形式となる可能性が比較的高い</span>と思われる。</p>
+<ol>
+<li><strong class="kw">仕上げ工事の施工上の留意事項（4工種）</strong>について、具体的な記述として解答する。（<strong class="kw">記述式</strong>）</li>
+<li><strong class="kw">仕上げ工事の施工上の留意事項（8工種）</strong>について、文章中の空欄に当てはまる語句又は数値の組合せを解答する。（<strong class="kw">五肢択一式</strong>）</li>
+</ol>
+<p>※仕上げ工事の出題方式に関する内容は、令和4年度以降の第二次検定に基づくものです。</p>
+<p>※令和3年度以前の試験における上記②の出題方式は、文章中にある不適当な語句又は数値を選択し、適当な語句又は数値を選択または記入するものになっていました。</p>
+</div></article>
+<article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi">
+<p>Công tác hoàn thiện cũng thường được ra luân phiên bằng một trong hai hình thức. Đối với Reiwa 8, sách nhận định <span class="relation">khả năng tương đối cao sẽ dùng hình thức ①</span>.</p>
+<ol>
+<li>Đối với các điểm cần lưu ý trong thi công của <strong class="kw">4 loại công tác hoàn thiện</strong>, trả lời bằng mô tả cụ thể. <strong class="kw">Tự luận</strong>.</li>
+<li>Đối với các điểm cần lưu ý trong thi công của <strong class="kw">8 loại công tác hoàn thiện</strong>, chọn tổ hợp từ ngữ hoặc trị số phù hợp với các ô trống trong câu. <strong class="kw">Trắc nghiệm chọn 1 trong 5</strong>.</li>
+</ol>
+<p>※ Cơ sở của nhận định là hình thức ra đề từ Reiwa 4 trở đi.</p>
+<p>※ Từ Reiwa 3 trở về trước, hình thức ② là tìm từ ngữ hoặc trị số sai rồi chọn hoặc ghi nội dung đúng.</p>
+</div></article>
+</div>
+</section>
+<section class="subsection" id="sec-law">
+<h3>問題6（建築法規：予想配点12点）</h3>
+<p class="source-ref">Nguồn: Book page 9</p>
+<div class="study-grid">
+<article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja">
+<p>建築法規の問題は、次の<strong class="kw">3つの法律</strong>に書かれている条文について、<strong class="kw">空欄に当てはまる正しい語句又は数値を選択</strong>する形式として出題される。</p>
+<ol>
+<li><strong class="kw">建設業法</strong>（請負契約・元請負人の義務・主任技術者の職務などに関する条文）</li>
+<li><strong class="kw">建築基準法</strong>（施行令で定められている工事現場の危害防止などに関する条文）</li>
+<li><strong class="kw">労働安全衛生法</strong>（目的・元方事業者の責務・安全衛生教育などに関する条文）</li>
+</ol>
+<p>※建築法規の出題方式に関する内容は、令和3年度以降の第二次検定に基づくものです。</p>
+<p>※令和2年度以前の試験における建築法規の出題方式は、文章中の空欄に当てはまる語句又は数値を記入する（<span class="trap">五肢択一式ではなく記述式</span>の）ものになっていました。</p>
+</div></article>
+<article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi">
+<p>Đề pháp quy xây dựng được ra theo hình thức <strong class="kw">chọn từ ngữ hoặc trị số đúng để điền vào ô trống</strong> trong các điều khoản thuộc <strong class="kw">ba luật</strong> sau:</p>
+<ol>
+<li><strong class="kw">建設業法 - Luật Kinh doanh xây dựng</strong>: các điều khoản về hợp đồng nhận thầu, nghĩa vụ của nhà thầu chính, nhiệm vụ của 主任技術者...</li>
+<li><strong class="kw">建築基準法 - Luật Tiêu chuẩn xây dựng</strong>: các điều khoản về phòng ngừa nguy hiểm tại công trường được quy định trong Nghị định thi hành...</li>
+<li><strong class="kw">労働安全衛生法 - Luật An toàn và Vệ sinh lao động</strong>: mục đích của luật, trách nhiệm của nhà thầu chính, giáo dục an toàn vệ sinh...</li>
+</ol>
+<p>※ Hình thức này dựa trên kỳ kiểm định lần thứ hai từ Reiwa 3 trở đi.</p>
+<p>※ Từ Reiwa 2 trở về trước, thí sinh phải tự ghi từ ngữ hoặc trị số vào chỗ trống, tức là <span class="trap">hình thức tự luận chứ không phải trắc nghiệm chọn 1 trong 5</span>.</p>
+</div></article>
+</div>
+<p><a href="#toc">↑ Mục lục</a></p>
+</section>
+<section class="subsection" id="sec-scoring">
+<h3>1級建築施工管理技術検定試験第二次検定の評価基準（推定例）</h3>
+<p class="source-ref">Nguồn: Book page 10</p>
+<div class="study-grid">
+<article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja">
+<h4>問題1　施工経験記述</h4>
+<p><strong class="kw">問題文に示された工事概要の建築工事について、適切な施工管理の方法を3つ記述</strong></p>
+<div class="table-wrap"><table><thead><tr><th>区分</th><th>摘要</th><th>配点</th></tr></thead><tbody>
+<tr><td>施工管理①</td><td>工種名・作業名</td><td>2</td></tr><tr><td></td><td>工程管理：施工管理の方策・その理由</td><td>3</td></tr><tr><td></td><td>品質管理：必要事項・実施事項・留意事項</td><td>3</td></tr><tr><td></td><td>建設副産物：※この項目の摘要は年度ごとに異なる。</td><td></td></tr><tr><td></td><td><strong class="kw">計</strong></td><td><mark class="critical">8点</mark></td></tr>
+<tr><td>施工管理②</td><td>工種名・作業名 2点、工程管理 3点、品質管理 3点、建設副産物は年度により異なる。</td><td><mark class="critical">8点</mark></td></tr>
+<tr><td>施工管理③</td><td>工種名・作業名 2点、工程管理 3点、品質管理 3点、建設副産物は年度により異なる。</td><td><mark class="critical">8点</mark></td></tr>
+<tr><td>施工管理上行うべき内容など</td><td>時間外労働対策：施工管理上の問題・その理由 4点。品質管理活動：有効な取組・方法・その効果 4点。建設廃棄物対策：※この項目の摘要は年度ごとに異なる。</td><td><mark class="critical">8点</mark></td></tr>
+</tbody></table></div>
+<h4>問題2　施工計画</h4>
+<div class="table-wrap"><table><thead><tr><th>分野</th><th>摘要</th><th>配点</th></tr></thead><tbody>
+<tr><td>仮設物の設置</td><td>語句1：留意事項・検討・対策を記述</td><td>4</td></tr><tr><td>仮設物の安全</td><td>語句2：留意事項・検討・対策を記述</td><td>4</td></tr><tr><td>労働災害防止</td><td>語句3：留意事項・検討・対策を記述</td><td>4</td></tr><tr><td><strong class="kw">計</strong></td><td></td><td><mark class="critical">12点</mark></td></tr>
+</tbody></table></div>
+<h4>問題3　施工管理</h4>
+<div class="table-wrap"><table><thead><tr><th>設問</th><th>摘要</th><th>配点</th></tr></thead><tbody>
+<tr><td>設問1</td><td>作業内容</td><td>3</td></tr><tr><td>設問2</td><td>作業名・フリーフロート</td><td>3</td></tr><tr><td>設問3</td><td>作業日数・総所要日数</td><td>3</td></tr><tr><td>設問4</td><td>必要人数・作業順序・作業遅延</td><td>3</td></tr><tr><td><strong class="kw">計</strong></td><td>※この項目の摘要は年度ごとに異なる。</td><td><mark class="critical">12点</mark></td></tr>
+</tbody></table></div>
+<h4>問題4 または 問題5　躯体工事</h4>
+<div class="table-wrap"><table><thead><tr><th>分野</th><th>摘要</th><th>配点</th></tr></thead><tbody>
+<tr><td>仮設・土・杭</td><td>工事1：留意事項を具体的に記述</td><td>4</td></tr><tr><td>鉄筋・型枠</td><td>工事2：留意事項を具体的に記述</td><td>4</td></tr><tr><td>コンクリート</td><td>工事3：留意事項を具体的に記述</td><td>4</td></tr><tr><td>鉄骨</td><td>工事4：留意事項を具体的に記述</td><td>4</td></tr><tr><td><strong class="kw">計</strong></td><td>※項目は年度ごとに異なる。※偶数年度の試験では仕上げ工事の摘要と入れ替わる。</td><td><mark class="critical">16点</mark></td></tr>
+</tbody></table></div>
+<h4>問題4 または 問題5　仕上げ工事</h4>
+<div class="table-wrap"><table><thead><tr><th>分野</th><th>摘要</th><th>配点</th></tr></thead><tbody>
+<tr><td>防水・屋根</td><td>記述1：3つの空欄の語句（五肢択一）</td><td>2</td></tr><tr><td>防水・屋根</td><td>記述2：3つの空欄の語句（五肢択一）</td><td>2</td></tr><tr><td>左官・塗装</td><td>記述3：3つの空欄の語句（五肢択一）</td><td>2</td></tr><tr><td>左官・塗装</td><td>記述4：3つの空欄の語句（五肢択一）</td><td>2</td></tr><tr><td>金属・タイル</td><td>記述5：3つの空欄の語句（五肢択一）</td><td>2</td></tr><tr><td>金属・タイル</td><td>記述6：3つの空欄の語句（五肢択一）</td><td>2</td></tr><tr><td>内装・建具</td><td>記述7：3つの空欄の語句（五肢択一）</td><td>2</td></tr><tr><td>内装・建具</td><td>記述8：3つの空欄の語句（五肢択一）</td><td>2</td></tr><tr><td><strong class="kw">計</strong></td><td>※項目は年度ごとに異なる。※偶数年度の試験では躯体工事の摘要と入れ替わる。</td><td><mark class="critical">16点</mark></td></tr>
+</tbody></table></div>
+<h4>問題6　建築法規</h4>
+<div class="table-wrap"><table><thead><tr><th>分野</th><th>摘要</th><th>配点</th></tr></thead><tbody>
+<tr><td>建設業法</td><td>条文1：2つの空欄の語句（五肢択一）</td><td>4</td></tr><tr><td>建築基準法</td><td>条文2：2つの空欄の語句（五肢択一）</td><td>4</td></tr><tr><td>労働安全衛生法</td><td>条文3：2つの空欄の語句（五肢択一）</td><td>4</td></tr><tr><td><strong class="kw">計</strong></td><td></td><td><mark class="critical">12点</mark></td></tr>
+</tbody></table></div>
+<p><strong class="kw">合計</strong> <mark class="critical">100点</mark>（<strong class="kw">合格基準</strong> <mark class="critical">60点以上</mark>かつ<span class="trap">「不合格要件」に該当しない</span>）</p>
+</div></article>
+<article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi">
+<h4>Câu 1. Mô tả kinh nghiệm thi công</h4>
+<p><strong class="kw">Đối với công trình được nêu trong phần tổng quan công trình của đề bài, trình bày 3 phương pháp quản lý thi công phù hợp.</strong></p>
+<div class="table-wrap"><table><thead><tr><th>Phần</th><th>Nội dung</th><th>Điểm</th></tr></thead><tbody>
+<tr><td>Nội dung quản lý thi công ①</td><td>Tên loại công tác / tên công việc: 2 điểm</td><td></td></tr><tr><td></td><td>Quản lý tiến độ: phương án quản lý thi công và lý do</td><td>3</td></tr><tr><td></td><td>Quản lý chất lượng: nội dung cần thiết, nội dung thực hiện, điểm cần lưu ý</td><td>3</td></tr><tr><td></td><td>Sản phẩm phụ xây dựng: nội dung tóm tắt thay đổi tùy theo từng năm.</td><td></td></tr><tr><td></td><td><strong class="kw">Tổng</strong></td><td><mark class="critical">8 điểm</mark></td></tr>
+<tr><td>Nội dung quản lý thi công ②</td><td>Cơ cấu điểm giống trên.</td><td><mark class="critical">8 điểm</mark></td></tr>
+<tr><td>Nội dung quản lý thi công ③</td><td>Cơ cấu điểm giống trên.</td><td><mark class="critical">8 điểm</mark></td></tr>
+<tr><td>Các nội dung cần thực hiện về mặt quản lý thi công</td><td>Biện pháp đối với lao động ngoài giờ: vấn đề trong quản lý thi công và lý do 4 điểm. Hoạt động quản lý chất lượng: biện pháp/phương pháp hiệu quả và hiệu quả đạt được 4 điểm. Biện pháp đối với chất thải xây dựng: nội dung tóm tắt thay đổi tùy năm.</td><td><mark class="critical">8 điểm</mark></td></tr>
+</tbody></table></div>
+<h4>Câu 2. Kế hoạch thi công</h4>
+<div class="table-wrap"><table><thead><tr><th>Lĩnh vực</th><th>Nội dung đánh giá</th><th>Điểm</th></tr></thead><tbody>
+<tr><td>Bố trí công trình tạm</td><td>Cụm 1: trình bày điểm lưu ý, nội dung xem xét, biện pháp</td><td>4</td></tr><tr><td>An toàn công trình tạm</td><td>Cụm 2: trình bày điểm lưu ý, nội dung xem xét, biện pháp</td><td>4</td></tr><tr><td>Phòng ngừa tai nạn lao động</td><td>Cụm 3: trình bày điểm lưu ý, nội dung xem xét, biện pháp</td><td>4</td></tr><tr><td><strong class="kw">Tổng</strong></td><td></td><td><mark class="critical">12 điểm</mark></td></tr>
+</tbody></table></div>
+<h4>Câu 3. Quản lý thi công</h4>
+<div class="table-wrap"><table><thead><tr><th>Câu nhỏ</th><th>Nội dung</th><th>Điểm</th></tr></thead><tbody>
+<tr><td>1</td><td>Nội dung công việc</td><td>3</td></tr><tr><td>2</td><td>Tên công việc, free float</td><td>3</td></tr><tr><td>3</td><td>Số ngày công việc, tổng số ngày cần thiết</td><td>3</td></tr><tr><td>4</td><td>Nhân lực cần thiết, trình tự công việc, chậm trễ công việc</td><td>3</td></tr><tr><td><strong class="kw">Tổng</strong></td><td>Chi tiết có thể thay đổi theo từng năm.</td><td><mark class="critical">12 điểm</mark></td></tr>
+</tbody></table></div>
+<h4>Câu 4 hoặc Câu 5. Công tác phần thân</h4>
+<div class="table-wrap"><table><thead><tr><th>Nhóm công tác</th><th>Nội dung đánh giá</th><th>Điểm</th></tr></thead><tbody>
+<tr><td>Công trình tạm, đất, cọc</td><td>Công tác 1: trình bày cụ thể điểm cần lưu ý</td><td>4</td></tr><tr><td>Cốt thép, cốp pha</td><td>Công tác 2: trình bày cụ thể điểm cần lưu ý</td><td>4</td></tr><tr><td>Bê tông</td><td>Công tác 3: trình bày cụ thể điểm cần lưu ý</td><td>4</td></tr><tr><td>Kết cấu thép</td><td>Công tác 4: trình bày cụ thể điểm cần lưu ý</td><td>4</td></tr><tr><td><strong class="kw">Tổng</strong></td><td>※ Hạng mục cụ thể thay đổi tùy năm. ※ Trong năm chẵn, nội dung đánh giá này được hoán đổi với phần công tác hoàn thiện.</td><td><mark class="critical">16 điểm</mark></td></tr>
+</tbody></table></div>
+<h4>Câu 4 hoặc Câu 5. Công tác hoàn thiện</h4>
+<div class="table-wrap"><table><thead><tr><th>Nhóm công tác</th><th>Nội dung đánh giá</th><th>Điểm</th></tr></thead><tbody>
+<tr><td>Chống thấm, mái</td><td>Mục 1: 3 ô trống, trắc nghiệm 5 lựa chọn</td><td>2</td></tr><tr><td>Chống thấm, mái</td><td>Mục 2: 3 ô trống, trắc nghiệm 5 lựa chọn</td><td>2</td></tr><tr><td>Trát, sơn</td><td>Mục 3: 3 ô trống, trắc nghiệm 5 lựa chọn</td><td>2</td></tr><tr><td>Trát, sơn</td><td>Mục 4: 3 ô trống, trắc nghiệm 5 lựa chọn</td><td>2</td></tr><tr><td>Kim loại, gạch ốp lát</td><td>Mục 5: 3 ô trống, trắc nghiệm 5 lựa chọn</td><td>2</td></tr><tr><td>Kim loại, gạch ốp lát</td><td>Mục 6: 3 ô trống, trắc nghiệm 5 lựa chọn</td><td>2</td></tr><tr><td>Nội thất, cửa</td><td>Mục 7: 3 ô trống, trắc nghiệm 5 lựa chọn</td><td>2</td></tr><tr><td>Nội thất, cửa</td><td>Mục 8: 3 ô trống, trắc nghiệm 5 lựa chọn</td><td>2</td></tr><tr><td><strong class="kw">Tổng</strong></td><td>※ Hạng mục thay đổi tùy năm. ※ Trong năm chẵn, nội dung đánh giá được hoán đổi với công tác phần thân.</td><td><mark class="critical">16 điểm</mark></td></tr>
+</tbody></table></div>
+<h4>Câu 6. Pháp quy xây dựng</h4>
+<div class="table-wrap"><table><thead><tr><th>Luật</th><th>Nội dung đánh giá</th><th>Điểm</th></tr></thead><tbody>
+<tr><td>建設業法</td><td>Điều khoản 1: 2 ô trống, trắc nghiệm 5 lựa chọn</td><td>4</td></tr><tr><td>建築基準法</td><td>Điều khoản 2: 2 ô trống, trắc nghiệm 5 lựa chọn</td><td>4</td></tr><tr><td>労働安全衛生法</td><td>Điều khoản 3: 2 ô trống, trắc nghiệm 5 lựa chọn</td><td>4</td></tr><tr><td><strong class="kw">Tổng</strong></td><td></td><td><mark class="critical">12 điểm</mark></td></tr>
+</tbody></table></div>
+<p><strong class="kw">Tổng điểm</strong>: <mark class="critical">100 điểm</mark>. <strong class="kw">Tiêu chuẩn đỗ</strong>: từ <mark class="critical">60 điểm trở lên</mark> và đồng thời <span class="trap">không thuộc trường hợp bị xác định là 「不合格要件」</span>.</p>
+</div></article>
+</div>
+<div class="note-box"><strong>Giải thích bảng</strong><p>Bảng này được sách ghi rõ là <strong>推定例 - ví dụ ước tính</strong>, không phải bảng chấm điểm chính thức được khẳng định chắc chắn. Cấu trúc điểm dự kiến: <strong>32 + 12 + 12 + 16 + 16 + 12 = 100 điểm</strong>.</p></div>
+<p><a href="#toc">↑ Mục lục</a></p>
+</section>
+</section><section class="study-section" id="sec-standard-study">
+<div class="section-head"><h2>3　初学者向けの標準的な学習手順</h2><span class="source-ref">Nguồn: Book page 11</span></div>
+<section class="subsection" id="sec-study-intro">
+<div class="study-grid">
+<article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja">
+<p>※この勉強法は、初めて第二次検定を受ける方に向けたものです。これまでに1級建築施工管理技術検定試験第二次検定や実地試験（第二次検定の旧称）を受けたことがあるなど、既に自らの勉強法が定まっている方は、その方法を踏襲してください。しかし、この勉強法は本当に効率的なので、勉強法が定まっていない方は、活用することをお勧めします。</p>
+<p>本書では、第二次検定を<strong class="kw">5日間の集中学習</strong>で完全攻略することを目標にしています。各学習日の学習時間は、<mark class="critical">5時間</mark>を想定しているので、長期休暇を利用して一気に学習することを推奨しますが、毎週末に少しずつ学習することもできます。</p>
+<p>この学習手順は、第二次検定を初めて受検する方が、<strong class="kw">最短の学習時間で合格</strong>できるように構築されています。より詳しい学習手順については、「受検ガイダンス＆学び方講習」のYouTube動画講習を参照してください。なお、この学習手順は、<span class="relation">合格するために必要となる最小限の内容</span>になっています。学習時間に余裕のある受検者は、自らの学習計画に合わせて、学習範囲を更に広げてゆくことも検討してください。</p>
+</div></article>
+<article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi">
+<p>※ Phương pháp học này dành cho người lần đầu dự kỳ kiểm định lần thứ hai. Người đã từng thi kỳ kiểm định lần thứ hai của 1級建築施工管理技術検定 hoặc đã từng thi 実地試験, tên cũ của kỳ kiểm định lần thứ hai, và đã có phương pháp học riêng thì nên tiếp tục sử dụng phương pháp đó. Tuy nhiên, sách cho rằng phương pháp này thực sự hiệu quả và khuyến nghị người chưa xác định được cách học nên áp dụng.</p>
+<p>Mục tiêu của sách là hoàn thành việc chuẩn bị cho kỳ kiểm định lần thứ hai bằng <strong class="kw">5 ngày học tập trung</strong>. Mỗi ngày dự kiến học <mark class="critical">5 giờ</mark>. Sách khuyến nghị tận dụng kỳ nghỉ dài để học liên tục, nhưng cũng có thể chia nhỏ và học vào từng cuối tuần.</p>
+<p>Trình tự học được xây dựng để người lần đầu dự thi có thể <strong class="kw">đỗ với thời gian học ngắn nhất</strong>. Muốn biết chi tiết hơn, tham khảo video YouTube 「受検ガイダンス＆学び方講習」. Trình tự này chỉ gồm <span class="relation">nội dung tối thiểu cần thiết để đỗ</span>. Người có nhiều thời gian hơn nên cân nhắc mở rộng phạm vi học theo kế hoạch của mình.</p>
+</div></article>
+</div>
+</section>
+<section class="subsection" id="sec-day1"><h3>1日目の学習手順（最新問題の重要ポイントを把握します）</h3><div class="study-grid">
+<article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja"><ol><li>本書14ページに掲載されている<strong class="kw">「最新問題の一括要約リスト」</strong>を熟読してください。</li><li><strong class="kw">ネットワーク計算の解き方講習</strong>（YouTube動画講習）を視聴してください。</li></ol></div></article>
+<article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi"><ol><li>Đọc kỹ <strong class="kw">「最新問題の一括要約リスト」</strong> ở trang 14.</li><li>Xem video <strong class="kw">ネットワーク計算の解き方講習</strong>, bài giảng về cách giải bài tính network.</li></ol></div></article>
+</div></section>
+<section class="subsection" id="sec-day2"><h3>2日目の学習手順（躯体工事・仕上げ工事を分野別に集中学習します）</h3><div class="study-grid">
+<article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja"><ol><li>「虎の巻」解説講習（YouTube動画講習）の<strong class="kw">問題4・問題5</strong>を視聴してください。</li><li>虎の巻（精選模試）第一巻及び第二巻の<strong class="kw">問題4・問題5</strong>を学習してください。</li><li>本書の<strong class="kw">第4章「躯体工事」・第5章「仕上げ工事」</strong>を学習してください。</li></ol></div></article>
+<article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi"><ol><li>Xem phần <strong class="kw">Câu 4 và Câu 5</strong> trong video giải thích 「虎の巻」.</li><li>Học <strong class="kw">Câu 4 và Câu 5</strong> trong quyển 1 và quyển 2 của 「虎の巻（精選模試）」.</li><li>Học <strong class="kw">Chương 4 躯体工事 và Chương 5 仕上げ工事</strong> của sách.</li></ol></div></article>
+</div></section>
+<section class="subsection" id="sec-day3"><h3>3日目の学習手順（施工計画・施工管理・建築法規を分野別に集中学習します）</h3><div class="study-grid">
+<article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja"><ol><li>「虎の巻」解説講習（YouTube動画講習）の<strong class="kw">問題2・問題3・問題6</strong>を視聴してください。</li><li>虎の巻（精選模試）第一巻及び第二巻の<strong class="kw">問題2・問題3・問題6</strong>を学習してください。</li><li>本書の<strong class="kw">第2章「施工計画」・第3章「施工管理」・第6章「建築法規」</strong>を学習してください。</li></ol></div></article>
+<article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi"><ol><li>Xem phần <strong class="kw">Câu 2, Câu 3, Câu 6</strong> trong video giải thích 「虎の巻」.</li><li>Học <strong class="kw">Câu 2, Câu 3, Câu 6</strong> trong quyển 1 và quyển 2 của 「虎の巻（精選模試）」.</li><li>Học <strong class="kw">Chương 2: 施工計画, Chương 3: 施工管理, Chương 6: 建築法規</strong>.</li></ol></div></article>
+</div></section>
+<section class="subsection" id="sec-day4"><h3>4日目の学習手順（施工経験記述の工事概要を理解して施工管理の方法の草案を考えます）</h3><div class="study-grid">
+<article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja"><ol><li><strong class="kw">施工経験記述の考え方・書き方講習</strong>（YouTube動画講習）を視聴してください。</li><li>本書678ページの<strong class="kw">「工事概要」</strong>を閲覧し、自身の経験から類似した建築工事を選定してください。</li><li><strong class="kw">工程管理・品質管理・建設副産物</strong>の施工管理の方法について、草案を作成してください。</li></ol></div></article>
+<article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi"><ol><li>Xem video <strong class="kw">施工経験記述の考え方・書き方講習</strong>.</li><li>Xem phần <strong class="kw">工事概要</strong> ở trang 678 và chọn một công trình xây dựng tương tự từ kinh nghiệm của bản thân.</li><li>Lập bản nháp phương pháp quản lý thi công đối với <strong class="kw">工程管理, 品質管理, 建設副産物</strong>.</li></ol></div></article>
+</div></section>
+<section class="subsection" id="sec-day5"><h3>5日目の学習手順（工程管理・品質管理・建設副産物の施工管理の方法を実際に書いてみます）</h3><div class="study-grid">
+<article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja"><ol><li>本書679ページ～684ページの<strong class="kw">施工経験記述記入用紙</strong>をコピーしてください。</li><li><strong class="kw">工程管理・品質管理・建設副産物</strong>の各テーマについて、施工管理の方法を書き込んでください。</li></ol><p>※施工経験記述添削講座（有料）の受講をご希望の方は、本書の673ページをご覧ください。</p></div></article>
+<article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi"><ol><li>Sao chép các <strong class="kw">phiếu điền 施工経験記述</strong> ở trang 679 đến 684.</li><li>Viết phương pháp quản lý thi công cho từng chủ đề: <strong class="kw">quản lý tiến độ, quản lý chất lượng, sản phẩm phụ xây dựng</strong>.</li></ol><p>※ Người muốn đăng ký khóa chữa bài 施工経験記述 có thu phí, xem trang 673.</p></div></article>
+</div><p><a href="#toc">↑ Mục lục</a></p></section>
+</section><section class="study-section" id="sec-study-notes">
+<div class="section-head"><h2>4　学習手順の補足</h2><span class="source-ref">Nguồn: Book page 12</span></div>
+<div class="study-grid">
+<article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja">
+<p>① 2日目の学習手順では、問題4（躯体工事分野）の<span class="relation">「動画講習視聴→虎の巻学習→本編学習」</span>を行ってから、問題5（仕上げ工事分野）の<span class="relation">「動画講習視聴→虎の巻学習→本編学習」</span>を行うと、分野別に学習を進めることができるので、より効果的です。3日目の学習手順についても同様です。</p>
+<p>② 2日目と3日目の学習手順では、「虎の巻」解説講習（YouTube動画講習）を見てから、虎の巻（精選模試）を学習することになっていますが、この方法では、<span class="relation">虎の巻（精選模試）を自らの力だけで解いてみる前に、その答えが分かってしまいます</span>。これを避けたいと思う方は、<strong class="kw">動画を見る前に、自らの力だけで虎の巻（精選模試）に挑戦</strong>してみるという学習方法も考えられます。こちらの方法は、何度か第二次検定や実地試験（第二次検定の旧称）を受けたことがあるなど、既に学習経験のある方にお勧めです。</p>
+</div></article>
+<article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi">
+<p><strong>① Cách học ngày 2</strong>: Ở ngày thứ 2, sẽ hiệu quả hơn nếu học trọn từng lĩnh vực theo thứ tự <span class="relation">Xem video bài giảng → học 虎の巻 → học phần chính trong sách</span> đối với Câu 4, 躯体工事, sau đó mới chuyển sang Câu 5, 仕上げ工事 theo cùng trình tự. Nhờ vậy có thể hoàn tất từng lĩnh vực một cách tập trung. Ngày thứ 3 cũng nên thực hiện theo cách tương tự.</p>
+<p><strong>② Có thể đổi thứ tự giữa làm đề và xem video</strong>: Theo trình tự ngày 2 và ngày 3, sách hướng dẫn xem video giải thích 「虎の巻」 trước rồi mới học 「虎の巻（精選模試）」. Tuy nhiên, làm như vậy thì <span class="relation">đáp án đã được biết trước khi người học tự giải đề bằng năng lực của mình</span>. Người muốn tránh điều này có thể áp dụng cách khác: <strong class="kw">tự làm 精選模試 trước, sau đó mới xem video</strong>. Phương pháp này được sách khuyến nghị cho người đã có kinh nghiệm học, chẳng hạn đã dự kỳ kiểm định lần thứ hai hoặc 実地試験 nhiều lần.</p>
+</div></article>
+</div>
+<p><a href="#toc">↑ Mục lục</a></p>
+</section><section class="study-section" id="sec-summary-list">
+<div class="section-head"><h2>5　最新問題の一括要約リスト（完全合格のための学習法）</h2><span class="source-ref">Nguồn: Book page 12</span></div>
+<div class="study-grid">
+<article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja">
+<p>本書の14ページ～24ページでは、平成28年度以降に出題された<strong class="kw">施工計画分野・躯体工事分野・仕上げ工事分野・建築法規分野の全問題</strong>について、その要点を集約しています。これを数回通読すると、学習をより確かなものにすることができます。</p>
+<p>1日目の学習手順でもある最新問題の一括要約リスト（完全合格のための学習法）は、YouTube動画講習としても提供しているため、手元にスマートフォンなどがあれば、<strong class="kw">ちょっとした隙間時間（通勤電車の中や休憩時間など）</strong>にも、<strong class="kw">過去10年間の出題内容</strong>をまとめて効率よく学習を進めてゆくことができます。</p>
+</div></article>
+<article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi">
+<p>Trang 14 đến 24 của sách tổng hợp các điểm chính của toàn bộ câu hỏi từ năm Heisei 28 trở đi trong các lĩnh vực <strong class="kw">施工計画, 躯体工事, 仕上げ工事, 建築法規</strong>. Đọc toàn bộ phần này vài lần sẽ giúp củng cố việc học.</p>
+<p>「最新問題の一括要約リスト（完全合格のための学習法）」, vốn là nội dung học ngày thứ 1, cũng được cung cấp dưới dạng video YouTube. Vì vậy, nếu có điện thoại thông minh, có thể tận dụng <strong class="kw">các khoảng thời gian ngắn như trên tàu khi đi làm hoặc trong giờ nghỉ</strong> để học hiệu quả nội dung đề thi của <strong class="kw">10 năm gần đây</strong>.</p>
+</div></article>
+</div>
+<p><a href="#toc">↑ Mục lục</a></p>
+</section><section class="study-section" id="sec-express-course">
+<div class="section-head"><h2>6　超特急コースの学習手順</h2><span class="source-ref">Nguồn: Book page 12</span></div>
+<div class="study-grid">
+<article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja">
+<p>この学習手順は、5日間の学習時間を取ることができない受検者のために、標準的な学習手順を更に短縮したものです。この学習手順では、本書の<strong class="kw">「最新問題の一括要約リスト」</strong>と重要度の高い<strong class="kw">「虎の巻（精選模試）」</strong>に絞り込んで学習を進めていきます。</p>
+<h4>1日目の学習手順（施工経験記述を1日で学習します）</h4><p>本書の637ページに掲載されている<strong class="kw">虎の巻（精選模試）施工経験記述編</strong>を学習してください。</p>
+<h4>2日目の学習手順（最新問題の重要ポイントを把握します）</h4><p>本書の14ページに掲載されている<strong class="kw">「最新問題の一括要約リスト」</strong>を学習してください。</p>
+<h4>3日目の学習手順（最も重要度の高い問題だけを学習します）</h4><p>本書の648ページに掲載されている<strong class="kw">虎の巻（精選模試）第一巻</strong>を学習してください。</p>
+</div></article>
+<article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi">
+<p>Đây là phiên bản rút ngắn hơn nữa của trình tự học tiêu chuẩn, dành cho người không thể bố trí đủ 5 ngày học. Khóa này giới hạn phạm vi vào <strong class="kw">「最新問題の一括要約リスト」</strong> và <strong class="kw">「虎の巻（精選模試）」 có mức độ quan trọng cao</strong>.</p>
+<h4>Ngày 1: học 施工経験記述 trong một ngày</h4><p>Học phần <strong class="kw">虎の巻（精選模試）施工経験記述編</strong> ở trang 637.</p>
+<h4>Ngày 2: nắm các điểm quan trọng của đề thi gần đây</h4><p>Học <strong class="kw">「最新問題の一括要約リスト」</strong> ở trang 14.</p>
+<h4>Ngày 3: chỉ học những vấn đề có mức độ quan trọng cao nhất</h4><p>Học <strong class="kw">虎の巻（精選模試）第一巻</strong> ở trang 648.</p>
+</div></article>
+</div>
+<p><a href="#toc">↑ Mục lục</a></p>
+</section></main>
+<!-- CONTENT_END -->
+<section id="terms">
+<h2>Thuật ngữ chuyên môn</h2><div class="section-head">
+<h2>Thuật ngữ chuyên môn</h2>
+</div><div class="table-wrap">
+<table>
+<thead><tr><th>日本語</th><th>読み方</th><th>Tiếng Việt</th><th>Giải thích</th><th>Liên quan</th></tr></thead>
+<tbody>
+<tr><td>監理技術者</td><td>かんりぎじゅつしゃ</td><td>Kỹ sư quản lý kỹ thuật</td><td>Chức danh kỹ thuật phụ trách quản lý thi công đối với công trình thuộc phạm vi pháp luật quy định.</td><td>1級建築施工管理技士</td></tr>
+<tr><td>建築一式工事</td><td>けんちくいっしきこうじ</td><td>Công trình xây dựng tổng hợp</td><td>Phân loại công trình trong 建設業法.</td><td>監理技術者</td></tr>
+<tr><td>施工経験記述</td><td>せこうけいけんきじゅつ</td><td>Bài mô tả kinh nghiệm thi công</td><td>Phần tự luận yêu cầu trình bày phương pháp quản lý dựa trên kinh nghiệm thực tế.</td><td>工程管理・品質管理・建設副産物</td></tr>
+<tr><td>建設副産物</td><td>けんせつふくさんぶつ</td><td>Sản phẩm phụ xây dựng</td><td>Vật chất phát sinh trong quá trình xây dựng, gồm đối tượng có thể tái sử dụng, tái chế hoặc cần xử lý.</td><td>発生抑制・再使用・再生利用・適正処分</td></tr>
+<tr><td>五肢択一式</td><td>ごしたくいつしき</td><td>Trắc nghiệm chọn 1 trong 5</td><td>Chọn một đáp án đúng trong năm phương án.</td><td>躯体工事・仕上げ工事・建築法規</td></tr>
+<tr><td>ネットワーク工程表</td><td>ネットワークこうていひょう</td><td>Network schedule</td><td>Biểu đồ tiến độ thể hiện quan hệ logic giữa các công việc.</td><td>先行作業・後続作業・フロート</td></tr>
+<tr><td>先行作業</td><td>せんこうさぎょう</td><td>Công việc trước</td><td>Công việc phải được hoàn thành hoặc đạt điều kiện nhất định trước công việc sau.</td><td>後続作業</td></tr>
+<tr><td>後続作業</td><td>こうぞくさぎょう</td><td>Công việc sau</td><td>Công việc phụ thuộc vào công việc trước.</td><td>先行作業</td></tr>
+<tr><td>フリーフロート</td><td>－</td><td>Free float</td><td>Thời gian có thể trì hoãn mà không làm chậm thời điểm bắt đầu sớm của công việc kế tiếp.</td><td>ネットワーク工程表</td></tr>
+<tr><td>トータルフロート</td><td>－</td><td>Total float</td><td>Thời gian có thể trì hoãn mà không làm chậm thời điểm hoàn thành toàn bộ dự án.</td><td>ネットワーク工程表</td></tr>
+<tr><td>躯体工事</td><td>くたいこうじ</td><td>Công tác phần thân / kết cấu</td><td>Nhóm công tác tạo nên kết cấu chính của công trình.</td><td>仕上げ工事</td></tr>
+<tr><td>虎の巻</td><td>とらのまき</td><td>Tài liệu trọng điểm / cẩm nang luyện thi</td><td>Tên bộ tài liệu luyện thi trọng điểm được sách sử dụng.</td><td>精選模試</td></tr>
+<tr><td>精選模試</td><td>せいせんもし</td><td>Đề thi thử tuyển chọn</td><td>Các câu mô phỏng được chọn lọc theo mức độ quan trọng.</td><td>虎の巻</td></tr>
+<tr><td>草案</td><td>そうあん</td><td>Bản nháp</td><td>Bản dự thảo câu trả lời trước khi viết hoàn chỉnh.</td><td>施工経験記述</td></tr>
+<tr><td>添削講座</td><td>てんさくこうざ</td><td>Khóa chữa bài</td><td>Dịch vụ kiểm tra, nhận xét và sửa bài viết.</td><td>施工経験記述</td></tr>
+<tr><td>通読</td><td>つうどく</td><td>Đọc xuyên suốt</td><td>Đọc toàn bộ tài liệu từ đầu đến cuối để nắm tổng thể và lặp lại kiến thức.</td><td>最新問題の一括要約リスト</td></tr>
+<tr><td>隙間時間</td><td>すきまじかん</td><td>Thời gian trống ngắn</td><td>Các khoảng vài phút có thể tận dụng để học.</td><td>通勤・休憩</td></tr>
+<tr><td>超特急コース</td><td>ちょうとっきゅうコース</td><td>Khóa siêu tốc</td><td>Phương án học rút ngắn khi không thể theo kế hoạch 5 ngày.</td><td>3日間</td></tr>
+</tbody>
+</table>
+</div></section>
+
+<section id="memory">
+<h2>Điểm cần nhớ và mẹo nhớ</h2><div class="section-head">
+<h2>Điểm cần nhớ và mẹo nhớ</h2>
+</div><div class="memory-box">
+<strong>Cơ cấu điểm dự kiến</strong>
+<p><strong>32 + 12 + 12 + 16 + 16 + 12 = 100 điểm.</strong> Mốc được sách nêu: <strong>từ 60 điểm trở lên</strong> và đồng thời không thuộc 「不合格要件」.</p>
+</div><div class="comparison-box">
+<div class="table-wrap">
+<table>
+<thead><tr><th>Nhóm cần nhớ</th><th>Recall cue</th></tr></thead>
+<tbody>
+<tr><td>施工経験記述</td><td><span class="relation">工程管理・品質管理・建設副産物</span> đều phải chuẩn bị.</td></tr>
+<tr><td>Reiwa 8, năm chẵn</td><td><span class="relation">Câu 4 = 仕上げ工事, dạng tự luận</span>; <span class="relation">Câu 5 = 躯体工事, dạng 5 lựa chọn</span>.</td></tr>
+<tr><td>施工管理</td><td><span class="relation">Tên công việc → quan hệ trước/sau → free float / total float → tổng thời gian</span>.</td></tr>
+<tr><td>Lộ trình tiêu chuẩn</td><td><strong>5 ngày × 5 giờ = khoảng 25 giờ học tập trung.</strong></td></tr>
+<tr><td>超特急コース</td><td><strong>3 ngày</strong>, giới hạn vào 最新問題の一括要約リスト và 虎の巻（精選模試） quan trọng.</td></tr>
+<tr><td>Tự kiểm tra trước khi xem đáp án</td><td><span class="relation">Tự làm 精選模試 trước → sau đó xem video giải thích.</span></td></tr>
+</tbody>
+</table>
+</div>
+</div></section>
 <template id="component-library">
-
-  <!-- FIGURE -->
-  <figure class="figure-card">
-    <img src="{{IMAGE_SOURCE}}" alt="{{IMAGE_ALT}}">
-    <figcaption>{{FIGURE_CAPTION}}</figcaption>
-  </figure>
-
-  <!-- MULTIPLE FIGURES -->
-  <div class="figure-grid">
-    <figure class="figure-card">
-      <img src="{{IMAGE_SOURCE_1}}" alt="{{IMAGE_ALT_1}}">
-      <figcaption>{{FIGURE_CAPTION_1}}</figcaption>
-    </figure>
-    <figure class="figure-card">
-      <img src="{{IMAGE_SOURCE_2}}" alt="{{IMAGE_ALT_2}}">
-      <figcaption>{{FIGURE_CAPTION_2}}</figcaption>
-    </figure>
-  </div>
-
-  <!-- TABLE -->
-  <div class="table-wrap">
-    <table>
-      <caption>{{TABLE_CAPTION}}</caption>
-      <thead>
-        <tr><th>{{HEADER_1}}</th><th>{{HEADER_2}}</th></tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><strong class="kw">{{ROW_SUBJECT}}</strong></td>
-          <td><span class="relation">{{ROW_RECALL_CUE}}</span></td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-
-  <!-- NOTE -->
-  <div class="note-box">
-    <strong>{{NOTE_TITLE}}</strong>
-    <p>{{NOTE_CONTENT}}</p>
-  </div>
-
-  <!-- WARNING -->
-  <div class="warning-box">
-    <strong>{{WARNING_TITLE}}</strong>
-    <p>{{WARNING_CONTENT}}</p>
-  </div>
-
-  <!-- MEMORY -->
-  <div class="memory-box">
-    <strong>{{MEMORY_TITLE}}</strong>
-    <p>
-    <div class="memory-box">
-      <strong>Cơ cấu điểm dự kiến</strong>
-      <p><strong>32 + 12 + 12 + 16 + 16 + 12 = 100 điểm.</strong> Mốc được sách nêu: <strong>từ 60 điểm trở lên</strong> và đồng thời không thuộc 「不合格要件」.</p>
-    </div>
-    <div class="comparison-box">
-      <div class="table-wrap">
-        <table>
-          <thead><tr><th>Nhóm cần nhớ</th><th>Recall cue</th></tr></thead>
-          <tbody>
-            <tr><td>施工経験記述</td><td><span class="relation">工程管理・品質管理・建設副産物</span> đều phải chuẩn bị.</td></tr>
-            <tr><td>Reiwa 8, năm chẵn</td><td><span class="relation">Câu 4 = 仕上げ工事, dạng tự luận</span>; <span class="relation">Câu 5 = 躯体工事, dạng 5 lựa chọn</span>.</td></tr>
-            <tr><td>施工管理</td><td><span class="relation">Tên công việc → quan hệ trước/sau → free float / total float → tổng thời gian</span>.</td></tr>
-            <tr><td>Lộ trình tiêu chuẩn</td><td><strong>5 ngày × 5 giờ = khoảng 25 giờ học tập trung.</strong></td></tr>
-            <tr><td>超特急コース</td><td><strong>3 ngày</strong>, giới hạn vào 最新問題の一括要約リスト và 虎の巻（精選模試） quan trọng.</td></tr>
-            <tr><td>Tự kiểm tra trước khi xem đáp án</td><td><span class="relation">Tự làm 精選模試 trước → sau đó xem video giải thích.</span></td></tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-</p>
-  </div>
-
-  <!-- FORMULA / FLOW -->
-  <div class="formula-box">
-    <div class="formula-line">
-      <span class="flow-node">{{NODE_1}}</span>
-      <span class="flow-arrow">→</span>
-      <span class="flow-node">{{NODE_2}}</span>
-      <span class="flow-arrow">→</span>
-      <span class="flow-node">{{NODE_3}}</span>
-    </div>
-  </div>
-
+<div class="table-wrap">
+<table>
+<caption>{{TABLE_CAPTION}}</caption>
+<thead><tr><th>{{HEADER_1}}</th><th>{{HEADER_2}}</th></tr></thead>
+<tbody><tr><td><strong class="kw">{{ROW_KEY}}</strong></td><td><span class="relation">{{ROW_RELATION}}</span></td></tr></tbody>
+</table>
+</div>
+<figure class="figure-card">
+<img alt="{{IMAGE_ALT}}" height="{{IMAGE_HEIGHT}}" src="{{IMAGE_SOURCE}}" width="{{IMAGE_WIDTH}}"/>
+<figcaption>{{IMAGE_CAPTION}}</figcaption>
+</figure>
+<div class="figure-grid">
+<figure class="figure-card">
+<img alt="{{IMAGE_ALT_1}}" height="{{IMAGE_HEIGHT_1}}" src="{{IMAGE_SOURCE_1}}" width="{{IMAGE_WIDTH_1}}"/>
+<figcaption>{{IMAGE_CAPTION_1}}</figcaption>
+</figure>
+<figure class="figure-card">
+<img alt="{{IMAGE_ALT_2}}" height="{{IMAGE_HEIGHT_2}}" src="{{IMAGE_SOURCE_2}}" width="{{IMAGE_WIDTH_2}}"/>
+<figcaption>{{IMAGE_CAPTION_2}}</figcaption>
+</figure>
+</div>
+<section class="note-box"><h3>{{NOTE_TITLE}}</h3><p>{{NOTE_CONTENT}}</p></section>
+<section class="warning-box"><h3>{{WARNING_TITLE}}</h3><p>{{WARNING_CONTENT}}</p></section>
+<section class="memory-box"><h3>{{MEMORY_TITLE}}</h3><p>{{MEMORY_ITEM}}</p></section>
 </template>
-
+</div>
 <script>
-(() => {
-  "use strict";
+(function () {
+  'use strict';
 
   const root = document.documentElement;
   const body = document.body;
+  const q = id => document.getElementById(id);
+  const FONT_LEVELS = Array.from({ length: 21 }, (_, i) => 50 + i * 5);
 
-  const themeToggle = document.getElementById("theme-toggle");
-  const modeToggle = document.getElementById("mode-toggle");
-  const fontDown = document.getElementById("font-down");
-  const fontReset = document.getElementById("font-reset");
-  const fontUp = document.getElementById("font-up");
+  const controls = q('control-cluster');
+  const controlsToggle = q('controls-toggle');
+  const controlPanel = q('control-panel');
+  const themeButton = q('theme-toggle');
+  const modeButton = q('mode-toggle');
+  const fontDown = q('font-down');
+  const fontUp = q('font-up');
+  const fontReset = q('font-reset');
+  const tocButton = q('toc-toggle');
+  const tocClose = q('toc-close');
+  const overlay = q('toc-overlay');
+  const prevButton = q('section-prev');
+  const nextButton = q('section-next');
+  const homeButton = q('home-button');
 
-  const tocToggle = document.getElementById("toc-toggle");
-  const tocClose = document.getElementById("toc-close");
-  const tocOverlay = document.getElementById("toc-overlay");
-  const tocDrawer = document.getElementById("toc-drawer");
+  const pageKey = location.pathname + location.search;
+  const readerStateKey = 'study-reader-position:' + pageKey;
+  const lastPageKey = 'study-last-page';
+  const explicitHomeKey = 'study-explicit-home';
+  const anchorSelector = [
+    '.page-shell h1', '.page-shell h2', '.page-shell h3', '.page-shell h4',
+    '.page-shell p', '.page-shell li', '.page-shell td', '.page-shell th',
+    '.page-shell figcaption', '.page-shell .card-title'
+  ].join(', ');
 
-  const prevButton = document.getElementById("section-prev");
-  const nextButton = document.getElementById("section-next");
+  let anchorElements = [];
+  let lastStablePosition = null;
+  let scrollSaveTimer = 0;
+  let resizeRestoreTimer = 0;
+  let resizeAnchor = null;
+  let suppressScrollSaveUntil = 0;
+  function layoutViewportSize() {
+    const de = document.documentElement;
+    return {
+      width: de.clientWidth || window.innerWidth,
+      height: de.clientHeight || window.innerHeight
+    };
+  }
 
-  const FONT_LEVELS = [80, 90, 100, 110, 120, 130, 140];
+  function visualViewportScale() {
+    const vv = window.visualViewport;
+    return vv && Number.isFinite(vv.scale) ? vv.scale : 1;
+  }
+
+  function isPinchZoomActive() {
+    return Math.abs(visualViewportScale() - 1) > 0.015;
+  }
+
+  const initialLayoutViewport = layoutViewportSize();
+  let lastViewportWidth = initialLayoutViewport.width;
+  let lastViewportHeight = initialLayoutViewport.height;
+  let pinchZoomSession = false;
+
+  try {
+    if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+  } catch (e) {}
 
   function safeGet(key, fallback = null) {
     try {
@@ -1514,210 +1163,602 @@ body.toc-open .toc-drawer {
   }
 
   function safeSet(key, value) {
-    try {
-      localStorage.setItem(key, value);
-    } catch (e) {}
+    try { localStorage.setItem(key, value); } catch (e) {}
   }
+
+  function safeRemove(key) {
+    try { localStorage.removeItem(key); } catch (e) {}
+  }
+
+  /* ---------- Persistent page / PWA resume metadata ---------- */
+
+  function rememberCurrentPage() {
+    safeSet(lastPageKey, pageKey);
+    safeSet('study-last-active-at', String(Date.now()));
+  }
+
+  rememberCurrentPage();
+
+  /* ---------- Layout viewport geometry ---------- */
+
+  /*
+    Pinch zoom changes visualViewport.width / height / scale.
+    It must NOT change the document layout width.
+
+    Therefore --app-viewport-width is derived only from the layout viewport
+    (documentElement.clientWidth / innerWidth), never from visualViewport.width.
+  */
+  function syncViewportGeometry() {
+    const { width } = layoutViewportSize();
+    root.style.setProperty(
+      '--app-viewport-width',
+      `${Math.round(width * 100) / 100}px`
+    );
+  }
+
+  syncViewportGeometry();
+
+  /* ---------- Reader anchors ---------- */
+
+  function rebuildReaderAnchors() {
+    anchorElements = Array.from(document.querySelectorAll(anchorSelector));
+    anchorElements.forEach((el, index) => {
+      el.dataset.readerKey = 'r' + index;
+    });
+  }
+
+  function closestReaderElement(node) {
+    if (!node) return null;
+    const el = node.nodeType === Node.ELEMENT_NODE ? node : node.parentElement;
+    return el ? el.closest('[data-reader-key]') : null;
+  }
+
+  function caretAtPoint(x, y) {
+    try {
+      if (document.caretPositionFromPoint) {
+        const pos = document.caretPositionFromPoint(x, y);
+        if (!pos || !pos.offsetNode) return null;
+        return { node: pos.offsetNode, offset: pos.offset };
+      }
+      if (document.caretRangeFromPoint) {
+        const range = document.caretRangeFromPoint(x, y);
+        if (!range) return null;
+        return { node: range.startContainer, offset: range.startOffset };
+      }
+    } catch (e) {}
+    return null;
+  }
+
+  function textOffsetFromElementStart(element, node, offset) {
+    try {
+      const range = document.createRange();
+      range.setStart(element, 0);
+      range.setEnd(node, offset);
+      return range.toString().length;
+    } catch (e) {
+      return 0;
+    }
+  }
+
+  function domPositionFromTextOffset(element, targetOffset) {
+    const walker = document.createTreeWalker(element, NodeFilter.SHOW_TEXT);
+    let remaining = Math.max(0, targetOffset);
+    let node = walker.nextNode();
+    let last = null;
+
+    while (node) {
+      last = node;
+      const len = node.nodeValue ? node.nodeValue.length : 0;
+      if (remaining <= len) {
+        return { node, offset: remaining };
+      }
+      remaining -= len;
+      node = walker.nextNode();
+    }
+
+    if (last) return { node: last, offset: last.nodeValue ? last.nodeValue.length : 0 };
+    return { node: element, offset: 0 };
+  }
+
+  function characterRect(node, offset) {
+    try {
+      if (node.nodeType !== Node.TEXT_NODE) {
+        const r = node.getBoundingClientRect ? node.getBoundingClientRect() : null;
+        return r && r.height ? r : null;
+      }
+
+      const len = node.nodeValue ? node.nodeValue.length : 0;
+      if (!len) return node.parentElement ? node.parentElement.getBoundingClientRect() : null;
+
+      let start = Math.max(0, Math.min(offset, len - 1));
+      let end = Math.min(len, start + 1);
+      if (offset >= len && len > 0) {
+        start = len - 1;
+        end = len;
+      }
+
+      const range = document.createRange();
+      range.setStart(node, start);
+      range.setEnd(node, end);
+      const rects = range.getClientRects();
+      return rects.length ? rects[0] : range.getBoundingClientRect();
+    } catch (e) {
+      return null;
+    }
+  }
+
+  function captureReadingPosition() {
+    if (!anchorElements.length) rebuildReaderAnchors();
+    if (!anchorElements.length) return null;
+
+    const vv = window.visualViewport;
+    const viewportWidth = vv ? vv.width : window.innerWidth;
+    const topProbe = 6;
+    const ys = [topProbe, 12, 18, 26, 36, 50];
+    const xs = [];
+
+    for (let x = 12; x <= Math.min(viewportWidth - 12, 220); x += 16) xs.push(x);
+    xs.push(viewportWidth * .25, viewportWidth * .5, viewportWidth * .75);
+
+    for (const y of ys) {
+      for (const x of xs) {
+        if (x <= 0 || x >= viewportWidth) continue;
+        const caret = caretAtPoint(x, y);
+        if (!caret) continue;
+        const element = closestReaderElement(caret.node);
+        if (!element || !document.querySelector('.page-shell')?.contains(element)) continue;
+
+        const offset = textOffsetFromElementStart(element, caret.node, caret.offset);
+        const rect = characterRect(caret.node, caret.offset);
+        const key = element.dataset.readerKey;
+        if (key && rect && Number.isFinite(rect.top)) {
+          return { key, offset, top: rect.top };
+        }
+      }
+    }
+
+    /* Fallback: nearest textual block to the top edge. */
+    let best = null;
+    let bestDistance = Infinity;
+    for (const element of anchorElements) {
+      const rect = element.getBoundingClientRect();
+      if (rect.bottom < 0 || rect.top > (vv ? vv.height : window.innerHeight)) continue;
+      const distance = Math.abs(rect.top);
+      if (distance < bestDistance) {
+        bestDistance = distance;
+        best = { key: element.dataset.readerKey, offset: 0, top: rect.top };
+      }
+    }
+    return best;
+  }
+
+  function restoreReadingPosition(state) {
+    if (!state || !state.key) return false;
+    if (!anchorElements.length) rebuildReaderAnchors();
+
+    const element = document.querySelector('[data-reader-key="' + CSS.escape(state.key) + '"]');
+    if (!element) return false;
+
+    const pos = domPositionFromTextOffset(element, Number(state.offset) || 0);
+    const rect = characterRect(pos.node, pos.offset);
+    if (!rect || !Number.isFinite(rect.top)) return false;
+
+    const desiredTop = Number.isFinite(Number(state.top)) ? Number(state.top) : 6;
+    const delta = rect.top - desiredTop;
+    if (Math.abs(delta) < .5) return true;
+
+    suppressScrollSaveUntil = Date.now() + 700;
+    const oldBehavior = root.style.scrollBehavior;
+    root.style.scrollBehavior = 'auto';
+    window.scrollBy(0, delta);
+    root.style.scrollBehavior = oldBehavior;
+    return true;
+  }
+
+  function saveReaderState(state) {
+    if (!state) return;
+    lastStablePosition = state;
+    safeSet(readerStateKey, JSON.stringify(state));
+  }
+
+  function readReaderState() {
+    try {
+      const raw = safeGet(readerStateKey);
+      return raw ? JSON.parse(raw) : null;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  function settleRestore(state, delays = [0, 60, 180, 420]) {
+    if (!state) return;
+    suppressScrollSaveUntil = Date.now() + Math.max(...delays) + 350;
+    delays.forEach(delay => {
+      window.setTimeout(() => {
+        requestAnimationFrame(() => restoreReadingPosition(state));
+      }, delay);
+    });
+    window.setTimeout(() => {
+      saveReaderState(state);
+    }, Math.max(...delays) + 120);
+  }
+
+  function preserveReadingPosition(mutator) {
+    const state = captureReadingPosition() || lastStablePosition || readReaderState();
+    if (state) saveReaderState(state);
+    mutator();
+    rebuildReaderAnchors();
+    settleRestore(state);
+  }
+
+  function scheduleReaderSave() {
+    if (Date.now() < suppressScrollSaveUntil) return;
+    clearTimeout(scrollSaveTimer);
+    scrollSaveTimer = window.setTimeout(() => {
+      if (Date.now() < suppressScrollSaveUntil) return;
+      const state = captureReadingPosition();
+      if (state) saveReaderState(state);
+    }, 130);
+  }
+
+  rebuildReaderAnchors();
+  lastStablePosition = readReaderState();
 
   /* ---------- Theme ---------- */
 
   function applyTheme(theme) {
-    const next = theme === "light" ? "light" : "dark";
-    root.dataset.theme = next;
-
-    if (themeToggle) {
-      const dark = next === "dark";
-      themeToggle.textContent = dark ? "☀" : "☾";
-      themeToggle.title = dark ? "Chuyển sang Light" : "Chuyển sang Dark";
-      themeToggle.setAttribute("aria-pressed", String(!dark));
+    theme = theme === 'light' ? 'light' : 'dark';
+    root.dataset.theme = theme;
+    safeSet('study-theme', theme);
+    if (themeButton) {
+      themeButton.textContent = theme === 'dark' ? '☀' : '☾';
+      themeButton.title = theme === 'dark' ? 'Chuyển sang Light theme' : 'Chuyển sang Dark theme';
+      themeButton.setAttribute('aria-label', themeButton.title);
+      themeButton.setAttribute('aria-pressed', theme === 'light' ? 'true' : 'false');
     }
-
-    safeSet("study-theme", next);
   }
-
-  const initialTheme =
-    safeGet("study-theme") ||
-    (window.matchMedia &&
-     window.matchMedia("(prefers-color-scheme: dark)").matches
-      ? "dark"
-      : "light");
-
-  applyTheme(initialTheme);
-
-  themeToggle?.addEventListener("click", () => {
-    applyTheme(root.dataset.theme === "dark" ? "light" : "dark");
-  });
 
   /* ---------- Full / Keywords ---------- */
 
   function applyMode(mode) {
-    const keywords = mode === "keywords";
-    body.classList.toggle("keyword-focus", keywords);
-
-    if (modeToggle) {
-      modeToggle.textContent = keywords ? "📖" : "🎯";
-      modeToggle.title = keywords ? "Chuyển sang Full" : "Chuyển sang Keywords";
-      modeToggle.setAttribute("aria-pressed", String(keywords));
+    mode = mode === 'keywords' ? 'keywords' : 'full';
+    root.dataset.studyMode = mode;
+    body.classList.toggle('keyword-focus', mode === 'keywords');
+    safeSet('study-mode', mode);
+    if (modeButton) {
+      modeButton.textContent = mode === 'full' ? '🎯' : '📖';
+      modeButton.title = mode === 'full' ? 'Chuyển sang Keywords mode' : 'Trở lại Full mode';
+      modeButton.setAttribute('aria-label', modeButton.title);
+      modeButton.setAttribute('aria-pressed', mode === 'keywords' ? 'true' : 'false');
     }
-
-    safeSet("study-mode", keywords ? "keywords" : "full");
   }
 
-  applyMode(safeGet("study-mode", "full"));
+  /* ---------- Font 50-150%, step 5% ---------- */
 
-  modeToggle?.addEventListener("click", () => {
-    applyMode(body.classList.contains("keyword-focus") ? "full" : "keywords");
-  });
-
-  /* ---------- Font scale ---------- */
-
-  let fontScale = Number(safeGet("study-font-scale", "100"));
-  if (!FONT_LEVELS.includes(fontScale)) {
-    fontScale = 100;
+  function currentScale() {
+    const saved = Number(safeGet('study-font-scale', '100'));
+    return FONT_LEVELS.includes(saved) ? saved : 100;
   }
 
   function applyFontScale(scale) {
-    fontScale = FONT_LEVELS.includes(scale) ? scale : 100;
-
-    root.style.setProperty(
-      "--base-font-size",
-      `${16 * fontScale / 100}px`
-    );
+    if (!FONT_LEVELS.includes(scale)) scale = 100;
+    root.style.setProperty('--base-font-size', (16 * scale / 100) + 'px');
+    safeSet('study-font-scale', String(scale));
 
     if (fontReset) {
-      fontReset.textContent = `${fontScale}%`;
-      fontReset.title =
-        fontScale === 100
-          ? "Cỡ chữ hiện tại 100%"
-          : `Cỡ chữ hiện tại ${fontScale}%, bấm để về 100%`;
+      fontReset.textContent = scale + '%';
+      fontReset.title = 'Cỡ chữ hiện tại ' + scale + '%. Chạm để về 100%';
+      fontReset.setAttribute('aria-label', fontReset.title);
     }
-
-    if (fontDown) {
-      fontDown.disabled = fontScale === FONT_LEVELS[0];
-    }
-
-    if (fontUp) {
-      fontUp.disabled = fontScale === FONT_LEVELS[FONT_LEVELS.length - 1];
-    }
-
-    safeSet("study-font-scale", String(fontScale));
+    if (fontDown) fontDown.disabled = scale === FONT_LEVELS[0];
+    if (fontUp) fontUp.disabled = scale === FONT_LEVELS[FONT_LEVELS.length - 1];
   }
 
-  applyFontScale(fontScale);
+  /* ---------- Collapsible controls ---------- */
 
-  fontDown?.addEventListener("click", () => {
-    const index = FONT_LEVELS.indexOf(fontScale);
-    if (index > 0) {
-      applyFontScale(FONT_LEVELS[index - 1]);
-    }
-  });
-
-  fontUp?.addEventListener("click", () => {
-    const index = FONT_LEVELS.indexOf(fontScale);
-    if (index >= 0 && index < FONT_LEVELS.length - 1) {
-      applyFontScale(FONT_LEVELS[index + 1]);
-    }
-  });
-
-  fontReset?.addEventListener("click", () => {
-    applyFontScale(100);
-  });
-
-  /* ---------- TOC drawer ---------- */
-
-  function setToc(open) {
-    body.classList.toggle("toc-open", open);
-    tocToggle?.setAttribute("aria-expanded", String(open));
-    tocOverlay?.setAttribute("aria-hidden", String(!open));
-
-    if (open) {
-      requestAnimationFrame(() => tocClose?.focus());
-    }
+  function setControlsOpen(open) {
+    if (!controls) return;
+    controls.classList.toggle('open', open);
+    controlsToggle?.setAttribute('aria-expanded', String(open));
+    controlsToggle?.setAttribute('aria-label', open ? 'Đóng công cụ' : 'Mở công cụ');
+    controlsToggle?.setAttribute('title', open ? 'Đóng công cụ' : 'Mở công cụ');
   }
 
-  tocToggle?.addEventListener("click", () => {
-    setToc(!body.classList.contains("toc-open"));
+  controlsToggle?.addEventListener('click', event => {
+    event.stopPropagation();
+    setControlsOpen(!controls.classList.contains('open'));
   });
 
-  tocClose?.addEventListener("click", () => setToc(false));
-  tocOverlay?.addEventListener("click", () => setToc(false));
-
-  tocDrawer?.querySelectorAll("a[href^='#']").forEach(link => {
-    link.addEventListener("click", () => setToc(false));
+  controlPanel?.addEventListener('click', event => event.stopPropagation());
+  document.addEventListener('pointerdown', event => {
+    if (controls?.classList.contains('open') && !controls.contains(event.target)) setControlsOpen(false);
   });
 
-  document.addEventListener("keydown", event => {
-    if (event.key === "Escape" && body.classList.contains("toc-open")) {
-      setToc(false);
-      tocToggle?.focus();
+  /* ---------- TOC ---------- */
+
+  function openToc() {
+    body.classList.add('toc-open');
+    tocButton?.setAttribute('aria-expanded', 'true');
+    setControlsOpen(false);
+  }
+
+  function closeToc() {
+    body.classList.remove('toc-open');
+    tocButton?.setAttribute('aria-expanded', 'false');
+  }
+
+  tocButton?.addEventListener('click', openToc);
+  tocClose?.addEventListener('click', closeToc);
+  overlay?.addEventListener('click', closeToc);
+
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape') {
+      closeToc();
+      setControlsOpen(false);
     }
   });
 
-  /* ---------- Back / Next section ---------- */
+  document.querySelectorAll('a[href="#toc"]').forEach(a => {
+    a.addEventListener('click', event => {
+      event.preventDefault();
+      openToc();
+    });
+  });
 
-  const studySections = Array.from(
-    document.querySelectorAll("main .study-section[id]")
-  );
+  /* TOC navigation does not add hash-history entries. */
+  document.querySelectorAll('#toc a[href^="#"]').forEach(a => {
+    a.addEventListener('click', event => {
+      const href = a.getAttribute('href');
+      if (!href || href === '#toc') return;
+      const target = document.getElementById(decodeURIComponent(href.slice(1)));
+      if (!target) return;
+      event.preventDefault();
+      closeToc();
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      window.setTimeout(scheduleReaderSave, 450);
+    });
+  });
+
+  /* ---------- Previous / next lesson item ---------- */
+
+  const tocTargets = Array.from(document.querySelectorAll('#toc a[href^="#"]'))
+    .map(a => document.getElementById(decodeURIComponent(a.getAttribute('href').slice(1))))
+    .filter((el, i, arr) => el && el.id !== 'toc' && arr.indexOf(el) === i);
 
   function currentSectionIndex() {
-    if (!studySections.length) return -1;
-
-    const referenceY = window.scrollY + Math.min(window.innerHeight * 0.32, 220);
-    let index = 0;
-
-    for (let i = 0; i < studySections.length; i++) {
-      if (studySections[i].offsetTop <= referenceY) {
-        index = i;
-      } else {
-        break;
-      }
-    }
-    return index;
+    let idx = -1;
+    const threshold = 24;
+    tocTargets.forEach((el, i) => {
+      if (el.getBoundingClientRect().top <= threshold) idx = i;
+    });
+    return idx;
   }
 
-  function updateNavState() {
-    if (!studySections.length) {
-      if (prevButton) prevButton.disabled = true;
-      if (nextButton) nextButton.disabled = true;
+  function updateSectionButtons() {
+    const i = currentSectionIndex();
+    if (prevButton) prevButton.disabled = !tocTargets.length || i <= 0;
+    if (nextButton) nextButton.disabled = !tocTargets.length || i >= tocTargets.length - 1;
+  }
+
+  function goToIndex(i) {
+    if (!tocTargets.length) return;
+    i = Math.max(0, Math.min(tocTargets.length - 1, i));
+    tocTargets[i].scrollIntoView({ behavior: 'smooth', block: 'start' });
+    window.setTimeout(() => {
+      const state = captureReadingPosition();
+      if (state) saveReaderState(state);
+      updateSectionButtons();
+    }, 450);
+  }
+
+  prevButton?.addEventListener('click', () => goToIndex(Math.max(0, currentSectionIndex() - 1)));
+  nextButton?.addEventListener('click', () => goToIndex(Math.min(tocTargets.length - 1, currentSectionIndex() + 1)));
+
+  /* ---------- Home ---------- */
+
+  homeButton?.addEventListener('click', () => {
+    const state = captureReadingPosition();
+    if (state) saveReaderState(state);
+    safeSet(explicitHomeKey, '1');
+    safeSet('study-home-click-at', String(Date.now()));
+    window.location.href = new URL('index.html', window.location.href).href;
+  });
+
+  /* ---------- Initialize state ---------- */
+
+  applyTheme(root.dataset.theme === 'light' ? 'light' : 'dark');
+  applyMode(root.dataset.studyMode || 'full');
+  applyFontScale(currentScale());
+
+  themeButton?.addEventListener('click', () => applyTheme(root.dataset.theme === 'dark' ? 'light' : 'dark'));
+  modeButton?.addEventListener('click', () => applyMode(root.dataset.studyMode === 'keywords' ? 'full' : 'keywords'));
+
+  fontDown?.addEventListener('click', () => {
+    const i = FONT_LEVELS.indexOf(currentScale());
+    if (i > 0) preserveReadingPosition(() => applyFontScale(FONT_LEVELS[i - 1]));
+  });
+
+  fontUp?.addEventListener('click', () => {
+    const i = FONT_LEVELS.indexOf(currentScale());
+    if (i >= 0 && i < FONT_LEVELS.length - 1) preserveReadingPosition(() => applyFontScale(FONT_LEVELS[i + 1]));
+  });
+
+  fontReset?.addEventListener('click', () => preserveReadingPosition(() => applyFontScale(100)));
+
+  /* ---------- Scroll / rotation / resize persistence ---------- */
+
+  window.addEventListener('scroll', () => {
+    scheduleReaderSave();
+    updateSectionButtons();
+  }, { passive: true });
+
+  function handleLayoutViewportChange() {
+    /*
+      A native two-finger pinch changes VisualViewport but normally does not
+      change the layout viewport. Ignore it completely so the page does not
+      recalculate width or fight the browser's native zoom.
+    */
+    if (isPinchZoomActive()) {
+      pinchZoomSession = true;
       return;
     }
 
-    const index = currentSectionIndex();
-    if (prevButton) prevButton.disabled = index <= 0;
-    if (nextButton) nextButton.disabled = index >= studySections.length - 1;
-  }
+    const { width: w, height: h } = layoutViewportSize();
 
-  function moveSection(delta) {
-    const index = currentSectionIndex();
-    const targetIndex = Math.max(
-      0,
-      Math.min(studySections.length - 1, index + delta)
-    );
+    /*
+      When pinch zoom returns to scale 1, VisualViewport may emit another
+      resize. If the layout viewport itself did not change, this was only zoom,
+      so do nothing.
+    */
+    const layoutChanged =
+      Math.abs(w - lastViewportWidth) >= 1 ||
+      Math.abs(h - lastViewportHeight) >= 1;
 
-    studySections[targetIndex]?.scrollIntoView({
-      behavior: "smooth",
-      block: "start"
-    });
-  }
-
-  prevButton?.addEventListener("click", () => moveSection(-1));
-  nextButton?.addEventListener("click", () => moveSection(1));
-
-  let ticking = false;
-  window.addEventListener("scroll", () => {
-    if (!ticking) {
-      requestAnimationFrame(() => {
-        updateNavState();
-        ticking = false;
-      });
-      ticking = true;
+    if (!layoutChanged) {
+      pinchZoomSession = false;
+      return;
     }
+
+    pinchZoomSession = false;
+
+    if (!resizeAnchor) {
+      resizeAnchor =
+        lastStablePosition ||
+        readReaderState() ||
+        captureReadingPosition();
+    }
+
+    /*
+      Only a real layout change, such as portrait <-> landscape, updates
+      --app-viewport-width.
+    */
+    syncViewportGeometry();
+    lastViewportWidth = w;
+    lastViewportHeight = h;
+
+    if (resizeAnchor) {
+      settleRestore(resizeAnchor, [0, 50, 140, 300]);
+    }
+
+    clearTimeout(resizeRestoreTimer);
+    resizeRestoreTimer = window.setTimeout(() => {
+      if (resizeAnchor) {
+        settleRestore(resizeAnchor, [0, 80, 220]);
+      }
+
+      window.setTimeout(() => {
+        lastStablePosition =
+          resizeAnchor ||
+          captureReadingPosition();
+
+        if (lastStablePosition) {
+          saveReaderState(lastStablePosition);
+        }
+
+        resizeAnchor = null;
+        updateSectionButtons();
+      }, 320);
+    }, 260);
+  }
+
+  function handleVisualViewportResize() {
+    /*
+      visualViewport resize is the main signal used by Safari/WebKit while
+      pinch-zooming. At scale != 1 this is zoom, not a responsive-layout event.
+    */
+    if (isPinchZoomActive()) {
+      pinchZoomSession = true;
+      return;
+    }
+
+    handleLayoutViewportChange();
+  }
+
+  window.addEventListener(
+    'resize',
+    handleLayoutViewportChange,
+    { passive: true }
+  );
+
+  window.addEventListener('orientationchange', () => {
+    /*
+      Rotation is a genuine layout change. Use the stored logical reading
+      position, then wait for iOS to finish updating its layout viewport.
+    */
+    resizeAnchor =
+      lastStablePosition ||
+      readReaderState() ||
+      captureReadingPosition();
+
+    [40, 120, 280].forEach(delay => {
+      window.setTimeout(() => {
+        if (isPinchZoomActive()) return;
+
+        const size = layoutViewportSize();
+        syncViewportGeometry();
+
+        if (
+          Math.abs(size.width - lastViewportWidth) >= 1 ||
+          Math.abs(size.height - lastViewportHeight) >= 1
+        ) {
+          lastViewportWidth = size.width;
+          lastViewportHeight = size.height;
+        }
+
+        if (resizeAnchor) {
+          settleRestore(resizeAnchor, [0, 70, 180]);
+        }
+      }, delay);
+    });
+
+    window.setTimeout(() => {
+      resizeAnchor = null;
+      updateSectionButtons();
+    }, 620);
   }, { passive: true });
 
-  window.addEventListener("resize", updateNavState);
-  updateNavState();
-})();
-</script>
+  window.visualViewport?.addEventListener(
+    'resize',
+    handleVisualViewportResize,
+    { passive: true }
+  );
 
-</body>
+  function saveLifecycleState() {
+    const state = captureReadingPosition() || lastStablePosition;
+    if (state) saveReaderState(state);
+    rememberCurrentPage();
+  }
+
+  document.addEventListener('visibilitychange', () => {
+    if (document.visibilityState === 'hidden') saveLifecycleState();
+    else {
+      rememberCurrentPage();
+      const state = readReaderState();
+      if (state) settleRestore(state, [0, 80, 220]);
+    }
+  });
+
+  window.addEventListener('pagehide', saveLifecycleState);
+  window.addEventListener('beforeunload', saveLifecycleState);
+
+  window.addEventListener('pageshow', () => {
+    rememberCurrentPage();
+    rebuildReaderAnchors();
+    const state = readReaderState();
+    if (!location.hash && state) settleRestore(state, [0, 80, 220, 500]);
+    window.setTimeout(updateSectionButtons, 80);
+  });
+
+  window.addEventListener('load', () => {
+    rebuildReaderAnchors();
+    const state = readReaderState();
+    if (!location.hash && state) settleRestore(state, [0, 80, 220, 500]);
+    else {
+      const current = captureReadingPosition();
+      if (current) saveReaderState(current);
+    }
+    updateSectionButtons();
+  });
+})();
+</script></body>
 </html>
