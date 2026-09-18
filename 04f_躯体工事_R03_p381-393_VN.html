@@ -1,24 +1,20 @@
 <!DOCTYPE html>
-<html lang="vi" data-theme="dark">
+<!DOCTYPE html>
+
+<html data-study-mode="full" data-theme="dark" lang="vi">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<meta name="color-scheme" content="dark light">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<meta content="dark light" name="color-scheme"/>
+<meta content="test-2.1-responsive-landscape" name="study-template-version"/>
 <title>躯体工事 R03・問題4｜Book 381-392</title>
-
 <style>
-/* =========================================================
-   FIXED DESIGN TOKENS
-   Do not redesign these values per lesson.
-   ========================================================= */
-
 :root {
-  --font-vi: Arial, Helvetica, sans-serif;
-  --font-ja: "Hiragino Sans", "Yu Gothic", "Yu Gothic UI", Meiryo, sans-serif;
+  --app-viewport-width: 100vw;
+  --font-vi: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  --font-ja: "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic UI", "Yu Gothic", Meiryo, sans-serif;
   --base-font-size: 16px;
-  --content-width: 1320px;
-  --control-size: 38px;
-  --control-gap: 4px;
+  color-scheme: dark;
 }
 
 html[data-theme="dark"] {
@@ -36,16 +32,17 @@ html[data-theme="dark"] {
   --note-bg: #1C2028;
   --memory-bg: #20231C;
   --keyword: #74D7FF;
-  --keyword-bg: rgba(75, 190, 255, .10);
+  --keyword-bg: rgba(75, 190, 255, 0.10);
   --critical-bg: #594613;
   --critical-text: #FFE39A;
   --trap: #FF8585;
   --trap-underline: #FF5F5F;
-  --relation-bg: rgba(139, 126, 255, .12);
+  --relation-bg: rgba(139, 126, 255, 0.12);
   --relation-border: #8F86FF;
   --shadow: rgba(0, 0, 0, .28);
   --dock-bg: rgba(23, 27, 34, .94);
-  --overlay: rgba(0, 0, 0, .46);
+  --overlay: rgba(0, 0, 0, .48);
+  color-scheme: dark;
 }
 
 html[data-theme="light"] {
@@ -72,586 +69,239 @@ html[data-theme="light"] {
   --relation-border: #6C5CE7;
   --shadow: rgba(31, 38, 49, .12);
   --dock-bg: rgba(255, 255, 255, .94);
-  --overlay: rgba(20, 24, 30, .32);
+  --overlay: rgba(19, 26, 35, .28);
+  color-scheme: light;
 }
 
-/* =========================================================
-   BASE
-   ========================================================= */
-
 * { box-sizing: border-box; }
-
 html {
   scroll-behavior: smooth;
   font-size: var(--base-font-size);
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
-
-body {
+body { overflow-anchor: none;
   margin: 0;
-  min-height: 100vh;
   background: var(--bg);
   color: var(--text);
   font-family: var(--font-vi);
   font-size: 1rem;
   line-height: 1.72;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
+  padding-bottom: 11rem;
 }
+:lang(vi), .translation, .translation-cell, .vn-topic, .vn-answer { font-family: var(--font-vi); }
+:lang(ja), .original, .original-cell, .jp-topic, .jp-answer { font-family: var(--font-ja); }
+strong, b { font-weight: 700; }
+a { color: var(--link); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+a:hover { text-decoration-thickness: 2px; }
+h1, h2, h3, h4 { color: var(--heading); line-height: 1.35; }
+h1 { font-size: clamp(1.8rem, 4vw, 2.8rem); margin: 0 0 .55rem; }
+h2 { font-size: clamp(1.38rem, 2.8vw, 2rem); margin: 0; }
+h3 { font-size: clamp(1.12rem, 2vw, 1.48rem); }
+h4 { font-size: 1.02rem; }
+[id] { scroll-margin-top: 22px; }
+p { margin: .62rem 0; }
+ul, ol { padding-left: 1.5rem; }
+li { margin: .34rem 0; }
 
-:lang(vi) {
-  font-family: var(--font-vi);
-}
-
-:lang(ja) {
-  font-family: var(--font-ja);
-}
-
-a {
-  color: var(--link);
-  text-decoration-thickness: 1px;
-  text-underline-offset: 3px;
-}
-
-a:hover {
-  text-decoration-thickness: 2px;
-}
-
-button {
-  font: inherit;
-}
-
-h1, h2, h3, h4 {
-  color: var(--heading);
-  line-height: 1.35;
-}
-
-h1 {
-  margin: 0 0 .35rem;
-  font-size: clamp(1.75rem, 4vw, 2.7rem);
-}
-
-h2 {
-  margin: 2.5rem 0 1rem;
-  padding-bottom: .42rem;
-  border-bottom: 1px solid var(--border);
-  font-size: clamp(1.42rem, 3vw, 2rem);
-}
-
-h3 {
-  margin: 1.9rem 0 .75rem;
-  font-size: clamp(1.16rem, 2.4vw, 1.5rem);
-}
-
-h4 {
-  margin: 1.2rem 0 .45rem;
-  font-size: 1rem;
-}
-
-p {
-  margin: .58rem 0;
-}
-
-ul, ol {
-  padding-left: 1.45rem;
-}
-
-li {
-  margin: .3rem 0;
-}
-
-[id] {
-  scroll-margin-top: 18px;
-}
-
-/* =========================================================
-   PAGE LAYOUT
-   ========================================================= */
-
-.page-shell {
-  width: min(var(--content-width), calc(100% - 28px));
+body > main,
+body > .page-shell {
+  width: min(1320px, calc(100% - 32px));
   margin: 0 auto;
-  padding: 18px 0 112px;
+  padding: 26px 0 70px;
 }
+body > .page-shell > main { width: 100%; margin: 0; padding: 0; }
 
-.hero,
-.toc-card,
-.study-section,
-.aggregate-section {
+.hero {
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: 16px;
   box-shadow: 0 8px 28px var(--shadow);
+  padding: clamp(22px, 4vw, 42px);
+  margin: 0 0 24px;
 }
-
-.hero {
-  margin-bottom: 22px;
-  padding: clamp(22px, 3vw, 40px);
-}
-
-.hero-subtitle {
-  margin: 0;
+.eyebrow, .hero-subtitle, .subtitle, .meta-line, .source-ref, .mini-label, .small, .meta-label {
   color: var(--text-muted);
-  font-size: 1.06rem;
 }
+.eyebrow { font-size: .82rem; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; }
+.hero-subtitle, .subtitle { font-size: 1.08rem; }
+.source-ref, .mini-label, .small, .meta-label { font-size: .86rem; }
 
-.meta-grid {
+.summary-grid, .meta-grid, .mini-grid, .coverage {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(195px, 1fr));
-  gap: 10px;
-  margin-top: 16px;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: .72rem;
+  margin-top: 1rem;
 }
-
-.meta-item {
-  padding: 10px 12px;
+.summary-card, .summary-item, .meta-item, .mini-card, .coverage > div {
   background: var(--surface-alt);
   border: 1px solid var(--border);
   border-radius: 10px;
+  padding: .75rem .85rem;
 }
+.summary-item b, .summary-card strong { color: var(--heading); }
+.source-list { color: var(--text-muted); }
 
-.meta-label {
-  display: block;
-  margin-bottom: 2px;
-  color: var(--text-muted);
-  font-size: .8rem;
-}
-
-.study-section,
+body > main > section:not(#toc),
+body > .page-shell > section:not(#toc),
+body > .page-shell > main > section,
+.topic,
 .aggregate-section {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  box-shadow: 0 7px 22px var(--shadow);
+  padding: clamp(18px, 3vw, 30px);
   margin: 22px 0;
-  padding: clamp(18px, 2.6vw, 30px);
 }
-
-.section-head {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 12px;
-  margin-bottom: 16px;
-  padding-bottom: 10px;
+.subsection { margin: 1.7rem 0 2.1rem; }
+.subsection-title, .section-head {
   border-bottom: 1px solid var(--border);
+  padding-bottom: .65rem;
+  margin-bottom: 1rem;
 }
+.section-head { display: flex; gap: 12px; align-items: baseline; justify-content: space-between; }
 
-.section-head h2,
-.section-head h3 {
-  margin: 0;
-  padding: 0;
-  border: 0;
-}
-
-.source-ref {
-  color: var(--text-muted);
-  font-size: .84rem;
-  white-space: nowrap;
-}
-
-.subsection {
-  margin: 26px 0 32px;
-}
-
-.subsection:first-child {
-  margin-top: 0;
-}
-
-.study-grid {
+.study-grid, .lang-grid, .bilingual-note {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  gap: 14px;
+  gap: 1rem;
   align-items: start;
 }
-
-.study-card {
-  min-width: 0;
-  overflow: hidden;
+.study-card, .lang-card, .note-pane {
   border: 1px solid var(--border);
   border-radius: 12px;
+  overflow: hidden;
+  min-width: 0;
+  background: var(--surface-alt);
 }
-
-.study-card.original {
-  background: var(--original-bg);
-}
-
-.study-card.translation {
-  background: var(--translation-bg);
-}
-
+.study-card.original, .lang-card.original, .original-cell, .jp-topic, .jp-answer { background: var(--original-bg); }
+.study-card.translation, .lang-card.translation, .translation-cell, .vn-topic, .vn-answer { background: var(--translation-bg); }
 .card-title {
-  padding: 9px 13px;
+  padding: .62rem .85rem;
   background: var(--surface-alt);
   border-bottom: 1px solid var(--border);
   color: var(--heading);
-  font-weight: 800;
+  font-weight: 700;
   letter-spacing: .02em;
 }
+.card-body, .recall-source { padding: .9rem 1rem; }
+.card-body.recall-source { padding: 1rem 1.05rem; }
+.item-block { border-top: 1px dashed var(--border); padding-top: .72rem; margin-top: .72rem; }
+.item-block:first-child { border-top: 0; padding-top: 0; margin-top: 0; }
+.item-label { font-weight: 700; color: var(--heading); margin-right: .35em; }
 
-.recall-source {
-  padding: 14px 16px 16px;
-  transition: color .15s ease;
-}
+.table-wrap { overflow-x: auto; margin: .9rem 0; border: 1px solid var(--border); border-radius: 10px; }
+table { width: 100%; border-collapse: collapse; min-width: 650px; background: var(--surface); }
+th, td { border: 1px solid var(--border); padding: .62rem .7rem; vertical-align: top; text-align: left; }
+th { background: var(--surface-alt); color: var(--heading); font-weight: 700; }
+caption { text-align: left; font-weight: 700; color: var(--heading); padding: .58rem .7rem; background: var(--surface-alt); caption-side: top; }
+.compact th, .compact td { padding: .48rem .55rem; }
+.study-table { min-width: 1040px; }
+.study-table .meta { white-space: nowrap; text-align: center; background: var(--surface-alt); }
+.glossary-table { min-width: 920px; }
+.memory-table, .number-table, .num-table { min-width: 760px; }
 
-.recall-source > :first-child {
-  margin-top: 0;
-}
-
-.recall-source > :last-child {
-  margin-bottom: 0;
-}
-
-/* =========================================================
-   CONTENT COMPONENTS
-   ========================================================= */
-
-.table-wrap {
-  overflow-x: auto;
-  margin: 12px 0 18px;
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  -webkit-overflow-scrolling: touch;
-}
-
-table {
-  width: 100%;
-  min-width: 640px;
-  border-collapse: collapse;
-  background: var(--surface);
-}
-
-th,
-td {
-  padding: 9px 11px;
-  border-right: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
-  vertical-align: top;
-  text-align: left;
-}
-
-th:last-child,
-td:last-child {
-  border-right: 0;
-}
-
-tr:last-child td {
-  border-bottom: 0;
-}
-
-th {
-  background: var(--surface-alt);
-  color: var(--heading);
-  font-weight: 800;
-}
-
-caption {
-  padding: 9px 11px;
-  background: var(--surface-alt);
-  color: var(--heading);
-  font-weight: 800;
-  text-align: left;
-  caption-side: top;
-}
-
-.summary-box,
-.note-box,
-.memory-box,
-.warning-box,
-.figure-box,
-.formula-box,
-.comparison-box {
-  margin: 14px 0;
-  padding: 13px 15px;
-  background: var(--note-bg);
+.summary-box, .note-box, .note, .info-box, .background-box, .exam-note, .memory-box, .warning-box, .warning, .figure-box, .figure-card {
   border: 1px solid var(--border);
   border-left-width: 4px;
   border-radius: 10px;
+  padding: .9rem 1rem;
+  margin: 1rem 0;
+  background: var(--note-bg);
 }
+.summary-box, .note-box, .note, .info-box, .background-box { border-left-color: var(--link); }
+.memory-box, .exam-note { background: var(--memory-bg); border-left-color: var(--critical-text); }
+.warning-box, .warning { border-left-color: var(--trap); }
+.figure-box, .figure-card { border-left-color: var(--relation-border); }
+.figure-card { overflow: hidden; padding: 0; }
+.figure-card img { display: block; width: 100%; height: auto; background: #fff; }
+.figure-card figcaption, .figure-explain { padding: .8rem 1rem; }
 
-.summary-box,
-.note-box {
-  border-left-color: var(--link);
-}
-
-.memory-box {
-  background: var(--memory-bg);
-  border-left-color: var(--critical-text);
-}
-
-.warning-box {
-  border-left-color: var(--trap);
-}
-
-.figure-box,
-.formula-box,
-.comparison-box {
-  border-left-color: var(--relation-border);
-}
-
-.figure-card {
-  margin: 15px 0 20px;
-  overflow: hidden;
-  background: var(--surface-alt);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-}
-
-.figure-card img {
-  display: block;
-  width: 100%;
-  height: auto;
-  background: #fff;
-}
-
-.figure-card figcaption {
-  padding: 10px 13px 12px;
-  color: var(--text-muted);
-  font-size: .9rem;
-}
-
-.figure-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 12px;
-  margin: 15px 0 20px;
-}
-
-.figure-grid .figure-card {
-  margin: 0;
-}
-
-.item-block {
-  margin-top: 11px;
-  padding-top: 11px;
-  border-top: 1px dashed var(--border);
-}
-
-.item-block:first-child {
-  margin-top: 0;
-  padding-top: 0;
-  border-top: 0;
-}
-
-.item-label {
-  margin-right: .3em;
-  color: var(--heading);
-  font-weight: 800;
-}
-
-.formula-line {
+.formula, .formula-line {
   display: flex;
   flex-wrap: wrap;
+  gap: .45rem;
   align-items: center;
-  gap: 6px;
-}
-
-.flow-node {
-  padding: 5px 8px;
-  background: var(--surface);
+  padding: .75rem;
+  background: var(--surface-alt);
   border: 1px solid var(--border);
-  border-radius: 7px;
-  font-weight: 700;
+  border-radius: 9px;
+  margin: .75rem 0;
 }
-
-.flow-arrow {
-  color: var(--text-muted);
-  font-weight: 800;
-}
-
-/* =========================================================
-   SEMANTIC HIGHLIGHTING
-   ========================================================= */
+.flow-node { border: 1px solid var(--border); border-radius: 7px; padding: .35rem .55rem; background: var(--surface); font-weight: 700; }
+.flow-arrow { color: var(--text-muted); font-weight: 700; }
 
 .kw {
-  padding: .02em .16em;
-  background: var(--keyword-bg);
-  color: var(--keyword);
-  border-radius: .2em;
-  font-weight: 750;
-}
-
-.critical {
-  padding: .04em .22em;
-  background: var(--critical-bg);
-  color: var(--critical-text);
-  border-radius: .22em;
-  font-weight: 750;
-}
-
-.trap {
-  color: var(--trap);
   font-weight: 700;
+  color: var(--keyword);
+  background: var(--keyword-bg);
+  padding: .02em .16em;
+  border-radius: .2em;
+}
+.critical {
+  font-weight: 700;
+  color: var(--critical-text);
+  background: var(--critical-bg);
+  padding: .04em .22em;
+  border-radius: .22em;
+}
+.trap {
+  font-weight: 700;
+  color: var(--trap);
   text-decoration-line: underline;
   text-decoration-color: var(--trap-underline);
   text-decoration-thickness: 2px;
   text-underline-offset: 3px;
 }
-
 .relation {
-  padding: .02em .14em;
-  background: var(--relation-bg);
+  font-weight: 600;
   color: var(--text);
+  background: var(--relation-bg);
   border-bottom: 2px solid var(--relation-border);
-  font-weight: 650;
+  padding: .02em .14em;
 }
 
-/* Only recall-source is dimmed in Keywords mode. */
-body.keyword-focus .recall-source {
-  color: var(--focus-muted);
-}
+html[data-study-mode="keywords"] .recall-source { color: var(--focus-muted); }
+html[data-study-mode="keywords"] .recall-source .kw { color: var(--keyword); background: var(--keyword-bg); }
+html[data-study-mode="keywords"] .recall-source .critical { color: var(--critical-text); background: var(--critical-bg); }
+html[data-study-mode="keywords"] .recall-source .trap { color: var(--trap); }
+html[data-study-mode="keywords"] .recall-source .relation { color: var(--text); background: var(--relation-bg); }
+html[data-study-mode="keywords"] .recall-source th,
+html[data-study-mode="keywords"] .recall-source .card-title,
+html[data-study-mode="keywords"] .recall-source .item-label { color: var(--heading); }
 
-body.keyword-focus .recall-source .kw {
-  color: var(--keyword);
-  background: var(--keyword-bg);
-}
+.backlink, .back-toc, .back { display: inline-block; margin-top: .8rem; font-size: .9rem; }
 
-body.keyword-focus .recall-source .critical {
-  color: var(--critical-text);
-  background: var(--critical-bg);
-}
-
-body.keyword-focus .recall-source .trap {
-  color: var(--trap);
-}
-
-body.keyword-focus .recall-source .relation {
-  color: var(--text);
-  background: var(--relation-bg);
-}
-
-body.keyword-focus .recall-source th,
-body.keyword-focus .recall-source .item-label {
-  color: var(--heading);
-}
-
-/* =========================================================
-   TOC DRAWER
-   ========================================================= */
-
-.toc-overlay {
+/* Collapsible study controls: one launcher at bottom-left. */
+.control-cluster {
   position: fixed;
-  inset: 0;
-  z-index: 1990;
-  visibility: hidden;
-  opacity: 0;
-  background: var(--overlay);
-  transition: opacity .18s ease, visibility .18s ease;
-}
-
-.toc-drawer {
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  z-index: 2000;
-  width: min(78vw, 360px);
-  padding: max(14px, env(safe-area-inset-top)) 14px
-           max(18px, env(safe-area-inset-bottom))
-           max(14px, env(safe-area-inset-left));
-  overflow-y: auto;
-  background: var(--surface);
-  border-right: 1px solid var(--border);
-  box-shadow: 14px 0 36px var(--shadow);
-  transform: translateX(-103%);
-  transition: transform .2s ease;
-  -webkit-overflow-scrolling: touch;
-}
-
-body.toc-open .toc-overlay {
-  visibility: visible;
-  opacity: 1;
-}
-
-body.toc-open .toc-drawer {
-  transform: translateX(0);
-}
-
-.toc-drawer-head {
-  position: sticky;
-  top: 0;
-  z-index: 1;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 10px;
-  padding: 4px 0 10px;
-  background: var(--surface);
-  border-bottom: 1px solid var(--border);
-}
-
-.toc-drawer-head h2 {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  font-size: 1.2rem;
-}
-
-.toc-close {
-  width: 34px;
-  height: 34px;
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  background: var(--surface-alt);
-  color: var(--text);
-  cursor: pointer;
-}
-
-.toc-list {
-  margin: 12px 0 0;
-  padding-left: 1.2rem;
-}
-
-.toc-list ol {
-  margin-top: 4px;
-}
-
-/* =========================================================
-   COMPACT CONTROLS
-   Left: vertical TOC / Back / Next
-   Right: horizontal display controls
-   ========================================================= */
-
-.nav-dock-left,
-.settings-dock-right {
-  position: fixed;
-  bottom: max(14px, env(safe-area-inset-bottom));
-  z-index: 1900;
-  padding: 5px;
-  background: var(--dock-bg);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  box-shadow: 0 8px 24px var(--shadow);
-  -webkit-backdrop-filter: blur(10px);
-  backdrop-filter: blur(10px);
+  left: max(8px, env(safe-area-inset-left));
+  bottom: max(10px, env(safe-area-inset-bottom));
+  z-index: 2200;
+  width: 38px;
+  height: 38px;
   user-select: none;
+  -webkit-user-select: none;
 }
 
-.nav-dock-left {
-  left: max(10px, env(safe-area-inset-left));
-  display: flex;
-  flex-direction: column;
-  gap: var(--control-gap);
-}
-
-.settings-dock-right {
-  right: max(10px, env(safe-area-inset-right));
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: var(--control-gap);
-}
-
-.nav-dock-left button,
-.settings-dock-right button {
-  display: flex;
+.control-launcher,
+.control-panel button {
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: var(--control-size);
-  height: var(--control-size);
-  min-width: var(--control-size);
-  min-height: var(--control-size);
+  flex: 0 0 auto;
+  width: 32px;
+  height: 32px;
+  min-width: 32px;
+  min-height: 32px;
   padding: 0;
-  background: var(--surface-alt);
-  color: var(--text);
   border: 1px solid var(--border);
   border-radius: 8px;
-  font-family: var(--font-vi);
-  font-size: .96rem;
+  background: var(--surface-alt);
+  color: var(--text);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
   font-weight: 700;
   line-height: 1;
   cursor: pointer;
@@ -659,98 +309,246 @@ body.toc-open .toc-drawer {
   -webkit-tap-highlight-color: transparent;
 }
 
-.nav-dock-left button:hover,
-.settings-dock-right button:hover {
+.control-launcher {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  z-index: 2;
+  width: 38px;
+  height: 38px;
+  min-width: 38px;
+  min-height: 38px;
+  border-radius: 11px;
+  background: var(--dock-bg);
+  box-shadow: 0 6px 18px var(--shadow);
+  font-size: 20px;
+  letter-spacing: 1px;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+}
+
+.control-panel {
+  position: absolute;
+  left: 43px;
+  bottom: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 2px;
+  width: max-content;
+  max-width: calc(100dvw - max(59px, env(safe-area-inset-left) + 59px) - max(8px, env(safe-area-inset-right)));
+  padding: 3px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  overscroll-behavior-x: contain;
+  scrollbar-width: none;
+  border: 1px solid var(--border);
+  border-radius: 11px;
+  background: var(--dock-bg);
+  box-shadow: 0 6px 18px var(--shadow);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateX(-10px) scale(.98);
+  transform-origin: left bottom;
+  transition: opacity .14s ease, transform .14s ease, visibility .14s ease;
+}
+
+.control-panel::-webkit-scrollbar { display: none; }
+
+.control-cluster.open .control-panel {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateX(0) scale(1);
+}
+
+.control-cluster.open .control-launcher {
   border-color: var(--link);
 }
 
-.nav-dock-left button:active,
-.settings-dock-right button:active {
-  transform: translateY(1px);
-}
+.control-panel button:active,
+.control-launcher:active { transform: translateY(1px); }
 
-.nav-dock-left button:disabled {
-  opacity: .38;
+.control-panel button:hover,
+.control-launcher:hover { border-color: var(--link); }
+
+.control-panel button:disabled {
+  opacity: .36;
   cursor: default;
 }
 
-.settings-dock-right .font-reset {
-  font-size: .66rem;
+.control-panel .font-reset {
+  width: 38px;
+  min-width: 38px;
+  font-size: 9px;
   letter-spacing: -.03em;
 }
 
-.settings-dock-right .mode-toggle {
-  font-size: 1.02rem;
+.control-panel .mode-toggle { font-size: 14px; }
+
+.control-panel .home-icon svg {
+  width: 17px;
+  height: 17px;
+  display: block;
 }
 
-/* =========================================================
-   RESPONSIVE
-   ========================================================= */
+/*
+  Responsive reading geometry for iPad/iPhone.
+  The page follows the actual Visual Viewport width. When rotating to
+  landscape it expands across the wider screen instead of staying at
+  portrait width. Reader-anchor JS below restores the same logical text
+  position after the reflow.
+*/
+@media (pointer: coarse) {
+  body > main,
+  body > .page-shell {
+    width: min(calc(var(--app-viewport-width, 100vw) - 16px), 1320px) !important;
+    max-width: 1320px !important;
+  }
+
+
+  .hero {
+    padding: 1rem !important;
+  }
+
+  body > main > section:not(#toc),
+  body > .page-shell > section:not(#toc),
+  body > .page-shell > main > section,
+  .topic,
+  .aggregate-section {
+    padding: 1rem !important;
+  }
+}
+
+
+@media (pointer: coarse) and (orientation: portrait) {
+  .study-grid,
+  .lang-grid,
+  .bilingual-note {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+@media (pointer: coarse) and (orientation: landscape) {
+  body > main,
+  body > .page-shell {
+    width: min(calc(var(--app-viewport-width, 100dvw) - 20px), 1320px) !important;
+  }
+}
+
+/* TOC drawer */
+#toc {
+  position: fixed !important;
+  left: 0 !important;
+  top: 0 !important;
+  bottom: 0 !important;
+  z-index: 2100 !important;
+  width: min(82vw, 390px) !important;
+  max-height: 100dvh !important;
+  overflow-y: auto !important;
+  margin: 0 !important;
+  padding: 74px 20px 28px !important;
+  background: var(--surface) !important;
+  border: 0 !important;
+  border-right: 1px solid var(--border) !important;
+  border-radius: 0 16px 16px 0 !important;
+  box-shadow: 10px 0 30px var(--shadow) !important;
+  transform: translateX(-105%);
+  transition: transform .2s ease;
+}
+body.toc-open #toc { transform: translateX(0); }
+#toc .toc-grid { columns: 1 !important; display: block !important; }
+#toc ol { margin-top: .35rem; }
+.toc-drawer-head {
+  position: sticky;
+  top: -74px;
+  margin: -74px -20px 18px;
+  padding: 13px 14px;
+  min-height: 58px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  z-index: 2;
+}
+.toc-drawer-head strong { color: var(--heading); }
+.toc-close {
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  background: var(--surface-alt);
+  color: var(--text);
+  font: 700 1.25rem var(--font-vi);
+  cursor: pointer;
+}
+.toc-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  background: var(--overlay);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .2s ease;
+}
+body.toc-open .toc-overlay { opacity: 1; pointer-events: auto; }
+body.toc-open { overflow: hidden; }
 
 @media (max-width: 900px) {
-  .study-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .page-shell {
-    width: min(100% - 18px, 760px);
-  }
-
-  .section-head {
-    display: block;
-  }
-
-  .source-ref {
-    display: block;
-    margin-top: 6px;
-    white-space: normal;
-  }
+  .study-grid, .lang-grid, .bilingual-note { grid-template-columns: 1fr; }
+  body > main, body > .page-shell { width: min(100% - 20px, 780px); padding-top: 14px; }
+  .section-head { display: block; }
+  .source-ref { display: block; margin-top: .45rem; }
+  table { min-width: 620px; }
 }
 
 @media (max-width: 560px) {
-  body {
-    font-size: .96rem;
-  }
-
-  .hero,
-  .study-section,
-  .aggregate-section {
-    border-radius: 12px;
-  }
-
-  .recall-source {
-    padding: 12px 13px 14px;
-  }
-
-  :root {
-    --control-size: 36px;
-  }
-
-  .settings-dock-right {
-    right: max(7px, env(safe-area-inset-right));
-  }
-
-  .nav-dock-left {
-    left: max(7px, env(safe-area-inset-left));
-  }
+  body { font-size: 1rem; }
+  body > main, body > .page-shell { width: calc(100% - 14px); }
+  .hero { padding: 1rem; border-radius: 12px; }
+  body > main > section:not(#toc),
+  body > .page-shell > section:not(#toc),
+  body > .page-shell > main > section,
+  .topic, .aggregate-section { padding: 1rem; border-radius: 12px; }
 }
 
-@media (orientation: landscape) and (pointer: coarse) {
-  .nav-dock-left {
-    left: max(14px, env(safe-area-inset-left));
+
+/*
+  iPad/tablet landscape:
+  Japanese and Vietnamese return to two side-by-side columns.
+  The min-height condition avoids forcing ordinary phone landscape into
+  two columns that would be too narrow.
+*/
+@media (pointer: coarse) and (orientation: landscape) and (min-width: 700px) and (min-height: 600px) {
+  body > main,
+  body > .page-shell {
+    width: min(calc(var(--app-viewport-width, 100dvw) - 20px), 1320px) !important;
+    max-width: 1320px !important;
   }
 
-  .settings-dock-right {
-    right: max(14px, env(safe-area-inset-right));
+  .study-grid,
+  .lang-grid,
+  .bilingual-note {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important;
+    gap: clamp(.75rem, 1.4vw, 1rem) !important;
+    align-items: start;
+  }
+
+  .study-card,
+  .lang-card,
+  .note-pane {
+    min-width: 0;
   }
 }
-
-/* =========================================================
-   PRINT
-   ========================================================= */
 
 @media print {
-  html,
+  .control-cluster { display: none !important; }
+  :root,
   html[data-theme="dark"],
   html[data-theme="light"] {
     --bg: #FFFFFF;
@@ -772,961 +570,760 @@ body.toc-open .toc-drawer {
     --trap-underline: #9E1B12;
     --relation-bg: #F0EDFF;
     --relation-border: #5B4FD6;
+    --shadow: transparent;
   }
-
-  body {
-    background: #fff;
-    color: #111;
-    font-size: 11pt;
+  body { background: #fff; color: #111; font-size: 11pt; padding-bottom: 0; }
+  .control-cluster, .toc-overlay, .toc-drawer-head { display: none !important; }
+  #toc {
+    position: static !important;
+    transform: none !important;
+    width: auto !important;
+    max-height: none !important;
+    padding: 1rem !important;
+    border: 1px solid var(--border) !important;
+    border-radius: 10px !important;
+    box-shadow: none !important;
+    margin: 1rem 0 !important;
   }
-
-  .page-shell {
-    width: 100%;
-    padding: 0;
-  }
-
-  .nav-dock-left,
-  .settings-dock-right,
-  .toc-drawer,
-  .toc-overlay {
-    display: none !important;
-  }
-
-  .hero,
-  .study-card,
-  .summary-box,
-  .note-box,
-  .memory-box,
-  .warning-box,
-  .figure-card {
-    break-inside: avoid;
-  }
-
-  a {
-    color: #000;
-    text-decoration: none;
-  }
+  body > main, body > .page-shell { width: 100%; padding: 0; }
+  .hero, .study-card, .lang-card, .summary-box, .note-box, .note, .memory-box, .warning-box, .figure-box, .figure-card { break-inside: avoid; }
+  a { color: #000; text-decoration: none; }
+  .backlink, .back-toc, .back { display: none; }
 }
-</style>
-
-<script>
-/* Apply saved theme before body paint to reduce flashing. */
-(function () {
-  try {
-    const saved = localStorage.getItem("study-theme");
-    const systemDark = window.matchMedia &&
-      window.matchMedia("(prefers-color-scheme: dark)").matches;
-    document.documentElement.dataset.theme =
-      saved || (systemDark ? "dark" : "light");
-  } catch (e) {
-    document.documentElement.dataset.theme = "dark";
+</style><script>
+try {
+  if ("scrollRestoration" in history) {
+    history.scrollRestoration = "manual";
   }
-
+} catch (e) {}
+(function () {
+  const root = document.documentElement;
   try {
-    const savedScale = Number(localStorage.getItem("study-font-scale")) || 100;
-    const clampedScale = Math.max(80, Math.min(140, savedScale));
-    document.documentElement.style.setProperty(
-      "--base-font-size",
-      `${16 * clampedScale / 100}px`
-    );
-  } catch (e) {}
+    const savedTheme = localStorage.getItem('study-theme');
+    root.dataset.theme = savedTheme === 'light' ? 'light' : 'dark';
+
+    const savedMode = localStorage.getItem('study-mode');
+    root.dataset.studyMode = savedMode === 'keywords' ? 'keywords' : 'full';
+
+    const savedScale = Number(localStorage.getItem('study-font-scale'));
+    const scale = Number.isFinite(savedScale) && savedScale >= 50 && savedScale <= 150 && savedScale % 5 === 0
+      ? savedScale : 100;
+    root.style.setProperty('--base-font-size', (16 * scale / 100) + 'px');
+  } catch (e) {
+    root.dataset.theme = 'dark';
+    root.dataset.studyMode = 'full';
+    root.style.setProperty('--base-font-size', '16px');
+  }
 })();
-</script>
-</head>
-
+</script></head>
 <body>
-
-<!-- =======================================================
-     TOC DRAWER
-     Replace only the list contents.
-     ======================================================= -->
-<div class="toc-overlay" id="toc-overlay" aria-hidden="true"></div>
-
-<aside class="toc-drawer" id="toc-drawer" aria-label="Mục lục">
-  <div class="toc-drawer-head">
-    <h2>Mục lục</h2>
-    <button class="toc-close" id="toc-close" type="button" aria-label="Đóng mục lục">×</button>
-  </div>
-
-  <!-- TOC_ITEMS_START -->
-  <ol class="toc-list">
-    <li><a href="#sec-problem4">令和3年度 問題4 躯体工事</a></li>
-    <li><a href="#sec-pile">1. 杭工事</a>
-      <ol>
-        <li><a href="#sec-pile-answer">解答例</a></li>
-        <li><a href="#sec-pile-class">杭基礎の工法の分類</a></li>
-        <li><a href="#sec-pile-features">既製コンクリート杭の埋込み工法の特徴</a></li>
-        <li><a href="#sec-pile-common">埋込み工法に共通する留意事項</a></li>
-        <li><a href="#sec-preboring">プレボーリング工法</a></li>
-        <li><a href="#sec-innerdrill">中掘り工法</a></li>
-      </ol>
-    </li>
-    <li><a href="#sec-formwork">2. 型枠工事</a>
-      <ol>
-        <li><a href="#sec-form-answer">解答例</a></li>
-        <li><a href="#sec-form-general">型枠の一般的な構成</a></li>
-        <li><a href="#sec-form-cautions">柱・梁型枠の加工・組立て</a></li>
-      </ol>
-    </li>
-    <li><a href="#sec-concrete">3. コンクリート工事</a>
-      <ol>
-        <li><a href="#sec-concrete-answer">解答例</a></li>
-        <li><a href="#sec-moist-curing">コンクリートの湿潤養生</a></li>
-        <li><a href="#sec-curing-period">湿潤養生期間</a></li>
-        <li><a href="#sec-cold-weather">寒中コンクリートの養生</a></li>
-        <li><a href="#sec-curing-past">過去試験の出題内容</a></li>
-      </ol>
-    </li>
-    <li><a href="#sec-steel">4. 鉄骨工事</a>
-      <ol>
-        <li><a href="#sec-steel-answer">解答例</a></li>
-        <li><a href="#sec-bolt-types">高力ボルトの種類</a></li>
-        <li><a href="#sec-bolt-length">高力ボルトの長さ</a></li>
-        <li><a href="#sec-friction-surface">摩擦接合面の処理</a></li>
-        <li><a href="#sec-torshear-control">トルシア形高力ボルト締付け力の管理</a></li>
-      </ol>
-    </li>
-    <li><a href="#terms">Thuật ngữ chuyên môn</a></li>
-    <li><a href="#background">Kiến thức nền cần biết</a></li>
-    <li><a href="#memory">Điểm cần nhớ và mẹo nhớ</a></li>
-  </ol>
-  <!-- TOC_ITEMS_END -->
-</aside>
-
-<!-- =======================================================
-     FIXED NAVIGATION CONTROLS
-     Left bottom: vertical.
-     Do not add a Top button.
-     ======================================================= -->
-<nav class="nav-dock-left" aria-label="Điều hướng học tập">
-  <button id="toc-toggle" type="button" aria-label="Mục lục" title="Mục lục"
-          aria-controls="toc-drawer" aria-expanded="false">☰</button>
-  <button id="section-prev" type="button" aria-label="Mục trước" title="Back">‹</button>
-  <button id="section-next" type="button" aria-label="Mục tiếp theo" title="Next">›</button>
-</nav>
-
-<!-- =======================================================
-     FIXED DISPLAY CONTROLS
-     Right bottom: horizontal.
-     ======================================================= -->
-<nav class="settings-dock-right" aria-label="Thiết lập hiển thị">
-  <button id="theme-toggle" type="button" aria-label="Đổi Dark/Light"
-          title="Đổi Dark/Light" aria-pressed="false">☀</button>
-  <button id="mode-toggle" class="mode-toggle" type="button"
-          aria-label="Đổi Full/Keywords" title="Đổi Full/Keywords"
-          aria-pressed="false">🎯</button>
-  <button id="font-reset" class="font-reset" type="button"
-          aria-label="Đặt lại cỡ chữ 100%" title="Đặt lại cỡ chữ 100%">100%</button>
-  <button id="font-down" type="button" aria-label="Giảm cỡ chữ"
-          title="Giảm cỡ chữ">A−</button>
-  <button id="font-up" type="button" aria-label="Tăng cỡ chữ"
-          title="Tăng cỡ chữ">A+</button>
-</nav>
-
-<div class="page-shell">
-
-  <!-- =====================================================
-       DOCUMENT HEADER
-       Replace title/subtitle/meta values only.
-       ===================================================== -->
-  <header class="hero" id="top">
-    <h1>躯体工事 R03・問題4｜Book 381-392</h1>
-    <p class="hero-subtitle">1級建築施工管理技術検定 第二次検定｜杭・型枠・コンクリート・鉄骨工事｜Song ngữ Nhật-Việt</p>
-
-    <div class="meta-grid">
-      <div class="meta-item">
-        <span class="meta-label">PDF nguồn</span>
-        04f_躯体工事_R03_p381-393.pdf
-      </div>
-      <div class="meta-item">
-        <span class="meta-label">File ID</span>
-        F046
-      </div>
-      <div class="meta-item">
-        <span class="meta-label">Phạm vi</span>
-        Book 381-392
-      </div>
-      <div class="meta-item">
-        <span class="meta-label">Chế độ</span>
-        Song ngữ Nhật-Việt / Dark-Light / Full-Keywords / Font 80-140%
-      </div>
-    </div>
-  </header>
-
-  <!-- =====================================================
-       CONTENT_START
-       AI may freely repeat/reorder approved content components.
-       Global CSS/JS/control structure must not be redesigned.
-       ===================================================== -->
-  
-  <main id="lesson">
-
-    <section class="study-section" id="sec-problem4">
-      <div class="section-head">
-        <h2>令和3年度 問題4 躯体工事</h2>
-        <span class="source-ref">Nguồn: Book page 381-382</span>
-      </div>
-      <div class="study-grid">
-        <article class="study-card original">
-          <div class="card-title">原文</div>
-          <div class="recall-source" lang="ja">
-            <p><strong class="kw">問題4</strong>　次の1.から4.の問いに答えなさい。</p>
-            <p>ただし、解答はそれぞれ異なる内容の記述とし、材料（仕様、品質、運搬、保管等）、作業環境（騒音、振動、気象条件等）及び作業員の安全に関する記述は除くものとする。</p>
-            <ol>
-              <li><strong class="kw">杭工事</strong>において、既製コンクリート杭の埋込み工法の施工上の留意事項を<mark class="critical">2つ</mark>、具体的に記述しなさい。ただし、養生に関する記述は除くものとする。</li>
-              <li><strong class="kw">型枠工事</strong>において、柱又は梁型枠の加工、組立ての施工上の留意事項を<mark class="critical">2つ</mark>、具体的に記述しなさい。ただし、基礎梁及び型枠支保工に関する記述は除くものとする。</li>
-              <li><strong class="kw">コンクリート工事</strong>において、コンクリート打込み後の養生に関する施工上の留意事項を<mark class="critical">2つ</mark>、具体的に記述しなさい。なお、コンクリートに使用するセメントは普通ポルトランドセメントとし、計画供用期間の級は標準とする。</li>
-              <li><strong class="kw">鉄骨工事</strong>において、トルシア形高力ボルトの締付けに関する施工上の留意事項を<mark class="critical">2つ</mark>、具体的に記述しなさい。ただし、締付け器具に関する記述は除くものとする。</li>
-            </ol>
-          </div>
-        </article>
-        <article class="study-card translation">
-          <div class="card-title">Bản dịch tiếng Việt</div>
-          <div class="recall-source" lang="vi">
-            <p><strong class="kw">Câu 4</strong>: Hãy trả lời các câu từ 1 đến 4.</p>
-            <p>Nội dung của từng câu trả lời phải khác nhau. Không được sử dụng các nội dung liên quan đến vật liệu như quy cách, chất lượng, vận chuyển, bảo quản; môi trường làm việc như tiếng ồn, rung động, điều kiện khí tượng; hoặc an toàn của người lao động.</p>
-            <ol>
-              <li>Trong <strong class="kw">công tác cọc</strong>, đối với phương pháp cọc bê tông đúc sẵn đặt trong lỗ khoan, hãy mô tả cụ thể <mark class="critical">2 điểm</mark> cần lưu ý khi thi công. Không sử dụng nội dung liên quan đến bảo dưỡng.</li>
-              <li>Trong <strong class="kw">công tác ván khuôn</strong>, khi gia công và lắp ráp ván khuôn cột hoặc dầm, hãy mô tả cụ thể <mark class="critical">2 điểm</mark> cần lưu ý. Không sử dụng nội dung liên quan đến dầm móng và hệ chống đỡ ván khuôn.</li>
-              <li>Trong <strong class="kw">công tác bê tông</strong>, hãy mô tả cụ thể <mark class="critical">2 điểm</mark> cần lưu ý về bảo dưỡng sau khi đổ. Xi măng sử dụng là Portland thông thường và cấp thời gian sử dụng theo kế hoạch là tiêu chuẩn.</li>
-              <li>Trong <strong class="kw">công tác kết cấu thép</strong>, hãy mô tả cụ thể <mark class="critical">2 điểm</mark> cần lưu ý khi siết bu lông cường độ cao kiểu Torshear. Không sử dụng nội dung liên quan đến dụng cụ siết.</li>
-            </ol>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <section class="study-section" id="sec-pile">
-      <div class="section-head">
-        <h2>1. 杭工事｜Công tác cọc</h2>
-        <span class="source-ref">Nguồn: Book page 381-385</span>
-      </div>
-
-      <section class="subsection" id="sec-pile-answer">
-        <h3>令和3年度 問題4 解答例｜Đáp án mẫu</h3>
-        <div class="study-grid">
-          <article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja">
-            <p>① セメントミルク工法において、<strong class="kw">杭径が300mm～500mmの場合</strong>は、<strong class="kw">オーガーヘッド</strong>を<mark class="critical">杭径よりも100mm程度大きい径</mark>とする。</p>
-            <p>② <strong class="kw">杭心ずれを低減するため</strong>、杭心位置から<strong class="kw">直角二方向に逃げ心</strong>を取り、掘削中や杭の建込み時に、<span class="relation">逃げ心からの距離を随時確認する</span>。</p>
-            <p>出典：建築工事標準仕様書・同解説 JASS 4 杭・地業および基礎工事</p>
-          </div></article>
-          <article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi">
-            <p>① Với phương pháp cement milk, khi <strong class="kw">đường kính cọc là 300-500 mm</strong>, dùng <strong class="kw">đầu khoan auger</strong> có đường kính <mark class="critical">lớn hơn đường kính cọc khoảng 100 mm</mark>.</p>
-            <p>② <strong class="kw">Để giảm sai lệch tim cọc</strong>, bố trí <strong class="kw">mốc tim phụ theo hai phương vuông góc</strong> từ vị trí tim cọc và <span class="relation">thường xuyên kiểm tra khoảng cách từ các mốc này khi khoan và dựng cọc</span>.</p>
-            <p>Nguồn trong sách: JASS 4, công tác cọc, nền và móng.</p>
-          </div></article>
-        </div>
-      </section>
-
-      <section class="subsection" id="sec-pile-class">
-        <h3>(1) 杭基礎の工法の分類｜Phân loại phương pháp móng cọc</h3>
-        <div class="study-grid">
-          <article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja">
-            <p>杭基礎の工法は、<strong class="kw">打込み杭工法・埋込み杭工法・場所打ち杭工法</strong>などに分類される。</p>
-            <ol>
-              <li><strong class="kw">打込み杭工法</strong>：工場で生産した既製杭を、直接地盤に打ち込む。</li>
-              <li><strong class="kw">埋込み杭工法</strong>：掘削孔に既製杭を投入し、杭下部をセメントミルク等で固定する。</li>
-              <li><strong class="kw">場所打ち杭工法</strong>：掘削孔に鉄筋篭を投入し、掘削孔にコンクリートを流し込む。</li>
-            </ol>
-            <p>図中では、打込み杭（許容応力度：大）、埋込み杭（許容応力度：中）、場所打ち杭（許容応力度：小）が示されている。</p>
-          </div></article>
-          <article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi">
-            <p>Phương pháp móng cọc được chia thành <strong class="kw">cọc đóng, cọc đúc sẵn đặt trong lỗ khoan và cọc đổ tại chỗ</strong>.</p>
-            <ol>
-              <li><strong class="kw">Cọc đóng</strong>: cọc chế tạo sẵn tại nhà máy được đóng trực tiếp xuống nền đất.</li>
-              <li><strong class="kw">Cọc đặt trong lỗ khoan</strong>: cọc đúc sẵn được đưa vào lỗ đã khoan và phần dưới cọc được cố định bằng cement milk hoặc tương tự.</li>
-              <li><strong class="kw">Cọc đổ tại chỗ</strong>: đặt lồng cốt thép vào lỗ khoan rồi đổ bê tông để tạo cọc.</li>
-            </ol>
-            <p>Hình trong sách ghi mức ứng suất cho phép theo thứ tự: cọc đóng là lớn, cọc đặt trong lỗ khoan là trung bình, cọc đổ tại chỗ là nhỏ.</p>
-          </div></article>
-        </div>
-        <div class="note-box"><strong>Giải thích hình trang 382</strong><p>Ba sơ đồ lần lượt minh họa đóng cọc bằng pile hammer, cọc đúc sẵn cố định bằng cement milk và cọc bê tông đổ tại chỗ theo Earth Drill.</p></div>
-      </section>
-
-      <section class="subsection" id="sec-pile-features">
-        <h3>(2) 既製コンクリート杭の埋込み工法の特徴｜Đặc điểm của phương pháp 埋込み</h3>
-        <div class="study-grid">
-          <article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja">
-            <p>既製コンクリート杭の埋込み工法は、<strong class="kw">プレボーリング工法</strong>と<strong class="kw">中掘り工法</strong>に分類される。</p>
-            <h4>① プレボーリング工法</h4>
-            <p>地盤をスパイラルオーガで削孔し、杭を挿入する工法である。<strong class="kw">杭径</strong>が<mark class="critical">600mm以下</mark>の既製コンクリート杭の施工に採用される。</p>
-            <ul>
-              <li>セメントミルク工法：掘削・杭挿入後、孔底に根固め液を入れ、杭周固定液を充填する。</li>
-              <li>拡大根固め工法：孔底を杭径以上に拡大掘りし、根固め球根製造後に杭を挿入する。</li>
-              <li>最終打撃工法：掘削・杭挿入後、杭頭を打撃し、支持地盤に貫入させる。</li>
-            </ul>
-            <h4>② 中掘り工法</h4>
-            <p>杭の中空部からスパイラルオーガで削孔し、杭を自沈させる工法である。<strong class="kw">杭径</strong>が<mark class="critical">500mm以上</mark>の既製コンクリート杭の施工に採用される。</p>
-            <ul>
-              <li>根固め工法：先端開放杭の中空部から掘削しながら自沈させ、その下端を根固めする。</li>
-              <li>拡大根固め工法：杭の中空部から掘削・自沈させ、支持層を拡大掘りし、根固めする。</li>
-              <li>最終打撃工法：杭の中空部から掘削・自沈させ、杭頭を打撃し、支持地盤に貫入させる。</li>
-            </ul>
-            <p>図Aでは、<strong class="kw">スパイラルオーガを急速に引き上げる</strong>と、この部分の空気が膨張して負圧になり、<span class="relation">ボイリング（水と土砂の噴出）</span>が生じることが示されている。</p>
-          </div></article>
-          <article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi">
-            <p>Phương pháp cọc bê tông đúc sẵn đặt trong lỗ khoan được chia thành <strong class="kw">Pre-boring</strong> và <strong class="kw">khoan trong lòng cọc</strong>.</p>
-            <h4>① Pre-boring</h4>
-            <p>Khoan nền bằng spiral auger rồi đưa cọc vào. Áp dụng cho cọc bê tông đúc sẵn có <strong class="kw">đường kính cọc</strong> <mark class="critical">≤ 600 mm</mark>.</p>
-            <ul>
-              <li>Phương pháp cement milk: sau khi khoan và đưa cọc vào, cho dung dịch gia cố mũi xuống đáy và bơm dung dịch cố định quanh thân cọc.</li>
-              <li>Phương pháp gia cố mở rộng mũi: khoan mở rộng đáy lỗ đến ít nhất bằng đường kính cọc, tạo bầu gia cố mũi rồi đưa cọc vào.</li>
-              <li>Phương pháp đóng hoàn thiện: sau khi khoan và đưa cọc vào, đóng đầu cọc để xuyên vào tầng chịu lực.</li>
-            </ul>
-            <h4>② Khoan trong lòng cọc</h4>
-            <p>Dùng spiral auger khoan qua phần rỗng trong cọc đồng thời để cọc tự hạ. Áp dụng cho cọc bê tông đúc sẵn có <strong class="kw">đường kính cọc</strong> <mark class="critical">≥ 500 mm</mark>.</p>
-            <ul>
-              <li>Gia cố mũi: vừa khoan qua cọc đầu hở vừa cho cọc tự hạ, sau đó gia cố phần dưới.</li>
-              <li>Gia cố mở rộng mũi: khoan và tự hạ, mở rộng tầng chịu lực rồi gia cố mũi.</li>
-              <li>Đóng hoàn thiện: sau khi khoan và tự hạ, đóng đầu cọc để xuyên vào tầng chịu lực.</li>
-            </ul>
-            <p>Hình A cho thấy nếu <strong class="kw">kéo spiral auger lên quá nhanh</strong>, không khí giãn nở tạo áp suất âm và có thể dẫn đến <span class="relation">boiling, tức nước và đất cát phun lên</span>.</p>
-          </div></article>
-        </div>
-      </section>
-
-      <section class="subsection" id="sec-pile-common">
-        <h3>(3) 埋込み工法に共通する施工上の留意事項｜Các lưu ý chung</h3>
-        <div class="study-grid">
-          <article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja">
-            <p>これらの留意事項は、プレボーリング工法と中掘り工法に共通する。</p>
-            <ol>
-              <li><strong class="kw">セメントミルク根固め液の強度</strong>は<mark class="critical">20N/mm²以上</mark>とする。</li>
-              <li><strong class="kw">杭の高止まりの許容高さ</strong>は<mark class="critical">0.5m以下</mark>とし、<strong class="kw">支持層への根入れ</strong>は<mark class="critical">1.0m以上</mark>とする。</li>
-              <li><strong class="kw">杭の傾斜</strong>は<mark class="critical">100分の1以内</mark>とし、<strong class="kw">杭心ずれ量</strong>は<mark class="critical">「杭径÷4」以下かつ100mm以下</mark>とする。</li>
-              <li>現場溶接継手を設けるときの溶接方法は、<strong class="kw">アーク溶接</strong>とする。その<strong class="kw">ルート間隔（開先間隔）</strong>は<mark class="critical">4mm以下</mark>とし、<strong class="kw">上下杭軸の目違い</strong>は<mark class="critical">2mm以下</mark>とする。</li>
-            </ol>
-          </div></article>
-          <article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi">
-            <p>Các lưu ý sau dùng chung cho Pre-boring và khoan trong lòng cọc.</p>
-            <ol>
-              <li><strong class="kw">Cường độ dung dịch cement milk gia cố mũi</strong>: <mark class="critical">≥ 20 N/mm²</mark>.</li>
-              <li><strong class="kw">Độ cao cọc dừng cao cho phép</strong>: <mark class="critical">≤ 0,5 m</mark>; <strong class="kw">độ cắm vào tầng chịu lực</strong>: <mark class="critical">≥ 1,0 m</mark>.</li>
-              <li><strong class="kw">Độ nghiêng cọc</strong>: <mark class="critical">≤ 1/100</mark>; <strong class="kw">sai lệch tim cọc</strong>: <mark class="critical">≤ D/4 và đồng thời ≤ 100 mm</mark>.</li>
-              <li>Khi nối hàn tại công trường, dùng <strong class="kw">hàn hồ quang</strong>. <strong class="kw">Khe chân mối hàn</strong>: <mark class="critical">≤ 4 mm</mark>; <strong class="kw">độ lệch trục cọc trên-dưới</strong>: <mark class="critical">≤ 2 mm</mark>.</li>
-            </ol>
-          </div></article>
-        </div>
-      </section>
-
-      <section class="subsection" id="sec-preboring">
-        <h3>(4) プレボーリング工法における施工上の留意事項｜Lưu ý riêng cho Pre-boring</h3>
-        <div class="study-grid">
-          <article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja">
-            <ol>
-              <li><strong class="kw">掘削速度が速くなりすぎる</strong>と鉛直精度が確保できなくなり、杭心ずれが大きくなるので、<span class="relation">掘削速度を遅くする</span>。</li>
-              <li>アースオーガーは、<strong class="kw">負圧を発生させないよう</strong>、根固め液の注入後、<span class="relation">ゆっくりとした速度で引き上げる</span>。</li>
-              <li>掘削中に、<strong class="kw">孔壁崩壊やボイリングのおそれ</strong>があるときは、<span class="relation">ベントナイト溶液を用いる</span>。</li>
-              <li><strong class="kw">スパイラルオーガの径</strong>は、<mark class="critical">杭径よりも30mm～100mm程度大きくする</mark>。</li>
-            </ol>
-            <p>過去の試験では、セメントミルク工法において杭径が300mm～500mmの場合、杭径よりも100mm程度大きいオーガーヘッドを使用すること、安定液を用いて孔壁崩壊を防ぎながら鉛直に掘削し、支持層到達後に根固め液及び杭周固定液を注入しながらアースオーガーを引き抜き、その後既製コンクリート杭を建て込むことが出題されている。</p>
-          </div></article>
-          <article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi">
-            <ol>
-              <li>Nếu <strong class="kw">tốc độ khoan quá nhanh</strong>, độ thẳng đứng khó đảm bảo và sai lệch tim cọc tăng, vì vậy <span class="relation">phải giảm tốc độ khoan</span>.</li>
-              <li>Sau khi bơm dung dịch gia cố mũi, để <strong class="kw">không tạo áp suất âm</strong>, <span class="relation">kéo Earth Auger lên từ từ</span>.</li>
-              <li>Nếu có <strong class="kw">nguy cơ sập thành lỗ hoặc boiling</strong>, <span class="relation">dùng dung dịch bentonite</span>.</li>
-              <li><strong class="kw">Đường kính spiral auger</strong>: <mark class="critical">lớn hơn đường kính cọc khoảng 30-100 mm</mark>.</li>
-            </ol>
-            <p>Trong các đề trước, sách nêu trường hợp cement milk với cọc 300-500 mm dùng đầu auger lớn hơn đường kính cọc khoảng 100 mm; khoan thẳng đứng với dung dịch ổn định để chống sập thành, đến tầng chịu lực thì vừa bơm dung dịch gia cố mũi và dung dịch cố định quanh cọc vừa rút Earth Auger, sau đó dựng cọc bê tông đúc sẵn vào lỗ khoan.</p>
-          </div></article>
-        </div>
-      </section>
-
-      <section class="subsection" id="sec-innerdrill">
-        <h3>(5) 中掘り工法における施工上の留意事項｜Lưu ý cho khoan trong lòng cọc</h3>
-        <div class="study-grid">
-          <article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja">
-            <ol>
-              <li>杭中空部の排土を促進するため、必要に応じて、<strong class="kw">オーガー先端から空気を噴出</strong>させる。</li>
-              <li>最終打撃で支持力を得る場合は、<strong class="kw">支持層までの打込み深さ</strong>を<mark class="critical">杭径の3倍～5倍程度</mark>とする。</li>
-              <li><strong class="kw">スパイラルオーガの径</strong>は、<mark class="critical">杭径よりも30mm～60mm程度小さくする</mark>。</li>
-              <li>掘削中は、<span class="trap">過度の先掘りや拡大掘りをしてはならない</span>。特に砂質地盤では、<strong class="kw">先掘り長さS</strong>を<mark class="critical">杭径dよりも小さくする（S&lt;d）</mark>。</li>
-            </ol>
-            <p>図では、<strong class="kw">S&gt;d</strong>だと<span class="relation">ボイリングが発生しやすくなる</span>ことが示されている。</p>
-            <p>過去試験では、杭心ずれ低減のための振れ止め装置・直角二方向の逃げ心、プレボーリングのオーガーヘッド径、ならびに<strong class="kw">埋込み杭の杭中心間隔の最小値</strong>を<mark class="critical">杭径の2.0倍</mark>とする内容が出題されている。</p>
-          </div></article>
-          <article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi">
-            <ol>
-              <li>Để thúc đẩy thải đất trong lòng cọc, khi cần có thể <strong class="kw">phun khí từ đầu auger</strong>.</li>
-              <li>Khi dùng đóng hoàn thiện để đạt sức chịu tải, <strong class="kw">độ sâu đóng vào tầng chịu lực</strong> khoảng <mark class="critical">3-5 lần đường kính cọc</mark>.</li>
-              <li><strong class="kw">Đường kính spiral auger</strong>: <mark class="critical">nhỏ hơn đường kính cọc khoảng 30-60 mm</mark>.</li>
-              <li>Trong khi khoan, <span class="trap">không được khoan trước hoặc khoan mở rộng quá mức</span>. Đặc biệt trong nền cát, <strong class="kw">chiều dài khoan trước S</strong> phải <mark class="critical">nhỏ hơn đường kính cọc d, tức S&lt;d</mark>.</li>
-            </ol>
-            <p>Hình cho thấy khi <strong class="kw">S&gt;d</strong> thì <span class="relation">boiling dễ phát sinh hơn</span>.</p>
-            <p>Đề thi trước còn nêu thiết bị chống dao động và mốc tim phụ hai phương để giảm sai lệch tim cọc, kích thước đầu auger của Pre-boring và <strong class="kw">khoảng cách tim tối thiểu giữa cọc 埋込み</strong> là <mark class="critical">2,0D</mark>.</p>
-          </div></article>
-        </div>
-      </section>
-    </section>
-
-    <section class="study-section" id="sec-formwork">
-      <div class="section-head"><h2>2. 型枠工事｜Công tác ván khuôn</h2><span class="source-ref">Nguồn: Book page 381, 386-387</span></div>
-
-      <section class="subsection" id="sec-form-answer">
-        <h3>令和3年度 問題4 解答例｜Đáp án mẫu</h3>
-        <div class="study-grid">
-          <article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja">
-            <p>① 締付け金物の締付けすぎへの対策として、<strong class="kw">内端太（縦端太）</strong>を<span class="relation">締付けボルトにできるだけ近づける</span>ようにする。</p>
-            <p>② 柱型枠は、梁型枠や壁型枠を取り付ける前に、<strong class="kw">チェーンなどで控え</strong>を取り、<span class="relation">変形しないようにする</span>。</p>
-            <p>出典：建築工事標準仕様書・同解説 JASS 5 鉄筋コンクリート工事</p>
-          </div></article>
-          <article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi">
-            <p>① Để phòng ngừa siết phụ kiện ván khuôn quá mức, bố trí <strong class="kw">thanh nẹp trong（内端太／縦端太）</strong> <span class="relation">càng gần bu lông siết càng tốt</span>.</p>
-            <p>② Trước khi lắp ván khuôn dầm hoặc tường vào ván khuôn cột, dùng <strong class="kw">xích hoặc cấu kiện giằng giữ</strong> để <span class="relation">tránh biến dạng ván khuôn cột</span>.</p>
-            <p>Nguồn trong sách: JASS 5, công tác bê tông cốt thép.</p>
-          </div></article>
-        </div>
-      </section>
-
-      <section class="subsection" id="sec-form-general">
-        <h3>(1) 型枠の一般的な構成｜Cấu tạo chung của hệ ván khuôn</h3>
-        <div class="study-grid">
-          <article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja">
-            <p>鉄筋コンクリート造の建築物の出来栄えは、<strong class="kw">躯体コンクリートの施工精度</strong>に大きく左右される。型枠工事は、すべての工事の基本となるので、工程短縮・品質確保・原価削減を目指して綿密な施工計画を立てなければならない。</p>
-            <p>型枠は、コンクリートに直接接する<strong class="kw">せき板</strong>・せき板を支える<strong class="kw">支保工</strong>から構成され、せき板には剥離を容易にするための<strong class="kw">剥離剤</strong>が塗布されている。</p>
-            <p>支保工は、根太・大引き・支柱・水平つなぎ（支柱の座屈を防止する部材）・ブレース（倒壊を防止する部材）・内端太（せき板を支持する部材）・外端太・建入れ直し用チェーンなどから構成されている。</p>
-          </div></article>
-          <article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi">
-            <p>Chất lượng hoàn thiện của công trình bê tông cốt thép chịu ảnh hưởng lớn bởi <strong class="kw">độ chính xác thi công bê tông kết cấu</strong>. Công tác ván khuôn là cơ sở của các công tác khác, vì vậy phải lập kế hoạch chặt chẽ để rút ngắn tiến độ, đảm bảo chất lượng và giảm giá thành.</p>
-            <p>Hệ ván khuôn gồm <strong class="kw">tấm ván khuôn（せき板）</strong> tiếp xúc trực tiếp với bê tông và <strong class="kw">hệ chống đỡ（支保工）</strong>. Bề mặt tấm ván khuôn được bôi <strong class="kw">chất tháo khuôn</strong> để dễ tháo.</p>
-            <p>Hệ chống đỡ gồm joist, dầm đỡ, cột chống, giằng ngang chống oằn, brace chống sập, thanh nẹp trong, thanh nẹp ngoài và xích điều chỉnh độ thẳng đứng.</p>
-          </div></article>
-        </div>
-        <div class="note-box"><strong>Giải thích hình trang 386</strong><p>Sơ đồ cấu hình ván khuôn điển hình thể hiện quan hệ giữa せき板, 根太, 大引き, 支柱, 水平つなぎ, ブレース, 内端太・外端太 và các cấu kiện điều chỉnh độ thẳng đứng.</p></div>
-      </section>
-
-      <section class="subsection" id="sec-form-cautions">
-        <h3>(2) 柱型枠・梁型枠の加工・組立てにおける施工上の留意事項｜Lưu ý khi gia công và lắp ráp</h3>
-        <div class="study-grid">
-          <article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja">
-            <ol>
-              <li>柱や梁の型枠は、<strong class="kw">事前に製作された施工図</strong>を基にして組み立てる。</li>
-              <li>型枠は、<strong class="kw">コンクリートの打ちあがり</strong>が<span class="relation">許容差以内になるように組み立てる</span>。</li>
-              <li>型枠を設置する位置を正確に定めて、<strong class="kw">加工精度・組立て精度</strong>を確保する。</li>
-              <li>型枠の不同沈下を防止するため、<strong class="kw">上下階の同一位置に支柱</strong>を配置する。</li>
-              <li>小口のせき板の密着性を高め、<strong class="kw">継目からのセメントペーストの漏れ</strong>を少なくする。</li>
-              <li>せき板の表面の継目や凹凸はコンクリート表面に転写されるので、<strong class="kw">型枠の施工精度</strong>に注意する。</li>
-              <li>柱の型枠などの底面に落ちたゴミを清掃できるよう、<strong class="kw">型枠側面に掃除口</strong>を設ける。</li>
-              <li>各種配管・埋設金物類は、コンクリート打設時に移動しないよう、<strong class="kw">型枠に固定</strong>する。</li>
-              <li><strong class="kw">型枠の許容たわみ量</strong>は<mark class="critical">3mm以下</mark>、打放しコンクリートでは<mark class="critical">1mm以下～2mm以下</mark>とする。</li>
-            </ol>
-            <p>過去の試験では、締付け金物を締めすぎると内端太・外端太が内側に押され、せき板が内側に変形するため、内端太を締付けボルトにできるだけ近接させて締め付けること、柱型枠を梁型枠や壁型枠の取付け前にチェーンなどで控えること、柱や壁の型枠の足元を正しい位置に固定するため根巻きを行うことが出題されている。敷桟で行う場合には、コンクリート漏れ防止にパッキングやプラスチックアングルを用いる方法がある。</p>
-          </div></article>
-          <article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi">
-            <ol>
-              <li>Lắp ván khuôn cột và dầm theo <strong class="kw">bản vẽ thi công lập trước</strong>.</li>
-              <li>Lắp ráp để <strong class="kw">hình dạng bê tông sau khi đổ</strong> <span class="relation">nằm trong sai số cho phép</span>.</li>
-              <li>Xác định đúng vị trí và đảm bảo <strong class="kw">độ chính xác gia công, lắp ráp</strong>.</li>
-              <li>Để chống lún không đều, bố trí <strong class="kw">cột chống ở cùng vị trí tương ứng giữa tầng trên và tầng dưới</strong>.</li>
-              <li>Tăng độ kín mép ván và giảm <strong class="kw">rò hồ xi măng qua khe nối</strong>.</li>
-              <li>Khe nối và lồi lõm của ván khuôn sẽ in lên bề mặt bê tông, vì vậy phải kiểm soát <strong class="kw">độ chính xác thi công ván khuôn</strong>.</li>
-              <li>Bố trí <strong class="kw">cửa vệ sinh ở mặt bên ván khuôn</strong> để lấy rác ở đáy.</li>
-              <li>Các ống và chi tiết chôn sẵn phải <strong class="kw">cố định vào ván khuôn</strong> để không dịch chuyển khi đổ bê tông.</li>
-              <li><strong class="kw">Độ võng cho phép của ván khuôn</strong>: <mark class="critical">≤ 3 mm</mark>; bê tông để trần: <mark class="critical">≤ 1-2 mm</mark>.</li>
-            </ol>
-            <p>Các đề trước đã hỏi biện pháp chống siết quá mức bằng cách đặt 内端太 gần bu lông siết, dùng xích giữ ván khuôn cột trước khi lắp dầm hoặc tường, và thực hiện 根巻き để cố định chân ván khuôn. Khi dùng 敷桟, có thể dùng packing hoặc plastic angle để chống rò bê tông.</p>
-          </div></article>
-        </div>
-        <div class="note-box"><strong>Giải thích hình trang 387</strong><p>Các sơ đồ minh họa 独立柱, 打放し柱, 壁付き柱 và ví dụ lắp ráp ván khuôn, cho thấy bố trí form tie, separator, rib và cấu kiện định vị trong từng trường hợp.</p></div>
-      </section>
-    </section>
-
-    <section class="study-section" id="sec-concrete">
-      <div class="section-head"><h2>3. コンクリート工事｜Công tác bê tông</h2><span class="source-ref">Nguồn: Book page 382, 388-390</span></div>
-
-      <section class="subsection" id="sec-concrete-answer">
-        <h3>令和3年度 問題4 解答例｜Đáp án mẫu</h3>
-        <div class="study-grid">
-          <article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja">
-            <p>① 暑中コンクリートの湿潤養生の開始時期は、<strong class="kw">コンクリート打設面</strong>では<span class="relation">ブリーディング水が消失した時点</span>、<strong class="kw">せき板に接する面</strong>では<span class="relation">脱型直後</span>とする。</p>
-            <p>② 普通ポルトランドセメントを用いたコンクリートの湿潤養生期間は、<strong class="kw">日平均気温15℃以上</strong>なら<mark class="critical">5日</mark>、<strong class="kw">10℃以上</strong>なら<mark class="critical">7日</mark>、<strong class="kw">5℃以上</strong>なら<mark class="critical">9日</mark>とする。</p>
-            <p>出典：建築工事標準仕様書・同解説 JASS 5 鉄筋コンクリート工事</p>
-          </div></article>
-          <article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi">
-            <p>① Với bê tông thời tiết nóng, thời điểm bắt đầu bảo dưỡng ẩm: <strong class="kw">mặt bê tông vừa đổ</strong> là <span class="relation">khi nước bleeding biến mất</span>; <strong class="kw">mặt tiếp xúc ván khuôn</strong> là <span class="relation">ngay sau tháo khuôn</span>.</p>
-            <p>② Với xi măng Portland thông thường: <strong class="kw">nhiệt độ trung bình ngày ≥15℃</strong> thì <mark class="critical">5 ngày</mark>, <strong class="kw">≥10℃</strong> thì <mark class="critical">7 ngày</mark>, <strong class="kw">≥5℃</strong> thì <mark class="critical">9 ngày</mark>.</p>
-            <p>Nguồn trong sách: JASS 5, công tác bê tông cốt thép.</p>
-          </div></article>
-        </div>
-      </section>
-
-      <section class="subsection" id="sec-moist-curing">
-        <h3>(1) コンクリートの湿潤養生｜Bảo dưỡng ẩm bê tông</h3>
-        <div class="study-grid">
-          <article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja">
-            <p>コンクリートが十分に硬化するまでの間は、乾燥・通風・日光・高温・低温・振動・外力などの影響からコンクリートを保護しなければならない。このようにしてコンクリートを保護することを、<strong class="kw">コンクリートの養生</strong>という。</p>
-            <p>型枠に打ち込んだコンクリートは、セメントの<strong class="kw">水和作用</strong>によって硬化する。そのため、コンクリート表面を湿潤状態にするための<strong class="kw">湿潤養生</strong>が最も重要になる。湿潤養生中は、養生マット・水密シート・散水・膜養生などによりコンクリートを保護する。</p>
-            <p>ただし、コンクリートの露出面に対する散水やシート養生は、<strong class="kw">コンクリート表面を荒らさずに作業できる程度に硬化した後</strong>に開始しなければならない。硬化前に散水やシート養生を行うと、<span class="relation">コンクリート表面が荒れることがある</span>。</p>
-          </div></article>
-          <article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi">
-            <p>Cho đến khi bê tông đóng rắn đầy đủ, phải bảo vệ khỏi khô, gió, ánh nắng, nhiệt độ cao/thấp, rung động và ngoại lực. Việc bảo vệ này gọi là <strong class="kw">bảo dưỡng bê tông</strong>.</p>
-            <p>Bê tông trong ván khuôn đóng rắn nhờ <strong class="kw">phản ứng thủy hóa</strong> của xi măng. Vì vậy <strong class="kw">bảo dưỡng ẩm</strong>, tức giữ bề mặt bê tông ở trạng thái ẩm, là đặc biệt quan trọng. Sách nêu thảm bảo dưỡng, tấm kín nước, phun nước và bảo dưỡng tạo màng.</p>
-            <p>Đối với bề mặt lộ thiên, chỉ bắt đầu phun nước hoặc phủ tấm <strong class="kw">sau khi bê tông đã đủ cứng để thao tác không làm hỏng bề mặt</strong>. Nếu làm quá sớm, <span class="relation">bề mặt bê tông có thể bị phá hỏng</span>.</p>
-          </div></article>
-        </div>
-        <div class="note-box"><strong>Giải thích sơ đồ trang 388</strong><p>Sơ đồ phân biệt 初期養生 và 後期養生（湿潤養生）. Ban đầu chỉ che nắng mà không chạm bề mặt; sau khi bề mặt đủ cứng mới thực hiện 湛水, 湿布 hoặc 散水.</p></div>
-      </section>
-
-      <section class="subsection" id="sec-curing-period">
-        <h3>(2) コンクリートの湿潤養生期間｜Thời gian bảo dưỡng ẩm</h3>
-        <div class="study-grid">
-          <article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja">
-            <p>コンクリートの湿潤養生期間は、<strong class="kw">セメントの種類・施工時の日平均気温・計画供用期間の級</strong>などにより定められている。</p>
-            <ol>
-              <li>強度が発現するまでに時間がかかるセメントほど、湿潤養生期間は長くなる。</li>
-              <li>日平均気温が低いほど、水和反応に時間がかかるので、湿潤養生期間は長くなる。</li>
-              <li>計画供用期間が長いほど、高い強度が求められるので、湿潤養生期間は長くなる。</li>
-            </ol>
-            <div class="table-wrap"><table><caption>計画供用期間の級が「標準」の場合</caption><thead><tr><th>セメントの種類</th><th>15℃以上</th><th>10℃以上</th><th>5℃以上</th></tr></thead><tbody>
-              <tr><td><strong class="kw">早強ポルトランドセメント</strong></td><td><mark class="critical">3日以上</mark></td><td><mark class="critical">4日以上</mark></td><td><mark class="critical">5日以上</mark></td></tr>
-              <tr><td><strong class="kw">普通ポルトランドセメント</strong></td><td><mark class="critical">5日以上</mark></td><td><mark class="critical">7日以上</mark></td><td><mark class="critical">9日以上</mark></td></tr>
-              <tr><td><strong class="kw">混合セメントB種</strong></td><td><mark class="critical">7日以上</mark></td><td><mark class="critical">9日以上</mark></td><td><mark class="critical">12日以上</mark></td></tr>
-            </tbody></table></div>
-            <div class="table-wrap"><table><caption>日平均気温が15℃以上の場合</caption><thead><tr><th>セメントの種類</th><th>短期および標準</th><th>長期および超長期</th></tr></thead><tbody>
-              <tr><td><strong class="kw">早強ポルトランドセメント</strong></td><td><mark class="critical">3日以上</mark></td><td><mark class="critical">5日以上</mark></td></tr>
-              <tr><td><strong class="kw">普通ポルトランドセメント</strong></td><td><mark class="critical">5日以上</mark></td><td><mark class="critical">7日以上</mark></td></tr>
-              <tr><td><strong class="kw">混合セメントB種</strong></td><td><mark class="critical">7日以上</mark></td><td><mark class="critical">10日以上</mark></td></tr>
-            </tbody></table></div>
-            <p>※中庸熱ポルトランドセメント・低熱ポルトランドセメント・高炉セメントB種・フライアッシュセメントB種などを使用する場合。</p>
-            <p>普通ポルトランドセメントを用いた<strong class="kw">厚さ18cm以上のコンクリート部材</strong>では、所定期間前でも、短期または標準なら<strong class="kw">圧縮強度</strong><mark class="critical">10N/mm²以上</mark>、長期または超長期なら<mark class="critical">15N/mm²以上</mark>に達したことを確認できれば、以降の湿潤養生を打ち切ることができる。供試体は<strong class="kw">現場水中養生または現場封緘養生</strong>とする。</p>
-          </div></article>
-          <article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi">
-            <p>Thời gian bảo dưỡng ẩm được quyết định bởi <strong class="kw">loại xi măng, nhiệt độ trung bình ngày và cấp thời gian sử dụng theo kế hoạch</strong>.</p>
-            <ol>
-              <li>Xi măng phát triển cường độ chậm hơn thì cần bảo dưỡng ẩm lâu hơn.</li>
-              <li>Nhiệt độ trung bình ngày càng thấp, phản ứng thủy hóa càng chậm và thời gian bảo dưỡng càng dài.</li>
-              <li>Cấp thời gian sử dụng càng dài thì yêu cầu cường độ càng cao và thời gian bảo dưỡng càng dài.</li>
-            </ol>
-            <div class="table-wrap"><table><caption>Khi cấp thời gian sử dụng là tiêu chuẩn</caption><thead><tr><th>Loại xi măng</th><th>≥15℃</th><th>≥10℃</th><th>≥5℃</th></tr></thead><tbody>
-              <tr><td><strong class="kw">Portland cường độ sớm</strong></td><td><mark class="critical">≥3 ngày</mark></td><td><mark class="critical">≥4 ngày</mark></td><td><mark class="critical">≥5 ngày</mark></td></tr>
-              <tr><td><strong class="kw">Portland thông thường</strong></td><td><mark class="critical">≥5 ngày</mark></td><td><mark class="critical">≥7 ngày</mark></td><td><mark class="critical">≥9 ngày</mark></td></tr>
-              <tr><td><strong class="kw">Xi măng hỗn hợp loại B</strong></td><td><mark class="critical">≥7 ngày</mark></td><td><mark class="critical">≥9 ngày</mark></td><td><mark class="critical">≥12 ngày</mark></td></tr>
-            </tbody></table></div>
-            <div class="table-wrap"><table><caption>Khi nhiệt độ trung bình ngày ≥15℃</caption><thead><tr><th>Loại xi măng</th><th>Ngắn hạn và tiêu chuẩn</th><th>Dài hạn và siêu dài hạn</th></tr></thead><tbody>
-              <tr><td><strong class="kw">Portland cường độ sớm</strong></td><td><mark class="critical">≥3 ngày</mark></td><td><mark class="critical">≥5 ngày</mark></td></tr>
-              <tr><td><strong class="kw">Portland thông thường</strong></td><td><mark class="critical">≥5 ngày</mark></td><td><mark class="critical">≥7 ngày</mark></td></tr>
-              <tr><td><strong class="kw">Xi măng hỗn hợp loại B</strong></td><td><mark class="critical">≥7 ngày</mark></td><td><mark class="critical">≥10 ngày</mark></td></tr>
-            </tbody></table></div>
-            <p>Chú thích của sách áp dụng cho các loại như Portland nhiệt vừa, Portland nhiệt thấp, xi măng xỉ lò cao B và xi măng tro bay B.</p>
-            <p>Với cấu kiện <strong class="kw">dày ≥18 cm dùng Portland thông thường</strong>, có thể kết thúc bảo dưỡng trước thời hạn nếu xác nhận: cấp ngắn hạn/tiêu chuẩn đạt <strong class="kw">cường độ nén</strong> <mark class="critical">≥10 N/mm²</mark>; cấp dài hạn/siêu dài hạn đạt <mark class="critical">≥15 N/mm²</mark>. Mẫu thử dùng <strong class="kw">bảo dưỡng trong nước tại công trường hoặc bảo dưỡng kín tại công trường</strong>.</p>
-          </div></article>
-        </div>
-      </section>
-
-      <section class="subsection" id="sec-cold-weather">
-        <h3>(3) 特に注意を要する寒中コンクリートの養生｜Bảo dưỡng bê tông thời tiết lạnh</h3>
-        <div class="study-grid">
-          <article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja">
-            <p><strong class="kw">寒中コンクリート</strong>は、<mark class="critical">日平均気温が4℃以下</mark>の時期に施工するコンクリートである。</p>
-            <ol>
-              <li>打込み後<mark class="critical">5日間</mark>（早強ポルトランドセメントでは<mark class="critical">3日間</mark>）が経過するまで、<strong class="kw">コンクリートの温度</strong>を<mark class="critical">2℃以上</mark>に保つ。</li>
-              <li>初期凍害や強度発現の遅れを防止するため、<strong class="kw">圧縮強度</strong>が<mark class="critical">5N/mm²以上</mark>に達するまで、<span class="trap">コンクリートを凍結させない</span>ように初期養生を行う。</li>
-            </ol>
-          </div></article>
-          <article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi">
-            <p><strong class="kw">Bê tông thi công trong thời tiết lạnh</strong> là bê tông thi công khi <mark class="critical">nhiệt độ trung bình ngày ≤4℃</mark>.</p>
-            <ol>
-              <li>Trong <mark class="critical">5 ngày</mark> sau khi đổ, riêng Portland cường độ sớm là <mark class="critical">3 ngày</mark>, phải duy trì <strong class="kw">nhiệt độ bê tông</strong> <mark class="critical">≥2℃</mark>.</li>
-              <li>Để ngăn hư hại đóng băng sớm và chậm phát triển cường độ, thực hiện bảo dưỡng ban đầu sao cho <span class="trap">bê tông không bị đóng băng</span> cho đến khi <strong class="kw">cường độ nén</strong> đạt <mark class="critical">≥5 N/mm²</mark>.</li>
-            </ol>
-          </div></article>
-        </div>
-      </section>
-
-      <section class="subsection" id="sec-curing-past">
-        <h3>参考：コンクリート打込み後の養生に関する過去試験｜Nội dung từng ra thi</h3>
-        <div class="study-grid">
-          <article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja">
-            <ol>
-              <li>暑中コンクリートの打込み後の養生は、<strong class="kw">水分の急激な発散及び日射による温度上昇を防ぐ</strong>よう、コンクリート表面への散水により常に湿潤に保つ。湿潤養生の開始時期は、<strong class="kw">コンクリート上面</strong>では<span class="relation">ブリーディング水が消失した時点</span>、<strong class="kw">せき板に接する面</strong>では<span class="relation">脱型直後</span>とする。</li>
-              <li>計画供用期間の級を標準とする場合、普通ポルトランドセメントを用いたコンクリートの<strong class="kw">打込み後</strong><mark class="critical">5日間</mark>は、乾燥・振動等によって凝結及び硬化が妨げられないように養生する。</li>
-              <li>連続的に散水を行って水分を供給する方法による湿潤養生は、<strong class="kw">コンクリートの凝結が終了した後</strong>に行う。</li>
-            </ol>
-          </div></article>
-          <article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi">
-            <ol>
-              <li>Sau khi đổ bê tông thời tiết nóng, phải <strong class="kw">ngăn nước thoát quá nhanh và nhiệt độ tăng do nắng</strong>, duy trì bề mặt ẩm bằng phun nước. Thời điểm bắt đầu: <strong class="kw">mặt trên bê tông</strong> là <span class="relation">khi nước bleeding biến mất</span>; <strong class="kw">mặt tiếp xúc ván khuôn</strong> là <span class="relation">ngay sau tháo khuôn</span>.</li>
-              <li>Với cấp thời gian sử dụng tiêu chuẩn và Portland thông thường, trong <strong class="kw">sau khi đổ</strong> <mark class="critical">5 ngày</mark> phải bảo dưỡng để khô, rung động... không cản trở ninh kết và đóng rắn.</li>
-              <li>Bảo dưỡng ẩm bằng phun nước liên tục được thực hiện <strong class="kw">sau khi bê tông kết thúc ninh kết</strong>.</li>
-            </ol>
-          </div></article>
-        </div>
-      </section>
-    </section>
-
-    <section class="study-section" id="sec-steel">
-      <div class="section-head"><h2>4. 鉄骨工事｜Công tác kết cấu thép</h2><span class="source-ref">Nguồn: Book page 382, 390-392</span></div>
-
-      <section class="subsection" id="sec-steel-answer">
-        <h3>令和3年度 問題4 解答例｜Đáp án mẫu</h3>
-        <div class="study-grid">
-          <article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja">
-            <p>① 締付け完了後の検査では、<strong class="kw">すべてのボルトのピンテール</strong>が<span class="relation">破断されていることを確認</span>し、一次締付け後に付した<strong class="kw">マークのずれ</strong>を調べる。</p>
-            <p>② ナット回転量に著しいばらつきが認められる群については、<strong class="kw">ナット回転量</strong>が<mark class="critical">平均回転角度±30度の範囲</mark>のものだけを合格とする。</p>
-            <p>出典：建築工事標準仕様書 JASS 6 鉄骨工事</p>
-          </div></article>
-          <article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi">
-            <p>① Sau khi siết, xác nhận <strong class="kw">pintail của toàn bộ bu lông</strong> đã <span class="relation">bị đứt</span> và kiểm tra <strong class="kw">độ lệch của dấu marking</strong> đã đánh sau siết sơ bộ.</p>
-            <p>② Với nhóm có độ phân tán lớn về góc quay đai ốc, chỉ các bu lông có <strong class="kw">lượng quay đai ốc</strong> nằm trong <mark class="critical">góc quay trung bình ±30°</mark> mới đạt.</p>
-            <p>Nguồn trong sách: JASS 6, công tác kết cấu thép.</p>
-          </div></article>
-        </div>
-      </section>
-
-      <section class="subsection" id="sec-bolt-types">
-        <h3>(1) 高力ボルトの種類｜Các loại bu lông cường độ cao</h3>
-        <div class="study-grid">
-          <article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja">
-            <p>高力ボルトは、その構造により、<strong class="kw">トルシア形高力ボルト</strong>と<strong class="kw">高力六角ボルト（JIS形高力ボルト）</strong>に分類される。</p>
-            <p><strong class="kw">トルシア形高力ボルト</strong>は、所定の締付け力が得られると、<span class="relation">ピンテールが自動的に破断する</span>。ピンテールの破断を確認するだけで、所定の締付け力を得られたことが分かる。</p>
-            <p>トルシア形高力ボルトの材料試験では、<strong class="kw">建築基準法に基づいて認定された製品</strong>であることを確認する。</p>
-            <p>高力ボルト摩擦接合では、部材の引張力を<strong class="kw">接合面全体</strong>で受けるため、<span class="relation">ボルト孔周辺の応力集中が生じにくい</span>。</p>
-            <p>トルシア形高力ボルト全数の本締め完了後には、<strong class="kw">共回りの有無・軸回りの有無・ピンテールの破断・ナット回転量・ボルトの余長</strong>を確認する。</p>
-            <p><strong class="kw">高力六角ボルト（JIS形高力ボルト）</strong>は、日本産業規格（JIS）で規格化されており、規格品証明書を提出することで材料試験を省略できる。トルシア形と異なり、<span class="trap">ピンテールが付いていない</span>ので、トルクレンチを用いてトルク値を検査して確認する必要がある。</p>
-            <p>高力六角ボルト全数の本締め完了後には、共回りの有無・ナット回転量・ボルトの余長を確認するため、<strong class="kw">トルクコントロール法またはナット回転法</strong>による締付けの確認を行う。</p>
-          </div></article>
-          <article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi">
-            <p>Bu lông cường độ cao được chia theo cấu tạo thành <strong class="kw">Torshear</strong> và <strong class="kw">bu lông lục giác cường độ cao kiểu JIS</strong>.</p>
-            <p><strong class="kw">Bu lông Torshear</strong> có cơ chế khi đạt lực siết quy định thì <span class="relation">pintail tự động bị đứt</span>. Chỉ cần xác nhận pintail đứt là có thể biết đã đạt lực siết quy định.</p>
-            <p>Trong thử nghiệm vật liệu Torshear phải xác nhận đây là <strong class="kw">sản phẩm được công nhận theo Luật Tiêu chuẩn Xây dựng</strong>.</p>
-            <p>Trong liên kết ma sát bằng bu lông cường độ cao, lực kéo được truyền qua <strong class="kw">toàn bộ bề mặt liên kết</strong>, vì vậy <span class="relation">ít tập trung ứng suất quanh lỗ bu lông</span>.</p>
-            <p>Sau khi siết hoàn thiện toàn bộ Torshear, kiểm tra <strong class="kw">共回り, 軸回り, pintail, lượng quay đai ốc và chiều dài nhô dư</strong>.</p>
-            <p><strong class="kw">Bu lông lục giác cường độ cao kiểu JIS</strong> được tiêu chuẩn hóa theo JIS; có thể miễn thử nghiệm vật liệu khi nộp chứng nhận sản phẩm tiêu chuẩn. Khác Torshear, loại này <span class="trap">không có pintail</span>, do đó phải kiểm tra mômen bằng cờ lê lực.</p>
-            <p>Sau khi siết hoàn thiện toàn bộ bu lông lục giác, kiểm tra bằng <strong class="kw">phương pháp kiểm soát mômen hoặc phương pháp góc quay đai ốc</strong>.</p>
-          </div></article>
-        </div>
-      </section>
-
-      <section class="subsection" id="sec-bolt-length">
-        <h3>③ 締付け長さに加える値｜Giá trị cộng vào chiều dài kẹp</h3>
-        <div class="study-grid">
-          <article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja">
-            <p>トルシア形高力ボルトと高力六角ボルトでは、締付け長さに加える値が異なる。呼び径がM22の場合、<strong class="kw">トルシア形高力ボルト</strong>は<mark class="critical">締付け長さ＋35mm</mark>、<strong class="kw">高力六角ボルト</strong>は座金1枚分の厚さ（5mm）を考慮して<mark class="critical">締付け長さ＋40mm</mark>を標準とする。</p>
-            <div class="table-wrap"><table><caption>高力ボルトの長さ（締付け長さに加える値）</caption><thead><tr><th>呼び径</th><th>M16</th><th>M20</th><th>M22</th><th>M24</th><th>M27</th></tr></thead><tbody>
-              <tr><td><strong class="kw">トルシア形高力ボルト</strong></td><td><mark class="critical">25mm</mark></td><td><mark class="critical">30mm</mark></td><td><mark class="critical">35mm</mark></td><td><mark class="critical">40mm</mark></td><td><mark class="critical">45mm</mark></td></tr>
-              <tr><td><strong class="kw">高力六角ボルト</strong></td><td><mark class="critical">30mm</mark></td><td><mark class="critical">35mm</mark></td><td><mark class="critical">40mm</mark></td><td><mark class="critical">45mm</mark></td><td><mark class="critical">50mm</mark></td></tr>
-            </tbody></table></div>
-            <p><strong class="kw">トルシア形高力ボルト</strong>は、座金（厚さ5mm程度）が1枚少ないので、<span class="relation">その分だけ長さが短くなる</span>。</p>
-          </div></article>
-          <article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi">
-            <p>Torshear và bu lông lục giác có giá trị cộng vào chiều dài kẹp khác nhau. Với M22, <strong class="kw">Torshear</strong> dùng <mark class="critical">chiều dài kẹp + 35 mm</mark>, còn <strong class="kw">bu lông lục giác</strong> tính thêm một vòng đệm dày khoảng 5 mm nên dùng <mark class="critical">chiều dài kẹp + 40 mm</mark>.</p>
-            <div class="table-wrap"><table><caption>Giá trị cộng vào chiều dài kẹp</caption><thead><tr><th>Cỡ</th><th>M16</th><th>M20</th><th>M22</th><th>M24</th><th>M27</th></tr></thead><tbody>
-              <tr><td><strong class="kw">Torshear</strong></td><td><mark class="critical">25mm</mark></td><td><mark class="critical">30mm</mark></td><td><mark class="critical">35mm</mark></td><td><mark class="critical">40mm</mark></td><td><mark class="critical">45mm</mark></td></tr>
-              <tr><td><strong class="kw">Bu lông lục giác</strong></td><td><mark class="critical">30mm</mark></td><td><mark class="critical">35mm</mark></td><td><mark class="critical">40mm</mark></td><td><mark class="critical">45mm</mark></td><td><mark class="critical">50mm</mark></td></tr>
-            </tbody></table></div>
-            <p><strong class="kw">Torshear</strong> có ít hơn một vòng đệm dày khoảng 5 mm nên <span class="relation">chiều dài tiêu chuẩn ngắn hơn 5 mm</span> so với bu lông lục giác cùng cỡ.</p>
-          </div></article>
-        </div>
-      </section>
-
-      <section class="subsection" id="sec-friction-surface">
-        <h3>(2) 高力ボルトの摩擦接合面の処理｜Xử lý bề mặt liên kết ma sát</h3>
-        <div class="study-grid">
-          <article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja">
-            <p>高力ボルト接合の性能を確保するためには、摩擦接合面の処理を適正に行わなければならない。</p>
-            <ol>
-              <li><strong class="kw">すべり係数値</strong>を<mark class="critical">0.45以上</mark>確保するため、<strong class="kw">ショットブラストまたはグリットブラスト</strong>による処理を行い、<strong class="kw">表面粗さ</strong>を<mark class="critical">50μmRz以上</mark>とする。<span class="trap">サンドブラストによる処理は不適切</span>である。</li>
-              <li>大型の構造物に適用する高力ボルト接合では、凹みなどが生じないように注意しながら、<strong class="kw">ディスクグラインダー掛け</strong>とすることが一般的である。</li>
-              <li>材厚の差により、接合部に<strong class="kw">肌すき</strong>が<mark class="critical">1mmを超える</mark>ときは、<strong class="kw">フィラープレート</strong>を<span class="relation">適切な厚さのもの1枚だけ挿入</span>して埋める。フィラープレートも<strong class="kw">すべり係数</strong><mark class="critical">0.45以上</mark>を確保する。</li>
-            </ol>
-          </div></article>
-          <article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi">
-            <p>Để đảm bảo tính năng liên kết bu lông cường độ cao, phải xử lý đúng bề mặt ma sát.</p>
-            <ol>
-              <li>Để đạt <strong class="kw">hệ số trượt</strong> <mark class="critical">≥0,45</mark>, xử lý bằng <strong class="kw">shot blast hoặc grit blast</strong> và đảm bảo <strong class="kw">độ nhám bề mặt</strong> <mark class="critical">≥50 μmRz</mark>. <span class="trap">Sand blast là không phù hợp</span> theo nội dung sách.</li>
-              <li>Với kết cấu lớn, thông thường xử lý bằng <strong class="kw">máy mài đĩa</strong> và phải tránh tạo vết lõm.</li>
-              <li>Nếu do chênh chiều dày mà <strong class="kw">khe hở bề mặt</strong> <mark class="critical">&gt;1 mm</mark>, dùng <strong class="kw">filler plate</strong> bằng cách <span class="relation">chèn đúng 1 tấm có chiều dày thích hợp</span>. Filler plate cũng phải đạt <strong class="kw">hệ số trượt</strong> <mark class="critical">≥0,45</mark>.</li>
-            </ol>
-          </div></article>
-        </div>
-      </section>
-
-      <section class="subsection" id="sec-torshear-control">
-        <h3>(3) トルシア形高力ボルト締付け力の管理｜Quản lý lực siết Torshear</h3>
-        <div class="study-grid">
-          <article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja">
-            <ol>
-              <li>締付けは、<span class="relation">「一次締付け → マーキング → 本締め」</span>の手順による二度締めとする。</li>
-              <li>仮ボルトの締付け後には、<strong class="kw">座金の表裏</strong>を確認してから、本締めボルトや差込みナットを取り付ける。</li>
-              <li><strong class="kw">一次締付け</strong>は、<mark class="critical">本締めの60％程度</mark>の締付け力で行う。</li>
-              <li><strong class="kw">マーキング</strong>は、一次締付け後にマーカーペンで行う。</li>
-              <li><strong class="kw">本締め</strong>は、<span class="relation">ピンテールが破断するまで</span>締め付ける。</li>
-              <li><strong class="kw">軸回りや共回り</strong>が生じているボルトは、<span class="trap">新しいボルトセットに交換する</span>。</li>
-              <li>締付けはボルト群ごとに、<strong class="kw">継手の中央</strong>から<span class="relation">周辺部に向かう順序</span>で行う。</li>
-            </ol>
-          </div></article>
-          <article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi">
-            <ol>
-              <li>Thực hiện theo trình tự <span class="relation">siết sơ bộ → marking → siết hoàn thiện</span>, tức siết hai giai đoạn.</li>
-              <li>Sau khi siết bu lông tạm, kiểm tra <strong class="kw">mặt trước/sau của vòng đệm</strong> rồi mới lắp bu lông siết chính và đai ốc chèn.</li>
-              <li><strong class="kw">Siết sơ bộ</strong> ở mức khoảng <mark class="critical">60% lực siết hoàn thiện</mark>.</li>
-              <li><strong class="kw">Marking</strong> được thực hiện bằng bút marker sau siết sơ bộ.</li>
-              <li><strong class="kw">Siết hoàn thiện</strong> cho đến khi <span class="relation">pintail bị đứt</span>.</li>
-              <li>Bu lông có <strong class="kw">軸回り hoặc 共回り</strong> thì <span class="trap">phải thay bằng bộ bu lông mới</span>.</li>
-              <li>Trong từng nhóm bu lông, siết từ <strong class="kw">trung tâm mối nối</strong> <span class="relation">ra phía ngoài</span>.</li>
-            </ol>
-          </div></article>
-        </div>
-        <div class="formula-box"><div class="formula-line"><span class="flow-node">一次締付け / Siết sơ bộ</span><span class="flow-arrow">→</span><span class="flow-node">マーキング / Marking</span><span class="flow-arrow">→</span><span class="flow-node">本締め / Siết hoàn thiện</span></div></div>
-      </section>
-    </section>
-
-  </main>
-
-  <!-- CONTENT_END -->
-
-  <!-- =====================================================
-       NON-DIMMED STUDY SUPPORT SECTIONS
-       These sections stay normally readable in Keywords mode.
-       ===================================================== -->
-
-  <section class="aggregate-section" id="terms">
-    <div class="section-head">
-      <h2>Thuật ngữ chuyên môn</h2>
-    </div>
-    
-    <div class="table-wrap"><table>
-      <thead><tr><th>日本語</th><th>読み方</th><th>Tiếng Việt</th><th>Giải thích</th><th>Liên quan</th></tr></thead>
-      <tbody>
-        <tr><td>既製コンクリート杭</td><td>きせいコンクリートぐい</td><td>Cọc bê tông đúc sẵn</td><td>Cọc chế tạo trước rồi thi công vào nền đất.</td><td>埋込み工法</td></tr>
-        <tr><td>埋込み工法</td><td>うめこみこうほう</td><td>Phương pháp đặt cọc trong lỗ khoan</td><td>Nhóm phương pháp dùng cọc đúc sẵn kết hợp khoan.</td><td>プレボーリング, 中掘り</td></tr>
-        <tr><td>プレボーリング工法</td><td>プレボーリングこうほう</td><td>Pre-boring</td><td>Khoan lỗ trước bằng auger rồi đưa cọc vào.</td><td>杭径≤600mm</td></tr>
-        <tr><td>中掘り工法</td><td>なかぼりこうほう</td><td>Khoan trong lòng cọc</td><td>Khoan qua phần rỗng của cọc trong khi cọc tự hạ.</td><td>杭径≥500mm</td></tr>
-        <tr><td>スパイラルオーガ</td><td>スパイラルオーガ</td><td>Spiral auger</td><td>Mũi khoan xoắn dùng để đào đất.</td><td>プレボーリング, 中掘り</td></tr>
-        <tr><td>根固め液</td><td>ねがためえき</td><td>Dung dịch gia cố mũi</td><td>Vật liệu dùng để gia cường phần mũi cọc.</td><td>セメントミルク</td></tr>
-        <tr><td>杭周固定液</td><td>くいしゅうこていえき</td><td>Dung dịch cố định quanh thân cọc</td><td>Dung dịch dùng để cố định vùng quanh cọc.</td><td>埋込み杭</td></tr>
-        <tr><td>高止まり</td><td>たかどまり</td><td>Cọc dừng cao</td><td>Cọc dừng ở cao độ cao hơn dự kiến.</td><td>許容高さ0.5m以下</td></tr>
-        <tr><td>杭心ずれ</td><td>くいしんずれ</td><td>Sai lệch tim cọc</td><td>Sai lệch giữa tim cọc thi công và vị trí thiết kế.</td><td>逃げ心</td></tr>
-        <tr><td>逃げ心</td><td>にげしん</td><td>Mốc tim phụ / offset</td><td>Mốc kiểm soát vị trí tim cọc trong thi công.</td><td>直角二方向</td></tr>
-        <tr><td>先掘り</td><td>さきぼり</td><td>Khoan trước đầu cọc</td><td>Auger đào sâu hơn mũi cọc.</td><td>砂質地盤</td></tr>
-        <tr><td>ボイリング</td><td>ボイリング</td><td>Boiling</td><td>Hiện tượng nước và đất cát trào lên từ đáy lỗ.</td><td>負圧, 先掘り</td></tr>
-        <tr><td>型枠</td><td>かたわく</td><td>Ván khuôn</td><td>Hệ tạo hình cho bê tông.</td><td>せき板, 支保工</td></tr>
-        <tr><td>せき板</td><td>せきいた</td><td>Tấm ván khuôn</td><td>Bề mặt tiếp xúc trực tiếp với bê tông.</td><td>剥離剤</td></tr>
-        <tr><td>支保工</td><td>しほこう</td><td>Hệ chống đỡ</td><td>Hệ chịu tải và giữ ổn định ván khuôn.</td><td>支柱, 大引き</td></tr>
-        <tr><td>内端太</td><td>うちばた</td><td>Thanh nẹp trong</td><td>Cấu kiện đỡ せき板 phía trong hệ siết.</td><td>締付けボルト</td></tr>
-        <tr><td>掃除口</td><td>そうじぐち</td><td>Cửa vệ sinh</td><td>Lỗ mở để lấy rác khỏi đáy ván khuôn.</td><td>柱型枠</td></tr>
-        <tr><td>打放しコンクリート</td><td>うちはなしコンクリート</td><td>Bê tông để trần</td><td>Bề mặt bê tông dùng trực tiếp làm bề mặt hoàn thiện.</td><td>許容たわみ</td></tr>
-        <tr><td>養生</td><td>ようじょう</td><td>Bảo dưỡng</td><td>Bảo vệ bê tông trong quá trình đóng rắn.</td><td>湿潤養生</td></tr>
-        <tr><td>湿潤養生</td><td>しつじゅんようじょう</td><td>Bảo dưỡng ẩm</td><td>Duy trì nước cần thiết cho quá trình thủy hóa.</td><td>水和作用</td></tr>
-        <tr><td>水和作用</td><td>すいわさよう</td><td>Phản ứng thủy hóa</td><td>Phản ứng của xi măng với nước làm bê tông đóng rắn.</td><td>湿潤養生</td></tr>
-        <tr><td>ブリーディング水</td><td>ブリーディングすい</td><td>Nước bleeding</td><td>Nước tách xuất hiện trên bề mặt bê tông sau khi đổ.</td><td>暑中コンクリート</td></tr>
-        <tr><td>寒中コンクリート</td><td>かんちゅうコンクリート</td><td>Bê tông thời tiết lạnh</td><td>Trong trang này: thi công khi nhiệt độ trung bình ngày ≤4℃.</td><td>初期凍害</td></tr>
-        <tr><td>初期凍害</td><td>しょきとうがい</td><td>Hư hại do đóng băng sớm</td><td>Hư hại cần phòng ngừa trong bảo dưỡng ban đầu.</td><td>圧縮強度5N/mm²</td></tr>
-        <tr><td>トルシア形高力ボルト</td><td>トルシアがたこうりょくボルト</td><td>Bu lông cường độ cao Torshear</td><td>Pintail tự đứt khi đạt lực siết quy định.</td><td>ピンテール</td></tr>
-        <tr><td>高力六角ボルト</td><td>こうりょくろっかくボルト</td><td>Bu lông lục giác cường độ cao</td><td>Bu lông cường độ cao kiểu JIS, không có pintail.</td><td>トルクレンチ</td></tr>
-        <tr><td>ピンテール</td><td>ピンテール</td><td>Pintail</td><td>Phần đuôi Torshear bị cắt khi đạt mức siết quy định.</td><td>本締め</td></tr>
-        <tr><td>摩擦接合面</td><td>まさつせつごうめん</td><td>Bề mặt liên kết ma sát</td><td>Bề mặt truyền lực nhờ ma sát.</td><td>すべり係数</td></tr>
-        <tr><td>すべり係数</td><td>すべりけいすう</td><td>Hệ số trượt</td><td>Trang này yêu cầu 0,45 trở lên.</td><td>ショットブラスト</td></tr>
-        <tr><td>肌すき</td><td>はだすき</td><td>Khe hở bề mặt liên kết</td><td>Khe do chênh lệch chiều dày các cấu kiện.</td><td>フィラープレート</td></tr>
-        <tr><td>フィラープレート</td><td>フィラープレート</td><td>Tấm chêm thép</td><td>Tấm thép mỏng dùng bù chênh lệch chiều dày.</td><td>肌すき</td></tr>
-        <tr><td>一次締付け</td><td>いちじしめつけ</td><td>Siết sơ bộ</td><td>Với Torshear, khoảng 60% lực siết hoàn thiện.</td><td>マーキング</td></tr>
-        <tr><td>本締め</td><td>ほんじめ</td><td>Siết hoàn thiện</td><td>Siết Torshear đến khi pintail đứt.</td><td>ピンテール</td></tr>
-        <tr><td>共回り</td><td>ともまわり</td><td>Quay đồng thời</td><td>Trạng thái bất thường khi bộ phận khác quay theo.</td><td>交換</td></tr>
-        <tr><td>軸回り</td><td>じくまわり</td><td>Quay thân bu lông</td><td>Trạng thái bất thường khi thân bu lông quay.</td><td>交換</td></tr>
-        <tr><td>余長</td><td>よちょう</td><td>Chiều dài nhô dư</td><td>Phần bu lông nhô ra ngoài đai ốc sau khi siết.</td><td>高力ボルト</td></tr>
-      </tbody>
-    </table></div>
-
-  </section>
-
-  <section class="aggregate-section" id="background">
-    <div class="section-head">
-      <h2>Kiến thức nền cần biết</h2>
-    </div>
-    
-    <div class="note-box">
-      <strong>1. Quan hệ giữa đường kính auger và phương pháp cọc</strong>
-      <p>Trong nội dung đã dịch, Pre-boring tạo lỗ ở ngoài thân cọc nên auger được quy định lớn hơn đường kính cọc; 中掘り khoan trong phần rỗng của cọc nên auger nhỏ hơn đường kính cọc. Đây là cách đối chiếu trực tiếp hai nhóm trị số trong sách.</p>
-    </div>
-    <div class="note-box">
-      <strong>2. Vì sao bảo dưỡng ẩm là trọng tâm</strong>
-      <p>Sách giải thích bê tông đóng rắn nhờ水和作用. Vì vậy, duy trì nước cho bề mặt sau khi bê tông đủ cứng để không bị hư hỏng là trọng tâm của湿潤養生. Nhiệt độ thấp làm phản ứng chậm hơn nên thời gian bảo dưỡng dài hơn.</p>
-    </div>
-    <div class="note-box">
-      <strong>3. Cơ chế kiểm soát Torshear và bu lông lục giác</strong>
-      <p>Torshear cho phép xác nhận trực quan bằng việc pintail đứt. Bu lông lục giác JIS không có pintail nên cần kiểm tra bằng mômen hoặc góc quay đai ốc. Hai cơ chế này phải được phân biệt khi làm câu hỏi lựa chọn.</p>
-    </div>
-
-  </section>
-
-  <section class="aggregate-section" id="memory">
-    <div class="section-head">
-      <h2>Điểm cần nhớ và mẹo nhớ</h2>
-    </div>
-    
-    <div class="memory-box">
-      <strong>杭工事｜Các trị số trọng tâm</strong>
-      <div class="table-wrap"><table><thead><tr><th>Hạng mục</th><th>Giá trị / quan hệ cần nhớ</th></tr></thead><tbody>
-        <tr><td>根固め液の強度</td><td><mark class="critical">≥20 N/mm²</mark></td></tr>
-        <tr><td>高止まり</td><td><mark class="critical">≤0,5 m</mark></td></tr>
-        <tr><td>支持層への根入れ</td><td><mark class="critical">≥1,0 m</mark></td></tr>
-        <tr><td>杭の傾斜</td><td><mark class="critical">≤1/100</mark></td></tr>
-        <tr><td>杭心ずれ</td><td><mark class="critical">≤D/4 và ≤100 mm</mark></td></tr>
-        <tr><td>プレボーリングのオーガ径</td><td><mark class="critical">D + 30-100 mm</mark></td></tr>
-        <tr><td>中掘りのオーガ径</td><td><mark class="critical">D - 30-60 mm</mark></td></tr>
-        <tr><td>砂質地盤の先掘り</td><td><mark class="critical">S&lt;d</mark></td></tr>
-        <tr><td>埋込み杭の中心間隔</td><td><mark class="critical">≥2,0D</mark></td></tr>
-      </tbody></table></div>
-    </div>
-
-    <div class="memory-box">
-      <strong>型枠工事｜Nhóm điểm dễ ra đáp án tự luận</strong>
-      <p><span class="relation">内端太を締付けボルトに近づける</span> / <span class="relation">柱型枠をチェーンで控える</span> / 掃除口 / 埋設物固定 / 許容たわみ <mark class="critical">3 mm以下</mark>、打放し <mark class="critical">1-2 mm以下</mark>.</p>
-    </div>
-
-    <div class="memory-box">
-      <strong>コンクリート工事｜Chuỗi số bảo dưỡng</strong>
-      <p>普通ポルトランド・標準：<strong class="kw">15℃</strong> → <mark class="critical">5日</mark>、<strong class="kw">10℃</strong> → <mark class="critical">7日</mark>、<strong class="kw">5℃</strong> → <mark class="critical">9日</mark>.</p>
-      <p>寒中コンクリート：<strong class="kw">日平均気温</strong> <mark class="critical">≤4℃</mark>、<strong class="kw">保持温度</strong> <mark class="critical">≥2℃</mark>、<strong class="kw">凍結させない強度</strong> <mark class="critical">≥5 N/mm²</mark>.</p>
-    </div>
-
-    <div class="memory-box">
-      <strong>鉄骨工事｜Torshear</strong>
-      <p><span class="relation">一次締付け → マーキング → 本締め</span>。一次締付けは<mark class="critical">約60%</mark>。本締めは<span class="relation">ピンテール破断まで</span>。軸回り・共回りは<span class="trap">新品のボルトセットに交換</span>。締付け順序は<span class="relation">継手中央 → 周辺部</span>。</p>
-    </div>
-
-    <div class="memory-box">
-      <strong>鉄骨工事｜摩擦面とボルト長さ</strong>
-      <p>摩擦面：<strong class="kw">すべり係数</strong> <mark class="critical">≥0,45</mark>、<strong class="kw">表面粗さ</strong> <mark class="critical">≥50 μmRz</mark>、<strong class="kw">肌すき</strong> <mark class="critical">&gt;1 mm</mark> → <span class="relation">フィラープレート1枚</span>。</p>
-      <p>同じ呼び径では、高力六角ボルトの加算長さはトルシア形より<mark class="critical">5 mm大きい</mark>。</p>
-    </div>
-
-  </section>
-
+<!--
+HTML TEMPLATE CONTRACT 2.3
+- Based on latest pinch-zoom-safe test.html.
+- Default theme: dark; persistent Dark/Light toggle.
+- Font: 50%-150%, 5% step; persistent.
+- Native two-finger pinch zoom MUST NOT trigger responsive reflow.
+- Real orientation change MAY update layout and restore logical reading position.
+- iPad/tablet portrait: one-column bilingual flow.
+- iPad/tablet landscape: Japanese/Vietnamese side-by-side.
+- Controls: collapsed by default at bottom-left; tap to expand horizontally.
+- Home button: index.html.
+- Back/Next: TOC item navigation, not browser history.
+- Do not redesign CSS/JS/control behavior per lesson.
+-->
+<div class="control-cluster" id="control-cluster">
+<button aria-controls="control-panel" aria-expanded="false" aria-label="Mở công cụ" class="control-launcher" id="controls-toggle" title="Mở công cụ" type="button">⋯</button>
+<div aria-label="Công cụ học tập" class="control-panel" id="control-panel" role="toolbar">
+<button aria-controls="toc" aria-expanded="false" aria-label="Mục lục" id="toc-toggle" title="Mục lục" type="button">☰</button>
+<button aria-label="Mục trước" id="section-prev" title="Mục trước" type="button">‹</button>
+<button aria-label="Mục tiếp theo" id="section-next" title="Mục tiếp theo" type="button">›</button>
+<button aria-label="Đổi Dark/Light" aria-pressed="false" id="theme-toggle" title="Đổi Dark/Light" type="button">☀</button>
+<button aria-label="Đổi Full/Keywords" aria-pressed="false" class="mode-toggle" id="mode-toggle" title="Đổi Full/Keywords" type="button">🎯</button>
+<button aria-label="Giảm cỡ chữ" id="font-down" title="Giảm cỡ chữ 5%" type="button">A−</button>
+<button aria-label="Đặt lại cỡ chữ 100%" class="font-reset" id="font-reset" title="Đặt lại cỡ chữ 100%" type="button">100%</button>
+<button aria-label="Tăng cỡ chữ" id="font-up" title="Tăng cỡ chữ 5%" type="button">A+</button>
+<button aria-label="Top Page" class="home-icon" id="home-button" title="Top Page" type="button"><svg aria-hidden="true" fill="none" viewbox="0 0 24 24"><path d="M3.5 10.5 12 3.8l8.5 6.7v9.2h-5.3v-6H8.8v6H3.5z" stroke="currentColor" stroke-linejoin="round" stroke-width="1.8"></path></svg></button>
 </div>
+</div><div aria-hidden="true" class="toc-overlay" id="toc-overlay"></div>
+<div class="page-shell">
+<header class="hero" id="top">
+<h1>躯体工事 R03・問題4｜Book 381-392</h1>
+</header>
+<nav aria-label="Mục lục" class="toc" id="toc">
+<div class="toc-drawer-head">
+<strong>Mục lục</strong>
+<button aria-label="Đóng mục lục" class="toc-close" id="toc-close" type="button">×</button>
+</div>
+<h2>Mục lục</h2>
+<!-- TOC_ITEMS_START -->
 
-<!-- =======================================================
-     APPROVED COMPONENT LIBRARY
-     Hidden. AI may copy/repeat these components into CONTENT.
-     Do not create a new visual system unless strictly necessary.
-     ======================================================= -->
+<!-- TOC_ITEMS_END -->
+<ol><li><a href="#sec-problem4">令和3年度 問題4 躯体工事</a></li><li><a href="#sec-pile">1. 杭工事｜Công tác cọc</a><ol><li><a href="#sec-pile-answer">令和3年度 問題4 解答例｜Đáp án mẫu</a></li><li><a href="#sec-pile-class">(1) 杭基礎の工法の分類｜Phân loại phương pháp móng cọc</a></li><li><a href="#sec-pile-features">(2) 既製コンクリート杭の埋込み工法の特徴｜Đặc điểm của phương pháp 埋込み</a></li><li><a href="#sec-pile-common">(3) 埋込み工法に共通する施工上の留意事項｜Các lưu ý chung</a></li><li><a href="#sec-preboring">(4) プレボーリング工法における施工上の留意事項｜Lưu ý riêng cho Pre-boring</a></li><li><a href="#sec-innerdrill">(5) 中掘り工法における施工上の留意事項｜Lưu ý cho khoan trong lòng cọc</a></li></ol></li><li><a href="#sec-formwork">2. 型枠工事｜Công tác ván khuôn</a><ol><li><a href="#sec-form-answer">令和3年度 問題4 解答例｜Đáp án mẫu</a></li><li><a href="#sec-form-general">(1) 型枠の一般的な構成｜Cấu tạo chung của hệ ván khuôn</a></li><li><a href="#sec-form-cautions">(2) 柱型枠・梁型枠の加工・組立てにおける施工上の留意事項｜Lưu ý khi gia công và lắp ráp</a></li></ol></li><li><a href="#sec-concrete">3. コンクリート工事｜Công tác bê tông</a><ol><li><a href="#sec-concrete-answer">令和3年度 問題4 解答例｜Đáp án mẫu</a></li><li><a href="#sec-moist-curing">(1) コンクリートの湿潤養生｜Bảo dưỡng ẩm bê tông</a></li><li><a href="#sec-curing-period">(2) コンクリートの湿潤養生期間｜Thời gian bảo dưỡng ẩm</a></li><li><a href="#sec-cold-weather">(3) 特に注意を要する寒中コンクリートの養生｜Bảo dưỡng bê tông thời tiết lạnh</a></li><li><a href="#sec-curing-past">参考：コンクリート打込み後の養生に関する過去試験｜Nội dung từng ra thi</a></li></ol></li><li><a href="#sec-steel">4. 鉄骨工事｜Công tác kết cấu thép</a><ol><li><a href="#sec-steel-answer">令和3年度 問題4 解答例｜Đáp án mẫu</a></li><li><a href="#sec-bolt-types">(1) 高力ボルトの種類｜Các loại bu lông cường độ cao</a></li><li><a href="#sec-bolt-length">③ 締付け長さに加える値｜Giá trị cộng vào chiều dài kẹp</a></li><li><a href="#sec-friction-surface">(2) 高力ボルトの摩擦接合面の処理｜Xử lý bề mặt liên kết ma sát</a></li><li><a href="#sec-torshear-control">(3) トルシア形高力ボルト締付け力の管理｜Quản lý lực siết Torshear</a></li></ol></li><li><a href="#terms">Professional terminology</a></li><li><a href="#background">Background knowledge</a></li><li><a href="#memory">Key points and memory aids</a></li></ol></nav>
+<!-- CONTENT_START -->
+<main id="lesson"><section class="study-section" id="sec-problem4">
+<div class="section-head">
+<h2>令和3年度 問題4 躯体工事</h2>
+<span class="source-ref">Nguồn: Book page 381-382</span>
+</div>
+<div class="study-grid">
+<article class="study-card original">
+<div class="card-title">原文</div>
+<div class="recall-source" lang="ja">
+<p><strong class="kw">問題4</strong>　次の1.から4.の問いに答えなさい。</p>
+<p>ただし、解答はそれぞれ異なる内容の記述とし、材料（仕様、品質、運搬、保管等）、作業環境（騒音、振動、気象条件等）及び作業員の安全に関する記述は除くものとする。</p>
+<ol>
+<li><strong class="kw">杭工事</strong>において、既製コンクリート杭の埋込み工法の施工上の留意事項を<mark class="critical">2つ</mark>、具体的に記述しなさい。ただし、養生に関する記述は除くものとする。</li>
+<li><strong class="kw">型枠工事</strong>において、柱又は梁型枠の加工、組立ての施工上の留意事項を<mark class="critical">2つ</mark>、具体的に記述しなさい。ただし、基礎梁及び型枠支保工に関する記述は除くものとする。</li>
+<li><strong class="kw">コンクリート工事</strong>において、コンクリート打込み後の養生に関する施工上の留意事項を<mark class="critical">2つ</mark>、具体的に記述しなさい。なお、コンクリートに使用するセメントは普通ポルトランドセメントとし、計画供用期間の級は標準とする。</li>
+<li><strong class="kw">鉄骨工事</strong>において、トルシア形高力ボルトの締付けに関する施工上の留意事項を<mark class="critical">2つ</mark>、具体的に記述しなさい。ただし、締付け器具に関する記述は除くものとする。</li>
+</ol>
+</div>
+</article>
+<article class="study-card translation">
+<div class="card-title">Bản dịch tiếng Việt</div>
+<div class="recall-source" lang="vi">
+<p><strong class="kw">Câu 4</strong>: Hãy trả lời các câu từ 1 đến 4.</p>
+<p>Nội dung của từng câu trả lời phải khác nhau. Không được sử dụng các nội dung liên quan đến vật liệu như quy cách, chất lượng, vận chuyển, bảo quản; môi trường làm việc như tiếng ồn, rung động, điều kiện khí tượng; hoặc an toàn của người lao động.</p>
+<ol>
+<li>Trong <strong class="kw">công tác cọc</strong>, đối với phương pháp cọc bê tông đúc sẵn đặt trong lỗ khoan, hãy mô tả cụ thể <mark class="critical">2 điểm</mark> cần lưu ý khi thi công. Không sử dụng nội dung liên quan đến bảo dưỡng.</li>
+<li>Trong <strong class="kw">công tác ván khuôn</strong>, khi gia công và lắp ráp ván khuôn cột hoặc dầm, hãy mô tả cụ thể <mark class="critical">2 điểm</mark> cần lưu ý. Không sử dụng nội dung liên quan đến dầm móng và hệ chống đỡ ván khuôn.</li>
+<li>Trong <strong class="kw">công tác bê tông</strong>, hãy mô tả cụ thể <mark class="critical">2 điểm</mark> cần lưu ý về bảo dưỡng sau khi đổ. Xi măng sử dụng là Portland thông thường và cấp thời gian sử dụng theo kế hoạch là tiêu chuẩn.</li>
+<li>Trong <strong class="kw">công tác kết cấu thép</strong>, hãy mô tả cụ thể <mark class="critical">2 điểm</mark> cần lưu ý khi siết bu lông cường độ cao kiểu Torshear. Không sử dụng nội dung liên quan đến dụng cụ siết.</li>
+</ol>
+</div>
+</article>
+</div>
+</section><section class="study-section" id="sec-pile">
+<div class="section-head">
+<h2>1. 杭工事｜Công tác cọc</h2>
+<span class="source-ref">Nguồn: Book page 381-385</span>
+</div>
+<section class="subsection" id="sec-pile-answer">
+<h3>令和3年度 問題4 解答例｜Đáp án mẫu</h3>
+<div class="study-grid">
+<article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja">
+<p>① セメントミルク工法において、<strong class="kw">杭径が300mm～500mmの場合</strong>は、<strong class="kw">オーガーヘッド</strong>を<mark class="critical">杭径よりも100mm程度大きい径</mark>とする。</p>
+<p>② <strong class="kw">杭心ずれを低減するため</strong>、杭心位置から<strong class="kw">直角二方向に逃げ心</strong>を取り、掘削中や杭の建込み時に、<span class="relation">逃げ心からの距離を随時確認する</span>。</p>
+<p>出典：建築工事標準仕様書・同解説 JASS 4 杭・地業および基礎工事</p>
+</div></article>
+<article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi">
+<p>① Với phương pháp cement milk, khi <strong class="kw">đường kính cọc là 300-500 mm</strong>, dùng <strong class="kw">đầu khoan auger</strong> có đường kính <mark class="critical">lớn hơn đường kính cọc khoảng 100 mm</mark>.</p>
+<p>② <strong class="kw">Để giảm sai lệch tim cọc</strong>, bố trí <strong class="kw">mốc tim phụ theo hai phương vuông góc</strong> từ vị trí tim cọc và <span class="relation">thường xuyên kiểm tra khoảng cách từ các mốc này khi khoan và dựng cọc</span>.</p>
+<p>Nguồn trong sách: JASS 4, công tác cọc, nền và móng.</p>
+</div></article>
+</div>
+</section>
+<section class="subsection" id="sec-pile-class">
+<h3>(1) 杭基礎の工法の分類｜Phân loại phương pháp móng cọc</h3>
+<div class="study-grid">
+<article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja">
+<p>杭基礎の工法は、<strong class="kw">打込み杭工法・埋込み杭工法・場所打ち杭工法</strong>などに分類される。</p>
+<ol>
+<li><strong class="kw">打込み杭工法</strong>：工場で生産した既製杭を、直接地盤に打ち込む。</li>
+<li><strong class="kw">埋込み杭工法</strong>：掘削孔に既製杭を投入し、杭下部をセメントミルク等で固定する。</li>
+<li><strong class="kw">場所打ち杭工法</strong>：掘削孔に鉄筋篭を投入し、掘削孔にコンクリートを流し込む。</li>
+</ol>
+<p>図中では、打込み杭（許容応力度：大）、埋込み杭（許容応力度：中）、場所打ち杭（許容応力度：小）が示されている。</p>
+</div></article>
+<article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi">
+<p>Phương pháp móng cọc được chia thành <strong class="kw">cọc đóng, cọc đúc sẵn đặt trong lỗ khoan và cọc đổ tại chỗ</strong>.</p>
+<ol>
+<li><strong class="kw">Cọc đóng</strong>: cọc chế tạo sẵn tại nhà máy được đóng trực tiếp xuống nền đất.</li>
+<li><strong class="kw">Cọc đặt trong lỗ khoan</strong>: cọc đúc sẵn được đưa vào lỗ đã khoan và phần dưới cọc được cố định bằng cement milk hoặc tương tự.</li>
+<li><strong class="kw">Cọc đổ tại chỗ</strong>: đặt lồng cốt thép vào lỗ khoan rồi đổ bê tông để tạo cọc.</li>
+</ol>
+<p>Hình trong sách ghi mức ứng suất cho phép theo thứ tự: cọc đóng là lớn, cọc đặt trong lỗ khoan là trung bình, cọc đổ tại chỗ là nhỏ.</p>
+</div></article>
+</div>
+<div class="note-box"><strong>Giải thích hình trang 382</strong><p>Ba sơ đồ lần lượt minh họa đóng cọc bằng pile hammer, cọc đúc sẵn cố định bằng cement milk và cọc bê tông đổ tại chỗ theo Earth Drill.</p></div>
+</section>
+<section class="subsection" id="sec-pile-features">
+<h3>(2) 既製コンクリート杭の埋込み工法の特徴｜Đặc điểm của phương pháp 埋込み</h3>
+<div class="study-grid">
+<article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja">
+<p>既製コンクリート杭の埋込み工法は、<strong class="kw">プレボーリング工法</strong>と<strong class="kw">中掘り工法</strong>に分類される。</p>
+<h4>① プレボーリング工法</h4>
+<p>地盤をスパイラルオーガで削孔し、杭を挿入する工法である。<strong class="kw">杭径</strong>が<mark class="critical">600mm以下</mark>の既製コンクリート杭の施工に採用される。</p>
+<ul>
+<li>セメントミルク工法：掘削・杭挿入後、孔底に根固め液を入れ、杭周固定液を充填する。</li>
+<li>拡大根固め工法：孔底を杭径以上に拡大掘りし、根固め球根製造後に杭を挿入する。</li>
+<li>最終打撃工法：掘削・杭挿入後、杭頭を打撃し、支持地盤に貫入させる。</li>
+</ul>
+<h4>② 中掘り工法</h4>
+<p>杭の中空部からスパイラルオーガで削孔し、杭を自沈させる工法である。<strong class="kw">杭径</strong>が<mark class="critical">500mm以上</mark>の既製コンクリート杭の施工に採用される。</p>
+<ul>
+<li>根固め工法：先端開放杭の中空部から掘削しながら自沈させ、その下端を根固めする。</li>
+<li>拡大根固め工法：杭の中空部から掘削・自沈させ、支持層を拡大掘りし、根固めする。</li>
+<li>最終打撃工法：杭の中空部から掘削・自沈させ、杭頭を打撃し、支持地盤に貫入させる。</li>
+</ul>
+<p>図Aでは、<strong class="kw">スパイラルオーガを急速に引き上げる</strong>と、この部分の空気が膨張して負圧になり、<span class="relation">ボイリング（水と土砂の噴出）</span>が生じることが示されている。</p>
+</div></article>
+<article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi">
+<p>Phương pháp cọc bê tông đúc sẵn đặt trong lỗ khoan được chia thành <strong class="kw">Pre-boring</strong> và <strong class="kw">khoan trong lòng cọc</strong>.</p>
+<h4>① Pre-boring</h4>
+<p>Khoan nền bằng spiral auger rồi đưa cọc vào. Áp dụng cho cọc bê tông đúc sẵn có <strong class="kw">đường kính cọc</strong> <mark class="critical">≤ 600 mm</mark>.</p>
+<ul>
+<li>Phương pháp cement milk: sau khi khoan và đưa cọc vào, cho dung dịch gia cố mũi xuống đáy và bơm dung dịch cố định quanh thân cọc.</li>
+<li>Phương pháp gia cố mở rộng mũi: khoan mở rộng đáy lỗ đến ít nhất bằng đường kính cọc, tạo bầu gia cố mũi rồi đưa cọc vào.</li>
+<li>Phương pháp đóng hoàn thiện: sau khi khoan và đưa cọc vào, đóng đầu cọc để xuyên vào tầng chịu lực.</li>
+</ul>
+<h4>② Khoan trong lòng cọc</h4>
+<p>Dùng spiral auger khoan qua phần rỗng trong cọc đồng thời để cọc tự hạ. Áp dụng cho cọc bê tông đúc sẵn có <strong class="kw">đường kính cọc</strong> <mark class="critical">≥ 500 mm</mark>.</p>
+<ul>
+<li>Gia cố mũi: vừa khoan qua cọc đầu hở vừa cho cọc tự hạ, sau đó gia cố phần dưới.</li>
+<li>Gia cố mở rộng mũi: khoan và tự hạ, mở rộng tầng chịu lực rồi gia cố mũi.</li>
+<li>Đóng hoàn thiện: sau khi khoan và tự hạ, đóng đầu cọc để xuyên vào tầng chịu lực.</li>
+</ul>
+<p>Hình A cho thấy nếu <strong class="kw">kéo spiral auger lên quá nhanh</strong>, không khí giãn nở tạo áp suất âm và có thể dẫn đến <span class="relation">boiling, tức nước và đất cát phun lên</span>.</p>
+</div></article>
+</div>
+</section>
+<section class="subsection" id="sec-pile-common">
+<h3>(3) 埋込み工法に共通する施工上の留意事項｜Các lưu ý chung</h3>
+<div class="study-grid">
+<article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja">
+<p>これらの留意事項は、プレボーリング工法と中掘り工法に共通する。</p>
+<ol>
+<li><strong class="kw">セメントミルク根固め液の強度</strong>は<mark class="critical">20N/mm²以上</mark>とする。</li>
+<li><strong class="kw">杭の高止まりの許容高さ</strong>は<mark class="critical">0.5m以下</mark>とし、<strong class="kw">支持層への根入れ</strong>は<mark class="critical">1.0m以上</mark>とする。</li>
+<li><strong class="kw">杭の傾斜</strong>は<mark class="critical">100分の1以内</mark>とし、<strong class="kw">杭心ずれ量</strong>は<mark class="critical">「杭径÷4」以下かつ100mm以下</mark>とする。</li>
+<li>現場溶接継手を設けるときの溶接方法は、<strong class="kw">アーク溶接</strong>とする。その<strong class="kw">ルート間隔（開先間隔）</strong>は<mark class="critical">4mm以下</mark>とし、<strong class="kw">上下杭軸の目違い</strong>は<mark class="critical">2mm以下</mark>とする。</li>
+</ol>
+</div></article>
+<article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi">
+<p>Các lưu ý sau dùng chung cho Pre-boring và khoan trong lòng cọc.</p>
+<ol>
+<li><strong class="kw">Cường độ dung dịch cement milk gia cố mũi</strong>: <mark class="critical">≥ 20 N/mm²</mark>.</li>
+<li><strong class="kw">Độ cao cọc dừng cao cho phép</strong>: <mark class="critical">≤ 0,5 m</mark>; <strong class="kw">độ cắm vào tầng chịu lực</strong>: <mark class="critical">≥ 1,0 m</mark>.</li>
+<li><strong class="kw">Độ nghiêng cọc</strong>: <mark class="critical">≤ 1/100</mark>; <strong class="kw">sai lệch tim cọc</strong>: <mark class="critical">≤ D/4 và đồng thời ≤ 100 mm</mark>.</li>
+<li>Khi nối hàn tại công trường, dùng <strong class="kw">hàn hồ quang</strong>. <strong class="kw">Khe chân mối hàn</strong>: <mark class="critical">≤ 4 mm</mark>; <strong class="kw">độ lệch trục cọc trên-dưới</strong>: <mark class="critical">≤ 2 mm</mark>.</li>
+</ol>
+</div></article>
+</div>
+</section>
+<section class="subsection" id="sec-preboring">
+<h3>(4) プレボーリング工法における施工上の留意事項｜Lưu ý riêng cho Pre-boring</h3>
+<div class="study-grid">
+<article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja">
+<ol>
+<li><strong class="kw">掘削速度が速くなりすぎる</strong>と鉛直精度が確保できなくなり、杭心ずれが大きくなるので、<span class="relation">掘削速度を遅くする</span>。</li>
+<li>アースオーガーは、<strong class="kw">負圧を発生させないよう</strong>、根固め液の注入後、<span class="relation">ゆっくりとした速度で引き上げる</span>。</li>
+<li>掘削中に、<strong class="kw">孔壁崩壊やボイリングのおそれ</strong>があるときは、<span class="relation">ベントナイト溶液を用いる</span>。</li>
+<li><strong class="kw">スパイラルオーガの径</strong>は、<mark class="critical">杭径よりも30mm～100mm程度大きくする</mark>。</li>
+</ol>
+<p>過去の試験では、セメントミルク工法において杭径が300mm～500mmの場合、杭径よりも100mm程度大きいオーガーヘッドを使用すること、安定液を用いて孔壁崩壊を防ぎながら鉛直に掘削し、支持層到達後に根固め液及び杭周固定液を注入しながらアースオーガーを引き抜き、その後既製コンクリート杭を建て込むことが出題されている。</p>
+</div></article>
+<article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi">
+<ol>
+<li>Nếu <strong class="kw">tốc độ khoan quá nhanh</strong>, độ thẳng đứng khó đảm bảo và sai lệch tim cọc tăng, vì vậy <span class="relation">phải giảm tốc độ khoan</span>.</li>
+<li>Sau khi bơm dung dịch gia cố mũi, để <strong class="kw">không tạo áp suất âm</strong>, <span class="relation">kéo Earth Auger lên từ từ</span>.</li>
+<li>Nếu có <strong class="kw">nguy cơ sập thành lỗ hoặc boiling</strong>, <span class="relation">dùng dung dịch bentonite</span>.</li>
+<li><strong class="kw">Đường kính spiral auger</strong>: <mark class="critical">lớn hơn đường kính cọc khoảng 30-100 mm</mark>.</li>
+</ol>
+<p>Trong các đề trước, sách nêu trường hợp cement milk với cọc 300-500 mm dùng đầu auger lớn hơn đường kính cọc khoảng 100 mm; khoan thẳng đứng với dung dịch ổn định để chống sập thành, đến tầng chịu lực thì vừa bơm dung dịch gia cố mũi và dung dịch cố định quanh cọc vừa rút Earth Auger, sau đó dựng cọc bê tông đúc sẵn vào lỗ khoan.</p>
+</div></article>
+</div>
+</section>
+<section class="subsection" id="sec-innerdrill">
+<h3>(5) 中掘り工法における施工上の留意事項｜Lưu ý cho khoan trong lòng cọc</h3>
+<div class="study-grid">
+<article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja">
+<ol>
+<li>杭中空部の排土を促進するため、必要に応じて、<strong class="kw">オーガー先端から空気を噴出</strong>させる。</li>
+<li>最終打撃で支持力を得る場合は、<strong class="kw">支持層までの打込み深さ</strong>を<mark class="critical">杭径の3倍～5倍程度</mark>とする。</li>
+<li><strong class="kw">スパイラルオーガの径</strong>は、<mark class="critical">杭径よりも30mm～60mm程度小さくする</mark>。</li>
+<li>掘削中は、<span class="trap">過度の先掘りや拡大掘りをしてはならない</span>。特に砂質地盤では、<strong class="kw">先掘り長さS</strong>を<mark class="critical">杭径dよりも小さくする（S&lt;d）</mark>。</li>
+</ol>
+<p>図では、<strong class="kw">S&gt;d</strong>だと<span class="relation">ボイリングが発生しやすくなる</span>ことが示されている。</p>
+<p>過去試験では、杭心ずれ低減のための振れ止め装置・直角二方向の逃げ心、プレボーリングのオーガーヘッド径、ならびに<strong class="kw">埋込み杭の杭中心間隔の最小値</strong>を<mark class="critical">杭径の2.0倍</mark>とする内容が出題されている。</p>
+</div></article>
+<article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi">
+<ol>
+<li>Để thúc đẩy thải đất trong lòng cọc, khi cần có thể <strong class="kw">phun khí từ đầu auger</strong>.</li>
+<li>Khi dùng đóng hoàn thiện để đạt sức chịu tải, <strong class="kw">độ sâu đóng vào tầng chịu lực</strong> khoảng <mark class="critical">3-5 lần đường kính cọc</mark>.</li>
+<li><strong class="kw">Đường kính spiral auger</strong>: <mark class="critical">nhỏ hơn đường kính cọc khoảng 30-60 mm</mark>.</li>
+<li>Trong khi khoan, <span class="trap">không được khoan trước hoặc khoan mở rộng quá mức</span>. Đặc biệt trong nền cát, <strong class="kw">chiều dài khoan trước S</strong> phải <mark class="critical">nhỏ hơn đường kính cọc d, tức S&lt;d</mark>.</li>
+</ol>
+<p>Hình cho thấy khi <strong class="kw">S&gt;d</strong> thì <span class="relation">boiling dễ phát sinh hơn</span>.</p>
+<p>Đề thi trước còn nêu thiết bị chống dao động và mốc tim phụ hai phương để giảm sai lệch tim cọc, kích thước đầu auger của Pre-boring và <strong class="kw">khoảng cách tim tối thiểu giữa cọc 埋込み</strong> là <mark class="critical">2,0D</mark>.</p>
+</div></article>
+</div>
+</section>
+</section><section class="study-section" id="sec-formwork">
+<div class="section-head"><h2>2. 型枠工事｜Công tác ván khuôn</h2><span class="source-ref">Nguồn: Book page 381, 386-387</span></div>
+<section class="subsection" id="sec-form-answer">
+<h3>令和3年度 問題4 解答例｜Đáp án mẫu</h3>
+<div class="study-grid">
+<article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja">
+<p>① 締付け金物の締付けすぎへの対策として、<strong class="kw">内端太（縦端太）</strong>を<span class="relation">締付けボルトにできるだけ近づける</span>ようにする。</p>
+<p>② 柱型枠は、梁型枠や壁型枠を取り付ける前に、<strong class="kw">チェーンなどで控え</strong>を取り、<span class="relation">変形しないようにする</span>。</p>
+<p>出典：建築工事標準仕様書・同解説 JASS 5 鉄筋コンクリート工事</p>
+</div></article>
+<article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi">
+<p>① Để phòng ngừa siết phụ kiện ván khuôn quá mức, bố trí <strong class="kw">thanh nẹp trong（内端太／縦端太）</strong> <span class="relation">càng gần bu lông siết càng tốt</span>.</p>
+<p>② Trước khi lắp ván khuôn dầm hoặc tường vào ván khuôn cột, dùng <strong class="kw">xích hoặc cấu kiện giằng giữ</strong> để <span class="relation">tránh biến dạng ván khuôn cột</span>.</p>
+<p>Nguồn trong sách: JASS 5, công tác bê tông cốt thép.</p>
+</div></article>
+</div>
+</section>
+<section class="subsection" id="sec-form-general">
+<h3>(1) 型枠の一般的な構成｜Cấu tạo chung của hệ ván khuôn</h3>
+<div class="study-grid">
+<article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja">
+<p>鉄筋コンクリート造の建築物の出来栄えは、<strong class="kw">躯体コンクリートの施工精度</strong>に大きく左右される。型枠工事は、すべての工事の基本となるので、工程短縮・品質確保・原価削減を目指して綿密な施工計画を立てなければならない。</p>
+<p>型枠は、コンクリートに直接接する<strong class="kw">せき板</strong>・せき板を支える<strong class="kw">支保工</strong>から構成され、せき板には剥離を容易にするための<strong class="kw">剥離剤</strong>が塗布されている。</p>
+<p>支保工は、根太・大引き・支柱・水平つなぎ（支柱の座屈を防止する部材）・ブレース（倒壊を防止する部材）・内端太（せき板を支持する部材）・外端太・建入れ直し用チェーンなどから構成されている。</p>
+</div></article>
+<article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi">
+<p>Chất lượng hoàn thiện của công trình bê tông cốt thép chịu ảnh hưởng lớn bởi <strong class="kw">độ chính xác thi công bê tông kết cấu</strong>. Công tác ván khuôn là cơ sở của các công tác khác, vì vậy phải lập kế hoạch chặt chẽ để rút ngắn tiến độ, đảm bảo chất lượng và giảm giá thành.</p>
+<p>Hệ ván khuôn gồm <strong class="kw">tấm ván khuôn（せき板）</strong> tiếp xúc trực tiếp với bê tông và <strong class="kw">hệ chống đỡ（支保工）</strong>. Bề mặt tấm ván khuôn được bôi <strong class="kw">chất tháo khuôn</strong> để dễ tháo.</p>
+<p>Hệ chống đỡ gồm joist, dầm đỡ, cột chống, giằng ngang chống oằn, brace chống sập, thanh nẹp trong, thanh nẹp ngoài và xích điều chỉnh độ thẳng đứng.</p>
+</div></article>
+</div>
+<div class="note-box"><strong>Giải thích hình trang 386</strong><p>Sơ đồ cấu hình ván khuôn điển hình thể hiện quan hệ giữa せき板, 根太, 大引き, 支柱, 水平つなぎ, ブレース, 内端太・外端太 và các cấu kiện điều chỉnh độ thẳng đứng.</p></div>
+</section>
+<section class="subsection" id="sec-form-cautions">
+<h3>(2) 柱型枠・梁型枠の加工・組立てにおける施工上の留意事項｜Lưu ý khi gia công và lắp ráp</h3>
+<div class="study-grid">
+<article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja">
+<ol>
+<li>柱や梁の型枠は、<strong class="kw">事前に製作された施工図</strong>を基にして組み立てる。</li>
+<li>型枠は、<strong class="kw">コンクリートの打ちあがり</strong>が<span class="relation">許容差以内になるように組み立てる</span>。</li>
+<li>型枠を設置する位置を正確に定めて、<strong class="kw">加工精度・組立て精度</strong>を確保する。</li>
+<li>型枠の不同沈下を防止するため、<strong class="kw">上下階の同一位置に支柱</strong>を配置する。</li>
+<li>小口のせき板の密着性を高め、<strong class="kw">継目からのセメントペーストの漏れ</strong>を少なくする。</li>
+<li>せき板の表面の継目や凹凸はコンクリート表面に転写されるので、<strong class="kw">型枠の施工精度</strong>に注意する。</li>
+<li>柱の型枠などの底面に落ちたゴミを清掃できるよう、<strong class="kw">型枠側面に掃除口</strong>を設ける。</li>
+<li>各種配管・埋設金物類は、コンクリート打設時に移動しないよう、<strong class="kw">型枠に固定</strong>する。</li>
+<li><strong class="kw">型枠の許容たわみ量</strong>は<mark class="critical">3mm以下</mark>、打放しコンクリートでは<mark class="critical">1mm以下～2mm以下</mark>とする。</li>
+</ol>
+<p>過去の試験では、締付け金物を締めすぎると内端太・外端太が内側に押され、せき板が内側に変形するため、内端太を締付けボルトにできるだけ近接させて締め付けること、柱型枠を梁型枠や壁型枠の取付け前にチェーンなどで控えること、柱や壁の型枠の足元を正しい位置に固定するため根巻きを行うことが出題されている。敷桟で行う場合には、コンクリート漏れ防止にパッキングやプラスチックアングルを用いる方法がある。</p>
+</div></article>
+<article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi">
+<ol>
+<li>Lắp ván khuôn cột và dầm theo <strong class="kw">bản vẽ thi công lập trước</strong>.</li>
+<li>Lắp ráp để <strong class="kw">hình dạng bê tông sau khi đổ</strong> <span class="relation">nằm trong sai số cho phép</span>.</li>
+<li>Xác định đúng vị trí và đảm bảo <strong class="kw">độ chính xác gia công, lắp ráp</strong>.</li>
+<li>Để chống lún không đều, bố trí <strong class="kw">cột chống ở cùng vị trí tương ứng giữa tầng trên và tầng dưới</strong>.</li>
+<li>Tăng độ kín mép ván và giảm <strong class="kw">rò hồ xi măng qua khe nối</strong>.</li>
+<li>Khe nối và lồi lõm của ván khuôn sẽ in lên bề mặt bê tông, vì vậy phải kiểm soát <strong class="kw">độ chính xác thi công ván khuôn</strong>.</li>
+<li>Bố trí <strong class="kw">cửa vệ sinh ở mặt bên ván khuôn</strong> để lấy rác ở đáy.</li>
+<li>Các ống và chi tiết chôn sẵn phải <strong class="kw">cố định vào ván khuôn</strong> để không dịch chuyển khi đổ bê tông.</li>
+<li><strong class="kw">Độ võng cho phép của ván khuôn</strong>: <mark class="critical">≤ 3 mm</mark>; bê tông để trần: <mark class="critical">≤ 1-2 mm</mark>.</li>
+</ol>
+<p>Các đề trước đã hỏi biện pháp chống siết quá mức bằng cách đặt 内端太 gần bu lông siết, dùng xích giữ ván khuôn cột trước khi lắp dầm hoặc tường, và thực hiện 根巻き để cố định chân ván khuôn. Khi dùng 敷桟, có thể dùng packing hoặc plastic angle để chống rò bê tông.</p>
+</div></article>
+</div>
+<div class="note-box"><strong>Giải thích hình trang 387</strong><p>Các sơ đồ minh họa 独立柱, 打放し柱, 壁付き柱 và ví dụ lắp ráp ván khuôn, cho thấy bố trí form tie, separator, rib và cấu kiện định vị trong từng trường hợp.</p></div>
+</section>
+</section><section class="study-section" id="sec-concrete">
+<div class="section-head"><h2>3. コンクリート工事｜Công tác bê tông</h2><span class="source-ref">Nguồn: Book page 382, 388-390</span></div>
+<section class="subsection" id="sec-concrete-answer">
+<h3>令和3年度 問題4 解答例｜Đáp án mẫu</h3>
+<div class="study-grid">
+<article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja">
+<p>① 暑中コンクリートの湿潤養生の開始時期は、<strong class="kw">コンクリート打設面</strong>では<span class="relation">ブリーディング水が消失した時点</span>、<strong class="kw">せき板に接する面</strong>では<span class="relation">脱型直後</span>とする。</p>
+<p>② 普通ポルトランドセメントを用いたコンクリートの湿潤養生期間は、<strong class="kw">日平均気温15℃以上</strong>なら<mark class="critical">5日</mark>、<strong class="kw">10℃以上</strong>なら<mark class="critical">7日</mark>、<strong class="kw">5℃以上</strong>なら<mark class="critical">9日</mark>とする。</p>
+<p>出典：建築工事標準仕様書・同解説 JASS 5 鉄筋コンクリート工事</p>
+</div></article>
+<article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi">
+<p>① Với bê tông thời tiết nóng, thời điểm bắt đầu bảo dưỡng ẩm: <strong class="kw">mặt bê tông vừa đổ</strong> là <span class="relation">khi nước bleeding biến mất</span>; <strong class="kw">mặt tiếp xúc ván khuôn</strong> là <span class="relation">ngay sau tháo khuôn</span>.</p>
+<p>② Với xi măng Portland thông thường: <strong class="kw">nhiệt độ trung bình ngày ≥15℃</strong> thì <mark class="critical">5 ngày</mark>, <strong class="kw">≥10℃</strong> thì <mark class="critical">7 ngày</mark>, <strong class="kw">≥5℃</strong> thì <mark class="critical">9 ngày</mark>.</p>
+<p>Nguồn trong sách: JASS 5, công tác bê tông cốt thép.</p>
+</div></article>
+</div>
+</section>
+<section class="subsection" id="sec-moist-curing">
+<h3>(1) コンクリートの湿潤養生｜Bảo dưỡng ẩm bê tông</h3>
+<div class="study-grid">
+<article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja">
+<p>コンクリートが十分に硬化するまでの間は、乾燥・通風・日光・高温・低温・振動・外力などの影響からコンクリートを保護しなければならない。このようにしてコンクリートを保護することを、<strong class="kw">コンクリートの養生</strong>という。</p>
+<p>型枠に打ち込んだコンクリートは、セメントの<strong class="kw">水和作用</strong>によって硬化する。そのため、コンクリート表面を湿潤状態にするための<strong class="kw">湿潤養生</strong>が最も重要になる。湿潤養生中は、養生マット・水密シート・散水・膜養生などによりコンクリートを保護する。</p>
+<p>ただし、コンクリートの露出面に対する散水やシート養生は、<strong class="kw">コンクリート表面を荒らさずに作業できる程度に硬化した後</strong>に開始しなければならない。硬化前に散水やシート養生を行うと、<span class="relation">コンクリート表面が荒れることがある</span>。</p>
+</div></article>
+<article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi">
+<p>Cho đến khi bê tông đóng rắn đầy đủ, phải bảo vệ khỏi khô, gió, ánh nắng, nhiệt độ cao/thấp, rung động và ngoại lực. Việc bảo vệ này gọi là <strong class="kw">bảo dưỡng bê tông</strong>.</p>
+<p>Bê tông trong ván khuôn đóng rắn nhờ <strong class="kw">phản ứng thủy hóa</strong> của xi măng. Vì vậy <strong class="kw">bảo dưỡng ẩm</strong>, tức giữ bề mặt bê tông ở trạng thái ẩm, là đặc biệt quan trọng. Sách nêu thảm bảo dưỡng, tấm kín nước, phun nước và bảo dưỡng tạo màng.</p>
+<p>Đối với bề mặt lộ thiên, chỉ bắt đầu phun nước hoặc phủ tấm <strong class="kw">sau khi bê tông đã đủ cứng để thao tác không làm hỏng bề mặt</strong>. Nếu làm quá sớm, <span class="relation">bề mặt bê tông có thể bị phá hỏng</span>.</p>
+</div></article>
+</div>
+<div class="note-box"><strong>Giải thích sơ đồ trang 388</strong><p>Sơ đồ phân biệt 初期養生 và 後期養生（湿潤養生）. Ban đầu chỉ che nắng mà không chạm bề mặt; sau khi bề mặt đủ cứng mới thực hiện 湛水, 湿布 hoặc 散水.</p></div>
+</section>
+<section class="subsection" id="sec-curing-period">
+<h3>(2) コンクリートの湿潤養生期間｜Thời gian bảo dưỡng ẩm</h3>
+<div class="study-grid">
+<article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja">
+<p>コンクリートの湿潤養生期間は、<strong class="kw">セメントの種類・施工時の日平均気温・計画供用期間の級</strong>などにより定められている。</p>
+<ol>
+<li>強度が発現するまでに時間がかかるセメントほど、湿潤養生期間は長くなる。</li>
+<li>日平均気温が低いほど、水和反応に時間がかかるので、湿潤養生期間は長くなる。</li>
+<li>計画供用期間が長いほど、高い強度が求められるので、湿潤養生期間は長くなる。</li>
+</ol>
+<div class="table-wrap"><table><caption>計画供用期間の級が「標準」の場合</caption><thead><tr><th>セメントの種類</th><th>15℃以上</th><th>10℃以上</th><th>5℃以上</th></tr></thead><tbody>
+<tr><td><strong class="kw">早強ポルトランドセメント</strong></td><td><mark class="critical">3日以上</mark></td><td><mark class="critical">4日以上</mark></td><td><mark class="critical">5日以上</mark></td></tr>
+<tr><td><strong class="kw">普通ポルトランドセメント</strong></td><td><mark class="critical">5日以上</mark></td><td><mark class="critical">7日以上</mark></td><td><mark class="critical">9日以上</mark></td></tr>
+<tr><td><strong class="kw">混合セメントB種</strong></td><td><mark class="critical">7日以上</mark></td><td><mark class="critical">9日以上</mark></td><td><mark class="critical">12日以上</mark></td></tr>
+</tbody></table></div>
+<div class="table-wrap"><table><caption>日平均気温が15℃以上の場合</caption><thead><tr><th>セメントの種類</th><th>短期および標準</th><th>長期および超長期</th></tr></thead><tbody>
+<tr><td><strong class="kw">早強ポルトランドセメント</strong></td><td><mark class="critical">3日以上</mark></td><td><mark class="critical">5日以上</mark></td></tr>
+<tr><td><strong class="kw">普通ポルトランドセメント</strong></td><td><mark class="critical">5日以上</mark></td><td><mark class="critical">7日以上</mark></td></tr>
+<tr><td><strong class="kw">混合セメントB種</strong></td><td><mark class="critical">7日以上</mark></td><td><mark class="critical">10日以上</mark></td></tr>
+</tbody></table></div>
+<p>※中庸熱ポルトランドセメント・低熱ポルトランドセメント・高炉セメントB種・フライアッシュセメントB種などを使用する場合。</p>
+<p>普通ポルトランドセメントを用いた<strong class="kw">厚さ18cm以上のコンクリート部材</strong>では、所定期間前でも、短期または標準なら<strong class="kw">圧縮強度</strong><mark class="critical">10N/mm²以上</mark>、長期または超長期なら<mark class="critical">15N/mm²以上</mark>に達したことを確認できれば、以降の湿潤養生を打ち切ることができる。供試体は<strong class="kw">現場水中養生または現場封緘養生</strong>とする。</p>
+</div></article>
+<article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi">
+<p>Thời gian bảo dưỡng ẩm được quyết định bởi <strong class="kw">loại xi măng, nhiệt độ trung bình ngày và cấp thời gian sử dụng theo kế hoạch</strong>.</p>
+<ol>
+<li>Xi măng phát triển cường độ chậm hơn thì cần bảo dưỡng ẩm lâu hơn.</li>
+<li>Nhiệt độ trung bình ngày càng thấp, phản ứng thủy hóa càng chậm và thời gian bảo dưỡng càng dài.</li>
+<li>Cấp thời gian sử dụng càng dài thì yêu cầu cường độ càng cao và thời gian bảo dưỡng càng dài.</li>
+</ol>
+<div class="table-wrap"><table><caption>Khi cấp thời gian sử dụng là tiêu chuẩn</caption><thead><tr><th>Loại xi măng</th><th>≥15℃</th><th>≥10℃</th><th>≥5℃</th></tr></thead><tbody>
+<tr><td><strong class="kw">Portland cường độ sớm</strong></td><td><mark class="critical">≥3 ngày</mark></td><td><mark class="critical">≥4 ngày</mark></td><td><mark class="critical">≥5 ngày</mark></td></tr>
+<tr><td><strong class="kw">Portland thông thường</strong></td><td><mark class="critical">≥5 ngày</mark></td><td><mark class="critical">≥7 ngày</mark></td><td><mark class="critical">≥9 ngày</mark></td></tr>
+<tr><td><strong class="kw">Xi măng hỗn hợp loại B</strong></td><td><mark class="critical">≥7 ngày</mark></td><td><mark class="critical">≥9 ngày</mark></td><td><mark class="critical">≥12 ngày</mark></td></tr>
+</tbody></table></div>
+<div class="table-wrap"><table><caption>Khi nhiệt độ trung bình ngày ≥15℃</caption><thead><tr><th>Loại xi măng</th><th>Ngắn hạn và tiêu chuẩn</th><th>Dài hạn và siêu dài hạn</th></tr></thead><tbody>
+<tr><td><strong class="kw">Portland cường độ sớm</strong></td><td><mark class="critical">≥3 ngày</mark></td><td><mark class="critical">≥5 ngày</mark></td></tr>
+<tr><td><strong class="kw">Portland thông thường</strong></td><td><mark class="critical">≥5 ngày</mark></td><td><mark class="critical">≥7 ngày</mark></td></tr>
+<tr><td><strong class="kw">Xi măng hỗn hợp loại B</strong></td><td><mark class="critical">≥7 ngày</mark></td><td><mark class="critical">≥10 ngày</mark></td></tr>
+</tbody></table></div>
+<p>Chú thích của sách áp dụng cho các loại như Portland nhiệt vừa, Portland nhiệt thấp, xi măng xỉ lò cao B và xi măng tro bay B.</p>
+<p>Với cấu kiện <strong class="kw">dày ≥18 cm dùng Portland thông thường</strong>, có thể kết thúc bảo dưỡng trước thời hạn nếu xác nhận: cấp ngắn hạn/tiêu chuẩn đạt <strong class="kw">cường độ nén</strong> <mark class="critical">≥10 N/mm²</mark>; cấp dài hạn/siêu dài hạn đạt <mark class="critical">≥15 N/mm²</mark>. Mẫu thử dùng <strong class="kw">bảo dưỡng trong nước tại công trường hoặc bảo dưỡng kín tại công trường</strong>.</p>
+</div></article>
+</div>
+</section>
+<section class="subsection" id="sec-cold-weather">
+<h3>(3) 特に注意を要する寒中コンクリートの養生｜Bảo dưỡng bê tông thời tiết lạnh</h3>
+<div class="study-grid">
+<article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja">
+<p><strong class="kw">寒中コンクリート</strong>は、<mark class="critical">日平均気温が4℃以下</mark>の時期に施工するコンクリートである。</p>
+<ol>
+<li>打込み後<mark class="critical">5日間</mark>（早強ポルトランドセメントでは<mark class="critical">3日間</mark>）が経過するまで、<strong class="kw">コンクリートの温度</strong>を<mark class="critical">2℃以上</mark>に保つ。</li>
+<li>初期凍害や強度発現の遅れを防止するため、<strong class="kw">圧縮強度</strong>が<mark class="critical">5N/mm²以上</mark>に達するまで、<span class="trap">コンクリートを凍結させない</span>ように初期養生を行う。</li>
+</ol>
+</div></article>
+<article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi">
+<p><strong class="kw">Bê tông thi công trong thời tiết lạnh</strong> là bê tông thi công khi <mark class="critical">nhiệt độ trung bình ngày ≤4℃</mark>.</p>
+<ol>
+<li>Trong <mark class="critical">5 ngày</mark> sau khi đổ, riêng Portland cường độ sớm là <mark class="critical">3 ngày</mark>, phải duy trì <strong class="kw">nhiệt độ bê tông</strong> <mark class="critical">≥2℃</mark>.</li>
+<li>Để ngăn hư hại đóng băng sớm và chậm phát triển cường độ, thực hiện bảo dưỡng ban đầu sao cho <span class="trap">bê tông không bị đóng băng</span> cho đến khi <strong class="kw">cường độ nén</strong> đạt <mark class="critical">≥5 N/mm²</mark>.</li>
+</ol>
+</div></article>
+</div>
+</section>
+<section class="subsection" id="sec-curing-past">
+<h3>参考：コンクリート打込み後の養生に関する過去試験｜Nội dung từng ra thi</h3>
+<div class="study-grid">
+<article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja">
+<ol>
+<li>暑中コンクリートの打込み後の養生は、<strong class="kw">水分の急激な発散及び日射による温度上昇を防ぐ</strong>よう、コンクリート表面への散水により常に湿潤に保つ。湿潤養生の開始時期は、<strong class="kw">コンクリート上面</strong>では<span class="relation">ブリーディング水が消失した時点</span>、<strong class="kw">せき板に接する面</strong>では<span class="relation">脱型直後</span>とする。</li>
+<li>計画供用期間の級を標準とする場合、普通ポルトランドセメントを用いたコンクリートの<strong class="kw">打込み後</strong><mark class="critical">5日間</mark>は、乾燥・振動等によって凝結及び硬化が妨げられないように養生する。</li>
+<li>連続的に散水を行って水分を供給する方法による湿潤養生は、<strong class="kw">コンクリートの凝結が終了した後</strong>に行う。</li>
+</ol>
+</div></article>
+<article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi">
+<ol>
+<li>Sau khi đổ bê tông thời tiết nóng, phải <strong class="kw">ngăn nước thoát quá nhanh và nhiệt độ tăng do nắng</strong>, duy trì bề mặt ẩm bằng phun nước. Thời điểm bắt đầu: <strong class="kw">mặt trên bê tông</strong> là <span class="relation">khi nước bleeding biến mất</span>; <strong class="kw">mặt tiếp xúc ván khuôn</strong> là <span class="relation">ngay sau tháo khuôn</span>.</li>
+<li>Với cấp thời gian sử dụng tiêu chuẩn và Portland thông thường, trong <strong class="kw">sau khi đổ</strong> <mark class="critical">5 ngày</mark> phải bảo dưỡng để khô, rung động... không cản trở ninh kết và đóng rắn.</li>
+<li>Bảo dưỡng ẩm bằng phun nước liên tục được thực hiện <strong class="kw">sau khi bê tông kết thúc ninh kết</strong>.</li>
+</ol>
+</div></article>
+</div>
+</section>
+</section><section class="study-section" id="sec-steel">
+<div class="section-head"><h2>4. 鉄骨工事｜Công tác kết cấu thép</h2><span class="source-ref">Nguồn: Book page 382, 390-392</span></div>
+<section class="subsection" id="sec-steel-answer">
+<h3>令和3年度 問題4 解答例｜Đáp án mẫu</h3>
+<div class="study-grid">
+<article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja">
+<p>① 締付け完了後の検査では、<strong class="kw">すべてのボルトのピンテール</strong>が<span class="relation">破断されていることを確認</span>し、一次締付け後に付した<strong class="kw">マークのずれ</strong>を調べる。</p>
+<p>② ナット回転量に著しいばらつきが認められる群については、<strong class="kw">ナット回転量</strong>が<mark class="critical">平均回転角度±30度の範囲</mark>のものだけを合格とする。</p>
+<p>出典：建築工事標準仕様書 JASS 6 鉄骨工事</p>
+</div></article>
+<article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi">
+<p>① Sau khi siết, xác nhận <strong class="kw">pintail của toàn bộ bu lông</strong> đã <span class="relation">bị đứt</span> và kiểm tra <strong class="kw">độ lệch của dấu marking</strong> đã đánh sau siết sơ bộ.</p>
+<p>② Với nhóm có độ phân tán lớn về góc quay đai ốc, chỉ các bu lông có <strong class="kw">lượng quay đai ốc</strong> nằm trong <mark class="critical">góc quay trung bình ±30°</mark> mới đạt.</p>
+<p>Nguồn trong sách: JASS 6, công tác kết cấu thép.</p>
+</div></article>
+</div>
+</section>
+<section class="subsection" id="sec-bolt-types">
+<h3>(1) 高力ボルトの種類｜Các loại bu lông cường độ cao</h3>
+<div class="study-grid">
+<article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja">
+<p>高力ボルトは、その構造により、<strong class="kw">トルシア形高力ボルト</strong>と<strong class="kw">高力六角ボルト（JIS形高力ボルト）</strong>に分類される。</p>
+<p><strong class="kw">トルシア形高力ボルト</strong>は、所定の締付け力が得られると、<span class="relation">ピンテールが自動的に破断する</span>。ピンテールの破断を確認するだけで、所定の締付け力を得られたことが分かる。</p>
+<p>トルシア形高力ボルトの材料試験では、<strong class="kw">建築基準法に基づいて認定された製品</strong>であることを確認する。</p>
+<p>高力ボルト摩擦接合では、部材の引張力を<strong class="kw">接合面全体</strong>で受けるため、<span class="relation">ボルト孔周辺の応力集中が生じにくい</span>。</p>
+<p>トルシア形高力ボルト全数の本締め完了後には、<strong class="kw">共回りの有無・軸回りの有無・ピンテールの破断・ナット回転量・ボルトの余長</strong>を確認する。</p>
+<p><strong class="kw">高力六角ボルト（JIS形高力ボルト）</strong>は、日本産業規格（JIS）で規格化されており、規格品証明書を提出することで材料試験を省略できる。トルシア形と異なり、<span class="trap">ピンテールが付いていない</span>ので、トルクレンチを用いてトルク値を検査して確認する必要がある。</p>
+<p>高力六角ボルト全数の本締め完了後には、共回りの有無・ナット回転量・ボルトの余長を確認するため、<strong class="kw">トルクコントロール法またはナット回転法</strong>による締付けの確認を行う。</p>
+</div></article>
+<article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi">
+<p>Bu lông cường độ cao được chia theo cấu tạo thành <strong class="kw">Torshear</strong> và <strong class="kw">bu lông lục giác cường độ cao kiểu JIS</strong>.</p>
+<p><strong class="kw">Bu lông Torshear</strong> có cơ chế khi đạt lực siết quy định thì <span class="relation">pintail tự động bị đứt</span>. Chỉ cần xác nhận pintail đứt là có thể biết đã đạt lực siết quy định.</p>
+<p>Trong thử nghiệm vật liệu Torshear phải xác nhận đây là <strong class="kw">sản phẩm được công nhận theo Luật Tiêu chuẩn Xây dựng</strong>.</p>
+<p>Trong liên kết ma sát bằng bu lông cường độ cao, lực kéo được truyền qua <strong class="kw">toàn bộ bề mặt liên kết</strong>, vì vậy <span class="relation">ít tập trung ứng suất quanh lỗ bu lông</span>.</p>
+<p>Sau khi siết hoàn thiện toàn bộ Torshear, kiểm tra <strong class="kw">共回り, 軸回り, pintail, lượng quay đai ốc và chiều dài nhô dư</strong>.</p>
+<p><strong class="kw">Bu lông lục giác cường độ cao kiểu JIS</strong> được tiêu chuẩn hóa theo JIS; có thể miễn thử nghiệm vật liệu khi nộp chứng nhận sản phẩm tiêu chuẩn. Khác Torshear, loại này <span class="trap">không có pintail</span>, do đó phải kiểm tra mômen bằng cờ lê lực.</p>
+<p>Sau khi siết hoàn thiện toàn bộ bu lông lục giác, kiểm tra bằng <strong class="kw">phương pháp kiểm soát mômen hoặc phương pháp góc quay đai ốc</strong>.</p>
+</div></article>
+</div>
+</section>
+<section class="subsection" id="sec-bolt-length">
+<h3>③ 締付け長さに加える値｜Giá trị cộng vào chiều dài kẹp</h3>
+<div class="study-grid">
+<article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja">
+<p>トルシア形高力ボルトと高力六角ボルトでは、締付け長さに加える値が異なる。呼び径がM22の場合、<strong class="kw">トルシア形高力ボルト</strong>は<mark class="critical">締付け長さ＋35mm</mark>、<strong class="kw">高力六角ボルト</strong>は座金1枚分の厚さ（5mm）を考慮して<mark class="critical">締付け長さ＋40mm</mark>を標準とする。</p>
+<div class="table-wrap"><table><caption>高力ボルトの長さ（締付け長さに加える値）</caption><thead><tr><th>呼び径</th><th>M16</th><th>M20</th><th>M22</th><th>M24</th><th>M27</th></tr></thead><tbody>
+<tr><td><strong class="kw">トルシア形高力ボルト</strong></td><td><mark class="critical">25mm</mark></td><td><mark class="critical">30mm</mark></td><td><mark class="critical">35mm</mark></td><td><mark class="critical">40mm</mark></td><td><mark class="critical">45mm</mark></td></tr>
+<tr><td><strong class="kw">高力六角ボルト</strong></td><td><mark class="critical">30mm</mark></td><td><mark class="critical">35mm</mark></td><td><mark class="critical">40mm</mark></td><td><mark class="critical">45mm</mark></td><td><mark class="critical">50mm</mark></td></tr>
+</tbody></table></div>
+<p><strong class="kw">トルシア形高力ボルト</strong>は、座金（厚さ5mm程度）が1枚少ないので、<span class="relation">その分だけ長さが短くなる</span>。</p>
+</div></article>
+<article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi">
+<p>Torshear và bu lông lục giác có giá trị cộng vào chiều dài kẹp khác nhau. Với M22, <strong class="kw">Torshear</strong> dùng <mark class="critical">chiều dài kẹp + 35 mm</mark>, còn <strong class="kw">bu lông lục giác</strong> tính thêm một vòng đệm dày khoảng 5 mm nên dùng <mark class="critical">chiều dài kẹp + 40 mm</mark>.</p>
+<div class="table-wrap"><table><caption>Giá trị cộng vào chiều dài kẹp</caption><thead><tr><th>Cỡ</th><th>M16</th><th>M20</th><th>M22</th><th>M24</th><th>M27</th></tr></thead><tbody>
+<tr><td><strong class="kw">Torshear</strong></td><td><mark class="critical">25mm</mark></td><td><mark class="critical">30mm</mark></td><td><mark class="critical">35mm</mark></td><td><mark class="critical">40mm</mark></td><td><mark class="critical">45mm</mark></td></tr>
+<tr><td><strong class="kw">Bu lông lục giác</strong></td><td><mark class="critical">30mm</mark></td><td><mark class="critical">35mm</mark></td><td><mark class="critical">40mm</mark></td><td><mark class="critical">45mm</mark></td><td><mark class="critical">50mm</mark></td></tr>
+</tbody></table></div>
+<p><strong class="kw">Torshear</strong> có ít hơn một vòng đệm dày khoảng 5 mm nên <span class="relation">chiều dài tiêu chuẩn ngắn hơn 5 mm</span> so với bu lông lục giác cùng cỡ.</p>
+</div></article>
+</div>
+</section>
+<section class="subsection" id="sec-friction-surface">
+<h3>(2) 高力ボルトの摩擦接合面の処理｜Xử lý bề mặt liên kết ma sát</h3>
+<div class="study-grid">
+<article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja">
+<p>高力ボルト接合の性能を確保するためには、摩擦接合面の処理を適正に行わなければならない。</p>
+<ol>
+<li><strong class="kw">すべり係数値</strong>を<mark class="critical">0.45以上</mark>確保するため、<strong class="kw">ショットブラストまたはグリットブラスト</strong>による処理を行い、<strong class="kw">表面粗さ</strong>を<mark class="critical">50μmRz以上</mark>とする。<span class="trap">サンドブラストによる処理は不適切</span>である。</li>
+<li>大型の構造物に適用する高力ボルト接合では、凹みなどが生じないように注意しながら、<strong class="kw">ディスクグラインダー掛け</strong>とすることが一般的である。</li>
+<li>材厚の差により、接合部に<strong class="kw">肌すき</strong>が<mark class="critical">1mmを超える</mark>ときは、<strong class="kw">フィラープレート</strong>を<span class="relation">適切な厚さのもの1枚だけ挿入</span>して埋める。フィラープレートも<strong class="kw">すべり係数</strong><mark class="critical">0.45以上</mark>を確保する。</li>
+</ol>
+</div></article>
+<article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi">
+<p>Để đảm bảo tính năng liên kết bu lông cường độ cao, phải xử lý đúng bề mặt ma sát.</p>
+<ol>
+<li>Để đạt <strong class="kw">hệ số trượt</strong> <mark class="critical">≥0,45</mark>, xử lý bằng <strong class="kw">shot blast hoặc grit blast</strong> và đảm bảo <strong class="kw">độ nhám bề mặt</strong> <mark class="critical">≥50 μmRz</mark>. <span class="trap">Sand blast là không phù hợp</span> theo nội dung sách.</li>
+<li>Với kết cấu lớn, thông thường xử lý bằng <strong class="kw">máy mài đĩa</strong> và phải tránh tạo vết lõm.</li>
+<li>Nếu do chênh chiều dày mà <strong class="kw">khe hở bề mặt</strong> <mark class="critical">&gt;1 mm</mark>, dùng <strong class="kw">filler plate</strong> bằng cách <span class="relation">chèn đúng 1 tấm có chiều dày thích hợp</span>. Filler plate cũng phải đạt <strong class="kw">hệ số trượt</strong> <mark class="critical">≥0,45</mark>.</li>
+</ol>
+</div></article>
+</div>
+</section>
+<section class="subsection" id="sec-torshear-control">
+<h3>(3) トルシア形高力ボルト締付け力の管理｜Quản lý lực siết Torshear</h3>
+<div class="study-grid">
+<article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja">
+<ol>
+<li>締付けは、<span class="relation">「一次締付け → マーキング → 本締め」</span>の手順による二度締めとする。</li>
+<li>仮ボルトの締付け後には、<strong class="kw">座金の表裏</strong>を確認してから、本締めボルトや差込みナットを取り付ける。</li>
+<li><strong class="kw">一次締付け</strong>は、<mark class="critical">本締めの60％程度</mark>の締付け力で行う。</li>
+<li><strong class="kw">マーキング</strong>は、一次締付け後にマーカーペンで行う。</li>
+<li><strong class="kw">本締め</strong>は、<span class="relation">ピンテールが破断するまで</span>締め付ける。</li>
+<li><strong class="kw">軸回りや共回り</strong>が生じているボルトは、<span class="trap">新しいボルトセットに交換する</span>。</li>
+<li>締付けはボルト群ごとに、<strong class="kw">継手の中央</strong>から<span class="relation">周辺部に向かう順序</span>で行う。</li>
+</ol>
+</div></article>
+<article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi">
+<ol>
+<li>Thực hiện theo trình tự <span class="relation">siết sơ bộ → marking → siết hoàn thiện</span>, tức siết hai giai đoạn.</li>
+<li>Sau khi siết bu lông tạm, kiểm tra <strong class="kw">mặt trước/sau của vòng đệm</strong> rồi mới lắp bu lông siết chính và đai ốc chèn.</li>
+<li><strong class="kw">Siết sơ bộ</strong> ở mức khoảng <mark class="critical">60% lực siết hoàn thiện</mark>.</li>
+<li><strong class="kw">Marking</strong> được thực hiện bằng bút marker sau siết sơ bộ.</li>
+<li><strong class="kw">Siết hoàn thiện</strong> cho đến khi <span class="relation">pintail bị đứt</span>.</li>
+<li>Bu lông có <strong class="kw">軸回り hoặc 共回り</strong> thì <span class="trap">phải thay bằng bộ bu lông mới</span>.</li>
+<li>Trong từng nhóm bu lông, siết từ <strong class="kw">trung tâm mối nối</strong> <span class="relation">ra phía ngoài</span>.</li>
+</ol>
+</div></article>
+</div>
+<div class="formula-box"><div class="formula-line"><span class="flow-node">一次締付け / Siết sơ bộ</span><span class="flow-arrow">→</span><span class="flow-node">マーキング / Marking</span><span class="flow-arrow">→</span><span class="flow-node">本締め / Siết hoàn thiện</span></div></div>
+</section>
+</section></main>
+<!-- CONTENT_END -->
+<section id="terms">
+<h2>Thuật ngữ chuyên môn</h2><div class="section-head">
+<h2>Thuật ngữ chuyên môn</h2>
+</div><div class="table-wrap"><table>
+<thead><tr><th>日本語</th><th>読み方</th><th>Tiếng Việt</th><th>Giải thích</th><th>Liên quan</th></tr></thead>
+<tbody>
+<tr><td>既製コンクリート杭</td><td>きせいコンクリートぐい</td><td>Cọc bê tông đúc sẵn</td><td>Cọc chế tạo trước rồi thi công vào nền đất.</td><td>埋込み工法</td></tr>
+<tr><td>埋込み工法</td><td>うめこみこうほう</td><td>Phương pháp đặt cọc trong lỗ khoan</td><td>Nhóm phương pháp dùng cọc đúc sẵn kết hợp khoan.</td><td>プレボーリング, 中掘り</td></tr>
+<tr><td>プレボーリング工法</td><td>プレボーリングこうほう</td><td>Pre-boring</td><td>Khoan lỗ trước bằng auger rồi đưa cọc vào.</td><td>杭径≤600mm</td></tr>
+<tr><td>中掘り工法</td><td>なかぼりこうほう</td><td>Khoan trong lòng cọc</td><td>Khoan qua phần rỗng của cọc trong khi cọc tự hạ.</td><td>杭径≥500mm</td></tr>
+<tr><td>スパイラルオーガ</td><td>スパイラルオーガ</td><td>Spiral auger</td><td>Mũi khoan xoắn dùng để đào đất.</td><td>プレボーリング, 中掘り</td></tr>
+<tr><td>根固め液</td><td>ねがためえき</td><td>Dung dịch gia cố mũi</td><td>Vật liệu dùng để gia cường phần mũi cọc.</td><td>セメントミルク</td></tr>
+<tr><td>杭周固定液</td><td>くいしゅうこていえき</td><td>Dung dịch cố định quanh thân cọc</td><td>Dung dịch dùng để cố định vùng quanh cọc.</td><td>埋込み杭</td></tr>
+<tr><td>高止まり</td><td>たかどまり</td><td>Cọc dừng cao</td><td>Cọc dừng ở cao độ cao hơn dự kiến.</td><td>許容高さ0.5m以下</td></tr>
+<tr><td>杭心ずれ</td><td>くいしんずれ</td><td>Sai lệch tim cọc</td><td>Sai lệch giữa tim cọc thi công và vị trí thiết kế.</td><td>逃げ心</td></tr>
+<tr><td>逃げ心</td><td>にげしん</td><td>Mốc tim phụ / offset</td><td>Mốc kiểm soát vị trí tim cọc trong thi công.</td><td>直角二方向</td></tr>
+<tr><td>先掘り</td><td>さきぼり</td><td>Khoan trước đầu cọc</td><td>Auger đào sâu hơn mũi cọc.</td><td>砂質地盤</td></tr>
+<tr><td>ボイリング</td><td>ボイリング</td><td>Boiling</td><td>Hiện tượng nước và đất cát trào lên từ đáy lỗ.</td><td>負圧, 先掘り</td></tr>
+<tr><td>型枠</td><td>かたわく</td><td>Ván khuôn</td><td>Hệ tạo hình cho bê tông.</td><td>せき板, 支保工</td></tr>
+<tr><td>せき板</td><td>せきいた</td><td>Tấm ván khuôn</td><td>Bề mặt tiếp xúc trực tiếp với bê tông.</td><td>剥離剤</td></tr>
+<tr><td>支保工</td><td>しほこう</td><td>Hệ chống đỡ</td><td>Hệ chịu tải và giữ ổn định ván khuôn.</td><td>支柱, 大引き</td></tr>
+<tr><td>内端太</td><td>うちばた</td><td>Thanh nẹp trong</td><td>Cấu kiện đỡ せき板 phía trong hệ siết.</td><td>締付けボルト</td></tr>
+<tr><td>掃除口</td><td>そうじぐち</td><td>Cửa vệ sinh</td><td>Lỗ mở để lấy rác khỏi đáy ván khuôn.</td><td>柱型枠</td></tr>
+<tr><td>打放しコンクリート</td><td>うちはなしコンクリート</td><td>Bê tông để trần</td><td>Bề mặt bê tông dùng trực tiếp làm bề mặt hoàn thiện.</td><td>許容たわみ</td></tr>
+<tr><td>養生</td><td>ようじょう</td><td>Bảo dưỡng</td><td>Bảo vệ bê tông trong quá trình đóng rắn.</td><td>湿潤養生</td></tr>
+<tr><td>湿潤養生</td><td>しつじゅんようじょう</td><td>Bảo dưỡng ẩm</td><td>Duy trì nước cần thiết cho quá trình thủy hóa.</td><td>水和作用</td></tr>
+<tr><td>水和作用</td><td>すいわさよう</td><td>Phản ứng thủy hóa</td><td>Phản ứng của xi măng với nước làm bê tông đóng rắn.</td><td>湿潤養生</td></tr>
+<tr><td>ブリーディング水</td><td>ブリーディングすい</td><td>Nước bleeding</td><td>Nước tách xuất hiện trên bề mặt bê tông sau khi đổ.</td><td>暑中コンクリート</td></tr>
+<tr><td>寒中コンクリート</td><td>かんちゅうコンクリート</td><td>Bê tông thời tiết lạnh</td><td>Trong trang này: thi công khi nhiệt độ trung bình ngày ≤4℃.</td><td>初期凍害</td></tr>
+<tr><td>初期凍害</td><td>しょきとうがい</td><td>Hư hại do đóng băng sớm</td><td>Hư hại cần phòng ngừa trong bảo dưỡng ban đầu.</td><td>圧縮強度5N/mm²</td></tr>
+<tr><td>トルシア形高力ボルト</td><td>トルシアがたこうりょくボルト</td><td>Bu lông cường độ cao Torshear</td><td>Pintail tự đứt khi đạt lực siết quy định.</td><td>ピンテール</td></tr>
+<tr><td>高力六角ボルト</td><td>こうりょくろっかくボルト</td><td>Bu lông lục giác cường độ cao</td><td>Bu lông cường độ cao kiểu JIS, không có pintail.</td><td>トルクレンチ</td></tr>
+<tr><td>ピンテール</td><td>ピンテール</td><td>Pintail</td><td>Phần đuôi Torshear bị cắt khi đạt mức siết quy định.</td><td>本締め</td></tr>
+<tr><td>摩擦接合面</td><td>まさつせつごうめん</td><td>Bề mặt liên kết ma sát</td><td>Bề mặt truyền lực nhờ ma sát.</td><td>すべり係数</td></tr>
+<tr><td>すべり係数</td><td>すべりけいすう</td><td>Hệ số trượt</td><td>Trang này yêu cầu 0,45 trở lên.</td><td>ショットブラスト</td></tr>
+<tr><td>肌すき</td><td>はだすき</td><td>Khe hở bề mặt liên kết</td><td>Khe do chênh lệch chiều dày các cấu kiện.</td><td>フィラープレート</td></tr>
+<tr><td>フィラープレート</td><td>フィラープレート</td><td>Tấm chêm thép</td><td>Tấm thép mỏng dùng bù chênh lệch chiều dày.</td><td>肌すき</td></tr>
+<tr><td>一次締付け</td><td>いちじしめつけ</td><td>Siết sơ bộ</td><td>Với Torshear, khoảng 60% lực siết hoàn thiện.</td><td>マーキング</td></tr>
+<tr><td>本締め</td><td>ほんじめ</td><td>Siết hoàn thiện</td><td>Siết Torshear đến khi pintail đứt.</td><td>ピンテール</td></tr>
+<tr><td>共回り</td><td>ともまわり</td><td>Quay đồng thời</td><td>Trạng thái bất thường khi bộ phận khác quay theo.</td><td>交換</td></tr>
+<tr><td>軸回り</td><td>じくまわり</td><td>Quay thân bu lông</td><td>Trạng thái bất thường khi thân bu lông quay.</td><td>交換</td></tr>
+<tr><td>余長</td><td>よちょう</td><td>Chiều dài nhô dư</td><td>Phần bu lông nhô ra ngoài đai ốc sau khi siết.</td><td>高力ボルト</td></tr>
+</tbody>
+</table></div></section>
+<section id="background">
+<h2>Kiến thức nền cần biết</h2><div class="section-head">
+<h2>Kiến thức nền cần biết</h2>
+</div><div class="note-box">
+<strong>1. Quan hệ giữa đường kính auger và phương pháp cọc</strong>
+<p>Trong nội dung đã dịch, Pre-boring tạo lỗ ở ngoài thân cọc nên auger được quy định lớn hơn đường kính cọc; 中掘り khoan trong phần rỗng của cọc nên auger nhỏ hơn đường kính cọc. Đây là cách đối chiếu trực tiếp hai nhóm trị số trong sách.</p>
+</div><div class="note-box">
+<strong>2. Vì sao bảo dưỡng ẩm là trọng tâm</strong>
+<p>Sách giải thích bê tông đóng rắn nhờ水和作用. Vì vậy, duy trì nước cho bề mặt sau khi bê tông đủ cứng để không bị hư hỏng là trọng tâm của湿潤養生. Nhiệt độ thấp làm phản ứng chậm hơn nên thời gian bảo dưỡng dài hơn.</p>
+</div><div class="note-box">
+<strong>3. Cơ chế kiểm soát Torshear và bu lông lục giác</strong>
+<p>Torshear cho phép xác nhận trực quan bằng việc pintail đứt. Bu lông lục giác JIS không có pintail nên cần kiểm tra bằng mômen hoặc góc quay đai ốc. Hai cơ chế này phải được phân biệt khi làm câu hỏi lựa chọn.</p>
+</div></section>
+<section id="memory">
+<h2>Điểm cần nhớ và mẹo nhớ</h2><div class="section-head">
+<h2>Điểm cần nhớ và mẹo nhớ</h2>
+</div><div class="memory-box">
+<strong>杭工事｜Các trị số trọng tâm</strong>
+<div class="table-wrap"><table><thead><tr><th>Hạng mục</th><th>Giá trị / quan hệ cần nhớ</th></tr></thead><tbody>
+<tr><td>根固め液の強度</td><td><mark class="critical">≥20 N/mm²</mark></td></tr>
+<tr><td>高止まり</td><td><mark class="critical">≤0,5 m</mark></td></tr>
+<tr><td>支持層への根入れ</td><td><mark class="critical">≥1,0 m</mark></td></tr>
+<tr><td>杭の傾斜</td><td><mark class="critical">≤1/100</mark></td></tr>
+<tr><td>杭心ずれ</td><td><mark class="critical">≤D/4 và ≤100 mm</mark></td></tr>
+<tr><td>プレボーリングのオーガ径</td><td><mark class="critical">D + 30-100 mm</mark></td></tr>
+<tr><td>中掘りのオーガ径</td><td><mark class="critical">D - 30-60 mm</mark></td></tr>
+<tr><td>砂質地盤の先掘り</td><td><mark class="critical">S&lt;d</mark></td></tr>
+<tr><td>埋込み杭の中心間隔</td><td><mark class="critical">≥2,0D</mark></td></tr>
+</tbody></table></div>
+</div><div class="memory-box">
+<strong>型枠工事｜Nhóm điểm dễ ra đáp án tự luận</strong>
+<p><span class="relation">内端太を締付けボルトに近づける</span> / <span class="relation">柱型枠をチェーンで控える</span> / 掃除口 / 埋設物固定 / 許容たわみ <mark class="critical">3 mm以下</mark>、打放し <mark class="critical">1-2 mm以下</mark>.</p>
+</div><div class="memory-box">
+<strong>コンクリート工事｜Chuỗi số bảo dưỡng</strong>
+<p>普通ポルトランド・標準：<strong class="kw">15℃</strong> → <mark class="critical">5日</mark>、<strong class="kw">10℃</strong> → <mark class="critical">7日</mark>、<strong class="kw">5℃</strong> → <mark class="critical">9日</mark>.</p>
+<p>寒中コンクリート：<strong class="kw">日平均気温</strong> <mark class="critical">≤4℃</mark>、<strong class="kw">保持温度</strong> <mark class="critical">≥2℃</mark>、<strong class="kw">凍結させない強度</strong> <mark class="critical">≥5 N/mm²</mark>.</p>
+</div><div class="memory-box">
+<strong>鉄骨工事｜Torshear</strong>
+<p><span class="relation">一次締付け → マーキング → 本締め</span>。一次締付けは<mark class="critical">約60%</mark>。本締めは<span class="relation">ピンテール破断まで</span>。軸回り・共回りは<span class="trap">新品のボルトセットに交換</span>。締付け順序は<span class="relation">継手中央 → 周辺部</span>。</p>
+</div><div class="memory-box">
+<strong>鉄骨工事｜摩擦面とボルト長さ</strong>
+<p>摩擦面：<strong class="kw">すべり係数</strong> <mark class="critical">≥0,45</mark>、<strong class="kw">表面粗さ</strong> <mark class="critical">≥50 μmRz</mark>、<strong class="kw">肌すき</strong> <mark class="critical">&gt;1 mm</mark> → <span class="relation">フィラープレート1枚</span>。</p>
+<p>同じ呼び径では、高力六角ボルトの加算長さはトルシア形より<mark class="critical">5 mm大きい</mark>。</p>
+</div></section>
 <template id="component-library">
-
-  <!-- FIGURE -->
-  <figure class="figure-card">
-    <img src="{{IMAGE_SOURCE}}" alt="{{IMAGE_ALT}}">
-    <figcaption>{{FIGURE_CAPTION}}</figcaption>
-  </figure>
-
-  <!-- MULTIPLE FIGURES -->
-  <div class="figure-grid">
-    <figure class="figure-card">
-      <img src="{{IMAGE_SOURCE_1}}" alt="{{IMAGE_ALT_1}}">
-      <figcaption>{{FIGURE_CAPTION_1}}</figcaption>
-    </figure>
-    <figure class="figure-card">
-      <img src="{{IMAGE_SOURCE_2}}" alt="{{IMAGE_ALT_2}}">
-      <figcaption>{{FIGURE_CAPTION_2}}</figcaption>
-    </figure>
-  </div>
-
-  <!-- TABLE -->
-  <div class="table-wrap">
-    <table>
-      <caption>{{TABLE_CAPTION}}</caption>
-      <thead>
-        <tr><th>{{HEADER_1}}</th><th>{{HEADER_2}}</th></tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><strong class="kw">{{ROW_SUBJECT}}</strong></td>
-          <td><span class="relation">{{ROW_RECALL_CUE}}</span></td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-
-  <!-- NOTE -->
-  <div class="note-box">
-    <strong>{{NOTE_TITLE}}</strong>
-    <p>{{NOTE_CONTENT}}</p>
-  </div>
-
-  <!-- WARNING -->
-  <div class="warning-box">
-    <strong>{{WARNING_TITLE}}</strong>
-    <p>{{WARNING_CONTENT}}</p>
-  </div>
-
-  <!-- MEMORY -->
-  <div class="memory-box">
-    <strong>{{MEMORY_TITLE}}</strong>
-    <p>
-    <div class="memory-box">
-      <strong>杭工事｜Các trị số trọng tâm</strong>
-      <div class="table-wrap"><table><thead><tr><th>Hạng mục</th><th>Giá trị / quan hệ cần nhớ</th></tr></thead><tbody>
-        <tr><td>根固め液の強度</td><td><mark class="critical">≥20 N/mm²</mark></td></tr>
-        <tr><td>高止まり</td><td><mark class="critical">≤0,5 m</mark></td></tr>
-        <tr><td>支持層への根入れ</td><td><mark class="critical">≥1,0 m</mark></td></tr>
-        <tr><td>杭の傾斜</td><td><mark class="critical">≤1/100</mark></td></tr>
-        <tr><td>杭心ずれ</td><td><mark class="critical">≤D/4 và ≤100 mm</mark></td></tr>
-        <tr><td>プレボーリングのオーガ径</td><td><mark class="critical">D + 30-100 mm</mark></td></tr>
-        <tr><td>中掘りのオーガ径</td><td><mark class="critical">D - 30-60 mm</mark></td></tr>
-        <tr><td>砂質地盤の先掘り</td><td><mark class="critical">S&lt;d</mark></td></tr>
-        <tr><td>埋込み杭の中心間隔</td><td><mark class="critical">≥2,0D</mark></td></tr>
-      </tbody></table></div>
-    </div>
-
-    <div class="memory-box">
-      <strong>型枠工事｜Nhóm điểm dễ ra đáp án tự luận</strong>
-      <p><span class="relation">内端太を締付けボルトに近づける</span> / <span class="relation">柱型枠をチェーンで控える</span> / 掃除口 / 埋設物固定 / 許容たわみ <mark class="critical">3 mm以下</mark>、打放し <mark class="critical">1-2 mm以下</mark>.</p>
-    </div>
-
-    <div class="memory-box">
-      <strong>コンクリート工事｜Chuỗi số bảo dưỡng</strong>
-      <p>普通ポルトランド・標準：<strong class="kw">15℃</strong> → <mark class="critical">5日</mark>、<strong class="kw">10℃</strong> → <mark class="critical">7日</mark>、<strong class="kw">5℃</strong> → <mark class="critical">9日</mark>.</p>
-      <p>寒中コンクリート：<strong class="kw">日平均気温</strong> <mark class="critical">≤4℃</mark>、<strong class="kw">保持温度</strong> <mark class="critical">≥2℃</mark>、<strong class="kw">凍結させない強度</strong> <mark class="critical">≥5 N/mm²</mark>.</p>
-    </div>
-
-    <div class="memory-box">
-      <strong>鉄骨工事｜Torshear</strong>
-      <p><span class="relation">一次締付け → マーキング → 本締め</span>。一次締付けは<mark class="critical">約60%</mark>。本締めは<span class="relation">ピンテール破断まで</span>。軸回り・共回りは<span class="trap">新品のボルトセットに交換</span>。締付け順序は<span class="relation">継手中央 → 周辺部</span>。</p>
-    </div>
-
-    <div class="memory-box">
-      <strong>鉄骨工事｜摩擦面とボルト長さ</strong>
-      <p>摩擦面：<strong class="kw">すべり係数</strong> <mark class="critical">≥0,45</mark>、<strong class="kw">表面粗さ</strong> <mark class="critical">≥50 μmRz</mark>、<strong class="kw">肌すき</strong> <mark class="critical">&gt;1 mm</mark> → <span class="relation">フィラープレート1枚</span>。</p>
-      <p>同じ呼び径では、高力六角ボルトの加算長さはトルシア形より<mark class="critical">5 mm大きい</mark>。</p>
-    </div>
-</p>
-  </div>
-
-  <!-- FORMULA / FLOW -->
-  <div class="formula-box">
-    <div class="formula-line">
-      <span class="flow-node">{{NODE_1}}</span>
-      <span class="flow-arrow">→</span>
-      <span class="flow-node">{{NODE_2}}</span>
-      <span class="flow-arrow">→</span>
-      <span class="flow-node">{{NODE_3}}</span>
-    </div>
-  </div>
-
+<div class="table-wrap">
+<table>
+<caption>{{TABLE_CAPTION}}</caption>
+<thead><tr><th>{{HEADER_1}}</th><th>{{HEADER_2}}</th></tr></thead>
+<tbody><tr><td><strong class="kw">{{ROW_KEY}}</strong></td><td><span class="relation">{{ROW_RELATION}}</span></td></tr></tbody>
+</table>
+</div>
+<figure class="figure-card">
+<img alt="{{IMAGE_ALT}}" height="{{IMAGE_HEIGHT}}" src="{{IMAGE_SOURCE}}" width="{{IMAGE_WIDTH}}"/>
+<figcaption>{{IMAGE_CAPTION}}</figcaption>
+</figure>
+<div class="figure-grid">
+<figure class="figure-card">
+<img alt="{{IMAGE_ALT_1}}" height="{{IMAGE_HEIGHT_1}}" src="{{IMAGE_SOURCE_1}}" width="{{IMAGE_WIDTH_1}}"/>
+<figcaption>{{IMAGE_CAPTION_1}}</figcaption>
+</figure>
+<figure class="figure-card">
+<img alt="{{IMAGE_ALT_2}}" height="{{IMAGE_HEIGHT_2}}" src="{{IMAGE_SOURCE_2}}" width="{{IMAGE_WIDTH_2}}"/>
+<figcaption>{{IMAGE_CAPTION_2}}</figcaption>
+</figure>
+</div>
+<section class="note-box"><h3>{{NOTE_TITLE}}</h3><p>{{NOTE_CONTENT}}</p></section>
+<section class="warning-box"><h3>{{WARNING_TITLE}}</h3><p>{{WARNING_CONTENT}}</p></section>
+<section class="memory-box"><h3>{{MEMORY_TITLE}}</h3><p>{{MEMORY_ITEM}}</p></section>
 </template>
-
+</div>
 <script>
-(() => {
-  "use strict";
+(function () {
+  'use strict';
 
   const root = document.documentElement;
   const body = document.body;
+  const q = id => document.getElementById(id);
+  const FONT_LEVELS = Array.from({ length: 21 }, (_, i) => 50 + i * 5);
 
-  const themeToggle = document.getElementById("theme-toggle");
-  const modeToggle = document.getElementById("mode-toggle");
-  const fontDown = document.getElementById("font-down");
-  const fontReset = document.getElementById("font-reset");
-  const fontUp = document.getElementById("font-up");
+  const controls = q('control-cluster');
+  const controlsToggle = q('controls-toggle');
+  const controlPanel = q('control-panel');
+  const themeButton = q('theme-toggle');
+  const modeButton = q('mode-toggle');
+  const fontDown = q('font-down');
+  const fontUp = q('font-up');
+  const fontReset = q('font-reset');
+  const tocButton = q('toc-toggle');
+  const tocClose = q('toc-close');
+  const overlay = q('toc-overlay');
+  const prevButton = q('section-prev');
+  const nextButton = q('section-next');
+  const homeButton = q('home-button');
 
-  const tocToggle = document.getElementById("toc-toggle");
-  const tocClose = document.getElementById("toc-close");
-  const tocOverlay = document.getElementById("toc-overlay");
-  const tocDrawer = document.getElementById("toc-drawer");
+  const pageKey = location.pathname + location.search;
+  const readerStateKey = 'study-reader-position:' + pageKey;
+  const lastPageKey = 'study-last-page';
+  const explicitHomeKey = 'study-explicit-home';
+  const anchorSelector = [
+    '.page-shell h1', '.page-shell h2', '.page-shell h3', '.page-shell h4',
+    '.page-shell p', '.page-shell li', '.page-shell td', '.page-shell th',
+    '.page-shell figcaption', '.page-shell .card-title'
+  ].join(', ');
 
-  const prevButton = document.getElementById("section-prev");
-  const nextButton = document.getElementById("section-next");
+  let anchorElements = [];
+  let lastStablePosition = null;
+  let scrollSaveTimer = 0;
+  let resizeRestoreTimer = 0;
+  let resizeAnchor = null;
+  let suppressScrollSaveUntil = 0;
+  function layoutViewportSize() {
+    const de = document.documentElement;
+    return {
+      width: de.clientWidth || window.innerWidth,
+      height: de.clientHeight || window.innerHeight
+    };
+  }
 
-  const FONT_LEVELS = [80, 90, 100, 110, 120, 130, 140];
+  function visualViewportScale() {
+    const vv = window.visualViewport;
+    return vv && Number.isFinite(vv.scale) ? vv.scale : 1;
+  }
+
+  function isPinchZoomActive() {
+    return Math.abs(visualViewportScale() - 1) > 0.015;
+  }
+
+  const initialLayoutViewport = layoutViewportSize();
+  let lastViewportWidth = initialLayoutViewport.width;
+  let lastViewportHeight = initialLayoutViewport.height;
+  let pinchZoomSession = false;
+
+  try {
+    if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+  } catch (e) {}
 
   function safeGet(key, fallback = null) {
     try {
@@ -1738,210 +1335,602 @@ body.toc-open .toc-drawer {
   }
 
   function safeSet(key, value) {
-    try {
-      localStorage.setItem(key, value);
-    } catch (e) {}
+    try { localStorage.setItem(key, value); } catch (e) {}
   }
+
+  function safeRemove(key) {
+    try { localStorage.removeItem(key); } catch (e) {}
+  }
+
+  /* ---------- Persistent page / PWA resume metadata ---------- */
+
+  function rememberCurrentPage() {
+    safeSet(lastPageKey, pageKey);
+    safeSet('study-last-active-at', String(Date.now()));
+  }
+
+  rememberCurrentPage();
+
+  /* ---------- Layout viewport geometry ---------- */
+
+  /*
+    Pinch zoom changes visualViewport.width / height / scale.
+    It must NOT change the document layout width.
+
+    Therefore --app-viewport-width is derived only from the layout viewport
+    (documentElement.clientWidth / innerWidth), never from visualViewport.width.
+  */
+  function syncViewportGeometry() {
+    const { width } = layoutViewportSize();
+    root.style.setProperty(
+      '--app-viewport-width',
+      `${Math.round(width * 100) / 100}px`
+    );
+  }
+
+  syncViewportGeometry();
+
+  /* ---------- Reader anchors ---------- */
+
+  function rebuildReaderAnchors() {
+    anchorElements = Array.from(document.querySelectorAll(anchorSelector));
+    anchorElements.forEach((el, index) => {
+      el.dataset.readerKey = 'r' + index;
+    });
+  }
+
+  function closestReaderElement(node) {
+    if (!node) return null;
+    const el = node.nodeType === Node.ELEMENT_NODE ? node : node.parentElement;
+    return el ? el.closest('[data-reader-key]') : null;
+  }
+
+  function caretAtPoint(x, y) {
+    try {
+      if (document.caretPositionFromPoint) {
+        const pos = document.caretPositionFromPoint(x, y);
+        if (!pos || !pos.offsetNode) return null;
+        return { node: pos.offsetNode, offset: pos.offset };
+      }
+      if (document.caretRangeFromPoint) {
+        const range = document.caretRangeFromPoint(x, y);
+        if (!range) return null;
+        return { node: range.startContainer, offset: range.startOffset };
+      }
+    } catch (e) {}
+    return null;
+  }
+
+  function textOffsetFromElementStart(element, node, offset) {
+    try {
+      const range = document.createRange();
+      range.setStart(element, 0);
+      range.setEnd(node, offset);
+      return range.toString().length;
+    } catch (e) {
+      return 0;
+    }
+  }
+
+  function domPositionFromTextOffset(element, targetOffset) {
+    const walker = document.createTreeWalker(element, NodeFilter.SHOW_TEXT);
+    let remaining = Math.max(0, targetOffset);
+    let node = walker.nextNode();
+    let last = null;
+
+    while (node) {
+      last = node;
+      const len = node.nodeValue ? node.nodeValue.length : 0;
+      if (remaining <= len) {
+        return { node, offset: remaining };
+      }
+      remaining -= len;
+      node = walker.nextNode();
+    }
+
+    if (last) return { node: last, offset: last.nodeValue ? last.nodeValue.length : 0 };
+    return { node: element, offset: 0 };
+  }
+
+  function characterRect(node, offset) {
+    try {
+      if (node.nodeType !== Node.TEXT_NODE) {
+        const r = node.getBoundingClientRect ? node.getBoundingClientRect() : null;
+        return r && r.height ? r : null;
+      }
+
+      const len = node.nodeValue ? node.nodeValue.length : 0;
+      if (!len) return node.parentElement ? node.parentElement.getBoundingClientRect() : null;
+
+      let start = Math.max(0, Math.min(offset, len - 1));
+      let end = Math.min(len, start + 1);
+      if (offset >= len && len > 0) {
+        start = len - 1;
+        end = len;
+      }
+
+      const range = document.createRange();
+      range.setStart(node, start);
+      range.setEnd(node, end);
+      const rects = range.getClientRects();
+      return rects.length ? rects[0] : range.getBoundingClientRect();
+    } catch (e) {
+      return null;
+    }
+  }
+
+  function captureReadingPosition() {
+    if (!anchorElements.length) rebuildReaderAnchors();
+    if (!anchorElements.length) return null;
+
+    const vv = window.visualViewport;
+    const viewportWidth = vv ? vv.width : window.innerWidth;
+    const topProbe = 6;
+    const ys = [topProbe, 12, 18, 26, 36, 50];
+    const xs = [];
+
+    for (let x = 12; x <= Math.min(viewportWidth - 12, 220); x += 16) xs.push(x);
+    xs.push(viewportWidth * .25, viewportWidth * .5, viewportWidth * .75);
+
+    for (const y of ys) {
+      for (const x of xs) {
+        if (x <= 0 || x >= viewportWidth) continue;
+        const caret = caretAtPoint(x, y);
+        if (!caret) continue;
+        const element = closestReaderElement(caret.node);
+        if (!element || !document.querySelector('.page-shell')?.contains(element)) continue;
+
+        const offset = textOffsetFromElementStart(element, caret.node, caret.offset);
+        const rect = characterRect(caret.node, caret.offset);
+        const key = element.dataset.readerKey;
+        if (key && rect && Number.isFinite(rect.top)) {
+          return { key, offset, top: rect.top };
+        }
+      }
+    }
+
+    /* Fallback: nearest textual block to the top edge. */
+    let best = null;
+    let bestDistance = Infinity;
+    for (const element of anchorElements) {
+      const rect = element.getBoundingClientRect();
+      if (rect.bottom < 0 || rect.top > (vv ? vv.height : window.innerHeight)) continue;
+      const distance = Math.abs(rect.top);
+      if (distance < bestDistance) {
+        bestDistance = distance;
+        best = { key: element.dataset.readerKey, offset: 0, top: rect.top };
+      }
+    }
+    return best;
+  }
+
+  function restoreReadingPosition(state) {
+    if (!state || !state.key) return false;
+    if (!anchorElements.length) rebuildReaderAnchors();
+
+    const element = document.querySelector('[data-reader-key="' + CSS.escape(state.key) + '"]');
+    if (!element) return false;
+
+    const pos = domPositionFromTextOffset(element, Number(state.offset) || 0);
+    const rect = characterRect(pos.node, pos.offset);
+    if (!rect || !Number.isFinite(rect.top)) return false;
+
+    const desiredTop = Number.isFinite(Number(state.top)) ? Number(state.top) : 6;
+    const delta = rect.top - desiredTop;
+    if (Math.abs(delta) < .5) return true;
+
+    suppressScrollSaveUntil = Date.now() + 700;
+    const oldBehavior = root.style.scrollBehavior;
+    root.style.scrollBehavior = 'auto';
+    window.scrollBy(0, delta);
+    root.style.scrollBehavior = oldBehavior;
+    return true;
+  }
+
+  function saveReaderState(state) {
+    if (!state) return;
+    lastStablePosition = state;
+    safeSet(readerStateKey, JSON.stringify(state));
+  }
+
+  function readReaderState() {
+    try {
+      const raw = safeGet(readerStateKey);
+      return raw ? JSON.parse(raw) : null;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  function settleRestore(state, delays = [0, 60, 180, 420]) {
+    if (!state) return;
+    suppressScrollSaveUntil = Date.now() + Math.max(...delays) + 350;
+    delays.forEach(delay => {
+      window.setTimeout(() => {
+        requestAnimationFrame(() => restoreReadingPosition(state));
+      }, delay);
+    });
+    window.setTimeout(() => {
+      saveReaderState(state);
+    }, Math.max(...delays) + 120);
+  }
+
+  function preserveReadingPosition(mutator) {
+    const state = captureReadingPosition() || lastStablePosition || readReaderState();
+    if (state) saveReaderState(state);
+    mutator();
+    rebuildReaderAnchors();
+    settleRestore(state);
+  }
+
+  function scheduleReaderSave() {
+    if (Date.now() < suppressScrollSaveUntil) return;
+    clearTimeout(scrollSaveTimer);
+    scrollSaveTimer = window.setTimeout(() => {
+      if (Date.now() < suppressScrollSaveUntil) return;
+      const state = captureReadingPosition();
+      if (state) saveReaderState(state);
+    }, 130);
+  }
+
+  rebuildReaderAnchors();
+  lastStablePosition = readReaderState();
 
   /* ---------- Theme ---------- */
 
   function applyTheme(theme) {
-    const next = theme === "light" ? "light" : "dark";
-    root.dataset.theme = next;
-
-    if (themeToggle) {
-      const dark = next === "dark";
-      themeToggle.textContent = dark ? "☀" : "☾";
-      themeToggle.title = dark ? "Chuyển sang Light" : "Chuyển sang Dark";
-      themeToggle.setAttribute("aria-pressed", String(!dark));
+    theme = theme === 'light' ? 'light' : 'dark';
+    root.dataset.theme = theme;
+    safeSet('study-theme', theme);
+    if (themeButton) {
+      themeButton.textContent = theme === 'dark' ? '☀' : '☾';
+      themeButton.title = theme === 'dark' ? 'Chuyển sang Light theme' : 'Chuyển sang Dark theme';
+      themeButton.setAttribute('aria-label', themeButton.title);
+      themeButton.setAttribute('aria-pressed', theme === 'light' ? 'true' : 'false');
     }
-
-    safeSet("study-theme", next);
   }
-
-  const initialTheme =
-    safeGet("study-theme") ||
-    (window.matchMedia &&
-     window.matchMedia("(prefers-color-scheme: dark)").matches
-      ? "dark"
-      : "light");
-
-  applyTheme(initialTheme);
-
-  themeToggle?.addEventListener("click", () => {
-    applyTheme(root.dataset.theme === "dark" ? "light" : "dark");
-  });
 
   /* ---------- Full / Keywords ---------- */
 
   function applyMode(mode) {
-    const keywords = mode === "keywords";
-    body.classList.toggle("keyword-focus", keywords);
-
-    if (modeToggle) {
-      modeToggle.textContent = keywords ? "📖" : "🎯";
-      modeToggle.title = keywords ? "Chuyển sang Full" : "Chuyển sang Keywords";
-      modeToggle.setAttribute("aria-pressed", String(keywords));
+    mode = mode === 'keywords' ? 'keywords' : 'full';
+    root.dataset.studyMode = mode;
+    body.classList.toggle('keyword-focus', mode === 'keywords');
+    safeSet('study-mode', mode);
+    if (modeButton) {
+      modeButton.textContent = mode === 'full' ? '🎯' : '📖';
+      modeButton.title = mode === 'full' ? 'Chuyển sang Keywords mode' : 'Trở lại Full mode';
+      modeButton.setAttribute('aria-label', modeButton.title);
+      modeButton.setAttribute('aria-pressed', mode === 'keywords' ? 'true' : 'false');
     }
-
-    safeSet("study-mode", keywords ? "keywords" : "full");
   }
 
-  applyMode(safeGet("study-mode", "full"));
+  /* ---------- Font 50-150%, step 5% ---------- */
 
-  modeToggle?.addEventListener("click", () => {
-    applyMode(body.classList.contains("keyword-focus") ? "full" : "keywords");
-  });
-
-  /* ---------- Font scale ---------- */
-
-  let fontScale = Number(safeGet("study-font-scale", "100"));
-  if (!FONT_LEVELS.includes(fontScale)) {
-    fontScale = 100;
+  function currentScale() {
+    const saved = Number(safeGet('study-font-scale', '100'));
+    return FONT_LEVELS.includes(saved) ? saved : 100;
   }
 
   function applyFontScale(scale) {
-    fontScale = FONT_LEVELS.includes(scale) ? scale : 100;
-
-    root.style.setProperty(
-      "--base-font-size",
-      `${16 * fontScale / 100}px`
-    );
+    if (!FONT_LEVELS.includes(scale)) scale = 100;
+    root.style.setProperty('--base-font-size', (16 * scale / 100) + 'px');
+    safeSet('study-font-scale', String(scale));
 
     if (fontReset) {
-      fontReset.textContent = `${fontScale}%`;
-      fontReset.title =
-        fontScale === 100
-          ? "Cỡ chữ hiện tại 100%"
-          : `Cỡ chữ hiện tại ${fontScale}%, bấm để về 100%`;
+      fontReset.textContent = scale + '%';
+      fontReset.title = 'Cỡ chữ hiện tại ' + scale + '%. Chạm để về 100%';
+      fontReset.setAttribute('aria-label', fontReset.title);
     }
-
-    if (fontDown) {
-      fontDown.disabled = fontScale === FONT_LEVELS[0];
-    }
-
-    if (fontUp) {
-      fontUp.disabled = fontScale === FONT_LEVELS[FONT_LEVELS.length - 1];
-    }
-
-    safeSet("study-font-scale", String(fontScale));
+    if (fontDown) fontDown.disabled = scale === FONT_LEVELS[0];
+    if (fontUp) fontUp.disabled = scale === FONT_LEVELS[FONT_LEVELS.length - 1];
   }
 
-  applyFontScale(fontScale);
+  /* ---------- Collapsible controls ---------- */
 
-  fontDown?.addEventListener("click", () => {
-    const index = FONT_LEVELS.indexOf(fontScale);
-    if (index > 0) {
-      applyFontScale(FONT_LEVELS[index - 1]);
-    }
-  });
-
-  fontUp?.addEventListener("click", () => {
-    const index = FONT_LEVELS.indexOf(fontScale);
-    if (index >= 0 && index < FONT_LEVELS.length - 1) {
-      applyFontScale(FONT_LEVELS[index + 1]);
-    }
-  });
-
-  fontReset?.addEventListener("click", () => {
-    applyFontScale(100);
-  });
-
-  /* ---------- TOC drawer ---------- */
-
-  function setToc(open) {
-    body.classList.toggle("toc-open", open);
-    tocToggle?.setAttribute("aria-expanded", String(open));
-    tocOverlay?.setAttribute("aria-hidden", String(!open));
-
-    if (open) {
-      requestAnimationFrame(() => tocClose?.focus());
-    }
+  function setControlsOpen(open) {
+    if (!controls) return;
+    controls.classList.toggle('open', open);
+    controlsToggle?.setAttribute('aria-expanded', String(open));
+    controlsToggle?.setAttribute('aria-label', open ? 'Đóng công cụ' : 'Mở công cụ');
+    controlsToggle?.setAttribute('title', open ? 'Đóng công cụ' : 'Mở công cụ');
   }
 
-  tocToggle?.addEventListener("click", () => {
-    setToc(!body.classList.contains("toc-open"));
+  controlsToggle?.addEventListener('click', event => {
+    event.stopPropagation();
+    setControlsOpen(!controls.classList.contains('open'));
   });
 
-  tocClose?.addEventListener("click", () => setToc(false));
-  tocOverlay?.addEventListener("click", () => setToc(false));
-
-  tocDrawer?.querySelectorAll("a[href^='#']").forEach(link => {
-    link.addEventListener("click", () => setToc(false));
+  controlPanel?.addEventListener('click', event => event.stopPropagation());
+  document.addEventListener('pointerdown', event => {
+    if (controls?.classList.contains('open') && !controls.contains(event.target)) setControlsOpen(false);
   });
 
-  document.addEventListener("keydown", event => {
-    if (event.key === "Escape" && body.classList.contains("toc-open")) {
-      setToc(false);
-      tocToggle?.focus();
+  /* ---------- TOC ---------- */
+
+  function openToc() {
+    body.classList.add('toc-open');
+    tocButton?.setAttribute('aria-expanded', 'true');
+    setControlsOpen(false);
+  }
+
+  function closeToc() {
+    body.classList.remove('toc-open');
+    tocButton?.setAttribute('aria-expanded', 'false');
+  }
+
+  tocButton?.addEventListener('click', openToc);
+  tocClose?.addEventListener('click', closeToc);
+  overlay?.addEventListener('click', closeToc);
+
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape') {
+      closeToc();
+      setControlsOpen(false);
     }
   });
 
-  /* ---------- Back / Next section ---------- */
+  document.querySelectorAll('a[href="#toc"]').forEach(a => {
+    a.addEventListener('click', event => {
+      event.preventDefault();
+      openToc();
+    });
+  });
 
-  const studySections = Array.from(
-    document.querySelectorAll("main .study-section[id]")
-  );
+  /* TOC navigation does not add hash-history entries. */
+  document.querySelectorAll('#toc a[href^="#"]').forEach(a => {
+    a.addEventListener('click', event => {
+      const href = a.getAttribute('href');
+      if (!href || href === '#toc') return;
+      const target = document.getElementById(decodeURIComponent(href.slice(1)));
+      if (!target) return;
+      event.preventDefault();
+      closeToc();
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      window.setTimeout(scheduleReaderSave, 450);
+    });
+  });
+
+  /* ---------- Previous / next lesson item ---------- */
+
+  const tocTargets = Array.from(document.querySelectorAll('#toc a[href^="#"]'))
+    .map(a => document.getElementById(decodeURIComponent(a.getAttribute('href').slice(1))))
+    .filter((el, i, arr) => el && el.id !== 'toc' && arr.indexOf(el) === i);
 
   function currentSectionIndex() {
-    if (!studySections.length) return -1;
-
-    const referenceY = window.scrollY + Math.min(window.innerHeight * 0.32, 220);
-    let index = 0;
-
-    for (let i = 0; i < studySections.length; i++) {
-      if (studySections[i].offsetTop <= referenceY) {
-        index = i;
-      } else {
-        break;
-      }
-    }
-    return index;
+    let idx = -1;
+    const threshold = 24;
+    tocTargets.forEach((el, i) => {
+      if (el.getBoundingClientRect().top <= threshold) idx = i;
+    });
+    return idx;
   }
 
-  function updateNavState() {
-    if (!studySections.length) {
-      if (prevButton) prevButton.disabled = true;
-      if (nextButton) nextButton.disabled = true;
+  function updateSectionButtons() {
+    const i = currentSectionIndex();
+    if (prevButton) prevButton.disabled = !tocTargets.length || i <= 0;
+    if (nextButton) nextButton.disabled = !tocTargets.length || i >= tocTargets.length - 1;
+  }
+
+  function goToIndex(i) {
+    if (!tocTargets.length) return;
+    i = Math.max(0, Math.min(tocTargets.length - 1, i));
+    tocTargets[i].scrollIntoView({ behavior: 'smooth', block: 'start' });
+    window.setTimeout(() => {
+      const state = captureReadingPosition();
+      if (state) saveReaderState(state);
+      updateSectionButtons();
+    }, 450);
+  }
+
+  prevButton?.addEventListener('click', () => goToIndex(Math.max(0, currentSectionIndex() - 1)));
+  nextButton?.addEventListener('click', () => goToIndex(Math.min(tocTargets.length - 1, currentSectionIndex() + 1)));
+
+  /* ---------- Home ---------- */
+
+  homeButton?.addEventListener('click', () => {
+    const state = captureReadingPosition();
+    if (state) saveReaderState(state);
+    safeSet(explicitHomeKey, '1');
+    safeSet('study-home-click-at', String(Date.now()));
+    window.location.href = new URL('index.html', window.location.href).href;
+  });
+
+  /* ---------- Initialize state ---------- */
+
+  applyTheme(root.dataset.theme === 'light' ? 'light' : 'dark');
+  applyMode(root.dataset.studyMode || 'full');
+  applyFontScale(currentScale());
+
+  themeButton?.addEventListener('click', () => applyTheme(root.dataset.theme === 'dark' ? 'light' : 'dark'));
+  modeButton?.addEventListener('click', () => applyMode(root.dataset.studyMode === 'keywords' ? 'full' : 'keywords'));
+
+  fontDown?.addEventListener('click', () => {
+    const i = FONT_LEVELS.indexOf(currentScale());
+    if (i > 0) preserveReadingPosition(() => applyFontScale(FONT_LEVELS[i - 1]));
+  });
+
+  fontUp?.addEventListener('click', () => {
+    const i = FONT_LEVELS.indexOf(currentScale());
+    if (i >= 0 && i < FONT_LEVELS.length - 1) preserveReadingPosition(() => applyFontScale(FONT_LEVELS[i + 1]));
+  });
+
+  fontReset?.addEventListener('click', () => preserveReadingPosition(() => applyFontScale(100)));
+
+  /* ---------- Scroll / rotation / resize persistence ---------- */
+
+  window.addEventListener('scroll', () => {
+    scheduleReaderSave();
+    updateSectionButtons();
+  }, { passive: true });
+
+  function handleLayoutViewportChange() {
+    /*
+      A native two-finger pinch changes VisualViewport but normally does not
+      change the layout viewport. Ignore it completely so the page does not
+      recalculate width or fight the browser's native zoom.
+    */
+    if (isPinchZoomActive()) {
+      pinchZoomSession = true;
       return;
     }
 
-    const index = currentSectionIndex();
-    if (prevButton) prevButton.disabled = index <= 0;
-    if (nextButton) nextButton.disabled = index >= studySections.length - 1;
-  }
+    const { width: w, height: h } = layoutViewportSize();
 
-  function moveSection(delta) {
-    const index = currentSectionIndex();
-    const targetIndex = Math.max(
-      0,
-      Math.min(studySections.length - 1, index + delta)
-    );
+    /*
+      When pinch zoom returns to scale 1, VisualViewport may emit another
+      resize. If the layout viewport itself did not change, this was only zoom,
+      so do nothing.
+    */
+    const layoutChanged =
+      Math.abs(w - lastViewportWidth) >= 1 ||
+      Math.abs(h - lastViewportHeight) >= 1;
 
-    studySections[targetIndex]?.scrollIntoView({
-      behavior: "smooth",
-      block: "start"
-    });
-  }
-
-  prevButton?.addEventListener("click", () => moveSection(-1));
-  nextButton?.addEventListener("click", () => moveSection(1));
-
-  let ticking = false;
-  window.addEventListener("scroll", () => {
-    if (!ticking) {
-      requestAnimationFrame(() => {
-        updateNavState();
-        ticking = false;
-      });
-      ticking = true;
+    if (!layoutChanged) {
+      pinchZoomSession = false;
+      return;
     }
+
+    pinchZoomSession = false;
+
+    if (!resizeAnchor) {
+      resizeAnchor =
+        lastStablePosition ||
+        readReaderState() ||
+        captureReadingPosition();
+    }
+
+    /*
+      Only a real layout change, such as portrait <-> landscape, updates
+      --app-viewport-width.
+    */
+    syncViewportGeometry();
+    lastViewportWidth = w;
+    lastViewportHeight = h;
+
+    if (resizeAnchor) {
+      settleRestore(resizeAnchor, [0, 50, 140, 300]);
+    }
+
+    clearTimeout(resizeRestoreTimer);
+    resizeRestoreTimer = window.setTimeout(() => {
+      if (resizeAnchor) {
+        settleRestore(resizeAnchor, [0, 80, 220]);
+      }
+
+      window.setTimeout(() => {
+        lastStablePosition =
+          resizeAnchor ||
+          captureReadingPosition();
+
+        if (lastStablePosition) {
+          saveReaderState(lastStablePosition);
+        }
+
+        resizeAnchor = null;
+        updateSectionButtons();
+      }, 320);
+    }, 260);
+  }
+
+  function handleVisualViewportResize() {
+    /*
+      visualViewport resize is the main signal used by Safari/WebKit while
+      pinch-zooming. At scale != 1 this is zoom, not a responsive-layout event.
+    */
+    if (isPinchZoomActive()) {
+      pinchZoomSession = true;
+      return;
+    }
+
+    handleLayoutViewportChange();
+  }
+
+  window.addEventListener(
+    'resize',
+    handleLayoutViewportChange,
+    { passive: true }
+  );
+
+  window.addEventListener('orientationchange', () => {
+    /*
+      Rotation is a genuine layout change. Use the stored logical reading
+      position, then wait for iOS to finish updating its layout viewport.
+    */
+    resizeAnchor =
+      lastStablePosition ||
+      readReaderState() ||
+      captureReadingPosition();
+
+    [40, 120, 280].forEach(delay => {
+      window.setTimeout(() => {
+        if (isPinchZoomActive()) return;
+
+        const size = layoutViewportSize();
+        syncViewportGeometry();
+
+        if (
+          Math.abs(size.width - lastViewportWidth) >= 1 ||
+          Math.abs(size.height - lastViewportHeight) >= 1
+        ) {
+          lastViewportWidth = size.width;
+          lastViewportHeight = size.height;
+        }
+
+        if (resizeAnchor) {
+          settleRestore(resizeAnchor, [0, 70, 180]);
+        }
+      }, delay);
+    });
+
+    window.setTimeout(() => {
+      resizeAnchor = null;
+      updateSectionButtons();
+    }, 620);
   }, { passive: true });
 
-  window.addEventListener("resize", updateNavState);
-  updateNavState();
-})();
-</script>
+  window.visualViewport?.addEventListener(
+    'resize',
+    handleVisualViewportResize,
+    { passive: true }
+  );
 
-</body>
+  function saveLifecycleState() {
+    const state = captureReadingPosition() || lastStablePosition;
+    if (state) saveReaderState(state);
+    rememberCurrentPage();
+  }
+
+  document.addEventListener('visibilitychange', () => {
+    if (document.visibilityState === 'hidden') saveLifecycleState();
+    else {
+      rememberCurrentPage();
+      const state = readReaderState();
+      if (state) settleRestore(state, [0, 80, 220]);
+    }
+  });
+
+  window.addEventListener('pagehide', saveLifecycleState);
+  window.addEventListener('beforeunload', saveLifecycleState);
+
+  window.addEventListener('pageshow', () => {
+    rememberCurrentPage();
+    rebuildReaderAnchors();
+    const state = readReaderState();
+    if (!location.hash && state) settleRestore(state, [0, 80, 220, 500]);
+    window.setTimeout(updateSectionButtons, 80);
+  });
+
+  window.addEventListener('load', () => {
+    rebuildReaderAnchors();
+    const state = readReaderState();
+    if (!location.hash && state) settleRestore(state, [0, 80, 220, 500]);
+    else {
+      const current = captureReadingPosition();
+      if (current) saveReaderState(current);
+    }
+    updateSectionButtons();
+  });
+})();
+</script></body>
 </html>

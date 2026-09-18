@@ -1,24 +1,20 @@
 <!DOCTYPE html>
-<html lang="vi" data-theme="dark">
+<!DOCTYPE html>
+
+<html data-study-mode="full" data-theme="dark" lang="vi">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<meta name="color-scheme" content="dark light">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<meta content="dark light" name="color-scheme"/>
+<meta content="test-2.1-responsive-landscape" name="study-template-version"/>
 <title>平成29年度 問題4 仕上げ工事 | Book 560-568</title>
-
 <style>
-/* =========================================================
-   FIXED DESIGN TOKENS
-   Do not redesign these values per lesson.
-   ========================================================= */
-
 :root {
-  --font-vi: Arial, Helvetica, sans-serif;
-  --font-ja: "Hiragino Sans", "Yu Gothic", "Yu Gothic UI", Meiryo, sans-serif;
+  --app-viewport-width: 100vw;
+  --font-vi: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  --font-ja: "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic UI", "Yu Gothic", Meiryo, sans-serif;
   --base-font-size: 16px;
-  --content-width: 1320px;
-  --control-size: 38px;
-  --control-gap: 4px;
+  color-scheme: dark;
 }
 
 html[data-theme="dark"] {
@@ -36,16 +32,17 @@ html[data-theme="dark"] {
   --note-bg: #1C2028;
   --memory-bg: #20231C;
   --keyword: #74D7FF;
-  --keyword-bg: rgba(75, 190, 255, .10);
+  --keyword-bg: rgba(75, 190, 255, 0.10);
   --critical-bg: #594613;
   --critical-text: #FFE39A;
   --trap: #FF8585;
   --trap-underline: #FF5F5F;
-  --relation-bg: rgba(139, 126, 255, .12);
+  --relation-bg: rgba(139, 126, 255, 0.12);
   --relation-border: #8F86FF;
   --shadow: rgba(0, 0, 0, .28);
   --dock-bg: rgba(23, 27, 34, .94);
-  --overlay: rgba(0, 0, 0, .46);
+  --overlay: rgba(0, 0, 0, .48);
+  color-scheme: dark;
 }
 
 html[data-theme="light"] {
@@ -72,586 +69,239 @@ html[data-theme="light"] {
   --relation-border: #6C5CE7;
   --shadow: rgba(31, 38, 49, .12);
   --dock-bg: rgba(255, 255, 255, .94);
-  --overlay: rgba(20, 24, 30, .32);
+  --overlay: rgba(19, 26, 35, .28);
+  color-scheme: light;
 }
 
-/* =========================================================
-   BASE
-   ========================================================= */
-
 * { box-sizing: border-box; }
-
 html {
   scroll-behavior: smooth;
   font-size: var(--base-font-size);
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
-
-body {
+body { overflow-anchor: none;
   margin: 0;
-  min-height: 100vh;
   background: var(--bg);
   color: var(--text);
   font-family: var(--font-vi);
   font-size: 1rem;
   line-height: 1.72;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
+  padding-bottom: 11rem;
 }
+:lang(vi), .translation, .translation-cell, .vn-topic, .vn-answer { font-family: var(--font-vi); }
+:lang(ja), .original, .original-cell, .jp-topic, .jp-answer { font-family: var(--font-ja); }
+strong, b { font-weight: 700; }
+a { color: var(--link); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+a:hover { text-decoration-thickness: 2px; }
+h1, h2, h3, h4 { color: var(--heading); line-height: 1.35; }
+h1 { font-size: clamp(1.8rem, 4vw, 2.8rem); margin: 0 0 .55rem; }
+h2 { font-size: clamp(1.38rem, 2.8vw, 2rem); margin: 0; }
+h3 { font-size: clamp(1.12rem, 2vw, 1.48rem); }
+h4 { font-size: 1.02rem; }
+[id] { scroll-margin-top: 22px; }
+p { margin: .62rem 0; }
+ul, ol { padding-left: 1.5rem; }
+li { margin: .34rem 0; }
 
-:lang(vi) {
-  font-family: var(--font-vi);
-}
-
-:lang(ja) {
-  font-family: var(--font-ja);
-}
-
-a {
-  color: var(--link);
-  text-decoration-thickness: 1px;
-  text-underline-offset: 3px;
-}
-
-a:hover {
-  text-decoration-thickness: 2px;
-}
-
-button {
-  font: inherit;
-}
-
-h1, h2, h3, h4 {
-  color: var(--heading);
-  line-height: 1.35;
-}
-
-h1 {
-  margin: 0 0 .35rem;
-  font-size: clamp(1.75rem, 4vw, 2.7rem);
-}
-
-h2 {
-  margin: 2.5rem 0 1rem;
-  padding-bottom: .42rem;
-  border-bottom: 1px solid var(--border);
-  font-size: clamp(1.42rem, 3vw, 2rem);
-}
-
-h3 {
-  margin: 1.9rem 0 .75rem;
-  font-size: clamp(1.16rem, 2.4vw, 1.5rem);
-}
-
-h4 {
-  margin: 1.2rem 0 .45rem;
-  font-size: 1rem;
-}
-
-p {
-  margin: .58rem 0;
-}
-
-ul, ol {
-  padding-left: 1.45rem;
-}
-
-li {
-  margin: .3rem 0;
-}
-
-[id] {
-  scroll-margin-top: 18px;
-}
-
-/* =========================================================
-   PAGE LAYOUT
-   ========================================================= */
-
-.page-shell {
-  width: min(var(--content-width), calc(100% - 28px));
+body > main,
+body > .page-shell {
+  width: min(1320px, calc(100% - 32px));
   margin: 0 auto;
-  padding: 18px 0 112px;
+  padding: 26px 0 70px;
 }
+body > .page-shell > main { width: 100%; margin: 0; padding: 0; }
 
-.hero,
-.toc-card,
-.study-section,
-.aggregate-section {
+.hero {
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: 16px;
   box-shadow: 0 8px 28px var(--shadow);
+  padding: clamp(22px, 4vw, 42px);
+  margin: 0 0 24px;
 }
-
-.hero {
-  margin-bottom: 22px;
-  padding: clamp(22px, 3vw, 40px);
-}
-
-.hero-subtitle {
-  margin: 0;
+.eyebrow, .hero-subtitle, .subtitle, .meta-line, .source-ref, .mini-label, .small, .meta-label {
   color: var(--text-muted);
-  font-size: 1.06rem;
 }
+.eyebrow { font-size: .82rem; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; }
+.hero-subtitle, .subtitle { font-size: 1.08rem; }
+.source-ref, .mini-label, .small, .meta-label { font-size: .86rem; }
 
-.meta-grid {
+.summary-grid, .meta-grid, .mini-grid, .coverage {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(195px, 1fr));
-  gap: 10px;
-  margin-top: 16px;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: .72rem;
+  margin-top: 1rem;
 }
-
-.meta-item {
-  padding: 10px 12px;
+.summary-card, .summary-item, .meta-item, .mini-card, .coverage > div {
   background: var(--surface-alt);
   border: 1px solid var(--border);
   border-radius: 10px;
+  padding: .75rem .85rem;
 }
+.summary-item b, .summary-card strong { color: var(--heading); }
+.source-list { color: var(--text-muted); }
 
-.meta-label {
-  display: block;
-  margin-bottom: 2px;
-  color: var(--text-muted);
-  font-size: .8rem;
-}
-
-.study-section,
+body > main > section:not(#toc),
+body > .page-shell > section:not(#toc),
+body > .page-shell > main > section,
+.topic,
 .aggregate-section {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  box-shadow: 0 7px 22px var(--shadow);
+  padding: clamp(18px, 3vw, 30px);
   margin: 22px 0;
-  padding: clamp(18px, 2.6vw, 30px);
 }
-
-.section-head {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 12px;
-  margin-bottom: 16px;
-  padding-bottom: 10px;
+.subsection { margin: 1.7rem 0 2.1rem; }
+.subsection-title, .section-head {
   border-bottom: 1px solid var(--border);
+  padding-bottom: .65rem;
+  margin-bottom: 1rem;
 }
+.section-head { display: flex; gap: 12px; align-items: baseline; justify-content: space-between; }
 
-.section-head h2,
-.section-head h3 {
-  margin: 0;
-  padding: 0;
-  border: 0;
-}
-
-.source-ref {
-  color: var(--text-muted);
-  font-size: .84rem;
-  white-space: nowrap;
-}
-
-.subsection {
-  margin: 26px 0 32px;
-}
-
-.subsection:first-child {
-  margin-top: 0;
-}
-
-.study-grid {
+.study-grid, .lang-grid, .bilingual-note {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  gap: 14px;
+  gap: 1rem;
   align-items: start;
 }
-
-.study-card {
-  min-width: 0;
-  overflow: hidden;
+.study-card, .lang-card, .note-pane {
   border: 1px solid var(--border);
   border-radius: 12px;
+  overflow: hidden;
+  min-width: 0;
+  background: var(--surface-alt);
 }
-
-.study-card.original {
-  background: var(--original-bg);
-}
-
-.study-card.translation {
-  background: var(--translation-bg);
-}
-
+.study-card.original, .lang-card.original, .original-cell, .jp-topic, .jp-answer { background: var(--original-bg); }
+.study-card.translation, .lang-card.translation, .translation-cell, .vn-topic, .vn-answer { background: var(--translation-bg); }
 .card-title {
-  padding: 9px 13px;
+  padding: .62rem .85rem;
   background: var(--surface-alt);
   border-bottom: 1px solid var(--border);
   color: var(--heading);
-  font-weight: 800;
+  font-weight: 700;
   letter-spacing: .02em;
 }
+.card-body, .recall-source { padding: .9rem 1rem; }
+.card-body.recall-source { padding: 1rem 1.05rem; }
+.item-block { border-top: 1px dashed var(--border); padding-top: .72rem; margin-top: .72rem; }
+.item-block:first-child { border-top: 0; padding-top: 0; margin-top: 0; }
+.item-label { font-weight: 700; color: var(--heading); margin-right: .35em; }
 
-.recall-source {
-  padding: 14px 16px 16px;
-  transition: color .15s ease;
-}
+.table-wrap { overflow-x: auto; margin: .9rem 0; border: 1px solid var(--border); border-radius: 10px; }
+table { width: 100%; border-collapse: collapse; min-width: 650px; background: var(--surface); }
+th, td { border: 1px solid var(--border); padding: .62rem .7rem; vertical-align: top; text-align: left; }
+th { background: var(--surface-alt); color: var(--heading); font-weight: 700; }
+caption { text-align: left; font-weight: 700; color: var(--heading); padding: .58rem .7rem; background: var(--surface-alt); caption-side: top; }
+.compact th, .compact td { padding: .48rem .55rem; }
+.study-table { min-width: 1040px; }
+.study-table .meta { white-space: nowrap; text-align: center; background: var(--surface-alt); }
+.glossary-table { min-width: 920px; }
+.memory-table, .number-table, .num-table { min-width: 760px; }
 
-.recall-source > :first-child {
-  margin-top: 0;
-}
-
-.recall-source > :last-child {
-  margin-bottom: 0;
-}
-
-/* =========================================================
-   CONTENT COMPONENTS
-   ========================================================= */
-
-.table-wrap {
-  overflow-x: auto;
-  margin: 12px 0 18px;
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  -webkit-overflow-scrolling: touch;
-}
-
-table {
-  width: 100%;
-  min-width: 640px;
-  border-collapse: collapse;
-  background: var(--surface);
-}
-
-th,
-td {
-  padding: 9px 11px;
-  border-right: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
-  vertical-align: top;
-  text-align: left;
-}
-
-th:last-child,
-td:last-child {
-  border-right: 0;
-}
-
-tr:last-child td {
-  border-bottom: 0;
-}
-
-th {
-  background: var(--surface-alt);
-  color: var(--heading);
-  font-weight: 800;
-}
-
-caption {
-  padding: 9px 11px;
-  background: var(--surface-alt);
-  color: var(--heading);
-  font-weight: 800;
-  text-align: left;
-  caption-side: top;
-}
-
-.summary-box,
-.note-box,
-.memory-box,
-.warning-box,
-.figure-box,
-.formula-box,
-.comparison-box {
-  margin: 14px 0;
-  padding: 13px 15px;
-  background: var(--note-bg);
+.summary-box, .note-box, .note, .info-box, .background-box, .exam-note, .memory-box, .warning-box, .warning, .figure-box, .figure-card {
   border: 1px solid var(--border);
   border-left-width: 4px;
   border-radius: 10px;
+  padding: .9rem 1rem;
+  margin: 1rem 0;
+  background: var(--note-bg);
 }
+.summary-box, .note-box, .note, .info-box, .background-box { border-left-color: var(--link); }
+.memory-box, .exam-note { background: var(--memory-bg); border-left-color: var(--critical-text); }
+.warning-box, .warning { border-left-color: var(--trap); }
+.figure-box, .figure-card { border-left-color: var(--relation-border); }
+.figure-card { overflow: hidden; padding: 0; }
+.figure-card img { display: block; width: 100%; height: auto; background: #fff; }
+.figure-card figcaption, .figure-explain { padding: .8rem 1rem; }
 
-.summary-box,
-.note-box {
-  border-left-color: var(--link);
-}
-
-.memory-box {
-  background: var(--memory-bg);
-  border-left-color: var(--critical-text);
-}
-
-.warning-box {
-  border-left-color: var(--trap);
-}
-
-.figure-box,
-.formula-box,
-.comparison-box {
-  border-left-color: var(--relation-border);
-}
-
-.figure-card {
-  margin: 15px 0 20px;
-  overflow: hidden;
-  background: var(--surface-alt);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-}
-
-.figure-card img {
-  display: block;
-  width: 100%;
-  height: auto;
-  background: #fff;
-}
-
-.figure-card figcaption {
-  padding: 10px 13px 12px;
-  color: var(--text-muted);
-  font-size: .9rem;
-}
-
-.figure-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 12px;
-  margin: 15px 0 20px;
-}
-
-.figure-grid .figure-card {
-  margin: 0;
-}
-
-.item-block {
-  margin-top: 11px;
-  padding-top: 11px;
-  border-top: 1px dashed var(--border);
-}
-
-.item-block:first-child {
-  margin-top: 0;
-  padding-top: 0;
-  border-top: 0;
-}
-
-.item-label {
-  margin-right: .3em;
-  color: var(--heading);
-  font-weight: 800;
-}
-
-.formula-line {
+.formula, .formula-line {
   display: flex;
   flex-wrap: wrap;
+  gap: .45rem;
   align-items: center;
-  gap: 6px;
-}
-
-.flow-node {
-  padding: 5px 8px;
-  background: var(--surface);
+  padding: .75rem;
+  background: var(--surface-alt);
   border: 1px solid var(--border);
-  border-radius: 7px;
-  font-weight: 700;
+  border-radius: 9px;
+  margin: .75rem 0;
 }
-
-.flow-arrow {
-  color: var(--text-muted);
-  font-weight: 800;
-}
-
-/* =========================================================
-   SEMANTIC HIGHLIGHTING
-   ========================================================= */
+.flow-node { border: 1px solid var(--border); border-radius: 7px; padding: .35rem .55rem; background: var(--surface); font-weight: 700; }
+.flow-arrow { color: var(--text-muted); font-weight: 700; }
 
 .kw {
-  padding: .02em .16em;
-  background: var(--keyword-bg);
-  color: var(--keyword);
-  border-radius: .2em;
-  font-weight: 750;
-}
-
-.critical {
-  padding: .04em .22em;
-  background: var(--critical-bg);
-  color: var(--critical-text);
-  border-radius: .22em;
-  font-weight: 750;
-}
-
-.trap {
-  color: var(--trap);
   font-weight: 700;
+  color: var(--keyword);
+  background: var(--keyword-bg);
+  padding: .02em .16em;
+  border-radius: .2em;
+}
+.critical {
+  font-weight: 700;
+  color: var(--critical-text);
+  background: var(--critical-bg);
+  padding: .04em .22em;
+  border-radius: .22em;
+}
+.trap {
+  font-weight: 700;
+  color: var(--trap);
   text-decoration-line: underline;
   text-decoration-color: var(--trap-underline);
   text-decoration-thickness: 2px;
   text-underline-offset: 3px;
 }
-
 .relation {
-  padding: .02em .14em;
-  background: var(--relation-bg);
+  font-weight: 600;
   color: var(--text);
+  background: var(--relation-bg);
   border-bottom: 2px solid var(--relation-border);
-  font-weight: 650;
+  padding: .02em .14em;
 }
 
-/* Only recall-source is dimmed in Keywords mode. */
-body.keyword-focus .recall-source {
-  color: var(--focus-muted);
-}
+html[data-study-mode="keywords"] .recall-source { color: var(--focus-muted); }
+html[data-study-mode="keywords"] .recall-source .kw { color: var(--keyword); background: var(--keyword-bg); }
+html[data-study-mode="keywords"] .recall-source .critical { color: var(--critical-text); background: var(--critical-bg); }
+html[data-study-mode="keywords"] .recall-source .trap { color: var(--trap); }
+html[data-study-mode="keywords"] .recall-source .relation { color: var(--text); background: var(--relation-bg); }
+html[data-study-mode="keywords"] .recall-source th,
+html[data-study-mode="keywords"] .recall-source .card-title,
+html[data-study-mode="keywords"] .recall-source .item-label { color: var(--heading); }
 
-body.keyword-focus .recall-source .kw {
-  color: var(--keyword);
-  background: var(--keyword-bg);
-}
+.backlink, .back-toc, .back { display: inline-block; margin-top: .8rem; font-size: .9rem; }
 
-body.keyword-focus .recall-source .critical {
-  color: var(--critical-text);
-  background: var(--critical-bg);
-}
-
-body.keyword-focus .recall-source .trap {
-  color: var(--trap);
-}
-
-body.keyword-focus .recall-source .relation {
-  color: var(--text);
-  background: var(--relation-bg);
-}
-
-body.keyword-focus .recall-source th,
-body.keyword-focus .recall-source .item-label {
-  color: var(--heading);
-}
-
-/* =========================================================
-   TOC DRAWER
-   ========================================================= */
-
-.toc-overlay {
+/* Collapsible study controls: one launcher at bottom-left. */
+.control-cluster {
   position: fixed;
-  inset: 0;
-  z-index: 1990;
-  visibility: hidden;
-  opacity: 0;
-  background: var(--overlay);
-  transition: opacity .18s ease, visibility .18s ease;
-}
-
-.toc-drawer {
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  z-index: 2000;
-  width: min(78vw, 360px);
-  padding: max(14px, env(safe-area-inset-top)) 14px
-           max(18px, env(safe-area-inset-bottom))
-           max(14px, env(safe-area-inset-left));
-  overflow-y: auto;
-  background: var(--surface);
-  border-right: 1px solid var(--border);
-  box-shadow: 14px 0 36px var(--shadow);
-  transform: translateX(-103%);
-  transition: transform .2s ease;
-  -webkit-overflow-scrolling: touch;
-}
-
-body.toc-open .toc-overlay {
-  visibility: visible;
-  opacity: 1;
-}
-
-body.toc-open .toc-drawer {
-  transform: translateX(0);
-}
-
-.toc-drawer-head {
-  position: sticky;
-  top: 0;
-  z-index: 1;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 10px;
-  padding: 4px 0 10px;
-  background: var(--surface);
-  border-bottom: 1px solid var(--border);
-}
-
-.toc-drawer-head h2 {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  font-size: 1.2rem;
-}
-
-.toc-close {
-  width: 34px;
-  height: 34px;
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  background: var(--surface-alt);
-  color: var(--text);
-  cursor: pointer;
-}
-
-.toc-list {
-  margin: 12px 0 0;
-  padding-left: 1.2rem;
-}
-
-.toc-list ol {
-  margin-top: 4px;
-}
-
-/* =========================================================
-   COMPACT CONTROLS
-   Left: vertical TOC / Back / Next
-   Right: horizontal display controls
-   ========================================================= */
-
-.nav-dock-left,
-.settings-dock-right {
-  position: fixed;
-  bottom: max(14px, env(safe-area-inset-bottom));
-  z-index: 1900;
-  padding: 5px;
-  background: var(--dock-bg);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  box-shadow: 0 8px 24px var(--shadow);
-  -webkit-backdrop-filter: blur(10px);
-  backdrop-filter: blur(10px);
+  left: max(8px, env(safe-area-inset-left));
+  bottom: max(10px, env(safe-area-inset-bottom));
+  z-index: 2200;
+  width: 38px;
+  height: 38px;
   user-select: none;
+  -webkit-user-select: none;
 }
 
-.nav-dock-left {
-  left: max(10px, env(safe-area-inset-left));
-  display: flex;
-  flex-direction: column;
-  gap: var(--control-gap);
-}
-
-.settings-dock-right {
-  right: max(10px, env(safe-area-inset-right));
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: var(--control-gap);
-}
-
-.nav-dock-left button,
-.settings-dock-right button {
-  display: flex;
+.control-launcher,
+.control-panel button {
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: var(--control-size);
-  height: var(--control-size);
-  min-width: var(--control-size);
-  min-height: var(--control-size);
+  flex: 0 0 auto;
+  width: 32px;
+  height: 32px;
+  min-width: 32px;
+  min-height: 32px;
   padding: 0;
-  background: var(--surface-alt);
-  color: var(--text);
   border: 1px solid var(--border);
   border-radius: 8px;
-  font-family: var(--font-vi);
-  font-size: .96rem;
+  background: var(--surface-alt);
+  color: var(--text);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
   font-weight: 700;
   line-height: 1;
   cursor: pointer;
@@ -659,98 +309,246 @@ body.toc-open .toc-drawer {
   -webkit-tap-highlight-color: transparent;
 }
 
-.nav-dock-left button:hover,
-.settings-dock-right button:hover {
+.control-launcher {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  z-index: 2;
+  width: 38px;
+  height: 38px;
+  min-width: 38px;
+  min-height: 38px;
+  border-radius: 11px;
+  background: var(--dock-bg);
+  box-shadow: 0 6px 18px var(--shadow);
+  font-size: 20px;
+  letter-spacing: 1px;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+}
+
+.control-panel {
+  position: absolute;
+  left: 43px;
+  bottom: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 2px;
+  width: max-content;
+  max-width: calc(100dvw - max(59px, env(safe-area-inset-left) + 59px) - max(8px, env(safe-area-inset-right)));
+  padding: 3px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  overscroll-behavior-x: contain;
+  scrollbar-width: none;
+  border: 1px solid var(--border);
+  border-radius: 11px;
+  background: var(--dock-bg);
+  box-shadow: 0 6px 18px var(--shadow);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateX(-10px) scale(.98);
+  transform-origin: left bottom;
+  transition: opacity .14s ease, transform .14s ease, visibility .14s ease;
+}
+
+.control-panel::-webkit-scrollbar { display: none; }
+
+.control-cluster.open .control-panel {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateX(0) scale(1);
+}
+
+.control-cluster.open .control-launcher {
   border-color: var(--link);
 }
 
-.nav-dock-left button:active,
-.settings-dock-right button:active {
-  transform: translateY(1px);
-}
+.control-panel button:active,
+.control-launcher:active { transform: translateY(1px); }
 
-.nav-dock-left button:disabled {
-  opacity: .38;
+.control-panel button:hover,
+.control-launcher:hover { border-color: var(--link); }
+
+.control-panel button:disabled {
+  opacity: .36;
   cursor: default;
 }
 
-.settings-dock-right .font-reset {
-  font-size: .66rem;
+.control-panel .font-reset {
+  width: 38px;
+  min-width: 38px;
+  font-size: 9px;
   letter-spacing: -.03em;
 }
 
-.settings-dock-right .mode-toggle {
-  font-size: 1.02rem;
+.control-panel .mode-toggle { font-size: 14px; }
+
+.control-panel .home-icon svg {
+  width: 17px;
+  height: 17px;
+  display: block;
 }
 
-/* =========================================================
-   RESPONSIVE
-   ========================================================= */
+/*
+  Responsive reading geometry for iPad/iPhone.
+  The page follows the actual Visual Viewport width. When rotating to
+  landscape it expands across the wider screen instead of staying at
+  portrait width. Reader-anchor JS below restores the same logical text
+  position after the reflow.
+*/
+@media (pointer: coarse) {
+  body > main,
+  body > .page-shell {
+    width: min(calc(var(--app-viewport-width, 100vw) - 16px), 1320px) !important;
+    max-width: 1320px !important;
+  }
+
+
+  .hero {
+    padding: 1rem !important;
+  }
+
+  body > main > section:not(#toc),
+  body > .page-shell > section:not(#toc),
+  body > .page-shell > main > section,
+  .topic,
+  .aggregate-section {
+    padding: 1rem !important;
+  }
+}
+
+
+@media (pointer: coarse) and (orientation: portrait) {
+  .study-grid,
+  .lang-grid,
+  .bilingual-note {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+@media (pointer: coarse) and (orientation: landscape) {
+  body > main,
+  body > .page-shell {
+    width: min(calc(var(--app-viewport-width, 100dvw) - 20px), 1320px) !important;
+  }
+}
+
+/* TOC drawer */
+#toc {
+  position: fixed !important;
+  left: 0 !important;
+  top: 0 !important;
+  bottom: 0 !important;
+  z-index: 2100 !important;
+  width: min(82vw, 390px) !important;
+  max-height: 100dvh !important;
+  overflow-y: auto !important;
+  margin: 0 !important;
+  padding: 74px 20px 28px !important;
+  background: var(--surface) !important;
+  border: 0 !important;
+  border-right: 1px solid var(--border) !important;
+  border-radius: 0 16px 16px 0 !important;
+  box-shadow: 10px 0 30px var(--shadow) !important;
+  transform: translateX(-105%);
+  transition: transform .2s ease;
+}
+body.toc-open #toc { transform: translateX(0); }
+#toc .toc-grid { columns: 1 !important; display: block !important; }
+#toc ol { margin-top: .35rem; }
+.toc-drawer-head {
+  position: sticky;
+  top: -74px;
+  margin: -74px -20px 18px;
+  padding: 13px 14px;
+  min-height: 58px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  z-index: 2;
+}
+.toc-drawer-head strong { color: var(--heading); }
+.toc-close {
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  background: var(--surface-alt);
+  color: var(--text);
+  font: 700 1.25rem var(--font-vi);
+  cursor: pointer;
+}
+.toc-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  background: var(--overlay);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .2s ease;
+}
+body.toc-open .toc-overlay { opacity: 1; pointer-events: auto; }
+body.toc-open { overflow: hidden; }
 
 @media (max-width: 900px) {
-  .study-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .page-shell {
-    width: min(100% - 18px, 760px);
-  }
-
-  .section-head {
-    display: block;
-  }
-
-  .source-ref {
-    display: block;
-    margin-top: 6px;
-    white-space: normal;
-  }
+  .study-grid, .lang-grid, .bilingual-note { grid-template-columns: 1fr; }
+  body > main, body > .page-shell { width: min(100% - 20px, 780px); padding-top: 14px; }
+  .section-head { display: block; }
+  .source-ref { display: block; margin-top: .45rem; }
+  table { min-width: 620px; }
 }
 
 @media (max-width: 560px) {
-  body {
-    font-size: .96rem;
-  }
-
-  .hero,
-  .study-section,
-  .aggregate-section {
-    border-radius: 12px;
-  }
-
-  .recall-source {
-    padding: 12px 13px 14px;
-  }
-
-  :root {
-    --control-size: 36px;
-  }
-
-  .settings-dock-right {
-    right: max(7px, env(safe-area-inset-right));
-  }
-
-  .nav-dock-left {
-    left: max(7px, env(safe-area-inset-left));
-  }
+  body { font-size: 1rem; }
+  body > main, body > .page-shell { width: calc(100% - 14px); }
+  .hero { padding: 1rem; border-radius: 12px; }
+  body > main > section:not(#toc),
+  body > .page-shell > section:not(#toc),
+  body > .page-shell > main > section,
+  .topic, .aggregate-section { padding: 1rem; border-radius: 12px; }
 }
 
-@media (orientation: landscape) and (pointer: coarse) {
-  .nav-dock-left {
-    left: max(14px, env(safe-area-inset-left));
+
+/*
+  iPad/tablet landscape:
+  Japanese and Vietnamese return to two side-by-side columns.
+  The min-height condition avoids forcing ordinary phone landscape into
+  two columns that would be too narrow.
+*/
+@media (pointer: coarse) and (orientation: landscape) and (min-width: 700px) and (min-height: 600px) {
+  body > main,
+  body > .page-shell {
+    width: min(calc(var(--app-viewport-width, 100dvw) - 20px), 1320px) !important;
+    max-width: 1320px !important;
   }
 
-  .settings-dock-right {
-    right: max(14px, env(safe-area-inset-right));
+  .study-grid,
+  .lang-grid,
+  .bilingual-note {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important;
+    gap: clamp(.75rem, 1.4vw, 1rem) !important;
+    align-items: start;
+  }
+
+  .study-card,
+  .lang-card,
+  .note-pane {
+    min-width: 0;
   }
 }
-
-/* =========================================================
-   PRINT
-   ========================================================= */
 
 @media print {
-  html,
+  .control-cluster { display: none !important; }
+  :root,
   html[data-theme="dark"],
   html[data-theme="light"] {
     --bg: #FFFFFF;
@@ -772,763 +570,630 @@ body.toc-open .toc-drawer {
     --trap-underline: #9E1B12;
     --relation-bg: #F0EDFF;
     --relation-border: #5B4FD6;
+    --shadow: transparent;
   }
-
-  body {
-    background: #fff;
-    color: #111;
-    font-size: 11pt;
+  body { background: #fff; color: #111; font-size: 11pt; padding-bottom: 0; }
+  .control-cluster, .toc-overlay, .toc-drawer-head { display: none !important; }
+  #toc {
+    position: static !important;
+    transform: none !important;
+    width: auto !important;
+    max-height: none !important;
+    padding: 1rem !important;
+    border: 1px solid var(--border) !important;
+    border-radius: 10px !important;
+    box-shadow: none !important;
+    margin: 1rem 0 !important;
   }
-
-  .page-shell {
-    width: 100%;
-    padding: 0;
-  }
-
-  .nav-dock-left,
-  .settings-dock-right,
-  .toc-drawer,
-  .toc-overlay {
-    display: none !important;
-  }
-
-  .hero,
-  .study-card,
-  .summary-box,
-  .note-box,
-  .memory-box,
-  .warning-box,
-  .figure-card {
-    break-inside: avoid;
-  }
-
-  a {
-    color: #000;
-    text-decoration: none;
-  }
+  body > main, body > .page-shell { width: 100%; padding: 0; }
+  .hero, .study-card, .lang-card, .summary-box, .note-box, .note, .memory-box, .warning-box, .figure-box, .figure-card { break-inside: avoid; }
+  a { color: #000; text-decoration: none; }
+  .backlink, .back-toc, .back { display: none; }
 }
-</style>
-
-<script>
-/* Apply saved theme before body paint to reduce flashing. */
-(function () {
-  try {
-    const saved = localStorage.getItem("study-theme");
-    const systemDark = window.matchMedia &&
-      window.matchMedia("(prefers-color-scheme: dark)").matches;
-    document.documentElement.dataset.theme =
-      saved || (systemDark ? "dark" : "light");
-  } catch (e) {
-    document.documentElement.dataset.theme = "dark";
+</style><script>
+try {
+  if ("scrollRestoration" in history) {
+    history.scrollRestoration = "manual";
   }
-
+} catch (e) {}
+(function () {
+  const root = document.documentElement;
   try {
-    const savedScale = Number(localStorage.getItem("study-font-scale")) || 100;
-    const clampedScale = Math.max(80, Math.min(140, savedScale));
-    document.documentElement.style.setProperty(
-      "--base-font-size",
-      `${16 * clampedScale / 100}px`
-    );
-  } catch (e) {}
+    const savedTheme = localStorage.getItem('study-theme');
+    root.dataset.theme = savedTheme === 'light' ? 'light' : 'dark';
+
+    const savedMode = localStorage.getItem('study-mode');
+    root.dataset.studyMode = savedMode === 'keywords' ? 'keywords' : 'full';
+
+    const savedScale = Number(localStorage.getItem('study-font-scale'));
+    const scale = Number.isFinite(savedScale) && savedScale >= 50 && savedScale <= 150 && savedScale % 5 === 0
+      ? savedScale : 100;
+    root.style.setProperty('--base-font-size', (16 * scale / 100) + 'px');
+  } catch (e) {
+    root.dataset.theme = 'dark';
+    root.dataset.studyMode = 'full';
+    root.style.setProperty('--base-font-size', '16px');
+  }
 })();
-</script>
-</head>
-
+</script></head>
 <body>
-
-<!-- =======================================================
-     TOC DRAWER
-     Replace only the list contents.
-     ======================================================= -->
-<span id="toc" aria-hidden="true"></span>
-<div class="toc-overlay" id="toc-overlay" aria-hidden="true"></div>
-
-<aside class="toc-drawer" id="toc-drawer" aria-label="Mục lục">
-  <div class="toc-drawer-head">
-    <h2>Mục lục</h2>
-    <button class="toc-close" id="toc-close" type="button" aria-label="Đóng mục lục">×</button>
-  </div>
-
-  <!-- TOC_ITEMS_START -->
-  <ol class="toc-list">
-    <li><a href="#section-overview">平成29年度 問題4 仕上げ工事</a>
-      <ol>
-        <li><a href="#sub-instructions">出題形式</a></li>
-        <li><a href="#sub-answers">解答一覧</a></li>
-      </ol>
-    </li>
-    <li><a href="#section-solutions">考え方・解き方</a>
-      <ol>
-        <li><a href="#q1">設問1 防水工事</a></li>
-        <li><a href="#q2">設問2 タイル工事</a></li>
-        <li><a href="#q3">設問3 屋根工事</a></li>
-        <li><a href="#q4">設問4 金属工事</a></li>
-        <li><a href="#q5">設問5 左官工事</a></li>
-        <li><a href="#q6">設問6 建具工事</a></li>
-        <li><a href="#q7">設問7 塗装工事</a></li>
-        <li><a href="#q8">設問8 内装工事</a></li>
-      </ol>
-    </li>
-    <li><a href="#terms">Thuật ngữ chuyên môn</a></li>
-    <li><a href="#background">Kiến thức nền cần biết</a></li>
-    <li><a href="#memory">Điểm cần nhớ và mẹo nhớ</a></li>
-  </ol>
-  <!-- TOC_ITEMS_END -->
-</aside>
-
-<!-- =======================================================
-     FIXED NAVIGATION CONTROLS
-     Left bottom: vertical.
-     Do not add a Top button.
-     ======================================================= -->
-<nav class="nav-dock-left" aria-label="Điều hướng học tập">
-  <button id="toc-toggle" type="button" aria-label="Mục lục" title="Mục lục"
-          aria-controls="toc-drawer" aria-expanded="false">☰</button>
-  <button id="section-prev" type="button" aria-label="Mục trước" title="Back">‹</button>
-  <button id="section-next" type="button" aria-label="Mục tiếp theo" title="Next">›</button>
-</nav>
-
-<!-- =======================================================
-     FIXED DISPLAY CONTROLS
-     Right bottom: horizontal.
-     ======================================================= -->
-<nav class="settings-dock-right" aria-label="Thiết lập hiển thị">
-  <button id="theme-toggle" type="button" aria-label="Đổi Dark/Light"
-          title="Đổi Dark/Light" aria-pressed="false">☀</button>
-  <button id="mode-toggle" class="mode-toggle" type="button"
-          aria-label="Đổi Full/Keywords" title="Đổi Full/Keywords"
-          aria-pressed="false">🎯</button>
-  <button id="font-reset" class="font-reset" type="button"
-          aria-label="Đặt lại cỡ chữ 100%" title="Đặt lại cỡ chữ 100%">100%</button>
-  <button id="font-down" type="button" aria-label="Giảm cỡ chữ"
-          title="Giảm cỡ chữ">A−</button>
-  <button id="font-up" type="button" aria-label="Tăng cỡ chữ"
-          title="Tăng cỡ chữ">A+</button>
-</nav>
-
-<div class="page-shell">
-
-  <!-- =====================================================
-       DOCUMENT HEADER
-       Replace title/subtitle/meta values only.
-       ===================================================== -->
-  <header class="hero" id="top">
-    <h1>平成29年度 問題4 仕上げ工事 | Book 560-568</h1>
-    <p class="hero-subtitle">1級建築施工管理技術検定 第二次検定 | Song ngữ Nhật-Việt | H29 仕上げ工事</p>
-
-    <div class="meta-grid">
-      <div class="meta-item">
-        <span class="meta-label">PDF nguồn</span>
-        05j_仕上げ工事_H29_p560-569.pdf
-      </div>
-      <div class="meta-item">
-        <span class="meta-label">File ID</span>
-        F061
-      </div>
-      <div class="meta-item">
-        <span class="meta-label">Phạm vi</span>
-        Book 560-568
-      </div>
-      <div class="meta-item">
-        <span class="meta-label">Chế độ</span>
-        Song ngữ Nhật-Việt / Dark-Light / Full-Keywords / Font 80-140%
-      </div>
-    </div>
-  </header>
-
-  <!-- =====================================================
-       CONTENT_START
-       AI may freely repeat/reorder approved content components.
-       Global CSS/JS/control structure must not be redesigned.
-       ===================================================== -->
-  <main id="lesson">
-
-    <section class="study-section" id="section-overview">
-      <div class="section-head">
-        <h2>平成29年度 問題4 仕上げ工事</h2>
-        <span class="source-ref">Nguồn: Book 560-561</span>
-      </div>
-
-      <section class="subsection" id="sub-instructions">
-        <h3>出題形式 / Hình thức câu hỏi</h3>
-        <div class="study-grid">
-          <article class="study-card original">
-            <div class="card-title">原文</div>
-            <div class="recall-source" lang="ja">
-              <p>次の<strong class="kw">設問1から設問8</strong>の各記述において、記述ごとの①から③の下線部の語句のうち<strong class="kw">最も不適当な箇所番号を1つ</strong>あげ、<strong class="kw">適当な語句を記入</strong>しなさい。</p>
-            </div>
-          </article>
-          <article class="study-card translation">
-            <div class="card-title">Bản dịch tiếng Việt</div>
-            <div class="recall-source" lang="vi">
-              <p>Trong từng mô tả từ <strong class="kw">câu 1 đến câu 8</strong>, hãy chọn <strong class="kw">một vị trí không phù hợp nhất</strong> trong ba phần được gạch chân ① đến ③ và <strong class="kw">ghi từ ngữ thích hợp để sửa lại</strong>.</p>
-            </div>
-          </article>
-        </div>
-      </section>
-
-      <section class="subsection" id="sub-answers">
-        <h3>平成29年度 問題4 の解答 / Bảng đáp án</h3>
-        <div class="study-grid">
-          <article class="study-card original">
-            <div class="card-title">原文</div>
-            <div class="recall-source" lang="ja">
-              <div class="table-wrap"><table>
-                <thead><tr><th>設問</th><th>最も不適当な箇所番号</th><th>適当な語句</th><th>別解</th></tr></thead>
-                <tbody>
-                  <tr><td><strong class="kw">設問1</strong></td><td>①</td><td><mark class="critical">500mm</mark></td><td></td></tr>
-                  <tr><td><strong class="kw">設問2</strong></td><td>③</td><td><strong class="kw">曲げ強度</strong></td><td>曲げ破壊荷重</td></tr>
-                  <tr><td><strong class="kw">設問3</strong></td><td>②</td><td><mark class="critical">300mm</mark></td><td></td></tr>
-                  <tr><td><strong class="kw">設問4</strong></td><td>②</td><td><mark class="critical">0.5mm</mark></td><td></td></tr>
-                  <tr><td><strong class="kw">設問5</strong></td><td>①</td><td><strong class="kw">薄い</strong></td><td></td></tr>
-                  <tr><td><strong class="kw">設問6</strong></td><td>①</td><td><mark class="critical">1.5mm</mark></td><td></td></tr>
-                  <tr><td><strong class="kw">設問7</strong></td><td>①</td><td><strong class="kw">ワニス</strong></td><td></td></tr>
-                  <tr><td><strong class="kw">設問8</strong></td><td>③</td><td><strong class="kw">床パネル</strong></td><td>下地</td></tr>
-                </tbody>
-              </table></div>
-            </div>
-          </article>
-          <article class="study-card translation">
-            <div class="card-title">Bản dịch tiếng Việt</div>
-            <div class="recall-source" lang="vi">
-              <div class="table-wrap"><table>
-                <thead><tr><th>Câu</th><th>Vị trí sai</th><th>Nội dung đúng</th><th>Đáp án khác</th></tr></thead>
-                <tbody>
-                  <tr><td><strong class="kw">Câu 1</strong></td><td>①</td><td><mark class="critical">500mm</mark></td><td></td></tr>
-                  <tr><td><strong class="kw">Câu 2</strong></td><td>③</td><td><strong class="kw">Cường độ uốn</strong></td><td>Tải trọng phá hoại khi uốn</td></tr>
-                  <tr><td><strong class="kw">Câu 3</strong></td><td>②</td><td><mark class="critical">300mm</mark></td><td></td></tr>
-                  <tr><td><strong class="kw">Câu 4</strong></td><td>②</td><td><mark class="critical">0,5mm</mark></td><td></td></tr>
-                  <tr><td><strong class="kw">Câu 5</strong></td><td>①</td><td><strong class="kw">Mỏng</strong></td><td></td></tr>
-                  <tr><td><strong class="kw">Câu 6</strong></td><td>①</td><td><mark class="critical">1,5mm</mark></td><td></td></tr>
-                  <tr><td><strong class="kw">Câu 7</strong></td><td>①</td><td><strong class="kw">Varnish</strong></td><td></td></tr>
-                  <tr><td><strong class="kw">Câu 8</strong></td><td>③</td><td><strong class="kw">Tấm sàn</strong></td><td>Nền</td></tr>
-                </tbody>
-              </table></div>
-            </div>
-          </article>
-        </div>
-        <p class="source-ref"><a href="#toc">↑ Mục lục</a></p>
-      </section>
-    </section>
-
-    <section class="study-section" id="section-solutions">
-      <div class="section-head">
-        <h2>平成29年度 問題4 仕上げ工事の考え方・解き方</h2>
-        <span class="source-ref">Nguồn: Book 562-568, đối chiếu đề Book 560-561</span>
-      </div>
-
-      <section class="subsection" id="q1">
-        <h3>設問1 防水工事：改質アスファルトシート防水常温粘着工法</h3>
-        <div class="source-ref">Nguồn: Book 560, 562</div>
-        <div class="study-grid">
-          <article class="study-card original">
-            <div class="card-title">原文</div>
-            <div class="recall-source" lang="ja">
-              <p><strong class="kw">改質アスファルトシート防水常温粘着工法・断熱露出仕様</strong>の場合、立上がり際の風による負圧は平場の一般部より大きくなるため、断熱材の上が絶縁工法となる立上がり際の<strong class="kw">平場部幅</strong> <span class="trap">300mm程度①</span>は、防水層の<strong class="kw">1層目②</strong>に粘着層付改質アスファルトシートを張り付ける。</p>
-              <p>なお、入隅部では<strong class="kw">立上り</strong>に<mark class="critical">100mm程度③</mark>立ち上げて、浮き・口あきが生じないように張り付ける。</p>
-              <h4>考え方・解き方</h4>
-              <p><strong class="kw">改質アスファルトシート防水常温粘着工法・断熱露出仕様</strong>とは、裏面に粘着層が付いた改質アスファルトシートを、裏面の剥離紙などを剥がしながら張り付ける工法のうち、断熱処理を行うものである。</p>
-              <p>改質アスファルト防水トーチ工法は、改質アスファルトシートの裏面および下地面をトーチで加熱・溶融させてシートと下地を密着させる工法であるが、本工法はこれとは異なり、<strong class="kw">常温で施工</strong>されることが特徴である。</p>
-              <p>断熱材の上が絶縁工法となる立上がり際の<strong class="kw">平場部幅</strong>は<mark class="critical">500mm程度</mark>とし、その部分にある防水層の<strong class="kw">1層目</strong>には、粘着層付改質アスファルトシートを張り付けなければならない。</p>
-              <p>また、出隅部および入隅部では、増張りとして、<strong class="kw">増張り用シートの幅</strong>を<mark class="critical">200mm程度</mark>とし、<strong class="kw">立上り</strong>に<mark class="critical">100mm程度</mark>立ち上げて、浮きや口あきが生じないように張り付けなければならない。</p>
-              <p>以上により、②と③は正しいが、①は<span class="trap">300mmではなく</span><mark class="critical">500mm</mark>である。</p>
-            </div>
-          </article>
-          <article class="study-card translation">
-            <div class="card-title">Bản dịch tiếng Việt</div>
-            <div class="recall-source" lang="vi">
-              <p>Đối với <strong class="kw">phương pháp chống thấm bằng màng asphalt cải tiến tự dính ở nhiệt độ thường, cấu hình cách nhiệt lộ thiên</strong>, do áp suất âm của gió tại khu vực sát chân phần dựng đứng lớn hơn khu vực thông thường của phần mặt phẳng, đề ghi <strong class="kw">bề rộng phần mặt phẳng sát chân phần dựng đứng</strong> là <span class="trap">khoảng 300mm①</span>; tại đây phải dán màng asphalt cải tiến có lớp tự dính vào <strong class="kw">lớp thứ nhất②</strong> của lớp chống thấm.</p>
-              <p>Tại góc lõm, màng phải được đưa lên <strong class="kw">phần dựng đứng</strong> <mark class="critical">khoảng 100mm③</mark>, đồng thời dán sao cho không phát sinh nổi hoặc hở mép.</p>
-              <h4>Cách tư duy và giải</h4>
-              <p><strong class="kw">Phương pháp tự dính ở nhiệt độ thường có cách nhiệt lộ thiên</strong> sử dụng màng asphalt cải tiến có lớp keo sẵn ở mặt sau; khi thi công bóc giấy cách ly rồi dán màng xuống nền, đồng thời có xử lý cách nhiệt.</p>
-              <p>Khác với phương pháp torch, vốn gia nhiệt và làm nóng chảy mặt sau màng và nền để tạo liên kết, công pháp này có đặc điểm là <strong class="kw">thi công ở nhiệt độ thường</strong>.</p>
-              <p><strong class="kw">Bề rộng phần mặt phẳng sát chân phần dựng đứng</strong> đúng phải là <mark class="critical">khoảng 500mm</mark>; tại <strong class="kw">lớp thứ nhất</strong> của lớp chống thấm trong phạm vi này phải dùng màng asphalt cải tiến có lớp tự dính.</p>
-              <p>Tại góc lồi và góc lõm, phải gia cường bằng <strong class="kw">màng bổ sung rộng</strong> <mark class="critical">khoảng 200mm</mark> và đưa màng lên <strong class="kw">phần dựng đứng</strong> <mark class="critical">khoảng 100mm</mark>, tránh nổi hoặc hở mép.</p>
-              <p>Vì vậy ② và ③ đúng; ① <span class="trap">không phải 300mm</span> mà là <mark class="critical">500mm</mark>.</p>
-            </div>
-          </article>
-        </div>
-        <div class="figure-box"><strong>Giải thích hình trong Book 562</strong><p>Hình cấu tạo thể hiện phạm vi <mark class="critical">500mm</mark> tính từ chân phần dựng đứng, lớp chống thấm thứ nhất dùng màng asphalt cải tiến có lớp tự dính. Hai hình chi tiết phía dưới thể hiện 増張り tại góc lồi và góc lõm: màng gia cường rộng khoảng <mark class="critical">200mm</mark> và đưa lên phần đứng khoảng <mark class="critical">100mm</mark>.</p></div>
-        <div class="memory-box"><strong>Chuỗi số cần nhớ</strong><p><strong class="kw">Sát chân phần dựng đứng</strong> <mark class="critical">500mm</mark> | <strong class="kw">màng gia cường</strong> <mark class="critical">200mm</mark> | <strong class="kw">đưa lên phần đứng</strong> <mark class="critical">100mm</mark>.</p></div>
-        <p class="source-ref"><a href="#toc">↑ Mục lục</a></p>
-      </section>
-
-      <section class="subsection" id="q2">
-        <h3>設問2 タイル工事：タイルの検査における検査項目</h3>
-        <div class="source-ref">Nguồn: Book 560, 563</div>
-        <div class="study-grid">
-          <article class="study-card original">
-            <div class="card-title">原文</div>
-            <div class="recall-source" lang="ja">
-              <p>タイルの検査における標準品のタイルは、寸法、厚さ、反り、側反り、ばち、欠陥の有無、<strong class="kw">吸水率①</strong>、<strong class="kw">耐凍害性②</strong>、<span class="trap">圧縮強度③</span>、色合いなどの品質検査表を提出し、工事監理者の承認を受ける。</p>
-              <p>特注品は、荷口見本による検査又は工場における立会い検査のいずれかを実施する。</p>
-              <h4>考え方・解き方</h4>
-              <p>タイルの検査において調べなければならない項目には、次のようなものがある。</p>
-              <div class="table-wrap"><table>
-                <thead><tr><th>項目</th><th>検査内容</th></tr></thead>
-                <tbody>
-                  <tr><td>① 外観</td><td>色合い・欠陥の有無など</td></tr>
-                  <tr><td>② 裏あし</td><td>形状・長さ［mm］</td></tr>
-                  <tr><td>③ 寸法</td><td>長さ・幅・厚さ［mm］</td></tr>
-                  <tr><td>④ ばち</td><td>相対する二辺の寸法差［mm］</td></tr>
-                  <tr><td>⑤ 反り</td><td>面反り・辺反り・側反り・ねじれ</td></tr>
-                  <tr><td>⑥ 直角性・役物の角度</td><td>［°］</td></tr>
-                  <tr><td><strong class="kw">⑦ 吸水率</strong></td><td>［％］</td></tr>
-                  <tr><td><strong class="kw">⑧ 曲げ破壊荷重</strong></td><td>［N］、曲げ強度［N/mm²］</td></tr>
-                  <tr><td>⑨ 耐摩耗性</td><td></td></tr><tr><td>⑩ 耐熱衝撃性</td><td></td></tr><tr><td>⑪ 耐貫入性</td><td></td></tr>
-                  <tr><td><strong class="kw">⑫ 耐凍害性</strong></td><td></td></tr><tr><td>⑬ 耐薬品性</td><td></td></tr><tr><td>⑭ 耐滑り性</td><td></td></tr><tr><td>⑮ 鉛・カドミウムの溶出性</td><td></td></tr>
-                </tbody>
-              </table></div>
-              <p>標準品のタイルについては、寸法・厚さ・反り・側反り・ばち・欠陥の有無・吸水率・耐凍害性・<strong class="kw">曲げ強度</strong>・色合いなどの品質検査表を提出し、工事監理者の承認を受けなければならない。</p>
-              <p>この品質検査表に、<span class="trap">圧縮強度を記入する必要はない</span>ので、タイルの検査において圧縮強度を調べる必要はない。</p>
-              <p>以上により、①と②は正しいが、③は<span class="trap">圧縮強度ではなく</span><strong class="kw">曲げ強度</strong>である。なお、JASSでは「曲げ強度」、JISでは<strong class="kw">曲げ破壊荷重</strong>となっているため、「曲げ破壊荷重」でも正解である。</p>
-            </div>
-          </article>
-          <article class="study-card translation">
-            <div class="card-title">Bản dịch tiếng Việt</div>
-            <div class="recall-source" lang="vi">
-              <p>Đối với gạch tiêu chuẩn, bảng kiểm tra chất lượng phải có các hạng mục như kích thước, chiều dày, độ cong vênh, cong vênh cạnh bên, ばち, khuyết tật, <strong class="kw">độ hút nước①</strong>, <strong class="kw">khả năng chống hư hại do đóng băng②</strong>, <span class="trap">cường độ nén③</span>, màu sắc... và phải được người giám sát công trình phê duyệt.</p>
-              <p>Đối với sản phẩm đặt hàng đặc biệt, thực hiện kiểm tra bằng mẫu lô hàng hoặc kiểm tra chứng kiến tại nhà máy.</p>
-              <h4>Cách tư duy và giải</h4>
-              <p>Các hạng mục kiểm tra gạch được sách liệt kê như sau.</p>
-              <div class="table-wrap"><table>
-                <thead><tr><th>Hạng mục</th><th>Nội dung kiểm tra</th></tr></thead>
-                <tbody>
-                  <tr><td>① Ngoại quan</td><td>Màu sắc, khuyết tật...</td></tr>
-                  <tr><td>② 裏あし</td><td>Hình dạng và chiều dài gờ/rãnh mặt sau [mm]</td></tr>
-                  <tr><td>③ Kích thước</td><td>Dài, rộng, dày [mm]</td></tr>
-                  <tr><td>④ ばち</td><td>Chênh lệch kích thước giữa hai cạnh đối diện [mm]</td></tr>
-                  <tr><td>⑤ Cong vênh</td><td>Cong mặt, cong cạnh, cong cạnh bên, xoắn</td></tr>
-                  <tr><td>⑥ Độ vuông góc, góc của gạch định hình</td><td>[°]</td></tr>
-                  <tr><td><strong class="kw">⑦ Độ hút nước</strong></td><td>[%]</td></tr>
-                  <tr><td><strong class="kw">⑧ Tải trọng phá hoại khi uốn</strong></td><td>[N], cường độ uốn [N/mm²]</td></tr>
-                  <tr><td>⑨ Chống mài mòn</td><td></td></tr><tr><td>⑩ Chịu sốc nhiệt</td><td></td></tr><tr><td>⑪ Chống rạn men</td><td></td></tr>
-                  <tr><td><strong class="kw">⑫ Chống hư hại do đóng băng</strong></td><td></td></tr><tr><td>⑬ Chịu hóa chất</td><td></td></tr><tr><td>⑭ Chống trượt</td><td></td></tr><tr><td>⑮ Khả năng thôi nhiễm chì và cadimi</td><td></td></tr>
-                </tbody>
-              </table></div>
-              <p>Đối với gạch tiêu chuẩn, bảng chất lượng phải bao gồm <strong class="kw">cường độ uốn</strong> cùng các hạng mục nêu trên.</p>
-              <p><span class="trap">Không cần ghi cường độ nén</span> vào bảng kiểm tra chất lượng, vì vậy không cần kiểm tra cường độ nén đối với gạch.</p>
-              <p>Do đó ① và ② đúng; ③ <span class="trap">không phải cường độ nén</span> mà là <strong class="kw">cường độ uốn</strong>. JASS dùng thuật ngữ “cường độ uốn”, còn JIS dùng <strong class="kw">tải trọng phá hoại khi uốn</strong>, nên cách ghi sau cũng được chấp nhận.</p>
-            </div>
-          </article>
-        </div>
-        <div class="memory-box"><strong>Điểm phân biệt</strong><p><strong class="kw">Kiểm tra cường độ của tile</strong>: <span class="trap">圧縮強度 ×</span> | <strong class="kw">曲げ強度 ○</strong> | <strong class="kw">曲げ破壊荷重 ○</strong>.</p></div>
-        <p class="source-ref"><a href="#toc">↑ Mục lục</a></p>
-      </section>
-
-      <section class="subsection" id="q3">
-        <h3>設問3 屋根工事：金属板葺き屋根のアスファルトルーフィング</h3>
-        <div class="source-ref">Nguồn: Book 560, 564</div>
-        <div class="study-grid">
-          <article class="study-card original">
-            <div class="card-title">原文</div>
-            <div class="recall-source" lang="ja">
-              <p>金属板葺きによる屋根工事の下葺きに用いる<strong class="kw">アスファルトルーフィング</strong>は、軒先より葺き進め、隣接するルーフィングの<strong class="kw">重ね幅・短辺部</strong>は<mark class="critical">200mm以上①</mark>、<strong class="kw">長辺部</strong>は<mark class="critical">100mm以上</mark>とする。</p>
-              <p>仮止めを行う場合のステープル釘の打込み間隔は、ルーフィングの重ね、屋根の流れ方向で<span class="trap">450mm程度②</span>、流れに直角方向では<mark class="critical">900mm以内③</mark>とする。</p>
-              <h4>考え方・解き方</h4>
-              <p>下葺きに用いるアスファルトルーフィングは防水を目的とし、<strong class="kw">軒先より、水下側から水上側に向かって葺き進める</strong>。隣接するルーフィングは、水上側のルーフィングが下葺材の上に来るように重ね合わせる。</p>
-              <p><strong class="kw">短辺部の重ね幅</strong>は<mark class="critical">200mm以上</mark>、<strong class="kw">長辺部の重ね幅</strong>は<mark class="critical">100mm以上</mark>とする。</p>
-              <p>現在では廃止された昔の規定では、仮止めを行う場合のステープル釘の打込み間隔は、屋根の流れ方向で<mark class="critical">300mm程度</mark>、流れに直角方向では<mark class="critical">900mm以内</mark>と定められていた。</p>
-              <p>しかし、ステープル釘を多く打ち過ぎると、下葺きとなるアスファルトルーフィングを貫通する孔が増加し、<span class="relation">防水機能が低下する</span>。そのため規定が変更された。</p>
-              <p>現在の規定では、<strong class="kw">隣接するルーフィングを重ね合わせた部分</strong>では<mark class="critical">300mm程度</mark>、<strong class="kw">その他の部分</strong>では必要に応じて<mark class="critical">900mm以内</mark>とする。</p>
-              <p>粘着層を有する改質アスファルトルーフィングを用いる場合は、粘着層による下地への仮止めが可能であるため、<span class="trap">ステープル釘は不要</span>である。</p>
-              <p>昔の規定に従えば、①と③は正しく、②は<span class="trap">450mmではなく</span><mark class="critical">300mm</mark>である。しかし、現在の規定（建築工事監理指針）では流れ方向か否かによって打込み間隔は変わらないため、<span class="trap">この問題は不適切と考えられる</span>。</p>
-            </div>
-          </article>
-          <article class="study-card translation">
-            <div class="card-title">Bản dịch tiếng Việt</div>
-            <div class="recall-source" lang="vi">
-              <p><strong class="kw">Màng asphalt roofing</strong> dùng làm lớp lót dưới mái kim loại được thi công từ mép mái hướng lên phía cao. <strong class="kw">Chiều rộng chồng mí ở cạnh ngắn</strong> phải <mark class="critical">từ 200mm trở lên①</mark>, còn <strong class="kw">cạnh dài</strong> phải <mark class="critical">từ 100mm trở lên</mark>.</p>
-              <p>Khi cố định tạm, đề ghi khoảng cách đinh staple theo hướng dốc mái là <span class="trap">khoảng 450mm②</span>, còn theo hướng vuông góc với hướng dốc là <mark class="critical">không quá 900mm③</mark>.</p>
-              <h4>Cách tư duy và giải</h4>
-              <p>Màng asphalt roofing có mục đích chống nước và được <strong class="kw">trải từ mép mái, tức phía thấp, tiến lên phía cao</strong>. Tấm phía thượng lưu phải phủ lên phía trên tấm phía hạ lưu.</p>
-              <p><strong class="kw">Chồng mí cạnh ngắn</strong>: <mark class="critical">≥ 200mm</mark>. <strong class="kw">Chồng mí cạnh dài</strong>: <mark class="critical">≥ 100mm</mark>.</p>
-              <p>Theo quy định cũ hiện đã bị bãi bỏ, khoảng cách staple là <mark class="critical">khoảng 300mm</mark> theo hướng dốc mái và <mark class="critical">không quá 900mm</mark> theo hướng vuông góc.</p>
-              <p>Nếu đóng staple quá nhiều, số lỗ xuyên qua lớp roofing tăng lên và <span class="relation">khả năng chống nước suy giảm</span>. Vì vậy quy định đã được thay đổi.</p>
-              <p>Theo quy định hiện tại được sách nêu, <strong class="kw">phần chồng mí giữa các tấm</strong> dùng khoảng cách <mark class="critical">khoảng 300mm</mark>; <strong class="kw">các phần khác</strong> khi cần dùng khoảng cách <mark class="critical">không quá 900mm</mark>.</p>
-              <p>Nếu dùng màng asphalt cải tiến có lớp tự dính thì có thể cố định tạm bằng lớp keo, vì vậy <span class="trap">không cần đinh staple</span>.</p>
-              <p>Nếu xét theo quy định cũ, ② <span class="trap">không phải 450mm</span> mà là <mark class="critical">300mm</mark>. Tuy nhiên, theo quy định hiện hành nêu trong sách, khoảng cách không còn được phân biệt chỉ theo hướng dốc hay vuông góc, vì vậy <span class="trap">câu hỏi này được sách đánh giá là không phù hợp</span>.</p>
-            </div>
-          </article>
-        </div>
-        <div class="figure-box"><strong>Giải thích sơ đồ Book 564</strong><p>Sơ đồ cho thấy hướng dốc, hướng vuông góc với dốc, vị trí 軒先, chiều rộng chồng mí <mark class="critical">100mm</mark> và <mark class="critical">200mm</mark>, cùng vị trí các đinh staple. Nguyên tắc chống nước là tấm phía cao phải phủ lên tấm phía thấp.</p></div>
-        <p class="source-ref"><a href="#toc">↑ Mục lục</a></p>
-      </section>
-
-      <section class="subsection" id="q4">
-        <h3>設問4 金属工事：金属製手すりの伸縮継手</h3>
-        <div class="source-ref">Nguồn: Book 560, 565</div>
-        <div class="study-grid">
-          <article class="study-card original">
-            <div class="card-title">原文</div>
-            <div class="recall-source" lang="ja">
-              <p>金属製手すりが長くなる場合には、金属の温度変化による部材の伸縮を考慮して、通常<strong class="kw">伸縮調整部の間隔</strong>を<mark class="critical">5～10m程度</mark>ごとに設ける。伸縮調整部を設ける間隔及び伸縮調整幅は、使用する金属の<strong class="kw">線膨張係数</strong>を考慮して決める。</p>
-              <p><strong class="kw">温度差</strong><mark class="critical">40℃①</mark>の場合の部材伸縮量は、鋼は1m当たり<span class="trap">0.2mm程度②</span>、アルミニウム合金は1m当たり<mark class="critical">1.0mm程度③</mark>である。</p>
-              <h4>考え方・解き方</h4>
-              <p>金属製手すりが長くなる場合、温度変化による伸縮を考慮し、<strong class="kw">伸縮調整部（伸縮継手）</strong>を<mark class="critical">5m～10m程度</mark>の間隔で設けなければならない。</p>
-              <p><strong class="kw">温度差40℃、長さ1m</strong>では、鋼は<mark class="critical">0.5mm程度</mark>、アルミニウム合金は<mark class="critical">1.0mm程度</mark>伸びる。</p>
-              <p>以上により、①と③は正しいが、②は<span class="trap">0.2mmではなく</span><mark class="critical">0.5mm</mark>である。</p>
-              <h4>参考</h4>
-              <p><strong class="kw">部材伸縮量［mm］</strong>＝<strong class="kw">線膨張係数［10⁻⁶/℃］</strong>×部材長さ［mm］×温度差［℃］。</p>
-              <p>鋼：12×10⁻⁶×1000×40＝<mark class="critical">0.48mm程度</mark>。アルミニウム合金：24×10⁻⁶×1000×40＝<mark class="critical">0.96mm程度</mark>。</p>
-              <p>また、鉄筋などの鋼材の線膨張係数と、コンクリートの線膨張係数は、ほぼ等しい。このことは、鉄筋コンクリート構造が合理的である理由のひとつである。</p>
-            </div>
-          </article>
-          <article class="study-card translation">
-            <div class="card-title">Bản dịch tiếng Việt</div>
-            <div class="recall-source" lang="vi">
-              <p>Khi tay vịn kim loại dài, phải xét co giãn do nhiệt và thông thường bố trí <strong class="kw">bộ phận điều chỉnh co giãn với khoảng cách</strong> <mark class="critical">khoảng 5 đến 10m</mark>. Khoảng cách và chiều rộng khe phải được xác định theo <strong class="kw">hệ số giãn nở tuyến tính</strong> của vật liệu.</p>
-              <p>Với <strong class="kw">chênh lệch nhiệt độ</strong> <mark class="critical">40℃①</mark>, đề ghi thép dài 1m giãn <span class="trap">khoảng 0,2mm②</span>, còn hợp kim nhôm dài 1m giãn <mark class="critical">khoảng 1,0mm③</mark>.</p>
-              <h4>Cách tư duy và giải</h4>
-              <p>Khi tay vịn dài, phải bố trí <strong class="kw">mối nối co giãn</strong> với khoảng cách <mark class="critical">khoảng 5 đến 10m</mark>.</p>
-              <p>Với <strong class="kw">ΔT = 40℃ và L = 1m</strong>, thép giãn <mark class="critical">khoảng 0,5mm</mark>, hợp kim nhôm giãn <mark class="critical">khoảng 1,0mm</mark>.</p>
-              <p>Vì vậy ② <span class="trap">không phải 0,2mm</span> mà là <mark class="critical">0,5mm</mark>.</p>
-              <h4>Tham khảo</h4>
-              <p><strong class="kw">Lượng co giãn cấu kiện [mm]</strong> = <strong class="kw">hệ số giãn nở tuyến tính [10⁻⁶/℃]</strong> × chiều dài [mm] × chênh lệch nhiệt độ [℃].</p>
-              <p>Thép: 12×10⁻⁶×1000×40 = <mark class="critical">khoảng 0,48mm</mark>. Hợp kim nhôm: 24×10⁻⁶×1000×40 = <mark class="critical">khoảng 0,96mm</mark>.</p>
-              <p>Hệ số giãn nở tuyến tính của thép, ví dụ cốt thép, và bê tông gần như bằng nhau; sách nêu đây là một lý do cho tính hợp lý của kết cấu bê tông cốt thép.</p>
-            </div>
-          </article>
-        </div>
-        <div class="figure-box"><strong>Giải thích hình Book 565</strong><p>Hình minh họa các ví dụ cấu tạo phần co giãn của tay vịn, có nắp che 伸縮調整カバー, kim loại cố định, あと施工アンカー và khe <strong class="kw">e</strong>. Kích thước <strong class="kw">e</strong> được quyết định theo chiều dài tay vịn.</p></div>
-        <p class="source-ref"><a href="#toc">↑ Mục lục</a></p>
-      </section>
-
-      <section class="subsection" id="q5">
-        <h3>設問5 左官工事：吸水調整材の塗布</h3>
-        <div class="source-ref">Nguồn: Book 560, 566</div>
-        <div class="study-grid">
-          <article class="study-card original">
-            <div class="card-title">原文</div>
-            <div class="recall-source" lang="ja">
-              <p>左官工事における<strong class="kw">吸水調整材</strong>は、モルタル塗りの下地となるコンクリート面等に直接塗布することで、下地とモルタルの界面に<span class="trap">厚い膜①</span>を形成させて、モルタル中の水分の下地への吸水（<strong class="kw">ドライアウト</strong>）による付着力の低下を防ぐものである。</p>
-              <p>吸水調整材塗布後の下塗りまでの間隔時間は、一般的には<strong class="kw">1時間以上②</strong>とするが、長時間放置するとほこり等の付着により接着を阻害することがあるので、<strong class="kw">1日程度③</strong>で下塗りをすることが望ましい。</p>
-              <h4>考え方・解き方</h4>
-              <p>ドライアウトによる付着力の低下を防止するため、モルタルを塗り付ける前に、吸水が著しい塗付け面に吸水調整材を塗布する必要がある。</p>
-              <p>吸水調整材は、下地とモルタルとの界面に、<strong class="kw">厚さ</strong><mark class="critical">1mm程度</mark>の<strong class="kw">薄い膜</strong>が形成されるように塗布する。<span class="relation">膜が厚すぎると、塗り付けたモルタルが剥がれやすくなる</span>。</p>
-              <p>吸水調整材の塗布後は、<strong class="kw">養生</strong><mark class="critical">1時間以上</mark>が必要である。しかし長すぎると埃などが付着して接着を阻害するので、<strong class="kw">下塗り完了</strong>は<mark class="critical">1日程度</mark>が望ましい。すなわち適切な間隔は<mark class="critical">1時間以上1日以内</mark>である。</p>
-              <p>ただし、吸水調整材として<strong class="kw">ポリマーセメント</strong>を使用するときは、塗布後、<span class="trap">1時間以上の養生を行わず、直ちに薄層で下塗り</span>を行う必要がある。また、保水性と作業性を向上させるため、粉体の保水剤が使用される場合もある。</p>
-              <p>以上により、②と③は正しいが、①は<span class="trap">厚いではなく</span><strong class="kw">薄い</strong>である。</p>
-            </div>
-          </article>
-          <article class="study-card translation">
-            <div class="card-title">Bản dịch tiếng Việt</div>
-            <div class="recall-source" lang="vi">
-              <p>Trong công tác trát, <strong class="kw">chất điều chỉnh độ hút nước</strong> được bôi trực tiếp lên bề mặt bê tông làm nền trát vữa, tạo <span class="trap">một lớp màng dày①</span> tại mặt tiếp xúc giữa nền và vữa, nhằm ngăn suy giảm lực bám dính do nền hút nước từ vữa, tức hiện tượng <strong class="kw">dry-out</strong>.</p>
-              <p>Khoảng thời gian từ khi bôi chất điều chỉnh độ hút nước đến khi trát lót thông thường là <strong class="kw">từ 1 giờ trở lên②</strong>; do để quá lâu có thể làm bụi bám và cản trở bám dính, nên mong muốn hoàn thành lớp trát lót trong <strong class="kw">khoảng 1 ngày③</strong>.</p>
-              <h4>Cách tư duy và giải</h4>
-              <p>Để ngăn giảm bám dính do dry-out, trước khi trát vữa phải bôi chất điều chỉnh độ hút nước lên bề mặt có khả năng hút nước lớn.</p>
-              <p>Chất này phải tạo một <strong class="kw">màng mỏng có chiều dày</strong> <mark class="critical">khoảng 1mm</mark> tại mặt tiếp xúc giữa nền và vữa. <span class="relation">Nếu màng quá dày, lớp vữa trát dễ bong</span>.</p>
-              <p>Sau khi bôi cần <strong class="kw">dưỡng hộ</strong> <mark class="critical">ít nhất 1 giờ</mark>, nhưng không nên để quá lâu; <strong class="kw">hoàn thành lớp trát lót</strong> trong <mark class="critical">khoảng 1 ngày</mark> là mong muốn. Khoảng phù hợp là <mark class="critical">từ 1 giờ đến không quá 1 ngày</mark>.</p>
-              <p>Ngoại lệ: khi dùng <strong class="kw">polymer cement</strong> làm chất điều chỉnh độ hút nước, sau khi bôi phải <span class="trap">trát ngay lớp lót mỏng, không chờ dưỡng hộ từ 1 giờ trở lên</span>. Có thể dùng chất giữ nước dạng bột để cải thiện khả năng giữ nước và tính thi công.</p>
-              <p>Vì vậy ① <span class="trap">không phải “dày”</span> mà là <strong class="kw">“mỏng”</strong>.</p>
-            </div>
-          </article>
-        </div>
-        <p class="source-ref"><a href="#toc">↑ Mục lục</a></p>
-      </section>
-
-      <section class="subsection" id="q6">
-        <h3>設問6 建具工事：ステンレス鋼板の加工（角出し曲げ）</h3>
-        <div class="source-ref">Nguồn: Book 561, 567</div>
-        <div class="study-grid">
-          <article class="study-card original">
-            <div class="card-title">原文</div>
-            <div class="recall-source" lang="ja">
-              <p>ステンレス製建具におけるステンレス鋼板の加工には普通曲げと<strong class="kw">角出し曲げ（角曲げ）</strong>がある。角出し曲げができる<strong class="kw">板厚</strong>は一般に<span class="trap">2.0mm以上①</span>であり、3種類の加工方法がある。</p>
-              <p>切込み後の残り板厚寸法が<mark class="critical">0.5mm（a角）</mark>、<mark class="critical">0.75mm（b角）②</mark>の場合は裏板にて補強する。<mark class="critical">1.0mm（c角）③</mark>の場合は<span class="trap">補強不要</span>である。a角は割れが生じやすいので、一般的にはb角、c角を用いる。</p>
-              <h4>考え方・解き方</h4>
-              <p>角出し曲げは、曲げる部分に<strong class="kw">V字型の溝</strong>を設ける加工方法である。角出し曲げができる<strong class="kw">板厚</strong>は、一般に<mark class="critical">1.5mm以上</mark>である。</p>
-              <p>V字型の溝を切り込んだ後の板厚寸法により、a角<mark class="critical">0.5mm</mark>、b角<mark class="critical">0.75mm</mark>、c角<mark class="critical">1.0mm</mark>の3種類に分類される。a角は角が鋭く意匠的には優れるが、強度に問題があるため、b角またはc角で行われることが多い。</p>
-              <div class="table-wrap"><table>
-                <thead><tr><th>呼称</th><th>a角</th><th>b角</th><th>c角</th></tr></thead>
-                <tbody>
-                  <tr><td><strong class="kw">切込み後の残り板厚寸法</strong></td><td><mark class="critical">0.5mm</mark></td><td><mark class="critical">0.75mm</mark></td><td><mark class="critical">1.0mm</mark></td></tr>
-                  <tr><td><strong class="kw">補強の必要性</strong></td><td>裏板で補強</td><td>裏板で補強</td><td><span class="trap">補強は不要</span></td></tr>
-                </tbody>
-              </table></div>
-              <p>以上により、②と③は正しいが、①は<span class="trap">2.0mmではなく</span><mark class="critical">1.5mm</mark>である。</p>
-            </div>
-          </article>
-          <article class="study-card translation">
-            <div class="card-title">Bản dịch tiếng Việt</div>
-            <div class="recall-source" lang="vi">
-              <p>Gia công tấm inox cho cửa gồm uốn thông thường và <strong class="kw">uốn tạo góc sắc</strong>. Đề ghi <strong class="kw">chiều dày tấm</strong> có thể áp dụng công pháp này là <span class="trap">từ 2,0mm trở lên①</span>.</p>
-              <p>Sau khi tạo rãnh, phần kim loại còn lại là <mark class="critical">0,5mm ở góc a</mark> và <mark class="critical">0,75mm ở góc b②</mark> thì phải gia cường bằng tấm phía sau; <mark class="critical">1,0mm ở góc c③</mark> thì <span class="trap">không cần gia cường</span>. Góc a dễ nứt nên thường dùng góc b hoặc c.</p>
-              <h4>Cách tư duy và giải</h4>
-              <p>Uốn tạo góc sắc là phương pháp tạo <strong class="kw">rãnh chữ V</strong> tại vị trí cần uốn. <strong class="kw">Chiều dày tấm</strong> có thể áp dụng nói chung phải <mark class="critical">từ 1,5mm trở lên</mark>.</p>
-              <p>Theo chiều dày còn lại ở đáy rãnh V, có a = <mark class="critical">0,5mm</mark>, b = <mark class="critical">0,75mm</mark>, c = <mark class="critical">1,0mm</mark>. Góc a sắc và tốt về hình thức nhưng có vấn đề về cường độ nên thường sử dụng b hoặc c.</p>
-              <div class="table-wrap"><table>
-                <thead><tr><th>Loại</th><th>a</th><th>b</th><th>c</th></tr></thead>
-                <tbody>
-                  <tr><td><strong class="kw">Chiều dày còn lại sau khi tạo rãnh</strong></td><td><mark class="critical">0,5mm</mark></td><td><mark class="critical">0,75mm</mark></td><td><mark class="critical">1,0mm</mark></td></tr>
-                  <tr><td><strong class="kw">Yêu cầu gia cường</strong></td><td>Gia cường bằng tấm phía sau</td><td>Gia cường bằng tấm phía sau</td><td><span class="trap">Không cần gia cường</span></td></tr>
-                </tbody>
-              </table></div>
-              <p>Vì vậy ① <span class="trap">không phải 2,0mm</span> mà là <mark class="critical">1,5mm</mark>.</p>
-            </div>
-          </article>
-        </div>
-        <div class="figure-box"><strong>Giải thích bảng/hình Book 567</strong><p>Cả ba dạng a, b, c đều áp dụng cho tấm inox có chiều dày ban đầu <mark class="critical">từ 1,5mm trở lên</mark>. Hình mặt cắt cho thấy rãnh V sâu dần đến phần kim loại còn lại 0,5mm, 0,75mm và 1,0mm; a và b dùng 裏板, c không cần.</p></div>
-        <p class="source-ref"><a href="#toc">↑ Mục lục</a></p>
-      </section>
-
-      <section class="subsection" id="q7">
-        <h3>設問7 塗装工事：アクリル樹脂系非水分散形塗料（NAD）の施工</h3>
-        <div class="source-ref">Nguồn: Book 561, 568</div>
-        <div class="study-grid">
-          <article class="study-card original">
-            <div class="card-title">原文</div>
-            <div class="recall-source" lang="ja">
-              <p><strong class="kw">アクリル樹脂系非水分散形塗料（NAD）</strong>は、有機溶剤を媒体として樹脂を分散させた<span class="trap">非水分散形エマルション①</span>を用いた塗料で、常温で比較的短時間で硬化し、<strong class="kw">耐水性②</strong>や耐アルカリ性に優れた塗膜が得られる。</p>
-              <p>塗装方法は、はけ塗り、ローラーブラシ塗り又は吹付け塗りとし、吹付け塗りの場合は、塗料に適したノズルの径や種類を選定する。</p>
-              <p>屋内塗装の場合、パテかいは<strong class="kw">水掛り部分③</strong>には<span class="trap">行わない</span>。</p>
-              <h4>考え方・解き方</h4>
-              <p>NAD（Non Aqueous Dispersion）の材料は、水を媒体とせず、有機溶剤を媒体として樹脂を分散させた<strong class="kw">非水分散形ワニス（透明樹脂）</strong>である。</p>
-              <p>アクリル樹脂系非水分散形塗料は、分散粒子融着乾燥形の塗料であるため、通常の溶剤系塗料に比べて、溶剤臭が少なく、常温でも比較的短時間で硬化し、<strong class="kw">耐水性・耐アルカリ性</strong>に優れた塗膜が得られる。</p>
-              <ul>
-                <li><strong class="kw">下塗り・中塗り・上塗り</strong>は、すべて同一材料で行う。</li>
-                <li>溶剤となるシンナーは、製造所指定のものとする。</li>
-                <li>塗装方法は、刷毛塗り・ローラーブラシ塗り・吹付け塗りのいずれかとする。</li>
-                <li>屋内塗装の場合、<strong class="kw">水掛り部分</strong>にパテかいを<span class="trap">行ってはならない</span>。</li>
-                <li><strong class="kw">気温20℃の場合の標準塗装間隔時間・標準最終養生時間</strong>は<mark class="critical">3時間以上</mark>とする。</li>
-              </ul>
-              <p>以上により、②と③は正しいが、①は<span class="trap">エマルションではなく</span><strong class="kw">ワニス</strong>である。</p>
-            </div>
-          </article>
-          <article class="study-card translation">
-            <div class="card-title">Bản dịch tiếng Việt</div>
-            <div class="recall-source" lang="vi">
-              <p><strong class="kw">Sơn acrylic dạng phân tán không nước NAD</strong> sử dụng dung môi hữu cơ làm môi trường phân tán nhựa. Đề mô tả vật liệu là <span class="trap">nhũ tương phân tán không nước①</span>; sơn đông cứng tương đối nhanh ở nhiệt độ thường và tạo màng có <strong class="kw">khả năng chịu nước②</strong> và chịu kiềm tốt.</p>
-              <p>Thi công bằng chổi, roller brush hoặc phun; khi phun phải chọn đường kính và loại vòi phù hợp với sơn.</p>
-              <p>Đối với sơn trong nhà, tại <strong class="kw">khu vực chịu tác động của nước③</strong> <span class="trap">không thực hiện パテかい</span>.</p>
-              <h4>Cách tư duy và giải</h4>
-              <p>Vật liệu NAD không dùng nước làm môi trường, mà dùng dung môi hữu cơ để phân tán nhựa thành <strong class="kw">varnish dạng phân tán không nước, nhựa trong suốt</strong>.</p>
-              <p>NAD là sơn kiểu các hạt phân tán kết dính khi khô; so với sơn dung môi thông thường, mùi dung môi ít hơn, đông cứng tương đối nhanh ở nhiệt độ thường và có <strong class="kw">khả năng chịu nước, chịu kiềm</strong> tốt.</p>
-              <ul>
-                <li><strong class="kw">Lớp lót, lớp giữa, lớp phủ hoàn thiện</strong> đều dùng cùng vật liệu.</li>
-                <li>Thinner phải là loại do nhà sản xuất chỉ định.</li>
-                <li>Thi công bằng chổi, roller brush hoặc phun.</li>
-                <li>Trong nhà, tại <strong class="kw">khu vực chịu nước</strong> <span class="trap">không được thực hiện パテかい</span>.</li>
-                <li><strong class="kw">Ở 20℃, thời gian giữa các lớp và dưỡng hộ cuối cùng</strong> phải <mark class="critical">từ 3 giờ trở lên</mark>.</li>
-              </ul>
-              <p>Vì vậy ① <span class="trap">không phải emulsion</span> mà là <strong class="kw">varnish</strong>.</p>
-            </div>
-          </article>
-        </div>
-        <p class="source-ref"><a href="#toc">↑ Mục lục</a></p>
-      </section>
-
-      <section class="subsection" id="q8">
-        <h3>設問8 内装工事：フリーアクセスフロア下地となるタイルカーペット</h3>
-        <div class="source-ref">Nguồn: Book 561, 568</div>
-        <div class="study-grid">
-          <article class="study-card original">
-            <div class="card-title">原文</div>
-            <div class="recall-source" lang="ja">
-              <p>タイルカーペットを<strong class="kw">事務室用フリーアクセスフロア下地</strong>に施工する場合、床パネル相互間の<strong class="kw">段差とすき間</strong>を<mark class="critical">1mm以下①</mark>に調整した後、床パネルの目地とタイルカーペットの目地を<mark class="critical">100mm程度②</mark>ずらして割付けを行う。</p>
-              <p>カーペットの張付けは、粘着はく離形の接着剤を<span class="trap">カーペット裏③</span>の全面に塗布し、適切なオープンタイムをとり、圧着しながら行う。</p>
-              <p><strong class="kw">解答③</strong>：<strong class="kw">床パネル（下地）</strong>。</p>
-            </div>
-          </article>
-          <article class="study-card translation">
-            <div class="card-title">Bản dịch tiếng Việt</div>
-            <div class="recall-source" lang="vi">
-              <p>Khi thi công tile carpet trên <strong class="kw">nền sàn nâng kỹ thuật dùng cho văn phòng</strong>, phải điều chỉnh <strong class="kw">độ chênh cao và khe hở giữa các tấm sàn</strong> xuống <mark class="critical">không quá 1mm①</mark>, sau đó bố trí sao cho mạch tấm sàn và mạch tile carpet lệch nhau <mark class="critical">khoảng 100mm②</mark>.</p>
-              <p>Đề ghi rằng keo dính dạng có thể bóc được bôi lên toàn bộ <span class="trap">mặt sau của thảm③</span>, chờ đủ open time rồi ép dán.</p>
-              <p><strong class="kw">Đáp án ③</strong>: phải là <strong class="kw">tấm sàn, tức nền</strong>.</p>
-            </div>
-          </article>
-        </div>
-        <div class="note-box"><strong>Phạm vi Book 560-568</strong><p>Phần “考え方・解き方” chi tiết của 設問8 tiếp tục ở Book 569. HTML này dừng tại Book 568 nên chỉ giữ nội dung và đáp án đã xuất hiện trong phạm vi yêu cầu, không đưa phần Book 569 vào bài học chính.</p></div>
-        <p class="source-ref"><a href="#toc">↑ Mục lục</a></p>
-      </section>
-    </section>
-
-  </main>
-  <!-- CONTENT_END -->
-
-  <!-- =====================================================
-       NON-DIMMED STUDY SUPPORT SECTIONS
-       These sections stay normally readable in Keywords mode.
-       ===================================================== -->
-
-  <section class="aggregate-section" id="terms">
-    <div class="section-head">
-      <h2>Thuật ngữ chuyên môn</h2>
-    </div>
-    
-    <div class="table-wrap"><table>
-      <thead><tr><th>日本語</th><th>読み方</th><th>Tiếng Việt</th><th>Giải thích</th><th>Liên quan</th></tr></thead>
-      <tbody>
-        <tr><td>改質アスファルトシート防水</td><td>かいしつアスファルトシートぼうすい</td><td>Chống thấm bằng màng asphalt cải tiến</td><td>Hệ chống thấm dùng màng asphalt cải tiến.</td><td>常温粘着工法</td></tr>
-        <tr><td>常温粘着工法</td><td>じょうおんねんちゃくこうほう</td><td>Phương pháp tự dính ở nhiệt độ thường</td><td>Bóc giấy cách ly và dán lớp tự dính, không gia nhiệt bằng torch.</td><td>粘着層付改質アスファルトシート</td></tr>
-        <tr><td>負圧</td><td>ふあつ</td><td>Áp suất âm, lực hút gió</td><td>Áp lực có xu hướng hút lớp mái lên.</td><td>立上がり際</td></tr>
-        <tr><td>増張り</td><td>ますばり</td><td>Gia cường bằng lớp màng bổ sung</td><td>Bổ sung màng tại góc, chân tường hoặc vị trí cần tăng độ tin cậy chống thấm.</td><td>出隅・入隅</td></tr>
-        <tr><td>ばち</td><td>ばち</td><td>Sai khác kích thước hai cạnh đối diện</td><td>Hạng mục kiểm tra hình học của gạch.</td><td>タイル検査</td></tr>
-        <tr><td>曲げ強度</td><td>まげきょうど</td><td>Cường độ uốn</td><td>Thuật ngữ JASS dùng cho hạng mục cường độ của tile.</td><td>曲げ破壊荷重</td></tr>
-        <tr><td>曲げ破壊荷重</td><td>まげはかいかじゅう</td><td>Tải trọng phá hoại khi uốn</td><td>Thuật ngữ JIS được sách nêu là đáp án chấp nhận được.</td><td>曲げ強度</td></tr>
-        <tr><td>下葺き</td><td>したぶき</td><td>Lớp lót dưới mái</td><td>Lớp chống nước phía dưới vật liệu lợp mái chính.</td><td>アスファルトルーフィング</td></tr>
-        <tr><td>軒先</td><td>のきさき</td><td>Mép mái</td><td>Phía thấp của mái, nơi bắt đầu trải lớp lót.</td><td>水下側</td></tr>
-        <tr><td>仮止め</td><td>かりどめ</td><td>Cố định tạm</td><td>Giữ vật liệu tại vị trí trước khi hoàn thiện hệ mái.</td><td>ステープル釘</td></tr>
-        <tr><td>伸縮調整部</td><td>しんしゅくちょうせいぶ</td><td>Bộ phận điều chỉnh co giãn</td><td>Hấp thụ co giãn của cấu kiện kim loại do nhiệt độ.</td><td>伸縮継手</td></tr>
-        <tr><td>線膨張係数</td><td>せんぼうちょうけいすう</td><td>Hệ số giãn nở tuyến tính</td><td>Đại lượng biểu thị mức thay đổi chiều dài theo nhiệt độ.</td><td>部材伸縮量</td></tr>
-        <tr><td>吸水調整材</td><td>きゅうすいちょうせいざい</td><td>Chất điều chỉnh độ hút nước</td><td>Hạn chế nền hút nước quá nhanh từ vữa trát.</td><td>ドライアウト</td></tr>
-        <tr><td>ドライアウト</td><td>ドライアウト</td><td>Dry-out</td><td>Nước trong vữa bị nền hút quá nhanh làm giảm khả năng bám dính.</td><td>左官工事</td></tr>
-        <tr><td>角出し曲げ</td><td>かどだしまげ</td><td>Uốn tạo góc sắc</td><td>Gia công tạo rãnh chữ V trước khi uốn tấm inox.</td><td>角曲げ</td></tr>
-        <tr><td>裏板</td><td>うらいた</td><td>Tấm gia cường phía sau</td><td>Gia cường vùng rãnh V khi phần kim loại còn lại mỏng.</td><td>a角・b角</td></tr>
-        <tr><td>非水分散形塗料</td><td>ひすいぶんさんがたとりょう</td><td>Sơn phân tán không nước</td><td>Hệ phân tán nhựa trong môi trường không phải nước.</td><td>NAD</td></tr>
-        <tr><td>ワニス</td><td>ワニス</td><td>Varnish</td><td>Trong NAD, sách mô tả là vật liệu nhựa trong suốt dạng phân tán không nước.</td><td>非水分散形ワニス</td></tr>
-        <tr><td>パテかい</td><td>パテかい</td><td>Xử lý putty cục bộ</td><td>Xử lý cục bộ bề mặt bằng putty; không thực hiện ở 水掛り部分 trong sơn nội thất theo nội dung bài.</td><td>水掛り部分</td></tr>
-        <tr><td>フリーアクセスフロア</td><td>フリーアクセスフロア</td><td>Sàn nâng kỹ thuật</td><td>Sàn có khoảng trống bên dưới để bố trí cáp và hạ tầng kỹ thuật.</td><td>床パネル</td></tr>
-        <tr><td>粘着はく離形接着剤</td><td>ねんちゃくはくりがたせっちゃくざい</td><td>Keo dính có thể bóc</td><td>Cho phép tháo và thay tile carpet.</td><td>オープンタイム</td></tr>
-        <tr><td>オープンタイム</td><td>オープンタイム</td><td>Open time</td><td>Thời gian chờ sau khi bôi keo trước khi đặt tile carpet.</td><td>タイルカーペット</td></tr>
-      </tbody>
-    </table></div>
-
-  </section>
-
-  <section class="aggregate-section" id="background">
-    <div class="section-head">
-      <h2>Kiến thức nền cần biết</h2>
-    </div>
-    
-    <div class="note-box"><strong>Phạm vi của section này</strong><p>Phần này hệ thống hóa các cơ chế và quan hệ kỹ thuật đã được giải thích trong Book 560-568 và trong bản dịch; không phải là phần 原文 độc lập của sách.</p></div>
-    <h3 id="bg-waterproof">1. Chống thấm màng tự dính và vùng sát chân phần dựng đứng</h3>
-    <p>Vùng sát 立上がり chịu áp suất âm do gió lớn hơn phần mặt phẳng thông thường. Vì vậy bài yêu cầu tại phạm vi <mark class="critical">500mm</mark> sát chân phần đứng, lớp thứ nhất dùng màng có lớp tự dính; góc lồi và góc lõm được 増張り bằng màng rộng khoảng <mark class="critical">200mm</mark>, đưa lên phần đứng khoảng <mark class="critical">100mm</mark>.</p>
-    <h3 id="bg-roofing">2. Nguyên tắc chồng mí lớp lót mái</h3>
-    <p>Lớp roofing được thi công từ phía thấp lên phía cao để tấm phía thượng lưu phủ lên tấm phía hạ lưu. Cách chồng này duy trì đường thoát nước liên tục và hạn chế nước lọt ngược vào mối nối.</p>
-    <h3 id="bg-expansion">3. Giãn nở nhiệt của kim loại</h3>
-    <p>Lượng thay đổi chiều dài phụ thuộc hệ số giãn nở tuyến tính, chiều dài cấu kiện và chênh lệch nhiệt độ. Trong ví dụ của sách, ΔT = <mark class="critical">40℃</mark>, L = 1m cho kết quả xấp xỉ <mark class="critical">0,5mm</mark> với thép và <mark class="critical">1,0mm</mark> với hợp kim nhôm.</p>
-    <h3 id="bg-dryout">4. Dry-out và chất điều chỉnh độ hút nước</h3>
-    <p>Nền hút nước mạnh có thể lấy nước khỏi vữa quá nhanh, làm giảm bám dính. 吸水調整材 tạo một màng mỏng khoảng <mark class="critical">1mm</mark>; nếu màng quá dày thì bản thân mặt phân cách lại dễ trở thành vị trí bong.</p>
-    <h3 id="bg-vgroove">5. Uốn tạo góc sắc của inox</h3>
-    <p>角出し曲げ tạo rãnh chữ V trước khi uốn. Phần vật liệu còn lại càng mỏng thì góc càng sắc nhưng cường độ càng bất lợi; vì vậy a角 tuy tốt về hình thức nhưng thường ưu tiên b角 hoặc c角.</p>
-    <h3 id="bg-nad">6. NAD</h3>
-    <p>NAD là Non Aqueous Dispersion: hệ không dùng nước làm môi trường phân tán. Nội dung sách xác định vật liệu là 非水分散形ワニス, không phải エマルション.</p>
-
-  </section>
-
-  <section class="aggregate-section" id="memory">
-    <div class="section-head">
-      <h2>Điểm cần nhớ và mẹo nhớ</h2>
-    </div>
-    
-    <div class="comparison-box">
-      <div class="table-wrap"><table>
-        <thead><tr><th>Chủ đề</th><th>Recall cue cần nhớ</th></tr></thead>
-        <tbody>
-          <tr><td><strong class="kw">設問1 防水</strong></td><td><strong class="kw">Sát chân phần đứng</strong> <mark class="critical">500mm</mark> → <strong class="kw">増張り</strong> <mark class="critical">200mm</mark> → <strong class="kw">đưa lên</strong> <mark class="critical">100mm</mark></td></tr>
-          <tr><td><strong class="kw">設問2 タイル</strong></td><td><span class="trap">圧縮強度 ×</span> → <strong class="kw">曲げ強度 ○</strong> / <strong class="kw">曲げ破壊荷重 ○</strong></td></tr>
-          <tr><td><strong class="kw">設問3 屋根</strong></td><td><strong class="kw">重ね幅</strong>: 短辺 <mark class="critical">200mm以上</mark>, 長辺 <mark class="critical">100mm以上</mark>. Hiện hành: <strong class="kw">phần chồng mí</strong> <mark class="critical">300mm程度</mark>, <strong class="kw">chỗ khác</strong> <mark class="critical">900mm以内</mark>.</td></tr>
-          <tr><td><strong class="kw">設問4 手すり</strong></td><td><strong class="kw">伸縮継手間隔</strong> <mark class="critical">5-10m</mark>. ΔT <mark class="critical">40℃</mark>, L 1m: thép <mark class="critical">0,5mm</mark>, nhôm <mark class="critical">1,0mm</mark>.</td></tr>
-          <tr><td><strong class="kw">設問5 吸水調整材</strong></td><td><strong class="kw">薄い膜</strong> khoảng <mark class="critical">1mm</mark>; <strong class="kw">dưỡng hộ</strong> <mark class="critical">≥1 giờ</mark>, <strong class="kw">trát lót</strong> trong khoảng <mark class="critical">1 ngày</mark>. <span class="trap">Polymer cement: thi công ngay</span>.</td></tr>
-          <tr><td><strong class="kw">設問6 角出し曲げ</strong></td><td><strong class="kw">板厚</strong> <mark class="critical">≥1,5mm</mark>; a <mark class="critical">0,5</mark> + 裏板, b <mark class="critical">0,75</mark> + 裏板, c <mark class="critical">1,0</mark> + <span class="trap">補強不要</span>.</td></tr>
-          <tr><td><strong class="kw">設問7 NAD</strong></td><td><span class="trap">エマルション ×</span> → <strong class="kw">ワニス ○</strong>. <strong class="kw">20℃の塗装間隔・養生</strong> <mark class="critical">3時間以上</mark>. <strong class="kw">水掛り部分</strong> → <span class="trap">パテかい禁止</span>.</td></tr>
-          <tr><td><strong class="kw">設問8 タイルカーペット</strong></td><td><strong class="kw">床パネル段差・すき間</strong> <mark class="critical">≤1mm</mark>; <strong class="kw">目地ずらし</strong> <mark class="critical">約100mm</mark>; 接着剤は<span class="trap">カーペット裏ではなく</span><strong class="kw">床パネル（下地）</strong>.</td></tr>
-        </tbody>
-      </table></div>
-    </div>
-    <div class="memory-box"><strong>Chuỗi số ôn nhanh</strong><p><mark class="critical">500-200-100</mark> | <mark class="critical">200-100 / 300-900</mark> | <mark class="critical">40℃ → 0,5 / 1,0</mark> | <mark class="critical">1mm, 1 giờ, 1 ngày</mark> | <mark class="critical">1,5 → 0,5 / 0,75 / 1,0</mark> | <mark class="critical">20℃ → 3 giờ</mark> | <mark class="critical">1mm / 100mm</mark>.</p></div>
-
-  </section>
-
+<!--
+HTML TEMPLATE CONTRACT 2.3
+- Based on latest pinch-zoom-safe test.html.
+- Default theme: dark; persistent Dark/Light toggle.
+- Font: 50%-150%, 5% step; persistent.
+- Native two-finger pinch zoom MUST NOT trigger responsive reflow.
+- Real orientation change MAY update layout and restore logical reading position.
+- iPad/tablet portrait: one-column bilingual flow.
+- iPad/tablet landscape: Japanese/Vietnamese side-by-side.
+- Controls: collapsed by default at bottom-left; tap to expand horizontally.
+- Home button: index.html.
+- Back/Next: TOC item navigation, not browser history.
+- Do not redesign CSS/JS/control behavior per lesson.
+-->
+<div class="control-cluster" id="control-cluster">
+<button aria-controls="control-panel" aria-expanded="false" aria-label="Mở công cụ" class="control-launcher" id="controls-toggle" title="Mở công cụ" type="button">⋯</button>
+<div aria-label="Công cụ học tập" class="control-panel" id="control-panel" role="toolbar">
+<button aria-controls="toc" aria-expanded="false" aria-label="Mục lục" id="toc-toggle" title="Mục lục" type="button">☰</button>
+<button aria-label="Mục trước" id="section-prev" title="Mục trước" type="button">‹</button>
+<button aria-label="Mục tiếp theo" id="section-next" title="Mục tiếp theo" type="button">›</button>
+<button aria-label="Đổi Dark/Light" aria-pressed="false" id="theme-toggle" title="Đổi Dark/Light" type="button">☀</button>
+<button aria-label="Đổi Full/Keywords" aria-pressed="false" class="mode-toggle" id="mode-toggle" title="Đổi Full/Keywords" type="button">🎯</button>
+<button aria-label="Giảm cỡ chữ" id="font-down" title="Giảm cỡ chữ 5%" type="button">A−</button>
+<button aria-label="Đặt lại cỡ chữ 100%" class="font-reset" id="font-reset" title="Đặt lại cỡ chữ 100%" type="button">100%</button>
+<button aria-label="Tăng cỡ chữ" id="font-up" title="Tăng cỡ chữ 5%" type="button">A+</button>
+<button aria-label="Top Page" class="home-icon" id="home-button" title="Top Page" type="button"><svg aria-hidden="true" fill="none" viewbox="0 0 24 24"><path d="M3.5 10.5 12 3.8l8.5 6.7v9.2h-5.3v-6H8.8v6H3.5z" stroke="currentColor" stroke-linejoin="round" stroke-width="1.8"></path></svg></button>
 </div>
+</div><div aria-hidden="true" class="toc-overlay" id="toc-overlay"></div>
+<div class="page-shell">
+<header class="hero" id="top">
+<h1>平成29年度 問題4 仕上げ工事 | Book 560-568</h1>
+</header>
+<nav aria-label="Mục lục" class="toc" id="toc">
+<div class="toc-drawer-head">
+<strong>Mục lục</strong>
+<button aria-label="Đóng mục lục" class="toc-close" id="toc-close" type="button">×</button>
+</div>
+<h2>Mục lục</h2>
+<!-- TOC_ITEMS_START -->
 
-<!-- =======================================================
-     APPROVED COMPONENT LIBRARY
-     Hidden. AI may copy/repeat these components into CONTENT.
-     Do not create a new visual system unless strictly necessary.
-     ======================================================= -->
+<!-- TOC_ITEMS_END -->
+<ol><li><a href="#section-overview">平成29年度 問題4 仕上げ工事</a><ol><li><a href="#sub-instructions">出題形式 / Hình thức câu hỏi</a></li><li><a href="#sub-answers">平成29年度 問題4 の解答 / Bảng đáp án</a></li></ol></li><li><a href="#section-solutions">平成29年度 問題4 仕上げ工事の考え方・解き方</a><ol><li><a href="#q1">設問1 防水工事：改質アスファルトシート防水常温粘着工法</a></li><li><a href="#q2">設問2 タイル工事：タイルの検査における検査項目</a></li><li><a href="#q3">設問3 屋根工事：金属板葺き屋根のアスファルトルーフィング</a></li><li><a href="#q4">設問4 金属工事：金属製手すりの伸縮継手</a></li><li><a href="#q5">設問5 左官工事：吸水調整材の塗布</a></li><li><a href="#q6">設問6 建具工事：ステンレス鋼板の加工（角出し曲げ）</a></li><li><a href="#q7">設問7 塗装工事：アクリル樹脂系非水分散形塗料（NAD）の施工</a></li><li><a href="#q8">設問8 内装工事：フリーアクセスフロア下地となるタイルカーペット</a></li></ol></li><li><a href="#terms">Professional terminology</a></li><li><a href="#background">Background knowledge</a></li><li><a href="#memory">Key points and memory aids</a></li></ol></nav>
+<!-- CONTENT_START -->
+<main id="lesson"><section class="study-section" id="section-overview">
+<div class="section-head">
+<h2>平成29年度 問題4 仕上げ工事</h2>
+<span class="source-ref">Nguồn: Book 560-561</span>
+</div>
+<section class="subsection" id="sub-instructions">
+<h3>出題形式 / Hình thức câu hỏi</h3>
+<div class="study-grid">
+<article class="study-card original">
+<div class="card-title">原文</div>
+<div class="recall-source" lang="ja">
+<p>次の<strong class="kw">設問1から設問8</strong>の各記述において、記述ごとの①から③の下線部の語句のうち<strong class="kw">最も不適当な箇所番号を1つ</strong>あげ、<strong class="kw">適当な語句を記入</strong>しなさい。</p>
+</div>
+</article>
+<article class="study-card translation">
+<div class="card-title">Bản dịch tiếng Việt</div>
+<div class="recall-source" lang="vi">
+<p>Trong từng mô tả từ <strong class="kw">câu 1 đến câu 8</strong>, hãy chọn <strong class="kw">một vị trí không phù hợp nhất</strong> trong ba phần được gạch chân ① đến ③ và <strong class="kw">ghi từ ngữ thích hợp để sửa lại</strong>.</p>
+</div>
+</article>
+</div>
+</section>
+<section class="subsection" id="sub-answers">
+<h3>平成29年度 問題4 の解答 / Bảng đáp án</h3>
+<div class="study-grid">
+<article class="study-card original">
+<div class="card-title">原文</div>
+<div class="recall-source" lang="ja">
+<div class="table-wrap"><table>
+<thead><tr><th>設問</th><th>最も不適当な箇所番号</th><th>適当な語句</th><th>別解</th></tr></thead>
+<tbody>
+<tr><td><strong class="kw">設問1</strong></td><td>①</td><td><mark class="critical">500mm</mark></td><td></td></tr>
+<tr><td><strong class="kw">設問2</strong></td><td>③</td><td><strong class="kw">曲げ強度</strong></td><td>曲げ破壊荷重</td></tr>
+<tr><td><strong class="kw">設問3</strong></td><td>②</td><td><mark class="critical">300mm</mark></td><td></td></tr>
+<tr><td><strong class="kw">設問4</strong></td><td>②</td><td><mark class="critical">0.5mm</mark></td><td></td></tr>
+<tr><td><strong class="kw">設問5</strong></td><td>①</td><td><strong class="kw">薄い</strong></td><td></td></tr>
+<tr><td><strong class="kw">設問6</strong></td><td>①</td><td><mark class="critical">1.5mm</mark></td><td></td></tr>
+<tr><td><strong class="kw">設問7</strong></td><td>①</td><td><strong class="kw">ワニス</strong></td><td></td></tr>
+<tr><td><strong class="kw">設問8</strong></td><td>③</td><td><strong class="kw">床パネル</strong></td><td>下地</td></tr>
+</tbody>
+</table></div>
+</div>
+</article>
+<article class="study-card translation">
+<div class="card-title">Bản dịch tiếng Việt</div>
+<div class="recall-source" lang="vi">
+<div class="table-wrap"><table>
+<thead><tr><th>Câu</th><th>Vị trí sai</th><th>Nội dung đúng</th><th>Đáp án khác</th></tr></thead>
+<tbody>
+<tr><td><strong class="kw">Câu 1</strong></td><td>①</td><td><mark class="critical">500mm</mark></td><td></td></tr>
+<tr><td><strong class="kw">Câu 2</strong></td><td>③</td><td><strong class="kw">Cường độ uốn</strong></td><td>Tải trọng phá hoại khi uốn</td></tr>
+<tr><td><strong class="kw">Câu 3</strong></td><td>②</td><td><mark class="critical">300mm</mark></td><td></td></tr>
+<tr><td><strong class="kw">Câu 4</strong></td><td>②</td><td><mark class="critical">0,5mm</mark></td><td></td></tr>
+<tr><td><strong class="kw">Câu 5</strong></td><td>①</td><td><strong class="kw">Mỏng</strong></td><td></td></tr>
+<tr><td><strong class="kw">Câu 6</strong></td><td>①</td><td><mark class="critical">1,5mm</mark></td><td></td></tr>
+<tr><td><strong class="kw">Câu 7</strong></td><td>①</td><td><strong class="kw">Varnish</strong></td><td></td></tr>
+<tr><td><strong class="kw">Câu 8</strong></td><td>③</td><td><strong class="kw">Tấm sàn</strong></td><td>Nền</td></tr>
+</tbody>
+</table></div>
+</div>
+</article>
+</div>
+<p class="source-ref"><a href="#toc">↑ Mục lục</a></p>
+</section>
+</section><section class="study-section" id="section-solutions">
+<div class="section-head">
+<h2>平成29年度 問題4 仕上げ工事の考え方・解き方</h2>
+<span class="source-ref">Nguồn: Book 562-568, đối chiếu đề Book 560-561</span>
+</div>
+<section class="subsection" id="q1">
+<h3>設問1 防水工事：改質アスファルトシート防水常温粘着工法</h3>
+<div class="source-ref">Nguồn: Book 560, 562</div>
+<div class="study-grid">
+<article class="study-card original">
+<div class="card-title">原文</div>
+<div class="recall-source" lang="ja">
+<p><strong class="kw">改質アスファルトシート防水常温粘着工法・断熱露出仕様</strong>の場合、立上がり際の風による負圧は平場の一般部より大きくなるため、断熱材の上が絶縁工法となる立上がり際の<strong class="kw">平場部幅</strong> <span class="trap">300mm程度①</span>は、防水層の<strong class="kw">1層目②</strong>に粘着層付改質アスファルトシートを張り付ける。</p>
+<p>なお、入隅部では<strong class="kw">立上り</strong>に<mark class="critical">100mm程度③</mark>立ち上げて、浮き・口あきが生じないように張り付ける。</p>
+<h4>考え方・解き方</h4>
+<p><strong class="kw">改質アスファルトシート防水常温粘着工法・断熱露出仕様</strong>とは、裏面に粘着層が付いた改質アスファルトシートを、裏面の剥離紙などを剥がしながら張り付ける工法のうち、断熱処理を行うものである。</p>
+<p>改質アスファルト防水トーチ工法は、改質アスファルトシートの裏面および下地面をトーチで加熱・溶融させてシートと下地を密着させる工法であるが、本工法はこれとは異なり、<strong class="kw">常温で施工</strong>されることが特徴である。</p>
+<p>断熱材の上が絶縁工法となる立上がり際の<strong class="kw">平場部幅</strong>は<mark class="critical">500mm程度</mark>とし、その部分にある防水層の<strong class="kw">1層目</strong>には、粘着層付改質アスファルトシートを張り付けなければならない。</p>
+<p>また、出隅部および入隅部では、増張りとして、<strong class="kw">増張り用シートの幅</strong>を<mark class="critical">200mm程度</mark>とし、<strong class="kw">立上り</strong>に<mark class="critical">100mm程度</mark>立ち上げて、浮きや口あきが生じないように張り付けなければならない。</p>
+<p>以上により、②と③は正しいが、①は<span class="trap">300mmではなく</span><mark class="critical">500mm</mark>である。</p>
+</div>
+</article>
+<article class="study-card translation">
+<div class="card-title">Bản dịch tiếng Việt</div>
+<div class="recall-source" lang="vi">
+<p>Đối với <strong class="kw">phương pháp chống thấm bằng màng asphalt cải tiến tự dính ở nhiệt độ thường, cấu hình cách nhiệt lộ thiên</strong>, do áp suất âm của gió tại khu vực sát chân phần dựng đứng lớn hơn khu vực thông thường của phần mặt phẳng, đề ghi <strong class="kw">bề rộng phần mặt phẳng sát chân phần dựng đứng</strong> là <span class="trap">khoảng 300mm①</span>; tại đây phải dán màng asphalt cải tiến có lớp tự dính vào <strong class="kw">lớp thứ nhất②</strong> của lớp chống thấm.</p>
+<p>Tại góc lõm, màng phải được đưa lên <strong class="kw">phần dựng đứng</strong> <mark class="critical">khoảng 100mm③</mark>, đồng thời dán sao cho không phát sinh nổi hoặc hở mép.</p>
+<h4>Cách tư duy và giải</h4>
+<p><strong class="kw">Phương pháp tự dính ở nhiệt độ thường có cách nhiệt lộ thiên</strong> sử dụng màng asphalt cải tiến có lớp keo sẵn ở mặt sau; khi thi công bóc giấy cách ly rồi dán màng xuống nền, đồng thời có xử lý cách nhiệt.</p>
+<p>Khác với phương pháp torch, vốn gia nhiệt và làm nóng chảy mặt sau màng và nền để tạo liên kết, công pháp này có đặc điểm là <strong class="kw">thi công ở nhiệt độ thường</strong>.</p>
+<p><strong class="kw">Bề rộng phần mặt phẳng sát chân phần dựng đứng</strong> đúng phải là <mark class="critical">khoảng 500mm</mark>; tại <strong class="kw">lớp thứ nhất</strong> của lớp chống thấm trong phạm vi này phải dùng màng asphalt cải tiến có lớp tự dính.</p>
+<p>Tại góc lồi và góc lõm, phải gia cường bằng <strong class="kw">màng bổ sung rộng</strong> <mark class="critical">khoảng 200mm</mark> và đưa màng lên <strong class="kw">phần dựng đứng</strong> <mark class="critical">khoảng 100mm</mark>, tránh nổi hoặc hở mép.</p>
+<p>Vì vậy ② và ③ đúng; ① <span class="trap">không phải 300mm</span> mà là <mark class="critical">500mm</mark>.</p>
+</div>
+</article>
+</div>
+<div class="figure-box"><strong>Giải thích hình trong Book 562</strong><p>Hình cấu tạo thể hiện phạm vi <mark class="critical">500mm</mark> tính từ chân phần dựng đứng, lớp chống thấm thứ nhất dùng màng asphalt cải tiến có lớp tự dính. Hai hình chi tiết phía dưới thể hiện 増張り tại góc lồi và góc lõm: màng gia cường rộng khoảng <mark class="critical">200mm</mark> và đưa lên phần đứng khoảng <mark class="critical">100mm</mark>.</p></div>
+<div class="memory-box"><strong>Chuỗi số cần nhớ</strong><p><strong class="kw">Sát chân phần dựng đứng</strong> <mark class="critical">500mm</mark> | <strong class="kw">màng gia cường</strong> <mark class="critical">200mm</mark> | <strong class="kw">đưa lên phần đứng</strong> <mark class="critical">100mm</mark>.</p></div>
+<p class="source-ref"><a href="#toc">↑ Mục lục</a></p>
+</section>
+<section class="subsection" id="q2">
+<h3>設問2 タイル工事：タイルの検査における検査項目</h3>
+<div class="source-ref">Nguồn: Book 560, 563</div>
+<div class="study-grid">
+<article class="study-card original">
+<div class="card-title">原文</div>
+<div class="recall-source" lang="ja">
+<p>タイルの検査における標準品のタイルは、寸法、厚さ、反り、側反り、ばち、欠陥の有無、<strong class="kw">吸水率①</strong>、<strong class="kw">耐凍害性②</strong>、<span class="trap">圧縮強度③</span>、色合いなどの品質検査表を提出し、工事監理者の承認を受ける。</p>
+<p>特注品は、荷口見本による検査又は工場における立会い検査のいずれかを実施する。</p>
+<h4>考え方・解き方</h4>
+<p>タイルの検査において調べなければならない項目には、次のようなものがある。</p>
+<div class="table-wrap"><table>
+<thead><tr><th>項目</th><th>検査内容</th></tr></thead>
+<tbody>
+<tr><td>① 外観</td><td>色合い・欠陥の有無など</td></tr>
+<tr><td>② 裏あし</td><td>形状・長さ［mm］</td></tr>
+<tr><td>③ 寸法</td><td>長さ・幅・厚さ［mm］</td></tr>
+<tr><td>④ ばち</td><td>相対する二辺の寸法差［mm］</td></tr>
+<tr><td>⑤ 反り</td><td>面反り・辺反り・側反り・ねじれ</td></tr>
+<tr><td>⑥ 直角性・役物の角度</td><td>［°］</td></tr>
+<tr><td><strong class="kw">⑦ 吸水率</strong></td><td>［％］</td></tr>
+<tr><td><strong class="kw">⑧ 曲げ破壊荷重</strong></td><td>［N］、曲げ強度［N/mm²］</td></tr>
+<tr><td>⑨ 耐摩耗性</td><td></td></tr><tr><td>⑩ 耐熱衝撃性</td><td></td></tr><tr><td>⑪ 耐貫入性</td><td></td></tr>
+<tr><td><strong class="kw">⑫ 耐凍害性</strong></td><td></td></tr><tr><td>⑬ 耐薬品性</td><td></td></tr><tr><td>⑭ 耐滑り性</td><td></td></tr><tr><td>⑮ 鉛・カドミウムの溶出性</td><td></td></tr>
+</tbody>
+</table></div>
+<p>標準品のタイルについては、寸法・厚さ・反り・側反り・ばち・欠陥の有無・吸水率・耐凍害性・<strong class="kw">曲げ強度</strong>・色合いなどの品質検査表を提出し、工事監理者の承認を受けなければならない。</p>
+<p>この品質検査表に、<span class="trap">圧縮強度を記入する必要はない</span>ので、タイルの検査において圧縮強度を調べる必要はない。</p>
+<p>以上により、①と②は正しいが、③は<span class="trap">圧縮強度ではなく</span><strong class="kw">曲げ強度</strong>である。なお、JASSでは「曲げ強度」、JISでは<strong class="kw">曲げ破壊荷重</strong>となっているため、「曲げ破壊荷重」でも正解である。</p>
+</div>
+</article>
+<article class="study-card translation">
+<div class="card-title">Bản dịch tiếng Việt</div>
+<div class="recall-source" lang="vi">
+<p>Đối với gạch tiêu chuẩn, bảng kiểm tra chất lượng phải có các hạng mục như kích thước, chiều dày, độ cong vênh, cong vênh cạnh bên, ばち, khuyết tật, <strong class="kw">độ hút nước①</strong>, <strong class="kw">khả năng chống hư hại do đóng băng②</strong>, <span class="trap">cường độ nén③</span>, màu sắc... và phải được người giám sát công trình phê duyệt.</p>
+<p>Đối với sản phẩm đặt hàng đặc biệt, thực hiện kiểm tra bằng mẫu lô hàng hoặc kiểm tra chứng kiến tại nhà máy.</p>
+<h4>Cách tư duy và giải</h4>
+<p>Các hạng mục kiểm tra gạch được sách liệt kê như sau.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Hạng mục</th><th>Nội dung kiểm tra</th></tr></thead>
+<tbody>
+<tr><td>① Ngoại quan</td><td>Màu sắc, khuyết tật...</td></tr>
+<tr><td>② 裏あし</td><td>Hình dạng và chiều dài gờ/rãnh mặt sau [mm]</td></tr>
+<tr><td>③ Kích thước</td><td>Dài, rộng, dày [mm]</td></tr>
+<tr><td>④ ばち</td><td>Chênh lệch kích thước giữa hai cạnh đối diện [mm]</td></tr>
+<tr><td>⑤ Cong vênh</td><td>Cong mặt, cong cạnh, cong cạnh bên, xoắn</td></tr>
+<tr><td>⑥ Độ vuông góc, góc của gạch định hình</td><td>[°]</td></tr>
+<tr><td><strong class="kw">⑦ Độ hút nước</strong></td><td>[%]</td></tr>
+<tr><td><strong class="kw">⑧ Tải trọng phá hoại khi uốn</strong></td><td>[N], cường độ uốn [N/mm²]</td></tr>
+<tr><td>⑨ Chống mài mòn</td><td></td></tr><tr><td>⑩ Chịu sốc nhiệt</td><td></td></tr><tr><td>⑪ Chống rạn men</td><td></td></tr>
+<tr><td><strong class="kw">⑫ Chống hư hại do đóng băng</strong></td><td></td></tr><tr><td>⑬ Chịu hóa chất</td><td></td></tr><tr><td>⑭ Chống trượt</td><td></td></tr><tr><td>⑮ Khả năng thôi nhiễm chì và cadimi</td><td></td></tr>
+</tbody>
+</table></div>
+<p>Đối với gạch tiêu chuẩn, bảng chất lượng phải bao gồm <strong class="kw">cường độ uốn</strong> cùng các hạng mục nêu trên.</p>
+<p><span class="trap">Không cần ghi cường độ nén</span> vào bảng kiểm tra chất lượng, vì vậy không cần kiểm tra cường độ nén đối với gạch.</p>
+<p>Do đó ① và ② đúng; ③ <span class="trap">không phải cường độ nén</span> mà là <strong class="kw">cường độ uốn</strong>. JASS dùng thuật ngữ “cường độ uốn”, còn JIS dùng <strong class="kw">tải trọng phá hoại khi uốn</strong>, nên cách ghi sau cũng được chấp nhận.</p>
+</div>
+</article>
+</div>
+<div class="memory-box"><strong>Điểm phân biệt</strong><p><strong class="kw">Kiểm tra cường độ của tile</strong>: <span class="trap">圧縮強度 ×</span> | <strong class="kw">曲げ強度 ○</strong> | <strong class="kw">曲げ破壊荷重 ○</strong>.</p></div>
+<p class="source-ref"><a href="#toc">↑ Mục lục</a></p>
+</section>
+<section class="subsection" id="q3">
+<h3>設問3 屋根工事：金属板葺き屋根のアスファルトルーフィング</h3>
+<div class="source-ref">Nguồn: Book 560, 564</div>
+<div class="study-grid">
+<article class="study-card original">
+<div class="card-title">原文</div>
+<div class="recall-source" lang="ja">
+<p>金属板葺きによる屋根工事の下葺きに用いる<strong class="kw">アスファルトルーフィング</strong>は、軒先より葺き進め、隣接するルーフィングの<strong class="kw">重ね幅・短辺部</strong>は<mark class="critical">200mm以上①</mark>、<strong class="kw">長辺部</strong>は<mark class="critical">100mm以上</mark>とする。</p>
+<p>仮止めを行う場合のステープル釘の打込み間隔は、ルーフィングの重ね、屋根の流れ方向で<span class="trap">450mm程度②</span>、流れに直角方向では<mark class="critical">900mm以内③</mark>とする。</p>
+<h4>考え方・解き方</h4>
+<p>下葺きに用いるアスファルトルーフィングは防水を目的とし、<strong class="kw">軒先より、水下側から水上側に向かって葺き進める</strong>。隣接するルーフィングは、水上側のルーフィングが下葺材の上に来るように重ね合わせる。</p>
+<p><strong class="kw">短辺部の重ね幅</strong>は<mark class="critical">200mm以上</mark>、<strong class="kw">長辺部の重ね幅</strong>は<mark class="critical">100mm以上</mark>とする。</p>
+<p>現在では廃止された昔の規定では、仮止めを行う場合のステープル釘の打込み間隔は、屋根の流れ方向で<mark class="critical">300mm程度</mark>、流れに直角方向では<mark class="critical">900mm以内</mark>と定められていた。</p>
+<p>しかし、ステープル釘を多く打ち過ぎると、下葺きとなるアスファルトルーフィングを貫通する孔が増加し、<span class="relation">防水機能が低下する</span>。そのため規定が変更された。</p>
+<p>現在の規定では、<strong class="kw">隣接するルーフィングを重ね合わせた部分</strong>では<mark class="critical">300mm程度</mark>、<strong class="kw">その他の部分</strong>では必要に応じて<mark class="critical">900mm以内</mark>とする。</p>
+<p>粘着層を有する改質アスファルトルーフィングを用いる場合は、粘着層による下地への仮止めが可能であるため、<span class="trap">ステープル釘は不要</span>である。</p>
+<p>昔の規定に従えば、①と③は正しく、②は<span class="trap">450mmではなく</span><mark class="critical">300mm</mark>である。しかし、現在の規定（建築工事監理指針）では流れ方向か否かによって打込み間隔は変わらないため、<span class="trap">この問題は不適切と考えられる</span>。</p>
+</div>
+</article>
+<article class="study-card translation">
+<div class="card-title">Bản dịch tiếng Việt</div>
+<div class="recall-source" lang="vi">
+<p><strong class="kw">Màng asphalt roofing</strong> dùng làm lớp lót dưới mái kim loại được thi công từ mép mái hướng lên phía cao. <strong class="kw">Chiều rộng chồng mí ở cạnh ngắn</strong> phải <mark class="critical">từ 200mm trở lên①</mark>, còn <strong class="kw">cạnh dài</strong> phải <mark class="critical">từ 100mm trở lên</mark>.</p>
+<p>Khi cố định tạm, đề ghi khoảng cách đinh staple theo hướng dốc mái là <span class="trap">khoảng 450mm②</span>, còn theo hướng vuông góc với hướng dốc là <mark class="critical">không quá 900mm③</mark>.</p>
+<h4>Cách tư duy và giải</h4>
+<p>Màng asphalt roofing có mục đích chống nước và được <strong class="kw">trải từ mép mái, tức phía thấp, tiến lên phía cao</strong>. Tấm phía thượng lưu phải phủ lên phía trên tấm phía hạ lưu.</p>
+<p><strong class="kw">Chồng mí cạnh ngắn</strong>: <mark class="critical">≥ 200mm</mark>. <strong class="kw">Chồng mí cạnh dài</strong>: <mark class="critical">≥ 100mm</mark>.</p>
+<p>Theo quy định cũ hiện đã bị bãi bỏ, khoảng cách staple là <mark class="critical">khoảng 300mm</mark> theo hướng dốc mái và <mark class="critical">không quá 900mm</mark> theo hướng vuông góc.</p>
+<p>Nếu đóng staple quá nhiều, số lỗ xuyên qua lớp roofing tăng lên và <span class="relation">khả năng chống nước suy giảm</span>. Vì vậy quy định đã được thay đổi.</p>
+<p>Theo quy định hiện tại được sách nêu, <strong class="kw">phần chồng mí giữa các tấm</strong> dùng khoảng cách <mark class="critical">khoảng 300mm</mark>; <strong class="kw">các phần khác</strong> khi cần dùng khoảng cách <mark class="critical">không quá 900mm</mark>.</p>
+<p>Nếu dùng màng asphalt cải tiến có lớp tự dính thì có thể cố định tạm bằng lớp keo, vì vậy <span class="trap">không cần đinh staple</span>.</p>
+<p>Nếu xét theo quy định cũ, ② <span class="trap">không phải 450mm</span> mà là <mark class="critical">300mm</mark>. Tuy nhiên, theo quy định hiện hành nêu trong sách, khoảng cách không còn được phân biệt chỉ theo hướng dốc hay vuông góc, vì vậy <span class="trap">câu hỏi này được sách đánh giá là không phù hợp</span>.</p>
+</div>
+</article>
+</div>
+<div class="figure-box"><strong>Giải thích sơ đồ Book 564</strong><p>Sơ đồ cho thấy hướng dốc, hướng vuông góc với dốc, vị trí 軒先, chiều rộng chồng mí <mark class="critical">100mm</mark> và <mark class="critical">200mm</mark>, cùng vị trí các đinh staple. Nguyên tắc chống nước là tấm phía cao phải phủ lên tấm phía thấp.</p></div>
+<p class="source-ref"><a href="#toc">↑ Mục lục</a></p>
+</section>
+<section class="subsection" id="q4">
+<h3>設問4 金属工事：金属製手すりの伸縮継手</h3>
+<div class="source-ref">Nguồn: Book 560, 565</div>
+<div class="study-grid">
+<article class="study-card original">
+<div class="card-title">原文</div>
+<div class="recall-source" lang="ja">
+<p>金属製手すりが長くなる場合には、金属の温度変化による部材の伸縮を考慮して、通常<strong class="kw">伸縮調整部の間隔</strong>を<mark class="critical">5～10m程度</mark>ごとに設ける。伸縮調整部を設ける間隔及び伸縮調整幅は、使用する金属の<strong class="kw">線膨張係数</strong>を考慮して決める。</p>
+<p><strong class="kw">温度差</strong><mark class="critical">40℃①</mark>の場合の部材伸縮量は、鋼は1m当たり<span class="trap">0.2mm程度②</span>、アルミニウム合金は1m当たり<mark class="critical">1.0mm程度③</mark>である。</p>
+<h4>考え方・解き方</h4>
+<p>金属製手すりが長くなる場合、温度変化による伸縮を考慮し、<strong class="kw">伸縮調整部（伸縮継手）</strong>を<mark class="critical">5m～10m程度</mark>の間隔で設けなければならない。</p>
+<p><strong class="kw">温度差40℃、長さ1m</strong>では、鋼は<mark class="critical">0.5mm程度</mark>、アルミニウム合金は<mark class="critical">1.0mm程度</mark>伸びる。</p>
+<p>以上により、①と③は正しいが、②は<span class="trap">0.2mmではなく</span><mark class="critical">0.5mm</mark>である。</p>
+<h4>参考</h4>
+<p><strong class="kw">部材伸縮量［mm］</strong>＝<strong class="kw">線膨張係数［10⁻⁶/℃］</strong>×部材長さ［mm］×温度差［℃］。</p>
+<p>鋼：12×10⁻⁶×1000×40＝<mark class="critical">0.48mm程度</mark>。アルミニウム合金：24×10⁻⁶×1000×40＝<mark class="critical">0.96mm程度</mark>。</p>
+<p>また、鉄筋などの鋼材の線膨張係数と、コンクリートの線膨張係数は、ほぼ等しい。このことは、鉄筋コンクリート構造が合理的である理由のひとつである。</p>
+</div>
+</article>
+<article class="study-card translation">
+<div class="card-title">Bản dịch tiếng Việt</div>
+<div class="recall-source" lang="vi">
+<p>Khi tay vịn kim loại dài, phải xét co giãn do nhiệt và thông thường bố trí <strong class="kw">bộ phận điều chỉnh co giãn với khoảng cách</strong> <mark class="critical">khoảng 5 đến 10m</mark>. Khoảng cách và chiều rộng khe phải được xác định theo <strong class="kw">hệ số giãn nở tuyến tính</strong> của vật liệu.</p>
+<p>Với <strong class="kw">chênh lệch nhiệt độ</strong> <mark class="critical">40℃①</mark>, đề ghi thép dài 1m giãn <span class="trap">khoảng 0,2mm②</span>, còn hợp kim nhôm dài 1m giãn <mark class="critical">khoảng 1,0mm③</mark>.</p>
+<h4>Cách tư duy và giải</h4>
+<p>Khi tay vịn dài, phải bố trí <strong class="kw">mối nối co giãn</strong> với khoảng cách <mark class="critical">khoảng 5 đến 10m</mark>.</p>
+<p>Với <strong class="kw">ΔT = 40℃ và L = 1m</strong>, thép giãn <mark class="critical">khoảng 0,5mm</mark>, hợp kim nhôm giãn <mark class="critical">khoảng 1,0mm</mark>.</p>
+<p>Vì vậy ② <span class="trap">không phải 0,2mm</span> mà là <mark class="critical">0,5mm</mark>.</p>
+<h4>Tham khảo</h4>
+<p><strong class="kw">Lượng co giãn cấu kiện [mm]</strong> = <strong class="kw">hệ số giãn nở tuyến tính [10⁻⁶/℃]</strong> × chiều dài [mm] × chênh lệch nhiệt độ [℃].</p>
+<p>Thép: 12×10⁻⁶×1000×40 = <mark class="critical">khoảng 0,48mm</mark>. Hợp kim nhôm: 24×10⁻⁶×1000×40 = <mark class="critical">khoảng 0,96mm</mark>.</p>
+<p>Hệ số giãn nở tuyến tính của thép, ví dụ cốt thép, và bê tông gần như bằng nhau; sách nêu đây là một lý do cho tính hợp lý của kết cấu bê tông cốt thép.</p>
+</div>
+</article>
+</div>
+<div class="figure-box"><strong>Giải thích hình Book 565</strong><p>Hình minh họa các ví dụ cấu tạo phần co giãn của tay vịn, có nắp che 伸縮調整カバー, kim loại cố định, あと施工アンカー và khe <strong class="kw">e</strong>. Kích thước <strong class="kw">e</strong> được quyết định theo chiều dài tay vịn.</p></div>
+<p class="source-ref"><a href="#toc">↑ Mục lục</a></p>
+</section>
+<section class="subsection" id="q5">
+<h3>設問5 左官工事：吸水調整材の塗布</h3>
+<div class="source-ref">Nguồn: Book 560, 566</div>
+<div class="study-grid">
+<article class="study-card original">
+<div class="card-title">原文</div>
+<div class="recall-source" lang="ja">
+<p>左官工事における<strong class="kw">吸水調整材</strong>は、モルタル塗りの下地となるコンクリート面等に直接塗布することで、下地とモルタルの界面に<span class="trap">厚い膜①</span>を形成させて、モルタル中の水分の下地への吸水（<strong class="kw">ドライアウト</strong>）による付着力の低下を防ぐものである。</p>
+<p>吸水調整材塗布後の下塗りまでの間隔時間は、一般的には<strong class="kw">1時間以上②</strong>とするが、長時間放置するとほこり等の付着により接着を阻害することがあるので、<strong class="kw">1日程度③</strong>で下塗りをすることが望ましい。</p>
+<h4>考え方・解き方</h4>
+<p>ドライアウトによる付着力の低下を防止するため、モルタルを塗り付ける前に、吸水が著しい塗付け面に吸水調整材を塗布する必要がある。</p>
+<p>吸水調整材は、下地とモルタルとの界面に、<strong class="kw">厚さ</strong><mark class="critical">1mm程度</mark>の<strong class="kw">薄い膜</strong>が形成されるように塗布する。<span class="relation">膜が厚すぎると、塗り付けたモルタルが剥がれやすくなる</span>。</p>
+<p>吸水調整材の塗布後は、<strong class="kw">養生</strong><mark class="critical">1時間以上</mark>が必要である。しかし長すぎると埃などが付着して接着を阻害するので、<strong class="kw">下塗り完了</strong>は<mark class="critical">1日程度</mark>が望ましい。すなわち適切な間隔は<mark class="critical">1時間以上1日以内</mark>である。</p>
+<p>ただし、吸水調整材として<strong class="kw">ポリマーセメント</strong>を使用するときは、塗布後、<span class="trap">1時間以上の養生を行わず、直ちに薄層で下塗り</span>を行う必要がある。また、保水性と作業性を向上させるため、粉体の保水剤が使用される場合もある。</p>
+<p>以上により、②と③は正しいが、①は<span class="trap">厚いではなく</span><strong class="kw">薄い</strong>である。</p>
+</div>
+</article>
+<article class="study-card translation">
+<div class="card-title">Bản dịch tiếng Việt</div>
+<div class="recall-source" lang="vi">
+<p>Trong công tác trát, <strong class="kw">chất điều chỉnh độ hút nước</strong> được bôi trực tiếp lên bề mặt bê tông làm nền trát vữa, tạo <span class="trap">một lớp màng dày①</span> tại mặt tiếp xúc giữa nền và vữa, nhằm ngăn suy giảm lực bám dính do nền hút nước từ vữa, tức hiện tượng <strong class="kw">dry-out</strong>.</p>
+<p>Khoảng thời gian từ khi bôi chất điều chỉnh độ hút nước đến khi trát lót thông thường là <strong class="kw">từ 1 giờ trở lên②</strong>; do để quá lâu có thể làm bụi bám và cản trở bám dính, nên mong muốn hoàn thành lớp trát lót trong <strong class="kw">khoảng 1 ngày③</strong>.</p>
+<h4>Cách tư duy và giải</h4>
+<p>Để ngăn giảm bám dính do dry-out, trước khi trát vữa phải bôi chất điều chỉnh độ hút nước lên bề mặt có khả năng hút nước lớn.</p>
+<p>Chất này phải tạo một <strong class="kw">màng mỏng có chiều dày</strong> <mark class="critical">khoảng 1mm</mark> tại mặt tiếp xúc giữa nền và vữa. <span class="relation">Nếu màng quá dày, lớp vữa trát dễ bong</span>.</p>
+<p>Sau khi bôi cần <strong class="kw">dưỡng hộ</strong> <mark class="critical">ít nhất 1 giờ</mark>, nhưng không nên để quá lâu; <strong class="kw">hoàn thành lớp trát lót</strong> trong <mark class="critical">khoảng 1 ngày</mark> là mong muốn. Khoảng phù hợp là <mark class="critical">từ 1 giờ đến không quá 1 ngày</mark>.</p>
+<p>Ngoại lệ: khi dùng <strong class="kw">polymer cement</strong> làm chất điều chỉnh độ hút nước, sau khi bôi phải <span class="trap">trát ngay lớp lót mỏng, không chờ dưỡng hộ từ 1 giờ trở lên</span>. Có thể dùng chất giữ nước dạng bột để cải thiện khả năng giữ nước và tính thi công.</p>
+<p>Vì vậy ① <span class="trap">không phải “dày”</span> mà là <strong class="kw">“mỏng”</strong>.</p>
+</div>
+</article>
+</div>
+<p class="source-ref"><a href="#toc">↑ Mục lục</a></p>
+</section>
+<section class="subsection" id="q6">
+<h3>設問6 建具工事：ステンレス鋼板の加工（角出し曲げ）</h3>
+<div class="source-ref">Nguồn: Book 561, 567</div>
+<div class="study-grid">
+<article class="study-card original">
+<div class="card-title">原文</div>
+<div class="recall-source" lang="ja">
+<p>ステンレス製建具におけるステンレス鋼板の加工には普通曲げと<strong class="kw">角出し曲げ（角曲げ）</strong>がある。角出し曲げができる<strong class="kw">板厚</strong>は一般に<span class="trap">2.0mm以上①</span>であり、3種類の加工方法がある。</p>
+<p>切込み後の残り板厚寸法が<mark class="critical">0.5mm（a角）</mark>、<mark class="critical">0.75mm（b角）②</mark>の場合は裏板にて補強する。<mark class="critical">1.0mm（c角）③</mark>の場合は<span class="trap">補強不要</span>である。a角は割れが生じやすいので、一般的にはb角、c角を用いる。</p>
+<h4>考え方・解き方</h4>
+<p>角出し曲げは、曲げる部分に<strong class="kw">V字型の溝</strong>を設ける加工方法である。角出し曲げができる<strong class="kw">板厚</strong>は、一般に<mark class="critical">1.5mm以上</mark>である。</p>
+<p>V字型の溝を切り込んだ後の板厚寸法により、a角<mark class="critical">0.5mm</mark>、b角<mark class="critical">0.75mm</mark>、c角<mark class="critical">1.0mm</mark>の3種類に分類される。a角は角が鋭く意匠的には優れるが、強度に問題があるため、b角またはc角で行われることが多い。</p>
+<div class="table-wrap"><table>
+<thead><tr><th>呼称</th><th>a角</th><th>b角</th><th>c角</th></tr></thead>
+<tbody>
+<tr><td><strong class="kw">切込み後の残り板厚寸法</strong></td><td><mark class="critical">0.5mm</mark></td><td><mark class="critical">0.75mm</mark></td><td><mark class="critical">1.0mm</mark></td></tr>
+<tr><td><strong class="kw">補強の必要性</strong></td><td>裏板で補強</td><td>裏板で補強</td><td><span class="trap">補強は不要</span></td></tr>
+</tbody>
+</table></div>
+<p>以上により、②と③は正しいが、①は<span class="trap">2.0mmではなく</span><mark class="critical">1.5mm</mark>である。</p>
+</div>
+</article>
+<article class="study-card translation">
+<div class="card-title">Bản dịch tiếng Việt</div>
+<div class="recall-source" lang="vi">
+<p>Gia công tấm inox cho cửa gồm uốn thông thường và <strong class="kw">uốn tạo góc sắc</strong>. Đề ghi <strong class="kw">chiều dày tấm</strong> có thể áp dụng công pháp này là <span class="trap">từ 2,0mm trở lên①</span>.</p>
+<p>Sau khi tạo rãnh, phần kim loại còn lại là <mark class="critical">0,5mm ở góc a</mark> và <mark class="critical">0,75mm ở góc b②</mark> thì phải gia cường bằng tấm phía sau; <mark class="critical">1,0mm ở góc c③</mark> thì <span class="trap">không cần gia cường</span>. Góc a dễ nứt nên thường dùng góc b hoặc c.</p>
+<h4>Cách tư duy và giải</h4>
+<p>Uốn tạo góc sắc là phương pháp tạo <strong class="kw">rãnh chữ V</strong> tại vị trí cần uốn. <strong class="kw">Chiều dày tấm</strong> có thể áp dụng nói chung phải <mark class="critical">từ 1,5mm trở lên</mark>.</p>
+<p>Theo chiều dày còn lại ở đáy rãnh V, có a = <mark class="critical">0,5mm</mark>, b = <mark class="critical">0,75mm</mark>, c = <mark class="critical">1,0mm</mark>. Góc a sắc và tốt về hình thức nhưng có vấn đề về cường độ nên thường sử dụng b hoặc c.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Loại</th><th>a</th><th>b</th><th>c</th></tr></thead>
+<tbody>
+<tr><td><strong class="kw">Chiều dày còn lại sau khi tạo rãnh</strong></td><td><mark class="critical">0,5mm</mark></td><td><mark class="critical">0,75mm</mark></td><td><mark class="critical">1,0mm</mark></td></tr>
+<tr><td><strong class="kw">Yêu cầu gia cường</strong></td><td>Gia cường bằng tấm phía sau</td><td>Gia cường bằng tấm phía sau</td><td><span class="trap">Không cần gia cường</span></td></tr>
+</tbody>
+</table></div>
+<p>Vì vậy ① <span class="trap">không phải 2,0mm</span> mà là <mark class="critical">1,5mm</mark>.</p>
+</div>
+</article>
+</div>
+<div class="figure-box"><strong>Giải thích bảng/hình Book 567</strong><p>Cả ba dạng a, b, c đều áp dụng cho tấm inox có chiều dày ban đầu <mark class="critical">từ 1,5mm trở lên</mark>. Hình mặt cắt cho thấy rãnh V sâu dần đến phần kim loại còn lại 0,5mm, 0,75mm và 1,0mm; a và b dùng 裏板, c không cần.</p></div>
+<p class="source-ref"><a href="#toc">↑ Mục lục</a></p>
+</section>
+<section class="subsection" id="q7">
+<h3>設問7 塗装工事：アクリル樹脂系非水分散形塗料（NAD）の施工</h3>
+<div class="source-ref">Nguồn: Book 561, 568</div>
+<div class="study-grid">
+<article class="study-card original">
+<div class="card-title">原文</div>
+<div class="recall-source" lang="ja">
+<p><strong class="kw">アクリル樹脂系非水分散形塗料（NAD）</strong>は、有機溶剤を媒体として樹脂を分散させた<span class="trap">非水分散形エマルション①</span>を用いた塗料で、常温で比較的短時間で硬化し、<strong class="kw">耐水性②</strong>や耐アルカリ性に優れた塗膜が得られる。</p>
+<p>塗装方法は、はけ塗り、ローラーブラシ塗り又は吹付け塗りとし、吹付け塗りの場合は、塗料に適したノズルの径や種類を選定する。</p>
+<p>屋内塗装の場合、パテかいは<strong class="kw">水掛り部分③</strong>には<span class="trap">行わない</span>。</p>
+<h4>考え方・解き方</h4>
+<p>NAD（Non Aqueous Dispersion）の材料は、水を媒体とせず、有機溶剤を媒体として樹脂を分散させた<strong class="kw">非水分散形ワニス（透明樹脂）</strong>である。</p>
+<p>アクリル樹脂系非水分散形塗料は、分散粒子融着乾燥形の塗料であるため、通常の溶剤系塗料に比べて、溶剤臭が少なく、常温でも比較的短時間で硬化し、<strong class="kw">耐水性・耐アルカリ性</strong>に優れた塗膜が得られる。</p>
+<ul>
+<li><strong class="kw">下塗り・中塗り・上塗り</strong>は、すべて同一材料で行う。</li>
+<li>溶剤となるシンナーは、製造所指定のものとする。</li>
+<li>塗装方法は、刷毛塗り・ローラーブラシ塗り・吹付け塗りのいずれかとする。</li>
+<li>屋内塗装の場合、<strong class="kw">水掛り部分</strong>にパテかいを<span class="trap">行ってはならない</span>。</li>
+<li><strong class="kw">気温20℃の場合の標準塗装間隔時間・標準最終養生時間</strong>は<mark class="critical">3時間以上</mark>とする。</li>
+</ul>
+<p>以上により、②と③は正しいが、①は<span class="trap">エマルションではなく</span><strong class="kw">ワニス</strong>である。</p>
+</div>
+</article>
+<article class="study-card translation">
+<div class="card-title">Bản dịch tiếng Việt</div>
+<div class="recall-source" lang="vi">
+<p><strong class="kw">Sơn acrylic dạng phân tán không nước NAD</strong> sử dụng dung môi hữu cơ làm môi trường phân tán nhựa. Đề mô tả vật liệu là <span class="trap">nhũ tương phân tán không nước①</span>; sơn đông cứng tương đối nhanh ở nhiệt độ thường và tạo màng có <strong class="kw">khả năng chịu nước②</strong> và chịu kiềm tốt.</p>
+<p>Thi công bằng chổi, roller brush hoặc phun; khi phun phải chọn đường kính và loại vòi phù hợp với sơn.</p>
+<p>Đối với sơn trong nhà, tại <strong class="kw">khu vực chịu tác động của nước③</strong> <span class="trap">không thực hiện パテかい</span>.</p>
+<h4>Cách tư duy và giải</h4>
+<p>Vật liệu NAD không dùng nước làm môi trường, mà dùng dung môi hữu cơ để phân tán nhựa thành <strong class="kw">varnish dạng phân tán không nước, nhựa trong suốt</strong>.</p>
+<p>NAD là sơn kiểu các hạt phân tán kết dính khi khô; so với sơn dung môi thông thường, mùi dung môi ít hơn, đông cứng tương đối nhanh ở nhiệt độ thường và có <strong class="kw">khả năng chịu nước, chịu kiềm</strong> tốt.</p>
+<ul>
+<li><strong class="kw">Lớp lót, lớp giữa, lớp phủ hoàn thiện</strong> đều dùng cùng vật liệu.</li>
+<li>Thinner phải là loại do nhà sản xuất chỉ định.</li>
+<li>Thi công bằng chổi, roller brush hoặc phun.</li>
+<li>Trong nhà, tại <strong class="kw">khu vực chịu nước</strong> <span class="trap">không được thực hiện パテかい</span>.</li>
+<li><strong class="kw">Ở 20℃, thời gian giữa các lớp và dưỡng hộ cuối cùng</strong> phải <mark class="critical">từ 3 giờ trở lên</mark>.</li>
+</ul>
+<p>Vì vậy ① <span class="trap">không phải emulsion</span> mà là <strong class="kw">varnish</strong>.</p>
+</div>
+</article>
+</div>
+<p class="source-ref"><a href="#toc">↑ Mục lục</a></p>
+</section>
+<section class="subsection" id="q8">
+<h3>設問8 内装工事：フリーアクセスフロア下地となるタイルカーペット</h3>
+<div class="source-ref">Nguồn: Book 561, 568</div>
+<div class="study-grid">
+<article class="study-card original">
+<div class="card-title">原文</div>
+<div class="recall-source" lang="ja">
+<p>タイルカーペットを<strong class="kw">事務室用フリーアクセスフロア下地</strong>に施工する場合、床パネル相互間の<strong class="kw">段差とすき間</strong>を<mark class="critical">1mm以下①</mark>に調整した後、床パネルの目地とタイルカーペットの目地を<mark class="critical">100mm程度②</mark>ずらして割付けを行う。</p>
+<p>カーペットの張付けは、粘着はく離形の接着剤を<span class="trap">カーペット裏③</span>の全面に塗布し、適切なオープンタイムをとり、圧着しながら行う。</p>
+<p><strong class="kw">解答③</strong>：<strong class="kw">床パネル（下地）</strong>。</p>
+</div>
+</article>
+<article class="study-card translation">
+<div class="card-title">Bản dịch tiếng Việt</div>
+<div class="recall-source" lang="vi">
+<p>Khi thi công tile carpet trên <strong class="kw">nền sàn nâng kỹ thuật dùng cho văn phòng</strong>, phải điều chỉnh <strong class="kw">độ chênh cao và khe hở giữa các tấm sàn</strong> xuống <mark class="critical">không quá 1mm①</mark>, sau đó bố trí sao cho mạch tấm sàn và mạch tile carpet lệch nhau <mark class="critical">khoảng 100mm②</mark>.</p>
+<p>Đề ghi rằng keo dính dạng có thể bóc được bôi lên toàn bộ <span class="trap">mặt sau của thảm③</span>, chờ đủ open time rồi ép dán.</p>
+<p><strong class="kw">Đáp án ③</strong>: phải là <strong class="kw">tấm sàn, tức nền</strong>.</p>
+</div>
+</article>
+</div>
+<div class="note-box"><strong>Phạm vi Book 560-568</strong><p>Phần “考え方・解き方” chi tiết của 設問8 tiếp tục ở Book 569. HTML này dừng tại Book 568 nên chỉ giữ nội dung và đáp án đã xuất hiện trong phạm vi yêu cầu, không đưa phần Book 569 vào bài học chính.</p></div>
+<p class="source-ref"><a href="#toc">↑ Mục lục</a></p>
+</section>
+</section></main>
+<!-- CONTENT_END -->
+<section id="terms">
+<h2>Thuật ngữ chuyên môn</h2><div class="section-head">
+<h2>Thuật ngữ chuyên môn</h2>
+</div><div class="table-wrap"><table>
+<thead><tr><th>日本語</th><th>読み方</th><th>Tiếng Việt</th><th>Giải thích</th><th>Liên quan</th></tr></thead>
+<tbody>
+<tr><td>改質アスファルトシート防水</td><td>かいしつアスファルトシートぼうすい</td><td>Chống thấm bằng màng asphalt cải tiến</td><td>Hệ chống thấm dùng màng asphalt cải tiến.</td><td>常温粘着工法</td></tr>
+<tr><td>常温粘着工法</td><td>じょうおんねんちゃくこうほう</td><td>Phương pháp tự dính ở nhiệt độ thường</td><td>Bóc giấy cách ly và dán lớp tự dính, không gia nhiệt bằng torch.</td><td>粘着層付改質アスファルトシート</td></tr>
+<tr><td>負圧</td><td>ふあつ</td><td>Áp suất âm, lực hút gió</td><td>Áp lực có xu hướng hút lớp mái lên.</td><td>立上がり際</td></tr>
+<tr><td>増張り</td><td>ますばり</td><td>Gia cường bằng lớp màng bổ sung</td><td>Bổ sung màng tại góc, chân tường hoặc vị trí cần tăng độ tin cậy chống thấm.</td><td>出隅・入隅</td></tr>
+<tr><td>ばち</td><td>ばち</td><td>Sai khác kích thước hai cạnh đối diện</td><td>Hạng mục kiểm tra hình học của gạch.</td><td>タイル検査</td></tr>
+<tr><td>曲げ強度</td><td>まげきょうど</td><td>Cường độ uốn</td><td>Thuật ngữ JASS dùng cho hạng mục cường độ của tile.</td><td>曲げ破壊荷重</td></tr>
+<tr><td>曲げ破壊荷重</td><td>まげはかいかじゅう</td><td>Tải trọng phá hoại khi uốn</td><td>Thuật ngữ JIS được sách nêu là đáp án chấp nhận được.</td><td>曲げ強度</td></tr>
+<tr><td>下葺き</td><td>したぶき</td><td>Lớp lót dưới mái</td><td>Lớp chống nước phía dưới vật liệu lợp mái chính.</td><td>アスファルトルーフィング</td></tr>
+<tr><td>軒先</td><td>のきさき</td><td>Mép mái</td><td>Phía thấp của mái, nơi bắt đầu trải lớp lót.</td><td>水下側</td></tr>
+<tr><td>仮止め</td><td>かりどめ</td><td>Cố định tạm</td><td>Giữ vật liệu tại vị trí trước khi hoàn thiện hệ mái.</td><td>ステープル釘</td></tr>
+<tr><td>伸縮調整部</td><td>しんしゅくちょうせいぶ</td><td>Bộ phận điều chỉnh co giãn</td><td>Hấp thụ co giãn của cấu kiện kim loại do nhiệt độ.</td><td>伸縮継手</td></tr>
+<tr><td>線膨張係数</td><td>せんぼうちょうけいすう</td><td>Hệ số giãn nở tuyến tính</td><td>Đại lượng biểu thị mức thay đổi chiều dài theo nhiệt độ.</td><td>部材伸縮量</td></tr>
+<tr><td>吸水調整材</td><td>きゅうすいちょうせいざい</td><td>Chất điều chỉnh độ hút nước</td><td>Hạn chế nền hút nước quá nhanh từ vữa trát.</td><td>ドライアウト</td></tr>
+<tr><td>ドライアウト</td><td>ドライアウト</td><td>Dry-out</td><td>Nước trong vữa bị nền hút quá nhanh làm giảm khả năng bám dính.</td><td>左官工事</td></tr>
+<tr><td>角出し曲げ</td><td>かどだしまげ</td><td>Uốn tạo góc sắc</td><td>Gia công tạo rãnh chữ V trước khi uốn tấm inox.</td><td>角曲げ</td></tr>
+<tr><td>裏板</td><td>うらいた</td><td>Tấm gia cường phía sau</td><td>Gia cường vùng rãnh V khi phần kim loại còn lại mỏng.</td><td>a角・b角</td></tr>
+<tr><td>非水分散形塗料</td><td>ひすいぶんさんがたとりょう</td><td>Sơn phân tán không nước</td><td>Hệ phân tán nhựa trong môi trường không phải nước.</td><td>NAD</td></tr>
+<tr><td>ワニス</td><td>ワニス</td><td>Varnish</td><td>Trong NAD, sách mô tả là vật liệu nhựa trong suốt dạng phân tán không nước.</td><td>非水分散形ワニス</td></tr>
+<tr><td>パテかい</td><td>パテかい</td><td>Xử lý putty cục bộ</td><td>Xử lý cục bộ bề mặt bằng putty; không thực hiện ở 水掛り部分 trong sơn nội thất theo nội dung bài.</td><td>水掛り部分</td></tr>
+<tr><td>フリーアクセスフロア</td><td>フリーアクセスフロア</td><td>Sàn nâng kỹ thuật</td><td>Sàn có khoảng trống bên dưới để bố trí cáp và hạ tầng kỹ thuật.</td><td>床パネル</td></tr>
+<tr><td>粘着はく離形接着剤</td><td>ねんちゃくはくりがたせっちゃくざい</td><td>Keo dính có thể bóc</td><td>Cho phép tháo và thay tile carpet.</td><td>オープンタイム</td></tr>
+<tr><td>オープンタイム</td><td>オープンタイム</td><td>Open time</td><td>Thời gian chờ sau khi bôi keo trước khi đặt tile carpet.</td><td>タイルカーペット</td></tr>
+</tbody>
+</table></div></section>
+<section id="background">
+<h2>Kiến thức nền cần biết</h2><div class="section-head">
+<h2>Kiến thức nền cần biết</h2>
+</div><div class="note-box"><strong>Phạm vi của section này</strong><p>Phần này hệ thống hóa các cơ chế và quan hệ kỹ thuật đã được giải thích trong Book 560-568 và trong bản dịch; không phải là phần 原文 độc lập của sách.</p></div><p>Vùng sát 立上がり chịu áp suất âm do gió lớn hơn phần mặt phẳng thông thường. Vì vậy bài yêu cầu tại phạm vi <mark class="critical">500mm</mark> sát chân phần đứng, lớp thứ nhất dùng màng có lớp tự dính; góc lồi và góc lõm được 増張り bằng màng rộng khoảng <mark class="critical">200mm</mark>, đưa lên phần đứng khoảng <mark class="critical">100mm</mark>.</p><h3 id="bg-roofing">2. Nguyên tắc chồng mí lớp lót mái</h3><p>Lớp roofing được thi công từ phía thấp lên phía cao để tấm phía thượng lưu phủ lên tấm phía hạ lưu. Cách chồng này duy trì đường thoát nước liên tục và hạn chế nước lọt ngược vào mối nối.</p><h3 id="bg-expansion">3. Giãn nở nhiệt của kim loại</h3><p>Lượng thay đổi chiều dài phụ thuộc hệ số giãn nở tuyến tính, chiều dài cấu kiện và chênh lệch nhiệt độ. Trong ví dụ của sách, ΔT = <mark class="critical">40℃</mark>, L = 1m cho kết quả xấp xỉ <mark class="critical">0,5mm</mark> với thép và <mark class="critical">1,0mm</mark> với hợp kim nhôm.</p><h3 id="bg-dryout">4. Dry-out và chất điều chỉnh độ hút nước</h3><p>Nền hút nước mạnh có thể lấy nước khỏi vữa quá nhanh, làm giảm bám dính. 吸水調整材 tạo một màng mỏng khoảng <mark class="critical">1mm</mark>; nếu màng quá dày thì bản thân mặt phân cách lại dễ trở thành vị trí bong.</p><h3 id="bg-vgroove">5. Uốn tạo góc sắc của inox</h3><p>角出し曲げ tạo rãnh chữ V trước khi uốn. Phần vật liệu còn lại càng mỏng thì góc càng sắc nhưng cường độ càng bất lợi; vì vậy a角 tuy tốt về hình thức nhưng thường ưu tiên b角 hoặc c角.</p><h3 id="bg-nad">6. NAD</h3><p>NAD là Non Aqueous Dispersion: hệ không dùng nước làm môi trường phân tán. Nội dung sách xác định vật liệu là 非水分散形ワニス, không phải エマルション.</p></section>
+<section id="memory">
+<h2>Điểm cần nhớ và mẹo nhớ</h2><div class="section-head">
+<h2>Điểm cần nhớ và mẹo nhớ</h2>
+</div><div class="comparison-box">
+<div class="table-wrap"><table>
+<thead><tr><th>Chủ đề</th><th>Recall cue cần nhớ</th></tr></thead>
+<tbody>
+<tr><td><strong class="kw">設問1 防水</strong></td><td><strong class="kw">Sát chân phần đứng</strong> <mark class="critical">500mm</mark> → <strong class="kw">増張り</strong> <mark class="critical">200mm</mark> → <strong class="kw">đưa lên</strong> <mark class="critical">100mm</mark></td></tr>
+<tr><td><strong class="kw">設問2 タイル</strong></td><td><span class="trap">圧縮強度 ×</span> → <strong class="kw">曲げ強度 ○</strong> / <strong class="kw">曲げ破壊荷重 ○</strong></td></tr>
+<tr><td><strong class="kw">設問3 屋根</strong></td><td><strong class="kw">重ね幅</strong>: 短辺 <mark class="critical">200mm以上</mark>, 長辺 <mark class="critical">100mm以上</mark>. Hiện hành: <strong class="kw">phần chồng mí</strong> <mark class="critical">300mm程度</mark>, <strong class="kw">chỗ khác</strong> <mark class="critical">900mm以内</mark>.</td></tr>
+<tr><td><strong class="kw">設問4 手すり</strong></td><td><strong class="kw">伸縮継手間隔</strong> <mark class="critical">5-10m</mark>. ΔT <mark class="critical">40℃</mark>, L 1m: thép <mark class="critical">0,5mm</mark>, nhôm <mark class="critical">1,0mm</mark>.</td></tr>
+<tr><td><strong class="kw">設問5 吸水調整材</strong></td><td><strong class="kw">薄い膜</strong> khoảng <mark class="critical">1mm</mark>; <strong class="kw">dưỡng hộ</strong> <mark class="critical">≥1 giờ</mark>, <strong class="kw">trát lót</strong> trong khoảng <mark class="critical">1 ngày</mark>. <span class="trap">Polymer cement: thi công ngay</span>.</td></tr>
+<tr><td><strong class="kw">設問6 角出し曲げ</strong></td><td><strong class="kw">板厚</strong> <mark class="critical">≥1,5mm</mark>; a <mark class="critical">0,5</mark> + 裏板, b <mark class="critical">0,75</mark> + 裏板, c <mark class="critical">1,0</mark> + <span class="trap">補強不要</span>.</td></tr>
+<tr><td><strong class="kw">設問7 NAD</strong></td><td><span class="trap">エマルション ×</span> → <strong class="kw">ワニス ○</strong>. <strong class="kw">20℃の塗装間隔・養生</strong> <mark class="critical">3時間以上</mark>. <strong class="kw">水掛り部分</strong> → <span class="trap">パテかい禁止</span>.</td></tr>
+<tr><td><strong class="kw">設問8 タイルカーペット</strong></td><td><strong class="kw">床パネル段差・すき間</strong> <mark class="critical">≤1mm</mark>; <strong class="kw">目地ずらし</strong> <mark class="critical">約100mm</mark>; 接着剤は<span class="trap">カーペット裏ではなく</span><strong class="kw">床パネル（下地）</strong>.</td></tr>
+</tbody>
+</table></div>
+</div><div class="memory-box"><strong>Chuỗi số ôn nhanh</strong><p><mark class="critical">500-200-100</mark> | <mark class="critical">200-100 / 300-900</mark> | <mark class="critical">40℃ → 0,5 / 1,0</mark> | <mark class="critical">1mm, 1 giờ, 1 ngày</mark> | <mark class="critical">1,5 → 0,5 / 0,75 / 1,0</mark> | <mark class="critical">20℃ → 3 giờ</mark> | <mark class="critical">1mm / 100mm</mark>.</p></div></section>
 <template id="component-library">
-
-  <!-- FIGURE -->
-  <figure class="figure-card">
-    <img src="{{IMAGE_SOURCE}}" alt="{{IMAGE_ALT}}">
-    <figcaption>{{FIGURE_CAPTION}}</figcaption>
-  </figure>
-
-  <!-- MULTIPLE FIGURES -->
-  <div class="figure-grid">
-    <figure class="figure-card">
-      <img src="{{IMAGE_SOURCE_1}}" alt="{{IMAGE_ALT_1}}">
-      <figcaption>{{FIGURE_CAPTION_1}}</figcaption>
-    </figure>
-    <figure class="figure-card">
-      <img src="{{IMAGE_SOURCE_2}}" alt="{{IMAGE_ALT_2}}">
-      <figcaption>{{FIGURE_CAPTION_2}}</figcaption>
-    </figure>
-  </div>
-
-  <!-- TABLE -->
-  <div class="table-wrap">
-    <table>
-      <caption>{{TABLE_CAPTION}}</caption>
-      <thead>
-        <tr><th>{{HEADER_1}}</th><th>{{HEADER_2}}</th></tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><strong class="kw">{{ROW_SUBJECT}}</strong></td>
-          <td><span class="relation">{{ROW_RECALL_CUE}}</span></td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-
-  <!-- NOTE -->
-  <div class="note-box">
-    <strong>{{NOTE_TITLE}}</strong>
-    <p>{{NOTE_CONTENT}}</p>
-  </div>
-
-  <!-- WARNING -->
-  <div class="warning-box">
-    <strong>{{WARNING_TITLE}}</strong>
-    <p>{{WARNING_CONTENT}}</p>
-  </div>
-
-  <!-- MEMORY -->
-  <div class="memory-box">
-    <strong>{{MEMORY_TITLE}}</strong>
-    <p>{{MEMORY_CONTENT}}</p>
-  </div>
-
-  <!-- FORMULA / FLOW -->
-  <div class="formula-box">
-    <div class="formula-line">
-      <span class="flow-node">{{NODE_1}}</span>
-      <span class="flow-arrow">→</span>
-      <span class="flow-node">{{NODE_2}}</span>
-      <span class="flow-arrow">→</span>
-      <span class="flow-node">{{NODE_3}}</span>
-    </div>
-  </div>
-
+<div class="table-wrap">
+<table>
+<caption>{{TABLE_CAPTION}}</caption>
+<thead><tr><th>{{HEADER_1}}</th><th>{{HEADER_2}}</th></tr></thead>
+<tbody><tr><td><strong class="kw">{{ROW_KEY}}</strong></td><td><span class="relation">{{ROW_RELATION}}</span></td></tr></tbody>
+</table>
+</div>
+<figure class="figure-card">
+<img alt="{{IMAGE_ALT}}" height="{{IMAGE_HEIGHT}}" src="{{IMAGE_SOURCE}}" width="{{IMAGE_WIDTH}}"/>
+<figcaption>{{IMAGE_CAPTION}}</figcaption>
+</figure>
+<div class="figure-grid">
+<figure class="figure-card">
+<img alt="{{IMAGE_ALT_1}}" height="{{IMAGE_HEIGHT_1}}" src="{{IMAGE_SOURCE_1}}" width="{{IMAGE_WIDTH_1}}"/>
+<figcaption>{{IMAGE_CAPTION_1}}</figcaption>
+</figure>
+<figure class="figure-card">
+<img alt="{{IMAGE_ALT_2}}" height="{{IMAGE_HEIGHT_2}}" src="{{IMAGE_SOURCE_2}}" width="{{IMAGE_WIDTH_2}}"/>
+<figcaption>{{IMAGE_CAPTION_2}}</figcaption>
+</figure>
+</div>
+<section class="note-box"><h3>{{NOTE_TITLE}}</h3><p>{{NOTE_CONTENT}}</p></section>
+<section class="warning-box"><h3>{{WARNING_TITLE}}</h3><p>{{WARNING_CONTENT}}</p></section>
+<section class="memory-box"><h3>{{MEMORY_TITLE}}</h3><p>{{MEMORY_ITEM}}</p></section>
 </template>
-
+</div>
 <script>
-(() => {
-  "use strict";
+(function () {
+  'use strict';
 
   const root = document.documentElement;
   const body = document.body;
+  const q = id => document.getElementById(id);
+  const FONT_LEVELS = Array.from({ length: 21 }, (_, i) => 50 + i * 5);
 
-  const themeToggle = document.getElementById("theme-toggle");
-  const modeToggle = document.getElementById("mode-toggle");
-  const fontDown = document.getElementById("font-down");
-  const fontReset = document.getElementById("font-reset");
-  const fontUp = document.getElementById("font-up");
+  const controls = q('control-cluster');
+  const controlsToggle = q('controls-toggle');
+  const controlPanel = q('control-panel');
+  const themeButton = q('theme-toggle');
+  const modeButton = q('mode-toggle');
+  const fontDown = q('font-down');
+  const fontUp = q('font-up');
+  const fontReset = q('font-reset');
+  const tocButton = q('toc-toggle');
+  const tocClose = q('toc-close');
+  const overlay = q('toc-overlay');
+  const prevButton = q('section-prev');
+  const nextButton = q('section-next');
+  const homeButton = q('home-button');
 
-  const tocToggle = document.getElementById("toc-toggle");
-  const tocClose = document.getElementById("toc-close");
-  const tocOverlay = document.getElementById("toc-overlay");
-  const tocDrawer = document.getElementById("toc-drawer");
+  const pageKey = location.pathname + location.search;
+  const readerStateKey = 'study-reader-position:' + pageKey;
+  const lastPageKey = 'study-last-page';
+  const explicitHomeKey = 'study-explicit-home';
+  const anchorSelector = [
+    '.page-shell h1', '.page-shell h2', '.page-shell h3', '.page-shell h4',
+    '.page-shell p', '.page-shell li', '.page-shell td', '.page-shell th',
+    '.page-shell figcaption', '.page-shell .card-title'
+  ].join(', ');
 
-  const prevButton = document.getElementById("section-prev");
-  const nextButton = document.getElementById("section-next");
+  let anchorElements = [];
+  let lastStablePosition = null;
+  let scrollSaveTimer = 0;
+  let resizeRestoreTimer = 0;
+  let resizeAnchor = null;
+  let suppressScrollSaveUntil = 0;
+  function layoutViewportSize() {
+    const de = document.documentElement;
+    return {
+      width: de.clientWidth || window.innerWidth,
+      height: de.clientHeight || window.innerHeight
+    };
+  }
 
-  const FONT_LEVELS = [80, 90, 100, 110, 120, 130, 140];
+  function visualViewportScale() {
+    const vv = window.visualViewport;
+    return vv && Number.isFinite(vv.scale) ? vv.scale : 1;
+  }
+
+  function isPinchZoomActive() {
+    return Math.abs(visualViewportScale() - 1) > 0.015;
+  }
+
+  const initialLayoutViewport = layoutViewportSize();
+  let lastViewportWidth = initialLayoutViewport.width;
+  let lastViewportHeight = initialLayoutViewport.height;
+  let pinchZoomSession = false;
+
+  try {
+    if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+  } catch (e) {}
 
   function safeGet(key, fallback = null) {
     try {
@@ -1540,210 +1205,602 @@ body.toc-open .toc-drawer {
   }
 
   function safeSet(key, value) {
-    try {
-      localStorage.setItem(key, value);
-    } catch (e) {}
+    try { localStorage.setItem(key, value); } catch (e) {}
   }
+
+  function safeRemove(key) {
+    try { localStorage.removeItem(key); } catch (e) {}
+  }
+
+  /* ---------- Persistent page / PWA resume metadata ---------- */
+
+  function rememberCurrentPage() {
+    safeSet(lastPageKey, pageKey);
+    safeSet('study-last-active-at', String(Date.now()));
+  }
+
+  rememberCurrentPage();
+
+  /* ---------- Layout viewport geometry ---------- */
+
+  /*
+    Pinch zoom changes visualViewport.width / height / scale.
+    It must NOT change the document layout width.
+
+    Therefore --app-viewport-width is derived only from the layout viewport
+    (documentElement.clientWidth / innerWidth), never from visualViewport.width.
+  */
+  function syncViewportGeometry() {
+    const { width } = layoutViewportSize();
+    root.style.setProperty(
+      '--app-viewport-width',
+      `${Math.round(width * 100) / 100}px`
+    );
+  }
+
+  syncViewportGeometry();
+
+  /* ---------- Reader anchors ---------- */
+
+  function rebuildReaderAnchors() {
+    anchorElements = Array.from(document.querySelectorAll(anchorSelector));
+    anchorElements.forEach((el, index) => {
+      el.dataset.readerKey = 'r' + index;
+    });
+  }
+
+  function closestReaderElement(node) {
+    if (!node) return null;
+    const el = node.nodeType === Node.ELEMENT_NODE ? node : node.parentElement;
+    return el ? el.closest('[data-reader-key]') : null;
+  }
+
+  function caretAtPoint(x, y) {
+    try {
+      if (document.caretPositionFromPoint) {
+        const pos = document.caretPositionFromPoint(x, y);
+        if (!pos || !pos.offsetNode) return null;
+        return { node: pos.offsetNode, offset: pos.offset };
+      }
+      if (document.caretRangeFromPoint) {
+        const range = document.caretRangeFromPoint(x, y);
+        if (!range) return null;
+        return { node: range.startContainer, offset: range.startOffset };
+      }
+    } catch (e) {}
+    return null;
+  }
+
+  function textOffsetFromElementStart(element, node, offset) {
+    try {
+      const range = document.createRange();
+      range.setStart(element, 0);
+      range.setEnd(node, offset);
+      return range.toString().length;
+    } catch (e) {
+      return 0;
+    }
+  }
+
+  function domPositionFromTextOffset(element, targetOffset) {
+    const walker = document.createTreeWalker(element, NodeFilter.SHOW_TEXT);
+    let remaining = Math.max(0, targetOffset);
+    let node = walker.nextNode();
+    let last = null;
+
+    while (node) {
+      last = node;
+      const len = node.nodeValue ? node.nodeValue.length : 0;
+      if (remaining <= len) {
+        return { node, offset: remaining };
+      }
+      remaining -= len;
+      node = walker.nextNode();
+    }
+
+    if (last) return { node: last, offset: last.nodeValue ? last.nodeValue.length : 0 };
+    return { node: element, offset: 0 };
+  }
+
+  function characterRect(node, offset) {
+    try {
+      if (node.nodeType !== Node.TEXT_NODE) {
+        const r = node.getBoundingClientRect ? node.getBoundingClientRect() : null;
+        return r && r.height ? r : null;
+      }
+
+      const len = node.nodeValue ? node.nodeValue.length : 0;
+      if (!len) return node.parentElement ? node.parentElement.getBoundingClientRect() : null;
+
+      let start = Math.max(0, Math.min(offset, len - 1));
+      let end = Math.min(len, start + 1);
+      if (offset >= len && len > 0) {
+        start = len - 1;
+        end = len;
+      }
+
+      const range = document.createRange();
+      range.setStart(node, start);
+      range.setEnd(node, end);
+      const rects = range.getClientRects();
+      return rects.length ? rects[0] : range.getBoundingClientRect();
+    } catch (e) {
+      return null;
+    }
+  }
+
+  function captureReadingPosition() {
+    if (!anchorElements.length) rebuildReaderAnchors();
+    if (!anchorElements.length) return null;
+
+    const vv = window.visualViewport;
+    const viewportWidth = vv ? vv.width : window.innerWidth;
+    const topProbe = 6;
+    const ys = [topProbe, 12, 18, 26, 36, 50];
+    const xs = [];
+
+    for (let x = 12; x <= Math.min(viewportWidth - 12, 220); x += 16) xs.push(x);
+    xs.push(viewportWidth * .25, viewportWidth * .5, viewportWidth * .75);
+
+    for (const y of ys) {
+      for (const x of xs) {
+        if (x <= 0 || x >= viewportWidth) continue;
+        const caret = caretAtPoint(x, y);
+        if (!caret) continue;
+        const element = closestReaderElement(caret.node);
+        if (!element || !document.querySelector('.page-shell')?.contains(element)) continue;
+
+        const offset = textOffsetFromElementStart(element, caret.node, caret.offset);
+        const rect = characterRect(caret.node, caret.offset);
+        const key = element.dataset.readerKey;
+        if (key && rect && Number.isFinite(rect.top)) {
+          return { key, offset, top: rect.top };
+        }
+      }
+    }
+
+    /* Fallback: nearest textual block to the top edge. */
+    let best = null;
+    let bestDistance = Infinity;
+    for (const element of anchorElements) {
+      const rect = element.getBoundingClientRect();
+      if (rect.bottom < 0 || rect.top > (vv ? vv.height : window.innerHeight)) continue;
+      const distance = Math.abs(rect.top);
+      if (distance < bestDistance) {
+        bestDistance = distance;
+        best = { key: element.dataset.readerKey, offset: 0, top: rect.top };
+      }
+    }
+    return best;
+  }
+
+  function restoreReadingPosition(state) {
+    if (!state || !state.key) return false;
+    if (!anchorElements.length) rebuildReaderAnchors();
+
+    const element = document.querySelector('[data-reader-key="' + CSS.escape(state.key) + '"]');
+    if (!element) return false;
+
+    const pos = domPositionFromTextOffset(element, Number(state.offset) || 0);
+    const rect = characterRect(pos.node, pos.offset);
+    if (!rect || !Number.isFinite(rect.top)) return false;
+
+    const desiredTop = Number.isFinite(Number(state.top)) ? Number(state.top) : 6;
+    const delta = rect.top - desiredTop;
+    if (Math.abs(delta) < .5) return true;
+
+    suppressScrollSaveUntil = Date.now() + 700;
+    const oldBehavior = root.style.scrollBehavior;
+    root.style.scrollBehavior = 'auto';
+    window.scrollBy(0, delta);
+    root.style.scrollBehavior = oldBehavior;
+    return true;
+  }
+
+  function saveReaderState(state) {
+    if (!state) return;
+    lastStablePosition = state;
+    safeSet(readerStateKey, JSON.stringify(state));
+  }
+
+  function readReaderState() {
+    try {
+      const raw = safeGet(readerStateKey);
+      return raw ? JSON.parse(raw) : null;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  function settleRestore(state, delays = [0, 60, 180, 420]) {
+    if (!state) return;
+    suppressScrollSaveUntil = Date.now() + Math.max(...delays) + 350;
+    delays.forEach(delay => {
+      window.setTimeout(() => {
+        requestAnimationFrame(() => restoreReadingPosition(state));
+      }, delay);
+    });
+    window.setTimeout(() => {
+      saveReaderState(state);
+    }, Math.max(...delays) + 120);
+  }
+
+  function preserveReadingPosition(mutator) {
+    const state = captureReadingPosition() || lastStablePosition || readReaderState();
+    if (state) saveReaderState(state);
+    mutator();
+    rebuildReaderAnchors();
+    settleRestore(state);
+  }
+
+  function scheduleReaderSave() {
+    if (Date.now() < suppressScrollSaveUntil) return;
+    clearTimeout(scrollSaveTimer);
+    scrollSaveTimer = window.setTimeout(() => {
+      if (Date.now() < suppressScrollSaveUntil) return;
+      const state = captureReadingPosition();
+      if (state) saveReaderState(state);
+    }, 130);
+  }
+
+  rebuildReaderAnchors();
+  lastStablePosition = readReaderState();
 
   /* ---------- Theme ---------- */
 
   function applyTheme(theme) {
-    const next = theme === "light" ? "light" : "dark";
-    root.dataset.theme = next;
-
-    if (themeToggle) {
-      const dark = next === "dark";
-      themeToggle.textContent = dark ? "☀" : "☾";
-      themeToggle.title = dark ? "Chuyển sang Light" : "Chuyển sang Dark";
-      themeToggle.setAttribute("aria-pressed", String(!dark));
+    theme = theme === 'light' ? 'light' : 'dark';
+    root.dataset.theme = theme;
+    safeSet('study-theme', theme);
+    if (themeButton) {
+      themeButton.textContent = theme === 'dark' ? '☀' : '☾';
+      themeButton.title = theme === 'dark' ? 'Chuyển sang Light theme' : 'Chuyển sang Dark theme';
+      themeButton.setAttribute('aria-label', themeButton.title);
+      themeButton.setAttribute('aria-pressed', theme === 'light' ? 'true' : 'false');
     }
-
-    safeSet("study-theme", next);
   }
-
-  const initialTheme =
-    safeGet("study-theme") ||
-    (window.matchMedia &&
-     window.matchMedia("(prefers-color-scheme: dark)").matches
-      ? "dark"
-      : "light");
-
-  applyTheme(initialTheme);
-
-  themeToggle?.addEventListener("click", () => {
-    applyTheme(root.dataset.theme === "dark" ? "light" : "dark");
-  });
 
   /* ---------- Full / Keywords ---------- */
 
   function applyMode(mode) {
-    const keywords = mode === "keywords";
-    body.classList.toggle("keyword-focus", keywords);
-
-    if (modeToggle) {
-      modeToggle.textContent = keywords ? "📖" : "🎯";
-      modeToggle.title = keywords ? "Chuyển sang Full" : "Chuyển sang Keywords";
-      modeToggle.setAttribute("aria-pressed", String(keywords));
+    mode = mode === 'keywords' ? 'keywords' : 'full';
+    root.dataset.studyMode = mode;
+    body.classList.toggle('keyword-focus', mode === 'keywords');
+    safeSet('study-mode', mode);
+    if (modeButton) {
+      modeButton.textContent = mode === 'full' ? '🎯' : '📖';
+      modeButton.title = mode === 'full' ? 'Chuyển sang Keywords mode' : 'Trở lại Full mode';
+      modeButton.setAttribute('aria-label', modeButton.title);
+      modeButton.setAttribute('aria-pressed', mode === 'keywords' ? 'true' : 'false');
     }
-
-    safeSet("study-mode", keywords ? "keywords" : "full");
   }
 
-  applyMode(safeGet("study-mode", "full"));
+  /* ---------- Font 50-150%, step 5% ---------- */
 
-  modeToggle?.addEventListener("click", () => {
-    applyMode(body.classList.contains("keyword-focus") ? "full" : "keywords");
-  });
-
-  /* ---------- Font scale ---------- */
-
-  let fontScale = Number(safeGet("study-font-scale", "100"));
-  if (!FONT_LEVELS.includes(fontScale)) {
-    fontScale = 100;
+  function currentScale() {
+    const saved = Number(safeGet('study-font-scale', '100'));
+    return FONT_LEVELS.includes(saved) ? saved : 100;
   }
 
   function applyFontScale(scale) {
-    fontScale = FONT_LEVELS.includes(scale) ? scale : 100;
-
-    root.style.setProperty(
-      "--base-font-size",
-      `${16 * fontScale / 100}px`
-    );
+    if (!FONT_LEVELS.includes(scale)) scale = 100;
+    root.style.setProperty('--base-font-size', (16 * scale / 100) + 'px');
+    safeSet('study-font-scale', String(scale));
 
     if (fontReset) {
-      fontReset.textContent = `${fontScale}%`;
-      fontReset.title =
-        fontScale === 100
-          ? "Cỡ chữ hiện tại 100%"
-          : `Cỡ chữ hiện tại ${fontScale}%, bấm để về 100%`;
+      fontReset.textContent = scale + '%';
+      fontReset.title = 'Cỡ chữ hiện tại ' + scale + '%. Chạm để về 100%';
+      fontReset.setAttribute('aria-label', fontReset.title);
     }
-
-    if (fontDown) {
-      fontDown.disabled = fontScale === FONT_LEVELS[0];
-    }
-
-    if (fontUp) {
-      fontUp.disabled = fontScale === FONT_LEVELS[FONT_LEVELS.length - 1];
-    }
-
-    safeSet("study-font-scale", String(fontScale));
+    if (fontDown) fontDown.disabled = scale === FONT_LEVELS[0];
+    if (fontUp) fontUp.disabled = scale === FONT_LEVELS[FONT_LEVELS.length - 1];
   }
 
-  applyFontScale(fontScale);
+  /* ---------- Collapsible controls ---------- */
 
-  fontDown?.addEventListener("click", () => {
-    const index = FONT_LEVELS.indexOf(fontScale);
-    if (index > 0) {
-      applyFontScale(FONT_LEVELS[index - 1]);
-    }
-  });
-
-  fontUp?.addEventListener("click", () => {
-    const index = FONT_LEVELS.indexOf(fontScale);
-    if (index >= 0 && index < FONT_LEVELS.length - 1) {
-      applyFontScale(FONT_LEVELS[index + 1]);
-    }
-  });
-
-  fontReset?.addEventListener("click", () => {
-    applyFontScale(100);
-  });
-
-  /* ---------- TOC drawer ---------- */
-
-  function setToc(open) {
-    body.classList.toggle("toc-open", open);
-    tocToggle?.setAttribute("aria-expanded", String(open));
-    tocOverlay?.setAttribute("aria-hidden", String(!open));
-
-    if (open) {
-      requestAnimationFrame(() => tocClose?.focus());
-    }
+  function setControlsOpen(open) {
+    if (!controls) return;
+    controls.classList.toggle('open', open);
+    controlsToggle?.setAttribute('aria-expanded', String(open));
+    controlsToggle?.setAttribute('aria-label', open ? 'Đóng công cụ' : 'Mở công cụ');
+    controlsToggle?.setAttribute('title', open ? 'Đóng công cụ' : 'Mở công cụ');
   }
 
-  tocToggle?.addEventListener("click", () => {
-    setToc(!body.classList.contains("toc-open"));
+  controlsToggle?.addEventListener('click', event => {
+    event.stopPropagation();
+    setControlsOpen(!controls.classList.contains('open'));
   });
 
-  tocClose?.addEventListener("click", () => setToc(false));
-  tocOverlay?.addEventListener("click", () => setToc(false));
-
-  tocDrawer?.querySelectorAll("a[href^='#']").forEach(link => {
-    link.addEventListener("click", () => setToc(false));
+  controlPanel?.addEventListener('click', event => event.stopPropagation());
+  document.addEventListener('pointerdown', event => {
+    if (controls?.classList.contains('open') && !controls.contains(event.target)) setControlsOpen(false);
   });
 
-  document.addEventListener("keydown", event => {
-    if (event.key === "Escape" && body.classList.contains("toc-open")) {
-      setToc(false);
-      tocToggle?.focus();
+  /* ---------- TOC ---------- */
+
+  function openToc() {
+    body.classList.add('toc-open');
+    tocButton?.setAttribute('aria-expanded', 'true');
+    setControlsOpen(false);
+  }
+
+  function closeToc() {
+    body.classList.remove('toc-open');
+    tocButton?.setAttribute('aria-expanded', 'false');
+  }
+
+  tocButton?.addEventListener('click', openToc);
+  tocClose?.addEventListener('click', closeToc);
+  overlay?.addEventListener('click', closeToc);
+
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape') {
+      closeToc();
+      setControlsOpen(false);
     }
   });
 
-  /* ---------- Back / Next section ---------- */
+  document.querySelectorAll('a[href="#toc"]').forEach(a => {
+    a.addEventListener('click', event => {
+      event.preventDefault();
+      openToc();
+    });
+  });
 
-  const studySections = Array.from(
-    document.querySelectorAll("main .study-section[id]")
-  );
+  /* TOC navigation does not add hash-history entries. */
+  document.querySelectorAll('#toc a[href^="#"]').forEach(a => {
+    a.addEventListener('click', event => {
+      const href = a.getAttribute('href');
+      if (!href || href === '#toc') return;
+      const target = document.getElementById(decodeURIComponent(href.slice(1)));
+      if (!target) return;
+      event.preventDefault();
+      closeToc();
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      window.setTimeout(scheduleReaderSave, 450);
+    });
+  });
+
+  /* ---------- Previous / next lesson item ---------- */
+
+  const tocTargets = Array.from(document.querySelectorAll('#toc a[href^="#"]'))
+    .map(a => document.getElementById(decodeURIComponent(a.getAttribute('href').slice(1))))
+    .filter((el, i, arr) => el && el.id !== 'toc' && arr.indexOf(el) === i);
 
   function currentSectionIndex() {
-    if (!studySections.length) return -1;
-
-    const referenceY = window.scrollY + Math.min(window.innerHeight * 0.32, 220);
-    let index = 0;
-
-    for (let i = 0; i < studySections.length; i++) {
-      if (studySections[i].offsetTop <= referenceY) {
-        index = i;
-      } else {
-        break;
-      }
-    }
-    return index;
+    let idx = -1;
+    const threshold = 24;
+    tocTargets.forEach((el, i) => {
+      if (el.getBoundingClientRect().top <= threshold) idx = i;
+    });
+    return idx;
   }
 
-  function updateNavState() {
-    if (!studySections.length) {
-      if (prevButton) prevButton.disabled = true;
-      if (nextButton) nextButton.disabled = true;
+  function updateSectionButtons() {
+    const i = currentSectionIndex();
+    if (prevButton) prevButton.disabled = !tocTargets.length || i <= 0;
+    if (nextButton) nextButton.disabled = !tocTargets.length || i >= tocTargets.length - 1;
+  }
+
+  function goToIndex(i) {
+    if (!tocTargets.length) return;
+    i = Math.max(0, Math.min(tocTargets.length - 1, i));
+    tocTargets[i].scrollIntoView({ behavior: 'smooth', block: 'start' });
+    window.setTimeout(() => {
+      const state = captureReadingPosition();
+      if (state) saveReaderState(state);
+      updateSectionButtons();
+    }, 450);
+  }
+
+  prevButton?.addEventListener('click', () => goToIndex(Math.max(0, currentSectionIndex() - 1)));
+  nextButton?.addEventListener('click', () => goToIndex(Math.min(tocTargets.length - 1, currentSectionIndex() + 1)));
+
+  /* ---------- Home ---------- */
+
+  homeButton?.addEventListener('click', () => {
+    const state = captureReadingPosition();
+    if (state) saveReaderState(state);
+    safeSet(explicitHomeKey, '1');
+    safeSet('study-home-click-at', String(Date.now()));
+    window.location.href = new URL('index.html', window.location.href).href;
+  });
+
+  /* ---------- Initialize state ---------- */
+
+  applyTheme(root.dataset.theme === 'light' ? 'light' : 'dark');
+  applyMode(root.dataset.studyMode || 'full');
+  applyFontScale(currentScale());
+
+  themeButton?.addEventListener('click', () => applyTheme(root.dataset.theme === 'dark' ? 'light' : 'dark'));
+  modeButton?.addEventListener('click', () => applyMode(root.dataset.studyMode === 'keywords' ? 'full' : 'keywords'));
+
+  fontDown?.addEventListener('click', () => {
+    const i = FONT_LEVELS.indexOf(currentScale());
+    if (i > 0) preserveReadingPosition(() => applyFontScale(FONT_LEVELS[i - 1]));
+  });
+
+  fontUp?.addEventListener('click', () => {
+    const i = FONT_LEVELS.indexOf(currentScale());
+    if (i >= 0 && i < FONT_LEVELS.length - 1) preserveReadingPosition(() => applyFontScale(FONT_LEVELS[i + 1]));
+  });
+
+  fontReset?.addEventListener('click', () => preserveReadingPosition(() => applyFontScale(100)));
+
+  /* ---------- Scroll / rotation / resize persistence ---------- */
+
+  window.addEventListener('scroll', () => {
+    scheduleReaderSave();
+    updateSectionButtons();
+  }, { passive: true });
+
+  function handleLayoutViewportChange() {
+    /*
+      A native two-finger pinch changes VisualViewport but normally does not
+      change the layout viewport. Ignore it completely so the page does not
+      recalculate width or fight the browser's native zoom.
+    */
+    if (isPinchZoomActive()) {
+      pinchZoomSession = true;
       return;
     }
 
-    const index = currentSectionIndex();
-    if (prevButton) prevButton.disabled = index <= 0;
-    if (nextButton) nextButton.disabled = index >= studySections.length - 1;
-  }
+    const { width: w, height: h } = layoutViewportSize();
 
-  function moveSection(delta) {
-    const index = currentSectionIndex();
-    const targetIndex = Math.max(
-      0,
-      Math.min(studySections.length - 1, index + delta)
-    );
+    /*
+      When pinch zoom returns to scale 1, VisualViewport may emit another
+      resize. If the layout viewport itself did not change, this was only zoom,
+      so do nothing.
+    */
+    const layoutChanged =
+      Math.abs(w - lastViewportWidth) >= 1 ||
+      Math.abs(h - lastViewportHeight) >= 1;
 
-    studySections[targetIndex]?.scrollIntoView({
-      behavior: "smooth",
-      block: "start"
-    });
-  }
-
-  prevButton?.addEventListener("click", () => moveSection(-1));
-  nextButton?.addEventListener("click", () => moveSection(1));
-
-  let ticking = false;
-  window.addEventListener("scroll", () => {
-    if (!ticking) {
-      requestAnimationFrame(() => {
-        updateNavState();
-        ticking = false;
-      });
-      ticking = true;
+    if (!layoutChanged) {
+      pinchZoomSession = false;
+      return;
     }
+
+    pinchZoomSession = false;
+
+    if (!resizeAnchor) {
+      resizeAnchor =
+        lastStablePosition ||
+        readReaderState() ||
+        captureReadingPosition();
+    }
+
+    /*
+      Only a real layout change, such as portrait <-> landscape, updates
+      --app-viewport-width.
+    */
+    syncViewportGeometry();
+    lastViewportWidth = w;
+    lastViewportHeight = h;
+
+    if (resizeAnchor) {
+      settleRestore(resizeAnchor, [0, 50, 140, 300]);
+    }
+
+    clearTimeout(resizeRestoreTimer);
+    resizeRestoreTimer = window.setTimeout(() => {
+      if (resizeAnchor) {
+        settleRestore(resizeAnchor, [0, 80, 220]);
+      }
+
+      window.setTimeout(() => {
+        lastStablePosition =
+          resizeAnchor ||
+          captureReadingPosition();
+
+        if (lastStablePosition) {
+          saveReaderState(lastStablePosition);
+        }
+
+        resizeAnchor = null;
+        updateSectionButtons();
+      }, 320);
+    }, 260);
+  }
+
+  function handleVisualViewportResize() {
+    /*
+      visualViewport resize is the main signal used by Safari/WebKit while
+      pinch-zooming. At scale != 1 this is zoom, not a responsive-layout event.
+    */
+    if (isPinchZoomActive()) {
+      pinchZoomSession = true;
+      return;
+    }
+
+    handleLayoutViewportChange();
+  }
+
+  window.addEventListener(
+    'resize',
+    handleLayoutViewportChange,
+    { passive: true }
+  );
+
+  window.addEventListener('orientationchange', () => {
+    /*
+      Rotation is a genuine layout change. Use the stored logical reading
+      position, then wait for iOS to finish updating its layout viewport.
+    */
+    resizeAnchor =
+      lastStablePosition ||
+      readReaderState() ||
+      captureReadingPosition();
+
+    [40, 120, 280].forEach(delay => {
+      window.setTimeout(() => {
+        if (isPinchZoomActive()) return;
+
+        const size = layoutViewportSize();
+        syncViewportGeometry();
+
+        if (
+          Math.abs(size.width - lastViewportWidth) >= 1 ||
+          Math.abs(size.height - lastViewportHeight) >= 1
+        ) {
+          lastViewportWidth = size.width;
+          lastViewportHeight = size.height;
+        }
+
+        if (resizeAnchor) {
+          settleRestore(resizeAnchor, [0, 70, 180]);
+        }
+      }, delay);
+    });
+
+    window.setTimeout(() => {
+      resizeAnchor = null;
+      updateSectionButtons();
+    }, 620);
   }, { passive: true });
 
-  window.addEventListener("resize", updateNavState);
-  updateNavState();
-})();
-</script>
+  window.visualViewport?.addEventListener(
+    'resize',
+    handleVisualViewportResize,
+    { passive: true }
+  );
 
-</body>
+  function saveLifecycleState() {
+    const state = captureReadingPosition() || lastStablePosition;
+    if (state) saveReaderState(state);
+    rememberCurrentPage();
+  }
+
+  document.addEventListener('visibilitychange', () => {
+    if (document.visibilityState === 'hidden') saveLifecycleState();
+    else {
+      rememberCurrentPage();
+      const state = readReaderState();
+      if (state) settleRestore(state, [0, 80, 220]);
+    }
+  });
+
+  window.addEventListener('pagehide', saveLifecycleState);
+  window.addEventListener('beforeunload', saveLifecycleState);
+
+  window.addEventListener('pageshow', () => {
+    rememberCurrentPage();
+    rebuildReaderAnchors();
+    const state = readReaderState();
+    if (!location.hash && state) settleRestore(state, [0, 80, 220, 500]);
+    window.setTimeout(updateSectionButtons, 80);
+  });
+
+  window.addEventListener('load', () => {
+    rebuildReaderAnchors();
+    const state = readReaderState();
+    if (!location.hash && state) settleRestore(state, [0, 80, 220, 500]);
+    else {
+      const current = captureReadingPosition();
+      if (current) saveReaderState(current);
+    }
+    updateSectionButtons();
+  });
+})();
+</script></body>
 </html>

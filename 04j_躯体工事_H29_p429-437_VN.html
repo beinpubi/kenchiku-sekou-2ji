@@ -1,24 +1,20 @@
 <!DOCTYPE html>
-<html lang="vi" data-theme="dark">
+<!DOCTYPE html>
+
+<html data-study-mode="full" data-theme="dark" lang="vi">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<meta name="color-scheme" content="dark light">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<meta content="dark light" name="color-scheme"/>
+<meta content="test-2.1-responsive-landscape" name="study-template-version"/>
 <title>躯体工事 H29 - Book 429-436</title>
-
 <style>
-/* =========================================================
-   FIXED DESIGN TOKENS
-   Do not redesign these values per lesson.
-   ========================================================= */
-
 :root {
-  --font-vi: Arial, Helvetica, sans-serif;
-  --font-ja: "Hiragino Sans", "Yu Gothic", "Yu Gothic UI", Meiryo, sans-serif;
+  --app-viewport-width: 100vw;
+  --font-vi: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  --font-ja: "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic UI", "Yu Gothic", Meiryo, sans-serif;
   --base-font-size: 16px;
-  --content-width: 1320px;
-  --control-size: 38px;
-  --control-gap: 4px;
+  color-scheme: dark;
 }
 
 html[data-theme="dark"] {
@@ -36,16 +32,17 @@ html[data-theme="dark"] {
   --note-bg: #1C2028;
   --memory-bg: #20231C;
   --keyword: #74D7FF;
-  --keyword-bg: rgba(75, 190, 255, .10);
+  --keyword-bg: rgba(75, 190, 255, 0.10);
   --critical-bg: #594613;
   --critical-text: #FFE39A;
   --trap: #FF8585;
   --trap-underline: #FF5F5F;
-  --relation-bg: rgba(139, 126, 255, .12);
+  --relation-bg: rgba(139, 126, 255, 0.12);
   --relation-border: #8F86FF;
   --shadow: rgba(0, 0, 0, .28);
   --dock-bg: rgba(23, 27, 34, .94);
-  --overlay: rgba(0, 0, 0, .46);
+  --overlay: rgba(0, 0, 0, .48);
+  color-scheme: dark;
 }
 
 html[data-theme="light"] {
@@ -72,586 +69,239 @@ html[data-theme="light"] {
   --relation-border: #6C5CE7;
   --shadow: rgba(31, 38, 49, .12);
   --dock-bg: rgba(255, 255, 255, .94);
-  --overlay: rgba(20, 24, 30, .32);
+  --overlay: rgba(19, 26, 35, .28);
+  color-scheme: light;
 }
 
-/* =========================================================
-   BASE
-   ========================================================= */
-
 * { box-sizing: border-box; }
-
 html {
   scroll-behavior: smooth;
   font-size: var(--base-font-size);
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
-
-body {
+body { overflow-anchor: none;
   margin: 0;
-  min-height: 100vh;
   background: var(--bg);
   color: var(--text);
   font-family: var(--font-vi);
   font-size: 1rem;
   line-height: 1.72;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
+  padding-bottom: 11rem;
 }
+:lang(vi), .translation, .translation-cell, .vn-topic, .vn-answer { font-family: var(--font-vi); }
+:lang(ja), .original, .original-cell, .jp-topic, .jp-answer { font-family: var(--font-ja); }
+strong, b { font-weight: 700; }
+a { color: var(--link); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+a:hover { text-decoration-thickness: 2px; }
+h1, h2, h3, h4 { color: var(--heading); line-height: 1.35; }
+h1 { font-size: clamp(1.8rem, 4vw, 2.8rem); margin: 0 0 .55rem; }
+h2 { font-size: clamp(1.38rem, 2.8vw, 2rem); margin: 0; }
+h3 { font-size: clamp(1.12rem, 2vw, 1.48rem); }
+h4 { font-size: 1.02rem; }
+[id] { scroll-margin-top: 22px; }
+p { margin: .62rem 0; }
+ul, ol { padding-left: 1.5rem; }
+li { margin: .34rem 0; }
 
-:lang(vi) {
-  font-family: var(--font-vi);
-}
-
-:lang(ja) {
-  font-family: var(--font-ja);
-}
-
-a {
-  color: var(--link);
-  text-decoration-thickness: 1px;
-  text-underline-offset: 3px;
-}
-
-a:hover {
-  text-decoration-thickness: 2px;
-}
-
-button {
-  font: inherit;
-}
-
-h1, h2, h3, h4 {
-  color: var(--heading);
-  line-height: 1.35;
-}
-
-h1 {
-  margin: 0 0 .35rem;
-  font-size: clamp(1.75rem, 4vw, 2.7rem);
-}
-
-h2 {
-  margin: 2.5rem 0 1rem;
-  padding-bottom: .42rem;
-  border-bottom: 1px solid var(--border);
-  font-size: clamp(1.42rem, 3vw, 2rem);
-}
-
-h3 {
-  margin: 1.9rem 0 .75rem;
-  font-size: clamp(1.16rem, 2.4vw, 1.5rem);
-}
-
-h4 {
-  margin: 1.2rem 0 .45rem;
-  font-size: 1rem;
-}
-
-p {
-  margin: .58rem 0;
-}
-
-ul, ol {
-  padding-left: 1.45rem;
-}
-
-li {
-  margin: .3rem 0;
-}
-
-[id] {
-  scroll-margin-top: 18px;
-}
-
-/* =========================================================
-   PAGE LAYOUT
-   ========================================================= */
-
-.page-shell {
-  width: min(var(--content-width), calc(100% - 28px));
+body > main,
+body > .page-shell {
+  width: min(1320px, calc(100% - 32px));
   margin: 0 auto;
-  padding: 18px 0 112px;
+  padding: 26px 0 70px;
 }
+body > .page-shell > main { width: 100%; margin: 0; padding: 0; }
 
-.hero,
-.toc-card,
-.study-section,
-.aggregate-section {
+.hero {
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: 16px;
   box-shadow: 0 8px 28px var(--shadow);
+  padding: clamp(22px, 4vw, 42px);
+  margin: 0 0 24px;
 }
-
-.hero {
-  margin-bottom: 22px;
-  padding: clamp(22px, 3vw, 40px);
-}
-
-.hero-subtitle {
-  margin: 0;
+.eyebrow, .hero-subtitle, .subtitle, .meta-line, .source-ref, .mini-label, .small, .meta-label {
   color: var(--text-muted);
-  font-size: 1.06rem;
 }
+.eyebrow { font-size: .82rem; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; }
+.hero-subtitle, .subtitle { font-size: 1.08rem; }
+.source-ref, .mini-label, .small, .meta-label { font-size: .86rem; }
 
-.meta-grid {
+.summary-grid, .meta-grid, .mini-grid, .coverage {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(195px, 1fr));
-  gap: 10px;
-  margin-top: 16px;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: .72rem;
+  margin-top: 1rem;
 }
-
-.meta-item {
-  padding: 10px 12px;
+.summary-card, .summary-item, .meta-item, .mini-card, .coverage > div {
   background: var(--surface-alt);
   border: 1px solid var(--border);
   border-radius: 10px;
+  padding: .75rem .85rem;
 }
+.summary-item b, .summary-card strong { color: var(--heading); }
+.source-list { color: var(--text-muted); }
 
-.meta-label {
-  display: block;
-  margin-bottom: 2px;
-  color: var(--text-muted);
-  font-size: .8rem;
-}
-
-.study-section,
+body > main > section:not(#toc),
+body > .page-shell > section:not(#toc),
+body > .page-shell > main > section,
+.topic,
 .aggregate-section {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  box-shadow: 0 7px 22px var(--shadow);
+  padding: clamp(18px, 3vw, 30px);
   margin: 22px 0;
-  padding: clamp(18px, 2.6vw, 30px);
 }
-
-.section-head {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 12px;
-  margin-bottom: 16px;
-  padding-bottom: 10px;
+.subsection { margin: 1.7rem 0 2.1rem; }
+.subsection-title, .section-head {
   border-bottom: 1px solid var(--border);
+  padding-bottom: .65rem;
+  margin-bottom: 1rem;
 }
+.section-head { display: flex; gap: 12px; align-items: baseline; justify-content: space-between; }
 
-.section-head h2,
-.section-head h3 {
-  margin: 0;
-  padding: 0;
-  border: 0;
-}
-
-.source-ref {
-  color: var(--text-muted);
-  font-size: .84rem;
-  white-space: nowrap;
-}
-
-.subsection {
-  margin: 26px 0 32px;
-}
-
-.subsection:first-child {
-  margin-top: 0;
-}
-
-.study-grid {
+.study-grid, .lang-grid, .bilingual-note {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  gap: 14px;
+  gap: 1rem;
   align-items: start;
 }
-
-.study-card {
-  min-width: 0;
-  overflow: hidden;
+.study-card, .lang-card, .note-pane {
   border: 1px solid var(--border);
   border-radius: 12px;
+  overflow: hidden;
+  min-width: 0;
+  background: var(--surface-alt);
 }
-
-.study-card.original {
-  background: var(--original-bg);
-}
-
-.study-card.translation {
-  background: var(--translation-bg);
-}
-
+.study-card.original, .lang-card.original, .original-cell, .jp-topic, .jp-answer { background: var(--original-bg); }
+.study-card.translation, .lang-card.translation, .translation-cell, .vn-topic, .vn-answer { background: var(--translation-bg); }
 .card-title {
-  padding: 9px 13px;
+  padding: .62rem .85rem;
   background: var(--surface-alt);
   border-bottom: 1px solid var(--border);
   color: var(--heading);
-  font-weight: 800;
+  font-weight: 700;
   letter-spacing: .02em;
 }
+.card-body, .recall-source { padding: .9rem 1rem; }
+.card-body.recall-source { padding: 1rem 1.05rem; }
+.item-block { border-top: 1px dashed var(--border); padding-top: .72rem; margin-top: .72rem; }
+.item-block:first-child { border-top: 0; padding-top: 0; margin-top: 0; }
+.item-label { font-weight: 700; color: var(--heading); margin-right: .35em; }
 
-.recall-source {
-  padding: 14px 16px 16px;
-  transition: color .15s ease;
-}
+.table-wrap { overflow-x: auto; margin: .9rem 0; border: 1px solid var(--border); border-radius: 10px; }
+table { width: 100%; border-collapse: collapse; min-width: 650px; background: var(--surface); }
+th, td { border: 1px solid var(--border); padding: .62rem .7rem; vertical-align: top; text-align: left; }
+th { background: var(--surface-alt); color: var(--heading); font-weight: 700; }
+caption { text-align: left; font-weight: 700; color: var(--heading); padding: .58rem .7rem; background: var(--surface-alt); caption-side: top; }
+.compact th, .compact td { padding: .48rem .55rem; }
+.study-table { min-width: 1040px; }
+.study-table .meta { white-space: nowrap; text-align: center; background: var(--surface-alt); }
+.glossary-table { min-width: 920px; }
+.memory-table, .number-table, .num-table { min-width: 760px; }
 
-.recall-source > :first-child {
-  margin-top: 0;
-}
-
-.recall-source > :last-child {
-  margin-bottom: 0;
-}
-
-/* =========================================================
-   CONTENT COMPONENTS
-   ========================================================= */
-
-.table-wrap {
-  overflow-x: auto;
-  margin: 12px 0 18px;
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  -webkit-overflow-scrolling: touch;
-}
-
-table {
-  width: 100%;
-  min-width: 640px;
-  border-collapse: collapse;
-  background: var(--surface);
-}
-
-th,
-td {
-  padding: 9px 11px;
-  border-right: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
-  vertical-align: top;
-  text-align: left;
-}
-
-th:last-child,
-td:last-child {
-  border-right: 0;
-}
-
-tr:last-child td {
-  border-bottom: 0;
-}
-
-th {
-  background: var(--surface-alt);
-  color: var(--heading);
-  font-weight: 800;
-}
-
-caption {
-  padding: 9px 11px;
-  background: var(--surface-alt);
-  color: var(--heading);
-  font-weight: 800;
-  text-align: left;
-  caption-side: top;
-}
-
-.summary-box,
-.note-box,
-.memory-box,
-.warning-box,
-.figure-box,
-.formula-box,
-.comparison-box {
-  margin: 14px 0;
-  padding: 13px 15px;
-  background: var(--note-bg);
+.summary-box, .note-box, .note, .info-box, .background-box, .exam-note, .memory-box, .warning-box, .warning, .figure-box, .figure-card {
   border: 1px solid var(--border);
   border-left-width: 4px;
   border-radius: 10px;
+  padding: .9rem 1rem;
+  margin: 1rem 0;
+  background: var(--note-bg);
 }
+.summary-box, .note-box, .note, .info-box, .background-box { border-left-color: var(--link); }
+.memory-box, .exam-note { background: var(--memory-bg); border-left-color: var(--critical-text); }
+.warning-box, .warning { border-left-color: var(--trap); }
+.figure-box, .figure-card { border-left-color: var(--relation-border); }
+.figure-card { overflow: hidden; padding: 0; }
+.figure-card img { display: block; width: 100%; height: auto; background: #fff; }
+.figure-card figcaption, .figure-explain { padding: .8rem 1rem; }
 
-.summary-box,
-.note-box {
-  border-left-color: var(--link);
-}
-
-.memory-box {
-  background: var(--memory-bg);
-  border-left-color: var(--critical-text);
-}
-
-.warning-box {
-  border-left-color: var(--trap);
-}
-
-.figure-box,
-.formula-box,
-.comparison-box {
-  border-left-color: var(--relation-border);
-}
-
-.figure-card {
-  margin: 15px 0 20px;
-  overflow: hidden;
-  background: var(--surface-alt);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-}
-
-.figure-card img {
-  display: block;
-  width: 100%;
-  height: auto;
-  background: #fff;
-}
-
-.figure-card figcaption {
-  padding: 10px 13px 12px;
-  color: var(--text-muted);
-  font-size: .9rem;
-}
-
-.figure-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 12px;
-  margin: 15px 0 20px;
-}
-
-.figure-grid .figure-card {
-  margin: 0;
-}
-
-.item-block {
-  margin-top: 11px;
-  padding-top: 11px;
-  border-top: 1px dashed var(--border);
-}
-
-.item-block:first-child {
-  margin-top: 0;
-  padding-top: 0;
-  border-top: 0;
-}
-
-.item-label {
-  margin-right: .3em;
-  color: var(--heading);
-  font-weight: 800;
-}
-
-.formula-line {
+.formula, .formula-line {
   display: flex;
   flex-wrap: wrap;
+  gap: .45rem;
   align-items: center;
-  gap: 6px;
-}
-
-.flow-node {
-  padding: 5px 8px;
-  background: var(--surface);
+  padding: .75rem;
+  background: var(--surface-alt);
   border: 1px solid var(--border);
-  border-radius: 7px;
-  font-weight: 700;
+  border-radius: 9px;
+  margin: .75rem 0;
 }
-
-.flow-arrow {
-  color: var(--text-muted);
-  font-weight: 800;
-}
-
-/* =========================================================
-   SEMANTIC HIGHLIGHTING
-   ========================================================= */
+.flow-node { border: 1px solid var(--border); border-radius: 7px; padding: .35rem .55rem; background: var(--surface); font-weight: 700; }
+.flow-arrow { color: var(--text-muted); font-weight: 700; }
 
 .kw {
-  padding: .02em .16em;
-  background: var(--keyword-bg);
-  color: var(--keyword);
-  border-radius: .2em;
-  font-weight: 750;
-}
-
-.critical {
-  padding: .04em .22em;
-  background: var(--critical-bg);
-  color: var(--critical-text);
-  border-radius: .22em;
-  font-weight: 750;
-}
-
-.trap {
-  color: var(--trap);
   font-weight: 700;
+  color: var(--keyword);
+  background: var(--keyword-bg);
+  padding: .02em .16em;
+  border-radius: .2em;
+}
+.critical {
+  font-weight: 700;
+  color: var(--critical-text);
+  background: var(--critical-bg);
+  padding: .04em .22em;
+  border-radius: .22em;
+}
+.trap {
+  font-weight: 700;
+  color: var(--trap);
   text-decoration-line: underline;
   text-decoration-color: var(--trap-underline);
   text-decoration-thickness: 2px;
   text-underline-offset: 3px;
 }
-
 .relation {
-  padding: .02em .14em;
-  background: var(--relation-bg);
+  font-weight: 600;
   color: var(--text);
+  background: var(--relation-bg);
   border-bottom: 2px solid var(--relation-border);
-  font-weight: 650;
+  padding: .02em .14em;
 }
 
-/* Only recall-source is dimmed in Keywords mode. */
-body.keyword-focus .recall-source {
-  color: var(--focus-muted);
-}
+html[data-study-mode="keywords"] .recall-source { color: var(--focus-muted); }
+html[data-study-mode="keywords"] .recall-source .kw { color: var(--keyword); background: var(--keyword-bg); }
+html[data-study-mode="keywords"] .recall-source .critical { color: var(--critical-text); background: var(--critical-bg); }
+html[data-study-mode="keywords"] .recall-source .trap { color: var(--trap); }
+html[data-study-mode="keywords"] .recall-source .relation { color: var(--text); background: var(--relation-bg); }
+html[data-study-mode="keywords"] .recall-source th,
+html[data-study-mode="keywords"] .recall-source .card-title,
+html[data-study-mode="keywords"] .recall-source .item-label { color: var(--heading); }
 
-body.keyword-focus .recall-source .kw {
-  color: var(--keyword);
-  background: var(--keyword-bg);
-}
+.backlink, .back-toc, .back { display: inline-block; margin-top: .8rem; font-size: .9rem; }
 
-body.keyword-focus .recall-source .critical {
-  color: var(--critical-text);
-  background: var(--critical-bg);
-}
-
-body.keyword-focus .recall-source .trap {
-  color: var(--trap);
-}
-
-body.keyword-focus .recall-source .relation {
-  color: var(--text);
-  background: var(--relation-bg);
-}
-
-body.keyword-focus .recall-source th,
-body.keyword-focus .recall-source .item-label {
-  color: var(--heading);
-}
-
-/* =========================================================
-   TOC DRAWER
-   ========================================================= */
-
-.toc-overlay {
+/* Collapsible study controls: one launcher at bottom-left. */
+.control-cluster {
   position: fixed;
-  inset: 0;
-  z-index: 1990;
-  visibility: hidden;
-  opacity: 0;
-  background: var(--overlay);
-  transition: opacity .18s ease, visibility .18s ease;
-}
-
-.toc-drawer {
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  z-index: 2000;
-  width: min(78vw, 360px);
-  padding: max(14px, env(safe-area-inset-top)) 14px
-           max(18px, env(safe-area-inset-bottom))
-           max(14px, env(safe-area-inset-left));
-  overflow-y: auto;
-  background: var(--surface);
-  border-right: 1px solid var(--border);
-  box-shadow: 14px 0 36px var(--shadow);
-  transform: translateX(-103%);
-  transition: transform .2s ease;
-  -webkit-overflow-scrolling: touch;
-}
-
-body.toc-open .toc-overlay {
-  visibility: visible;
-  opacity: 1;
-}
-
-body.toc-open .toc-drawer {
-  transform: translateX(0);
-}
-
-.toc-drawer-head {
-  position: sticky;
-  top: 0;
-  z-index: 1;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 10px;
-  padding: 4px 0 10px;
-  background: var(--surface);
-  border-bottom: 1px solid var(--border);
-}
-
-.toc-drawer-head h2 {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  font-size: 1.2rem;
-}
-
-.toc-close {
-  width: 34px;
-  height: 34px;
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  background: var(--surface-alt);
-  color: var(--text);
-  cursor: pointer;
-}
-
-.toc-list {
-  margin: 12px 0 0;
-  padding-left: 1.2rem;
-}
-
-.toc-list ol {
-  margin-top: 4px;
-}
-
-/* =========================================================
-   COMPACT CONTROLS
-   Left: vertical TOC / Back / Next
-   Right: horizontal display controls
-   ========================================================= */
-
-.nav-dock-left,
-.settings-dock-right {
-  position: fixed;
-  bottom: max(14px, env(safe-area-inset-bottom));
-  z-index: 1900;
-  padding: 5px;
-  background: var(--dock-bg);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  box-shadow: 0 8px 24px var(--shadow);
-  -webkit-backdrop-filter: blur(10px);
-  backdrop-filter: blur(10px);
+  left: max(8px, env(safe-area-inset-left));
+  bottom: max(10px, env(safe-area-inset-bottom));
+  z-index: 2200;
+  width: 38px;
+  height: 38px;
   user-select: none;
+  -webkit-user-select: none;
 }
 
-.nav-dock-left {
-  left: max(10px, env(safe-area-inset-left));
-  display: flex;
-  flex-direction: column;
-  gap: var(--control-gap);
-}
-
-.settings-dock-right {
-  right: max(10px, env(safe-area-inset-right));
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: var(--control-gap);
-}
-
-.nav-dock-left button,
-.settings-dock-right button {
-  display: flex;
+.control-launcher,
+.control-panel button {
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: var(--control-size);
-  height: var(--control-size);
-  min-width: var(--control-size);
-  min-height: var(--control-size);
+  flex: 0 0 auto;
+  width: 32px;
+  height: 32px;
+  min-width: 32px;
+  min-height: 32px;
   padding: 0;
-  background: var(--surface-alt);
-  color: var(--text);
   border: 1px solid var(--border);
   border-radius: 8px;
-  font-family: var(--font-vi);
-  font-size: .96rem;
+  background: var(--surface-alt);
+  color: var(--text);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
   font-weight: 700;
   line-height: 1;
   cursor: pointer;
@@ -659,98 +309,246 @@ body.toc-open .toc-drawer {
   -webkit-tap-highlight-color: transparent;
 }
 
-.nav-dock-left button:hover,
-.settings-dock-right button:hover {
+.control-launcher {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  z-index: 2;
+  width: 38px;
+  height: 38px;
+  min-width: 38px;
+  min-height: 38px;
+  border-radius: 11px;
+  background: var(--dock-bg);
+  box-shadow: 0 6px 18px var(--shadow);
+  font-size: 20px;
+  letter-spacing: 1px;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+}
+
+.control-panel {
+  position: absolute;
+  left: 43px;
+  bottom: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 2px;
+  width: max-content;
+  max-width: calc(100dvw - max(59px, env(safe-area-inset-left) + 59px) - max(8px, env(safe-area-inset-right)));
+  padding: 3px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  overscroll-behavior-x: contain;
+  scrollbar-width: none;
+  border: 1px solid var(--border);
+  border-radius: 11px;
+  background: var(--dock-bg);
+  box-shadow: 0 6px 18px var(--shadow);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateX(-10px) scale(.98);
+  transform-origin: left bottom;
+  transition: opacity .14s ease, transform .14s ease, visibility .14s ease;
+}
+
+.control-panel::-webkit-scrollbar { display: none; }
+
+.control-cluster.open .control-panel {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateX(0) scale(1);
+}
+
+.control-cluster.open .control-launcher {
   border-color: var(--link);
 }
 
-.nav-dock-left button:active,
-.settings-dock-right button:active {
-  transform: translateY(1px);
-}
+.control-panel button:active,
+.control-launcher:active { transform: translateY(1px); }
 
-.nav-dock-left button:disabled {
-  opacity: .38;
+.control-panel button:hover,
+.control-launcher:hover { border-color: var(--link); }
+
+.control-panel button:disabled {
+  opacity: .36;
   cursor: default;
 }
 
-.settings-dock-right .font-reset {
-  font-size: .66rem;
+.control-panel .font-reset {
+  width: 38px;
+  min-width: 38px;
+  font-size: 9px;
   letter-spacing: -.03em;
 }
 
-.settings-dock-right .mode-toggle {
-  font-size: 1.02rem;
+.control-panel .mode-toggle { font-size: 14px; }
+
+.control-panel .home-icon svg {
+  width: 17px;
+  height: 17px;
+  display: block;
 }
 
-/* =========================================================
-   RESPONSIVE
-   ========================================================= */
+/*
+  Responsive reading geometry for iPad/iPhone.
+  The page follows the actual Visual Viewport width. When rotating to
+  landscape it expands across the wider screen instead of staying at
+  portrait width. Reader-anchor JS below restores the same logical text
+  position after the reflow.
+*/
+@media (pointer: coarse) {
+  body > main,
+  body > .page-shell {
+    width: min(calc(var(--app-viewport-width, 100vw) - 16px), 1320px) !important;
+    max-width: 1320px !important;
+  }
+
+
+  .hero {
+    padding: 1rem !important;
+  }
+
+  body > main > section:not(#toc),
+  body > .page-shell > section:not(#toc),
+  body > .page-shell > main > section,
+  .topic,
+  .aggregate-section {
+    padding: 1rem !important;
+  }
+}
+
+
+@media (pointer: coarse) and (orientation: portrait) {
+  .study-grid,
+  .lang-grid,
+  .bilingual-note {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+@media (pointer: coarse) and (orientation: landscape) {
+  body > main,
+  body > .page-shell {
+    width: min(calc(var(--app-viewport-width, 100dvw) - 20px), 1320px) !important;
+  }
+}
+
+/* TOC drawer */
+#toc {
+  position: fixed !important;
+  left: 0 !important;
+  top: 0 !important;
+  bottom: 0 !important;
+  z-index: 2100 !important;
+  width: min(82vw, 390px) !important;
+  max-height: 100dvh !important;
+  overflow-y: auto !important;
+  margin: 0 !important;
+  padding: 74px 20px 28px !important;
+  background: var(--surface) !important;
+  border: 0 !important;
+  border-right: 1px solid var(--border) !important;
+  border-radius: 0 16px 16px 0 !important;
+  box-shadow: 10px 0 30px var(--shadow) !important;
+  transform: translateX(-105%);
+  transition: transform .2s ease;
+}
+body.toc-open #toc { transform: translateX(0); }
+#toc .toc-grid { columns: 1 !important; display: block !important; }
+#toc ol { margin-top: .35rem; }
+.toc-drawer-head {
+  position: sticky;
+  top: -74px;
+  margin: -74px -20px 18px;
+  padding: 13px 14px;
+  min-height: 58px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  z-index: 2;
+}
+.toc-drawer-head strong { color: var(--heading); }
+.toc-close {
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  background: var(--surface-alt);
+  color: var(--text);
+  font: 700 1.25rem var(--font-vi);
+  cursor: pointer;
+}
+.toc-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  background: var(--overlay);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .2s ease;
+}
+body.toc-open .toc-overlay { opacity: 1; pointer-events: auto; }
+body.toc-open { overflow: hidden; }
 
 @media (max-width: 900px) {
-  .study-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .page-shell {
-    width: min(100% - 18px, 760px);
-  }
-
-  .section-head {
-    display: block;
-  }
-
-  .source-ref {
-    display: block;
-    margin-top: 6px;
-    white-space: normal;
-  }
+  .study-grid, .lang-grid, .bilingual-note { grid-template-columns: 1fr; }
+  body > main, body > .page-shell { width: min(100% - 20px, 780px); padding-top: 14px; }
+  .section-head { display: block; }
+  .source-ref { display: block; margin-top: .45rem; }
+  table { min-width: 620px; }
 }
 
 @media (max-width: 560px) {
-  body {
-    font-size: .96rem;
-  }
-
-  .hero,
-  .study-section,
-  .aggregate-section {
-    border-radius: 12px;
-  }
-
-  .recall-source {
-    padding: 12px 13px 14px;
-  }
-
-  :root {
-    --control-size: 36px;
-  }
-
-  .settings-dock-right {
-    right: max(7px, env(safe-area-inset-right));
-  }
-
-  .nav-dock-left {
-    left: max(7px, env(safe-area-inset-left));
-  }
+  body { font-size: 1rem; }
+  body > main, body > .page-shell { width: calc(100% - 14px); }
+  .hero { padding: 1rem; border-radius: 12px; }
+  body > main > section:not(#toc),
+  body > .page-shell > section:not(#toc),
+  body > .page-shell > main > section,
+  .topic, .aggregate-section { padding: 1rem; border-radius: 12px; }
 }
 
-@media (orientation: landscape) and (pointer: coarse) {
-  .nav-dock-left {
-    left: max(14px, env(safe-area-inset-left));
+
+/*
+  iPad/tablet landscape:
+  Japanese and Vietnamese return to two side-by-side columns.
+  The min-height condition avoids forcing ordinary phone landscape into
+  two columns that would be too narrow.
+*/
+@media (pointer: coarse) and (orientation: landscape) and (min-width: 700px) and (min-height: 600px) {
+  body > main,
+  body > .page-shell {
+    width: min(calc(var(--app-viewport-width, 100dvw) - 20px), 1320px) !important;
+    max-width: 1320px !important;
   }
 
-  .settings-dock-right {
-    right: max(14px, env(safe-area-inset-right));
+  .study-grid,
+  .lang-grid,
+  .bilingual-note {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important;
+    gap: clamp(.75rem, 1.4vw, 1rem) !important;
+    align-items: start;
+  }
+
+  .study-card,
+  .lang-card,
+  .note-pane {
+    min-width: 0;
   }
 }
-
-/* =========================================================
-   PRINT
-   ========================================================= */
 
 @media print {
-  html,
+  .control-cluster { display: none !important; }
+  :root,
   html[data-theme="dark"],
   html[data-theme="light"] {
     --bg: #FFFFFF;
@@ -772,675 +570,559 @@ body.toc-open .toc-drawer {
     --trap-underline: #9E1B12;
     --relation-bg: #F0EDFF;
     --relation-border: #5B4FD6;
+    --shadow: transparent;
   }
-
-  body {
-    background: #fff;
-    color: #111;
-    font-size: 11pt;
+  body { background: #fff; color: #111; font-size: 11pt; padding-bottom: 0; }
+  .control-cluster, .toc-overlay, .toc-drawer-head { display: none !important; }
+  #toc {
+    position: static !important;
+    transform: none !important;
+    width: auto !important;
+    max-height: none !important;
+    padding: 1rem !important;
+    border: 1px solid var(--border) !important;
+    border-radius: 10px !important;
+    box-shadow: none !important;
+    margin: 1rem 0 !important;
   }
-
-  .page-shell {
-    width: 100%;
-    padding: 0;
-  }
-
-  .nav-dock-left,
-  .settings-dock-right,
-  .toc-drawer,
-  .toc-overlay {
-    display: none !important;
-  }
-
-  .hero,
-  .study-card,
-  .summary-box,
-  .note-box,
-  .memory-box,
-  .warning-box,
-  .figure-card {
-    break-inside: avoid;
-  }
-
-  a {
-    color: #000;
-    text-decoration: none;
-  }
+  body > main, body > .page-shell { width: 100%; padding: 0; }
+  .hero, .study-card, .lang-card, .summary-box, .note-box, .note, .memory-box, .warning-box, .figure-box, .figure-card { break-inside: avoid; }
+  a { color: #000; text-decoration: none; }
+  .backlink, .back-toc, .back { display: none; }
 }
-</style>
-
-<script>
-/* Apply saved theme before body paint to reduce flashing. */
-(function () {
-  try {
-    const saved = localStorage.getItem("study-theme");
-    const systemDark = window.matchMedia &&
-      window.matchMedia("(prefers-color-scheme: dark)").matches;
-    document.documentElement.dataset.theme =
-      saved || (systemDark ? "dark" : "light");
-  } catch (e) {
-    document.documentElement.dataset.theme = "dark";
+</style><script>
+try {
+  if ("scrollRestoration" in history) {
+    history.scrollRestoration = "manual";
   }
-
+} catch (e) {}
+(function () {
+  const root = document.documentElement;
   try {
-    const savedScale = Number(localStorage.getItem("study-font-scale")) || 100;
-    const clampedScale = Math.max(80, Math.min(140, savedScale));
-    document.documentElement.style.setProperty(
-      "--base-font-size",
-      `${16 * clampedScale / 100}px`
-    );
-  } catch (e) {}
+    const savedTheme = localStorage.getItem('study-theme');
+    root.dataset.theme = savedTheme === 'light' ? 'light' : 'dark';
+
+    const savedMode = localStorage.getItem('study-mode');
+    root.dataset.studyMode = savedMode === 'keywords' ? 'keywords' : 'full';
+
+    const savedScale = Number(localStorage.getItem('study-font-scale'));
+    const scale = Number.isFinite(savedScale) && savedScale >= 50 && savedScale <= 150 && savedScale % 5 === 0
+      ? savedScale : 100;
+    root.style.setProperty('--base-font-size', (16 * scale / 100) + 'px');
+  } catch (e) {
+    root.dataset.theme = 'dark';
+    root.dataset.studyMode = 'full';
+    root.style.setProperty('--base-font-size', '16px');
+  }
 })();
-</script>
-</head>
-
+</script></head>
 <body>
-
-<!-- =======================================================
-     TOC DRAWER
-     Replace only the list contents.
-     ======================================================= -->
-<span id="toc"></span>
-<div class="toc-overlay" id="toc-overlay" aria-hidden="true"></div>
-
-<aside class="toc-drawer" id="toc-drawer" data-anchor="toc" aria-label="Mục lục">
-  <div class="toc-drawer-head">
-    <h2>Mục lục</h2>
-    <button class="toc-close" id="toc-close" type="button" aria-label="Đóng mục lục">×</button>
-  </div>
-
-  <!-- TOC_ITEMS_START -->
-<ol class="toc-list">
-  <li><a href="#stud-weld">スタッド溶接の検査</a></li>
-  <li><a href="#h29-q3">平成29年度 問題3 躯体工事</a>
-    <ol>
-      <li><a href="#answers">解答例</a></li>
-      <li><a href="#pile">設問1 既製コンクリート杭の埋込み工法</a></li>
-      <li><a href="#rebar-support">設問2 バーサポート・スペーサー</a></li>
-      <li><a href="#cold-joint">設問3 コールドジョイント</a></li>
-      <li><a href="#fireproof">設問4 吹付けロックウール</a></li>
-    </ol>
-  </li>
-  <li><a href="#terms">Thuật ngữ chuyên môn</a></li>
-  <li><a href="#background">Kiến thức nền cần biết</a></li>
-  <li><a href="#memory">Điểm cần nhớ và mẹo nhớ</a></li>
-</ol>
-  <!-- TOC_ITEMS_END -->
-</aside>
-
-<!-- =======================================================
-     FIXED NAVIGATION CONTROLS
-     Left bottom: vertical.
-     Do not add a Top button.
-     ======================================================= -->
-<nav class="nav-dock-left" aria-label="Điều hướng học tập">
-  <button id="toc-toggle" type="button" aria-label="Mục lục" title="Mục lục"
-          aria-controls="toc-drawer" aria-expanded="false">☰</button>
-  <button id="section-prev" type="button" aria-label="Mục trước" title="Back">‹</button>
-  <button id="section-next" type="button" aria-label="Mục tiếp theo" title="Next">›</button>
-</nav>
-
-<!-- =======================================================
-     FIXED DISPLAY CONTROLS
-     Right bottom: horizontal.
-     ======================================================= -->
-<nav class="settings-dock-right" aria-label="Thiết lập hiển thị">
-  <button id="theme-toggle" type="button" aria-label="Đổi Dark/Light"
-          title="Đổi Dark/Light" aria-pressed="false">☀</button>
-  <button id="mode-toggle" class="mode-toggle" type="button"
-          aria-label="Đổi Full/Keywords" title="Đổi Full/Keywords"
-          aria-pressed="false">🎯</button>
-  <button id="font-reset" class="font-reset" type="button"
-          aria-label="Đặt lại cỡ chữ 100%" title="Đặt lại cỡ chữ 100%">100%</button>
-  <button id="font-down" type="button" aria-label="Giảm cỡ chữ"
-          title="Giảm cỡ chữ">A−</button>
-  <button id="font-up" type="button" aria-label="Tăng cỡ chữ"
-          title="Tăng cỡ chữ">A+</button>
-</nav>
-
+<!--
+HTML TEMPLATE CONTRACT 2.3
+- Based on latest pinch-zoom-safe test.html.
+- Default theme: dark; persistent Dark/Light toggle.
+- Font: 50%-150%, 5% step; persistent.
+- Native two-finger pinch zoom MUST NOT trigger responsive reflow.
+- Real orientation change MAY update layout and restore logical reading position.
+- iPad/tablet portrait: one-column bilingual flow.
+- iPad/tablet landscape: Japanese/Vietnamese side-by-side.
+- Controls: collapsed by default at bottom-left; tap to expand horizontally.
+- Home button: index.html.
+- Back/Next: TOC item navigation, not browser history.
+- Do not redesign CSS/JS/control behavior per lesson.
+-->
+<div class="control-cluster" id="control-cluster">
+<button aria-controls="control-panel" aria-expanded="false" aria-label="Mở công cụ" class="control-launcher" id="controls-toggle" title="Mở công cụ" type="button">⋯</button>
+<div aria-label="Công cụ học tập" class="control-panel" id="control-panel" role="toolbar">
+<button aria-controls="toc" aria-expanded="false" aria-label="Mục lục" id="toc-toggle" title="Mục lục" type="button">☰</button>
+<button aria-label="Mục trước" id="section-prev" title="Mục trước" type="button">‹</button>
+<button aria-label="Mục tiếp theo" id="section-next" title="Mục tiếp theo" type="button">›</button>
+<button aria-label="Đổi Dark/Light" aria-pressed="false" id="theme-toggle" title="Đổi Dark/Light" type="button">☀</button>
+<button aria-label="Đổi Full/Keywords" aria-pressed="false" class="mode-toggle" id="mode-toggle" title="Đổi Full/Keywords" type="button">🎯</button>
+<button aria-label="Giảm cỡ chữ" id="font-down" title="Giảm cỡ chữ 5%" type="button">A−</button>
+<button aria-label="Đặt lại cỡ chữ 100%" class="font-reset" id="font-reset" title="Đặt lại cỡ chữ 100%" type="button">100%</button>
+<button aria-label="Tăng cỡ chữ" id="font-up" title="Tăng cỡ chữ 5%" type="button">A+</button>
+<button aria-label="Top Page" class="home-icon" id="home-button" title="Top Page" type="button"><svg aria-hidden="true" fill="none" viewbox="0 0 24 24"><path d="M3.5 10.5 12 3.8l8.5 6.7v9.2h-5.3v-6H8.8v6H3.5z" stroke="currentColor" stroke-linejoin="round" stroke-width="1.8"></path></svg></button>
+</div>
+</div><div aria-hidden="true" class="toc-overlay" id="toc-overlay"></div>
 <div class="page-shell">
+<header class="hero" id="top">
+<h1>躯体工事 H29 - Book 429-436</h1>
+</header>
+<nav aria-label="Mục lục" class="toc" id="toc">
+<div class="toc-drawer-head">
+<strong>Mục lục</strong>
+<button aria-label="Đóng mục lục" class="toc-close" id="toc-close" type="button">×</button>
+</div>
+<h2>Mục lục</h2>
+<!-- TOC_ITEMS_START -->
 
-  <!-- =====================================================
-       DOCUMENT HEADER
-       Replace title/subtitle/meta values only.
-       ===================================================== -->
-  <header class="hero" id="top">
-    <h1>躯体工事 H29 - Book 429-436</h1>
-    <p class="hero-subtitle">1級建築施工管理技術検定 第二次検定 / 平成29年度 問題3 躯体工事</p>
-
-    <div class="meta-grid">
-      <div class="meta-item">
-        <span class="meta-label">PDF nguồn</span>
-        04j_躯体工事_H29_p429-437.pdf
-      </div>
-      <div class="meta-item">
-        <span class="meta-label">File ID</span>
-        F050
-      </div>
-      <div class="meta-item">
-        <span class="meta-label">Phạm vi</span>
-        Book page 429-436
-      </div>
-      <div class="meta-item">
-        <span class="meta-label">Chế độ</span>
-        Song ngữ Nhật-Việt / Dark-Light / Full-Keywords / Font 80-140%
-      </div>
-    </div>
-  </header>
-
-  <!-- =====================================================
-       CONTENT_START
-       AI may freely repeat/reorder approved content components.
-       Global CSS/JS/control structure must not be redesigned.
-       ===================================================== -->
-  <main id="lesson">
-
-<section class="study-section" id="stud-weld">
-  <div class="section-head">
-    <h2>スタッド溶接後の仕上がり高さ・傾きの検査</h2>
-    <span class="source-ref">Nguồn: Book page 429</span>
-  </div>
-  <div class="study-grid">
-    <article class="study-card original">
-      <div class="card-title">原文</div>
-      <div class="recall-source" lang="ja">
-        <p>(4) <strong class="kw">スタッド溶接後の仕上がり高さ</strong>は、指定された寸法の<mark class="critical">±2mm以内</mark>でなければならない。指定された寸法Lに対する限界許容差ΔLは<mark class="critical">±2mm以内</mark>である。なお、スタッドが傾いている場合は、<span class="relation">軸の中心における軸長を仕上がり高さとみなす</span>。</p>
-        <p>(5) <strong class="kw">スタッド溶接後の傾きθ</strong>は、<mark class="critical">5度以内</mark>でなければならない。</p>
-        <p>(6) スタッド溶接における検査基準をまとめると、下表のようになる。</p>
-        <div class="table-wrap"><table>
-          <caption>スタッド溶接後の仕上り高さ（ΔL）と傾き（θ）</caption>
-          <thead><tr><th>項目</th><th>基準</th></tr></thead>
-          <tbody>
-            <tr><td><strong class="kw">管理許容差</strong></td><td><span class="relation">−1.5mm ≦ ΔL ≦ ＋1.5mm</span><br><span class="relation">θ ≦ 3度</span></td></tr>
-            <tr><td><strong class="kw">限界許容差</strong></td><td><mark class="critical">−2mm ≦ ΔL ≦ ＋2mm</mark><br><mark class="critical">θ ≦ 5度</mark></td></tr>
-            <tr><td>測定器具</td><td>金属製直尺、限界ゲージ、コンベックスルール</td></tr>
-            <tr><td>測定方法</td><td><span class="relation">スタッドが傾いている場合は、軸の中心でその軸長を測定する。</span></td></tr>
-          </tbody>
-        </table></div>
-        <p>以上により、①と②は正しいが、③は<span class="trap">15ではなく5</span>である。</p>
-      </div>
-    </article>
-    <article class="study-card translation">
-      <div class="card-title">Bản dịch tiếng Việt</div>
-      <div class="recall-source" lang="vi">
-        <p>(4) <strong class="kw">Chiều cao hoàn thiện sau khi hàn stud</strong> phải nằm trong phạm vi <mark class="critical">±2 mm</mark> so với kích thước chỉ định. Dung sai giới hạn ΔL đối với kích thước chỉ định L là <mark class="critical">±2 mm</mark>. Khi stud bị nghiêng, <span class="relation">chiều dài trục đo tại tâm trục được coi là chiều cao hoàn thiện</span>.</p>
-        <p>(5) <strong class="kw">Độ nghiêng θ sau khi hàn stud</strong> phải <mark class="critical">≤ 5°</mark>.</p>
-        <p>(6) Tiêu chuẩn kiểm tra hàn stud được tổng hợp như bảng dưới đây.</p>
-        <div class="table-wrap"><table>
-          <caption>Chiều cao hoàn thiện (ΔL) và độ nghiêng (θ) sau khi hàn stud</caption>
-          <thead><tr><th>Hạng mục</th><th>Tiêu chuẩn</th></tr></thead>
-          <tbody>
-            <tr><td><strong class="kw">Dung sai quản lý</strong></td><td><span class="relation">−1,5 mm ≦ ΔL ≦ ＋1,5 mm</span><br><span class="relation">θ ≦ 3°</span></td></tr>
-            <tr><td><strong class="kw">Dung sai giới hạn</strong></td><td><mark class="critical">−2 mm ≦ ΔL ≦ ＋2 mm</mark><br><mark class="critical">θ ≦ 5°</mark></td></tr>
-            <tr><td>Dụng cụ đo</td><td>Thước thẳng kim loại, dưỡng kiểm giới hạn, thước cuộn</td></tr>
-            <tr><td>Phương pháp đo</td><td><span class="relation">Nếu stud bị nghiêng, đo chiều dài trục tại tâm của trục stud.</span></td></tr>
-          </tbody>
-        </table></div>
-        <p>Do đó, ① và ② đúng, còn ③ phải là <span class="trap">5°, không phải 15°</span>.</p>
-      </div>
-    </article>
-  </div>
-</section>
-
-<section class="study-section" id="h29-q3">
-  <div class="section-head">
-    <h2>平成29年度 問題3 躯体工事</h2>
-    <span class="source-ref">Nguồn: Book page 429</span>
-  </div>
-  <div class="study-grid">
-    <article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja">
-      <p>次の設問1から設問4に答えなさい。</p>
-      <p>ただし、解答はそれぞれ異なる内容の記述とし、<span class="trap">作業環境（気象条件等）、材料の品質、材料の調合、材料の保管及び作業員の安全に関する記述は除く</span>ものとする。</p>
-      <p><strong class="kw">設問1</strong> 既製コンクリート杭の埋込み工法における、支持力を確保するための施工管理上の確認方法を2つ具体的に記述しなさい。</p>
-      <p><strong class="kw">設問2</strong> 鉄筋工事における、バーサポート又はスペーサーを設置する際の施工上の留意事項を2つ具体的に記述しなさい。</p>
-      <p><strong class="kw">設問3</strong> コンクリート工事の打込み時における、コールドジョイントの発生を防止するための施工上の留意事項を2つ具体的に記述しなさい。</p>
-      <p><strong class="kw">設問4</strong> 鉄骨工事の耐火被覆における、吹付けロックウール（乾式又は半乾式）工法の施工上の留意事項を2つ具体的に記述しなさい。</p>
-    </div></article>
-    <article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi">
-      <p>Trả lời từ câu 1 đến câu 4.</p>
-      <p>Mỗi câu trả lời phải có nội dung khác nhau. <span class="trap">Không được sử dụng nội dung về môi trường làm việc như điều kiện khí tượng, chất lượng vật liệu, cấp phối vật liệu, bảo quản vật liệu hoặc an toàn của người lao động</span>.</p>
-      <p><strong class="kw">Câu 1</strong> Đối với phương pháp chôn cọc bê tông đúc sẵn, trình bày cụ thể 2 phương pháp kiểm tra trong quản lý thi công nhằm bảo đảm sức chịu tải của cọc.</p>
-      <p><strong class="kw">Câu 2</strong> Trong công tác cốt thép, trình bày cụ thể 2 điểm cần lưu ý khi lắp bar support hoặc spacer.</p>
-      <p><strong class="kw">Câu 3</strong> Trong quá trình đổ bê tông, trình bày cụ thể 2 điểm cần lưu ý nhằm ngăn ngừa phát sinh cold joint.</p>
-      <p><strong class="kw">Câu 4</strong> Trong công tác lớp phủ chống cháy kết cấu thép, trình bày cụ thể 2 điểm cần lưu ý khi thi công phương pháp phun rock wool dạng khô hoặc bán khô.</p>
-    </div></article>
-  </div>
-
-  <section class="subsection" id="answers">
-    <h3>解答例 / Ví dụ đáp án</h3>
-    <div class="study-grid">
-      <article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja">
-        <div class="item-block"><span class="item-label">設問1</span><p>① <span class="relation">深度ごとに、オーガ駆動電流値の変化と、土質柱状図におけるN値の変化を比較する。</span></p><p>② <span class="relation">オーガ先端に付着した掘削土を採取し、土質標本と照合する。</span></p></div>
-        <div class="item-block"><span class="item-label">設問2</span><p>① 鋼製のバーサポートは、鉄筋の水平位置を保持できるように配置し、<strong class="kw">防錆処理</strong>を行う。</p><p>② スペーサーは、鋼製とし、その<strong class="kw">数量や配置を施工図で確認する</strong>。</p></div>
-        <div class="item-block"><span class="item-label">設問3</span><p>① <strong class="kw">打重ね時間間隔</strong>は、外気温が<mark class="critical">25℃超なら120分以内</mark>、<mark class="critical">25℃以下でも150分以内</mark>とする。</p><p>② 後打ちコンクリートは、<span class="relation">内部振動機を先打ちコンクリート下層に挿入し、一体化させる</span>。</p></div>
-        <div class="item-block"><span class="item-label">設問4</span><p>① 吹付け前に、<strong class="kw">鉄骨表面の浮き錆を除去し、素地調整</strong>を行う。</p><p>② 乾式工法で工場配合のロックウールを吹き付ける時は、<strong class="kw">飛散防止対策</strong>を講じる。</p></div>
-      </div></article>
-      <article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi">
-        <div class="item-block"><span class="item-label">Câu 1</span><p>① <span class="relation">Ở từng độ sâu, so sánh sự biến đổi của dòng điện dẫn động auger với sự biến đổi của giá trị N trên biểu đồ trụ địa chất.</span></p><p>② <span class="relation">Lấy mẫu đất đào bám ở đầu auger và đối chiếu với mẫu đất chuẩn.</span></p></div>
-        <div class="item-block"><span class="item-label">Câu 2</span><p>① Bar support bằng thép phải được bố trí để duy trì vị trí ngang của cốt thép và thực hiện <strong class="kw">xử lý chống gỉ</strong>.</p><p>② Spacer phải làm bằng thép; <strong class="kw">số lượng và cách bố trí phải được xác nhận trên bản vẽ thi công</strong>.</p></div>
-        <div class="item-block"><span class="item-label">Câu 3</span><p>① <strong class="kw">Khoảng thời gian giữa hai lớp đổ</strong>: nhiệt độ ngoài trời <mark class="critical">&gt;25°C: trong 120 phút</mark>; <mark class="critical">≤25°C: trong 150 phút</mark>.</p><p>② Khi đổ lớp bê tông sau, <span class="relation">đưa đầm rung trong vào bê tông đã đổ trước để hai lớp trở thành một khối thống nhất</span>.</p></div>
-        <div class="item-block"><span class="item-label">Câu 4</span><p>① Trước khi phun phải <strong class="kw">loại bỏ gỉ nổi trên bề mặt kết cấu thép và xử lý bề mặt nền</strong>.</p><p>② Khi phun rock wool đã phối trộn tại nhà máy bằng phương pháp khô, phải có <strong class="kw">biện pháp ngăn vật liệu phát tán</strong>.</p></div>
-      </div></article>
-    </div>
-    <p><a href="#toc">↑ Mục lục</a></p>
-  </section>
-</section>
-
-<section class="study-section" id="pile">
-  <div class="section-head"><h2>設問1 既製コンクリート杭の埋込み工法</h2><span class="source-ref">Nguồn: Book page 430-431</span></div>
-  <section class="subsection" id="preboring"><h3>(1) プレボーリング工法の施工要領</h3>
-    <div class="study-grid">
-      <article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja">
-        <p><strong class="kw">既製コンクリート杭の埋込み工法</strong>は、<span class="relation">プレボーリング工法と、中掘り工法に大別される</span>。</p>
-        <p><strong class="kw">プレボーリング工法</strong>は、地盤に穴を開けてから既製杭を埋め込み、打撃またはセメントミルクなどによる根固めを行う工法である。</p>
-        <p>施工手順を簡潔に示すと、「<mark class="critical">杭径よりも10cm程度大きな径の穴を掘削する</mark>」→「根固め液となるセメントミルクを注入して球根を造る」→「杭周固定液を充填する」→「掘削ビットを引き上げる」→「既製杭を挿入する」→「杭を自沈させるか、回転圧入する」→「杭の先端を根固め部に埋め込み、定着させる」となる。</p>
-        <p>プレボーリング工法における施工の留意点には、次のようなものがある。</p>
-        <ol>
-          <li><span class="relation">孔壁の崩壊が生じないよう、地盤の状態に応じた掘削速度とする。</span></li>
-          <li><span class="relation">アースオーガーの引き上げは、負圧によって地盤を緩めないよう、ゆっくりと行う。</span></li>
-          <li><strong class="kw">安定液</strong>を<mark class="critical">地下水位以上</mark>になるまで補充する。</li>
-          <li>掘削土は、しっかりと排出する。</li>
-          <li>根固め液の配合は、特記仕様書に従って行う。</li>
-          <li>杭周固定液は、杭の全長にわたって、空隙を充填できるだけの量を注入する。</li>
-          <li>杭の建込み後に、杭が自沈するようなときは、固定治具で杭を保持する。</li>
-        </ol>
-      </div></article>
-      <article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi">
-        <p><strong class="kw">Phương pháp chôn cọc bê tông đúc sẵn</strong> được <span class="relation">chia chủ yếu thành pre-boring và khoan trong lòng cọc</span>.</p>
-        <p><strong class="kw">Pre-boring</strong> là phương pháp khoan lỗ trong nền trước, sau đó hạ cọc đúc sẵn và gia cố chân cọc bằng đóng hoặc cement milk.</p>
-        <p>Trình tự: “<mark class="critical">khoan lỗ có đường kính lớn hơn đường kính cọc khoảng 10 cm</mark>” → bơm cement milk làm dung dịch gia cố chân cọc để tạo bầu gia cố → bơm dung dịch cố định quanh cọc → rút mũi khoan → đưa cọc đúc sẵn vào → cho cọc tự chìm hoặc ép xoay → chôn đầu cọc vào phần gia cố chân cọc và cố định.</p>
-        <p>Các điểm cần lưu ý:</p>
-        <ol>
-          <li><span class="relation">Điều chỉnh tốc độ khoan theo trạng thái nền để không làm sập thành lỗ.</span></li>
-          <li><span class="relation">Rút earth auger từ từ để áp suất âm không làm nền đất bị nới lỏng.</span></li>
-          <li>Bổ sung <strong class="kw">dung dịch ổn định</strong> đến mức <mark class="critical">cao hơn mực nước ngầm</mark>.</li>
-          <li>Đất đào phải được thải ra đầy đủ.</li>
-          <li>Cấp phối dung dịch gia cố chân cọc phải theo đặc tả kỹ thuật riêng.</li>
-          <li>Dung dịch cố định quanh cọc phải đủ để lấp kín khe rỗng dọc toàn bộ chiều dài cọc.</li>
-          <li>Nếu cọc có xu hướng tự chìm sau khi dựng, phải giữ cọc bằng đồ gá cố định.</li>
-        </ol>
-      </div></article>
-    </div>
-  </section>
-  <section class="subsection" id="inner-boring"><h3>(2) 中掘り工法の施工要領</h3>
-    <div class="study-grid">
-      <article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja">
-        <p><strong class="kw">中掘り工法</strong>は、大口径の鋼管を建て込み、鋼管の中（既製杭の中空部）からスパイラルオーガーで掘削して杭を埋め込み、打撃またはモルタル拡大根固めを行い、杭と支持地盤を一体化させる工法である。</p>
-        <p>施工手順は、「既製杭の中空部にスパイラルオーガーを挿入する」→「杭とスパイラルオーガーを吊り上げて建て込む」→「穴を掘削する」→「杭を沈設する」→「ディーゼルパイルハンマで打撃して支持地盤に杭を固定するか、根固め部にセメントミルクで球根を造って杭を固定する」→「スパイラルオーガーを引き上げる」となる。</p>
-        <ol>
-          <li><span class="trap">杭の損傷や地盤の緩みが生じないよう、先掘りをしない。</span></li>
-          <li><span class="relation">スパイラルオーガーを引き上げるときは、負圧によって地盤を緩めないよう、ゆっくりとした速度で引き上げる。</span></li>
-          <li>根固め液の配合は、特記仕様書に従って行う。</li>
-          <li>杭周固定液は、杭の全長にわたって、空隙を充填できるだけの量を注入する。</li>
-        </ol>
-      </div></article>
-      <article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi">
-        <p><strong class="kw">Phương pháp khoan trong lòng cọc</strong> là phương pháp dựng cọc/ống thép đường kính lớn, khoan bằng spiral auger từ phần rỗng bên trong cọc đúc sẵn, đồng thời hạ cọc; sau đó đóng hoặc gia cố mở rộng chân cọc bằng mortar để liên kết cọc với tầng đất chịu lực thành một khối.</p>
-        <p>Trình tự: đưa spiral auger vào phần rỗng của cọc → cẩu cọc cùng auger và dựng vào vị trí → khoan → hạ cọc → đóng bằng diesel pile hammer để cố định vào tầng chịu lực hoặc tạo bầu cement milk tại phần gia cố chân cọc → rút spiral auger.</p>
-        <ol>
-          <li><span class="trap">Không được khoan vượt trước, nhằm tránh hư hại cọc hoặc làm nền đất bị nới lỏng.</span></li>
-          <li><span class="relation">Khi rút spiral auger phải rút chậm để áp suất âm không làm nền đất bị nới lỏng.</span></li>
-          <li>Cấp phối dung dịch gia cố chân cọc phải theo đặc tả kỹ thuật riêng.</li>
-          <li>Dung dịch cố định quanh cọc phải đủ để lấp đầy khe rỗng trên toàn bộ chiều dài cọc.</li>
-        </ol>
-      </div></article>
-    </div>
-  </section>
-  <section class="subsection" id="bearing-check"><h3>(3) 支持力を確保するための施工管理上の確認方法</h3>
-    <div class="study-grid">
-      <article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja">
-        <p>既製コンクリート杭の埋込み工法において、支持力を確保するための施工管理上の確認方法には、次のようなものがある。</p>
-        <ol><li><span class="relation">支持層の深度を、土質調査結果や地層断面図によって確認する。</span></li><li><span class="relation">深度ごとに、オーガ駆動電流値の変化と、土質柱状図におけるN値の変化を比較する。</span></li><li><span class="relation">オーガヘッドの先端に付着した掘削土を採取し、仕様書に示されている土質標本と照合する。</span></li></ol>
-      </div></article>
-      <article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi">
-        <p>Đối với cọc bê tông đúc sẵn thi công bằng phương pháp chôn, các phương pháp kiểm tra quản lý thi công để bảo đảm sức chịu tải gồm:</p>
-        <ol><li><span class="relation">Xác nhận độ sâu tầng chịu lực bằng kết quả khảo sát địa chất và mặt cắt địa tầng.</span></li><li><span class="relation">Ở từng độ sâu, so sánh biến đổi dòng điện dẫn động auger với biến đổi giá trị N trên biểu đồ trụ địa chất.</span></li><li><span class="relation">Lấy đất đào bám ở đầu auger head và đối chiếu với mẫu đất nêu trong đặc tả kỹ thuật.</span></li></ol>
-      </div></article>
-    </div>
-    <p><a href="#toc">↑ Mục lục</a></p>
-  </section>
-</section>
-
-<section class="study-section" id="rebar-support">
-  <div class="section-head"><h2>設問2 バーサポート・スペーサー</h2><span class="source-ref">Nguồn: Book page 432-433</span></div>
-  <div class="study-grid">
-    <article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja">
-      <p><strong class="kw">スペーサー</strong>とは、せき板（側面の型枠）やスラブ鉄筋と、鉄筋との間隔を保つために必要となる、<span class="relation">鉄筋のかぶりを確保するための部材</span>である。<strong class="kw">バーサポート</strong>とは、<span class="relation">鉄筋の水平位置を保持するための部材</span>であり、スペーサーの一種である。</p>
-      <p>鉄筋工事のスペーサーは、鉄筋を支持すると共に、鉄筋のかぶり厚さ（コンクリート表面から鉄筋表面までの最小距離）を確保するための部材である。</p>
-      <div class="table-wrap"><table>
-        <caption>鉄筋のサポートおよびスペーサの種類・配置の標準（JASS5）</caption>
-        <thead><tr><th>部位</th><th>種類</th><th>配置の標準</th><th>備考</th></tr></thead>
-        <tbody>
-          <tr><td><strong class="kw">スラブ</strong></td><td>鋼製・コンクリート製・モルタル製</td><td>上端筋・下端筋それぞれ<mark class="critical">間隔0.9m程度</mark>、<mark class="critical">端部0.1m以内</mark></td><td></td></tr>
-          <tr><td><strong class="kw">梁</strong></td><td>鋼製・コンクリート製・モルタル製</td><td><mark class="critical">間隔1.5m程度</mark>、<mark class="critical">端部0.5m程度</mark></td><td>上または下いずれかと、側面の両側へ対称に設置</td></tr>
-          <tr><td><strong class="kw">柱</strong></td><td>鋼製・コンクリート製・モルタル製</td><td>上段は梁下より<mark class="critical">0.5m程度</mark>、中段は上段より<mark class="critical">1.5m間隔程度</mark>。柱幅方向は<mark class="critical">1.0m以下2個、1.0m超え3個</mark></td><td>同一平面に点対称となるように設置</td></tr>
-          <tr><td><strong class="kw">基礎</strong></td><td>鋼製・コンクリート製・モルタル製</td><td><mark class="critical">間隔0.9m程度</mark></td><td>基礎の四隅と柱の四隅に設置</td></tr>
-          <tr><td><strong class="kw">基礎梁</strong></td><td>鋼製・コンクリート製・モルタル製</td><td><mark class="critical">間隔1.5m程度</mark>、<mark class="critical">端部0.5m程度</mark></td><td>上または下いずれかと、側面の両側へ対称に設置</td></tr>
-          <tr><td><strong class="kw">壁・地下外壁</strong></td><td>鋼製・コンクリート製・モルタル製</td><td>上段は梁下より<mark class="critical">0.5m程度</mark>まで、中段は上段より<mark class="critical">1.5m間隔程度</mark>、横間隔<mark class="critical">1.5m程度</mark>、端部<mark class="critical">0.5m程度</mark></td><td></td></tr>
-        </tbody>
-      </table></div>
-      <p>［注］(1) スペーサは、<span class="trap">側面に限りプラスチック製でもよい</span>。(2) 断熱材打込み時のスペーサは、支持重量に対して、めり込まない程度の設置面積を持ったものとする。</p>
-      <p>コンクリート中の鉄筋が、設計図に示されている位置を確保できるよう、鉄筋相互の結束はバーサポートやスペーサーを用いて行う。</p>
-      <ol>
-        <li>バーサポートやスペーサーは、組み立てられた鉄筋を安全に支持し、コンクリートの打込み圧力がかかっても変形せず、剛性・強度を有しており、コンクリートと同等以上の耐久性があるものとする。</li>
-        <li>使用するバーサポートやスペーサーは、スラブ・梁・柱などの部位ごとに、種類・数量・配置の標準と適合していることを確認する。</li>
-        <li>バーサポートやスペーサーは、原則として、鋼製・コンクリート製・モルタル製のいずれかとするが、<span class="trap">側面ではプラスチック製でもよい</span>。また、<span class="relation">スラブのスペーサーは、原則として鋼製</span>とする。</li>
-        <li>鋼製のバーサポートやスペーサーを使用するときは、<strong class="kw">かぶりに等しい厚さに相当する部分に、防錆処理</strong>をしていることを確認する。</li>
-        <li>断熱材打込み時のスペーサーは、作用荷重に対して、<span class="relation">めり込まないだけの面積</span>を有するものであることを確認する。</li>
-        <li>バーサポートやスペーサーは、かぶり厚さを確保できるものとするが、過大とならないようにする必要もあるので、その<strong class="kw">数量や配置を施工図で確認する</strong>。</li>
-      </ol>
-      <p>※「建築工事標準仕様書・同解説（日本建築学会）」では、「バーサポート」の名称は「サポート」、「スペーサー」の名称は「スペーサ」と表記されているが、その意味するところに違いはない。</p>
-    </div></article>
-    <article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi">
-      <p><strong class="kw">Spacer</strong> là cấu kiện dùng để duy trì khoảng cách giữa cốt thép với ván khuôn mặt bên hoặc giữa các lớp cốt thép, qua đó <span class="relation">bảo đảm chiều dày lớp bê tông bảo vệ</span>. <strong class="kw">Bar support</strong> là <span class="relation">cấu kiện giữ vị trí ngang của cốt thép</span> và là một loại spacer.</p>
-      <p>Spacer vừa đỡ cốt thép vừa bảo đảm chiều dày lớp bảo vệ, tức khoảng cách nhỏ nhất từ bề mặt bê tông đến bề mặt cốt thép.</p>
-      <div class="table-wrap"><table>
-        <caption>Tiêu chuẩn về loại và bố trí support/spacer theo JASS 5</caption>
-        <thead><tr><th>Vị trí</th><th>Vật liệu</th><th>Bố trí tiêu chuẩn</th><th>Ghi chú</th></tr></thead>
-        <tbody>
-          <tr><td><strong class="kw">Sàn</strong></td><td>Thép, bê tông hoặc mortar</td><td>Cho cả thép lớp trên và dưới: <mark class="critical">khoảng 0,9 m</mark>; tại đầu <mark class="critical">≤0,1 m</mark></td><td></td></tr>
-          <tr><td><strong class="kw">Dầm</strong></td><td>Thép, bê tông hoặc mortar</td><td><mark class="critical">Khoảng 1,5 m</mark>; đầu khoảng <mark class="critical">0,5 m</mark></td><td>Bố trí phía trên hoặc dưới và đối xứng hai mặt bên</td></tr>
-          <tr><td><strong class="kw">Cột</strong></td><td>Thép, bê tông hoặc mortar</td><td>Hàng trên cách đáy dầm <mark class="critical">0,5 m</mark>; hàng giữa cách hàng trên <mark class="critical">1,5 m</mark>; theo chiều rộng cột: <mark class="critical">≤1,0 m: 2 cái; &gt;1,0 m: 3 cái</mark></td><td>Bố trí đối xứng điểm trên cùng một mặt phẳng</td></tr>
-          <tr><td><strong class="kw">Móng</strong></td><td>Thép, bê tông hoặc mortar</td><td><mark class="critical">Khoảng 0,9 m</mark></td><td>Đặt tại bốn góc móng và bốn góc cột</td></tr>
-          <tr><td><strong class="kw">Dầm móng</strong></td><td>Thép, bê tông hoặc mortar</td><td><mark class="critical">Khoảng 1,5 m</mark>; đầu khoảng <mark class="critical">0,5 m</mark></td><td>Bố trí phía trên hoặc dưới và đối xứng hai mặt bên</td></tr>
-          <tr><td><strong class="kw">Tường / tường ngoài tầng hầm</strong></td><td>Thép, bê tông hoặc mortar</td><td>Hàng trên đến khoảng <mark class="critical">0,5 m dưới dầm</mark>; hàng giữa <mark class="critical">1,5 m</mark>; phương ngang <mark class="critical">1,5 m</mark>; đầu <mark class="critical">0,5 m</mark></td><td></td></tr>
-        </tbody>
-      </table></div>
-      <p>Chú ý: (1) <span class="trap">chỉ spacer ở mặt bên mới có thể dùng loại bằng nhựa</span>. (2) Khi đổ bê tông cùng vật liệu cách nhiệt, spacer phải có diện tích tiếp xúc đủ để không bị lún dưới tải trọng đỡ.</p>
-      <p>Cần dùng bar support và spacer để cốt thép trong bê tông duy trì đúng vị trí thể hiện trên bản vẽ thiết kế.</p>
-      <ol>
-        <li>Bar support và spacer phải đỡ an toàn cốt thép đã lắp dựng, không biến dạng dưới áp lực đổ bê tông, có đủ độ cứng, cường độ và độ bền lâu bằng hoặc cao hơn bê tông.</li>
-        <li>Với từng vị trí như sàn, dầm, cột, phải xác nhận loại, số lượng và cách bố trí phù hợp tiêu chuẩn.</li>
-        <li>Về nguyên tắc dùng thép, bê tông hoặc mortar; <span class="trap">ở mặt bên có thể dùng spacer bằng nhựa</span>. <span class="relation">Spacer của sàn về nguyên tắc làm bằng thép</span>.</li>
-        <li>Khi dùng loại bằng thép, phải xác nhận đã <strong class="kw">xử lý chống gỉ phần tương ứng với chiều dày lớp bảo vệ</strong>.</li>
-        <li>Khi đổ cùng vật liệu cách nhiệt, spacer phải có <span class="relation">diện tích đủ để không bị lún dưới tải trọng tác dụng</span>.</li>
-        <li>Phải bảo đảm chiều dày lớp bảo vệ nhưng không để quá lớn, vì vậy phải <strong class="kw">kiểm tra số lượng và cách bố trí trên bản vẽ thi công</strong>.</li>
-      </ol>
-      <p>Trong JASS của Viện Kiến trúc Nhật Bản, `バーサポート` được ghi là `サポート`, còn `スペーサー` được ghi là `スペーサ`; ý nghĩa kỹ thuật không khác nhau.</p>
-    </div></article>
-  </div>
-  <div class="figure-box"><strong>Giải thích hình Book 432</strong><p>Hình minh họa spacer nằm giữa cốt thép và ván khuôn: chức năng là giữ cốt thép ở vị trí thích hợp và bảo đảm <em>所要のかぶり</em>, tức chiều dày lớp bê tông bảo vệ theo yêu cầu.</p></div>
-  <p><a href="#toc">↑ Mục lục</a></p>
-</section>
-
-<section class="study-section" id="cold-joint">
-  <div class="section-head"><h2>設問3 コールドジョイントの発生防止</h2><span class="source-ref">Nguồn: Book page 433-434</span></div>
-  <div class="study-grid">
-    <article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja">
-      <p><strong class="kw">コールドジョイント</strong>とは、上下層（先打ちコンクリートと後打ちコンクリート）が一体化していない不連続な不良打継目のことである。<span class="relation">下層の先打ちコンクリートが硬化してから、上層の後打ちコンクリートを施工すると発生しやすい</span>。</p>
-      <p>また、<strong class="kw">暑中コンクリート</strong>（日平均気温が<mark class="critical">25℃を超える</mark>時期に施工するコンクリート）や<strong class="kw">マスコンクリート</strong>（部材断面の最小寸法が<mark class="critical">80cm以上</mark>となるコンクリート）では、特に発生しやすい。</p>
-      <p><span class="relation">コールドジョイントが発生した部位では、構造としての強度が低下し、打継ぎ部分において鉄筋の錆が生じるため、鉄筋コンクリート躯体の耐久性が著しく低下する</span>。</p>
-      <p>旧（先打ち）コンクリートに新（後打ち）コンクリートを打ち込むときは、<strong class="kw">旧コンクリート表面のレイタンスを取り除き、その表面を湿潤にしておく</strong>。</p>
-      <h4>(1) コールドジョイントの発生を防止するための施工上の留意事項</h4>
-      <ol>
-        <li><strong class="kw">許容打重ね時間間隔</strong>を厳守し、連続打設する。外気温が<mark class="critical">25℃以下: 2.5時間以内</mark>、<mark class="critical">25℃超: 2.0時間以内</mark>。</li>
-        <li>後打ちコンクリートの施工時には、<span class="relation">内部振動機を先打ちコンクリート中に10cm程度挿入して一体化させる</span>。</li>
-        <li><strong class="kw">再振動</strong>は、コンクリートの締固め後、<span class="relation">コンクリートが硬化する直前</span>に行う。</li>
-        <li>暑中コンクリートやマスコンクリートでは、工事監理者の承認を受けてから<strong class="kw">遅延形AE剤</strong>を使用し、許容打重ね時間間隔を延ばすことができる。</li>
-        <li><strong class="kw">コンクリートの打込み温度</strong>が<mark class="critical">35℃以下</mark>であることを確認してから打込みを開始する。</li>
-        <li>コンクリートの輸送管に、直射日光が当たらないように措置を講じる。</li>
-        <li>打込み区画の範囲を、外気温に適合するよう定め、工事監理者の承認を受ける。</li>
-      </ol>
-    </div></article>
-    <article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi">
-      <p><strong class="kw">Cold joint</strong> là mạch nối không tốt và không liên tục, tại đó lớp bê tông đổ trước và lớp đổ sau không liên kết thành một khối. <span class="relation">Hiện tượng dễ phát sinh khi bê tông đổ trước đã cứng rồi mới thi công lớp bê tông đổ sau</span>.</p>
-      <p>Hiện tượng đặc biệt dễ phát sinh với <strong class="kw">bê tông mùa nóng</strong> thi công khi nhiệt độ trung bình ngày <mark class="critical">&gt;25°C</mark> và <strong class="kw">bê tông khối lớn</strong> có kích thước nhỏ nhất của tiết diện cấu kiện <mark class="critical">≥80 cm</mark>.</p>
-      <p><span class="relation">Khi xuất hiện cold joint, cường độ kết cấu giảm, cốt thép tại mạch nối dễ bị gỉ và độ bền lâu của kết cấu bê tông cốt thép giảm đáng kể</span>.</p>
-      <p>Khi đổ bê tông mới lên bê tông cũ, phải <strong class="kw">loại bỏ laitance trên bề mặt bê tông cũ và làm ẩm bề mặt</strong>.</p>
-      <h4>(1) Các điểm cần lưu ý để ngăn ngừa cold joint</h4>
-      <ol>
-        <li>Tuân thủ <strong class="kw">khoảng thời gian cho phép giữa các lớp đổ</strong> và đổ liên tục: nhiệt độ ngoài trời <mark class="critical">≤25°C: ≤2,5 giờ</mark>; <mark class="critical">&gt;25°C: ≤2,0 giờ</mark>.</li>
-        <li>Khi đổ lớp sau, <span class="relation">đưa đầm rung trong vào bê tông đổ trước khoảng 10 cm để hai lớp liên kết thành một khối</span>.</li>
-        <li><strong class="kw">Rung lại</strong> được thực hiện sau khi đầm chặt và <span class="relation">ngay trước khi bê tông bắt đầu cứng</span>.</li>
-        <li>Với bê tông mùa nóng hoặc bê tông khối lớn, sau khi được giám sát công trình phê duyệt có thể dùng <strong class="kw">phụ gia AE loại chậm đông kết</strong> để kéo dài khoảng thời gian cho phép giữa các lớp đổ.</li>
-        <li>Chỉ bắt đầu đổ sau khi xác nhận <strong class="kw">nhiệt độ bê tông khi đổ</strong> <mark class="critical">≤35°C</mark>.</li>
-        <li>Phải có biện pháp để ống vận chuyển bê tông không bị ánh nắng trực tiếp chiếu vào.</li>
-        <li>Phạm vi phân khu đổ phải phù hợp với nhiệt độ ngoài trời và được giám sát công trình phê duyệt.</li>
-      </ol>
-    </div></article>
-  </div>
-  <div class="figure-box"><strong>Giải thích hình Book 433</strong><p>Hình thể hiện bê tông đổ sau nằm trên bê tông đổ trước, còn đường biên gồ ghề giữa hai lớp là <em>不良打継目（コールドジョイント）</em>. Đây là mặt phân cách không liên kết nguyên khối.</p></div>
-  <p><a href="#toc">↑ Mục lục</a></p>
-</section>
-
-<section class="study-section" id="fireproof">
-  <div class="section-head"><h2>設問4 耐火被覆・吹付けロックウール</h2><span class="source-ref">Nguồn: Book page 434-436</span></div>
-  <section class="subsection" id="fireproof-basic"><h3>耐火被覆と耐火構造</h3>
-    <div class="study-grid">
-      <article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja">
-        <p><strong class="kw">耐火被覆</strong>とは、鉄骨構造の建物を耐火構造とするために、鉄骨工事において、壁・柱・梁・床などを定められた材料で覆うことである。</p>
-        <p><strong class="kw">耐火構造</strong>とは、壁・柱・梁・床などの建築物の部位の構造のうち、耐火性能（通常の火災が終了するまでの間、当該火災による建築物の倒壊・延焼を防止するために、当該建築物の部分に必要とされる性能）に関して、政令で定める技術的基準に適合する鉄筋コンクリート造・煉瓦造などの構造で、国土交通大臣が定めた構造方法を用いるものまたは国土交通大臣の認定を受けたものをいう。</p>
-      </div></article>
-      <article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi">
-        <p><strong class="kw">Lớp phủ chống cháy</strong> là việc phủ các cấu kiện như tường, cột, dầm, sàn bằng vật liệu quy định nhằm làm cho công trình kết cấu thép đáp ứng yêu cầu của kết cấu chịu lửa.</p>
-        <p><strong class="kw">Kết cấu chịu lửa</strong> là kết cấu của các bộ phận công trình như tường, cột, dầm, sàn đáp ứng các tiêu chuẩn kỹ thuật do pháp lệnh quy định về khả năng chịu lửa, tức khả năng cần thiết để ngăn công trình sụp đổ và ngăn cháy lan trong khoảng thời gian cho tới khi một đám cháy thông thường kết thúc. Các kết cấu phải sử dụng phương pháp cấu tạo do Bộ trưởng Bộ Đất đai, Hạ tầng, Giao thông và Du lịch quy định hoặc được Bộ trưởng công nhận.</p>
-      </div></article>
-    </div>
-  </section>
-  <section class="subsection" id="fireproof-types"><h3>(1) 耐火被覆工法の種類</h3>
-    <div class="study-grid">
-      <article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja">
-        <p>一般的に用いられる耐火被覆工法には、次のようなものがある。鉄骨構造の建物を耐火構造とするための耐火被覆は、<span class="relation">建築基準法に例示されている仕様か、国土交通大臣が認定した仕様に準じた品質</span>を有していなければならない。</p>
-        <div class="table-wrap"><table><caption>耐火被覆工法の分類（出典：建築工事監理指針）</caption><thead><tr><th>工法</th><th>耐火被覆材料</th><th>材料の主成分</th><th>仕様区分</th></tr></thead><tbody>
-          <tr><td rowspan="2"><strong class="kw">打設工法</strong></td><td>コンクリート</td><td>セメント、砂、砂利</td><td>例示</td></tr><tr><td>軽量コンクリート</td><td>セメント、軽量骨材</td><td>例示</td></tr>
-          <tr><td rowspan="2"><strong class="kw">左官工法</strong></td><td>鉄網モルタル</td><td>セメント、砂</td><td>例示</td></tr><tr><td>鉄網パーライトモルタル</td><td>セメント、パーライト</td><td>例示</td></tr>
-          <tr><td rowspan="5"><strong class="kw">吹付け工法</strong></td><td><strong class="kw">吹付けロックウール</strong></td><td>ロックウール、セメント</td><td>認定</td></tr><tr><td>軽量セメントモルタル</td><td>セメント、パーライト、水酸化アルミニウム</td><td>認定</td></tr><tr><td>吹付けパーライトモルタル</td><td>セメント、パーライト</td><td>認定</td></tr><tr><td>水酸化アルミニウム混入湿式吹付けモルタル</td><td>セメント、シリカ、アルミナ</td><td>認定</td></tr><tr><td>耐火塗料</td><td>燐酸アンモニウム</td><td>認定</td></tr>
-          <tr><td rowspan="5"><strong class="kw">張付け工法</strong></td><td>繊維混入珪酸カルシウム板</td><td>珪酸カルシウム</td><td>認定</td></tr><tr><td>ALCパネル</td><td>セメント、珪石、生石灰</td><td>認定</td></tr><tr><td>強化石膏ボード</td><td>石膏</td><td>認定</td></tr><tr><td>押出成形セメント板</td><td>セメント</td><td>認定</td></tr><tr><td>軽量コンクリート板</td><td>セメント、軽量骨材</td><td>認定</td></tr>
-          <tr><td rowspan="2"><strong class="kw">巻付け工法</strong></td><td>セラミックファイバー系材料</td><td>セラミックファイバー</td><td>認定</td></tr><tr><td>ロックウールフェルト</td><td>ロックウール</td><td>認定</td></tr>
-          <tr><td rowspan="3"><strong class="kw">組積工法</strong></td><td>コンクリートブロック</td><td>セメント、砂、砂利</td><td>例示</td></tr><tr><td>軽量コンクリートブロック</td><td>セメント、軽量骨材</td><td>例示</td></tr><tr><td>石または煉瓦</td><td>石または煉瓦</td><td>例示</td></tr>
-          <tr><td><strong class="kw">合成工法</strong></td><td>各種材料や工法の組み合わせ</td><td>各種の耐火材</td><td>認定</td></tr>
-        </tbody></table></div>
-      </div></article>
-      <article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi">
-        <p>Các phương pháp lớp phủ chống cháy được sử dụng phổ biến như bảng dưới đây. Lớp phủ chống cháy cho công trình kết cấu thép phải có <span class="relation">chất lượng phù hợp với cấu tạo được Luật Tiêu chuẩn Xây dựng nêu ví dụ hoặc cấu tạo đã được Bộ trưởng MLIT công nhận</span>.</p>
-        <div class="table-wrap"><table><caption>Phân loại phương pháp lớp phủ chống cháy</caption><thead><tr><th>Phương pháp</th><th>Vật liệu</th><th>Thành phần chính</th><th>Phân loại</th></tr></thead><tbody>
-          <tr><td rowspan="2"><strong class="kw">Đổ tại chỗ</strong></td><td>Bê tông</td><td>Xi măng, cát, sỏi</td><td>例示</td></tr><tr><td>Bê tông nhẹ</td><td>Xi măng, cốt liệu nhẹ</td><td>例示</td></tr>
-          <tr><td rowspan="2"><strong class="kw">Trát</strong></td><td>Mortar lưới thép</td><td>Xi măng, cát</td><td>例示</td></tr><tr><td>Mortar perlite có lưới thép</td><td>Xi măng, perlite</td><td>例示</td></tr>
-          <tr><td rowspan="5"><strong class="kw">Phun</strong></td><td><strong class="kw">Rock wool phun</strong></td><td>Rock wool, xi măng</td><td>認定</td></tr><tr><td>Mortar xi măng nhẹ</td><td>Xi măng, perlite, nhôm hydroxide</td><td>認定</td></tr><tr><td>Mortar perlite phun</td><td>Xi măng, perlite</td><td>認定</td></tr><tr><td>Mortar phun ướt có nhôm hydroxide</td><td>Xi măng, silica, alumina</td><td>認定</td></tr><tr><td>Sơn chống cháy</td><td>Amoni phosphat</td><td>認定</td></tr>
-          <tr><td rowspan="5"><strong class="kw">Gắn tấm</strong></td><td>Tấm calcium silicate gia cường sợi</td><td>Calcium silicate</td><td>認定</td></tr><tr><td>Panel ALC</td><td>Xi măng, đá silica, vôi sống</td><td>認定</td></tr><tr><td>Tấm thạch cao gia cường</td><td>Thạch cao</td><td>認定</td></tr><tr><td>Tấm xi măng đùn ép</td><td>Xi măng</td><td>認定</td></tr><tr><td>Tấm bê tông nhẹ</td><td>Xi măng, cốt liệu nhẹ</td><td>認定</td></tr>
-          <tr><td rowspan="2"><strong class="kw">Bọc/cuốn</strong></td><td>Vật liệu ceramic fiber</td><td>Ceramic fiber</td><td>認定</td></tr><tr><td>Nỉ rock wool</td><td>Rock wool</td><td>認定</td></tr>
-          <tr><td rowspan="3"><strong class="kw">Xây bao</strong></td><td>Block bê tông</td><td>Xi măng, cát, sỏi</td><td>例示</td></tr><tr><td>Block bê tông nhẹ</td><td>Xi măng, cốt liệu nhẹ</td><td>例示</td></tr><tr><td>Đá hoặc gạch</td><td>Đá hoặc gạch</td><td>例示</td></tr>
-          <tr><td><strong class="kw">Phương pháp hỗn hợp</strong></td><td>Kết hợp nhiều vật liệu/công pháp</td><td>Các loại vật liệu chịu lửa</td><td>認定</td></tr>
-        </tbody></table></div>
-      </div></article>
-    </div>
-  </section>
-  <section class="subsection" id="rockwool-method"><h3>(2) 吹付けロックウール工法</h3>
-    <div class="study-grid">
-      <article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja">
-        <p>耐火被覆材料として吹付けロックウールを使用する吹付け工法は、鉄骨工事における代表的な耐火被覆工法である。吹付けロックウール工法は、<span class="relation">工場配合されたロックウールを用いる乾式工法</span>と、<span class="relation">現場配合のセメントスラリーを用いる半乾式工法</span>に分類されている。</p>
-        <p>① <strong class="kw">乾式工法</strong>は、工場配合されたロックウールおよびセメントと、水を別々に圧送し、<span class="relation">ノズルの先端で混合して吹き付ける</span>工法である。施工時に<span class="relation">ロックウールが飛散するおそれ</span>がある。</p>
-        <p>② <strong class="kw">半乾式工法</strong>は、現場配合されたセメントスラリー（水およびセメント）と、ロックウールを別々に圧送し、<span class="relation">ノズルの先端で混合して吹き付ける</span>工法である。</p>
-      </div></article>
-      <article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi">
-        <p>Phương pháp phun dùng rock wool là một phương pháp phủ chống cháy tiêu biểu cho kết cấu thép. Công pháp được chia thành <span class="relation">phương pháp khô dùng rock wool phối trộn tại nhà máy</span> và <span class="relation">phương pháp bán khô dùng cement slurry phối trộn tại công trường</span>.</p>
-        <p>① <strong class="kw">Phương pháp khô</strong>: hỗn hợp rock wool + xi măng đã phối trộn tại nhà máy và nước được vận chuyển riêng, sau đó <span class="relation">trộn tại đầu nozzle rồi phun</span>. Khi thi công có <span class="relation">nguy cơ rock wool phát tán</span>.</p>
-        <p>② <strong class="kw">Phương pháp bán khô</strong>: cement slurry gồm nước + xi măng phối trộn tại công trường và rock wool được vận chuyển riêng, sau đó <span class="relation">trộn tại đầu nozzle rồi phun</span>.</p>
-      </div></article>
-    </div>
-    <div class="figure-box"><strong>Giải thích hai sơ đồ hệ thống phun</strong><p><b>乾式:</b> rock wool + xi măng đi theo tuyến vật liệu khô, nước đi tuyến riêng, gặp nhau tại nozzle. <b>半乾式:</b> rock wool đi tuyến riêng; nước + xi măng được khuấy thành cement slurry, bơm theo tuyến riêng, sau đó gặp rock wool tại nozzle. Điểm phân biệt không phải “có nước hay không”, mà là trạng thái vật liệu trước nozzle.</p></div>
-  </section>
-  <section class="subsection" id="rockwool-cautions"><h3>(3) 吹付けロックウール工法の施工上の留意事項</h3>
-    <div class="study-grid">
-      <article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja">
-        <ol><li><strong class="kw">鉄骨表面の浮き錆</strong>は、ワイヤーブラシなどの手道具で除去する。</li><li><strong class="kw">吹付け機械の設置場所</strong>は、資材搬入動線を考慮して定める。</li><li><span class="relation">鉄骨の構造材貫通部や、鉄骨の取付け金物などには、主要な鉄骨と同様の耐火被覆を行う。</span></li><li>工場配合されたロックウールを吹き付ける<strong class="kw">乾式工法</strong>では、<span class="relation">ロックウールの飛散を防ぐための措置を講じる</span>。</li></ol>
-      </div></article>
-      <article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi">
-        <ol><li><strong class="kw">Gỉ nổi trên bề mặt kết cấu thép</strong> phải được loại bỏ bằng dụng cụ cầm tay như bàn chải thép.</li><li><strong class="kw">Vị trí đặt máy phun</strong> phải được xác định có xét đến tuyến vận chuyển vật liệu.</li><li><span class="relation">Các vị trí kết cấu xuyên qua cấu kiện thép và phụ kiện lắp vào kết cấu thép phải được phủ chống cháy tương đương với kết cấu thép chính.</span></li><li>Đối với <strong class="kw">phương pháp khô</strong> dùng rock wool phối trộn tại nhà máy, phải <span class="relation">thực hiện biện pháp ngăn rock wool phát tán</span>.</li></ol>
-      </div></article>
-    </div>
-    <p><a href="#toc">↑ Mục lục</a></p>
-  </section>
-</section>
-
-  </main>
-  <!-- CONTENT_END -->
-
-  <!-- =====================================================
-       NON-DIMMED STUDY SUPPORT SECTIONS
-       These sections stay normally readable in Keywords mode.
-       ===================================================== -->
-
-  <section class="aggregate-section" id="terms">
-    <div class="section-head">
-      <h2>Thuật ngữ chuyên môn</h2>
-    </div>
-    
+<!-- TOC_ITEMS_END -->
+<ol><li><a href="#stud-weld">スタッド溶接後の仕上がり高さ・傾きの検査</a></li><li><a href="#h29-q3">平成29年度 問題3 躯体工事</a><ol><li><a href="#answers">解答例 / Ví dụ đáp án</a></li></ol></li><li><a href="#pile">設問1 既製コンクリート杭の埋込み工法</a><ol><li><a href="#preboring">(1) プレボーリング工法の施工要領</a></li><li><a href="#inner-boring">(2) 中掘り工法の施工要領</a></li><li><a href="#bearing-check">(3) 支持力を確保するための施工管理上の確認方法</a></li></ol></li><li><a href="#rebar-support">設問2 バーサポート・スペーサー</a></li><li><a href="#cold-joint">設問3 コールドジョイントの発生防止</a></li><li><a href="#fireproof">設問4 耐火被覆・吹付けロックウール</a><ol><li><a href="#fireproof-basic">耐火被覆と耐火構造</a></li><li><a href="#fireproof-types">(1) 耐火被覆工法の種類</a></li><li><a href="#rockwool-method">(2) 吹付けロックウール工法</a></li><li><a href="#rockwool-cautions">(3) 吹付けロックウール工法の施工上の留意事項</a></li></ol></li><li><a href="#terms">Professional terminology</a></li><li><a href="#background">Background knowledge</a></li><li><a href="#memory">Key points and memory aids</a></li></ol></nav>
+<!-- CONTENT_START -->
+<main id="lesson"><section class="study-section" id="stud-weld">
+<div class="section-head">
+<h2>スタッド溶接後の仕上がり高さ・傾きの検査</h2>
+<span class="source-ref">Nguồn: Book page 429</span>
+</div>
+<div class="study-grid">
+<article class="study-card original">
+<div class="card-title">原文</div>
+<div class="recall-source" lang="ja">
+<p>(4) <strong class="kw">スタッド溶接後の仕上がり高さ</strong>は、指定された寸法の<mark class="critical">±2mm以内</mark>でなければならない。指定された寸法Lに対する限界許容差ΔLは<mark class="critical">±2mm以内</mark>である。なお、スタッドが傾いている場合は、<span class="relation">軸の中心における軸長を仕上がり高さとみなす</span>。</p>
+<p>(5) <strong class="kw">スタッド溶接後の傾きθ</strong>は、<mark class="critical">5度以内</mark>でなければならない。</p>
+<p>(6) スタッド溶接における検査基準をまとめると、下表のようになる。</p>
 <div class="table-wrap"><table>
-  <thead><tr><th>日本語</th><th>読み方</th><th>Tiếng Việt</th><th>Giải thích</th><th>Liên quan</th></tr></thead>
-  <tbody>
-    <tr><td>スタッド溶接</td><td>スタッドようせつ</td><td>Hàn stud / hàn chốt</td><td>Hàn trực tiếp stud vào thép nền.</td><td>仕上がり高さ, 傾き</td></tr>
-    <tr><td>管理許容差</td><td>かんりきょようさ</td><td>Dung sai quản lý</td><td>Mức mục tiêu dùng trong quản lý thi công.</td><td>限界許容差</td></tr>
-    <tr><td>限界許容差</td><td>げんかいきょようさ</td><td>Dung sai giới hạn</td><td>Giới hạn dùng để đánh giá đạt/không đạt.</td><td>スタッド検査</td></tr>
-    <tr><td>埋込み工法</td><td>うめこみこうほう</td><td>Phương pháp chôn cọc</td><td>Nhóm công pháp hạ cọc đúc sẵn bằng cách tạo lỗ/khoan kết hợp gia cố mũi.</td><td>プレボーリング, 中掘り</td></tr>
-    <tr><td>支持層</td><td>しじそう</td><td>Tầng chịu lực</td><td>Tầng đất tiếp nhận tải trọng từ cọc.</td><td>N値, オーガ駆動電流値</td></tr>
-    <tr><td>根固め液</td><td>ねがためえき</td><td>Dung dịch gia cố chân cọc</td><td>Vật liệu gốc xi măng dùng tạo phần gia cố mũi cọc.</td><td>球根</td></tr>
-    <tr><td>杭周固定液</td><td>くいしゅうこていえき</td><td>Dung dịch cố định quanh cọc</td><td>Lấp khe rỗng dọc thân cọc.</td><td>埋込み工法</td></tr>
-    <tr><td>負圧</td><td>ふあつ</td><td>Áp suất âm</td><td>Có thể phát sinh khi rút auger quá nhanh và làm nền đất bị nới lỏng.</td><td>オーガ引上げ</td></tr>
-    <tr><td>先掘り</td><td>さきぼり</td><td>Khoan vượt trước</td><td>Mũi khoan đi trước quá sâu so với cọc.</td><td>中掘り工法</td></tr>
-    <tr><td>スペーサー</td><td>スペーサー</td><td>Spacer / con kê</td><td>Duy trì vị trí cốt thép và lớp bê tông bảo vệ.</td><td>かぶり厚さ</td></tr>
-    <tr><td>バーサポート</td><td>バーサポート</td><td>Bar support</td><td>Giữ vị trí ngang của cốt thép, là một loại spacer.</td><td>鉄筋工事</td></tr>
-    <tr><td>かぶり厚さ</td><td>かぶりあつさ</td><td>Chiều dày lớp bê tông bảo vệ</td><td>Khoảng cách nhỏ nhất từ bề mặt bê tông đến bề mặt cốt thép.</td><td>スペーサー</td></tr>
-    <tr><td>コールドジョイント</td><td>コールドジョイント</td><td>Cold joint / mạch ngừng lạnh</td><td>Mạch nối không liên kết nguyên khối giữa hai lớp bê tông.</td><td>打重ね</td></tr>
-    <tr><td>許容打重ね時間間隔</td><td>きょよううちかさねじかんかんかく</td><td>Khoảng thời gian cho phép giữa các lớp đổ</td><td>Giới hạn thời gian nhằm ngăn cold joint.</td><td>外気温</td></tr>
-    <tr><td>再振動</td><td>さいしんどう</td><td>Rung lại</td><td>Rung lại sau đầm chặt, trước khi bê tông cứng.</td><td>内部振動機</td></tr>
-    <tr><td>レイタンス</td><td>レイタンス</td><td>Laitance</td><td>Lớp hồ xi măng yếu trên bề mặt bê tông.</td><td>打継ぎ</td></tr>
-    <tr><td>耐火被覆</td><td>たいかひふく</td><td>Lớp phủ chống cháy</td><td>Vật liệu phủ bảo vệ cấu kiện nhằm đạt yêu cầu chịu lửa.</td><td>耐火構造</td></tr>
-    <tr><td>吹付けロックウール</td><td>ふきつけロックウール</td><td>Rock wool phun</td><td>Vật liệu phủ chống cháy tiêu biểu cho kết cấu thép.</td><td>乾式, 半乾式</td></tr>
-    <tr><td>乾式工法</td><td>かんしきこうほう</td><td>Phương pháp khô</td><td>Rock wool + xi măng và nước được cấp riêng, trộn tại nozzle.</td><td>飛散</td></tr>
-    <tr><td>半乾式工法</td><td>はんかんしきこうほう</td><td>Phương pháp bán khô</td><td>Cement slurry và rock wool được cấp riêng, trộn tại nozzle.</td><td>セメントスラリー</td></tr>
-    <tr><td>浮き錆</td><td>うきさび</td><td>Gỉ nổi</td><td>Lớp gỉ bong, không bám chắc vào bề mặt thép.</td><td>ワイヤーブラシ</td></tr>
-    <tr><td>飛散</td><td>ひさん</td><td>Phát tán</td><td>Vật liệu dạng sợi/hạt phát tán ra xung quanh.</td><td>乾式工法</td></tr>
-  </tbody>
+<caption>スタッド溶接後の仕上り高さ（ΔL）と傾き（θ）</caption>
+<thead><tr><th>項目</th><th>基準</th></tr></thead>
+<tbody>
+<tr><td><strong class="kw">管理許容差</strong></td><td><span class="relation">−1.5mm ≦ ΔL ≦ ＋1.5mm</span><br/><span class="relation">θ ≦ 3度</span></td></tr>
+<tr><td><strong class="kw">限界許容差</strong></td><td><mark class="critical">−2mm ≦ ΔL ≦ ＋2mm</mark><br/><mark class="critical">θ ≦ 5度</mark></td></tr>
+<tr><td>測定器具</td><td>金属製直尺、限界ゲージ、コンベックスルール</td></tr>
+<tr><td>測定方法</td><td><span class="relation">スタッドが傾いている場合は、軸の中心でその軸長を測定する。</span></td></tr>
+</tbody>
 </table></div>
-
-  </section>
-
-  <section class="aggregate-section" id="background">
-    <div class="section-head">
-      <h2>Kiến thức nền cần biết</h2>
-    </div>
-    
-<div class="comparison-box">
-  <strong>Logic kiểm tra tầng chịu lực của cọc</strong>
-  <p>Không dựa vào một tín hiệu đơn lẻ. Sách đặt ba nguồn kiểm tra cạnh nhau: độ sâu theo khảo sát/địa tầng; biến đổi dòng điện auger so với N値; và đất thực tế bám ở đầu auger so với mẫu đất.</p>
+<p>以上により、①と②は正しいが、③は<span class="trap">15ではなく5</span>である。</p>
 </div>
-<div class="comparison-box">
-  <strong>乾式 và 半乾式 của rock wool phun</strong>
-  <p>Cả hai đều trộn các dòng vật liệu tại đầu nozzle. Khác biệt cốt lõi là trạng thái cấp liệu trước nozzle: 乾式 dùng rock wool + xi măng phối trộn tại nhà máy và nước đi riêng; 半乾式 dùng cement slurry pha tại hiện trường và rock wool đi riêng.</p>
+</article>
+<article class="study-card translation">
+<div class="card-title">Bản dịch tiếng Việt</div>
+<div class="recall-source" lang="vi">
+<p>(4) <strong class="kw">Chiều cao hoàn thiện sau khi hàn stud</strong> phải nằm trong phạm vi <mark class="critical">±2 mm</mark> so với kích thước chỉ định. Dung sai giới hạn ΔL đối với kích thước chỉ định L là <mark class="critical">±2 mm</mark>. Khi stud bị nghiêng, <span class="relation">chiều dài trục đo tại tâm trục được coi là chiều cao hoàn thiện</span>.</p>
+<p>(5) <strong class="kw">Độ nghiêng θ sau khi hàn stud</strong> phải <mark class="critical">≤ 5°</mark>.</p>
+<p>(6) Tiêu chuẩn kiểm tra hàn stud được tổng hợp như bảng dưới đây.</p>
+<div class="table-wrap"><table>
+<caption>Chiều cao hoàn thiện (ΔL) và độ nghiêng (θ) sau khi hàn stud</caption>
+<thead><tr><th>Hạng mục</th><th>Tiêu chuẩn</th></tr></thead>
+<tbody>
+<tr><td><strong class="kw">Dung sai quản lý</strong></td><td><span class="relation">−1,5 mm ≦ ΔL ≦ ＋1,5 mm</span><br/><span class="relation">θ ≦ 3°</span></td></tr>
+<tr><td><strong class="kw">Dung sai giới hạn</strong></td><td><mark class="critical">−2 mm ≦ ΔL ≦ ＋2 mm</mark><br/><mark class="critical">θ ≦ 5°</mark></td></tr>
+<tr><td>Dụng cụ đo</td><td>Thước thẳng kim loại, dưỡng kiểm giới hạn, thước cuộn</td></tr>
+<tr><td>Phương pháp đo</td><td><span class="relation">Nếu stud bị nghiêng, đo chiều dài trục tại tâm của trục stud.</span></td></tr>
+</tbody>
+</table></div>
+<p>Do đó, ① và ② đúng, còn ③ phải là <span class="trap">5°, không phải 15°</span>.</p>
 </div>
-
-  </section>
-
-  <section class="aggregate-section" id="memory">
-    <div class="section-head">
-      <h2>Điểm cần nhớ và mẹo nhớ</h2>
-    </div>
-    
-<div class="memory-box"><strong>Stud hàn</strong><p>管理許容差: ΔL ±1,5 mm / θ ≤3°. 限界許容差: ΔL ±2 mm / θ ≤5°.</p></div>
-<div class="memory-box"><strong>Pre-boring</strong><p>Khoan lỗ lớn hơn đường kính cọc khoảng 10 cm → tạo bầu gia cố → bơm dung dịch quanh cọc → rút bit → hạ cọc → định vị mũi cọc.</p></div>
-<div class="memory-box"><strong>Support / spacer</strong><p>Sàn: 0,9 m, đầu 0,1 m. Dầm: 1,5 m, đầu 0,5 m. Móng: 0,9 m. Tường: ngang 1,5 m, đầu 0,5 m.</p></div>
-<div class="memory-box"><strong>Cold joint</strong><p>外気温 ≤25℃ → 2,5 giờ; &gt;25℃ → 2,0 giờ. Đầm rung trong xuyên vào lớp trước khoảng 10 cm. Nhiệt độ bê tông khi đổ ≤35℃.</p></div>
-<div class="memory-box"><strong>吹付けロックウール</strong><p>乾式: 工場配合 + 水別送 + ノズル混合 + 飛散防止. 半乾式: 現場配合セメントスラリー + ロックウール別送 + ノズル混合.</p></div>
-
-  </section>
-
+</article>
 </div>
-
-<!-- =======================================================
-     APPROVED COMPONENT LIBRARY
-     Hidden. AI may copy/repeat these components into CONTENT.
-     Do not create a new visual system unless strictly necessary.
-     ======================================================= -->
+</section><section class="study-section" id="h29-q3">
+<div class="section-head">
+<h2>平成29年度 問題3 躯体工事</h2>
+<span class="source-ref">Nguồn: Book page 429</span>
+</div>
+<div class="study-grid">
+<article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja">
+<p>次の設問1から設問4に答えなさい。</p>
+<p>ただし、解答はそれぞれ異なる内容の記述とし、<span class="trap">作業環境（気象条件等）、材料の品質、材料の調合、材料の保管及び作業員の安全に関する記述は除く</span>ものとする。</p>
+<p><strong class="kw">設問1</strong> 既製コンクリート杭の埋込み工法における、支持力を確保するための施工管理上の確認方法を2つ具体的に記述しなさい。</p>
+<p><strong class="kw">設問2</strong> 鉄筋工事における、バーサポート又はスペーサーを設置する際の施工上の留意事項を2つ具体的に記述しなさい。</p>
+<p><strong class="kw">設問3</strong> コンクリート工事の打込み時における、コールドジョイントの発生を防止するための施工上の留意事項を2つ具体的に記述しなさい。</p>
+<p><strong class="kw">設問4</strong> 鉄骨工事の耐火被覆における、吹付けロックウール（乾式又は半乾式）工法の施工上の留意事項を2つ具体的に記述しなさい。</p>
+</div></article>
+<article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi">
+<p>Trả lời từ câu 1 đến câu 4.</p>
+<p>Mỗi câu trả lời phải có nội dung khác nhau. <span class="trap">Không được sử dụng nội dung về môi trường làm việc như điều kiện khí tượng, chất lượng vật liệu, cấp phối vật liệu, bảo quản vật liệu hoặc an toàn của người lao động</span>.</p>
+<p><strong class="kw">Câu 1</strong> Đối với phương pháp chôn cọc bê tông đúc sẵn, trình bày cụ thể 2 phương pháp kiểm tra trong quản lý thi công nhằm bảo đảm sức chịu tải của cọc.</p>
+<p><strong class="kw">Câu 2</strong> Trong công tác cốt thép, trình bày cụ thể 2 điểm cần lưu ý khi lắp bar support hoặc spacer.</p>
+<p><strong class="kw">Câu 3</strong> Trong quá trình đổ bê tông, trình bày cụ thể 2 điểm cần lưu ý nhằm ngăn ngừa phát sinh cold joint.</p>
+<p><strong class="kw">Câu 4</strong> Trong công tác lớp phủ chống cháy kết cấu thép, trình bày cụ thể 2 điểm cần lưu ý khi thi công phương pháp phun rock wool dạng khô hoặc bán khô.</p>
+</div></article>
+</div>
+<section class="subsection" id="answers">
+<h3>解答例 / Ví dụ đáp án</h3>
+<div class="study-grid">
+<article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja">
+<div class="item-block"><span class="item-label">設問1</span><p>① <span class="relation">深度ごとに、オーガ駆動電流値の変化と、土質柱状図におけるN値の変化を比較する。</span></p><p>② <span class="relation">オーガ先端に付着した掘削土を採取し、土質標本と照合する。</span></p></div>
+<div class="item-block"><span class="item-label">設問2</span><p>① 鋼製のバーサポートは、鉄筋の水平位置を保持できるように配置し、<strong class="kw">防錆処理</strong>を行う。</p><p>② スペーサーは、鋼製とし、その<strong class="kw">数量や配置を施工図で確認する</strong>。</p></div>
+<div class="item-block"><span class="item-label">設問3</span><p>① <strong class="kw">打重ね時間間隔</strong>は、外気温が<mark class="critical">25℃超なら120分以内</mark>、<mark class="critical">25℃以下でも150分以内</mark>とする。</p><p>② 後打ちコンクリートは、<span class="relation">内部振動機を先打ちコンクリート下層に挿入し、一体化させる</span>。</p></div>
+<div class="item-block"><span class="item-label">設問4</span><p>① 吹付け前に、<strong class="kw">鉄骨表面の浮き錆を除去し、素地調整</strong>を行う。</p><p>② 乾式工法で工場配合のロックウールを吹き付ける時は、<strong class="kw">飛散防止対策</strong>を講じる。</p></div>
+</div></article>
+<article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi">
+<div class="item-block"><span class="item-label">Câu 1</span><p>① <span class="relation">Ở từng độ sâu, so sánh sự biến đổi của dòng điện dẫn động auger với sự biến đổi của giá trị N trên biểu đồ trụ địa chất.</span></p><p>② <span class="relation">Lấy mẫu đất đào bám ở đầu auger và đối chiếu với mẫu đất chuẩn.</span></p></div>
+<div class="item-block"><span class="item-label">Câu 2</span><p>① Bar support bằng thép phải được bố trí để duy trì vị trí ngang của cốt thép và thực hiện <strong class="kw">xử lý chống gỉ</strong>.</p><p>② Spacer phải làm bằng thép; <strong class="kw">số lượng và cách bố trí phải được xác nhận trên bản vẽ thi công</strong>.</p></div>
+<div class="item-block"><span class="item-label">Câu 3</span><p>① <strong class="kw">Khoảng thời gian giữa hai lớp đổ</strong>: nhiệt độ ngoài trời <mark class="critical">&gt;25°C: trong 120 phút</mark>; <mark class="critical">≤25°C: trong 150 phút</mark>.</p><p>② Khi đổ lớp bê tông sau, <span class="relation">đưa đầm rung trong vào bê tông đã đổ trước để hai lớp trở thành một khối thống nhất</span>.</p></div>
+<div class="item-block"><span class="item-label">Câu 4</span><p>① Trước khi phun phải <strong class="kw">loại bỏ gỉ nổi trên bề mặt kết cấu thép và xử lý bề mặt nền</strong>.</p><p>② Khi phun rock wool đã phối trộn tại nhà máy bằng phương pháp khô, phải có <strong class="kw">biện pháp ngăn vật liệu phát tán</strong>.</p></div>
+</div></article>
+</div>
+<p><a href="#toc">↑ Mục lục</a></p>
+</section>
+</section><section class="study-section" id="pile">
+<div class="section-head"><h2>設問1 既製コンクリート杭の埋込み工法</h2><span class="source-ref">Nguồn: Book page 430-431</span></div>
+<section class="subsection" id="preboring"><h3>(1) プレボーリング工法の施工要領</h3>
+<div class="study-grid">
+<article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja">
+<p><strong class="kw">既製コンクリート杭の埋込み工法</strong>は、<span class="relation">プレボーリング工法と、中掘り工法に大別される</span>。</p>
+<p><strong class="kw">プレボーリング工法</strong>は、地盤に穴を開けてから既製杭を埋め込み、打撃またはセメントミルクなどによる根固めを行う工法である。</p>
+<p>施工手順を簡潔に示すと、「<mark class="critical">杭径よりも10cm程度大きな径の穴を掘削する</mark>」→「根固め液となるセメントミルクを注入して球根を造る」→「杭周固定液を充填する」→「掘削ビットを引き上げる」→「既製杭を挿入する」→「杭を自沈させるか、回転圧入する」→「杭の先端を根固め部に埋め込み、定着させる」となる。</p>
+<p>プレボーリング工法における施工の留意点には、次のようなものがある。</p>
+<ol>
+<li><span class="relation">孔壁の崩壊が生じないよう、地盤の状態に応じた掘削速度とする。</span></li>
+<li><span class="relation">アースオーガーの引き上げは、負圧によって地盤を緩めないよう、ゆっくりと行う。</span></li>
+<li><strong class="kw">安定液</strong>を<mark class="critical">地下水位以上</mark>になるまで補充する。</li>
+<li>掘削土は、しっかりと排出する。</li>
+<li>根固め液の配合は、特記仕様書に従って行う。</li>
+<li>杭周固定液は、杭の全長にわたって、空隙を充填できるだけの量を注入する。</li>
+<li>杭の建込み後に、杭が自沈するようなときは、固定治具で杭を保持する。</li>
+</ol>
+</div></article>
+<article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi">
+<p><strong class="kw">Phương pháp chôn cọc bê tông đúc sẵn</strong> được <span class="relation">chia chủ yếu thành pre-boring và khoan trong lòng cọc</span>.</p>
+<p><strong class="kw">Pre-boring</strong> là phương pháp khoan lỗ trong nền trước, sau đó hạ cọc đúc sẵn và gia cố chân cọc bằng đóng hoặc cement milk.</p>
+<p>Trình tự: “<mark class="critical">khoan lỗ có đường kính lớn hơn đường kính cọc khoảng 10 cm</mark>” → bơm cement milk làm dung dịch gia cố chân cọc để tạo bầu gia cố → bơm dung dịch cố định quanh cọc → rút mũi khoan → đưa cọc đúc sẵn vào → cho cọc tự chìm hoặc ép xoay → chôn đầu cọc vào phần gia cố chân cọc và cố định.</p>
+<p>Các điểm cần lưu ý:</p>
+<ol>
+<li><span class="relation">Điều chỉnh tốc độ khoan theo trạng thái nền để không làm sập thành lỗ.</span></li>
+<li><span class="relation">Rút earth auger từ từ để áp suất âm không làm nền đất bị nới lỏng.</span></li>
+<li>Bổ sung <strong class="kw">dung dịch ổn định</strong> đến mức <mark class="critical">cao hơn mực nước ngầm</mark>.</li>
+<li>Đất đào phải được thải ra đầy đủ.</li>
+<li>Cấp phối dung dịch gia cố chân cọc phải theo đặc tả kỹ thuật riêng.</li>
+<li>Dung dịch cố định quanh cọc phải đủ để lấp kín khe rỗng dọc toàn bộ chiều dài cọc.</li>
+<li>Nếu cọc có xu hướng tự chìm sau khi dựng, phải giữ cọc bằng đồ gá cố định.</li>
+</ol>
+</div></article>
+</div>
+</section>
+<section class="subsection" id="inner-boring"><h3>(2) 中掘り工法の施工要領</h3>
+<div class="study-grid">
+<article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja">
+<p><strong class="kw">中掘り工法</strong>は、大口径の鋼管を建て込み、鋼管の中（既製杭の中空部）からスパイラルオーガーで掘削して杭を埋め込み、打撃またはモルタル拡大根固めを行い、杭と支持地盤を一体化させる工法である。</p>
+<p>施工手順は、「既製杭の中空部にスパイラルオーガーを挿入する」→「杭とスパイラルオーガーを吊り上げて建て込む」→「穴を掘削する」→「杭を沈設する」→「ディーゼルパイルハンマで打撃して支持地盤に杭を固定するか、根固め部にセメントミルクで球根を造って杭を固定する」→「スパイラルオーガーを引き上げる」となる。</p>
+<ol>
+<li><span class="trap">杭の損傷や地盤の緩みが生じないよう、先掘りをしない。</span></li>
+<li><span class="relation">スパイラルオーガーを引き上げるときは、負圧によって地盤を緩めないよう、ゆっくりとした速度で引き上げる。</span></li>
+<li>根固め液の配合は、特記仕様書に従って行う。</li>
+<li>杭周固定液は、杭の全長にわたって、空隙を充填できるだけの量を注入する。</li>
+</ol>
+</div></article>
+<article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi">
+<p><strong class="kw">Phương pháp khoan trong lòng cọc</strong> là phương pháp dựng cọc/ống thép đường kính lớn, khoan bằng spiral auger từ phần rỗng bên trong cọc đúc sẵn, đồng thời hạ cọc; sau đó đóng hoặc gia cố mở rộng chân cọc bằng mortar để liên kết cọc với tầng đất chịu lực thành một khối.</p>
+<p>Trình tự: đưa spiral auger vào phần rỗng của cọc → cẩu cọc cùng auger và dựng vào vị trí → khoan → hạ cọc → đóng bằng diesel pile hammer để cố định vào tầng chịu lực hoặc tạo bầu cement milk tại phần gia cố chân cọc → rút spiral auger.</p>
+<ol>
+<li><span class="trap">Không được khoan vượt trước, nhằm tránh hư hại cọc hoặc làm nền đất bị nới lỏng.</span></li>
+<li><span class="relation">Khi rút spiral auger phải rút chậm để áp suất âm không làm nền đất bị nới lỏng.</span></li>
+<li>Cấp phối dung dịch gia cố chân cọc phải theo đặc tả kỹ thuật riêng.</li>
+<li>Dung dịch cố định quanh cọc phải đủ để lấp đầy khe rỗng trên toàn bộ chiều dài cọc.</li>
+</ol>
+</div></article>
+</div>
+</section>
+<section class="subsection" id="bearing-check"><h3>(3) 支持力を確保するための施工管理上の確認方法</h3>
+<div class="study-grid">
+<article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja">
+<p>既製コンクリート杭の埋込み工法において、支持力を確保するための施工管理上の確認方法には、次のようなものがある。</p>
+<ol><li><span class="relation">支持層の深度を、土質調査結果や地層断面図によって確認する。</span></li><li><span class="relation">深度ごとに、オーガ駆動電流値の変化と、土質柱状図におけるN値の変化を比較する。</span></li><li><span class="relation">オーガヘッドの先端に付着した掘削土を採取し、仕様書に示されている土質標本と照合する。</span></li></ol>
+</div></article>
+<article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi">
+<p>Đối với cọc bê tông đúc sẵn thi công bằng phương pháp chôn, các phương pháp kiểm tra quản lý thi công để bảo đảm sức chịu tải gồm:</p>
+<ol><li><span class="relation">Xác nhận độ sâu tầng chịu lực bằng kết quả khảo sát địa chất và mặt cắt địa tầng.</span></li><li><span class="relation">Ở từng độ sâu, so sánh biến đổi dòng điện dẫn động auger với biến đổi giá trị N trên biểu đồ trụ địa chất.</span></li><li><span class="relation">Lấy đất đào bám ở đầu auger head và đối chiếu với mẫu đất nêu trong đặc tả kỹ thuật.</span></li></ol>
+</div></article>
+</div>
+<p><a href="#toc">↑ Mục lục</a></p>
+</section>
+</section><section class="study-section" id="rebar-support">
+<div class="section-head"><h2>設問2 バーサポート・スペーサー</h2><span class="source-ref">Nguồn: Book page 432-433</span></div>
+<div class="study-grid">
+<article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja">
+<p><strong class="kw">スペーサー</strong>とは、せき板（側面の型枠）やスラブ鉄筋と、鉄筋との間隔を保つために必要となる、<span class="relation">鉄筋のかぶりを確保するための部材</span>である。<strong class="kw">バーサポート</strong>とは、<span class="relation">鉄筋の水平位置を保持するための部材</span>であり、スペーサーの一種である。</p>
+<p>鉄筋工事のスペーサーは、鉄筋を支持すると共に、鉄筋のかぶり厚さ（コンクリート表面から鉄筋表面までの最小距離）を確保するための部材である。</p>
+<div class="table-wrap"><table>
+<caption>鉄筋のサポートおよびスペーサの種類・配置の標準（JASS5）</caption>
+<thead><tr><th>部位</th><th>種類</th><th>配置の標準</th><th>備考</th></tr></thead>
+<tbody>
+<tr><td><strong class="kw">スラブ</strong></td><td>鋼製・コンクリート製・モルタル製</td><td>上端筋・下端筋それぞれ<mark class="critical">間隔0.9m程度</mark>、<mark class="critical">端部0.1m以内</mark></td><td></td></tr>
+<tr><td><strong class="kw">梁</strong></td><td>鋼製・コンクリート製・モルタル製</td><td><mark class="critical">間隔1.5m程度</mark>、<mark class="critical">端部0.5m程度</mark></td><td>上または下いずれかと、側面の両側へ対称に設置</td></tr>
+<tr><td><strong class="kw">柱</strong></td><td>鋼製・コンクリート製・モルタル製</td><td>上段は梁下より<mark class="critical">0.5m程度</mark>、中段は上段より<mark class="critical">1.5m間隔程度</mark>。柱幅方向は<mark class="critical">1.0m以下2個、1.0m超え3個</mark></td><td>同一平面に点対称となるように設置</td></tr>
+<tr><td><strong class="kw">基礎</strong></td><td>鋼製・コンクリート製・モルタル製</td><td><mark class="critical">間隔0.9m程度</mark></td><td>基礎の四隅と柱の四隅に設置</td></tr>
+<tr><td><strong class="kw">基礎梁</strong></td><td>鋼製・コンクリート製・モルタル製</td><td><mark class="critical">間隔1.5m程度</mark>、<mark class="critical">端部0.5m程度</mark></td><td>上または下いずれかと、側面の両側へ対称に設置</td></tr>
+<tr><td><strong class="kw">壁・地下外壁</strong></td><td>鋼製・コンクリート製・モルタル製</td><td>上段は梁下より<mark class="critical">0.5m程度</mark>まで、中段は上段より<mark class="critical">1.5m間隔程度</mark>、横間隔<mark class="critical">1.5m程度</mark>、端部<mark class="critical">0.5m程度</mark></td><td></td></tr>
+</tbody>
+</table></div>
+<p>［注］(1) スペーサは、<span class="trap">側面に限りプラスチック製でもよい</span>。(2) 断熱材打込み時のスペーサは、支持重量に対して、めり込まない程度の設置面積を持ったものとする。</p>
+<p>コンクリート中の鉄筋が、設計図に示されている位置を確保できるよう、鉄筋相互の結束はバーサポートやスペーサーを用いて行う。</p>
+<ol>
+<li>バーサポートやスペーサーは、組み立てられた鉄筋を安全に支持し、コンクリートの打込み圧力がかかっても変形せず、剛性・強度を有しており、コンクリートと同等以上の耐久性があるものとする。</li>
+<li>使用するバーサポートやスペーサーは、スラブ・梁・柱などの部位ごとに、種類・数量・配置の標準と適合していることを確認する。</li>
+<li>バーサポートやスペーサーは、原則として、鋼製・コンクリート製・モルタル製のいずれかとするが、<span class="trap">側面ではプラスチック製でもよい</span>。また、<span class="relation">スラブのスペーサーは、原則として鋼製</span>とする。</li>
+<li>鋼製のバーサポートやスペーサーを使用するときは、<strong class="kw">かぶりに等しい厚さに相当する部分に、防錆処理</strong>をしていることを確認する。</li>
+<li>断熱材打込み時のスペーサーは、作用荷重に対して、<span class="relation">めり込まないだけの面積</span>を有するものであることを確認する。</li>
+<li>バーサポートやスペーサーは、かぶり厚さを確保できるものとするが、過大とならないようにする必要もあるので、その<strong class="kw">数量や配置を施工図で確認する</strong>。</li>
+</ol>
+<p>※「建築工事標準仕様書・同解説（日本建築学会）」では、「バーサポート」の名称は「サポート」、「スペーサー」の名称は「スペーサ」と表記されているが、その意味するところに違いはない。</p>
+</div></article>
+<article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi">
+<p><strong class="kw">Spacer</strong> là cấu kiện dùng để duy trì khoảng cách giữa cốt thép với ván khuôn mặt bên hoặc giữa các lớp cốt thép, qua đó <span class="relation">bảo đảm chiều dày lớp bê tông bảo vệ</span>. <strong class="kw">Bar support</strong> là <span class="relation">cấu kiện giữ vị trí ngang của cốt thép</span> và là một loại spacer.</p>
+<p>Spacer vừa đỡ cốt thép vừa bảo đảm chiều dày lớp bảo vệ, tức khoảng cách nhỏ nhất từ bề mặt bê tông đến bề mặt cốt thép.</p>
+<div class="table-wrap"><table>
+<caption>Tiêu chuẩn về loại và bố trí support/spacer theo JASS 5</caption>
+<thead><tr><th>Vị trí</th><th>Vật liệu</th><th>Bố trí tiêu chuẩn</th><th>Ghi chú</th></tr></thead>
+<tbody>
+<tr><td><strong class="kw">Sàn</strong></td><td>Thép, bê tông hoặc mortar</td><td>Cho cả thép lớp trên và dưới: <mark class="critical">khoảng 0,9 m</mark>; tại đầu <mark class="critical">≤0,1 m</mark></td><td></td></tr>
+<tr><td><strong class="kw">Dầm</strong></td><td>Thép, bê tông hoặc mortar</td><td><mark class="critical">Khoảng 1,5 m</mark>; đầu khoảng <mark class="critical">0,5 m</mark></td><td>Bố trí phía trên hoặc dưới và đối xứng hai mặt bên</td></tr>
+<tr><td><strong class="kw">Cột</strong></td><td>Thép, bê tông hoặc mortar</td><td>Hàng trên cách đáy dầm <mark class="critical">0,5 m</mark>; hàng giữa cách hàng trên <mark class="critical">1,5 m</mark>; theo chiều rộng cột: <mark class="critical">≤1,0 m: 2 cái; &gt;1,0 m: 3 cái</mark></td><td>Bố trí đối xứng điểm trên cùng một mặt phẳng</td></tr>
+<tr><td><strong class="kw">Móng</strong></td><td>Thép, bê tông hoặc mortar</td><td><mark class="critical">Khoảng 0,9 m</mark></td><td>Đặt tại bốn góc móng và bốn góc cột</td></tr>
+<tr><td><strong class="kw">Dầm móng</strong></td><td>Thép, bê tông hoặc mortar</td><td><mark class="critical">Khoảng 1,5 m</mark>; đầu khoảng <mark class="critical">0,5 m</mark></td><td>Bố trí phía trên hoặc dưới và đối xứng hai mặt bên</td></tr>
+<tr><td><strong class="kw">Tường / tường ngoài tầng hầm</strong></td><td>Thép, bê tông hoặc mortar</td><td>Hàng trên đến khoảng <mark class="critical">0,5 m dưới dầm</mark>; hàng giữa <mark class="critical">1,5 m</mark>; phương ngang <mark class="critical">1,5 m</mark>; đầu <mark class="critical">0,5 m</mark></td><td></td></tr>
+</tbody>
+</table></div>
+<p>Chú ý: (1) <span class="trap">chỉ spacer ở mặt bên mới có thể dùng loại bằng nhựa</span>. (2) Khi đổ bê tông cùng vật liệu cách nhiệt, spacer phải có diện tích tiếp xúc đủ để không bị lún dưới tải trọng đỡ.</p>
+<p>Cần dùng bar support và spacer để cốt thép trong bê tông duy trì đúng vị trí thể hiện trên bản vẽ thiết kế.</p>
+<ol>
+<li>Bar support và spacer phải đỡ an toàn cốt thép đã lắp dựng, không biến dạng dưới áp lực đổ bê tông, có đủ độ cứng, cường độ và độ bền lâu bằng hoặc cao hơn bê tông.</li>
+<li>Với từng vị trí như sàn, dầm, cột, phải xác nhận loại, số lượng và cách bố trí phù hợp tiêu chuẩn.</li>
+<li>Về nguyên tắc dùng thép, bê tông hoặc mortar; <span class="trap">ở mặt bên có thể dùng spacer bằng nhựa</span>. <span class="relation">Spacer của sàn về nguyên tắc làm bằng thép</span>.</li>
+<li>Khi dùng loại bằng thép, phải xác nhận đã <strong class="kw">xử lý chống gỉ phần tương ứng với chiều dày lớp bảo vệ</strong>.</li>
+<li>Khi đổ cùng vật liệu cách nhiệt, spacer phải có <span class="relation">diện tích đủ để không bị lún dưới tải trọng tác dụng</span>.</li>
+<li>Phải bảo đảm chiều dày lớp bảo vệ nhưng không để quá lớn, vì vậy phải <strong class="kw">kiểm tra số lượng và cách bố trí trên bản vẽ thi công</strong>.</li>
+</ol>
+<p>Trong JASS của Viện Kiến trúc Nhật Bản, `バーサポート` được ghi là `サポート`, còn `スペーサー` được ghi là `スペーサ`; ý nghĩa kỹ thuật không khác nhau.</p>
+</div></article>
+</div>
+<div class="figure-box"><strong>Giải thích hình Book 432</strong><p>Hình minh họa spacer nằm giữa cốt thép và ván khuôn: chức năng là giữ cốt thép ở vị trí thích hợp và bảo đảm <em>所要のかぶり</em>, tức chiều dày lớp bê tông bảo vệ theo yêu cầu.</p></div>
+<p><a href="#toc">↑ Mục lục</a></p>
+</section><section class="study-section" id="cold-joint">
+<div class="section-head"><h2>設問3 コールドジョイントの発生防止</h2><span class="source-ref">Nguồn: Book page 433-434</span></div>
+<div class="study-grid">
+<article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja">
+<p><strong class="kw">コールドジョイント</strong>とは、上下層（先打ちコンクリートと後打ちコンクリート）が一体化していない不連続な不良打継目のことである。<span class="relation">下層の先打ちコンクリートが硬化してから、上層の後打ちコンクリートを施工すると発生しやすい</span>。</p>
+<p>また、<strong class="kw">暑中コンクリート</strong>（日平均気温が<mark class="critical">25℃を超える</mark>時期に施工するコンクリート）や<strong class="kw">マスコンクリート</strong>（部材断面の最小寸法が<mark class="critical">80cm以上</mark>となるコンクリート）では、特に発生しやすい。</p>
+<p><span class="relation">コールドジョイントが発生した部位では、構造としての強度が低下し、打継ぎ部分において鉄筋の錆が生じるため、鉄筋コンクリート躯体の耐久性が著しく低下する</span>。</p>
+<p>旧（先打ち）コンクリートに新（後打ち）コンクリートを打ち込むときは、<strong class="kw">旧コンクリート表面のレイタンスを取り除き、その表面を湿潤にしておく</strong>。</p>
+<h4>(1) コールドジョイントの発生を防止するための施工上の留意事項</h4>
+<ol>
+<li><strong class="kw">許容打重ね時間間隔</strong>を厳守し、連続打設する。外気温が<mark class="critical">25℃以下: 2.5時間以内</mark>、<mark class="critical">25℃超: 2.0時間以内</mark>。</li>
+<li>後打ちコンクリートの施工時には、<span class="relation">内部振動機を先打ちコンクリート中に10cm程度挿入して一体化させる</span>。</li>
+<li><strong class="kw">再振動</strong>は、コンクリートの締固め後、<span class="relation">コンクリートが硬化する直前</span>に行う。</li>
+<li>暑中コンクリートやマスコンクリートでは、工事監理者の承認を受けてから<strong class="kw">遅延形AE剤</strong>を使用し、許容打重ね時間間隔を延ばすことができる。</li>
+<li><strong class="kw">コンクリートの打込み温度</strong>が<mark class="critical">35℃以下</mark>であることを確認してから打込みを開始する。</li>
+<li>コンクリートの輸送管に、直射日光が当たらないように措置を講じる。</li>
+<li>打込み区画の範囲を、外気温に適合するよう定め、工事監理者の承認を受ける。</li>
+</ol>
+</div></article>
+<article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi">
+<p><strong class="kw">Cold joint</strong> là mạch nối không tốt và không liên tục, tại đó lớp bê tông đổ trước và lớp đổ sau không liên kết thành một khối. <span class="relation">Hiện tượng dễ phát sinh khi bê tông đổ trước đã cứng rồi mới thi công lớp bê tông đổ sau</span>.</p>
+<p>Hiện tượng đặc biệt dễ phát sinh với <strong class="kw">bê tông mùa nóng</strong> thi công khi nhiệt độ trung bình ngày <mark class="critical">&gt;25°C</mark> và <strong class="kw">bê tông khối lớn</strong> có kích thước nhỏ nhất của tiết diện cấu kiện <mark class="critical">≥80 cm</mark>.</p>
+<p><span class="relation">Khi xuất hiện cold joint, cường độ kết cấu giảm, cốt thép tại mạch nối dễ bị gỉ và độ bền lâu của kết cấu bê tông cốt thép giảm đáng kể</span>.</p>
+<p>Khi đổ bê tông mới lên bê tông cũ, phải <strong class="kw">loại bỏ laitance trên bề mặt bê tông cũ và làm ẩm bề mặt</strong>.</p>
+<h4>(1) Các điểm cần lưu ý để ngăn ngừa cold joint</h4>
+<ol>
+<li>Tuân thủ <strong class="kw">khoảng thời gian cho phép giữa các lớp đổ</strong> và đổ liên tục: nhiệt độ ngoài trời <mark class="critical">≤25°C: ≤2,5 giờ</mark>; <mark class="critical">&gt;25°C: ≤2,0 giờ</mark>.</li>
+<li>Khi đổ lớp sau, <span class="relation">đưa đầm rung trong vào bê tông đổ trước khoảng 10 cm để hai lớp liên kết thành một khối</span>.</li>
+<li><strong class="kw">Rung lại</strong> được thực hiện sau khi đầm chặt và <span class="relation">ngay trước khi bê tông bắt đầu cứng</span>.</li>
+<li>Với bê tông mùa nóng hoặc bê tông khối lớn, sau khi được giám sát công trình phê duyệt có thể dùng <strong class="kw">phụ gia AE loại chậm đông kết</strong> để kéo dài khoảng thời gian cho phép giữa các lớp đổ.</li>
+<li>Chỉ bắt đầu đổ sau khi xác nhận <strong class="kw">nhiệt độ bê tông khi đổ</strong> <mark class="critical">≤35°C</mark>.</li>
+<li>Phải có biện pháp để ống vận chuyển bê tông không bị ánh nắng trực tiếp chiếu vào.</li>
+<li>Phạm vi phân khu đổ phải phù hợp với nhiệt độ ngoài trời và được giám sát công trình phê duyệt.</li>
+</ol>
+</div></article>
+</div>
+<div class="figure-box"><strong>Giải thích hình Book 433</strong><p>Hình thể hiện bê tông đổ sau nằm trên bê tông đổ trước, còn đường biên gồ ghề giữa hai lớp là <em>不良打継目（コールドジョイント）</em>. Đây là mặt phân cách không liên kết nguyên khối.</p></div>
+<p><a href="#toc">↑ Mục lục</a></p>
+</section><section class="study-section" id="fireproof">
+<div class="section-head"><h2>設問4 耐火被覆・吹付けロックウール</h2><span class="source-ref">Nguồn: Book page 434-436</span></div>
+<section class="subsection" id="fireproof-basic"><h3>耐火被覆と耐火構造</h3>
+<div class="study-grid">
+<article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja">
+<p><strong class="kw">耐火被覆</strong>とは、鉄骨構造の建物を耐火構造とするために、鉄骨工事において、壁・柱・梁・床などを定められた材料で覆うことである。</p>
+<p><strong class="kw">耐火構造</strong>とは、壁・柱・梁・床などの建築物の部位の構造のうち、耐火性能（通常の火災が終了するまでの間、当該火災による建築物の倒壊・延焼を防止するために、当該建築物の部分に必要とされる性能）に関して、政令で定める技術的基準に適合する鉄筋コンクリート造・煉瓦造などの構造で、国土交通大臣が定めた構造方法を用いるものまたは国土交通大臣の認定を受けたものをいう。</p>
+</div></article>
+<article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi">
+<p><strong class="kw">Lớp phủ chống cháy</strong> là việc phủ các cấu kiện như tường, cột, dầm, sàn bằng vật liệu quy định nhằm làm cho công trình kết cấu thép đáp ứng yêu cầu của kết cấu chịu lửa.</p>
+<p><strong class="kw">Kết cấu chịu lửa</strong> là kết cấu của các bộ phận công trình như tường, cột, dầm, sàn đáp ứng các tiêu chuẩn kỹ thuật do pháp lệnh quy định về khả năng chịu lửa, tức khả năng cần thiết để ngăn công trình sụp đổ và ngăn cháy lan trong khoảng thời gian cho tới khi một đám cháy thông thường kết thúc. Các kết cấu phải sử dụng phương pháp cấu tạo do Bộ trưởng Bộ Đất đai, Hạ tầng, Giao thông và Du lịch quy định hoặc được Bộ trưởng công nhận.</p>
+</div></article>
+</div>
+</section>
+<section class="subsection" id="fireproof-types"><h3>(1) 耐火被覆工法の種類</h3>
+<div class="study-grid">
+<article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja">
+<p>一般的に用いられる耐火被覆工法には、次のようなものがある。鉄骨構造の建物を耐火構造とするための耐火被覆は、<span class="relation">建築基準法に例示されている仕様か、国土交通大臣が認定した仕様に準じた品質</span>を有していなければならない。</p>
+<div class="table-wrap"><table><caption>耐火被覆工法の分類（出典：建築工事監理指針）</caption><thead><tr><th>工法</th><th>耐火被覆材料</th><th>材料の主成分</th><th>仕様区分</th></tr></thead><tbody>
+<tr><td rowspan="2"><strong class="kw">打設工法</strong></td><td>コンクリート</td><td>セメント、砂、砂利</td><td>例示</td></tr><tr><td>軽量コンクリート</td><td>セメント、軽量骨材</td><td>例示</td></tr>
+<tr><td rowspan="2"><strong class="kw">左官工法</strong></td><td>鉄網モルタル</td><td>セメント、砂</td><td>例示</td></tr><tr><td>鉄網パーライトモルタル</td><td>セメント、パーライト</td><td>例示</td></tr>
+<tr><td rowspan="5"><strong class="kw">吹付け工法</strong></td><td><strong class="kw">吹付けロックウール</strong></td><td>ロックウール、セメント</td><td>認定</td></tr><tr><td>軽量セメントモルタル</td><td>セメント、パーライト、水酸化アルミニウム</td><td>認定</td></tr><tr><td>吹付けパーライトモルタル</td><td>セメント、パーライト</td><td>認定</td></tr><tr><td>水酸化アルミニウム混入湿式吹付けモルタル</td><td>セメント、シリカ、アルミナ</td><td>認定</td></tr><tr><td>耐火塗料</td><td>燐酸アンモニウム</td><td>認定</td></tr>
+<tr><td rowspan="5"><strong class="kw">張付け工法</strong></td><td>繊維混入珪酸カルシウム板</td><td>珪酸カルシウム</td><td>認定</td></tr><tr><td>ALCパネル</td><td>セメント、珪石、生石灰</td><td>認定</td></tr><tr><td>強化石膏ボード</td><td>石膏</td><td>認定</td></tr><tr><td>押出成形セメント板</td><td>セメント</td><td>認定</td></tr><tr><td>軽量コンクリート板</td><td>セメント、軽量骨材</td><td>認定</td></tr>
+<tr><td rowspan="2"><strong class="kw">巻付け工法</strong></td><td>セラミックファイバー系材料</td><td>セラミックファイバー</td><td>認定</td></tr><tr><td>ロックウールフェルト</td><td>ロックウール</td><td>認定</td></tr>
+<tr><td rowspan="3"><strong class="kw">組積工法</strong></td><td>コンクリートブロック</td><td>セメント、砂、砂利</td><td>例示</td></tr><tr><td>軽量コンクリートブロック</td><td>セメント、軽量骨材</td><td>例示</td></tr><tr><td>石または煉瓦</td><td>石または煉瓦</td><td>例示</td></tr>
+<tr><td><strong class="kw">合成工法</strong></td><td>各種材料や工法の組み合わせ</td><td>各種の耐火材</td><td>認定</td></tr>
+</tbody></table></div>
+</div></article>
+<article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi">
+<p>Các phương pháp lớp phủ chống cháy được sử dụng phổ biến như bảng dưới đây. Lớp phủ chống cháy cho công trình kết cấu thép phải có <span class="relation">chất lượng phù hợp với cấu tạo được Luật Tiêu chuẩn Xây dựng nêu ví dụ hoặc cấu tạo đã được Bộ trưởng MLIT công nhận</span>.</p>
+<div class="table-wrap"><table><caption>Phân loại phương pháp lớp phủ chống cháy</caption><thead><tr><th>Phương pháp</th><th>Vật liệu</th><th>Thành phần chính</th><th>Phân loại</th></tr></thead><tbody>
+<tr><td rowspan="2"><strong class="kw">Đổ tại chỗ</strong></td><td>Bê tông</td><td>Xi măng, cát, sỏi</td><td>例示</td></tr><tr><td>Bê tông nhẹ</td><td>Xi măng, cốt liệu nhẹ</td><td>例示</td></tr>
+<tr><td rowspan="2"><strong class="kw">Trát</strong></td><td>Mortar lưới thép</td><td>Xi măng, cát</td><td>例示</td></tr><tr><td>Mortar perlite có lưới thép</td><td>Xi măng, perlite</td><td>例示</td></tr>
+<tr><td rowspan="5"><strong class="kw">Phun</strong></td><td><strong class="kw">Rock wool phun</strong></td><td>Rock wool, xi măng</td><td>認定</td></tr><tr><td>Mortar xi măng nhẹ</td><td>Xi măng, perlite, nhôm hydroxide</td><td>認定</td></tr><tr><td>Mortar perlite phun</td><td>Xi măng, perlite</td><td>認定</td></tr><tr><td>Mortar phun ướt có nhôm hydroxide</td><td>Xi măng, silica, alumina</td><td>認定</td></tr><tr><td>Sơn chống cháy</td><td>Amoni phosphat</td><td>認定</td></tr>
+<tr><td rowspan="5"><strong class="kw">Gắn tấm</strong></td><td>Tấm calcium silicate gia cường sợi</td><td>Calcium silicate</td><td>認定</td></tr><tr><td>Panel ALC</td><td>Xi măng, đá silica, vôi sống</td><td>認定</td></tr><tr><td>Tấm thạch cao gia cường</td><td>Thạch cao</td><td>認定</td></tr><tr><td>Tấm xi măng đùn ép</td><td>Xi măng</td><td>認定</td></tr><tr><td>Tấm bê tông nhẹ</td><td>Xi măng, cốt liệu nhẹ</td><td>認定</td></tr>
+<tr><td rowspan="2"><strong class="kw">Bọc/cuốn</strong></td><td>Vật liệu ceramic fiber</td><td>Ceramic fiber</td><td>認定</td></tr><tr><td>Nỉ rock wool</td><td>Rock wool</td><td>認定</td></tr>
+<tr><td rowspan="3"><strong class="kw">Xây bao</strong></td><td>Block bê tông</td><td>Xi măng, cát, sỏi</td><td>例示</td></tr><tr><td>Block bê tông nhẹ</td><td>Xi măng, cốt liệu nhẹ</td><td>例示</td></tr><tr><td>Đá hoặc gạch</td><td>Đá hoặc gạch</td><td>例示</td></tr>
+<tr><td><strong class="kw">Phương pháp hỗn hợp</strong></td><td>Kết hợp nhiều vật liệu/công pháp</td><td>Các loại vật liệu chịu lửa</td><td>認定</td></tr>
+</tbody></table></div>
+</div></article>
+</div>
+</section>
+<section class="subsection" id="rockwool-method"><h3>(2) 吹付けロックウール工法</h3>
+<div class="study-grid">
+<article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja">
+<p>耐火被覆材料として吹付けロックウールを使用する吹付け工法は、鉄骨工事における代表的な耐火被覆工法である。吹付けロックウール工法は、<span class="relation">工場配合されたロックウールを用いる乾式工法</span>と、<span class="relation">現場配合のセメントスラリーを用いる半乾式工法</span>に分類されている。</p>
+<p>① <strong class="kw">乾式工法</strong>は、工場配合されたロックウールおよびセメントと、水を別々に圧送し、<span class="relation">ノズルの先端で混合して吹き付ける</span>工法である。施工時に<span class="relation">ロックウールが飛散するおそれ</span>がある。</p>
+<p>② <strong class="kw">半乾式工法</strong>は、現場配合されたセメントスラリー（水およびセメント）と、ロックウールを別々に圧送し、<span class="relation">ノズルの先端で混合して吹き付ける</span>工法である。</p>
+</div></article>
+<article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi">
+<p>Phương pháp phun dùng rock wool là một phương pháp phủ chống cháy tiêu biểu cho kết cấu thép. Công pháp được chia thành <span class="relation">phương pháp khô dùng rock wool phối trộn tại nhà máy</span> và <span class="relation">phương pháp bán khô dùng cement slurry phối trộn tại công trường</span>.</p>
+<p>① <strong class="kw">Phương pháp khô</strong>: hỗn hợp rock wool + xi măng đã phối trộn tại nhà máy và nước được vận chuyển riêng, sau đó <span class="relation">trộn tại đầu nozzle rồi phun</span>. Khi thi công có <span class="relation">nguy cơ rock wool phát tán</span>.</p>
+<p>② <strong class="kw">Phương pháp bán khô</strong>: cement slurry gồm nước + xi măng phối trộn tại công trường và rock wool được vận chuyển riêng, sau đó <span class="relation">trộn tại đầu nozzle rồi phun</span>.</p>
+</div></article>
+</div>
+<div class="figure-box"><strong>Giải thích hai sơ đồ hệ thống phun</strong><p><b>乾式:</b> rock wool + xi măng đi theo tuyến vật liệu khô, nước đi tuyến riêng, gặp nhau tại nozzle. <b>半乾式:</b> rock wool đi tuyến riêng; nước + xi măng được khuấy thành cement slurry, bơm theo tuyến riêng, sau đó gặp rock wool tại nozzle. Điểm phân biệt không phải “có nước hay không”, mà là trạng thái vật liệu trước nozzle.</p></div>
+</section>
+<section class="subsection" id="rockwool-cautions"><h3>(3) 吹付けロックウール工法の施工上の留意事項</h3>
+<div class="study-grid">
+<article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja">
+<ol><li><strong class="kw">鉄骨表面の浮き錆</strong>は、ワイヤーブラシなどの手道具で除去する。</li><li><strong class="kw">吹付け機械の設置場所</strong>は、資材搬入動線を考慮して定める。</li><li><span class="relation">鉄骨の構造材貫通部や、鉄骨の取付け金物などには、主要な鉄骨と同様の耐火被覆を行う。</span></li><li>工場配合されたロックウールを吹き付ける<strong class="kw">乾式工法</strong>では、<span class="relation">ロックウールの飛散を防ぐための措置を講じる</span>。</li></ol>
+</div></article>
+<article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi">
+<ol><li><strong class="kw">Gỉ nổi trên bề mặt kết cấu thép</strong> phải được loại bỏ bằng dụng cụ cầm tay như bàn chải thép.</li><li><strong class="kw">Vị trí đặt máy phun</strong> phải được xác định có xét đến tuyến vận chuyển vật liệu.</li><li><span class="relation">Các vị trí kết cấu xuyên qua cấu kiện thép và phụ kiện lắp vào kết cấu thép phải được phủ chống cháy tương đương với kết cấu thép chính.</span></li><li>Đối với <strong class="kw">phương pháp khô</strong> dùng rock wool phối trộn tại nhà máy, phải <span class="relation">thực hiện biện pháp ngăn rock wool phát tán</span>.</li></ol>
+</div></article>
+</div>
+<p><a href="#toc">↑ Mục lục</a></p>
+</section>
+</section></main>
+<!-- CONTENT_END -->
+<section id="terms">
+<h2>Thuật ngữ chuyên môn</h2><div class="section-head">
+<h2>Thuật ngữ chuyên môn</h2>
+</div><div class="table-wrap"><table>
+<thead><tr><th>日本語</th><th>読み方</th><th>Tiếng Việt</th><th>Giải thích</th><th>Liên quan</th></tr></thead>
+<tbody>
+<tr><td>スタッド溶接</td><td>スタッドようせつ</td><td>Hàn stud / hàn chốt</td><td>Hàn trực tiếp stud vào thép nền.</td><td>仕上がり高さ, 傾き</td></tr>
+<tr><td>管理許容差</td><td>かんりきょようさ</td><td>Dung sai quản lý</td><td>Mức mục tiêu dùng trong quản lý thi công.</td><td>限界許容差</td></tr>
+<tr><td>限界許容差</td><td>げんかいきょようさ</td><td>Dung sai giới hạn</td><td>Giới hạn dùng để đánh giá đạt/không đạt.</td><td>スタッド検査</td></tr>
+<tr><td>埋込み工法</td><td>うめこみこうほう</td><td>Phương pháp chôn cọc</td><td>Nhóm công pháp hạ cọc đúc sẵn bằng cách tạo lỗ/khoan kết hợp gia cố mũi.</td><td>プレボーリング, 中掘り</td></tr>
+<tr><td>支持層</td><td>しじそう</td><td>Tầng chịu lực</td><td>Tầng đất tiếp nhận tải trọng từ cọc.</td><td>N値, オーガ駆動電流値</td></tr>
+<tr><td>根固め液</td><td>ねがためえき</td><td>Dung dịch gia cố chân cọc</td><td>Vật liệu gốc xi măng dùng tạo phần gia cố mũi cọc.</td><td>球根</td></tr>
+<tr><td>杭周固定液</td><td>くいしゅうこていえき</td><td>Dung dịch cố định quanh cọc</td><td>Lấp khe rỗng dọc thân cọc.</td><td>埋込み工法</td></tr>
+<tr><td>負圧</td><td>ふあつ</td><td>Áp suất âm</td><td>Có thể phát sinh khi rút auger quá nhanh và làm nền đất bị nới lỏng.</td><td>オーガ引上げ</td></tr>
+<tr><td>先掘り</td><td>さきぼり</td><td>Khoan vượt trước</td><td>Mũi khoan đi trước quá sâu so với cọc.</td><td>中掘り工法</td></tr>
+<tr><td>スペーサー</td><td>スペーサー</td><td>Spacer / con kê</td><td>Duy trì vị trí cốt thép và lớp bê tông bảo vệ.</td><td>かぶり厚さ</td></tr>
+<tr><td>バーサポート</td><td>バーサポート</td><td>Bar support</td><td>Giữ vị trí ngang của cốt thép, là một loại spacer.</td><td>鉄筋工事</td></tr>
+<tr><td>かぶり厚さ</td><td>かぶりあつさ</td><td>Chiều dày lớp bê tông bảo vệ</td><td>Khoảng cách nhỏ nhất từ bề mặt bê tông đến bề mặt cốt thép.</td><td>スペーサー</td></tr>
+<tr><td>コールドジョイント</td><td>コールドジョイント</td><td>Cold joint / mạch ngừng lạnh</td><td>Mạch nối không liên kết nguyên khối giữa hai lớp bê tông.</td><td>打重ね</td></tr>
+<tr><td>許容打重ね時間間隔</td><td>きょよううちかさねじかんかんかく</td><td>Khoảng thời gian cho phép giữa các lớp đổ</td><td>Giới hạn thời gian nhằm ngăn cold joint.</td><td>外気温</td></tr>
+<tr><td>再振動</td><td>さいしんどう</td><td>Rung lại</td><td>Rung lại sau đầm chặt, trước khi bê tông cứng.</td><td>内部振動機</td></tr>
+<tr><td>レイタンス</td><td>レイタンス</td><td>Laitance</td><td>Lớp hồ xi măng yếu trên bề mặt bê tông.</td><td>打継ぎ</td></tr>
+<tr><td>耐火被覆</td><td>たいかひふく</td><td>Lớp phủ chống cháy</td><td>Vật liệu phủ bảo vệ cấu kiện nhằm đạt yêu cầu chịu lửa.</td><td>耐火構造</td></tr>
+<tr><td>吹付けロックウール</td><td>ふきつけロックウール</td><td>Rock wool phun</td><td>Vật liệu phủ chống cháy tiêu biểu cho kết cấu thép.</td><td>乾式, 半乾式</td></tr>
+<tr><td>乾式工法</td><td>かんしきこうほう</td><td>Phương pháp khô</td><td>Rock wool + xi măng và nước được cấp riêng, trộn tại nozzle.</td><td>飛散</td></tr>
+<tr><td>半乾式工法</td><td>はんかんしきこうほう</td><td>Phương pháp bán khô</td><td>Cement slurry và rock wool được cấp riêng, trộn tại nozzle.</td><td>セメントスラリー</td></tr>
+<tr><td>浮き錆</td><td>うきさび</td><td>Gỉ nổi</td><td>Lớp gỉ bong, không bám chắc vào bề mặt thép.</td><td>ワイヤーブラシ</td></tr>
+<tr><td>飛散</td><td>ひさん</td><td>Phát tán</td><td>Vật liệu dạng sợi/hạt phát tán ra xung quanh.</td><td>乾式工法</td></tr>
+</tbody>
+</table></div></section>
+<section id="background">
+<h2>Kiến thức nền cần biết</h2><div class="section-head">
+<h2>Kiến thức nền cần biết</h2>
+</div><div class="comparison-box">
+<strong>Logic kiểm tra tầng chịu lực của cọc</strong>
+<p>Không dựa vào một tín hiệu đơn lẻ. Sách đặt ba nguồn kiểm tra cạnh nhau: độ sâu theo khảo sát/địa tầng; biến đổi dòng điện auger so với N値; và đất thực tế bám ở đầu auger so với mẫu đất.</p>
+</div><div class="comparison-box">
+<strong>乾式 và 半乾式 của rock wool phun</strong>
+<p>Cả hai đều trộn các dòng vật liệu tại đầu nozzle. Khác biệt cốt lõi là trạng thái cấp liệu trước nozzle: 乾式 dùng rock wool + xi măng phối trộn tại nhà máy và nước đi riêng; 半乾式 dùng cement slurry pha tại hiện trường và rock wool đi riêng.</p>
+</div></section>
+<section id="memory">
+<h2>Điểm cần nhớ và mẹo nhớ</h2><div class="section-head">
+<h2>Điểm cần nhớ và mẹo nhớ</h2>
+</div><div class="memory-box"><strong>Stud hàn</strong><p>管理許容差: ΔL ±1,5 mm / θ ≤3°. 限界許容差: ΔL ±2 mm / θ ≤5°.</p></div><div class="memory-box"><strong>Pre-boring</strong><p>Khoan lỗ lớn hơn đường kính cọc khoảng 10 cm → tạo bầu gia cố → bơm dung dịch quanh cọc → rút bit → hạ cọc → định vị mũi cọc.</p></div><div class="memory-box"><strong>Support / spacer</strong><p>Sàn: 0,9 m, đầu 0,1 m. Dầm: 1,5 m, đầu 0,5 m. Móng: 0,9 m. Tường: ngang 1,5 m, đầu 0,5 m.</p></div><div class="memory-box"><strong>Cold joint</strong><p>外気温 ≤25℃ → 2,5 giờ; &gt;25℃ → 2,0 giờ. Đầm rung trong xuyên vào lớp trước khoảng 10 cm. Nhiệt độ bê tông khi đổ ≤35℃.</p></div><div class="memory-box"><strong>吹付けロックウール</strong><p>乾式: 工場配合 + 水別送 + ノズル混合 + 飛散防止. 半乾式: 現場配合セメントスラリー + ロックウール別送 + ノズル混合.</p></div></section>
 <template id="component-library">
-
-  <!-- FIGURE -->
-  <figure class="figure-card">
-    <img src="{{IMAGE_SOURCE}}" alt="{{IMAGE_ALT}}">
-    <figcaption>{{FIGURE_CAPTION}}</figcaption>
-  </figure>
-
-  <!-- MULTIPLE FIGURES -->
-  <div class="figure-grid">
-    <figure class="figure-card">
-      <img src="{{IMAGE_SOURCE_1}}" alt="{{IMAGE_ALT_1}}">
-      <figcaption>{{FIGURE_CAPTION_1}}</figcaption>
-    </figure>
-    <figure class="figure-card">
-      <img src="{{IMAGE_SOURCE_2}}" alt="{{IMAGE_ALT_2}}">
-      <figcaption>{{FIGURE_CAPTION_2}}</figcaption>
-    </figure>
-  </div>
-
-  <!-- TABLE -->
-  <div class="table-wrap">
-    <table>
-      <caption>{{TABLE_CAPTION}}</caption>
-      <thead>
-        <tr><th>{{HEADER_1}}</th><th>{{HEADER_2}}</th></tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><strong class="kw">{{ROW_SUBJECT}}</strong></td>
-          <td><span class="relation">{{ROW_RECALL_CUE}}</span></td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-
-  <!-- NOTE -->
-  <div class="note-box">
-    <strong>{{NOTE_TITLE}}</strong>
-    <p>{{NOTE_CONTENT}}</p>
-  </div>
-
-  <!-- WARNING -->
-  <div class="warning-box">
-    <strong>{{WARNING_TITLE}}</strong>
-    <p>{{WARNING_CONTENT}}</p>
-  </div>
-
-  <!-- MEMORY -->
-  <div class="memory-box">
-    <strong>{{MEMORY_TITLE}}</strong>
-    <p>{{MEMORY_CONTENT}}</p>
-  </div>
-
-  <!-- FORMULA / FLOW -->
-  <div class="formula-box">
-    <div class="formula-line">
-      <span class="flow-node">{{NODE_1}}</span>
-      <span class="flow-arrow">→</span>
-      <span class="flow-node">{{NODE_2}}</span>
-      <span class="flow-arrow">→</span>
-      <span class="flow-node">{{NODE_3}}</span>
-    </div>
-  </div>
-
+<div class="table-wrap">
+<table>
+<caption>{{TABLE_CAPTION}}</caption>
+<thead><tr><th>{{HEADER_1}}</th><th>{{HEADER_2}}</th></tr></thead>
+<tbody><tr><td><strong class="kw">{{ROW_KEY}}</strong></td><td><span class="relation">{{ROW_RELATION}}</span></td></tr></tbody>
+</table>
+</div>
+<figure class="figure-card">
+<img alt="{{IMAGE_ALT}}" height="{{IMAGE_HEIGHT}}" src="{{IMAGE_SOURCE}}" width="{{IMAGE_WIDTH}}"/>
+<figcaption>{{IMAGE_CAPTION}}</figcaption>
+</figure>
+<div class="figure-grid">
+<figure class="figure-card">
+<img alt="{{IMAGE_ALT_1}}" height="{{IMAGE_HEIGHT_1}}" src="{{IMAGE_SOURCE_1}}" width="{{IMAGE_WIDTH_1}}"/>
+<figcaption>{{IMAGE_CAPTION_1}}</figcaption>
+</figure>
+<figure class="figure-card">
+<img alt="{{IMAGE_ALT_2}}" height="{{IMAGE_HEIGHT_2}}" src="{{IMAGE_SOURCE_2}}" width="{{IMAGE_WIDTH_2}}"/>
+<figcaption>{{IMAGE_CAPTION_2}}</figcaption>
+</figure>
+</div>
+<section class="note-box"><h3>{{NOTE_TITLE}}</h3><p>{{NOTE_CONTENT}}</p></section>
+<section class="warning-box"><h3>{{WARNING_TITLE}}</h3><p>{{WARNING_CONTENT}}</p></section>
+<section class="memory-box"><h3>{{MEMORY_TITLE}}</h3><p>{{MEMORY_ITEM}}</p></section>
 </template>
-
+</div>
 <script>
-(() => {
-  "use strict";
+(function () {
+  'use strict';
 
   const root = document.documentElement;
   const body = document.body;
+  const q = id => document.getElementById(id);
+  const FONT_LEVELS = Array.from({ length: 21 }, (_, i) => 50 + i * 5);
 
-  const themeToggle = document.getElementById("theme-toggle");
-  const modeToggle = document.getElementById("mode-toggle");
-  const fontDown = document.getElementById("font-down");
-  const fontReset = document.getElementById("font-reset");
-  const fontUp = document.getElementById("font-up");
+  const controls = q('control-cluster');
+  const controlsToggle = q('controls-toggle');
+  const controlPanel = q('control-panel');
+  const themeButton = q('theme-toggle');
+  const modeButton = q('mode-toggle');
+  const fontDown = q('font-down');
+  const fontUp = q('font-up');
+  const fontReset = q('font-reset');
+  const tocButton = q('toc-toggle');
+  const tocClose = q('toc-close');
+  const overlay = q('toc-overlay');
+  const prevButton = q('section-prev');
+  const nextButton = q('section-next');
+  const homeButton = q('home-button');
 
-  const tocToggle = document.getElementById("toc-toggle");
-  const tocClose = document.getElementById("toc-close");
-  const tocOverlay = document.getElementById("toc-overlay");
-  const tocDrawer = document.getElementById("toc-drawer");
+  const pageKey = location.pathname + location.search;
+  const readerStateKey = 'study-reader-position:' + pageKey;
+  const lastPageKey = 'study-last-page';
+  const explicitHomeKey = 'study-explicit-home';
+  const anchorSelector = [
+    '.page-shell h1', '.page-shell h2', '.page-shell h3', '.page-shell h4',
+    '.page-shell p', '.page-shell li', '.page-shell td', '.page-shell th',
+    '.page-shell figcaption', '.page-shell .card-title'
+  ].join(', ');
 
-  const prevButton = document.getElementById("section-prev");
-  const nextButton = document.getElementById("section-next");
+  let anchorElements = [];
+  let lastStablePosition = null;
+  let scrollSaveTimer = 0;
+  let resizeRestoreTimer = 0;
+  let resizeAnchor = null;
+  let suppressScrollSaveUntil = 0;
+  function layoutViewportSize() {
+    const de = document.documentElement;
+    return {
+      width: de.clientWidth || window.innerWidth,
+      height: de.clientHeight || window.innerHeight
+    };
+  }
 
-  const FONT_LEVELS = [80, 90, 100, 110, 120, 130, 140];
+  function visualViewportScale() {
+    const vv = window.visualViewport;
+    return vv && Number.isFinite(vv.scale) ? vv.scale : 1;
+  }
+
+  function isPinchZoomActive() {
+    return Math.abs(visualViewportScale() - 1) > 0.015;
+  }
+
+  const initialLayoutViewport = layoutViewportSize();
+  let lastViewportWidth = initialLayoutViewport.width;
+  let lastViewportHeight = initialLayoutViewport.height;
+  let pinchZoomSession = false;
+
+  try {
+    if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+  } catch (e) {}
 
   function safeGet(key, fallback = null) {
     try {
@@ -1452,210 +1134,602 @@ body.toc-open .toc-drawer {
   }
 
   function safeSet(key, value) {
-    try {
-      localStorage.setItem(key, value);
-    } catch (e) {}
+    try { localStorage.setItem(key, value); } catch (e) {}
   }
+
+  function safeRemove(key) {
+    try { localStorage.removeItem(key); } catch (e) {}
+  }
+
+  /* ---------- Persistent page / PWA resume metadata ---------- */
+
+  function rememberCurrentPage() {
+    safeSet(lastPageKey, pageKey);
+    safeSet('study-last-active-at', String(Date.now()));
+  }
+
+  rememberCurrentPage();
+
+  /* ---------- Layout viewport geometry ---------- */
+
+  /*
+    Pinch zoom changes visualViewport.width / height / scale.
+    It must NOT change the document layout width.
+
+    Therefore --app-viewport-width is derived only from the layout viewport
+    (documentElement.clientWidth / innerWidth), never from visualViewport.width.
+  */
+  function syncViewportGeometry() {
+    const { width } = layoutViewportSize();
+    root.style.setProperty(
+      '--app-viewport-width',
+      `${Math.round(width * 100) / 100}px`
+    );
+  }
+
+  syncViewportGeometry();
+
+  /* ---------- Reader anchors ---------- */
+
+  function rebuildReaderAnchors() {
+    anchorElements = Array.from(document.querySelectorAll(anchorSelector));
+    anchorElements.forEach((el, index) => {
+      el.dataset.readerKey = 'r' + index;
+    });
+  }
+
+  function closestReaderElement(node) {
+    if (!node) return null;
+    const el = node.nodeType === Node.ELEMENT_NODE ? node : node.parentElement;
+    return el ? el.closest('[data-reader-key]') : null;
+  }
+
+  function caretAtPoint(x, y) {
+    try {
+      if (document.caretPositionFromPoint) {
+        const pos = document.caretPositionFromPoint(x, y);
+        if (!pos || !pos.offsetNode) return null;
+        return { node: pos.offsetNode, offset: pos.offset };
+      }
+      if (document.caretRangeFromPoint) {
+        const range = document.caretRangeFromPoint(x, y);
+        if (!range) return null;
+        return { node: range.startContainer, offset: range.startOffset };
+      }
+    } catch (e) {}
+    return null;
+  }
+
+  function textOffsetFromElementStart(element, node, offset) {
+    try {
+      const range = document.createRange();
+      range.setStart(element, 0);
+      range.setEnd(node, offset);
+      return range.toString().length;
+    } catch (e) {
+      return 0;
+    }
+  }
+
+  function domPositionFromTextOffset(element, targetOffset) {
+    const walker = document.createTreeWalker(element, NodeFilter.SHOW_TEXT);
+    let remaining = Math.max(0, targetOffset);
+    let node = walker.nextNode();
+    let last = null;
+
+    while (node) {
+      last = node;
+      const len = node.nodeValue ? node.nodeValue.length : 0;
+      if (remaining <= len) {
+        return { node, offset: remaining };
+      }
+      remaining -= len;
+      node = walker.nextNode();
+    }
+
+    if (last) return { node: last, offset: last.nodeValue ? last.nodeValue.length : 0 };
+    return { node: element, offset: 0 };
+  }
+
+  function characterRect(node, offset) {
+    try {
+      if (node.nodeType !== Node.TEXT_NODE) {
+        const r = node.getBoundingClientRect ? node.getBoundingClientRect() : null;
+        return r && r.height ? r : null;
+      }
+
+      const len = node.nodeValue ? node.nodeValue.length : 0;
+      if (!len) return node.parentElement ? node.parentElement.getBoundingClientRect() : null;
+
+      let start = Math.max(0, Math.min(offset, len - 1));
+      let end = Math.min(len, start + 1);
+      if (offset >= len && len > 0) {
+        start = len - 1;
+        end = len;
+      }
+
+      const range = document.createRange();
+      range.setStart(node, start);
+      range.setEnd(node, end);
+      const rects = range.getClientRects();
+      return rects.length ? rects[0] : range.getBoundingClientRect();
+    } catch (e) {
+      return null;
+    }
+  }
+
+  function captureReadingPosition() {
+    if (!anchorElements.length) rebuildReaderAnchors();
+    if (!anchorElements.length) return null;
+
+    const vv = window.visualViewport;
+    const viewportWidth = vv ? vv.width : window.innerWidth;
+    const topProbe = 6;
+    const ys = [topProbe, 12, 18, 26, 36, 50];
+    const xs = [];
+
+    for (let x = 12; x <= Math.min(viewportWidth - 12, 220); x += 16) xs.push(x);
+    xs.push(viewportWidth * .25, viewportWidth * .5, viewportWidth * .75);
+
+    for (const y of ys) {
+      for (const x of xs) {
+        if (x <= 0 || x >= viewportWidth) continue;
+        const caret = caretAtPoint(x, y);
+        if (!caret) continue;
+        const element = closestReaderElement(caret.node);
+        if (!element || !document.querySelector('.page-shell')?.contains(element)) continue;
+
+        const offset = textOffsetFromElementStart(element, caret.node, caret.offset);
+        const rect = characterRect(caret.node, caret.offset);
+        const key = element.dataset.readerKey;
+        if (key && rect && Number.isFinite(rect.top)) {
+          return { key, offset, top: rect.top };
+        }
+      }
+    }
+
+    /* Fallback: nearest textual block to the top edge. */
+    let best = null;
+    let bestDistance = Infinity;
+    for (const element of anchorElements) {
+      const rect = element.getBoundingClientRect();
+      if (rect.bottom < 0 || rect.top > (vv ? vv.height : window.innerHeight)) continue;
+      const distance = Math.abs(rect.top);
+      if (distance < bestDistance) {
+        bestDistance = distance;
+        best = { key: element.dataset.readerKey, offset: 0, top: rect.top };
+      }
+    }
+    return best;
+  }
+
+  function restoreReadingPosition(state) {
+    if (!state || !state.key) return false;
+    if (!anchorElements.length) rebuildReaderAnchors();
+
+    const element = document.querySelector('[data-reader-key="' + CSS.escape(state.key) + '"]');
+    if (!element) return false;
+
+    const pos = domPositionFromTextOffset(element, Number(state.offset) || 0);
+    const rect = characterRect(pos.node, pos.offset);
+    if (!rect || !Number.isFinite(rect.top)) return false;
+
+    const desiredTop = Number.isFinite(Number(state.top)) ? Number(state.top) : 6;
+    const delta = rect.top - desiredTop;
+    if (Math.abs(delta) < .5) return true;
+
+    suppressScrollSaveUntil = Date.now() + 700;
+    const oldBehavior = root.style.scrollBehavior;
+    root.style.scrollBehavior = 'auto';
+    window.scrollBy(0, delta);
+    root.style.scrollBehavior = oldBehavior;
+    return true;
+  }
+
+  function saveReaderState(state) {
+    if (!state) return;
+    lastStablePosition = state;
+    safeSet(readerStateKey, JSON.stringify(state));
+  }
+
+  function readReaderState() {
+    try {
+      const raw = safeGet(readerStateKey);
+      return raw ? JSON.parse(raw) : null;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  function settleRestore(state, delays = [0, 60, 180, 420]) {
+    if (!state) return;
+    suppressScrollSaveUntil = Date.now() + Math.max(...delays) + 350;
+    delays.forEach(delay => {
+      window.setTimeout(() => {
+        requestAnimationFrame(() => restoreReadingPosition(state));
+      }, delay);
+    });
+    window.setTimeout(() => {
+      saveReaderState(state);
+    }, Math.max(...delays) + 120);
+  }
+
+  function preserveReadingPosition(mutator) {
+    const state = captureReadingPosition() || lastStablePosition || readReaderState();
+    if (state) saveReaderState(state);
+    mutator();
+    rebuildReaderAnchors();
+    settleRestore(state);
+  }
+
+  function scheduleReaderSave() {
+    if (Date.now() < suppressScrollSaveUntil) return;
+    clearTimeout(scrollSaveTimer);
+    scrollSaveTimer = window.setTimeout(() => {
+      if (Date.now() < suppressScrollSaveUntil) return;
+      const state = captureReadingPosition();
+      if (state) saveReaderState(state);
+    }, 130);
+  }
+
+  rebuildReaderAnchors();
+  lastStablePosition = readReaderState();
 
   /* ---------- Theme ---------- */
 
   function applyTheme(theme) {
-    const next = theme === "light" ? "light" : "dark";
-    root.dataset.theme = next;
-
-    if (themeToggle) {
-      const dark = next === "dark";
-      themeToggle.textContent = dark ? "☀" : "☾";
-      themeToggle.title = dark ? "Chuyển sang Light" : "Chuyển sang Dark";
-      themeToggle.setAttribute("aria-pressed", String(!dark));
+    theme = theme === 'light' ? 'light' : 'dark';
+    root.dataset.theme = theme;
+    safeSet('study-theme', theme);
+    if (themeButton) {
+      themeButton.textContent = theme === 'dark' ? '☀' : '☾';
+      themeButton.title = theme === 'dark' ? 'Chuyển sang Light theme' : 'Chuyển sang Dark theme';
+      themeButton.setAttribute('aria-label', themeButton.title);
+      themeButton.setAttribute('aria-pressed', theme === 'light' ? 'true' : 'false');
     }
-
-    safeSet("study-theme", next);
   }
-
-  const initialTheme =
-    safeGet("study-theme") ||
-    (window.matchMedia &&
-     window.matchMedia("(prefers-color-scheme: dark)").matches
-      ? "dark"
-      : "light");
-
-  applyTheme(initialTheme);
-
-  themeToggle?.addEventListener("click", () => {
-    applyTheme(root.dataset.theme === "dark" ? "light" : "dark");
-  });
 
   /* ---------- Full / Keywords ---------- */
 
   function applyMode(mode) {
-    const keywords = mode === "keywords";
-    body.classList.toggle("keyword-focus", keywords);
-
-    if (modeToggle) {
-      modeToggle.textContent = keywords ? "📖" : "🎯";
-      modeToggle.title = keywords ? "Chuyển sang Full" : "Chuyển sang Keywords";
-      modeToggle.setAttribute("aria-pressed", String(keywords));
+    mode = mode === 'keywords' ? 'keywords' : 'full';
+    root.dataset.studyMode = mode;
+    body.classList.toggle('keyword-focus', mode === 'keywords');
+    safeSet('study-mode', mode);
+    if (modeButton) {
+      modeButton.textContent = mode === 'full' ? '🎯' : '📖';
+      modeButton.title = mode === 'full' ? 'Chuyển sang Keywords mode' : 'Trở lại Full mode';
+      modeButton.setAttribute('aria-label', modeButton.title);
+      modeButton.setAttribute('aria-pressed', mode === 'keywords' ? 'true' : 'false');
     }
-
-    safeSet("study-mode", keywords ? "keywords" : "full");
   }
 
-  applyMode(safeGet("study-mode", "full"));
+  /* ---------- Font 50-150%, step 5% ---------- */
 
-  modeToggle?.addEventListener("click", () => {
-    applyMode(body.classList.contains("keyword-focus") ? "full" : "keywords");
-  });
-
-  /* ---------- Font scale ---------- */
-
-  let fontScale = Number(safeGet("study-font-scale", "100"));
-  if (!FONT_LEVELS.includes(fontScale)) {
-    fontScale = 100;
+  function currentScale() {
+    const saved = Number(safeGet('study-font-scale', '100'));
+    return FONT_LEVELS.includes(saved) ? saved : 100;
   }
 
   function applyFontScale(scale) {
-    fontScale = FONT_LEVELS.includes(scale) ? scale : 100;
-
-    root.style.setProperty(
-      "--base-font-size",
-      `${16 * fontScale / 100}px`
-    );
+    if (!FONT_LEVELS.includes(scale)) scale = 100;
+    root.style.setProperty('--base-font-size', (16 * scale / 100) + 'px');
+    safeSet('study-font-scale', String(scale));
 
     if (fontReset) {
-      fontReset.textContent = `${fontScale}%`;
-      fontReset.title =
-        fontScale === 100
-          ? "Cỡ chữ hiện tại 100%"
-          : `Cỡ chữ hiện tại ${fontScale}%, bấm để về 100%`;
+      fontReset.textContent = scale + '%';
+      fontReset.title = 'Cỡ chữ hiện tại ' + scale + '%. Chạm để về 100%';
+      fontReset.setAttribute('aria-label', fontReset.title);
     }
-
-    if (fontDown) {
-      fontDown.disabled = fontScale === FONT_LEVELS[0];
-    }
-
-    if (fontUp) {
-      fontUp.disabled = fontScale === FONT_LEVELS[FONT_LEVELS.length - 1];
-    }
-
-    safeSet("study-font-scale", String(fontScale));
+    if (fontDown) fontDown.disabled = scale === FONT_LEVELS[0];
+    if (fontUp) fontUp.disabled = scale === FONT_LEVELS[FONT_LEVELS.length - 1];
   }
 
-  applyFontScale(fontScale);
+  /* ---------- Collapsible controls ---------- */
 
-  fontDown?.addEventListener("click", () => {
-    const index = FONT_LEVELS.indexOf(fontScale);
-    if (index > 0) {
-      applyFontScale(FONT_LEVELS[index - 1]);
-    }
-  });
-
-  fontUp?.addEventListener("click", () => {
-    const index = FONT_LEVELS.indexOf(fontScale);
-    if (index >= 0 && index < FONT_LEVELS.length - 1) {
-      applyFontScale(FONT_LEVELS[index + 1]);
-    }
-  });
-
-  fontReset?.addEventListener("click", () => {
-    applyFontScale(100);
-  });
-
-  /* ---------- TOC drawer ---------- */
-
-  function setToc(open) {
-    body.classList.toggle("toc-open", open);
-    tocToggle?.setAttribute("aria-expanded", String(open));
-    tocOverlay?.setAttribute("aria-hidden", String(!open));
-
-    if (open) {
-      requestAnimationFrame(() => tocClose?.focus());
-    }
+  function setControlsOpen(open) {
+    if (!controls) return;
+    controls.classList.toggle('open', open);
+    controlsToggle?.setAttribute('aria-expanded', String(open));
+    controlsToggle?.setAttribute('aria-label', open ? 'Đóng công cụ' : 'Mở công cụ');
+    controlsToggle?.setAttribute('title', open ? 'Đóng công cụ' : 'Mở công cụ');
   }
 
-  tocToggle?.addEventListener("click", () => {
-    setToc(!body.classList.contains("toc-open"));
+  controlsToggle?.addEventListener('click', event => {
+    event.stopPropagation();
+    setControlsOpen(!controls.classList.contains('open'));
   });
 
-  tocClose?.addEventListener("click", () => setToc(false));
-  tocOverlay?.addEventListener("click", () => setToc(false));
-
-  tocDrawer?.querySelectorAll("a[href^='#']").forEach(link => {
-    link.addEventListener("click", () => setToc(false));
+  controlPanel?.addEventListener('click', event => event.stopPropagation());
+  document.addEventListener('pointerdown', event => {
+    if (controls?.classList.contains('open') && !controls.contains(event.target)) setControlsOpen(false);
   });
 
-  document.addEventListener("keydown", event => {
-    if (event.key === "Escape" && body.classList.contains("toc-open")) {
-      setToc(false);
-      tocToggle?.focus();
+  /* ---------- TOC ---------- */
+
+  function openToc() {
+    body.classList.add('toc-open');
+    tocButton?.setAttribute('aria-expanded', 'true');
+    setControlsOpen(false);
+  }
+
+  function closeToc() {
+    body.classList.remove('toc-open');
+    tocButton?.setAttribute('aria-expanded', 'false');
+  }
+
+  tocButton?.addEventListener('click', openToc);
+  tocClose?.addEventListener('click', closeToc);
+  overlay?.addEventListener('click', closeToc);
+
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape') {
+      closeToc();
+      setControlsOpen(false);
     }
   });
 
-  /* ---------- Back / Next section ---------- */
+  document.querySelectorAll('a[href="#toc"]').forEach(a => {
+    a.addEventListener('click', event => {
+      event.preventDefault();
+      openToc();
+    });
+  });
 
-  const studySections = Array.from(
-    document.querySelectorAll("main .study-section[id]")
-  );
+  /* TOC navigation does not add hash-history entries. */
+  document.querySelectorAll('#toc a[href^="#"]').forEach(a => {
+    a.addEventListener('click', event => {
+      const href = a.getAttribute('href');
+      if (!href || href === '#toc') return;
+      const target = document.getElementById(decodeURIComponent(href.slice(1)));
+      if (!target) return;
+      event.preventDefault();
+      closeToc();
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      window.setTimeout(scheduleReaderSave, 450);
+    });
+  });
+
+  /* ---------- Previous / next lesson item ---------- */
+
+  const tocTargets = Array.from(document.querySelectorAll('#toc a[href^="#"]'))
+    .map(a => document.getElementById(decodeURIComponent(a.getAttribute('href').slice(1))))
+    .filter((el, i, arr) => el && el.id !== 'toc' && arr.indexOf(el) === i);
 
   function currentSectionIndex() {
-    if (!studySections.length) return -1;
-
-    const referenceY = window.scrollY + Math.min(window.innerHeight * 0.32, 220);
-    let index = 0;
-
-    for (let i = 0; i < studySections.length; i++) {
-      if (studySections[i].offsetTop <= referenceY) {
-        index = i;
-      } else {
-        break;
-      }
-    }
-    return index;
+    let idx = -1;
+    const threshold = 24;
+    tocTargets.forEach((el, i) => {
+      if (el.getBoundingClientRect().top <= threshold) idx = i;
+    });
+    return idx;
   }
 
-  function updateNavState() {
-    if (!studySections.length) {
-      if (prevButton) prevButton.disabled = true;
-      if (nextButton) nextButton.disabled = true;
+  function updateSectionButtons() {
+    const i = currentSectionIndex();
+    if (prevButton) prevButton.disabled = !tocTargets.length || i <= 0;
+    if (nextButton) nextButton.disabled = !tocTargets.length || i >= tocTargets.length - 1;
+  }
+
+  function goToIndex(i) {
+    if (!tocTargets.length) return;
+    i = Math.max(0, Math.min(tocTargets.length - 1, i));
+    tocTargets[i].scrollIntoView({ behavior: 'smooth', block: 'start' });
+    window.setTimeout(() => {
+      const state = captureReadingPosition();
+      if (state) saveReaderState(state);
+      updateSectionButtons();
+    }, 450);
+  }
+
+  prevButton?.addEventListener('click', () => goToIndex(Math.max(0, currentSectionIndex() - 1)));
+  nextButton?.addEventListener('click', () => goToIndex(Math.min(tocTargets.length - 1, currentSectionIndex() + 1)));
+
+  /* ---------- Home ---------- */
+
+  homeButton?.addEventListener('click', () => {
+    const state = captureReadingPosition();
+    if (state) saveReaderState(state);
+    safeSet(explicitHomeKey, '1');
+    safeSet('study-home-click-at', String(Date.now()));
+    window.location.href = new URL('index.html', window.location.href).href;
+  });
+
+  /* ---------- Initialize state ---------- */
+
+  applyTheme(root.dataset.theme === 'light' ? 'light' : 'dark');
+  applyMode(root.dataset.studyMode || 'full');
+  applyFontScale(currentScale());
+
+  themeButton?.addEventListener('click', () => applyTheme(root.dataset.theme === 'dark' ? 'light' : 'dark'));
+  modeButton?.addEventListener('click', () => applyMode(root.dataset.studyMode === 'keywords' ? 'full' : 'keywords'));
+
+  fontDown?.addEventListener('click', () => {
+    const i = FONT_LEVELS.indexOf(currentScale());
+    if (i > 0) preserveReadingPosition(() => applyFontScale(FONT_LEVELS[i - 1]));
+  });
+
+  fontUp?.addEventListener('click', () => {
+    const i = FONT_LEVELS.indexOf(currentScale());
+    if (i >= 0 && i < FONT_LEVELS.length - 1) preserveReadingPosition(() => applyFontScale(FONT_LEVELS[i + 1]));
+  });
+
+  fontReset?.addEventListener('click', () => preserveReadingPosition(() => applyFontScale(100)));
+
+  /* ---------- Scroll / rotation / resize persistence ---------- */
+
+  window.addEventListener('scroll', () => {
+    scheduleReaderSave();
+    updateSectionButtons();
+  }, { passive: true });
+
+  function handleLayoutViewportChange() {
+    /*
+      A native two-finger pinch changes VisualViewport but normally does not
+      change the layout viewport. Ignore it completely so the page does not
+      recalculate width or fight the browser's native zoom.
+    */
+    if (isPinchZoomActive()) {
+      pinchZoomSession = true;
       return;
     }
 
-    const index = currentSectionIndex();
-    if (prevButton) prevButton.disabled = index <= 0;
-    if (nextButton) nextButton.disabled = index >= studySections.length - 1;
-  }
+    const { width: w, height: h } = layoutViewportSize();
 
-  function moveSection(delta) {
-    const index = currentSectionIndex();
-    const targetIndex = Math.max(
-      0,
-      Math.min(studySections.length - 1, index + delta)
-    );
+    /*
+      When pinch zoom returns to scale 1, VisualViewport may emit another
+      resize. If the layout viewport itself did not change, this was only zoom,
+      so do nothing.
+    */
+    const layoutChanged =
+      Math.abs(w - lastViewportWidth) >= 1 ||
+      Math.abs(h - lastViewportHeight) >= 1;
 
-    studySections[targetIndex]?.scrollIntoView({
-      behavior: "smooth",
-      block: "start"
-    });
-  }
-
-  prevButton?.addEventListener("click", () => moveSection(-1));
-  nextButton?.addEventListener("click", () => moveSection(1));
-
-  let ticking = false;
-  window.addEventListener("scroll", () => {
-    if (!ticking) {
-      requestAnimationFrame(() => {
-        updateNavState();
-        ticking = false;
-      });
-      ticking = true;
+    if (!layoutChanged) {
+      pinchZoomSession = false;
+      return;
     }
+
+    pinchZoomSession = false;
+
+    if (!resizeAnchor) {
+      resizeAnchor =
+        lastStablePosition ||
+        readReaderState() ||
+        captureReadingPosition();
+    }
+
+    /*
+      Only a real layout change, such as portrait <-> landscape, updates
+      --app-viewport-width.
+    */
+    syncViewportGeometry();
+    lastViewportWidth = w;
+    lastViewportHeight = h;
+
+    if (resizeAnchor) {
+      settleRestore(resizeAnchor, [0, 50, 140, 300]);
+    }
+
+    clearTimeout(resizeRestoreTimer);
+    resizeRestoreTimer = window.setTimeout(() => {
+      if (resizeAnchor) {
+        settleRestore(resizeAnchor, [0, 80, 220]);
+      }
+
+      window.setTimeout(() => {
+        lastStablePosition =
+          resizeAnchor ||
+          captureReadingPosition();
+
+        if (lastStablePosition) {
+          saveReaderState(lastStablePosition);
+        }
+
+        resizeAnchor = null;
+        updateSectionButtons();
+      }, 320);
+    }, 260);
+  }
+
+  function handleVisualViewportResize() {
+    /*
+      visualViewport resize is the main signal used by Safari/WebKit while
+      pinch-zooming. At scale != 1 this is zoom, not a responsive-layout event.
+    */
+    if (isPinchZoomActive()) {
+      pinchZoomSession = true;
+      return;
+    }
+
+    handleLayoutViewportChange();
+  }
+
+  window.addEventListener(
+    'resize',
+    handleLayoutViewportChange,
+    { passive: true }
+  );
+
+  window.addEventListener('orientationchange', () => {
+    /*
+      Rotation is a genuine layout change. Use the stored logical reading
+      position, then wait for iOS to finish updating its layout viewport.
+    */
+    resizeAnchor =
+      lastStablePosition ||
+      readReaderState() ||
+      captureReadingPosition();
+
+    [40, 120, 280].forEach(delay => {
+      window.setTimeout(() => {
+        if (isPinchZoomActive()) return;
+
+        const size = layoutViewportSize();
+        syncViewportGeometry();
+
+        if (
+          Math.abs(size.width - lastViewportWidth) >= 1 ||
+          Math.abs(size.height - lastViewportHeight) >= 1
+        ) {
+          lastViewportWidth = size.width;
+          lastViewportHeight = size.height;
+        }
+
+        if (resizeAnchor) {
+          settleRestore(resizeAnchor, [0, 70, 180]);
+        }
+      }, delay);
+    });
+
+    window.setTimeout(() => {
+      resizeAnchor = null;
+      updateSectionButtons();
+    }, 620);
   }, { passive: true });
 
-  window.addEventListener("resize", updateNavState);
-  updateNavState();
-})();
-</script>
+  window.visualViewport?.addEventListener(
+    'resize',
+    handleVisualViewportResize,
+    { passive: true }
+  );
 
-</body>
+  function saveLifecycleState() {
+    const state = captureReadingPosition() || lastStablePosition;
+    if (state) saveReaderState(state);
+    rememberCurrentPage();
+  }
+
+  document.addEventListener('visibilitychange', () => {
+    if (document.visibilityState === 'hidden') saveLifecycleState();
+    else {
+      rememberCurrentPage();
+      const state = readReaderState();
+      if (state) settleRestore(state, [0, 80, 220]);
+    }
+  });
+
+  window.addEventListener('pagehide', saveLifecycleState);
+  window.addEventListener('beforeunload', saveLifecycleState);
+
+  window.addEventListener('pageshow', () => {
+    rememberCurrentPage();
+    rebuildReaderAnchors();
+    const state = readReaderState();
+    if (!location.hash && state) settleRestore(state, [0, 80, 220, 500]);
+    window.setTimeout(updateSectionButtons, 80);
+  });
+
+  window.addEventListener('load', () => {
+    rebuildReaderAnchors();
+    const state = readReaderState();
+    if (!location.hash && state) settleRestore(state, [0, 80, 220, 500]);
+    else {
+      const current = captureReadingPosition();
+      if (current) saveReaderState(current);
+    }
+    updateSectionButtons();
+  });
+})();
+</script></body>
 </html>

@@ -1,22 +1,83 @@
 <!doctype html>
-<html lang="vi">
+<html lang="vi" data-theme="dark">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="theme-color" content="#0f172a">
+  <meta name="theme-color" content="#0b1220" id="themeColorMeta">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="color-scheme" content="dark light">
   <title>1級建築施工管理技士 第二次検定 | Study Index</title>
+
+  <script>
+  (function() {
+    'use strict';
+    const root = document.documentElement;
+    const LAST_PAGE_KEY = 'study-last-page';
+    const EXPLICIT_HOME_KEY = 'study-explicit-home';
+
+    function safeGet(key, fallback = null) {
+      try { const v = localStorage.getItem(key); return v === null ? fallback : v; }
+      catch (e) { return fallback; }
+    }
+    function safeSet(key, value) { try { localStorage.setItem(key, value); } catch (e) {} }
+    function safeRemove(key) { try { localStorage.removeItem(key); } catch (e) {} }
+
+    // Theme must be decided before first paint. No system-theme fallback.
+    const savedTheme = safeGet('study-theme');
+    root.dataset.theme = savedTheme === 'light' ? 'light' : 'dark';
+
+    // If Home was explicitly pressed in a lesson, stay on index persistently.
+    if (safeGet(EXPLICIT_HOME_KEY) === '1') {
+      safeRemove(EXPLICIT_HOME_KEY);
+      safeSet(LAST_PAGE_KEY, location.pathname + location.search);
+      return;
+    }
+
+    // Cold launch / PWA relaunch: resume the last lesson, if valid.
+    const lastPage = safeGet(LAST_PAGE_KEY);
+    if (!lastPage) return;
+
+    try {
+      const current = new URL(location.href);
+      const candidate = new URL(lastPage, current.href);
+      const appDir = new URL('.', current.href);
+      const fileName = decodeURIComponent(candidate.pathname.split('/').pop() || '').toLowerCase();
+      const sameOrigin = current.protocol === 'file:'
+        ? candidate.protocol === 'file:'
+        : candidate.origin === current.origin;
+      const insideApp = candidate.pathname.startsWith(appDir.pathname);
+      const isLesson = fileName.endsWith('.html') && fileName !== 'index.html';
+
+      if (sameOrigin && insideApp && isLesson && candidate.href !== current.href) {
+        location.replace(candidate.href);
+      }
+    } catch (e) {}
+  })();
+  </script>
+
   <style>
-    :root { color-scheme: light dark; --bg:#f5f7fb; --card:#fff; --text:#172033; --muted:#687386; --line:#dfe4ec; --accent:#0b5ed7; --accent2:#e9f2ff; --shadow:0 4px 18px rgba(15,23,42,.07); }
-    @media (prefers-color-scheme: dark) { :root { --bg:#0b1220; --card:#121b2b; --text:#edf2f7; --muted:#a8b2c1; --line:#263349; --accent:#7db3ff; --accent2:#162b4c; --shadow:none; } }
+    :root { color-scheme: dark; }
+    html[data-theme="dark"] {
+      --bg:#0b1220; --card:#121b2b; --text:#edf2f7; --muted:#a8b2c1;
+      --line:#263349; --accent:#7db3ff; --accent2:#162b4c; --shadow:none;
+      color-scheme:dark;
+    }
+    html[data-theme="light"] {
+      --bg:#f5f7fb; --card:#fff; --text:#172033; --muted:#687386;
+      --line:#dfe4ec; --accent:#0b5ed7; --accent2:#e9f2ff;
+      --shadow:0 4px 18px rgba(15,23,42,.07); color-scheme:light;
+    }
     * { box-sizing:border-box; }
     html { scroll-behavior:smooth; }
     body { margin:0; background:var(--bg); color:var(--text); font-family:-apple-system,BlinkMacSystemFont,"Hiragino Kaku Gothic ProN","Yu Gothic",Meiryo,"Segoe UI",sans-serif; line-height:1.45; }
     .wrap { width:min(960px,100%); margin:auto; padding:18px 14px 80px; }
     header { padding:14px 4px 8px; }
+    .header-row { display:flex; align-items:flex-start; justify-content:space-between; gap:12px; }
+    .header-copy { min-width:0; }
     h1 { margin:0; font-size:clamp(1.35rem,4.8vw,2.05rem); line-height:1.25; letter-spacing:.01em; }
     .subtitle { margin:7px 0 0; color:var(--muted); font-size:.93rem; }
+    .theme-toggle { flex:0 0 auto; width:42px; height:42px; border:1px solid var(--line); border-radius:12px; background:var(--card); color:var(--text); font-size:1.1rem; cursor:pointer; box-shadow:var(--shadow); }
     .tools { position:sticky; top:0; z-index:20; padding:10px 0 12px; background:color-mix(in srgb, var(--bg) 92%, transparent); backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px); }
     .search { width:100%; border:1px solid var(--line); border-radius:14px; background:var(--card); color:var(--text); padding:13px 14px; font-size:16px; outline:none; box-shadow:var(--shadow); }
     .search:focus { border-color:var(--accent); box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 18%, transparent); }
@@ -39,7 +100,6 @@
     .doc-code { min-width:38px; font-variant-numeric:tabular-nums; font-weight:800; color:var(--accent); font-size:.86rem; }
     .doc-main { min-width:0; flex:1; }
     .doc-title { display:block; font-size:.93rem; overflow-wrap:anywhere; }
-    .doc-meta { display:block; color:var(--muted); font-size:.75rem; margin-top:3px; }
     .chevron { color:var(--muted); font-size:1.5rem; line-height:1; }
     .hidden { display:none !important; }
     .empty { display:none; text-align:center; color:var(--muted); padding:30px 10px; }
@@ -50,8 +110,13 @@
 <body>
   <main class="wrap">
     <header>
-      <h1>1級建築施工管理技士 第二次検定</h1>
-      <p class="subtitle">Mục lục tài liệu học · Bản tiếng Việt · 72 file HTML</p>
+      <div class="header-row">
+        <div class="header-copy">
+          <h1>1級建築施工管理技士 第二次検定</h1>
+          <p class="subtitle">Mục lục tài liệu học · Bản tiếng Việt · 72 file HTML</p>
+        </div>
+        <button id="themeToggle" class="theme-toggle" type="button" aria-label="Switch Dark/Light theme" title="Switch Dark/Light theme">☀</button>
+      </div>
     </header>
 
     <div class="tools">
@@ -61,35 +126,25 @@
 
     <div class="summary"><span id="resultCount">72 / 72 file</span><span>Chạm tiêu đề chương để thu gọn</span></div>
 
-    
     <section class="section" id="s00">
       <button class="section-head" type="button" aria-expanded="true">
         <span><strong>00. 導入・最新問題一括要約</strong><small>Hướng dẫn học và tóm tắt tổng hợp câu hỏi mới nhất</small></span>
         <span class="count">3 file</span>
       </button>
       <div class="docs">
-          <a class="doc" href="00a_導入_学習ガイド_p001-013_VN.html" data-search="00a_導入_学習ガイド_p001-013_vn.html 導入 学習ガイド hướng dẫn học p.001-013">
+          <a class="doc" href="00a_導入_学習ガイド_p001-013_VN.html" data-search="00a_導入_学習ガイド_p001-013_vn.html 導入・最新問題一括要約 hướng dẫn học và tóm tắt tổng hợp câu hỏi mới nhất 導入 学習ガイド hướng dẫn học p.001-013">
             <span class="doc-code">00a</span>
-            <span class="doc-main">
-              <span class="doc-title">導入・学習ガイド  |  p.001-013</span>
-              <span class="doc-meta">94.1 kB · 2026/09/15</span>
-            </span>
+            <span class="doc-main"><span class="doc-title">導入・学習ガイド | p.001-013</span></span>
             <span class="chevron" aria-hidden="true">›</span>
           </a>
-          <a class="doc" href="00b_最新問題一括要約_概要_p014_VN.html" data-search="00b_最新問題一括要約_概要_p014_vn.html 最新問題一括要約 概要 tóm tắt tổng hợp câu hỏi mới nhất p.014">
+          <a class="doc" href="00b_最新問題一括要約_概要_p014_VN.html" data-search="00b_最新問題一括要約_概要_p014_vn.html 導入・最新問題一括要約 hướng dẫn học và tóm tắt tổng hợp câu hỏi mới nhất 最新問題一括要約 概要 tóm tắt tổng hợp câu hỏi mới nhất p.014">
             <span class="doc-code">00b</span>
-            <span class="doc-main">
-              <span class="doc-title">最新問題一括要約・概要  |  p.014</span>
-              <span class="doc-meta">51.1 kB · 2026/09/15</span>
-            </span>
+            <span class="doc-main"><span class="doc-title">最新問題一括要約・概要 | p.014</span></span>
             <span class="chevron" aria-hidden="true">›</span>
           </a>
-          <a class="doc" href="00c_最新問題一括要約_BOOK015-024_VN.html" data-search="00c_最新問題一括要約_book015-024_vn.html 最新問題一括要約 tóm tắt tổng hợp câu hỏi mới nhất book p.015-024">
+          <a class="doc" href="00c_最新問題一括要約_BOOK015-024_VN.html" data-search="00c_最新問題一括要約_book015-024_vn.html 導入・最新問題一括要約 hướng dẫn học và tóm tắt tổng hợp câu hỏi mới nhất 最新問題一括要約 tóm tắt tổng hợp câu hỏi mới nhất book p.015-024">
             <span class="doc-code">00c</span>
-            <span class="doc-main">
-              <span class="doc-title">最新問題一括要約  |  BOOK p.015-024</span>
-              <span class="doc-meta">285 kB · 2026/09/10</span>
-            </span>
+            <span class="doc-main"><span class="doc-title">最新問題一括要約 | BOOK p.015-024</span></span>
             <span class="chevron" aria-hidden="true">›</span>
           </a>
       </div>
@@ -100,92 +155,59 @@
         <span class="count">11 file</span>
       </button>
       <div class="docs">
-          <a class="doc" href="01a_施工経験記述_重要項目_p025-038_VN.html" data-search="01a_施工経験記述_重要項目_p025-038_vn.html 施工経験記述 kinh nghiệm thi công 重要項目  |  p.025-038">
+          <a class="doc" href="01a_施工経験記述_重要項目_p025-038_VN.html" data-search="01a_施工経験記述_重要項目_p025-038_vn.html 施工経験記述 kinh nghiệm thi công 施工経験記述 kinh nghiệm thi công 重要項目 p.025-038">
             <span class="doc-code">01a</span>
-            <span class="doc-main">
-              <span class="doc-title">重要項目  |  p.025-038</span>
-              <span class="doc-meta">153 kB · 2026/09/11</span>
-            </span>
+            <span class="doc-main"><span class="doc-title">重要項目 | p.025-038</span></span>
             <span class="chevron" aria-hidden="true">›</span>
           </a>
-          <a class="doc" href="01b_施工経験記述_R07_p039-052_VN.html" data-search="01b_施工経験記述_r07_p039-052_vn.html 施工経験記述 kinh nghiệm thi công 令和7年度  |  p.039-052">
+          <a class="doc" href="01b_施工経験記述_R07_p039-052_VN.html" data-search="01b_施工経験記述_r07_p039-052_vn.html 施工経験記述 kinh nghiệm thi công 施工経験記述 kinh nghiệm thi công 令和7年度 p.039-052">
             <span class="doc-code">01b</span>
-            <span class="doc-main">
-              <span class="doc-title">令和7年度  |  p.039-052</span>
-              <span class="doc-meta">109 kB · 2026/09/11</span>
-            </span>
+            <span class="doc-main"><span class="doc-title">令和7年度 | p.039-052</span></span>
             <span class="chevron" aria-hidden="true">›</span>
           </a>
-          <a class="doc" href="01c_施工経験記述_R06_p052-062_VN.html" data-search="01c_施工経験記述_r06_p052-062_vn.html 施工経験記述 kinh nghiệm thi công 令和6年度  |  p.052-062">
+          <a class="doc" href="01c_施工経験記述_R06_p052-062_VN.html" data-search="01c_施工経験記述_r06_p052-062_vn.html 施工経験記述 kinh nghiệm thi công 施工経験記述 kinh nghiệm thi công 令和6年度 p.052-062">
             <span class="doc-code">01c</span>
-            <span class="doc-main">
-              <span class="doc-title">令和6年度  |  p.052-062</span>
-              <span class="doc-meta">1.2 MB · 2026/09/11</span>
-            </span>
+            <span class="doc-main"><span class="doc-title">令和6年度 | p.052-062</span></span>
             <span class="chevron" aria-hidden="true">›</span>
           </a>
-          <a class="doc" href="01d_施工経験記述_R05_p062-073_VN.html" data-search="01d_施工経験記述_r05_p062-073_vn.html 施工経験記述 kinh nghiệm thi công 令和5年度  |  p.062-073">
+          <a class="doc" href="01d_施工経験記述_R05_p062-073_VN.html" data-search="01d_施工経験記述_r05_p062-073_vn.html 施工経験記述 kinh nghiệm thi công 施工経験記述 kinh nghiệm thi công 令和5年度 p.062-073">
             <span class="doc-code">01d</span>
-            <span class="doc-main">
-              <span class="doc-title">令和5年度  |  p.062-073</span>
-              <span class="doc-meta">134 kB · 2026/09/11</span>
-            </span>
+            <span class="doc-main"><span class="doc-title">令和5年度 | p.062-073</span></span>
             <span class="chevron" aria-hidden="true">›</span>
           </a>
-          <a class="doc" href="01e_施工経験記述_R04_p073-083_VN.html" data-search="01e_施工経験記述_r04_p073-083_vn.html 施工経験記述 kinh nghiệm thi công 令和4年度  |  p.073-083">
+          <a class="doc" href="01e_施工経験記述_R04_p073-083_VN.html" data-search="01e_施工経験記述_r04_p073-083_vn.html 施工経験記述 kinh nghiệm thi công 施工経験記述 kinh nghiệm thi công 令和4年度 p.073-083">
             <span class="doc-code">01e</span>
-            <span class="doc-main">
-              <span class="doc-title">令和4年度  |  p.073-083</span>
-              <span class="doc-meta">99.4 kB · 2026/09/11</span>
-            </span>
+            <span class="doc-main"><span class="doc-title">令和4年度 | p.073-083</span></span>
             <span class="chevron" aria-hidden="true">›</span>
           </a>
-          <a class="doc" href="01f_施工経験記述_R03_p083-090_VN.html" data-search="01f_施工経験記述_r03_p083-090_vn.html 施工経験記述 kinh nghiệm thi công 令和3年度  |  p.083-090">
+          <a class="doc" href="01f_施工経験記述_R03_p083-090_VN.html" data-search="01f_施工経験記述_r03_p083-090_vn.html 施工経験記述 kinh nghiệm thi công 施工経験記述 kinh nghiệm thi công 令和3年度 p.083-090">
             <span class="doc-code">01f</span>
-            <span class="doc-main">
-              <span class="doc-title">令和3年度  |  p.083-090</span>
-              <span class="doc-meta">93.9 kB · 2026/09/11</span>
-            </span>
+            <span class="doc-main"><span class="doc-title">令和3年度 | p.083-090</span></span>
             <span class="chevron" aria-hidden="true">›</span>
           </a>
-          <a class="doc" href="01g_施工経験記述_R02_p090-098_VN.html" data-search="01g_施工経験記述_r02_p090-098_vn.html 施工経験記述 kinh nghiệm thi công 令和2年度  |  p.090-098">
+          <a class="doc" href="01g_施工経験記述_R02_p090-098_VN.html" data-search="01g_施工経験記述_r02_p090-098_vn.html 施工経験記述 kinh nghiệm thi công 施工経験記述 kinh nghiệm thi công 令和2年度 p.090-098">
             <span class="doc-code">01g</span>
-            <span class="doc-main">
-              <span class="doc-title">令和2年度  |  p.090-098</span>
-              <span class="doc-meta">114 kB · 2026/09/11</span>
-            </span>
+            <span class="doc-main"><span class="doc-title">令和2年度 | p.090-098</span></span>
             <span class="chevron" aria-hidden="true">›</span>
           </a>
-          <a class="doc" href="01h_施工経験記述_R01_p098-104_VN.html" data-search="01h_施工経験記述_r01_p098-104_vn.html 施工経験記述 kinh nghiệm thi công 令和1年度  |  p.098-104">
+          <a class="doc" href="01h_施工経験記述_R01_p098-104_VN.html" data-search="01h_施工経験記述_r01_p098-104_vn.html 施工経験記述 kinh nghiệm thi công 施工経験記述 kinh nghiệm thi công 令和1年度 p.098-104">
             <span class="doc-code">01h</span>
-            <span class="doc-main">
-              <span class="doc-title">令和1年度  |  p.098-104</span>
-              <span class="doc-meta">101 kB · 2026/09/11</span>
-            </span>
+            <span class="doc-main"><span class="doc-title">令和1年度 | p.098-104</span></span>
             <span class="chevron" aria-hidden="true">›</span>
           </a>
-          <a class="doc" href="01i_施工経験記述_H30_p104-112_VN.html" data-search="01i_施工経験記述_h30_p104-112_vn.html 施工経験記述 kinh nghiệm thi công 平成30年度  |  p.104-112">
+          <a class="doc" href="01i_施工経験記述_H30_p104-112_VN.html" data-search="01i_施工経験記述_h30_p104-112_vn.html 施工経験記述 kinh nghiệm thi công 施工経験記述 kinh nghiệm thi công 平成30年度 p.104-112">
             <span class="doc-code">01i</span>
-            <span class="doc-main">
-              <span class="doc-title">平成30年度  |  p.104-112</span>
-              <span class="doc-meta">112 kB · 2026/09/11</span>
-            </span>
+            <span class="doc-main"><span class="doc-title">平成30年度 | p.104-112</span></span>
             <span class="chevron" aria-hidden="true">›</span>
           </a>
-          <a class="doc" href="01j_施工経験記述_H29_p112-117_VN.html" data-search="01j_施工経験記述_h29_p112-117_vn.html 施工経験記述 kinh nghiệm thi công 平成29年度  |  p.112-117">
+          <a class="doc" href="01j_施工経験記述_H29_p112-117_VN.html" data-search="01j_施工経験記述_h29_p112-117_vn.html 施工経験記述 kinh nghiệm thi công 施工経験記述 kinh nghiệm thi công 平成29年度 p.112-117">
             <span class="doc-code">01j</span>
-            <span class="doc-main">
-              <span class="doc-title">平成29年度  |  p.112-117</span>
-              <span class="doc-meta">83.8 kB · 2026/09/11</span>
-            </span>
+            <span class="doc-main"><span class="doc-title">平成29年度 | p.112-117</span></span>
             <span class="chevron" aria-hidden="true">›</span>
           </a>
-          <a class="doc" href="01k_施工経験記述_H28_p117-121_VN.html" data-search="01k_施工経験記述_h28_p117-121_vn.html 施工経験記述 kinh nghiệm thi công 平成28年度  |  p.117-121">
+          <a class="doc" href="01k_施工経験記述_H28_p117-121_VN.html" data-search="01k_施工経験記述_h28_p117-121_vn.html 施工経験記述 kinh nghiệm thi công 施工経験記述 kinh nghiệm thi công 平成28年度 p.117-121">
             <span class="doc-code">01k</span>
-            <span class="doc-main">
-              <span class="doc-title">平成28年度  |  p.117-121</span>
-              <span class="doc-meta">88.9 kB · 2026/09/11</span>
-            </span>
+            <span class="doc-main"><span class="doc-title">平成28年度 | p.117-121</span></span>
             <span class="chevron" aria-hidden="true">›</span>
           </a>
       </div>
@@ -196,92 +218,59 @@
         <span class="count">11 file</span>
       </button>
       <div class="docs">
-          <a class="doc" href="02a_施工計画_重要項目_p122-132_VN.html" data-search="02a_施工計画_重要項目_p122-132_vn.html 施工計画 kế hoạch thi công 重要項目  |  p.122-132">
+          <a class="doc" href="02a_施工計画_重要項目_p122-132_VN.html" data-search="02a_施工計画_重要項目_p122-132_vn.html 施工計画 kế hoạch thi công 施工計画 kế hoạch thi công 重要項目 p.122-132">
             <span class="doc-code">02a</span>
-            <span class="doc-main">
-              <span class="doc-title">重要項目  |  p.122-132</span>
-              <span class="doc-meta">137 kB · 2026/09/10</span>
-            </span>
+            <span class="doc-main"><span class="doc-title">重要項目 | p.122-132</span></span>
             <span class="chevron" aria-hidden="true">›</span>
           </a>
-          <a class="doc" href="02b_施工計画_R07_p133-141_VN.html" data-search="02b_施工計画_r07_p133-141_vn.html 施工計画 kế hoạch thi công 令和7年度  |  p.133-141">
+          <a class="doc" href="02b_施工計画_R07_p133-141_VN.html" data-search="02b_施工計画_r07_p133-141_vn.html 施工計画 kế hoạch thi công 施工計画 kế hoạch thi công 令和7年度 p.133-141">
             <span class="doc-code">02b</span>
-            <span class="doc-main">
-              <span class="doc-title">令和7年度  |  p.133-141</span>
-              <span class="doc-meta">497 kB · 2026/09/10</span>
-            </span>
+            <span class="doc-main"><span class="doc-title">令和7年度 | p.133-141</span></span>
             <span class="chevron" aria-hidden="true">›</span>
           </a>
-          <a class="doc" href="02c_施工計画_R06_p141-148_VN.html" data-search="02c_施工計画_r06_p141-148_vn.html 施工計画 kế hoạch thi công 令和6年度  |  p.141-148">
+          <a class="doc" href="02c_施工計画_R06_p141-148_VN.html" data-search="02c_施工計画_r06_p141-148_vn.html 施工計画 kế hoạch thi công 施工計画 kế hoạch thi công 令和6年度 p.141-148">
             <span class="doc-code">02c</span>
-            <span class="doc-main">
-              <span class="doc-title">令和6年度  |  p.141-148</span>
-              <span class="doc-meta">589 kB · 2026/09/10</span>
-            </span>
+            <span class="doc-main"><span class="doc-title">令和6年度 | p.141-148</span></span>
             <span class="chevron" aria-hidden="true">›</span>
           </a>
-          <a class="doc" href="02d_施工計画_R05_p148-155_VN.html" data-search="02d_施工計画_r05_p148-155_vn.html 施工計画 kế hoạch thi công 令和5年度  |  p.148-155">
+          <a class="doc" href="02d_施工計画_R05_p148-155_VN.html" data-search="02d_施工計画_r05_p148-155_vn.html 施工計画 kế hoạch thi công 施工計画 kế hoạch thi công 令和5年度 p.148-155">
             <span class="doc-code">02d</span>
-            <span class="doc-main">
-              <span class="doc-title">令和5年度  |  p.148-155</span>
-              <span class="doc-meta">1.6 MB · 2026/09/10</span>
-            </span>
+            <span class="doc-main"><span class="doc-title">令和5年度 | p.148-155</span></span>
             <span class="chevron" aria-hidden="true">›</span>
           </a>
-          <a class="doc" href="02e_施工計画_R04_p155-161_VN.html" data-search="02e_施工計画_r04_p155-161_vn.html 施工計画 kế hoạch thi công 令和4年度  |  p.155-161">
+          <a class="doc" href="02e_施工計画_R04_p155-161_VN.html" data-search="02e_施工計画_r04_p155-161_vn.html 施工計画 kế hoạch thi công 施工計画 kế hoạch thi công 令和4年度 p.155-161">
             <span class="doc-code">02e</span>
-            <span class="doc-main">
-              <span class="doc-title">令和4年度  |  p.155-161</span>
-              <span class="doc-meta">839 kB · 2026/09/10</span>
-            </span>
+            <span class="doc-main"><span class="doc-title">令和4年度 | p.155-161</span></span>
             <span class="chevron" aria-hidden="true">›</span>
           </a>
-          <a class="doc" href="02f_施工計画_R03_p161-169_VN.html" data-search="02f_施工計画_r03_p161-169_vn.html 施工計画 kế hoạch thi công 令和3年度  |  p.161-169">
+          <a class="doc" href="02f_施工計画_R03_p161-169_VN.html" data-search="02f_施工計画_r03_p161-169_vn.html 施工計画 kế hoạch thi công 施工計画 kế hoạch thi công 令和3年度 p.161-169">
             <span class="doc-code">02f</span>
-            <span class="doc-main">
-              <span class="doc-title">令和3年度  |  p.161-169</span>
-              <span class="doc-meta">1.5 MB · 2026/09/10</span>
-            </span>
+            <span class="doc-main"><span class="doc-title">令和3年度 | p.161-169</span></span>
             <span class="chevron" aria-hidden="true">›</span>
           </a>
-          <a class="doc" href="02g_施工計画_R02_p169-175_VN.html" data-search="02g_施工計画_r02_p169-175_vn.html 施工計画 kế hoạch thi công 令和2年度  |  p.169-175">
+          <a class="doc" href="02g_施工計画_R02_p169-175_VN.html" data-search="02g_施工計画_r02_p169-175_vn.html 施工計画 kế hoạch thi công 施工計画 kế hoạch thi công 令和2年度 p.169-175">
             <span class="doc-code">02g</span>
-            <span class="doc-main">
-              <span class="doc-title">令和2年度  |  p.169-175</span>
-              <span class="doc-meta">607 kB · 2026/09/10</span>
-            </span>
+            <span class="doc-main"><span class="doc-title">令和2年度 | p.169-175</span></span>
             <span class="chevron" aria-hidden="true">›</span>
           </a>
-          <a class="doc" href="02h_施工計画_R01_p175-180_VN.html" data-search="02h_施工計画_r01_p175-180_vn.html 施工計画 kế hoạch thi công 令和1年度  |  p.175-180">
+          <a class="doc" href="02h_施工計画_R01_p175-180_VN.html" data-search="02h_施工計画_r01_p175-180_vn.html 施工計画 kế hoạch thi công 施工計画 kế hoạch thi công 令和1年度 p.175-180">
             <span class="doc-code">02h</span>
-            <span class="doc-main">
-              <span class="doc-title">令和1年度  |  p.175-180</span>
-              <span class="doc-meta">1.5 MB · 2026/09/10</span>
-            </span>
+            <span class="doc-main"><span class="doc-title">令和1年度 | p.175-180</span></span>
             <span class="chevron" aria-hidden="true">›</span>
           </a>
-          <a class="doc" href="02i_施工計画_H30_p180-185_VN.html" data-search="02i_施工計画_h30_p180-185_vn.html 施工計画 kế hoạch thi công 平成30年度  |  p.180-185">
+          <a class="doc" href="02i_施工計画_H30_p180-185_VN.html" data-search="02i_施工計画_h30_p180-185_vn.html 施工計画 kế hoạch thi công 施工計画 kế hoạch thi công 平成30年度 p.180-185">
             <span class="doc-code">02i</span>
-            <span class="doc-main">
-              <span class="doc-title">平成30年度  |  p.180-185</span>
-              <span class="doc-meta">101 kB · 2026/09/10</span>
-            </span>
+            <span class="doc-main"><span class="doc-title">平成30年度 | p.180-185</span></span>
             <span class="chevron" aria-hidden="true">›</span>
           </a>
-          <a class="doc" href="02j_施工計画_H29_p185-190_VN.html" data-search="02j_施工計画_h29_p185-190_vn.html 施工計画 kế hoạch thi công 平成29年度  |  p.185-190">
+          <a class="doc" href="02j_施工計画_H29_p185-190_VN.html" data-search="02j_施工計画_h29_p185-190_vn.html 施工計画 kế hoạch thi công 施工計画 kế hoạch thi công 平成29年度 p.185-190">
             <span class="doc-code">02j</span>
-            <span class="doc-main">
-              <span class="doc-title">平成29年度  |  p.185-190</span>
-              <span class="doc-meta">669 kB · 2026/09/11</span>
-            </span>
+            <span class="doc-main"><span class="doc-title">平成29年度 | p.185-190</span></span>
             <span class="chevron" aria-hidden="true">›</span>
           </a>
-          <a class="doc" href="02k_施工計画_H28_p190-193_VN.html" data-search="02k_施工計画_h28_p190-193_vn.html 施工計画 kế hoạch thi công 平成28年度  |  p.190-193">
+          <a class="doc" href="02k_施工計画_H28_p190-193_VN.html" data-search="02k_施工計画_h28_p190-193_vn.html 施工計画 kế hoạch thi công 施工計画 kế hoạch thi công 平成28年度 p.190-193">
             <span class="doc-code">02k</span>
-            <span class="doc-main">
-              <span class="doc-title">平成28年度  |  p.190-193</span>
-              <span class="doc-meta">293 kB · 2026/09/11</span>
-            </span>
+            <span class="doc-main"><span class="doc-title">平成28年度 | p.190-193</span></span>
             <span class="chevron" aria-hidden="true">›</span>
           </a>
       </div>
@@ -292,92 +281,59 @@
         <span class="count">11 file</span>
       </button>
       <div class="docs">
-          <a class="doc" href="03a_施工管理_ネットワーク重要項目_p194-217_VN.html" data-search="03a_施工管理_ネットワーク重要項目_p194-217_vn.html 施工管理 quản lý thi công ネットワーク重要項目  |  p.194-217">
+          <a class="doc" href="03a_施工管理_ネットワーク重要項目_p194-217_VN.html" data-search="03a_施工管理_ネットワーク重要項目_p194-217_vn.html 施工管理 quản lý thi công 施工管理 quản lý thi công ネットワーク重要項目 p.194-217">
             <span class="doc-code">03a</span>
-            <span class="doc-main">
-              <span class="doc-title">ネットワーク重要項目  |  p.194-217</span>
-              <span class="doc-meta">130 kB · 2026/09/11</span>
-            </span>
+            <span class="doc-main"><span class="doc-title">ネットワーク重要項目 | p.194-217</span></span>
             <span class="chevron" aria-hidden="true">›</span>
           </a>
-          <a class="doc" href="03b_施工管理_R07_p218-233_VN.html" data-search="03b_施工管理_r07_p218-233_vn.html 施工管理 quản lý thi công 令和7年度  |  p.218-233">
+          <a class="doc" href="03b_施工管理_R07_p218-233_VN.html" data-search="03b_施工管理_r07_p218-233_vn.html 施工管理 quản lý thi công 施工管理 quản lý thi công 令和7年度 p.218-233">
             <span class="doc-code">03b</span>
-            <span class="doc-main">
-              <span class="doc-title">令和7年度  |  p.218-233</span>
-              <span class="doc-meta">785 kB · 2026/09/11</span>
-            </span>
+            <span class="doc-main"><span class="doc-title">令和7年度 | p.218-233</span></span>
             <span class="chevron" aria-hidden="true">›</span>
           </a>
-          <a class="doc" href="03c_施工管理_R06_p233-244_VN.html" data-search="03c_施工管理_r06_p233-244_vn.html 施工管理 quản lý thi công 令和6年度  |  p.233-244">
+          <a class="doc" href="03c_施工管理_R06_p233-244_VN.html" data-search="03c_施工管理_r06_p233-244_vn.html 施工管理 quản lý thi công 施工管理 quản lý thi công 令和6年度 p.233-244">
             <span class="doc-code">03c</span>
-            <span class="doc-main">
-              <span class="doc-title">令和6年度  |  p.233-244</span>
-              <span class="doc-meta">1.1 MB · 2026/09/11</span>
-            </span>
+            <span class="doc-main"><span class="doc-title">令和6年度 | p.233-244</span></span>
             <span class="chevron" aria-hidden="true">›</span>
           </a>
-          <a class="doc" href="03d_施工管理_R05_p244-253_VN.html" data-search="03d_施工管理_r05_p244-253_vn.html 施工管理 quản lý thi công 令和5年度  |  p.244-253">
+          <a class="doc" href="03d_施工管理_R05_p244-253_VN.html" data-search="03d_施工管理_r05_p244-253_vn.html 施工管理 quản lý thi công 施工管理 quản lý thi công 令和5年度 p.244-253">
             <span class="doc-code">03d</span>
-            <span class="doc-main">
-              <span class="doc-title">令和5年度  |  p.244-253</span>
-              <span class="doc-meta">91.4 kB · 2026/09/11</span>
-            </span>
+            <span class="doc-main"><span class="doc-title">令和5年度 | p.244-253</span></span>
             <span class="chevron" aria-hidden="true">›</span>
           </a>
-          <a class="doc" href="03e_施工管理_R04_p253-262_VN.html" data-search="03e_施工管理_r04_p253-262_vn.html 施工管理 quản lý thi công 令和4年度  |  p.253-262">
+          <a class="doc" href="03e_施工管理_R04_p253-262_VN.html" data-search="03e_施工管理_r04_p253-262_vn.html 施工管理 quản lý thi công 施工管理 quản lý thi công 令和4年度 p.253-262">
             <span class="doc-code">03e</span>
-            <span class="doc-main">
-              <span class="doc-title">令和4年度  |  p.253-262</span>
-              <span class="doc-meta">93.7 kB · 2026/09/11</span>
-            </span>
+            <span class="doc-main"><span class="doc-title">令和4年度 | p.253-262</span></span>
             <span class="chevron" aria-hidden="true">›</span>
           </a>
-          <a class="doc" href="03f_施工管理_R03_p262-271_VN.html" data-search="03f_施工管理_r03_p262-271_vn.html 施工管理 quản lý thi công 令和3年度  |  p.262-271">
+          <a class="doc" href="03f_施工管理_R03_p262-271_VN.html" data-search="03f_施工管理_r03_p262-271_vn.html 施工管理 quản lý thi công 施工管理 quản lý thi công 令和3年度 p.262-271">
             <span class="doc-code">03f</span>
-            <span class="doc-main">
-              <span class="doc-title">令和3年度  |  p.262-271</span>
-              <span class="doc-meta">601 kB · 2026/09/11</span>
-            </span>
+            <span class="doc-main"><span class="doc-title">令和3年度 | p.262-271</span></span>
             <span class="chevron" aria-hidden="true">›</span>
           </a>
-          <a class="doc" href="03g_施工管理_R02_p271-278_VN.html" data-search="03g_施工管理_r02_p271-278_vn.html 施工管理 quản lý thi công 令和2年度  |  p.271-278">
+          <a class="doc" href="03g_施工管理_R02_p271-278_VN.html" data-search="03g_施工管理_r02_p271-278_vn.html 施工管理 quản lý thi công 施工管理 quản lý thi công 令和2年度 p.271-278">
             <span class="doc-code">03g</span>
-            <span class="doc-main">
-              <span class="doc-title">令和2年度  |  p.271-278</span>
-              <span class="doc-meta">2.5 MB · 2026/09/11</span>
-            </span>
+            <span class="doc-main"><span class="doc-title">令和2年度 | p.271-278</span></span>
             <span class="chevron" aria-hidden="true">›</span>
           </a>
-          <a class="doc" href="03h_施工管理_R01_p278-284_VN.html" data-search="03h_施工管理_r01_p278-284_vn.html 施工管理 quản lý thi công 令和1年度  |  p.278-284">
+          <a class="doc" href="03h_施工管理_R01_p278-284_VN.html" data-search="03h_施工管理_r01_p278-284_vn.html 施工管理 quản lý thi công 施工管理 quản lý thi công 令和1年度 p.278-284">
             <span class="doc-code">03h</span>
-            <span class="doc-main">
-              <span class="doc-title">令和1年度  |  p.278-284</span>
-              <span class="doc-meta">3.7 MB · 2026/09/11</span>
-            </span>
+            <span class="doc-main"><span class="doc-title">令和1年度 | p.278-284</span></span>
             <span class="chevron" aria-hidden="true">›</span>
           </a>
-          <a class="doc" href="03i_施工管理_H30_p284-289_VN.html" data-search="03i_施工管理_h30_p284-289_vn.html 施工管理 quản lý thi công 平成30年度  |  p.284-289">
+          <a class="doc" href="03i_施工管理_H30_p284-289_VN.html" data-search="03i_施工管理_h30_p284-289_vn.html 施工管理 quản lý thi công 施工管理 quản lý thi công 平成30年度 p.284-289">
             <span class="doc-code">03i</span>
-            <span class="doc-main">
-              <span class="doc-title">平成30年度  |  p.284-289</span>
-              <span class="doc-meta">545 kB · 2026/09/11</span>
-            </span>
+            <span class="doc-main"><span class="doc-title">平成30年度 | p.284-289</span></span>
             <span class="chevron" aria-hidden="true">›</span>
           </a>
-          <a class="doc" href="03j_施工管理_H29_p289-295_VN.html" data-search="03j_施工管理_h29_p289-295_vn.html 施工管理 quản lý thi công 平成29年度  |  p.289-295">
+          <a class="doc" href="03j_施工管理_H29_p289-295_VN.html" data-search="03j_施工管理_h29_p289-295_vn.html 施工管理 quản lý thi công 施工管理 quản lý thi công 平成29年度 p.289-295">
             <span class="doc-code">03j</span>
-            <span class="doc-main">
-              <span class="doc-title">平成29年度  |  p.289-295</span>
-              <span class="doc-meta">3.6 MB · 2026/09/11</span>
-            </span>
+            <span class="doc-main"><span class="doc-title">平成29年度 | p.289-295</span></span>
             <span class="chevron" aria-hidden="true">›</span>
           </a>
-          <a class="doc" href="03k_施工管理_H28_p295-300_VN.html" data-search="03k_施工管理_h28_p295-300_vn.html 施工管理 quản lý thi công 平成28年度  |  p.295-300">
+          <a class="doc" href="03k_施工管理_H28_p295-300_VN.html" data-search="03k_施工管理_h28_p295-300_vn.html 施工管理 quản lý thi công 施工管理 quản lý thi công 平成28年度 p.295-300">
             <span class="doc-code">03k</span>
-            <span class="doc-main">
-              <span class="doc-title">平成28年度  |  p.295-300</span>
-              <span class="doc-meta">1.3 MB · 2026/09/11</span>
-            </span>
+            <span class="doc-main"><span class="doc-title">平成28年度 | p.295-300</span></span>
             <span class="chevron" aria-hidden="true">›</span>
           </a>
       </div>
@@ -388,92 +344,59 @@
         <span class="count">11 file</span>
       </button>
       <div class="docs">
-          <a class="doc" href="04a_躯体工事_重要項目_p301-321_VN.html" data-search="04a_躯体工事_重要項目_p301-321_vn.html 躯体工事 công tác phần thân 重要項目  |  p.301-321">
+          <a class="doc" href="04a_躯体工事_重要項目_p301-321_VN.html" data-search="04a_躯体工事_重要項目_p301-321_vn.html 躯体工事 công tác phần thân 躯体工事 công tác phần thân 重要項目 p.301-321">
             <span class="doc-code">04a</span>
-            <span class="doc-main">
-              <span class="doc-title">重要項目  |  p.301-321</span>
-              <span class="doc-meta">155 kB · 2026/09/11</span>
-            </span>
+            <span class="doc-main"><span class="doc-title">重要項目 | p.301-321</span></span>
             <span class="chevron" aria-hidden="true">›</span>
           </a>
-          <a class="doc" href="04b_躯体工事_R07_p322-333_VN.html" data-search="04b_躯体工事_r07_p322-333_vn.html 躯体工事 công tác phần thân 令和7年度  |  p.322-333">
+          <a class="doc" href="04b_躯体工事_R07_p322-333_VN.html" data-search="04b_躯体工事_r07_p322-333_vn.html 躯体工事 công tác phần thân 躯体工事 công tác phần thân 令和7年度 p.322-333">
             <span class="doc-code">04b</span>
-            <span class="doc-main">
-              <span class="doc-title">令和7年度  |  p.322-333</span>
-              <span class="doc-meta">112 kB · 2026/09/11</span>
-            </span>
+            <span class="doc-main"><span class="doc-title">令和7年度 | p.322-333</span></span>
             <span class="chevron" aria-hidden="true">›</span>
           </a>
-          <a class="doc" href="04c_躯体工事_R06_p333-355_VN.html" data-search="04c_躯体工事_r06_p333-355_vn.html 躯体工事 công tác phần thân 令和6年度  |  p.333-355">
+          <a class="doc" href="04c_躯体工事_R06_p333-355_VN.html" data-search="04c_躯体工事_r06_p333-355_vn.html 躯体工事 công tác phần thân 躯体工事 công tác phần thân 令和6年度 p.333-355">
             <span class="doc-code">04c</span>
-            <span class="doc-main">
-              <span class="doc-title">令和6年度  |  p.333-355</span>
-              <span class="doc-meta">92.9 kB · 2026/09/11</span>
-            </span>
+            <span class="doc-main"><span class="doc-title">令和6年度 | p.333-355</span></span>
             <span class="chevron" aria-hidden="true">›</span>
           </a>
-          <a class="doc" href="04d_躯体工事_R05_p355-363_VN.html" data-search="04d_躯体工事_r05_p355-363_vn.html 躯体工事 công tác phần thân 令和5年度  |  p.355-363">
+          <a class="doc" href="04d_躯体工事_R05_p355-363_VN.html" data-search="04d_躯体工事_r05_p355-363_vn.html 躯体工事 công tác phần thân 躯体工事 công tác phần thân 令和5年度 p.355-363">
             <span class="doc-code">04d</span>
-            <span class="doc-main">
-              <span class="doc-title">令和5年度  |  p.355-363</span>
-              <span class="doc-meta">84.3 kB · 2026/09/11</span>
-            </span>
+            <span class="doc-main"><span class="doc-title">令和5年度 | p.355-363</span></span>
             <span class="chevron" aria-hidden="true">›</span>
           </a>
-          <a class="doc" href="04e_躯体工事_R04_p363-381_VN.html" data-search="04e_躯体工事_r04_p363-381_vn.html 躯体工事 công tác phần thân 令和4年度  |  p.363-381">
+          <a class="doc" href="04e_躯体工事_R04_p363-381_VN.html" data-search="04e_躯体工事_r04_p363-381_vn.html 躯体工事 công tác phần thân 躯体工事 công tác phần thân 令和4年度 p.363-381">
             <span class="doc-code">04e</span>
-            <span class="doc-main">
-              <span class="doc-title">令和4年度  |  p.363-381</span>
-              <span class="doc-meta">105 kB · 2026/09/11</span>
-            </span>
+            <span class="doc-main"><span class="doc-title">令和4年度 | p.363-381</span></span>
             <span class="chevron" aria-hidden="true">›</span>
           </a>
-          <a class="doc" href="04f_躯体工事_R03_p381-393_VN.html" data-search="04f_躯体工事_r03_p381-393_vn.html 躯体工事 công tác phần thân 令和3年度  |  p.381-393">
+          <a class="doc" href="04f_躯体工事_R03_p381-393_VN.html" data-search="04f_躯体工事_r03_p381-393_vn.html 躯体工事 công tác phần thân 躯体工事 công tác phần thân 令和3年度 p.381-393">
             <span class="doc-code">04f</span>
-            <span class="doc-main">
-              <span class="doc-title">令和3年度  |  p.381-393</span>
-              <span class="doc-meta">108 kB · 2026/09/11</span>
-            </span>
+            <span class="doc-main"><span class="doc-title">令和3年度 | p.381-393</span></span>
             <span class="chevron" aria-hidden="true">›</span>
           </a>
-          <a class="doc" href="04g_躯体工事_R02_p393-411_VN.html" data-search="04g_躯体工事_r02_p393-411_vn.html 躯体工事 công tác phần thân 令和2年度  |  p.393-411">
+          <a class="doc" href="04g_躯体工事_R02_p393-411_VN.html" data-search="04g_躯体工事_r02_p393-411_vn.html 躯体工事 công tác phần thân 躯体工事 công tác phần thân 令和2年度 p.393-411">
             <span class="doc-code">04g</span>
-            <span class="doc-main">
-              <span class="doc-title">令和2年度  |  p.393-411</span>
-              <span class="doc-meta">132 kB · 2026/09/11</span>
-            </span>
+            <span class="doc-main"><span class="doc-title">令和2年度 | p.393-411</span></span>
             <span class="chevron" aria-hidden="true">›</span>
           </a>
-          <a class="doc" href="04h_躯体工事_R01_p411-417_VN.html" data-search="04h_躯体工事_r01_p411-417_vn.html 躯体工事 công tác phần thân 令和1年度  |  p.411-417">
+          <a class="doc" href="04h_躯体工事_R01_p411-417_VN.html" data-search="04h_躯体工事_r01_p411-417_vn.html 躯体工事 công tác phần thân 躯体工事 công tác phần thân 令和1年度 p.411-417">
             <span class="doc-code">04h</span>
-            <span class="doc-main">
-              <span class="doc-title">令和1年度  |  p.411-417</span>
-              <span class="doc-meta">77.3 kB · 2026/09/11</span>
-            </span>
+            <span class="doc-main"><span class="doc-title">令和1年度 | p.411-417</span></span>
             <span class="chevron" aria-hidden="true">›</span>
           </a>
-          <a class="doc" href="04i_躯体工事_H30_p417-429_VN.html" data-search="04i_躯体工事_h30_p417-429_vn.html 躯体工事 công tác phần thân 平成30年度  |  p.417-429">
+          <a class="doc" href="04i_躯体工事_H30_p417-429_VN.html" data-search="04i_躯体工事_h30_p417-429_vn.html 躯体工事 công tác phần thân 躯体工事 công tác phần thân 平成30年度 p.417-429">
             <span class="doc-code">04i</span>
-            <span class="doc-main">
-              <span class="doc-title">平成30年度  |  p.417-429</span>
-              <span class="doc-meta">681 kB · 2026/09/11</span>
-            </span>
+            <span class="doc-main"><span class="doc-title">平成30年度 | p.417-429</span></span>
             <span class="chevron" aria-hidden="true">›</span>
           </a>
-          <a class="doc" href="04j_躯体工事_H29_p429-437_VN.html" data-search="04j_躯体工事_h29_p429-437_vn.html 躯体工事 công tác phần thân 平成29年度  |  p.429-437">
+          <a class="doc" href="04j_躯体工事_H29_p429-437_VN.html" data-search="04j_躯体工事_h29_p429-437_vn.html 躯体工事 công tác phần thân 躯体工事 công tác phần thân 平成29年度 p.429-437">
             <span class="doc-code">04j</span>
-            <span class="doc-main">
-              <span class="doc-title">平成29年度  |  p.429-437</span>
-              <span class="doc-meta">84.2 kB · 2026/09/11</span>
-            </span>
+            <span class="doc-main"><span class="doc-title">平成29年度 | p.429-437</span></span>
             <span class="chevron" aria-hidden="true">›</span>
           </a>
-          <a class="doc" href="04k_躯体工事_H28_p437-444_VN.html" data-search="04k_躯体工事_h28_p437-444_vn.html 躯体工事 công tác phần thân 平成28年度  |  p.437-444">
+          <a class="doc" href="04k_躯体工事_H28_p437-444_VN.html" data-search="04k_躯体工事_h28_p437-444_vn.html 躯体工事 công tác phần thân 躯体工事 công tác phần thân 平成28年度 p.437-444">
             <span class="doc-code">04k</span>
-            <span class="doc-main">
-              <span class="doc-title">平成28年度  |  p.437-444</span>
-              <span class="doc-meta">338 kB · 2026/09/11</span>
-            </span>
+            <span class="doc-main"><span class="doc-title">平成28年度 | p.437-444</span></span>
             <span class="chevron" aria-hidden="true">›</span>
           </a>
       </div>
@@ -484,92 +407,59 @@
         <span class="count">11 file</span>
       </button>
       <div class="docs">
-          <a class="doc" href="05a_仕上げ工事_重要項目_p445-460_VN.html" data-search="05a_仕上げ工事_重要項目_p445-460_vn.html 仕上げ工事 công tác hoàn thiện 重要項目  |  p.445-460">
+          <a class="doc" href="05a_仕上げ工事_重要項目_p445-460_VN.html" data-search="05a_仕上げ工事_重要項目_p445-460_vn.html 仕上げ工事 công tác hoàn thiện 仕上げ工事 công tác hoàn thiện 重要項目 p.445-460">
             <span class="doc-code">05a</span>
-            <span class="doc-main">
-              <span class="doc-title">重要項目  |  p.445-460</span>
-              <span class="doc-meta">1.1 MB · 2026/09/11</span>
-            </span>
+            <span class="doc-main"><span class="doc-title">重要項目 | p.445-460</span></span>
             <span class="chevron" aria-hidden="true">›</span>
           </a>
-          <a class="doc" href="05b_仕上げ工事_R07_p461-483_VN.html" data-search="05b_仕上げ工事_r07_p461-483_vn.html 仕上げ工事 công tác hoàn thiện 令和7年度  |  p.461-483">
+          <a class="doc" href="05b_仕上げ工事_R07_p461-483_VN.html" data-search="05b_仕上げ工事_r07_p461-483_vn.html 仕上げ工事 công tác hoàn thiện 仕上げ工事 công tác hoàn thiện 令和7年度 p.461-483">
             <span class="doc-code">05b</span>
-            <span class="doc-main">
-              <span class="doc-title">令和7年度  |  p.461-483</span>
-              <span class="doc-meta">146 kB · 2026/09/11</span>
-            </span>
+            <span class="doc-main"><span class="doc-title">令和7年度 | p.461-483</span></span>
             <span class="chevron" aria-hidden="true">›</span>
           </a>
-          <a class="doc" href="05c_仕上げ工事_R06_p483-491_VN.html" data-search="05c_仕上げ工事_r06_p483-491_vn.html 仕上げ工事 công tác hoàn thiện 令和6年度  |  p.483-491">
+          <a class="doc" href="05c_仕上げ工事_R06_p483-491_VN.html" data-search="05c_仕上げ工事_r06_p483-491_vn.html 仕上げ工事 công tác hoàn thiện 仕上げ工事 công tác hoàn thiện 令和6年度 p.483-491">
             <span class="doc-code">05c</span>
-            <span class="doc-main">
-              <span class="doc-title">令和6年度  |  p.483-491</span>
-              <span class="doc-meta">104 kB · 2026/09/11</span>
-            </span>
+            <span class="doc-main"><span class="doc-title">令和6年度 | p.483-491</span></span>
             <span class="chevron" aria-hidden="true">›</span>
           </a>
-          <a class="doc" href="05d_仕上げ工事_R05_p491-508_VN.html" data-search="05d_仕上げ工事_r05_p491-508_vn.html 仕上げ工事 công tác hoàn thiện 令和5年度  |  p.491-508">
+          <a class="doc" href="05d_仕上げ工事_R05_p491-508_VN.html" data-search="05d_仕上げ工事_r05_p491-508_vn.html 仕上げ工事 công tác hoàn thiện 仕上げ工事 công tác hoàn thiện 令和5年度 p.491-508">
             <span class="doc-code">05d</span>
-            <span class="doc-main">
-              <span class="doc-title">令和5年度  |  p.491-508</span>
-              <span class="doc-meta">101 kB · 2026/09/11</span>
-            </span>
+            <span class="doc-main"><span class="doc-title">令和5年度 | p.491-508</span></span>
             <span class="chevron" aria-hidden="true">›</span>
           </a>
-          <a class="doc" href="05e_仕上げ工事_R04_p508-516_VN.html" data-search="05e_仕上げ工事_r04_p508-516_vn.html 仕上げ工事 công tác hoàn thiện 令和4年度  |  p.508-516">
+          <a class="doc" href="05e_仕上げ工事_R04_p508-516_VN.html" data-search="05e_仕上げ工事_r04_p508-516_vn.html 仕上げ工事 công tác hoàn thiện 仕上げ工事 công tác hoàn thiện 令和4年度 p.508-516">
             <span class="doc-code">05e</span>
-            <span class="doc-main">
-              <span class="doc-title">令和4年度  |  p.508-516</span>
-              <span class="doc-meta">3.1 MB · 2026/09/11</span>
-            </span>
+            <span class="doc-main"><span class="doc-title">令和4年度 | p.508-516</span></span>
             <span class="chevron" aria-hidden="true">›</span>
           </a>
-          <a class="doc" href="05f_仕上げ工事_R03_p516-533_VN.html" data-search="05f_仕上げ工事_r03_p516-533_vn.html 仕上げ工事 công tác hoàn thiện 令和3年度  |  p.516-533">
+          <a class="doc" href="05f_仕上げ工事_R03_p516-533_VN.html" data-search="05f_仕上げ工事_r03_p516-533_vn.html 仕上げ工事 công tác hoàn thiện 仕上げ工事 công tác hoàn thiện 令和3年度 p.516-533">
             <span class="doc-code">05f</span>
-            <span class="doc-main">
-              <span class="doc-title">令和3年度  |  p.516-533</span>
-              <span class="doc-meta">97.8 kB · 2026/09/11</span>
-            </span>
+            <span class="doc-main"><span class="doc-title">令和3年度 | p.516-533</span></span>
             <span class="chevron" aria-hidden="true">›</span>
           </a>
-          <a class="doc" href="05g_仕上げ工事_R02_p533-543_VN.html" data-search="05g_仕上げ工事_r02_p533-543_vn.html 仕上げ工事 công tác hoàn thiện 令和2年度  |  p.533-543">
+          <a class="doc" href="05g_仕上げ工事_R02_p533-543_VN.html" data-search="05g_仕上げ工事_r02_p533-543_vn.html 仕上げ工事 công tác hoàn thiện 仕上げ工事 công tác hoàn thiện 令和2年度 p.533-543">
             <span class="doc-code">05g</span>
-            <span class="doc-main">
-              <span class="doc-title">令和2年度  |  p.533-543</span>
-              <span class="doc-meta">670 kB · 2026/09/11</span>
-            </span>
+            <span class="doc-main"><span class="doc-title">令和2年度 | p.533-543</span></span>
             <span class="chevron" aria-hidden="true">›</span>
           </a>
-          <a class="doc" href="05h_仕上げ工事_R01_p543-554_VN.html" data-search="05h_仕上げ工事_r01_p543-554_vn.html 仕上げ工事 công tác hoàn thiện 令和1年度  |  p.543-554">
+          <a class="doc" href="05h_仕上げ工事_R01_p543-554_VN.html" data-search="05h_仕上げ工事_r01_p543-554_vn.html 仕上げ工事 công tác hoàn thiện 仕上げ工事 công tác hoàn thiện 令和1年度 p.543-554">
             <span class="doc-code">05h</span>
-            <span class="doc-main">
-              <span class="doc-title">令和1年度  |  p.543-554</span>
-              <span class="doc-meta">84.3 kB · 2026/09/11</span>
-            </span>
+            <span class="doc-main"><span class="doc-title">令和1年度 | p.543-554</span></span>
             <span class="chevron" aria-hidden="true">›</span>
           </a>
-          <a class="doc" href="05i_仕上げ工事_H30_p554-560_VN.html" data-search="05i_仕上げ工事_h30_p554-560_vn.html 仕上げ工事 công tác hoàn thiện 平成30年度  |  p.554-560">
+          <a class="doc" href="05i_仕上げ工事_H30_p554-560_VN.html" data-search="05i_仕上げ工事_h30_p554-560_vn.html 仕上げ工事 công tác hoàn thiện 仕上げ工事 công tác hoàn thiện 平成30年度 p.554-560">
             <span class="doc-code">05i</span>
-            <span class="doc-main">
-              <span class="doc-title">平成30年度  |  p.554-560</span>
-              <span class="doc-meta">207 kB · 2026/09/11</span>
-            </span>
+            <span class="doc-main"><span class="doc-title">平成30年度 | p.554-560</span></span>
             <span class="chevron" aria-hidden="true">›</span>
           </a>
-          <a class="doc" href="05j_仕上げ工事_H29_p560-569_VN.html" data-search="05j_仕上げ工事_h29_p560-569_vn.html 仕上げ工事 công tác hoàn thiện 平成29年度  |  p.560-569">
+          <a class="doc" href="05j_仕上げ工事_H29_p560-569_VN.html" data-search="05j_仕上げ工事_h29_p560-569_vn.html 仕上げ工事 công tác hoàn thiện 仕上げ工事 công tác hoàn thiện 平成29年度 p.560-569">
             <span class="doc-code">05j</span>
-            <span class="doc-main">
-              <span class="doc-title">平成29年度  |  p.560-569</span>
-              <span class="doc-meta">86.9 kB · 2026/09/11</span>
-            </span>
+            <span class="doc-main"><span class="doc-title">平成29年度 | p.560-569</span></span>
             <span class="chevron" aria-hidden="true">›</span>
           </a>
-          <a class="doc" href="05k_仕上げ工事_H28_p569-573_VN.html" data-search="05k_仕上げ工事_h28_p569-573_vn.html 仕上げ工事 công tác hoàn thiện 平成28年度  |  p.569-573">
+          <a class="doc" href="05k_仕上げ工事_H28_p569-573_VN.html" data-search="05k_仕上げ工事_h28_p569-573_vn.html 仕上げ工事 công tác hoàn thiện 仕上げ工事 công tác hoàn thiện 平成28年度 p.569-573">
             <span class="doc-code">05k</span>
-            <span class="doc-main">
-              <span class="doc-title">平成28年度  |  p.569-573</span>
-              <span class="doc-meta">70.3 kB · 2026/09/11</span>
-            </span>
+            <span class="doc-main"><span class="doc-title">平成28年度 | p.569-573</span></span>
             <span class="chevron" aria-hidden="true">›</span>
           </a>
       </div>
@@ -580,92 +470,59 @@
         <span class="count">11 file</span>
       </button>
       <div class="docs">
-          <a class="doc" href="06a_建築法規_重要項目_p574-584_VN.html" data-search="06a_建築法規_重要項目_p574-584_vn.html 建築法規 pháp quy xây dựng 重要項目  |  p.574-584">
+          <a class="doc" href="06a_建築法規_重要項目_p574-584_VN.html" data-search="06a_建築法規_重要項目_p574-584_vn.html 建築法規 pháp quy xây dựng 建築法規 pháp quy xây dựng 重要項目 p.574-584">
             <span class="doc-code">06a</span>
-            <span class="doc-main">
-              <span class="doc-title">重要項目  |  p.574-584</span>
-              <span class="doc-meta">128 kB · 2026/09/11</span>
-            </span>
+            <span class="doc-main"><span class="doc-title">重要項目 | p.574-584</span></span>
             <span class="chevron" aria-hidden="true">›</span>
           </a>
-          <a class="doc" href="06b_建築法規_R07_p585-592_VN.html" data-search="06b_建築法規_r07_p585-592_vn.html 建築法規 pháp quy xây dựng 令和7年度  |  p.585-592">
+          <a class="doc" href="06b_建築法規_R07_p585-592_VN.html" data-search="06b_建築法規_r07_p585-592_vn.html 建築法規 pháp quy xây dựng 建築法規 pháp quy xây dựng 令和7年度 p.585-592">
             <span class="doc-code">06b</span>
-            <span class="doc-main">
-              <span class="doc-title">令和7年度  |  p.585-592</span>
-              <span class="doc-meta">61.9 kB · 2026/09/11</span>
-            </span>
+            <span class="doc-main"><span class="doc-title">令和7年度 | p.585-592</span></span>
             <span class="chevron" aria-hidden="true">›</span>
           </a>
-          <a class="doc" href="06c_建築法規_R06_p592-599_VN.html" data-search="06c_建築法規_r06_p592-599_vn.html 建築法規 pháp quy xây dựng 令和6年度  |  p.592-599">
+          <a class="doc" href="06c_建築法規_R06_p592-599_VN.html" data-search="06c_建築法規_r06_p592-599_vn.html 建築法規 pháp quy xây dựng 建築法規 pháp quy xây dựng 令和6年度 p.592-599">
             <span class="doc-code">06c</span>
-            <span class="doc-main">
-              <span class="doc-title">令和6年度  |  p.592-599</span>
-              <span class="doc-meta">424 kB · 2026/09/11</span>
-            </span>
+            <span class="doc-main"><span class="doc-title">令和6年度 | p.592-599</span></span>
             <span class="chevron" aria-hidden="true">›</span>
           </a>
-          <a class="doc" href="06d_建築法規_R05_p599-606_VN.html" data-search="06d_建築法規_r05_p599-606_vn.html 建築法規 pháp quy xây dựng 令和5年度  |  p.599-606">
+          <a class="doc" href="06d_建築法規_R05_p599-606_VN.html" data-search="06d_建築法規_r05_p599-606_vn.html 建築法規 pháp quy xây dựng 建築法規 pháp quy xây dựng 令和5年度 p.599-606">
             <span class="doc-code">06d</span>
-            <span class="doc-main">
-              <span class="doc-title">令和5年度  |  p.599-606</span>
-              <span class="doc-meta">358 kB · 2026/09/11</span>
-            </span>
+            <span class="doc-main"><span class="doc-title">令和5年度 | p.599-606</span></span>
             <span class="chevron" aria-hidden="true">›</span>
           </a>
-          <a class="doc" href="06e_建築法規_R04_p606-611_VN.html" data-search="06e_建築法規_r04_p606-611_vn.html 建築法規 pháp quy xây dựng 令和4年度  |  p.606-611">
+          <a class="doc" href="06e_建築法規_R04_p606-611_VN.html" data-search="06e_建築法規_r04_p606-611_vn.html 建築法規 pháp quy xây dựng 建築法規 pháp quy xây dựng 令和4年度 p.606-611">
             <span class="doc-code">06e</span>
-            <span class="doc-main">
-              <span class="doc-title">令和4年度  |  p.606-611</span>
-              <span class="doc-meta">1.9 MB · 2026/09/11</span>
-            </span>
+            <span class="doc-main"><span class="doc-title">令和4年度 | p.606-611</span></span>
             <span class="chevron" aria-hidden="true">›</span>
           </a>
-          <a class="doc" href="06f_建築法規_R03_p611-616_VN.html" data-search="06f_建築法規_r03_p611-616_vn.html 建築法規 pháp quy xây dựng 令和3年度  |  p.611-616">
+          <a class="doc" href="06f_建築法規_R03_p611-616_VN.html" data-search="06f_建築法規_r03_p611-616_vn.html 建築法規 pháp quy xây dựng 建築法規 pháp quy xây dựng 令和3年度 p.611-616">
             <span class="doc-code">06f</span>
-            <span class="doc-main">
-              <span class="doc-title">令和3年度  |  p.611-616</span>
-              <span class="doc-meta">65.6 kB · 2026/09/11</span>
-            </span>
+            <span class="doc-main"><span class="doc-title">令和3年度 | p.611-616</span></span>
             <span class="chevron" aria-hidden="true">›</span>
           </a>
-          <a class="doc" href="06g_建築法規_R02_p616-621_VN.html" data-search="06g_建築法規_r02_p616-621_vn.html 建築法規 pháp quy xây dựng 令和2年度  |  p.616-621">
+          <a class="doc" href="06g_建築法規_R02_p616-621_VN.html" data-search="06g_建築法規_r02_p616-621_vn.html 建築法規 pháp quy xây dựng 建築法規 pháp quy xây dựng 令和2年度 p.616-621">
             <span class="doc-code">06g</span>
-            <span class="doc-main">
-              <span class="doc-title">令和2年度  |  p.616-621</span>
-              <span class="doc-meta">67.6 kB · 2026/09/11</span>
-            </span>
+            <span class="doc-main"><span class="doc-title">令和2年度 | p.616-621</span></span>
             <span class="chevron" aria-hidden="true">›</span>
           </a>
-          <a class="doc" href="06h_建築法規_R01_p621-625_VN.html" data-search="06h_建築法規_r01_p621-625_vn.html 建築法規 pháp quy xây dựng 令和1年度  |  p.621-625">
+          <a class="doc" href="06h_建築法規_R01_p621-625_VN.html" data-search="06h_建築法規_r01_p621-625_vn.html 建築法規 pháp quy xây dựng 建築法規 pháp quy xây dựng 令和1年度 p.621-625">
             <span class="doc-code">06h</span>
-            <span class="doc-main">
-              <span class="doc-title">令和1年度  |  p.621-625</span>
-              <span class="doc-meta">55.3 kB · 2026/09/11</span>
-            </span>
+            <span class="doc-main"><span class="doc-title">令和1年度 | p.621-625</span></span>
             <span class="chevron" aria-hidden="true">›</span>
           </a>
-          <a class="doc" href="06i_建築法規_H30_p625-629_VN.html" data-search="06i_建築法規_h30_p625-629_vn.html 建築法規 pháp quy xây dựng 平成30年度  |  p.625-629">
+          <a class="doc" href="06i_建築法規_H30_p625-629_VN.html" data-search="06i_建築法規_h30_p625-629_vn.html 建築法規 pháp quy xây dựng 建築法規 pháp quy xây dựng 平成30年度 p.625-629">
             <span class="doc-code">06i</span>
-            <span class="doc-main">
-              <span class="doc-title">平成30年度  |  p.625-629</span>
-              <span class="doc-meta">56.9 kB · 2026/09/11</span>
-            </span>
+            <span class="doc-main"><span class="doc-title">平成30年度 | p.625-629</span></span>
             <span class="chevron" aria-hidden="true">›</span>
           </a>
-          <a class="doc" href="06j_建築法規_H29_p629-633_VN.html" data-search="06j_建築法規_h29_p629-633_vn.html 建築法規 pháp quy xây dựng 平成29年度  |  p.629-633">
+          <a class="doc" href="06j_建築法規_H29_p629-633_VN.html" data-search="06j_建築法規_h29_p629-633_vn.html 建築法規 pháp quy xây dựng 建築法規 pháp quy xây dựng 平成29年度 p.629-633">
             <span class="doc-code">06j</span>
-            <span class="doc-main">
-              <span class="doc-title">平成29年度  |  p.629-633</span>
-              <span class="doc-meta">66.7 kB · 2026/09/11</span>
-            </span>
+            <span class="doc-main"><span class="doc-title">平成29年度 | p.629-633</span></span>
             <span class="chevron" aria-hidden="true">›</span>
           </a>
-          <a class="doc" href="06k_建築法規_H28_p633-635_VN.html" data-search="06k_建築法規_h28_p633-635_vn.html 建築法規 pháp quy xây dựng 平成28年度  |  p.633-635">
+          <a class="doc" href="06k_建築法規_H28_p633-635_VN.html" data-search="06k_建築法規_h28_p633-635_vn.html 建築法規 pháp quy xây dựng 建築法規 pháp quy xây dựng 平成28年度 p.633-635">
             <span class="doc-code">06k</span>
-            <span class="doc-main">
-              <span class="doc-title">平成28年度  |  p.633-635</span>
-              <span class="doc-meta">50.5 kB · 2026/09/11</span>
-            </span>
+            <span class="doc-main"><span class="doc-title">平成28年度 | p.633-635</span></span>
             <span class="chevron" aria-hidden="true">›</span>
           </a>
       </div>
@@ -676,42 +533,55 @@
         <span class="count">3 file</span>
       </button>
       <div class="docs">
-          <a class="doc" href="07a_攻略編_R08_施工経験記述編_p636-647_VN.html" data-search="07a_攻略編_r08_施工経験記述編_p636-647_vn.html 攻略編 phần luyện thi trọng điểm 令和8年度  |  施工経験記述編  |  p.636-647">
+          <a class="doc" href="07a_攻略編_R08_施工経験記述編_p636-647_VN.html" data-search="07a_攻略編_r08_施工経験記述編_p636-647_vn.html 攻略編 phần luyện thi trọng điểm 攻略編 phần luyện thi trọng điểm 令和8年度 施工経験記述編 p.636-647">
             <span class="doc-code">07a</span>
-            <span class="doc-main">
-              <span class="doc-title">令和8年度  |  施工経験記述編  |  p.636-647</span>
-              <span class="doc-meta">129 kB · 2026/09/11</span>
-            </span>
+            <span class="doc-main"><span class="doc-title">令和8年度 | 施工経験記述編 | p.636-647</span></span>
             <span class="chevron" aria-hidden="true">›</span>
           </a>
-          <a class="doc" href="07b_攻略編_R08_虎の巻第一巻_p648-659_VN.html" data-search="07b_攻略編_r08_虎の巻第一巻_p648-659_vn.html 攻略編 phần luyện thi trọng điểm 令和8年度  |  虎の巻第一巻  |  p.648-659">
+          <a class="doc" href="07b_攻略編_R08_虎の巻第一巻_p648-659_VN.html" data-search="07b_攻略編_r08_虎の巻第一巻_p648-659_vn.html 攻略編 phần luyện thi trọng điểm 攻略編 phần luyện thi trọng điểm 令和8年度 虎の巻第一巻 p.648-659">
             <span class="doc-code">07b</span>
-            <span class="doc-main">
-              <span class="doc-title">令和8年度  |  虎の巻第一巻  |  p.648-659</span>
-              <span class="doc-meta">1.7 MB · 2026/09/11</span>
-            </span>
+            <span class="doc-main"><span class="doc-title">令和8年度 | 虎の巻第一巻 | p.648-659</span></span>
             <span class="chevron" aria-hidden="true">›</span>
           </a>
-          <a class="doc" href="07c_攻略編_R08_虎の巻第二巻_p660-673_VN.html" data-search="07c_攻略編_r08_虎の巻第二巻_p660-673_vn.html 攻略編 phần luyện thi trọng điểm 令和8年度  |  虎の巻第二巻  |  p.660-673">
+          <a class="doc" href="07c_攻略編_R08_虎の巻第二巻_p660-673_VN.html" data-search="07c_攻略編_r08_虎の巻第二巻_p660-673_vn.html 攻略編 phần luyện thi trọng điểm 攻略編 phần luyện thi trọng điểm 令和8年度 虎の巻第二巻 p.660-673">
             <span class="doc-code">07c</span>
-            <span class="doc-main">
-              <span class="doc-title">令和8年度  |  虎の巻第二巻  |  p.660-673</span>
-              <span class="doc-meta">2.1 MB · 2026/09/11</span>
-            </span>
+            <span class="doc-main"><span class="doc-title">令和8年度 | 虎の巻第二巻 | p.660-673</span></span>
             <span class="chevron" aria-hidden="true">›</span>
           </a>
       </div>
     </section>
+
     <div id="empty" class="empty">Không tìm thấy tài liệu phù hợp.</div>
-    <footer>GitHub Pages study index · Các liên kết dùng đường dẫn tương đối, vì vậy hãy đặt index.html cùng thư mục với 72 file HTML.</footer>
+    <footer>GitHub Pages study index · Đặt index.html cùng thư mục với 72 file HTML.</footer>
   </main>
 
   <script>
+  (function() {
+    'use strict';
+    const root = document.documentElement;
     const input = document.getElementById('q');
     const docs = [...document.querySelectorAll('.doc')];
     const sections = [...document.querySelectorAll('.section')];
     const resultCount = document.getElementById('resultCount');
     const empty = document.getElementById('empty');
+    const themeToggle = document.getElementById('themeToggle');
+    const themeColorMeta = document.getElementById('themeColorMeta');
+
+    function safeSet(key, value) { try { localStorage.setItem(key, value); } catch (e) {} }
+
+    function applyTheme(theme) {
+      const next = theme === 'light' ? 'light' : 'dark';
+      root.dataset.theme = next;
+      safeSet('study-theme', next);
+      if (themeToggle) {
+        themeToggle.textContent = next === 'dark' ? '☀' : '☾';
+        themeToggle.setAttribute('aria-pressed', next === 'light' ? 'true' : 'false');
+      }
+      if (themeColorMeta) themeColorMeta.setAttribute('content', next === 'dark' ? '#0b1220' : '#f5f7fb');
+    }
+
+    applyTheme(root.dataset.theme === 'light' ? 'light' : 'dark');
+    themeToggle?.addEventListener('click', () => applyTheme(root.dataset.theme === 'dark' ? 'light' : 'dark'));
 
     document.querySelectorAll('.section-head').forEach(btn => {
       btn.addEventListener('click', () => {
@@ -721,15 +591,13 @@
       });
     });
 
-    function normalize(s) {
-      return s.toLowerCase().normalize('NFKC').trim();
-    }
+    function normalize(s) { return s.toLowerCase().normalize('NFKC').trim(); }
 
     function filter() {
       const q = normalize(input.value);
       let shown = 0;
       docs.forEach(a => {
-        const ok = !q || normalize(a.dataset.search).includes(q);
+        const ok = !q || normalize(a.dataset.search || '').includes(q);
         a.classList.toggle('hidden', !ok);
         if (ok) shown++;
       });
@@ -742,6 +610,18 @@
       empty.style.display = shown ? 'none' : 'block';
     }
     input.addEventListener('input', filter);
+
+    // Defensive: remember the target immediately when a lesson is selected.
+    docs.forEach(a => {
+      a.addEventListener('click', () => {
+        try {
+          const u = new URL(a.getAttribute('href'), location.href);
+          safeSet('study-last-page', u.pathname + u.search);
+          safeSet('study-last-active-at', String(Date.now()));
+        } catch (e) {}
+      });
+    });
+  })();
   </script>
 </body>
 </html>

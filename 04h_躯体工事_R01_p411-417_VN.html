@@ -1,24 +1,20 @@
 <!DOCTYPE html>
-<html lang="vi" data-theme="dark">
+<!DOCTYPE html>
+
+<html data-study-mode="full" data-theme="dark" lang="vi">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<meta name="color-scheme" content="dark light">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<meta content="dark light" name="color-scheme"/>
+<meta content="test-2.1-responsive-landscape" name="study-template-version"/>
 <title>躯体工事 R01｜Book 411-416</title>
-
 <style>
-/* =========================================================
-   FIXED DESIGN TOKENS
-   Do not redesign these values per lesson.
-   ========================================================= */
-
 :root {
-  --font-vi: Arial, Helvetica, sans-serif;
-  --font-ja: "Hiragino Sans", "Yu Gothic", "Yu Gothic UI", Meiryo, sans-serif;
+  --app-viewport-width: 100vw;
+  --font-vi: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  --font-ja: "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic UI", "Yu Gothic", Meiryo, sans-serif;
   --base-font-size: 16px;
-  --content-width: 1320px;
-  --control-size: 38px;
-  --control-gap: 4px;
+  color-scheme: dark;
 }
 
 html[data-theme="dark"] {
@@ -36,16 +32,17 @@ html[data-theme="dark"] {
   --note-bg: #1C2028;
   --memory-bg: #20231C;
   --keyword: #74D7FF;
-  --keyword-bg: rgba(75, 190, 255, .10);
+  --keyword-bg: rgba(75, 190, 255, 0.10);
   --critical-bg: #594613;
   --critical-text: #FFE39A;
   --trap: #FF8585;
   --trap-underline: #FF5F5F;
-  --relation-bg: rgba(139, 126, 255, .12);
+  --relation-bg: rgba(139, 126, 255, 0.12);
   --relation-border: #8F86FF;
   --shadow: rgba(0, 0, 0, .28);
   --dock-bg: rgba(23, 27, 34, .94);
-  --overlay: rgba(0, 0, 0, .46);
+  --overlay: rgba(0, 0, 0, .48);
+  color-scheme: dark;
 }
 
 html[data-theme="light"] {
@@ -72,586 +69,239 @@ html[data-theme="light"] {
   --relation-border: #6C5CE7;
   --shadow: rgba(31, 38, 49, .12);
   --dock-bg: rgba(255, 255, 255, .94);
-  --overlay: rgba(20, 24, 30, .32);
+  --overlay: rgba(19, 26, 35, .28);
+  color-scheme: light;
 }
 
-/* =========================================================
-   BASE
-   ========================================================= */
-
 * { box-sizing: border-box; }
-
 html {
   scroll-behavior: smooth;
   font-size: var(--base-font-size);
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
-
-body {
+body { overflow-anchor: none;
   margin: 0;
-  min-height: 100vh;
   background: var(--bg);
   color: var(--text);
   font-family: var(--font-vi);
   font-size: 1rem;
   line-height: 1.72;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
+  padding-bottom: 11rem;
 }
+:lang(vi), .translation, .translation-cell, .vn-topic, .vn-answer { font-family: var(--font-vi); }
+:lang(ja), .original, .original-cell, .jp-topic, .jp-answer { font-family: var(--font-ja); }
+strong, b { font-weight: 700; }
+a { color: var(--link); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+a:hover { text-decoration-thickness: 2px; }
+h1, h2, h3, h4 { color: var(--heading); line-height: 1.35; }
+h1 { font-size: clamp(1.8rem, 4vw, 2.8rem); margin: 0 0 .55rem; }
+h2 { font-size: clamp(1.38rem, 2.8vw, 2rem); margin: 0; }
+h3 { font-size: clamp(1.12rem, 2vw, 1.48rem); }
+h4 { font-size: 1.02rem; }
+[id] { scroll-margin-top: 22px; }
+p { margin: .62rem 0; }
+ul, ol { padding-left: 1.5rem; }
+li { margin: .34rem 0; }
 
-:lang(vi) {
-  font-family: var(--font-vi);
-}
-
-:lang(ja) {
-  font-family: var(--font-ja);
-}
-
-a {
-  color: var(--link);
-  text-decoration-thickness: 1px;
-  text-underline-offset: 3px;
-}
-
-a:hover {
-  text-decoration-thickness: 2px;
-}
-
-button {
-  font: inherit;
-}
-
-h1, h2, h3, h4 {
-  color: var(--heading);
-  line-height: 1.35;
-}
-
-h1 {
-  margin: 0 0 .35rem;
-  font-size: clamp(1.75rem, 4vw, 2.7rem);
-}
-
-h2 {
-  margin: 2.5rem 0 1rem;
-  padding-bottom: .42rem;
-  border-bottom: 1px solid var(--border);
-  font-size: clamp(1.42rem, 3vw, 2rem);
-}
-
-h3 {
-  margin: 1.9rem 0 .75rem;
-  font-size: clamp(1.16rem, 2.4vw, 1.5rem);
-}
-
-h4 {
-  margin: 1.2rem 0 .45rem;
-  font-size: 1rem;
-}
-
-p {
-  margin: .58rem 0;
-}
-
-ul, ol {
-  padding-left: 1.45rem;
-}
-
-li {
-  margin: .3rem 0;
-}
-
-[id] {
-  scroll-margin-top: 18px;
-}
-
-/* =========================================================
-   PAGE LAYOUT
-   ========================================================= */
-
-.page-shell {
-  width: min(var(--content-width), calc(100% - 28px));
+body > main,
+body > .page-shell {
+  width: min(1320px, calc(100% - 32px));
   margin: 0 auto;
-  padding: 18px 0 112px;
+  padding: 26px 0 70px;
 }
+body > .page-shell > main { width: 100%; margin: 0; padding: 0; }
 
-.hero,
-.toc-card,
-.study-section,
-.aggregate-section {
+.hero {
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: 16px;
   box-shadow: 0 8px 28px var(--shadow);
+  padding: clamp(22px, 4vw, 42px);
+  margin: 0 0 24px;
 }
-
-.hero {
-  margin-bottom: 22px;
-  padding: clamp(22px, 3vw, 40px);
-}
-
-.hero-subtitle {
-  margin: 0;
+.eyebrow, .hero-subtitle, .subtitle, .meta-line, .source-ref, .mini-label, .small, .meta-label {
   color: var(--text-muted);
-  font-size: 1.06rem;
 }
+.eyebrow { font-size: .82rem; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; }
+.hero-subtitle, .subtitle { font-size: 1.08rem; }
+.source-ref, .mini-label, .small, .meta-label { font-size: .86rem; }
 
-.meta-grid {
+.summary-grid, .meta-grid, .mini-grid, .coverage {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(195px, 1fr));
-  gap: 10px;
-  margin-top: 16px;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: .72rem;
+  margin-top: 1rem;
 }
-
-.meta-item {
-  padding: 10px 12px;
+.summary-card, .summary-item, .meta-item, .mini-card, .coverage > div {
   background: var(--surface-alt);
   border: 1px solid var(--border);
   border-radius: 10px;
+  padding: .75rem .85rem;
 }
+.summary-item b, .summary-card strong { color: var(--heading); }
+.source-list { color: var(--text-muted); }
 
-.meta-label {
-  display: block;
-  margin-bottom: 2px;
-  color: var(--text-muted);
-  font-size: .8rem;
-}
-
-.study-section,
+body > main > section:not(#toc),
+body > .page-shell > section:not(#toc),
+body > .page-shell > main > section,
+.topic,
 .aggregate-section {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  box-shadow: 0 7px 22px var(--shadow);
+  padding: clamp(18px, 3vw, 30px);
   margin: 22px 0;
-  padding: clamp(18px, 2.6vw, 30px);
 }
-
-.section-head {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 12px;
-  margin-bottom: 16px;
-  padding-bottom: 10px;
+.subsection { margin: 1.7rem 0 2.1rem; }
+.subsection-title, .section-head {
   border-bottom: 1px solid var(--border);
+  padding-bottom: .65rem;
+  margin-bottom: 1rem;
 }
+.section-head { display: flex; gap: 12px; align-items: baseline; justify-content: space-between; }
 
-.section-head h2,
-.section-head h3 {
-  margin: 0;
-  padding: 0;
-  border: 0;
-}
-
-.source-ref {
-  color: var(--text-muted);
-  font-size: .84rem;
-  white-space: nowrap;
-}
-
-.subsection {
-  margin: 26px 0 32px;
-}
-
-.subsection:first-child {
-  margin-top: 0;
-}
-
-.study-grid {
+.study-grid, .lang-grid, .bilingual-note {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  gap: 14px;
+  gap: 1rem;
   align-items: start;
 }
-
-.study-card {
-  min-width: 0;
-  overflow: hidden;
+.study-card, .lang-card, .note-pane {
   border: 1px solid var(--border);
   border-radius: 12px;
+  overflow: hidden;
+  min-width: 0;
+  background: var(--surface-alt);
 }
-
-.study-card.original {
-  background: var(--original-bg);
-}
-
-.study-card.translation {
-  background: var(--translation-bg);
-}
-
+.study-card.original, .lang-card.original, .original-cell, .jp-topic, .jp-answer { background: var(--original-bg); }
+.study-card.translation, .lang-card.translation, .translation-cell, .vn-topic, .vn-answer { background: var(--translation-bg); }
 .card-title {
-  padding: 9px 13px;
+  padding: .62rem .85rem;
   background: var(--surface-alt);
   border-bottom: 1px solid var(--border);
   color: var(--heading);
-  font-weight: 800;
+  font-weight: 700;
   letter-spacing: .02em;
 }
+.card-body, .recall-source { padding: .9rem 1rem; }
+.card-body.recall-source { padding: 1rem 1.05rem; }
+.item-block { border-top: 1px dashed var(--border); padding-top: .72rem; margin-top: .72rem; }
+.item-block:first-child { border-top: 0; padding-top: 0; margin-top: 0; }
+.item-label { font-weight: 700; color: var(--heading); margin-right: .35em; }
 
-.recall-source {
-  padding: 14px 16px 16px;
-  transition: color .15s ease;
-}
+.table-wrap { overflow-x: auto; margin: .9rem 0; border: 1px solid var(--border); border-radius: 10px; }
+table { width: 100%; border-collapse: collapse; min-width: 650px; background: var(--surface); }
+th, td { border: 1px solid var(--border); padding: .62rem .7rem; vertical-align: top; text-align: left; }
+th { background: var(--surface-alt); color: var(--heading); font-weight: 700; }
+caption { text-align: left; font-weight: 700; color: var(--heading); padding: .58rem .7rem; background: var(--surface-alt); caption-side: top; }
+.compact th, .compact td { padding: .48rem .55rem; }
+.study-table { min-width: 1040px; }
+.study-table .meta { white-space: nowrap; text-align: center; background: var(--surface-alt); }
+.glossary-table { min-width: 920px; }
+.memory-table, .number-table, .num-table { min-width: 760px; }
 
-.recall-source > :first-child {
-  margin-top: 0;
-}
-
-.recall-source > :last-child {
-  margin-bottom: 0;
-}
-
-/* =========================================================
-   CONTENT COMPONENTS
-   ========================================================= */
-
-.table-wrap {
-  overflow-x: auto;
-  margin: 12px 0 18px;
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  -webkit-overflow-scrolling: touch;
-}
-
-table {
-  width: 100%;
-  min-width: 640px;
-  border-collapse: collapse;
-  background: var(--surface);
-}
-
-th,
-td {
-  padding: 9px 11px;
-  border-right: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
-  vertical-align: top;
-  text-align: left;
-}
-
-th:last-child,
-td:last-child {
-  border-right: 0;
-}
-
-tr:last-child td {
-  border-bottom: 0;
-}
-
-th {
-  background: var(--surface-alt);
-  color: var(--heading);
-  font-weight: 800;
-}
-
-caption {
-  padding: 9px 11px;
-  background: var(--surface-alt);
-  color: var(--heading);
-  font-weight: 800;
-  text-align: left;
-  caption-side: top;
-}
-
-.summary-box,
-.note-box,
-.memory-box,
-.warning-box,
-.figure-box,
-.formula-box,
-.comparison-box {
-  margin: 14px 0;
-  padding: 13px 15px;
-  background: var(--note-bg);
+.summary-box, .note-box, .note, .info-box, .background-box, .exam-note, .memory-box, .warning-box, .warning, .figure-box, .figure-card {
   border: 1px solid var(--border);
   border-left-width: 4px;
   border-radius: 10px;
+  padding: .9rem 1rem;
+  margin: 1rem 0;
+  background: var(--note-bg);
 }
+.summary-box, .note-box, .note, .info-box, .background-box { border-left-color: var(--link); }
+.memory-box, .exam-note { background: var(--memory-bg); border-left-color: var(--critical-text); }
+.warning-box, .warning { border-left-color: var(--trap); }
+.figure-box, .figure-card { border-left-color: var(--relation-border); }
+.figure-card { overflow: hidden; padding: 0; }
+.figure-card img { display: block; width: 100%; height: auto; background: #fff; }
+.figure-card figcaption, .figure-explain { padding: .8rem 1rem; }
 
-.summary-box,
-.note-box {
-  border-left-color: var(--link);
-}
-
-.memory-box {
-  background: var(--memory-bg);
-  border-left-color: var(--critical-text);
-}
-
-.warning-box {
-  border-left-color: var(--trap);
-}
-
-.figure-box,
-.formula-box,
-.comparison-box {
-  border-left-color: var(--relation-border);
-}
-
-.figure-card {
-  margin: 15px 0 20px;
-  overflow: hidden;
-  background: var(--surface-alt);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-}
-
-.figure-card img {
-  display: block;
-  width: 100%;
-  height: auto;
-  background: #fff;
-}
-
-.figure-card figcaption {
-  padding: 10px 13px 12px;
-  color: var(--text-muted);
-  font-size: .9rem;
-}
-
-.figure-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 12px;
-  margin: 15px 0 20px;
-}
-
-.figure-grid .figure-card {
-  margin: 0;
-}
-
-.item-block {
-  margin-top: 11px;
-  padding-top: 11px;
-  border-top: 1px dashed var(--border);
-}
-
-.item-block:first-child {
-  margin-top: 0;
-  padding-top: 0;
-  border-top: 0;
-}
-
-.item-label {
-  margin-right: .3em;
-  color: var(--heading);
-  font-weight: 800;
-}
-
-.formula-line {
+.formula, .formula-line {
   display: flex;
   flex-wrap: wrap;
+  gap: .45rem;
   align-items: center;
-  gap: 6px;
-}
-
-.flow-node {
-  padding: 5px 8px;
-  background: var(--surface);
+  padding: .75rem;
+  background: var(--surface-alt);
   border: 1px solid var(--border);
-  border-radius: 7px;
-  font-weight: 700;
+  border-radius: 9px;
+  margin: .75rem 0;
 }
-
-.flow-arrow {
-  color: var(--text-muted);
-  font-weight: 800;
-}
-
-/* =========================================================
-   SEMANTIC HIGHLIGHTING
-   ========================================================= */
+.flow-node { border: 1px solid var(--border); border-radius: 7px; padding: .35rem .55rem; background: var(--surface); font-weight: 700; }
+.flow-arrow { color: var(--text-muted); font-weight: 700; }
 
 .kw {
-  padding: .02em .16em;
-  background: var(--keyword-bg);
-  color: var(--keyword);
-  border-radius: .2em;
-  font-weight: 750;
-}
-
-.critical {
-  padding: .04em .22em;
-  background: var(--critical-bg);
-  color: var(--critical-text);
-  border-radius: .22em;
-  font-weight: 750;
-}
-
-.trap {
-  color: var(--trap);
   font-weight: 700;
+  color: var(--keyword);
+  background: var(--keyword-bg);
+  padding: .02em .16em;
+  border-radius: .2em;
+}
+.critical {
+  font-weight: 700;
+  color: var(--critical-text);
+  background: var(--critical-bg);
+  padding: .04em .22em;
+  border-radius: .22em;
+}
+.trap {
+  font-weight: 700;
+  color: var(--trap);
   text-decoration-line: underline;
   text-decoration-color: var(--trap-underline);
   text-decoration-thickness: 2px;
   text-underline-offset: 3px;
 }
-
 .relation {
-  padding: .02em .14em;
-  background: var(--relation-bg);
+  font-weight: 600;
   color: var(--text);
+  background: var(--relation-bg);
   border-bottom: 2px solid var(--relation-border);
-  font-weight: 650;
+  padding: .02em .14em;
 }
 
-/* Only recall-source is dimmed in Keywords mode. */
-body.keyword-focus .recall-source {
-  color: var(--focus-muted);
-}
+html[data-study-mode="keywords"] .recall-source { color: var(--focus-muted); }
+html[data-study-mode="keywords"] .recall-source .kw { color: var(--keyword); background: var(--keyword-bg); }
+html[data-study-mode="keywords"] .recall-source .critical { color: var(--critical-text); background: var(--critical-bg); }
+html[data-study-mode="keywords"] .recall-source .trap { color: var(--trap); }
+html[data-study-mode="keywords"] .recall-source .relation { color: var(--text); background: var(--relation-bg); }
+html[data-study-mode="keywords"] .recall-source th,
+html[data-study-mode="keywords"] .recall-source .card-title,
+html[data-study-mode="keywords"] .recall-source .item-label { color: var(--heading); }
 
-body.keyword-focus .recall-source .kw {
-  color: var(--keyword);
-  background: var(--keyword-bg);
-}
+.backlink, .back-toc, .back { display: inline-block; margin-top: .8rem; font-size: .9rem; }
 
-body.keyword-focus .recall-source .critical {
-  color: var(--critical-text);
-  background: var(--critical-bg);
-}
-
-body.keyword-focus .recall-source .trap {
-  color: var(--trap);
-}
-
-body.keyword-focus .recall-source .relation {
-  color: var(--text);
-  background: var(--relation-bg);
-}
-
-body.keyword-focus .recall-source th,
-body.keyword-focus .recall-source .item-label {
-  color: var(--heading);
-}
-
-/* =========================================================
-   TOC DRAWER
-   ========================================================= */
-
-.toc-overlay {
+/* Collapsible study controls: one launcher at bottom-left. */
+.control-cluster {
   position: fixed;
-  inset: 0;
-  z-index: 1990;
-  visibility: hidden;
-  opacity: 0;
-  background: var(--overlay);
-  transition: opacity .18s ease, visibility .18s ease;
-}
-
-.toc-drawer {
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  z-index: 2000;
-  width: min(78vw, 360px);
-  padding: max(14px, env(safe-area-inset-top)) 14px
-           max(18px, env(safe-area-inset-bottom))
-           max(14px, env(safe-area-inset-left));
-  overflow-y: auto;
-  background: var(--surface);
-  border-right: 1px solid var(--border);
-  box-shadow: 14px 0 36px var(--shadow);
-  transform: translateX(-103%);
-  transition: transform .2s ease;
-  -webkit-overflow-scrolling: touch;
-}
-
-body.toc-open .toc-overlay {
-  visibility: visible;
-  opacity: 1;
-}
-
-body.toc-open .toc-drawer {
-  transform: translateX(0);
-}
-
-.toc-drawer-head {
-  position: sticky;
-  top: 0;
-  z-index: 1;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 10px;
-  padding: 4px 0 10px;
-  background: var(--surface);
-  border-bottom: 1px solid var(--border);
-}
-
-.toc-drawer-head h2 {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  font-size: 1.2rem;
-}
-
-.toc-close {
-  width: 34px;
-  height: 34px;
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  background: var(--surface-alt);
-  color: var(--text);
-  cursor: pointer;
-}
-
-.toc-list {
-  margin: 12px 0 0;
-  padding-left: 1.2rem;
-}
-
-.toc-list ol {
-  margin-top: 4px;
-}
-
-/* =========================================================
-   COMPACT CONTROLS
-   Left: vertical TOC / Back / Next
-   Right: horizontal display controls
-   ========================================================= */
-
-.nav-dock-left,
-.settings-dock-right {
-  position: fixed;
-  bottom: max(14px, env(safe-area-inset-bottom));
-  z-index: 1900;
-  padding: 5px;
-  background: var(--dock-bg);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  box-shadow: 0 8px 24px var(--shadow);
-  -webkit-backdrop-filter: blur(10px);
-  backdrop-filter: blur(10px);
+  left: max(8px, env(safe-area-inset-left));
+  bottom: max(10px, env(safe-area-inset-bottom));
+  z-index: 2200;
+  width: 38px;
+  height: 38px;
   user-select: none;
+  -webkit-user-select: none;
 }
 
-.nav-dock-left {
-  left: max(10px, env(safe-area-inset-left));
-  display: flex;
-  flex-direction: column;
-  gap: var(--control-gap);
-}
-
-.settings-dock-right {
-  right: max(10px, env(safe-area-inset-right));
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: var(--control-gap);
-}
-
-.nav-dock-left button,
-.settings-dock-right button {
-  display: flex;
+.control-launcher,
+.control-panel button {
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: var(--control-size);
-  height: var(--control-size);
-  min-width: var(--control-size);
-  min-height: var(--control-size);
+  flex: 0 0 auto;
+  width: 32px;
+  height: 32px;
+  min-width: 32px;
+  min-height: 32px;
   padding: 0;
-  background: var(--surface-alt);
-  color: var(--text);
   border: 1px solid var(--border);
   border-radius: 8px;
-  font-family: var(--font-vi);
-  font-size: .96rem;
+  background: var(--surface-alt);
+  color: var(--text);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
   font-weight: 700;
   line-height: 1;
   cursor: pointer;
@@ -659,98 +309,246 @@ body.toc-open .toc-drawer {
   -webkit-tap-highlight-color: transparent;
 }
 
-.nav-dock-left button:hover,
-.settings-dock-right button:hover {
+.control-launcher {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  z-index: 2;
+  width: 38px;
+  height: 38px;
+  min-width: 38px;
+  min-height: 38px;
+  border-radius: 11px;
+  background: var(--dock-bg);
+  box-shadow: 0 6px 18px var(--shadow);
+  font-size: 20px;
+  letter-spacing: 1px;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+}
+
+.control-panel {
+  position: absolute;
+  left: 43px;
+  bottom: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 2px;
+  width: max-content;
+  max-width: calc(100dvw - max(59px, env(safe-area-inset-left) + 59px) - max(8px, env(safe-area-inset-right)));
+  padding: 3px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  overscroll-behavior-x: contain;
+  scrollbar-width: none;
+  border: 1px solid var(--border);
+  border-radius: 11px;
+  background: var(--dock-bg);
+  box-shadow: 0 6px 18px var(--shadow);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateX(-10px) scale(.98);
+  transform-origin: left bottom;
+  transition: opacity .14s ease, transform .14s ease, visibility .14s ease;
+}
+
+.control-panel::-webkit-scrollbar { display: none; }
+
+.control-cluster.open .control-panel {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateX(0) scale(1);
+}
+
+.control-cluster.open .control-launcher {
   border-color: var(--link);
 }
 
-.nav-dock-left button:active,
-.settings-dock-right button:active {
-  transform: translateY(1px);
-}
+.control-panel button:active,
+.control-launcher:active { transform: translateY(1px); }
 
-.nav-dock-left button:disabled {
-  opacity: .38;
+.control-panel button:hover,
+.control-launcher:hover { border-color: var(--link); }
+
+.control-panel button:disabled {
+  opacity: .36;
   cursor: default;
 }
 
-.settings-dock-right .font-reset {
-  font-size: .66rem;
+.control-panel .font-reset {
+  width: 38px;
+  min-width: 38px;
+  font-size: 9px;
   letter-spacing: -.03em;
 }
 
-.settings-dock-right .mode-toggle {
-  font-size: 1.02rem;
+.control-panel .mode-toggle { font-size: 14px; }
+
+.control-panel .home-icon svg {
+  width: 17px;
+  height: 17px;
+  display: block;
 }
 
-/* =========================================================
-   RESPONSIVE
-   ========================================================= */
+/*
+  Responsive reading geometry for iPad/iPhone.
+  The page follows the actual Visual Viewport width. When rotating to
+  landscape it expands across the wider screen instead of staying at
+  portrait width. Reader-anchor JS below restores the same logical text
+  position after the reflow.
+*/
+@media (pointer: coarse) {
+  body > main,
+  body > .page-shell {
+    width: min(calc(var(--app-viewport-width, 100vw) - 16px), 1320px) !important;
+    max-width: 1320px !important;
+  }
+
+
+  .hero {
+    padding: 1rem !important;
+  }
+
+  body > main > section:not(#toc),
+  body > .page-shell > section:not(#toc),
+  body > .page-shell > main > section,
+  .topic,
+  .aggregate-section {
+    padding: 1rem !important;
+  }
+}
+
+
+@media (pointer: coarse) and (orientation: portrait) {
+  .study-grid,
+  .lang-grid,
+  .bilingual-note {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+@media (pointer: coarse) and (orientation: landscape) {
+  body > main,
+  body > .page-shell {
+    width: min(calc(var(--app-viewport-width, 100dvw) - 20px), 1320px) !important;
+  }
+}
+
+/* TOC drawer */
+#toc {
+  position: fixed !important;
+  left: 0 !important;
+  top: 0 !important;
+  bottom: 0 !important;
+  z-index: 2100 !important;
+  width: min(82vw, 390px) !important;
+  max-height: 100dvh !important;
+  overflow-y: auto !important;
+  margin: 0 !important;
+  padding: 74px 20px 28px !important;
+  background: var(--surface) !important;
+  border: 0 !important;
+  border-right: 1px solid var(--border) !important;
+  border-radius: 0 16px 16px 0 !important;
+  box-shadow: 10px 0 30px var(--shadow) !important;
+  transform: translateX(-105%);
+  transition: transform .2s ease;
+}
+body.toc-open #toc { transform: translateX(0); }
+#toc .toc-grid { columns: 1 !important; display: block !important; }
+#toc ol { margin-top: .35rem; }
+.toc-drawer-head {
+  position: sticky;
+  top: -74px;
+  margin: -74px -20px 18px;
+  padding: 13px 14px;
+  min-height: 58px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  z-index: 2;
+}
+.toc-drawer-head strong { color: var(--heading); }
+.toc-close {
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  background: var(--surface-alt);
+  color: var(--text);
+  font: 700 1.25rem var(--font-vi);
+  cursor: pointer;
+}
+.toc-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  background: var(--overlay);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .2s ease;
+}
+body.toc-open .toc-overlay { opacity: 1; pointer-events: auto; }
+body.toc-open { overflow: hidden; }
 
 @media (max-width: 900px) {
-  .study-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .page-shell {
-    width: min(100% - 18px, 760px);
-  }
-
-  .section-head {
-    display: block;
-  }
-
-  .source-ref {
-    display: block;
-    margin-top: 6px;
-    white-space: normal;
-  }
+  .study-grid, .lang-grid, .bilingual-note { grid-template-columns: 1fr; }
+  body > main, body > .page-shell { width: min(100% - 20px, 780px); padding-top: 14px; }
+  .section-head { display: block; }
+  .source-ref { display: block; margin-top: .45rem; }
+  table { min-width: 620px; }
 }
 
 @media (max-width: 560px) {
-  body {
-    font-size: .96rem;
-  }
-
-  .hero,
-  .study-section,
-  .aggregate-section {
-    border-radius: 12px;
-  }
-
-  .recall-source {
-    padding: 12px 13px 14px;
-  }
-
-  :root {
-    --control-size: 36px;
-  }
-
-  .settings-dock-right {
-    right: max(7px, env(safe-area-inset-right));
-  }
-
-  .nav-dock-left {
-    left: max(7px, env(safe-area-inset-left));
-  }
+  body { font-size: 1rem; }
+  body > main, body > .page-shell { width: calc(100% - 14px); }
+  .hero { padding: 1rem; border-radius: 12px; }
+  body > main > section:not(#toc),
+  body > .page-shell > section:not(#toc),
+  body > .page-shell > main > section,
+  .topic, .aggregate-section { padding: 1rem; border-radius: 12px; }
 }
 
-@media (orientation: landscape) and (pointer: coarse) {
-  .nav-dock-left {
-    left: max(14px, env(safe-area-inset-left));
+
+/*
+  iPad/tablet landscape:
+  Japanese and Vietnamese return to two side-by-side columns.
+  The min-height condition avoids forcing ordinary phone landscape into
+  two columns that would be too narrow.
+*/
+@media (pointer: coarse) and (orientation: landscape) and (min-width: 700px) and (min-height: 600px) {
+  body > main,
+  body > .page-shell {
+    width: min(calc(var(--app-viewport-width, 100dvw) - 20px), 1320px) !important;
+    max-width: 1320px !important;
   }
 
-  .settings-dock-right {
-    right: max(14px, env(safe-area-inset-right));
+  .study-grid,
+  .lang-grid,
+  .bilingual-note {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important;
+    gap: clamp(.75rem, 1.4vw, 1rem) !important;
+    align-items: start;
+  }
+
+  .study-card,
+  .lang-card,
+  .note-pane {
+    min-width: 0;
   }
 }
-
-/* =========================================================
-   PRINT
-   ========================================================= */
 
 @media print {
-  html,
+  .control-cluster { display: none !important; }
+  :root,
   html[data-theme="dark"],
   html[data-theme="light"] {
     --bg: #FFFFFF;
@@ -772,169 +570,102 @@ body.toc-open .toc-drawer {
     --trap-underline: #9E1B12;
     --relation-bg: #F0EDFF;
     --relation-border: #5B4FD6;
+    --shadow: transparent;
   }
-
-  body {
-    background: #fff;
-    color: #111;
-    font-size: 11pt;
+  body { background: #fff; color: #111; font-size: 11pt; padding-bottom: 0; }
+  .control-cluster, .toc-overlay, .toc-drawer-head { display: none !important; }
+  #toc {
+    position: static !important;
+    transform: none !important;
+    width: auto !important;
+    max-height: none !important;
+    padding: 1rem !important;
+    border: 1px solid var(--border) !important;
+    border-radius: 10px !important;
+    box-shadow: none !important;
+    margin: 1rem 0 !important;
   }
-
-  .page-shell {
-    width: 100%;
-    padding: 0;
-  }
-
-  .nav-dock-left,
-  .settings-dock-right,
-  .toc-drawer,
-  .toc-overlay {
-    display: none !important;
-  }
-
-  .hero,
-  .study-card,
-  .summary-box,
-  .note-box,
-  .memory-box,
-  .warning-box,
-  .figure-card {
-    break-inside: avoid;
-  }
-
-  a {
-    color: #000;
-    text-decoration: none;
-  }
+  body > main, body > .page-shell { width: 100%; padding: 0; }
+  .hero, .study-card, .lang-card, .summary-box, .note-box, .note, .memory-box, .warning-box, .figure-box, .figure-card { break-inside: avoid; }
+  a { color: #000; text-decoration: none; }
+  .backlink, .back-toc, .back { display: none; }
 }
-</style>
-
-<script>
-/* Apply saved theme before body paint to reduce flashing. */
-(function () {
-  try {
-    const saved = localStorage.getItem("study-theme");
-    const systemDark = window.matchMedia &&
-      window.matchMedia("(prefers-color-scheme: dark)").matches;
-    document.documentElement.dataset.theme =
-      saved || (systemDark ? "dark" : "light");
-  } catch (e) {
-    document.documentElement.dataset.theme = "dark";
+</style><script>
+try {
+  if ("scrollRestoration" in history) {
+    history.scrollRestoration = "manual";
   }
-
+} catch (e) {}
+(function () {
+  const root = document.documentElement;
   try {
-    const savedScale = Number(localStorage.getItem("study-font-scale")) || 100;
-    const clampedScale = Math.max(80, Math.min(140, savedScale));
-    document.documentElement.style.setProperty(
-      "--base-font-size",
-      `${16 * clampedScale / 100}px`
-    );
-  } catch (e) {}
+    const savedTheme = localStorage.getItem('study-theme');
+    root.dataset.theme = savedTheme === 'light' ? 'light' : 'dark';
+
+    const savedMode = localStorage.getItem('study-mode');
+    root.dataset.studyMode = savedMode === 'keywords' ? 'keywords' : 'full';
+
+    const savedScale = Number(localStorage.getItem('study-font-scale'));
+    const scale = Number.isFinite(savedScale) && savedScale >= 50 && savedScale <= 150 && savedScale % 5 === 0
+      ? savedScale : 100;
+    root.style.setProperty('--base-font-size', (16 * scale / 100) + 'px');
+  } catch (e) {
+    root.dataset.theme = 'dark';
+    root.dataset.studyMode = 'full';
+    root.style.setProperty('--base-font-size', '16px');
+  }
 })();
-</script>
-</head>
-
+</script></head>
 <body>
-
-<!-- =======================================================
-     TOC DRAWER
-     Replace only the list contents.
-     ======================================================= -->
-<div class="toc-overlay" id="toc-overlay" aria-hidden="true"></div>
-
-<aside class="toc-drawer" id="toc-drawer" aria-label="Mục lục">
-  <div class="toc-drawer-head">
-    <h2>Mục lục</h2>
-    <button class="toc-close" id="toc-close" type="button" aria-label="Đóng mục lục">×</button>
-  </div>
-
-  <!-- TOC_ITEMS_START -->
-<ol class="toc-list">
-<li><a href="#sec-exam">令和元年度 問題3 躯体工事</a><ol><li><a href="#sec-exam-questions">Đề bài</a></li></ol></li>
-<li><a href="#sec-anchor">1. 山留め支保工・地盤アンカー</a><ol><li><a href="#sec-anchor-answer">解答例</a></li><li><a href="#sec-anchor-features">(1) 地盤アンカー工法の特徴</a></li><li><a href="#sec-anchor-structure">(2) 配置と長さ / (3) 緊張</a></li></ol></li>
-<li><a href="#sec-rebar">2. 鉄筋の組立て</a><ol><li><a href="#sec-rebar-answer">解答例</a></li><li><a href="#sec-rebar-joint">(1) 鉄筋の継手</a></li><li><a href="#sec-rebar-spacing">(2) 鉄筋の空き寸法</a></li></ol></li>
-<li><a href="#sec-concrete">3. コンクリートの打込み・締固め</a><ol><li><a href="#sec-concrete-answer">解答例</a></li><li><a href="#sec-concrete-placement">(1) コンクリートの打込み</a></li><li><a href="#sec-concrete-figures">図解：シュート・SRC梁</a></li><li><a href="#sec-concrete-compaction">(2) コンクリートの締固め</a></li></ol></li>
-<li><a href="#sec-steel">4. 鉄骨の建入れ直し・建方精度</a><ol><li><a href="#sec-steel-answer">解答例</a></li><li><a href="#sec-steel-intro">(1) 建入れ直し</a></li><li><a href="#sec-steel-rules">施工上の留意事項</a></li><li><a href="#sec-steel-precision">(2) 鉄骨建方の精度</a></li></ol></li>
-<li><a href="#terms">Thuật ngữ chuyên môn</a></li>
-<li><a href="#background">Kiến thức nền cần biết</a></li>
-<li><a href="#memory">Điểm cần nhớ và mẹo nhớ</a></li>
-</ol>
-  <!-- TOC_ITEMS_END -->
-</aside>
-
-<!-- =======================================================
-     FIXED NAVIGATION CONTROLS
-     Left bottom: vertical.
-     Do not add a Top button.
-     ======================================================= -->
-<nav class="nav-dock-left" aria-label="Điều hướng học tập">
-  <button id="toc-toggle" type="button" aria-label="Mục lục" title="Mục lục"
-          aria-controls="toc-drawer" aria-expanded="false">☰</button>
-  <button id="section-prev" type="button" aria-label="Mục trước" title="Back">‹</button>
-  <button id="section-next" type="button" aria-label="Mục tiếp theo" title="Next">›</button>
-</nav>
-
-<!-- =======================================================
-     FIXED DISPLAY CONTROLS
-     Right bottom: horizontal.
-     ======================================================= -->
-<nav class="settings-dock-right" aria-label="Thiết lập hiển thị">
-  <button id="theme-toggle" type="button" aria-label="Đổi Dark/Light"
-          title="Đổi Dark/Light" aria-pressed="false">☀</button>
-  <button id="mode-toggle" class="mode-toggle" type="button"
-          aria-label="Đổi Full/Keywords" title="Đổi Full/Keywords"
-          aria-pressed="false">🎯</button>
-  <button id="font-reset" class="font-reset" type="button"
-          aria-label="Đặt lại cỡ chữ 100%" title="Đặt lại cỡ chữ 100%">100%</button>
-  <button id="font-down" type="button" aria-label="Giảm cỡ chữ"
-          title="Giảm cỡ chữ">A−</button>
-  <button id="font-up" type="button" aria-label="Tăng cỡ chữ"
-          title="Tăng cỡ chữ">A+</button>
-</nav>
-
+<!--
+HTML TEMPLATE CONTRACT 2.3
+- Based on latest pinch-zoom-safe test.html.
+- Default theme: dark; persistent Dark/Light toggle.
+- Font: 50%-150%, 5% step; persistent.
+- Native two-finger pinch zoom MUST NOT trigger responsive reflow.
+- Real orientation change MAY update layout and restore logical reading position.
+- iPad/tablet portrait: one-column bilingual flow.
+- iPad/tablet landscape: Japanese/Vietnamese side-by-side.
+- Controls: collapsed by default at bottom-left; tap to expand horizontally.
+- Home button: index.html.
+- Back/Next: TOC item navigation, not browser history.
+- Do not redesign CSS/JS/control behavior per lesson.
+-->
+<div class="control-cluster" id="control-cluster">
+<button aria-controls="control-panel" aria-expanded="false" aria-label="Mở công cụ" class="control-launcher" id="controls-toggle" title="Mở công cụ" type="button">⋯</button>
+<div aria-label="Công cụ học tập" class="control-panel" id="control-panel" role="toolbar">
+<button aria-controls="toc" aria-expanded="false" aria-label="Mục lục" id="toc-toggle" title="Mục lục" type="button">☰</button>
+<button aria-label="Mục trước" id="section-prev" title="Mục trước" type="button">‹</button>
+<button aria-label="Mục tiếp theo" id="section-next" title="Mục tiếp theo" type="button">›</button>
+<button aria-label="Đổi Dark/Light" aria-pressed="false" id="theme-toggle" title="Đổi Dark/Light" type="button">☀</button>
+<button aria-label="Đổi Full/Keywords" aria-pressed="false" class="mode-toggle" id="mode-toggle" title="Đổi Full/Keywords" type="button">🎯</button>
+<button aria-label="Giảm cỡ chữ" id="font-down" title="Giảm cỡ chữ 5%" type="button">A−</button>
+<button aria-label="Đặt lại cỡ chữ 100%" class="font-reset" id="font-reset" title="Đặt lại cỡ chữ 100%" type="button">100%</button>
+<button aria-label="Tăng cỡ chữ" id="font-up" title="Tăng cỡ chữ 5%" type="button">A+</button>
+<button aria-label="Top Page" class="home-icon" id="home-button" title="Top Page" type="button"><svg aria-hidden="true" fill="none" viewbox="0 0 24 24"><path d="M3.5 10.5 12 3.8l8.5 6.7v9.2h-5.3v-6H8.8v6H3.5z" stroke="currentColor" stroke-linejoin="round" stroke-width="1.8"></path></svg></button>
+</div>
+</div><div aria-hidden="true" class="toc-overlay" id="toc-overlay"></div>
 <div class="page-shell">
+<header class="hero" id="top">
+<h1>躯体工事 R01｜Book 411-416</h1>
+</header>
+<nav aria-label="Mục lục" class="toc" id="toc">
+<div class="toc-drawer-head">
+<strong>Mục lục</strong>
+<button aria-label="Đóng mục lục" class="toc-close" id="toc-close" type="button">×</button>
+</div>
+<h2>Mục lục</h2>
+<!-- TOC_ITEMS_START -->
 
-  <!-- =====================================================
-       DOCUMENT HEADER
-       Replace title/subtitle/meta values only.
-       ===================================================== -->
-  <header class="hero" id="top">
-    <h1>躯体工事 R01｜Book 411-416</h1>
-    <p class="hero-subtitle">1級建築施工管理技術検定 第二次検定｜令和元年度 問題3 躯体工事</p>
-
-    <div class="meta-grid">
-      <div class="meta-item">
-        <span class="meta-label">PDF nguồn</span>
-        04h_躯体工事_R01_p411-417.pdf
-      </div>
-      <div class="meta-item">
-        <span class="meta-label">File ID</span>
-        F048
-      </div>
-      <div class="meta-item">
-        <span class="meta-label">Phạm vi</span>
-        Book 411-416
-      </div>
-      <div class="meta-item">
-        <span class="meta-label">Chế độ</span>
-        Song ngữ Nhật-Việt / Dark-Light / Full-Keywords / Font 80-140%
-      </div>
-    </div>
-  </header>
-
-  <!-- =====================================================
-       CONTENT_START
-       AI may freely repeat/reorder approved content components.
-       Global CSS/JS/control structure must not be redesigned.
-       ===================================================== -->
-  <span id="toc" aria-hidden="true"></span>
-  <main id="lesson">
-<section class="study-section" id="sec-exam">
+<!-- TOC_ITEMS_END -->
+<ol><li><a href="#sec-exam">令和元年度 問題3 躯体工事</a><ol><li><a href="#sec-exam-questions">Đề bài</a></li></ol></li><li><a href="#sec-anchor">1. 山留め支保工・地盤アンカー</a><ol><li><a href="#sec-anchor-answer">解答例 / Ví dụ đáp án</a></li><li><a href="#sec-anchor-features">(1) 地盤アンカー工法の特徴</a></li><li><a href="#sec-anchor-structure">(2) 配置と長さ / (3) 緊張</a></li></ol></li><li><a href="#sec-rebar">2. 鉄筋の組立て</a><ol><li><a href="#sec-rebar-answer">解答例 / Ví dụ đáp án</a></li><li><a href="#sec-rebar-joint">(1) 鉄筋の継手</a></li><li><a href="#sec-rebar-spacing">(2) 鉄筋の空き寸法</a></li></ol></li><li><a href="#sec-concrete">3. コンクリートの打込み・締固め</a><ol><li><a href="#sec-concrete-answer">解答例 / Ví dụ đáp án</a></li><li><a href="#sec-concrete-placement">(1) コンクリートの打込み</a></li><li><a href="#sec-concrete-figures">図解：シュート・SRC梁の打込み</a></li><li><a href="#sec-concrete-compaction">(2) コンクリートの締固め</a></li></ol></li><li><a href="#sec-steel">4. 鉄骨の建入れ直し・建方精度</a><ol><li><a href="#sec-steel-answer">解答例 / Ví dụ đáp án</a></li><li><a href="#sec-steel-intro">(1) 建入れ直し</a></li><li><a href="#sec-steel-rules">建入れ直しの施工上の留意事項</a></li><li><a href="#sec-steel-precision">(2) 鉄骨建方の精度</a></li></ol></li><li><a href="#terms">Professional terminology</a></li><li><a href="#background">Background knowledge</a></li><li><a href="#memory">Key points and memory aids</a></li></ol></nav>
+<!-- CONTENT_START -->
+<main id="lesson"><section class="study-section" id="sec-exam">
 <div class="section-head"><h2>令和元年度 問題3 躯体工事</h2><span class="source-ref">Nguồn: Book page 411</span></div>
 <section class="subsection" id="sec-exam-questions"><h3>Đề bài</h3><div class="study-grid">
-  <article class="study-card original">
-    <div class="card-title">原文</div>
-    <div class="recall-source" lang="ja">
+<article class="study-card original">
+<div class="card-title">原文</div>
+<div class="recall-source" lang="ja">
 <p><strong>令和元年度 問題3 躯体工事</strong></p>
 <p>次の設問1から設問4に答えなさい。</p>
 <p>ただし、解答はそれぞれ異なる内容の記述とし、材料の保管、作業環境（騒音、振動、気象条件等）及び作業員の安全に関する記述は除くものとする。</p>
@@ -943,10 +674,10 @@ body.toc-open .toc-drawer {
 <div class="item-block"><span class="item-label">設問3</span><p>普通コンクリートを用いる工事において、<strong class="kw">コンクリートを密実に打ち込む</strong>ための施工上の留意事項を<mark class="critical">2つ</mark>、具体的に記述しなさい。ただし、コンクリートの調合及び養生に関する記述は除くものとする。</p></div>
 <div class="item-block"><span class="item-label">設問4</span><p>鉄骨工事において、<strong class="kw">建入れ直し</strong>を行う場合の施工上の留意事項を<mark class="critical">2つ</mark>、具体的に記述しなさい。ただし、アンカーボルト及び仮ボルトに関する記述は除くものとする。</p></div>
 </div>
-  </article>
-  <article class="study-card translation">
-    <div class="card-title">Bản dịch tiếng Việt</div>
-    <div class="recall-source" lang="vi">
+</article>
+<article class="study-card translation">
+<div class="card-title">Bản dịch tiếng Việt</div>
+<div class="recall-source" lang="vi">
 <p><strong>Năm Reiwa 1 (2019), Câu 3: Công tác phần kết cấu</strong></p>
 <p>Hãy trả lời từ Câu hỏi 1 đến Câu hỏi 4.</p>
 <p>Các câu trả lời phải có nội dung khác nhau. Không sử dụng các nội dung liên quan đến bảo quản vật liệu, môi trường làm việc như tiếng ồn, rung động, điều kiện thời tiết, hoặc an toàn của người lao động.</p>
@@ -955,15 +686,14 @@ body.toc-open .toc-drawer {
 <div class="item-block"><span class="item-label">Câu hỏi 3</span><p>Trong công tác sử dụng bê tông thông thường, hãy mô tả cụ thể <mark class="critical">2 điểm</mark> cần lưu ý khi thi công để <strong class="kw">đổ bê tông đặc chắc</strong>. Không được viết về cấp phối hoặc bảo dưỡng bê tông.</p></div>
 <div class="item-block"><span class="item-label">Câu hỏi 4</span><p>Trong công tác kết cấu thép, khi thực hiện <strong class="kw">căn chỉnh khung thép sau lắp dựng</strong>, hãy mô tả cụ thể <mark class="critical">2 điểm</mark> cần lưu ý khi thi công. Không được viết về bu lông neo hoặc bu lông tạm.</p></div>
 </div>
-  </article>
+</article>
 </div><p class="source-ref"><a href="#toc">↑ Mục lục</a></p></section>
-</section>
-<section class="study-section" id="sec-anchor">
+</section><section class="study-section" id="sec-anchor">
 <div class="section-head"><h2>1. 山留め支保工・地盤アンカー</h2><span class="source-ref">Nguồn: Book page 411-413</span></div>
 <section class="subsection" id="sec-anchor-answer"><h3>解答例 / Ví dụ đáp án</h3><div class="study-grid">
-  <article class="study-card original">
-    <div class="card-title">原文</div>
-    <div class="recall-source" lang="ja">
+<article class="study-card original">
+<div class="card-title">原文</div>
+<div class="recall-source" lang="ja">
 <p><strong>解答例</strong></p>
 <ol>
 <li><strong class="kw">地盤アンカーの先端が敷地境界の外に出るとき</strong>は、<span class="relation">隣地所有者の承諾を得る</span>。</li>
@@ -971,10 +701,10 @@ body.toc-open .toc-drawer {
 </ol>
 <p class="source-ref">出典：建築工事標準仕様書・同解説 JASS 3 土工事および山留め工事</p>
 </div>
-  </article>
-  <article class="study-card translation">
-    <div class="card-title">Bản dịch tiếng Việt</div>
-    <div class="recall-source" lang="vi">
+</article>
+<article class="study-card translation">
+<div class="card-title">Bản dịch tiếng Việt</div>
+<div class="recall-source" lang="vi">
 <p><strong>Ví dụ đáp án</strong></p>
 <ol>
 <li><strong class="kw">Khi đầu neo đất vượt ra ngoài ranh giới khu đất</strong>, phải <span class="relation">được sự chấp thuận của chủ sở hữu khu đất liền kề</span>.</li>
@@ -982,12 +712,12 @@ body.toc-open .toc-drawer {
 </ol>
 <p class="source-ref">Nguồn trong sách: JASS 3, công tác đất và tường chắn đất.</p>
 </div>
-  </article>
+</article>
 </div></section>
 <section class="subsection" id="sec-anchor-features"><h3>(1) 地盤アンカー工法の特徴</h3><div class="study-grid">
-  <article class="study-card original">
-    <div class="card-title">原文</div>
-    <div class="recall-source" lang="ja">
+<article class="study-card original">
+<div class="card-title">原文</div>
+<div class="recall-source" lang="ja">
 <p><strong class="kw">地盤アンカー</strong>は、その先端部を<strong class="kw">良質地盤</strong>（山留め壁の背面など）に定着させることで、山留め支保工などの構造物を支持する部材である。</p>
 <p><strong class="kw">地盤アンカー工法</strong>は、<strong class="kw">切梁が架けられない（水平切梁工法が適用できない）傾斜地</strong>などにおいて、<span class="relation">切梁の代わりに施工した地盤アンカーで山留め壁を支える</span>工法である。</p>
 <ol>
@@ -998,10 +728,10 @@ body.toc-open .toc-drawer {
 <li>上空が開放されており、作業空間が広いため、<span class="relation">作業精度の向上・安全確保・工期短縮</span>が図れる。</li>
 </ol>
 </div>
-  </article>
-  <article class="study-card translation">
-    <div class="card-title">Bản dịch tiếng Việt</div>
-    <div class="recall-source" lang="vi">
+</article>
+<article class="study-card translation">
+<div class="card-title">Bản dịch tiếng Việt</div>
+<div class="recall-source" lang="vi">
 <p><strong class="kw">Neo đất</strong> là cấu kiện có đầu neo được cố định vào <strong class="kw">lớp đất tốt</strong>, chẳng hạn phía sau tường chắn đất, qua đó đỡ các kết cấu như hệ chống giữ tường chắn đất.</p>
 <p><strong class="kw">Phương pháp neo đất</strong> được sử dụng tại những vị trí như <strong class="kw">địa hình dốc, nơi không thể bố trí thanh chống ngang</strong>; <span class="relation">neo đất được dùng thay thanh chống để giữ tường chắn</span>.</p>
 <ol>
@@ -1012,13 +742,13 @@ body.toc-open .toc-drawer {
 <li>Do phía trên hố đào được để trống và không gian làm việc rộng, có thể <span class="relation">nâng cao độ chính xác, bảo đảm an toàn và rút ngắn thời gian thi công</span>.</li>
 </ol>
 </div>
-  </article>
+</article>
 </div>
 <div class="figure-box"><strong>Giải thích sơ đồ</strong><p>Sơ đồ Book page 412 thể hiện tường chắn bằng cừ thép, neo đất đi nghiêng xuống phía sau tường, vùng grout và thép PC được neo vào lớp đất tốt. Quan hệ chịu lực chính là: tường chắn → dầm waler → neo đất → vùng neo trong đất tốt.</p></div></section>
 <section class="subsection" id="sec-anchor-structure"><h3>(2) 配置と長さ / (3) 緊張</h3><div class="study-grid">
-  <article class="study-card original">
-    <div class="card-title">原文</div>
-    <div class="recall-source" lang="ja">
+<article class="study-card original">
+<div class="card-title">原文</div>
+<div class="recall-source" lang="ja">
 <p><strong>地盤アンカーの構造</strong></p>
 <ul>
 <li>アンカー頭部</li><li>頭部定着具</li><li>支圧板</li><li>台座</li><li>山留め壁</li>
@@ -1031,10 +761,10 @@ body.toc-open .toc-drawer {
 <h4>(3) 地盤アンカーの緊張</h4>
 <p><strong class="kw">グラウト材が硬化したことを確認した後</strong>に、引張材となる<strong class="kw">PC鋼材</strong>を<strong class="kw">油圧ジャッキ</strong>で緊張して、<span class="relation">アンカー頭部を定着させる（山留め壁を固定する）</span>。</p>
 </div>
-  </article>
-  <article class="study-card translation">
-    <div class="card-title">Bản dịch tiếng Việt</div>
-    <div class="recall-source" lang="vi">
+</article>
+<article class="study-card translation">
+<div class="card-title">Bản dịch tiếng Việt</div>
+<div class="recall-source" lang="vi">
 <p><strong>Cấu tạo neo đất</strong></p>
 <ul>
 <li>アンカー頭部: đầu neo</li><li>頭部定着具: bộ phận cố định đầu neo</li><li>支圧板: bản chịu áp lực</li><li>台座: bệ đỡ</li><li>山留め壁: tường chắn đất</li>
@@ -1047,16 +777,15 @@ body.toc-open .toc-drawer {
 <h4>(3) Căng neo đất</h4>
 <p><strong class="kw">Sau khi xác nhận grout đã đông cứng</strong>, dùng <strong class="kw">kích thủy lực</strong> để căng <strong class="kw">thép PC</strong> làm vật liệu chịu kéo, sau đó <span class="relation">cố định đầu neo để giữ tường chắn đất</span>.</p>
 </div>
-  </article>
+</article>
 </div>
 <div class="figure-box"><strong>Giải thích cấu tạo</strong><p>Hình Book page 413 phân biệt phần đầu neo, đoạn tự do và đoạn neo giữ. Đoạn tự do cho phép vật liệu chịu kéo biến dạng khi căng; đoạn định着 truyền lực vào lớp đất tốt thông qua grout.</p></div><p class="source-ref"><a href="#toc">↑ Mục lục</a></p></section>
-</section>
-<section class="study-section" id="sec-rebar">
+</section><section class="study-section" id="sec-rebar">
 <div class="section-head"><h2>2. 鉄筋の組立て</h2><span class="source-ref">Nguồn: Book page 411, 413-414</span></div>
 <section class="subsection" id="sec-rebar-answer"><h3>解答例 / Ví dụ đáp án</h3><div class="study-grid">
-  <article class="study-card original">
-    <div class="card-title">原文</div>
-    <div class="recall-source" lang="ja">
+<article class="study-card original">
+<div class="card-title">原文</div>
+<div class="recall-source" lang="ja">
 <p><strong>解答例</strong></p>
 <ol>
 <li><strong class="kw">隣り合う鉄筋の重ね継手の中心位置</strong>は、<mark class="critical">重ね継手長さの0.5倍または1.5倍</mark>ずらす。</li>
@@ -1064,10 +793,10 @@ body.toc-open .toc-drawer {
 </ol>
 <p class="source-ref">出典：建築工事標準仕様書・同解説 JASS 5 鉄筋コンクリート工事</p>
 </div>
-  </article>
-  <article class="study-card translation">
-    <div class="card-title">Bản dịch tiếng Việt</div>
-    <div class="recall-source" lang="vi">
+</article>
+<article class="study-card translation">
+<div class="card-title">Bản dịch tiếng Việt</div>
+<div class="recall-source" lang="vi">
 <p><strong>Ví dụ đáp án</strong></p>
 <ol>
 <li><strong class="kw">Tâm mối nối chồng của các thanh cốt thép liền kề</strong> phải bố trí lệch nhau <mark class="critical">0,5 lần hoặc 1,5 lần chiều dài mối nối chồng</mark>.</li>
@@ -1075,33 +804,33 @@ body.toc-open .toc-drawer {
 </ol>
 <p class="source-ref">Nguồn trong sách: JASS 5, công tác bê tông cốt thép.</p>
 </div>
-  </article>
+</article>
 </div></section>
 <section class="subsection" id="sec-rebar-joint"><h3>(1) 鉄筋の継手</h3><div class="study-grid">
-  <article class="study-card original">
-    <div class="card-title">原文</div>
-    <div class="recall-source" lang="ja">
+<article class="study-card original">
+<div class="card-title">原文</div>
+<div class="recall-source" lang="ja">
 <h4>(1) 鉄筋の継手</h4>
 <p>鉄筋の組立てを行うときは、<strong class="kw">隣接する鉄筋の継手</strong>が<span class="trap">同じ位置に来ないようにする</span>。鉄筋の継手は、鉄筋の弱点となるからである。</p>
 <p>一般的な重ね継手とする場合、<strong class="kw">隣接鉄筋の継手</strong>は<mark class="critical">0.5L1又は1.5L1</mark>ずらす。継手長さを<mark class="critical">1.0L1</mark>にすると、<span class="trap">継手の両端が同じ位置に揃い、強度が低下する</span>。</p>
 <p>また、柱に用いる<strong class="kw">スパイラル筋の重ね継手長さ</strong>は、<mark class="critical">鉄筋径の50倍以上かつ300mm以上</mark>とする。</p>
 </div>
-  </article>
-  <article class="study-card translation">
-    <div class="card-title">Bản dịch tiếng Việt</div>
-    <div class="recall-source" lang="vi">
+</article>
+<article class="study-card translation">
+<div class="card-title">Bản dịch tiếng Việt</div>
+<div class="recall-source" lang="vi">
 <h4>(1) Mối nối cốt thép</h4>
 <p>Khi lắp dựng cốt thép, <strong class="kw">mối nối của các thanh thép liền kề</strong> <span class="trap">không được nằm tại cùng một vị trí</span>, vì mối nối là vị trí yếu của cốt thép.</p>
 <p>Đối với mối nối chồng thông thường, <strong class="kw">mối nối của các thanh liền kề</strong> phải được bố trí lệch <mark class="critical">0,5L1 hoặc 1,5L1</mark>. Nếu bố trí lệch <mark class="critical">1,0L1</mark>, <span class="trap">hai đầu mối nối sẽ trùng vị trí và cường độ giảm</span>.</p>
 <p>Đối với <strong class="kw">mối nối chồng của cốt thép xoắn dùng cho cột</strong>, chiều dài phải đạt <mark class="critical">ít nhất 50 lần đường kính cốt thép và ít nhất 300 mm</mark>.</p>
 </div>
-  </article>
+</article>
 </div>
 <div class="figure-box"><strong>Giải thích hình</strong><p>Hình Book page 413 cho thấy các mối nối của hai thanh liền kề phải bố trí so le. Nếu dịch đúng 1,0L1 thì đầu các mối nối lại trùng nhau, do đó sách minh họa cách bố trí 0,5L1 hoặc 1,5L1.</p></div></section>
 <section class="subsection" id="sec-rebar-spacing"><h3>(2) 鉄筋の空き寸法</h3><div class="study-grid">
-  <article class="study-card original">
-    <div class="card-title">原文</div>
-    <div class="recall-source" lang="ja">
+<article class="study-card original">
+<div class="card-title">原文</div>
+<div class="recall-source" lang="ja">
 <h4>(2) 鉄筋の空き寸法</h4>
 <p>鉄筋コンクリート造の構造物では、隣接する鉄筋の相互間に、所定の空き寸法が必要である。<strong class="kw">鉄筋相互のあき</strong>は、<span class="relation">鉄筋とコンクリートとの付着による応力の伝達を確保し、コンクリートを分離させず密実に打ち込む</span>ために必要である。</p>
 <p><strong class="kw">鉄筋相互のあきの最小寸法</strong>は、次のうち<span class="relation">最大の値</span>とする。</p>
@@ -1113,10 +842,10 @@ body.toc-open .toc-drawer {
 <p>例：粗骨材最大寸法<mark class="critical">20mm</mark>、鉄筋D16の場合、16×1.5＝24、20×1.25＝25、25mmのうち最大値は25mmなので、<strong class="kw">鉄筋のあき</strong>は<mark class="critical">25mm以上</mark>とする。</p>
 <p><strong class="kw">「鉄筋のあき」</strong>と<strong class="kw">「鉄筋間隔」</strong>とは区別して考える必要がある。</p>
 </div>
-  </article>
-  <article class="study-card translation">
-    <div class="card-title">Bản dịch tiếng Việt</div>
-    <div class="recall-source" lang="vi">
+</article>
+<article class="study-card translation">
+<div class="card-title">Bản dịch tiếng Việt</div>
+<div class="recall-source" lang="vi">
 <h4>(2) Khoảng hở giữa các thanh cốt thép</h4>
 <p>Trong kết cấu bê tông cốt thép, phải có khoảng hở quy định giữa các thanh thép liền kề. <strong class="kw">Khoảng hở thông thủy giữa các thanh cốt thép</strong> cần thiết để <span class="relation">bảo đảm truyền ứng suất nhờ bám dính thép-bê tông và để bê tông được đổ đặc chắc mà không phân tầng</span>.</p>
 <p><strong class="kw">Khoảng hở tối thiểu giữa cốt thép</strong> phải lấy <span class="relation">giá trị lớn nhất</span> trong ba giá trị:</p>
@@ -1128,16 +857,15 @@ body.toc-open .toc-drawer {
 <p>Ví dụ: cốt liệu thô lớn nhất <mark class="critical">20 mm</mark>, cốt thép D16. Ta có 16×1,5＝24; 20×1,25＝25; và 25 mm. Giá trị lớn nhất là 25 mm, vì vậy <strong class="kw">khoảng hở cốt thép</strong> phải <mark class="critical">từ 25 mm trở lên</mark>.</p>
 <p>Cần phân biệt <strong class="kw">「鉄筋のあき」, khoảng hở thông thủy</strong> với <strong class="kw">「鉄筋間隔」, khoảng cách bố trí cốt thép</strong>.</p>
 </div>
-  </article>
+</article>
 </div>
 <div class="formula-box"><div class="formula-line"><span class="flow-node">鉄筋のあき</span><span class="flow-arrow">=</span><span class="flow-node">max(1.5d, 1.25Gmax, 25mm)</span></div></div><p class="source-ref"><a href="#toc">↑ Mục lục</a></p></section>
-</section>
-<section class="study-section" id="sec-concrete">
+</section><section class="study-section" id="sec-concrete">
 <div class="section-head"><h2>3. コンクリートの打込み・締固め</h2><span class="source-ref">Nguồn: Book page 412, 414-415</span></div>
 <section class="subsection" id="sec-concrete-answer"><h3>解答例 / Ví dụ đáp án</h3><div class="study-grid">
-  <article class="study-card original">
-    <div class="card-title">原文</div>
-    <div class="recall-source" lang="ja">
+<article class="study-card original">
+<div class="card-title">原文</div>
+<div class="recall-source" lang="ja">
 <p><strong>解答例</strong></p>
 <ol>
 <li><strong class="kw">荷卸し時</strong>に大きな山を作らないようにすることで、<span class="relation">コンクリートの材料分離を抑制する</span>。</li>
@@ -1145,10 +873,10 @@ body.toc-open .toc-drawer {
 </ol>
 <p class="source-ref">出典：建築工事標準仕様書・同解説 JASS 5 鉄筋コンクリート工事</p>
 </div>
-  </article>
-  <article class="study-card translation">
-    <div class="card-title">Bản dịch tiếng Việt</div>
-    <div class="recall-source" lang="vi">
+</article>
+<article class="study-card translation">
+<div class="card-title">Bản dịch tiếng Việt</div>
+<div class="recall-source" lang="vi">
 <p><strong>Ví dụ đáp án</strong></p>
 <ol>
 <li><strong class="kw">Khi xả bê tông</strong>, không tạo thành đống lớn, qua đó <span class="relation">hạn chế phân tầng vật liệu của bê tông</span>.</li>
@@ -1156,12 +884,12 @@ body.toc-open .toc-drawer {
 </ol>
 <p class="source-ref">Nguồn trong sách: JASS 5, công tác bê tông cốt thép.</p>
 </div>
-  </article>
+</article>
 </div></section>
 <section class="subsection" id="sec-concrete-placement"><h3>(1) コンクリートの打込み</h3><div class="study-grid">
-  <article class="study-card original">
-    <div class="card-title">原文</div>
-    <div class="recall-source" lang="ja">
+<article class="study-card original">
+<div class="card-title">原文</div>
+<div class="recall-source" lang="ja">
 <h4>(1) コンクリートの打込み</h4>
 <p>コンクリートを密実に打ち込むためには、次の点に留意する。これらを守らないと、<strong class="kw">材料分離（モルタルと骨材との分離）</strong>が発生する。</p>
 <ol>
@@ -1171,10 +899,10 @@ body.toc-open .toc-drawer {
 <li><strong class="kw">自由落下高さ</strong>が、なるべく低くなるようにする。</li>
 </ol>
 </div>
-  </article>
-  <article class="study-card translation">
-    <div class="card-title">Bản dịch tiếng Việt</div>
-    <div class="recall-source" lang="vi">
+</article>
+<article class="study-card translation">
+<div class="card-title">Bản dịch tiếng Việt</div>
+<div class="recall-source" lang="vi">
 <h4>(1) Đổ bê tông</h4>
 <p>Để bê tông được đổ đặc chắc phải lưu ý các điểm sau. Nếu không tuân thủ có thể phát sinh <strong class="kw">phân tầng vật liệu, tức vữa và cốt liệu bị tách ra</strong>.</p>
 <ol>
@@ -1184,12 +912,12 @@ body.toc-open .toc-drawer {
 <li>Giữ <strong class="kw">chiều cao rơi tự do</strong> của bê tông càng thấp càng tốt.</li>
 </ol>
 </div>
-  </article>
+</article>
 </div></section>
 <section class="subsection" id="sec-concrete-figures"><h3>図解：シュート・SRC梁の打込み</h3><div class="study-grid">
-  <article class="study-card original">
-    <div class="card-title">原文</div>
-    <div class="recall-source" lang="ja">
+<article class="study-card original">
+<div class="card-title">原文</div>
+<div class="recall-source" lang="ja">
 <p><strong>図の内容</strong></p>
 <ul>
 <li><strong class="kw">縦シュート</strong>：フレキシブルホースを用い、<span class="relation">分離しにくい</span>。</li>
@@ -1198,10 +926,10 @@ body.toc-open .toc-drawer {
 <li><strong class="kw">鉄骨鉄筋コンクリート梁</strong>は、一度に打ち込むと<span class="trap">す（巣）ができやすい</span>。<span class="relation">片側から打込み → 反対側への噴出を確認 → 両側から打込み</span>とする。</li>
 </ul>
 </div>
-  </article>
-  <article class="study-card translation">
-    <div class="card-title">Bản dịch tiếng Việt</div>
-    <div class="recall-source" lang="vi">
+</article>
+<article class="study-card translation">
+<div class="card-title">Bản dịch tiếng Việt</div>
+<div class="recall-source" lang="vi">
 <p><strong>Nội dung các hình</strong></p>
 <ul>
 <li><strong class="kw">Máng đứng</strong>: dùng ống mềm, nên <span class="relation">khó gây phân tầng</span>.</li>
@@ -1210,13 +938,13 @@ body.toc-open .toc-drawer {
 <li>Với <strong class="kw">dầm SRC</strong>, nếu đổ một lần thì <span class="trap">dễ xuất hiện rỗ tổ ong</span>. Trình tự là <span class="relation">đổ từ một phía → xác nhận bê tông chảy ra phía đối diện → đổ từ cả hai phía</span>.</li>
 </ul>
 </div>
-  </article>
+</article>
 </div>
 <div class="figure-box"><strong>Giải thích hình Book page 415</strong><p>Máng đứng hạn chế phân tầng tốt hơn máng nghiêng. Với dầm SRC, thép hình cản trở dòng bê tông; vì vậy cần xác nhận bê tông đã đi qua phía đối diện trước khi tiếp tục đổ để giảm nguy cơ tạo rỗ dưới thép hình.</p></div></section>
 <section class="subsection" id="sec-concrete-compaction"><h3>(2) コンクリートの締固め</h3><div class="study-grid">
-  <article class="study-card original">
-    <div class="card-title">原文</div>
-    <div class="recall-source" lang="ja">
+<article class="study-card original">
+<div class="card-title">原文</div>
+<div class="recall-source" lang="ja">
 <h4>(2) コンクリートの締固め</h4>
 <p>コンクリートを適切に打ち込んだとしても、締固めの方法が不適切であると、締固めの段階で材料分離が発生し、密実なコンクリートを得ることができなくなる。</p>
 <ol>
@@ -1226,10 +954,10 @@ body.toc-open .toc-drawer {
 <li><strong class="kw">内部振動機の抜き差し</strong>は、<span class="relation">孔を残さないよう、ゆっくりと鉛直に行う</span>。</li>
 </ol>
 </div>
-  </article>
-  <article class="study-card translation">
-    <div class="card-title">Bản dịch tiếng Việt</div>
-    <div class="recall-source" lang="vi">
+</article>
+<article class="study-card translation">
+<div class="card-title">Bản dịch tiếng Việt</div>
+<div class="recall-source" lang="vi">
 <h4>(2) Đầm bê tông</h4>
 <p>Ngay cả khi bê tông đã được đổ đúng cách, nếu phương pháp đầm không phù hợp thì vẫn có thể xảy ra phân tầng trong giai đoạn đầm và không thể đạt được bê tông đặc chắc.</p>
 <ol>
@@ -1239,15 +967,14 @@ body.toc-open .toc-drawer {
 <li><strong class="kw">Đưa đầm vào và rút đầm ra</strong>: <span class="relation">thao tác chậm, theo phương thẳng đứng để không để lại lỗ</span>.</li>
 </ol>
 </div>
-  </article>
+</article>
 </div><p class="source-ref"><a href="#toc">↑ Mục lục</a></p></section>
-</section>
-<section class="study-section" id="sec-steel">
+</section><section class="study-section" id="sec-steel">
 <div class="section-head"><h2>4. 鉄骨の建入れ直し・建方精度</h2><span class="source-ref">Nguồn: Book page 412, 415-416</span></div>
 <section class="subsection" id="sec-steel-answer"><h3>解答例 / Ví dụ đáp án</h3><div class="study-grid">
-  <article class="study-card original">
-    <div class="card-title">原文</div>
-    <div class="recall-source" lang="ja">
+<article class="study-card original">
+<div class="card-title">原文</div>
+<div class="recall-source" lang="ja">
 <p><strong>解答例</strong></p>
 <ol>
 <li><strong class="kw">建入れ直しのために力を加えるとき</strong>は、<span class="relation">部材の損傷を防ぐため、力を加える部分を養生する</span>。</li>
@@ -1255,10 +982,10 @@ body.toc-open .toc-drawer {
 </ol>
 <p class="source-ref">出典：建築工事標準仕様書・同解説 JASS 6 鉄骨工事</p>
 </div>
-  </article>
-  <article class="study-card translation">
-    <div class="card-title">Bản dịch tiếng Việt</div>
-    <div class="recall-source" lang="vi">
+</article>
+<article class="study-card translation">
+<div class="card-title">Bản dịch tiếng Việt</div>
+<div class="recall-source" lang="vi">
 <p><strong>Ví dụ đáp án</strong></p>
 <ol>
 <li><strong class="kw">Khi tác dụng lực để căn chỉnh</strong>, phải <span class="relation">bảo vệ vị trí chịu lực để tránh làm hư hỏng cấu kiện</span>.</li>
@@ -1266,28 +993,28 @@ body.toc-open .toc-drawer {
 </ol>
 <p class="source-ref">Nguồn trong sách: JASS 6, công tác kết cấu thép.</p>
 </div>
-  </article>
+</article>
 </div></section>
 <section class="subsection" id="sec-steel-intro"><h3>(1) 建入れ直し</h3><div class="study-grid">
-  <article class="study-card original">
-    <div class="card-title">原文</div>
-    <div class="recall-source" lang="ja">
+<article class="study-card original">
+<div class="card-title">原文</div>
+<div class="recall-source" lang="ja">
 <h4>(1) 建入れ直し</h4>
 <p><strong class="kw">建入れ直し</strong>とは、建方（柱や梁などの部材を現場で組み立てる作業）の途中または終了時に、<span class="relation">柱や梁などの鉛直性・水平性などを測定し、小区画ごとに歪みを修正していく</span>ことをいう。</p>
 </div>
-  </article>
-  <article class="study-card translation">
-    <div class="card-title">Bản dịch tiếng Việt</div>
-    <div class="recall-source" lang="vi">
+</article>
+<article class="study-card translation">
+<div class="card-title">Bản dịch tiếng Việt</div>
+<div class="recall-source" lang="vi">
 <h4>(1) Căn chỉnh sau lắp dựng</h4>
 <p><strong class="kw">建入れ直し</strong> là công tác được thực hiện trong hoặc sau quá trình lắp dựng, nhằm <span class="relation">đo độ thẳng đứng, độ ngang của cột và dầm rồi hiệu chỉnh sai lệch theo từng khu vực nhỏ</span>.</p>
 </div>
-  </article>
+</article>
 </div></section>
 <section class="subsection" id="sec-steel-rules"><h3>建入れ直しの施工上の留意事項</h3><div class="study-grid">
-  <article class="study-card original">
-    <div class="card-title">原文</div>
-    <div class="recall-source" lang="ja">
+<article class="study-card original">
+<div class="card-title">原文</div>
+<div class="recall-source" lang="ja">
 <ol>
 <li><strong class="kw">力を加える部分</strong>は、<span class="relation">部材の損傷を防ぐため養生する</span>。</li>
 <li><strong class="kw">ターンバックル付き筋かい</strong>を有する鉄骨構造物では、その筋かいを用いて<span class="trap">建入れ直しを行ってはならない</span>。</li>
@@ -1296,10 +1023,10 @@ body.toc-open .toc-drawer {
 <li><strong class="kw">スパン間の計測寸法が正規より小さい場合</strong>は、<span class="relation">梁接合部のクリアランスに楔を打ち込むなどして押し広げ、スパンを調整した後、ワイヤによる建入れ直しを行う</span>。なお、<strong class="kw">架構の倒壊防止用ワイヤロープ</strong>は、<span class="relation">建入れ直し用として兼用できる</span>。</li>
 </ol>
 </div>
-  </article>
-  <article class="study-card translation">
-    <div class="card-title">Bản dịch tiếng Việt</div>
-    <div class="recall-source" lang="vi">
+</article>
+<article class="study-card translation">
+<div class="card-title">Bản dịch tiếng Việt</div>
+<div class="recall-source" lang="vi">
 <ol>
 <li><strong class="kw">Vị trí chịu tác dụng lực</strong> phải <span class="relation">được bảo vệ để tránh hư hỏng cấu kiện</span>.</li>
 <li>Đối với <strong class="kw">kết cấu thép có giằng gắn tăng đơ</strong>, <span class="trap">không được dùng chính thanh giằng đó để thực hiện 建入れ直し</span>.</li>
@@ -1308,59 +1035,50 @@ body.toc-open .toc-drawer {
 <li>Nếu <strong class="kw">kích thước nhịp đo được nhỏ hơn nhịp tiêu chuẩn</strong>, phải <span class="relation">đóng nêm vào khe hở liên kết dầm để mở rộng, điều chỉnh nhịp rồi mới căn chỉnh bằng dây cáp</span>. <strong class="kw">Dây cáp chống đổ của khung</strong> có thể <span class="relation">dùng chung làm dây cáp cho 建入れ直し</span>.</li>
 </ol>
 </div>
-  </article>
+</article>
 </div>
 <div class="figure-box"><strong>Giải thích hình điều chỉnh nhịp</strong><p>Khi nhịp thực tế nhỏ hơn nhịp tiêu chuẩn, hình Book page 416 cho thấy đóng nêm vào khe tại liên kết dầm để mở rộng clearance, điều chỉnh về nhịp tiêu chuẩn rồi mới căn chỉnh khung bằng dây cáp.</p></div></section>
 <section class="subsection" id="sec-steel-precision"><h3>(2) 鉄骨建方の精度</h3><div class="study-grid">
-  <article class="study-card original">
-    <div class="card-title">原文</div>
-    <div class="recall-source" lang="ja">
+<article class="study-card original">
+<div class="card-title">原文</div>
+<div class="recall-source" lang="ja">
 <h4>(2) 鉄骨建方の精度</h4>
 <p>鉄骨工事における建入れ直しは、下表の建方精度を満たせるように行う。<strong class="kw">最終的な鉄骨建方</strong>は、<span class="relation">すべてが限界許容差を満たす</span>ようにしなければならない。材料搬入時のロット検査では、<strong class="kw">管理許容差</strong>を満たせるような施工管理を行う。</p>
 <div class="table-wrap"><table>
 <caption>鉄骨建方の精度</caption>
 <thead><tr><th>鉄骨建方の種類</th><th>管理許容差</th><th>限界許容差</th></tr></thead>
 <tbody>
-<tr><td><strong class="kw">建物の倒れ e</strong></td><td><mark class="critical">e ≤ H/4000 + 7mm</mark><br><mark class="critical">e ≤ 30mm</mark></td><td><mark class="critical">e ≤ H/2500 + 10mm</mark><br><mark class="critical">e ≤ 50mm</mark></td></tr>
-<tr><td><strong class="kw">建物のわん曲 e</strong></td><td><mark class="critical">e ≤ L/4000</mark><br><mark class="critical">e ≤ 20mm</mark></td><td><mark class="critical">e ≤ L/2500</mark><br><mark class="critical">e ≤ 25mm</mark></td></tr>
-<tr><td><strong class="kw">梁の水平度 e</strong></td><td><mark class="critical">e ≤ L/1000 + 3mm</mark><br><mark class="critical">e ≤ 10mm</mark></td><td><mark class="critical">e ≤ L/700 + 5mm</mark><br><mark class="critical">e ≤ 15mm</mark></td></tr>
-<tr><td><strong class="kw">柱の倒れ e</strong></td><td><mark class="critical">e ≤ H/1000</mark><br><mark class="critical">e ≤ 10mm</mark></td><td><mark class="critical">e ≤ H/700</mark><br><mark class="critical">e ≤ 15mm</mark></td></tr>
+<tr><td><strong class="kw">建物の倒れ e</strong></td><td><mark class="critical">e ≤ H/4000 + 7mm</mark><br/><mark class="critical">e ≤ 30mm</mark></td><td><mark class="critical">e ≤ H/2500 + 10mm</mark><br/><mark class="critical">e ≤ 50mm</mark></td></tr>
+<tr><td><strong class="kw">建物のわん曲 e</strong></td><td><mark class="critical">e ≤ L/4000</mark><br/><mark class="critical">e ≤ 20mm</mark></td><td><mark class="critical">e ≤ L/2500</mark><br/><mark class="critical">e ≤ 25mm</mark></td></tr>
+<tr><td><strong class="kw">梁の水平度 e</strong></td><td><mark class="critical">e ≤ L/1000 + 3mm</mark><br/><mark class="critical">e ≤ 10mm</mark></td><td><mark class="critical">e ≤ L/700 + 5mm</mark><br/><mark class="critical">e ≤ 15mm</mark></td></tr>
+<tr><td><strong class="kw">柱の倒れ e</strong></td><td><mark class="critical">e ≤ H/1000</mark><br/><mark class="critical">e ≤ 10mm</mark></td><td><mark class="critical">e ≤ H/700</mark><br/><mark class="critical">e ≤ 15mm</mark></td></tr>
 </tbody></table></div>
 </div>
-  </article>
-  <article class="study-card translation">
-    <div class="card-title">Bản dịch tiếng Việt</div>
-    <div class="recall-source" lang="vi">
+</article>
+<article class="study-card translation">
+<div class="card-title">Bản dịch tiếng Việt</div>
+<div class="recall-source" lang="vi">
 <h4>(2) Độ chính xác khi lắp dựng kết cấu thép</h4>
 <p>Việc 建入れ直し phải được thực hiện để đáp ứng độ chính xác lắp dựng trong bảng. <strong class="kw">Kết quả lắp dựng kết cấu thép cuối cùng</strong> phải <span class="relation">thỏa mãn toàn bộ sai số giới hạn（限界許容差）</span>. Trong quản lý thi công khi kiểm tra lô vật liệu đưa vào công trường, mục tiêu là đáp ứng <strong class="kw">sai số cho phép quản lý（管理許容差）</strong>.</p>
 <div class="table-wrap"><table>
 <caption>Độ chính xác lắp dựng kết cấu thép</caption>
 <thead><tr><th>Hạng mục</th><th>Sai số cho phép quản lý</th><th>Sai số giới hạn</th></tr></thead>
 <tbody>
-<tr><td><strong class="kw">Độ nghiêng tổng thể của công trình e</strong></td><td><mark class="critical">e ≤ H/4000 + 7 mm</mark><br><mark class="critical">e ≤ 30 mm</mark></td><td><mark class="critical">e ≤ H/2500 + 10 mm</mark><br><mark class="critical">e ≤ 50 mm</mark></td></tr>
-<tr><td><strong class="kw">Độ cong tổng thể của công trình e</strong></td><td><mark class="critical">e ≤ L/4000</mark><br><mark class="critical">e ≤ 20 mm</mark></td><td><mark class="critical">e ≤ L/2500</mark><br><mark class="critical">e ≤ 25 mm</mark></td></tr>
-<tr><td><strong class="kw">Độ ngang của dầm e</strong></td><td><mark class="critical">e ≤ L/1000 + 3 mm</mark><br><mark class="critical">e ≤ 10 mm</mark></td><td><mark class="critical">e ≤ L/700 + 5 mm</mark><br><mark class="critical">e ≤ 15 mm</mark></td></tr>
-<tr><td><strong class="kw">Độ nghiêng của cột e</strong></td><td><mark class="critical">e ≤ H/1000</mark><br><mark class="critical">e ≤ 10 mm</mark></td><td><mark class="critical">e ≤ H/700</mark><br><mark class="critical">e ≤ 15 mm</mark></td></tr>
+<tr><td><strong class="kw">Độ nghiêng tổng thể của công trình e</strong></td><td><mark class="critical">e ≤ H/4000 + 7 mm</mark><br/><mark class="critical">e ≤ 30 mm</mark></td><td><mark class="critical">e ≤ H/2500 + 10 mm</mark><br/><mark class="critical">e ≤ 50 mm</mark></td></tr>
+<tr><td><strong class="kw">Độ cong tổng thể của công trình e</strong></td><td><mark class="critical">e ≤ L/4000</mark><br/><mark class="critical">e ≤ 20 mm</mark></td><td><mark class="critical">e ≤ L/2500</mark><br/><mark class="critical">e ≤ 25 mm</mark></td></tr>
+<tr><td><strong class="kw">Độ ngang của dầm e</strong></td><td><mark class="critical">e ≤ L/1000 + 3 mm</mark><br/><mark class="critical">e ≤ 10 mm</mark></td><td><mark class="critical">e ≤ L/700 + 5 mm</mark><br/><mark class="critical">e ≤ 15 mm</mark></td></tr>
+<tr><td><strong class="kw">Độ nghiêng của cột e</strong></td><td><mark class="critical">e ≤ H/1000</mark><br/><mark class="critical">e ≤ 10 mm</mark></td><td><mark class="critical">e ≤ H/700</mark><br/><mark class="critical">e ≤ 15 mm</mark></td></tr>
 </tbody></table></div>
 <p>Trong đó: <strong>e</strong> là lượng sai lệch; <strong>H</strong> là chiều cao dùng để đánh giá độ nghiêng; <strong>L</strong> là chiều dài dùng để đánh giá độ cong hoặc độ ngang.</p>
 </div>
-  </article>
+</article>
 </div><p class="source-ref"><a href="#toc">↑ Mục lục</a></p></section>
-</section>
-  </main>
-  <!-- CONTENT_END -->
-
-  <!-- =====================================================
-       NON-DIMMED STUDY SUPPORT SECTIONS
-       These sections stay normally readable in Keywords mode.
-       ===================================================== -->
-
-  <section class="aggregate-section" id="terms">
-    <div class="section-head">
-      <h2>Thuật ngữ chuyên môn</h2>
-    </div>
-    
-<div class="table-wrap"><table>
+</section></main>
+<!-- CONTENT_END -->
+<section id="terms">
+<h2>Thuật ngữ chuyên môn</h2><div class="section-head">
+<h2>Thuật ngữ chuyên môn</h2>
+</div><div class="table-wrap"><table>
 <thead><tr><th>日本語</th><th>読み方</th><th>Tiếng Việt</th><th>Giải thích</th><th>Liên quan</th></tr></thead>
 <tbody>
 <tr><td>山留め支保工</td><td>やまどめしほこう</td><td>Hệ chống giữ tường chắn đất</td><td>Hệ kết cấu giữ ổn định tường chắn trong quá trình đào.</td><td>地盤アンカー, 切梁</td></tr>
@@ -1379,148 +1097,113 @@ body.toc-open .toc-drawer {
 <tr><td>ターンバックル</td><td>ターンバックル</td><td>Tăng đơ</td><td>Bộ phận điều chỉnh chiều dài hoặc lực căng của giằng.</td><td>筋かい</td></tr>
 <tr><td>管理許容差</td><td>かんりきょようさ</td><td>Sai số cho phép quản lý</td><td>Mức sai số dùng để quản lý chất lượng thi công.</td><td>限界許容差</td></tr>
 <tr><td>限界許容差</td><td>げんかいきょようさ</td><td>Sai số giới hạn</td><td>Giới hạn cuối cùng mà kết quả lắp dựng phải thỏa mãn.</td><td>建方精度</td></tr>
-</tbody></table></div>
-
-  </section>
-
-  <section class="aggregate-section" id="background">
-    <div class="section-head">
-      <h2>Kiến thức nền cần biết</h2>
-    </div>
-    
-<div class="note-box"><strong>1. Cấu tạo và cơ chế của neo đất</strong><p>Neo đất gồm phần đầu neo, đoạn tự do và vùng neo giữ. Đoạn tự do cho phép thép kéo biến dạng khi căng; vùng neo giữ truyền lực vào lớp đất tốt thông qua grout. Vì vậy phải xác nhận grout đã đông cứng trước khi căng thép PC bằng kích thủy lực.</p></div>
-<div class="note-box"><strong>2. Vì sao cần khoảng hở cốt thép</strong><p>Khoảng hở không chỉ phục vụ bố trí hình học. Nó cần cho truyền lực bám dính giữa thép và bê tông, đồng thời tạo đường cho bê tông và cốt liệu đi qua để đạt độ đặc chắc.</p></div>
-<div class="note-box"><strong>3. 管理許容差 và 限界許容差</strong><p>Trong bảng Book page 416, 管理許容差 là tiêu chuẩn quản lý chặt hơn; 限界許容差 là giới hạn cuối cùng mà kết quả lắp dựng hoàn thiện phải thỏa mãn.</p></div>
-
-  </section>
-
-  <section class="aggregate-section" id="memory">
-    <div class="section-head">
-      <h2>Điểm cần nhớ và mẹo nhớ</h2>
-    </div>
-    
-<div class="memory-box"><strong>Neo đất</strong><p><strong class="kw">Địa hình dốc, không thể dùng 切梁</strong> → <span class="relation">地盤アンカー</span>. <strong class="kw">Nền yếu</strong> → <span class="trap">không neo được</span>. <strong class="kw">Nước ngầm chảy nhanh</strong> → <span class="trap">không áp dụng được</span>.</p></div>
-<div class="memory-box"><strong>Mối nối và khoảng hở cốt thép</strong><p>Mối nối liền kề: <mark class="critical">0,5L1 hoặc 1,5L1</mark>. Spiral splice: <mark class="critical">≥ 50d và ≥ 300 mm</mark>. Khoảng hở: <mark class="critical">max(1,5d; 1,25Gmax; 25 mm)</mark>.</p></div>
-<div class="memory-box"><strong>Bê tông</strong><p><strong class="kw">Đầm dùi</strong>: khoảng cách <mark class="critical">≤ 60 cm</mark> → thời gian <mark class="critical">5-15 giây/vị trí</mark> → <span class="relation">rút chậm, thẳng đứng</span>.</p></div>
-<div class="memory-box"><strong>建入れ直し</strong><p><strong class="kw">ターンバックル付き筋かい</strong> → <span class="trap">không dùng để căn chỉnh</span>. <strong class="kw">Độ cứng nhỏ</strong> → <span class="relation">chia block nhỏ</span>. <strong class="kw">Nhịp thiếu</strong> → <span class="relation">mở clearance bằng nêm → chỉnh nhịp → 建入れ直し</span>.</p></div>
-<div class="comparison-box"><strong>Trị số giới hạn tuyệt đối trong bảng 建方精度</strong>
+</tbody></table></div></section>
+<section id="background">
+<h2>Kiến thức nền cần biết</h2><div class="section-head">
+<h2>Kiến thức nền cần biết</h2>
+</div><div class="note-box"><strong>1. Cấu tạo và cơ chế của neo đất</strong><p>Neo đất gồm phần đầu neo, đoạn tự do và vùng neo giữ. Đoạn tự do cho phép thép kéo biến dạng khi căng; vùng neo giữ truyền lực vào lớp đất tốt thông qua grout. Vì vậy phải xác nhận grout đã đông cứng trước khi căng thép PC bằng kích thủy lực.</p></div><div class="note-box"><strong>2. Vì sao cần khoảng hở cốt thép</strong><p>Khoảng hở không chỉ phục vụ bố trí hình học. Nó cần cho truyền lực bám dính giữa thép và bê tông, đồng thời tạo đường cho bê tông và cốt liệu đi qua để đạt độ đặc chắc.</p></div><div class="note-box"><strong>3. 管理許容差 và 限界許容差</strong><p>Trong bảng Book page 416, 管理許容差 là tiêu chuẩn quản lý chặt hơn; 限界許容差 là giới hạn cuối cùng mà kết quả lắp dựng hoàn thiện phải thỏa mãn.</p></div></section>
+<section id="memory">
+<h2>Điểm cần nhớ và mẹo nhớ</h2><div class="section-head">
+<h2>Điểm cần nhớ và mẹo nhớ</h2>
+</div><div class="memory-box"><strong>Neo đất</strong><p><strong class="kw">Địa hình dốc, không thể dùng 切梁</strong> → <span class="relation">地盤アンカー</span>. <strong class="kw">Nền yếu</strong> → <span class="trap">không neo được</span>. <strong class="kw">Nước ngầm chảy nhanh</strong> → <span class="trap">không áp dụng được</span>.</p></div><div class="memory-box"><strong>Mối nối và khoảng hở cốt thép</strong><p>Mối nối liền kề: <mark class="critical">0,5L1 hoặc 1,5L1</mark>. Spiral splice: <mark class="critical">≥ 50d và ≥ 300 mm</mark>. Khoảng hở: <mark class="critical">max(1,5d; 1,25Gmax; 25 mm)</mark>.</p></div><div class="memory-box"><strong>Bê tông</strong><p><strong class="kw">Đầm dùi</strong>: khoảng cách <mark class="critical">≤ 60 cm</mark> → thời gian <mark class="critical">5-15 giây/vị trí</mark> → <span class="relation">rút chậm, thẳng đứng</span>.</p></div><div class="memory-box"><strong>建入れ直し</strong><p><strong class="kw">ターンバックル付き筋かい</strong> → <span class="trap">không dùng để căn chỉnh</span>. <strong class="kw">Độ cứng nhỏ</strong> → <span class="relation">chia block nhỏ</span>. <strong class="kw">Nhịp thiếu</strong> → <span class="relation">mở clearance bằng nêm → chỉnh nhịp → 建入れ直し</span>.</p></div><div class="comparison-box"><strong>Trị số giới hạn tuyệt đối trong bảng 建方精度</strong>
 <div class="table-wrap"><table><thead><tr><th>Hạng mục</th><th>管理</th><th>限界</th></tr></thead><tbody>
 <tr><td><strong class="kw">建物の倒れ</strong></td><td><mark class="critical">30 mm</mark></td><td><mark class="critical">50 mm</mark></td></tr>
 <tr><td><strong class="kw">建物のわん曲</strong></td><td><mark class="critical">20 mm</mark></td><td><mark class="critical">25 mm</mark></td></tr>
 <tr><td><strong class="kw">梁の水平度</strong></td><td><mark class="critical">10 mm</mark></td><td><mark class="critical">15 mm</mark></td></tr>
 <tr><td><strong class="kw">柱の倒れ</strong></td><td><mark class="critical">10 mm</mark></td><td><mark class="critical">15 mm</mark></td></tr>
-</tbody></table></div></div>
-
-  </section>
-
-</div>
-
-<!-- =======================================================
-     APPROVED COMPONENT LIBRARY
-     Hidden. AI may copy/repeat these components into CONTENT.
-     Do not create a new visual system unless strictly necessary.
-     ======================================================= -->
+</tbody></table></div></div></section>
 <template id="component-library">
-
-  <!-- FIGURE -->
-  <figure class="figure-card">
-    <img src="{{IMAGE_SOURCE}}" alt="{{IMAGE_ALT}}">
-    <figcaption>{{FIGURE_CAPTION}}</figcaption>
-  </figure>
-
-  <!-- MULTIPLE FIGURES -->
-  <div class="figure-grid">
-    <figure class="figure-card">
-      <img src="{{IMAGE_SOURCE_1}}" alt="{{IMAGE_ALT_1}}">
-      <figcaption>{{FIGURE_CAPTION_1}}</figcaption>
-    </figure>
-    <figure class="figure-card">
-      <img src="{{IMAGE_SOURCE_2}}" alt="{{IMAGE_ALT_2}}">
-      <figcaption>{{FIGURE_CAPTION_2}}</figcaption>
-    </figure>
-  </div>
-
-  <!-- TABLE -->
-  <div class="table-wrap">
-    <table>
-      <caption>{{TABLE_CAPTION}}</caption>
-      <thead>
-        <tr><th>{{HEADER_1}}</th><th>{{HEADER_2}}</th></tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><strong class="kw">{{ROW_SUBJECT}}</strong></td>
-          <td><span class="relation">{{ROW_RECALL_CUE}}</span></td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-
-  <!-- NOTE -->
-  <div class="note-box">
-    <strong>{{NOTE_TITLE}}</strong>
-    <p>{{NOTE_CONTENT}}</p>
-  </div>
-
-  <!-- WARNING -->
-  <div class="warning-box">
-    <strong>{{WARNING_TITLE}}</strong>
-    <p>{{WARNING_CONTENT}}</p>
-  </div>
-
-  <!-- MEMORY -->
-  <div class="memory-box">
-    <strong>{{MEMORY_TITLE}}</strong>
-    <p>
-<div class="memory-box"><strong>Neo đất</strong><p><strong class="kw">Địa hình dốc, không thể dùng 切梁</strong> → <span class="relation">地盤アンカー</span>. <strong class="kw">Nền yếu</strong> → <span class="trap">không neo được</span>. <strong class="kw">Nước ngầm chảy nhanh</strong> → <span class="trap">không áp dụng được</span>.</p></div>
-<div class="memory-box"><strong>Mối nối và khoảng hở cốt thép</strong><p>Mối nối liền kề: <mark class="critical">0,5L1 hoặc 1,5L1</mark>. Spiral splice: <mark class="critical">≥ 50d và ≥ 300 mm</mark>. Khoảng hở: <mark class="critical">max(1,5d; 1,25Gmax; 25 mm)</mark>.</p></div>
-<div class="memory-box"><strong>Bê tông</strong><p><strong class="kw">Đầm dùi</strong>: khoảng cách <mark class="critical">≤ 60 cm</mark> → thời gian <mark class="critical">5-15 giây/vị trí</mark> → <span class="relation">rút chậm, thẳng đứng</span>.</p></div>
-<div class="memory-box"><strong>建入れ直し</strong><p><strong class="kw">ターンバックル付き筋かい</strong> → <span class="trap">không dùng để căn chỉnh</span>. <strong class="kw">Độ cứng nhỏ</strong> → <span class="relation">chia block nhỏ</span>. <strong class="kw">Nhịp thiếu</strong> → <span class="relation">mở clearance bằng nêm → chỉnh nhịp → 建入れ直し</span>.</p></div>
-<div class="comparison-box"><strong>Trị số giới hạn tuyệt đối trong bảng 建方精度</strong>
-<div class="table-wrap"><table><thead><tr><th>Hạng mục</th><th>管理</th><th>限界</th></tr></thead><tbody>
-<tr><td><strong class="kw">建物の倒れ</strong></td><td><mark class="critical">30 mm</mark></td><td><mark class="critical">50 mm</mark></td></tr>
-<tr><td><strong class="kw">建物のわん曲</strong></td><td><mark class="critical">20 mm</mark></td><td><mark class="critical">25 mm</mark></td></tr>
-<tr><td><strong class="kw">梁の水平度</strong></td><td><mark class="critical">10 mm</mark></td><td><mark class="critical">15 mm</mark></td></tr>
-<tr><td><strong class="kw">柱の倒れ</strong></td><td><mark class="critical">10 mm</mark></td><td><mark class="critical">15 mm</mark></td></tr>
-</tbody></table></div></div>
-</p>
-  </div>
-
-  <!-- FORMULA / FLOW -->
-  <div class="formula-box">
-    <div class="formula-line">
-      <span class="flow-node">{{NODE_1}}</span>
-      <span class="flow-arrow">→</span>
-      <span class="flow-node">{{NODE_2}}</span>
-      <span class="flow-arrow">→</span>
-      <span class="flow-node">{{NODE_3}}</span>
-    </div>
-  </div>
-
+<div class="table-wrap">
+<table>
+<caption>{{TABLE_CAPTION}}</caption>
+<thead><tr><th>{{HEADER_1}}</th><th>{{HEADER_2}}</th></tr></thead>
+<tbody><tr><td><strong class="kw">{{ROW_KEY}}</strong></td><td><span class="relation">{{ROW_RELATION}}</span></td></tr></tbody>
+</table>
+</div>
+<figure class="figure-card">
+<img alt="{{IMAGE_ALT}}" height="{{IMAGE_HEIGHT}}" src="{{IMAGE_SOURCE}}" width="{{IMAGE_WIDTH}}"/>
+<figcaption>{{IMAGE_CAPTION}}</figcaption>
+</figure>
+<div class="figure-grid">
+<figure class="figure-card">
+<img alt="{{IMAGE_ALT_1}}" height="{{IMAGE_HEIGHT_1}}" src="{{IMAGE_SOURCE_1}}" width="{{IMAGE_WIDTH_1}}"/>
+<figcaption>{{IMAGE_CAPTION_1}}</figcaption>
+</figure>
+<figure class="figure-card">
+<img alt="{{IMAGE_ALT_2}}" height="{{IMAGE_HEIGHT_2}}" src="{{IMAGE_SOURCE_2}}" width="{{IMAGE_WIDTH_2}}"/>
+<figcaption>{{IMAGE_CAPTION_2}}</figcaption>
+</figure>
+</div>
+<section class="note-box"><h3>{{NOTE_TITLE}}</h3><p>{{NOTE_CONTENT}}</p></section>
+<section class="warning-box"><h3>{{WARNING_TITLE}}</h3><p>{{WARNING_CONTENT}}</p></section>
+<section class="memory-box"><h3>{{MEMORY_TITLE}}</h3><p>{{MEMORY_ITEM}}</p></section>
 </template>
-
+</div>
 <script>
-(() => {
-  "use strict";
+(function () {
+  'use strict';
 
   const root = document.documentElement;
   const body = document.body;
+  const q = id => document.getElementById(id);
+  const FONT_LEVELS = Array.from({ length: 21 }, (_, i) => 50 + i * 5);
 
-  const themeToggle = document.getElementById("theme-toggle");
-  const modeToggle = document.getElementById("mode-toggle");
-  const fontDown = document.getElementById("font-down");
-  const fontReset = document.getElementById("font-reset");
-  const fontUp = document.getElementById("font-up");
+  const controls = q('control-cluster');
+  const controlsToggle = q('controls-toggle');
+  const controlPanel = q('control-panel');
+  const themeButton = q('theme-toggle');
+  const modeButton = q('mode-toggle');
+  const fontDown = q('font-down');
+  const fontUp = q('font-up');
+  const fontReset = q('font-reset');
+  const tocButton = q('toc-toggle');
+  const tocClose = q('toc-close');
+  const overlay = q('toc-overlay');
+  const prevButton = q('section-prev');
+  const nextButton = q('section-next');
+  const homeButton = q('home-button');
 
-  const tocToggle = document.getElementById("toc-toggle");
-  const tocClose = document.getElementById("toc-close");
-  const tocOverlay = document.getElementById("toc-overlay");
-  const tocDrawer = document.getElementById("toc-drawer");
+  const pageKey = location.pathname + location.search;
+  const readerStateKey = 'study-reader-position:' + pageKey;
+  const lastPageKey = 'study-last-page';
+  const explicitHomeKey = 'study-explicit-home';
+  const anchorSelector = [
+    '.page-shell h1', '.page-shell h2', '.page-shell h3', '.page-shell h4',
+    '.page-shell p', '.page-shell li', '.page-shell td', '.page-shell th',
+    '.page-shell figcaption', '.page-shell .card-title'
+  ].join(', ');
 
-  const prevButton = document.getElementById("section-prev");
-  const nextButton = document.getElementById("section-next");
+  let anchorElements = [];
+  let lastStablePosition = null;
+  let scrollSaveTimer = 0;
+  let resizeRestoreTimer = 0;
+  let resizeAnchor = null;
+  let suppressScrollSaveUntil = 0;
+  function layoutViewportSize() {
+    const de = document.documentElement;
+    return {
+      width: de.clientWidth || window.innerWidth,
+      height: de.clientHeight || window.innerHeight
+    };
+  }
 
-  const FONT_LEVELS = [80, 90, 100, 110, 120, 130, 140];
+  function visualViewportScale() {
+    const vv = window.visualViewport;
+    return vv && Number.isFinite(vv.scale) ? vv.scale : 1;
+  }
+
+  function isPinchZoomActive() {
+    return Math.abs(visualViewportScale() - 1) > 0.015;
+  }
+
+  const initialLayoutViewport = layoutViewportSize();
+  let lastViewportWidth = initialLayoutViewport.width;
+  let lastViewportHeight = initialLayoutViewport.height;
+  let pinchZoomSession = false;
+
+  try {
+    if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+  } catch (e) {}
 
   function safeGet(key, fallback = null) {
     try {
@@ -1532,210 +1215,602 @@ body.toc-open .toc-drawer {
   }
 
   function safeSet(key, value) {
-    try {
-      localStorage.setItem(key, value);
-    } catch (e) {}
+    try { localStorage.setItem(key, value); } catch (e) {}
   }
+
+  function safeRemove(key) {
+    try { localStorage.removeItem(key); } catch (e) {}
+  }
+
+  /* ---------- Persistent page / PWA resume metadata ---------- */
+
+  function rememberCurrentPage() {
+    safeSet(lastPageKey, pageKey);
+    safeSet('study-last-active-at', String(Date.now()));
+  }
+
+  rememberCurrentPage();
+
+  /* ---------- Layout viewport geometry ---------- */
+
+  /*
+    Pinch zoom changes visualViewport.width / height / scale.
+    It must NOT change the document layout width.
+
+    Therefore --app-viewport-width is derived only from the layout viewport
+    (documentElement.clientWidth / innerWidth), never from visualViewport.width.
+  */
+  function syncViewportGeometry() {
+    const { width } = layoutViewportSize();
+    root.style.setProperty(
+      '--app-viewport-width',
+      `${Math.round(width * 100) / 100}px`
+    );
+  }
+
+  syncViewportGeometry();
+
+  /* ---------- Reader anchors ---------- */
+
+  function rebuildReaderAnchors() {
+    anchorElements = Array.from(document.querySelectorAll(anchorSelector));
+    anchorElements.forEach((el, index) => {
+      el.dataset.readerKey = 'r' + index;
+    });
+  }
+
+  function closestReaderElement(node) {
+    if (!node) return null;
+    const el = node.nodeType === Node.ELEMENT_NODE ? node : node.parentElement;
+    return el ? el.closest('[data-reader-key]') : null;
+  }
+
+  function caretAtPoint(x, y) {
+    try {
+      if (document.caretPositionFromPoint) {
+        const pos = document.caretPositionFromPoint(x, y);
+        if (!pos || !pos.offsetNode) return null;
+        return { node: pos.offsetNode, offset: pos.offset };
+      }
+      if (document.caretRangeFromPoint) {
+        const range = document.caretRangeFromPoint(x, y);
+        if (!range) return null;
+        return { node: range.startContainer, offset: range.startOffset };
+      }
+    } catch (e) {}
+    return null;
+  }
+
+  function textOffsetFromElementStart(element, node, offset) {
+    try {
+      const range = document.createRange();
+      range.setStart(element, 0);
+      range.setEnd(node, offset);
+      return range.toString().length;
+    } catch (e) {
+      return 0;
+    }
+  }
+
+  function domPositionFromTextOffset(element, targetOffset) {
+    const walker = document.createTreeWalker(element, NodeFilter.SHOW_TEXT);
+    let remaining = Math.max(0, targetOffset);
+    let node = walker.nextNode();
+    let last = null;
+
+    while (node) {
+      last = node;
+      const len = node.nodeValue ? node.nodeValue.length : 0;
+      if (remaining <= len) {
+        return { node, offset: remaining };
+      }
+      remaining -= len;
+      node = walker.nextNode();
+    }
+
+    if (last) return { node: last, offset: last.nodeValue ? last.nodeValue.length : 0 };
+    return { node: element, offset: 0 };
+  }
+
+  function characterRect(node, offset) {
+    try {
+      if (node.nodeType !== Node.TEXT_NODE) {
+        const r = node.getBoundingClientRect ? node.getBoundingClientRect() : null;
+        return r && r.height ? r : null;
+      }
+
+      const len = node.nodeValue ? node.nodeValue.length : 0;
+      if (!len) return node.parentElement ? node.parentElement.getBoundingClientRect() : null;
+
+      let start = Math.max(0, Math.min(offset, len - 1));
+      let end = Math.min(len, start + 1);
+      if (offset >= len && len > 0) {
+        start = len - 1;
+        end = len;
+      }
+
+      const range = document.createRange();
+      range.setStart(node, start);
+      range.setEnd(node, end);
+      const rects = range.getClientRects();
+      return rects.length ? rects[0] : range.getBoundingClientRect();
+    } catch (e) {
+      return null;
+    }
+  }
+
+  function captureReadingPosition() {
+    if (!anchorElements.length) rebuildReaderAnchors();
+    if (!anchorElements.length) return null;
+
+    const vv = window.visualViewport;
+    const viewportWidth = vv ? vv.width : window.innerWidth;
+    const topProbe = 6;
+    const ys = [topProbe, 12, 18, 26, 36, 50];
+    const xs = [];
+
+    for (let x = 12; x <= Math.min(viewportWidth - 12, 220); x += 16) xs.push(x);
+    xs.push(viewportWidth * .25, viewportWidth * .5, viewportWidth * .75);
+
+    for (const y of ys) {
+      for (const x of xs) {
+        if (x <= 0 || x >= viewportWidth) continue;
+        const caret = caretAtPoint(x, y);
+        if (!caret) continue;
+        const element = closestReaderElement(caret.node);
+        if (!element || !document.querySelector('.page-shell')?.contains(element)) continue;
+
+        const offset = textOffsetFromElementStart(element, caret.node, caret.offset);
+        const rect = characterRect(caret.node, caret.offset);
+        const key = element.dataset.readerKey;
+        if (key && rect && Number.isFinite(rect.top)) {
+          return { key, offset, top: rect.top };
+        }
+      }
+    }
+
+    /* Fallback: nearest textual block to the top edge. */
+    let best = null;
+    let bestDistance = Infinity;
+    for (const element of anchorElements) {
+      const rect = element.getBoundingClientRect();
+      if (rect.bottom < 0 || rect.top > (vv ? vv.height : window.innerHeight)) continue;
+      const distance = Math.abs(rect.top);
+      if (distance < bestDistance) {
+        bestDistance = distance;
+        best = { key: element.dataset.readerKey, offset: 0, top: rect.top };
+      }
+    }
+    return best;
+  }
+
+  function restoreReadingPosition(state) {
+    if (!state || !state.key) return false;
+    if (!anchorElements.length) rebuildReaderAnchors();
+
+    const element = document.querySelector('[data-reader-key="' + CSS.escape(state.key) + '"]');
+    if (!element) return false;
+
+    const pos = domPositionFromTextOffset(element, Number(state.offset) || 0);
+    const rect = characterRect(pos.node, pos.offset);
+    if (!rect || !Number.isFinite(rect.top)) return false;
+
+    const desiredTop = Number.isFinite(Number(state.top)) ? Number(state.top) : 6;
+    const delta = rect.top - desiredTop;
+    if (Math.abs(delta) < .5) return true;
+
+    suppressScrollSaveUntil = Date.now() + 700;
+    const oldBehavior = root.style.scrollBehavior;
+    root.style.scrollBehavior = 'auto';
+    window.scrollBy(0, delta);
+    root.style.scrollBehavior = oldBehavior;
+    return true;
+  }
+
+  function saveReaderState(state) {
+    if (!state) return;
+    lastStablePosition = state;
+    safeSet(readerStateKey, JSON.stringify(state));
+  }
+
+  function readReaderState() {
+    try {
+      const raw = safeGet(readerStateKey);
+      return raw ? JSON.parse(raw) : null;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  function settleRestore(state, delays = [0, 60, 180, 420]) {
+    if (!state) return;
+    suppressScrollSaveUntil = Date.now() + Math.max(...delays) + 350;
+    delays.forEach(delay => {
+      window.setTimeout(() => {
+        requestAnimationFrame(() => restoreReadingPosition(state));
+      }, delay);
+    });
+    window.setTimeout(() => {
+      saveReaderState(state);
+    }, Math.max(...delays) + 120);
+  }
+
+  function preserveReadingPosition(mutator) {
+    const state = captureReadingPosition() || lastStablePosition || readReaderState();
+    if (state) saveReaderState(state);
+    mutator();
+    rebuildReaderAnchors();
+    settleRestore(state);
+  }
+
+  function scheduleReaderSave() {
+    if (Date.now() < suppressScrollSaveUntil) return;
+    clearTimeout(scrollSaveTimer);
+    scrollSaveTimer = window.setTimeout(() => {
+      if (Date.now() < suppressScrollSaveUntil) return;
+      const state = captureReadingPosition();
+      if (state) saveReaderState(state);
+    }, 130);
+  }
+
+  rebuildReaderAnchors();
+  lastStablePosition = readReaderState();
 
   /* ---------- Theme ---------- */
 
   function applyTheme(theme) {
-    const next = theme === "light" ? "light" : "dark";
-    root.dataset.theme = next;
-
-    if (themeToggle) {
-      const dark = next === "dark";
-      themeToggle.textContent = dark ? "☀" : "☾";
-      themeToggle.title = dark ? "Chuyển sang Light" : "Chuyển sang Dark";
-      themeToggle.setAttribute("aria-pressed", String(!dark));
+    theme = theme === 'light' ? 'light' : 'dark';
+    root.dataset.theme = theme;
+    safeSet('study-theme', theme);
+    if (themeButton) {
+      themeButton.textContent = theme === 'dark' ? '☀' : '☾';
+      themeButton.title = theme === 'dark' ? 'Chuyển sang Light theme' : 'Chuyển sang Dark theme';
+      themeButton.setAttribute('aria-label', themeButton.title);
+      themeButton.setAttribute('aria-pressed', theme === 'light' ? 'true' : 'false');
     }
-
-    safeSet("study-theme", next);
   }
-
-  const initialTheme =
-    safeGet("study-theme") ||
-    (window.matchMedia &&
-     window.matchMedia("(prefers-color-scheme: dark)").matches
-      ? "dark"
-      : "light");
-
-  applyTheme(initialTheme);
-
-  themeToggle?.addEventListener("click", () => {
-    applyTheme(root.dataset.theme === "dark" ? "light" : "dark");
-  });
 
   /* ---------- Full / Keywords ---------- */
 
   function applyMode(mode) {
-    const keywords = mode === "keywords";
-    body.classList.toggle("keyword-focus", keywords);
-
-    if (modeToggle) {
-      modeToggle.textContent = keywords ? "📖" : "🎯";
-      modeToggle.title = keywords ? "Chuyển sang Full" : "Chuyển sang Keywords";
-      modeToggle.setAttribute("aria-pressed", String(keywords));
+    mode = mode === 'keywords' ? 'keywords' : 'full';
+    root.dataset.studyMode = mode;
+    body.classList.toggle('keyword-focus', mode === 'keywords');
+    safeSet('study-mode', mode);
+    if (modeButton) {
+      modeButton.textContent = mode === 'full' ? '🎯' : '📖';
+      modeButton.title = mode === 'full' ? 'Chuyển sang Keywords mode' : 'Trở lại Full mode';
+      modeButton.setAttribute('aria-label', modeButton.title);
+      modeButton.setAttribute('aria-pressed', mode === 'keywords' ? 'true' : 'false');
     }
-
-    safeSet("study-mode", keywords ? "keywords" : "full");
   }
 
-  applyMode(safeGet("study-mode", "full"));
+  /* ---------- Font 50-150%, step 5% ---------- */
 
-  modeToggle?.addEventListener("click", () => {
-    applyMode(body.classList.contains("keyword-focus") ? "full" : "keywords");
-  });
-
-  /* ---------- Font scale ---------- */
-
-  let fontScale = Number(safeGet("study-font-scale", "100"));
-  if (!FONT_LEVELS.includes(fontScale)) {
-    fontScale = 100;
+  function currentScale() {
+    const saved = Number(safeGet('study-font-scale', '100'));
+    return FONT_LEVELS.includes(saved) ? saved : 100;
   }
 
   function applyFontScale(scale) {
-    fontScale = FONT_LEVELS.includes(scale) ? scale : 100;
-
-    root.style.setProperty(
-      "--base-font-size",
-      `${16 * fontScale / 100}px`
-    );
+    if (!FONT_LEVELS.includes(scale)) scale = 100;
+    root.style.setProperty('--base-font-size', (16 * scale / 100) + 'px');
+    safeSet('study-font-scale', String(scale));
 
     if (fontReset) {
-      fontReset.textContent = `${fontScale}%`;
-      fontReset.title =
-        fontScale === 100
-          ? "Cỡ chữ hiện tại 100%"
-          : `Cỡ chữ hiện tại ${fontScale}%, bấm để về 100%`;
+      fontReset.textContent = scale + '%';
+      fontReset.title = 'Cỡ chữ hiện tại ' + scale + '%. Chạm để về 100%';
+      fontReset.setAttribute('aria-label', fontReset.title);
     }
-
-    if (fontDown) {
-      fontDown.disabled = fontScale === FONT_LEVELS[0];
-    }
-
-    if (fontUp) {
-      fontUp.disabled = fontScale === FONT_LEVELS[FONT_LEVELS.length - 1];
-    }
-
-    safeSet("study-font-scale", String(fontScale));
+    if (fontDown) fontDown.disabled = scale === FONT_LEVELS[0];
+    if (fontUp) fontUp.disabled = scale === FONT_LEVELS[FONT_LEVELS.length - 1];
   }
 
-  applyFontScale(fontScale);
+  /* ---------- Collapsible controls ---------- */
 
-  fontDown?.addEventListener("click", () => {
-    const index = FONT_LEVELS.indexOf(fontScale);
-    if (index > 0) {
-      applyFontScale(FONT_LEVELS[index - 1]);
-    }
-  });
-
-  fontUp?.addEventListener("click", () => {
-    const index = FONT_LEVELS.indexOf(fontScale);
-    if (index >= 0 && index < FONT_LEVELS.length - 1) {
-      applyFontScale(FONT_LEVELS[index + 1]);
-    }
-  });
-
-  fontReset?.addEventListener("click", () => {
-    applyFontScale(100);
-  });
-
-  /* ---------- TOC drawer ---------- */
-
-  function setToc(open) {
-    body.classList.toggle("toc-open", open);
-    tocToggle?.setAttribute("aria-expanded", String(open));
-    tocOverlay?.setAttribute("aria-hidden", String(!open));
-
-    if (open) {
-      requestAnimationFrame(() => tocClose?.focus());
-    }
+  function setControlsOpen(open) {
+    if (!controls) return;
+    controls.classList.toggle('open', open);
+    controlsToggle?.setAttribute('aria-expanded', String(open));
+    controlsToggle?.setAttribute('aria-label', open ? 'Đóng công cụ' : 'Mở công cụ');
+    controlsToggle?.setAttribute('title', open ? 'Đóng công cụ' : 'Mở công cụ');
   }
 
-  tocToggle?.addEventListener("click", () => {
-    setToc(!body.classList.contains("toc-open"));
+  controlsToggle?.addEventListener('click', event => {
+    event.stopPropagation();
+    setControlsOpen(!controls.classList.contains('open'));
   });
 
-  tocClose?.addEventListener("click", () => setToc(false));
-  tocOverlay?.addEventListener("click", () => setToc(false));
-
-  tocDrawer?.querySelectorAll("a[href^='#']").forEach(link => {
-    link.addEventListener("click", () => setToc(false));
+  controlPanel?.addEventListener('click', event => event.stopPropagation());
+  document.addEventListener('pointerdown', event => {
+    if (controls?.classList.contains('open') && !controls.contains(event.target)) setControlsOpen(false);
   });
 
-  document.addEventListener("keydown", event => {
-    if (event.key === "Escape" && body.classList.contains("toc-open")) {
-      setToc(false);
-      tocToggle?.focus();
+  /* ---------- TOC ---------- */
+
+  function openToc() {
+    body.classList.add('toc-open');
+    tocButton?.setAttribute('aria-expanded', 'true');
+    setControlsOpen(false);
+  }
+
+  function closeToc() {
+    body.classList.remove('toc-open');
+    tocButton?.setAttribute('aria-expanded', 'false');
+  }
+
+  tocButton?.addEventListener('click', openToc);
+  tocClose?.addEventListener('click', closeToc);
+  overlay?.addEventListener('click', closeToc);
+
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape') {
+      closeToc();
+      setControlsOpen(false);
     }
   });
 
-  /* ---------- Back / Next section ---------- */
+  document.querySelectorAll('a[href="#toc"]').forEach(a => {
+    a.addEventListener('click', event => {
+      event.preventDefault();
+      openToc();
+    });
+  });
 
-  const studySections = Array.from(
-    document.querySelectorAll("main .study-section[id]")
-  );
+  /* TOC navigation does not add hash-history entries. */
+  document.querySelectorAll('#toc a[href^="#"]').forEach(a => {
+    a.addEventListener('click', event => {
+      const href = a.getAttribute('href');
+      if (!href || href === '#toc') return;
+      const target = document.getElementById(decodeURIComponent(href.slice(1)));
+      if (!target) return;
+      event.preventDefault();
+      closeToc();
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      window.setTimeout(scheduleReaderSave, 450);
+    });
+  });
+
+  /* ---------- Previous / next lesson item ---------- */
+
+  const tocTargets = Array.from(document.querySelectorAll('#toc a[href^="#"]'))
+    .map(a => document.getElementById(decodeURIComponent(a.getAttribute('href').slice(1))))
+    .filter((el, i, arr) => el && el.id !== 'toc' && arr.indexOf(el) === i);
 
   function currentSectionIndex() {
-    if (!studySections.length) return -1;
-
-    const referenceY = window.scrollY + Math.min(window.innerHeight * 0.32, 220);
-    let index = 0;
-
-    for (let i = 0; i < studySections.length; i++) {
-      if (studySections[i].offsetTop <= referenceY) {
-        index = i;
-      } else {
-        break;
-      }
-    }
-    return index;
+    let idx = -1;
+    const threshold = 24;
+    tocTargets.forEach((el, i) => {
+      if (el.getBoundingClientRect().top <= threshold) idx = i;
+    });
+    return idx;
   }
 
-  function updateNavState() {
-    if (!studySections.length) {
-      if (prevButton) prevButton.disabled = true;
-      if (nextButton) nextButton.disabled = true;
+  function updateSectionButtons() {
+    const i = currentSectionIndex();
+    if (prevButton) prevButton.disabled = !tocTargets.length || i <= 0;
+    if (nextButton) nextButton.disabled = !tocTargets.length || i >= tocTargets.length - 1;
+  }
+
+  function goToIndex(i) {
+    if (!tocTargets.length) return;
+    i = Math.max(0, Math.min(tocTargets.length - 1, i));
+    tocTargets[i].scrollIntoView({ behavior: 'smooth', block: 'start' });
+    window.setTimeout(() => {
+      const state = captureReadingPosition();
+      if (state) saveReaderState(state);
+      updateSectionButtons();
+    }, 450);
+  }
+
+  prevButton?.addEventListener('click', () => goToIndex(Math.max(0, currentSectionIndex() - 1)));
+  nextButton?.addEventListener('click', () => goToIndex(Math.min(tocTargets.length - 1, currentSectionIndex() + 1)));
+
+  /* ---------- Home ---------- */
+
+  homeButton?.addEventListener('click', () => {
+    const state = captureReadingPosition();
+    if (state) saveReaderState(state);
+    safeSet(explicitHomeKey, '1');
+    safeSet('study-home-click-at', String(Date.now()));
+    window.location.href = new URL('index.html', window.location.href).href;
+  });
+
+  /* ---------- Initialize state ---------- */
+
+  applyTheme(root.dataset.theme === 'light' ? 'light' : 'dark');
+  applyMode(root.dataset.studyMode || 'full');
+  applyFontScale(currentScale());
+
+  themeButton?.addEventListener('click', () => applyTheme(root.dataset.theme === 'dark' ? 'light' : 'dark'));
+  modeButton?.addEventListener('click', () => applyMode(root.dataset.studyMode === 'keywords' ? 'full' : 'keywords'));
+
+  fontDown?.addEventListener('click', () => {
+    const i = FONT_LEVELS.indexOf(currentScale());
+    if (i > 0) preserveReadingPosition(() => applyFontScale(FONT_LEVELS[i - 1]));
+  });
+
+  fontUp?.addEventListener('click', () => {
+    const i = FONT_LEVELS.indexOf(currentScale());
+    if (i >= 0 && i < FONT_LEVELS.length - 1) preserveReadingPosition(() => applyFontScale(FONT_LEVELS[i + 1]));
+  });
+
+  fontReset?.addEventListener('click', () => preserveReadingPosition(() => applyFontScale(100)));
+
+  /* ---------- Scroll / rotation / resize persistence ---------- */
+
+  window.addEventListener('scroll', () => {
+    scheduleReaderSave();
+    updateSectionButtons();
+  }, { passive: true });
+
+  function handleLayoutViewportChange() {
+    /*
+      A native two-finger pinch changes VisualViewport but normally does not
+      change the layout viewport. Ignore it completely so the page does not
+      recalculate width or fight the browser's native zoom.
+    */
+    if (isPinchZoomActive()) {
+      pinchZoomSession = true;
       return;
     }
 
-    const index = currentSectionIndex();
-    if (prevButton) prevButton.disabled = index <= 0;
-    if (nextButton) nextButton.disabled = index >= studySections.length - 1;
-  }
+    const { width: w, height: h } = layoutViewportSize();
 
-  function moveSection(delta) {
-    const index = currentSectionIndex();
-    const targetIndex = Math.max(
-      0,
-      Math.min(studySections.length - 1, index + delta)
-    );
+    /*
+      When pinch zoom returns to scale 1, VisualViewport may emit another
+      resize. If the layout viewport itself did not change, this was only zoom,
+      so do nothing.
+    */
+    const layoutChanged =
+      Math.abs(w - lastViewportWidth) >= 1 ||
+      Math.abs(h - lastViewportHeight) >= 1;
 
-    studySections[targetIndex]?.scrollIntoView({
-      behavior: "smooth",
-      block: "start"
-    });
-  }
-
-  prevButton?.addEventListener("click", () => moveSection(-1));
-  nextButton?.addEventListener("click", () => moveSection(1));
-
-  let ticking = false;
-  window.addEventListener("scroll", () => {
-    if (!ticking) {
-      requestAnimationFrame(() => {
-        updateNavState();
-        ticking = false;
-      });
-      ticking = true;
+    if (!layoutChanged) {
+      pinchZoomSession = false;
+      return;
     }
+
+    pinchZoomSession = false;
+
+    if (!resizeAnchor) {
+      resizeAnchor =
+        lastStablePosition ||
+        readReaderState() ||
+        captureReadingPosition();
+    }
+
+    /*
+      Only a real layout change, such as portrait <-> landscape, updates
+      --app-viewport-width.
+    */
+    syncViewportGeometry();
+    lastViewportWidth = w;
+    lastViewportHeight = h;
+
+    if (resizeAnchor) {
+      settleRestore(resizeAnchor, [0, 50, 140, 300]);
+    }
+
+    clearTimeout(resizeRestoreTimer);
+    resizeRestoreTimer = window.setTimeout(() => {
+      if (resizeAnchor) {
+        settleRestore(resizeAnchor, [0, 80, 220]);
+      }
+
+      window.setTimeout(() => {
+        lastStablePosition =
+          resizeAnchor ||
+          captureReadingPosition();
+
+        if (lastStablePosition) {
+          saveReaderState(lastStablePosition);
+        }
+
+        resizeAnchor = null;
+        updateSectionButtons();
+      }, 320);
+    }, 260);
+  }
+
+  function handleVisualViewportResize() {
+    /*
+      visualViewport resize is the main signal used by Safari/WebKit while
+      pinch-zooming. At scale != 1 this is zoom, not a responsive-layout event.
+    */
+    if (isPinchZoomActive()) {
+      pinchZoomSession = true;
+      return;
+    }
+
+    handleLayoutViewportChange();
+  }
+
+  window.addEventListener(
+    'resize',
+    handleLayoutViewportChange,
+    { passive: true }
+  );
+
+  window.addEventListener('orientationchange', () => {
+    /*
+      Rotation is a genuine layout change. Use the stored logical reading
+      position, then wait for iOS to finish updating its layout viewport.
+    */
+    resizeAnchor =
+      lastStablePosition ||
+      readReaderState() ||
+      captureReadingPosition();
+
+    [40, 120, 280].forEach(delay => {
+      window.setTimeout(() => {
+        if (isPinchZoomActive()) return;
+
+        const size = layoutViewportSize();
+        syncViewportGeometry();
+
+        if (
+          Math.abs(size.width - lastViewportWidth) >= 1 ||
+          Math.abs(size.height - lastViewportHeight) >= 1
+        ) {
+          lastViewportWidth = size.width;
+          lastViewportHeight = size.height;
+        }
+
+        if (resizeAnchor) {
+          settleRestore(resizeAnchor, [0, 70, 180]);
+        }
+      }, delay);
+    });
+
+    window.setTimeout(() => {
+      resizeAnchor = null;
+      updateSectionButtons();
+    }, 620);
   }, { passive: true });
 
-  window.addEventListener("resize", updateNavState);
-  updateNavState();
-})();
-</script>
+  window.visualViewport?.addEventListener(
+    'resize',
+    handleVisualViewportResize,
+    { passive: true }
+  );
 
-</body>
+  function saveLifecycleState() {
+    const state = captureReadingPosition() || lastStablePosition;
+    if (state) saveReaderState(state);
+    rememberCurrentPage();
+  }
+
+  document.addEventListener('visibilitychange', () => {
+    if (document.visibilityState === 'hidden') saveLifecycleState();
+    else {
+      rememberCurrentPage();
+      const state = readReaderState();
+      if (state) settleRestore(state, [0, 80, 220]);
+    }
+  });
+
+  window.addEventListener('pagehide', saveLifecycleState);
+  window.addEventListener('beforeunload', saveLifecycleState);
+
+  window.addEventListener('pageshow', () => {
+    rememberCurrentPage();
+    rebuildReaderAnchors();
+    const state = readReaderState();
+    if (!location.hash && state) settleRestore(state, [0, 80, 220, 500]);
+    window.setTimeout(updateSectionButtons, 80);
+  });
+
+  window.addEventListener('load', () => {
+    rebuildReaderAnchors();
+    const state = readReaderState();
+    if (!location.hash && state) settleRestore(state, [0, 80, 220, 500]);
+    else {
+      const current = captureReadingPosition();
+      if (current) saveReaderState(current);
+    }
+    updateSectionButtons();
+  });
+})();
+</script></body>
 </html>
