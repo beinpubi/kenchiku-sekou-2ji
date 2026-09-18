@@ -409,11 +409,6 @@ html[data-study-mode="keywords"] .recall-source .item-label { color: var(--headi
     max-width: 1320px !important;
   }
 
-  .study-grid,
-  .lang-grid,
-  .bilingual-note {
-    grid-template-columns: 1fr !important;
-  }
 
   .hero {
     padding: 1rem !important;
@@ -425,6 +420,15 @@ html[data-study-mode="keywords"] .recall-source .item-label { color: var(--headi
   .topic,
   .aggregate-section {
     padding: 1rem !important;
+  }
+}
+
+
+@media (pointer: coarse) and (orientation: portrait) {
+  .study-grid,
+  .lang-grid,
+  .bilingual-note {
+    grid-template-columns: 1fr !important;
   }
 }
 
@@ -511,6 +515,35 @@ body.toc-open { overflow: hidden; }
   body > .page-shell > section:not(#toc),
   body > .page-shell > main > section,
   .topic, .aggregate-section { padding: 1rem; border-radius: 12px; }
+}
+
+
+/*
+  iPad/tablet landscape:
+  Japanese and Vietnamese return to two side-by-side columns.
+  The min-height condition avoids forcing ordinary phone landscape into
+  two columns that would be too narrow.
+*/
+@media (pointer: coarse) and (orientation: landscape) and (min-width: 700px) and (min-height: 600px) {
+  body > main,
+  body > .page-shell {
+    width: min(calc(var(--app-viewport-width, 100dvw) - 20px), 1320px) !important;
+    max-width: 1320px !important;
+  }
+
+  .study-grid,
+  .lang-grid,
+  .bilingual-note {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important;
+    gap: clamp(.75rem, 1.4vw, 1rem) !important;
+    align-items: start;
+  }
+
+  .study-card,
+  .lang-card,
+  .note-pane {
+    min-width: 0;
+  }
 }
 
 @media print {
