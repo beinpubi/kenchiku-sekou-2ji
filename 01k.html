@@ -1,0 +1,3420 @@
+<!DOCTYPE html>
+<html data-study-mode="full" data-theme="dark" lang="vi">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<meta content="dark light" name="color-scheme"/>
+<meta content="test-2.1-responsive-landscape" name="study-template-version"/>
+<title>平成28年度 問題1 施工経験記述｜Book 117-121</title>
+<style>
+:root {
+  --app-viewport-width: 100vw;
+  --font-vi: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  --font-ja: "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic UI", "Yu Gothic", Meiryo, sans-serif;
+  --base-font-size: 16px;
+  color-scheme: dark;
+}
+
+html[data-theme="dark"] {
+  --bg: #101318;
+  --surface: #171B22;
+  --surface-alt: #1D232C;
+  --text: #E3E7ED;
+  --text-muted: #9DA8B5;
+  --focus-muted: #68717D;
+  --heading: #F4F7FA;
+  --border: #323A46;
+  --link: #7CC4FF;
+  --original-bg: #15181E;
+  --translation-bg: #16202A;
+  --note-bg: #1C2028;
+  --memory-bg: #20231C;
+  --keyword: #74D7FF;
+  --keyword-bg: rgba(75, 190, 255, 0.10);
+  --critical-bg: #594613;
+  --critical-text: #FFE39A;
+  --trap: #FF8585;
+  --trap-underline: #FF5F5F;
+  --relation-bg: rgba(139, 126, 255, 0.12);
+  --relation-border: #8F86FF;
+  --shadow: rgba(0, 0, 0, .28);
+  --dock-bg: rgba(23, 27, 34, .94);
+  --overlay: rgba(0, 0, 0, .48);
+  color-scheme: dark;
+}
+
+html[data-theme="light"] {
+  --bg: #F4F6F8;
+  --surface: #FFFFFF;
+  --surface-alt: #EEF1F5;
+  --text: #20242A;
+  --text-muted: #626B77;
+  --focus-muted: #A0A7B0;
+  --heading: #111418;
+  --border: #CCD2DA;
+  --link: #0068B5;
+  --original-bg: #F8FAFC;
+  --translation-bg: #EDF7FC;
+  --note-bg: #F2F4F7;
+  --memory-bg: #F6F7E9;
+  --keyword: #006B9F;
+  --keyword-bg: #E4F4FC;
+  --critical-bg: #FFF0B8;
+  --critical-text: #654900;
+  --trap: #B42318;
+  --trap-underline: #D92D20;
+  --relation-bg: #EEEBFF;
+  --relation-border: #6C5CE7;
+  --shadow: rgba(31, 38, 49, .12);
+  --dock-bg: rgba(255, 255, 255, .94);
+  --overlay: rgba(19, 26, 35, .28);
+  color-scheme: light;
+}
+
+* { box-sizing: border-box; }
+html {
+  scroll-behavior: smooth;
+  font-size: var(--base-font-size);
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+body { overflow-anchor: none;
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-vi);
+  font-size: 1rem;
+  line-height: 1.72;
+  padding-bottom: 11rem;
+}
+:lang(vi), .translation, .translation-cell, .vn-topic, .vn-answer { font-family: var(--font-vi); }
+:lang(ja), .original, .original-cell, .jp-topic, .jp-answer { font-family: var(--font-ja); }
+strong, b { font-weight: 700; }
+a { color: var(--link); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+a:hover { text-decoration-thickness: 2px; }
+h1, h2, h3, h4 { color: var(--heading); line-height: 1.35; }
+h1 { font-size: clamp(1.8rem, 4vw, 2.8rem); margin: 0 0 .55rem; }
+h2 { font-size: clamp(1.38rem, 2.8vw, 2rem); margin: 0; }
+h3 { font-size: clamp(1.12rem, 2vw, 1.48rem); }
+h4 { font-size: 1.02rem; }
+[id] { scroll-margin-top: 22px; }
+p { margin: .62rem 0; }
+ul, ol { padding-left: 1.5rem; }
+li { margin: .34rem 0; }
+
+body > main,
+body > .page-shell {
+  width: min(1320px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 26px 0 70px;
+}
+body > .page-shell > main { width: 100%; margin: 0; padding: 0; }
+
+.hero {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  box-shadow: 0 8px 28px var(--shadow);
+  padding: clamp(22px, 4vw, 42px);
+  margin: 0 0 24px;
+}
+.eyebrow, .hero-subtitle, .subtitle, .meta-line, .source-ref, .mini-label, .small, .meta-label {
+  color: var(--text-muted);
+}
+.eyebrow { font-size: .82rem; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; }
+.hero-subtitle, .subtitle { font-size: 1.08rem; }
+.source-ref, .mini-label, .small, .meta-label { font-size: .86rem; }
+
+.summary-grid, .meta-grid, .mini-grid, .coverage {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: .72rem;
+  margin-top: 1rem;
+}
+.summary-card, .summary-item, .meta-item, .mini-card, .coverage > div {
+  background: var(--surface-alt);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: .75rem .85rem;
+}
+.summary-item b, .summary-card strong { color: var(--heading); }
+.source-list { color: var(--text-muted); }
+
+body > main > section:not(#toc),
+body > .page-shell > section:not(#toc),
+body > .page-shell > main > section,
+.topic,
+.aggregate-section {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  box-shadow: 0 7px 22px var(--shadow);
+  padding: clamp(18px, 3vw, 30px);
+  margin: 22px 0;
+}
+.subsection { margin: 1.7rem 0 2.1rem; }
+.subsection-title, .section-head {
+  border-bottom: 1px solid var(--border);
+  padding-bottom: .65rem;
+  margin-bottom: 1rem;
+}
+.section-head { display: flex; gap: 12px; align-items: baseline; justify-content: space-between; }
+
+.study-grid, .lang-grid, .bilingual-note {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 1rem;
+  align-items: start;
+}
+.study-card, .lang-card, .note-pane {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  min-width: 0;
+  background: var(--surface-alt);
+}
+.study-card.original, .lang-card.original, .original-cell, .jp-topic, .jp-answer { background: var(--original-bg); }
+.study-card.translation, .lang-card.translation, .translation-cell, .vn-topic, .vn-answer { background: var(--translation-bg); }
+.card-title {
+  padding: .62rem .85rem;
+  background: var(--surface-alt);
+  border-bottom: 1px solid var(--border);
+  color: var(--heading);
+  font-weight: 700;
+  letter-spacing: .02em;
+}
+.card-body, .recall-source { padding: .9rem 1rem; }
+.card-body.recall-source { padding: 1rem 1.05rem; }
+.item-block { border-top: 1px dashed var(--border); padding-top: .72rem; margin-top: .72rem; }
+.item-block:first-child { border-top: 0; padding-top: 0; margin-top: 0; }
+.item-label { font-weight: 700; color: var(--heading); margin-right: .35em; }
+
+.table-wrap { overflow-x: auto; margin: .9rem 0; border: 1px solid var(--border); border-radius: 10px; }
+table { width: 100%; border-collapse: collapse; min-width: 650px; background: var(--surface); }
+th, td { border: 1px solid var(--border); padding: .62rem .7rem; vertical-align: top; text-align: left; }
+th { background: var(--surface-alt); color: var(--heading); font-weight: 700; }
+caption { text-align: left; font-weight: 700; color: var(--heading); padding: .58rem .7rem; background: var(--surface-alt); caption-side: top; }
+.compact th, .compact td { padding: .48rem .55rem; }
+.study-table { min-width: 1040px; }
+.study-table .meta { white-space: nowrap; text-align: center; background: var(--surface-alt); }
+.glossary-table { min-width: 920px; }
+.memory-table, .number-table, .num-table { min-width: 760px; }
+
+.summary-box, .note-box, .note, .info-box, .background-box, .exam-note, .memory-box, .warning-box, .warning, .figure-box, .figure-card {
+  border: 1px solid var(--border);
+  border-left-width: 4px;
+  border-radius: 10px;
+  padding: .9rem 1rem;
+  margin: 1rem 0;
+  background: var(--note-bg);
+}
+.summary-box, .note-box, .note, .info-box, .background-box { border-left-color: var(--link); }
+.memory-box, .exam-note { background: var(--memory-bg); border-left-color: var(--critical-text); }
+.warning-box, .warning { border-left-color: var(--trap); }
+.figure-box, .figure-card { border-left-color: var(--relation-border); }
+.figure-card { overflow: hidden; padding: 0; }
+.figure-card img { display: block; width: 100%; height: auto; background: #fff; }
+.figure-card figcaption, .figure-explain { padding: .8rem 1rem; }
+
+.formula, .formula-line {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .45rem;
+  align-items: center;
+  padding: .75rem;
+  background: var(--surface-alt);
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  margin: .75rem 0;
+}
+.flow-node { border: 1px solid var(--border); border-radius: 7px; padding: .35rem .55rem; background: var(--surface); font-weight: 700; }
+.flow-arrow { color: var(--text-muted); font-weight: 700; }
+
+.kw {
+  font-weight: 700;
+  color: var(--keyword);
+  background: var(--keyword-bg);
+  padding: .02em .16em;
+  border-radius: .2em;
+}
+.critical {
+  font-weight: 700;
+  color: var(--critical-text);
+  background: var(--critical-bg);
+  padding: .04em .22em;
+  border-radius: .22em;
+}
+.trap {
+  font-weight: 700;
+  color: var(--trap);
+  text-decoration-line: underline;
+  text-decoration-color: var(--trap-underline);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+}
+.relation {
+  font-weight: 600;
+  color: var(--text);
+  background: var(--relation-bg);
+  border-bottom: 2px solid var(--relation-border);
+  padding: .02em .14em;
+}
+
+html[data-study-mode="keywords"] .recall-source { color: var(--focus-muted); }
+html[data-study-mode="keywords"] .recall-source .kw { color: var(--keyword); background: var(--keyword-bg); }
+html[data-study-mode="keywords"] .recall-source .critical { color: var(--critical-text); background: var(--critical-bg); }
+html[data-study-mode="keywords"] .recall-source .trap { color: var(--trap); }
+html[data-study-mode="keywords"] .recall-source .relation { color: var(--text); background: var(--relation-bg); }
+html[data-study-mode="keywords"] .recall-source th,
+html[data-study-mode="keywords"] .recall-source .card-title,
+html[data-study-mode="keywords"] .recall-source .item-label { color: var(--heading); }
+
+.backlink, .back-toc, .back { display: inline-block; margin-top: .8rem; font-size: .9rem; }
+
+/* Collapsible study controls: one launcher at bottom-left. */
+.control-cluster {
+  position: fixed;
+  left: max(8px, env(safe-area-inset-left));
+  bottom: max(10px, env(safe-area-inset-bottom));
+  z-index: 2200;
+  width: 38px;
+  height: 38px;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.control-launcher,
+.control-panel button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  width: 32px;
+  height: 32px;
+  min-width: 32px;
+  min-height: 32px;
+  padding: 0;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface-alt);
+  color: var(--text);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1;
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.control-launcher {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  z-index: 2;
+  width: 38px;
+  height: 38px;
+  min-width: 38px;
+  min-height: 38px;
+  border-radius: 11px;
+  background: var(--dock-bg);
+  box-shadow: 0 6px 18px var(--shadow);
+  font-size: 20px;
+  letter-spacing: 1px;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+}
+
+.control-panel {
+  position: absolute;
+  left: 43px;
+  bottom: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 2px;
+  width: max-content;
+  max-width: calc(100dvw - max(59px, env(safe-area-inset-left) + 59px) - max(8px, env(safe-area-inset-right)));
+  padding: 3px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  overscroll-behavior-x: contain;
+  scrollbar-width: none;
+  border: 1px solid var(--border);
+  border-radius: 11px;
+  background: var(--dock-bg);
+  box-shadow: 0 6px 18px var(--shadow);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateX(-10px) scale(.98);
+  transform-origin: left bottom;
+  transition: opacity .14s ease, transform .14s ease, visibility .14s ease;
+}
+
+.control-panel::-webkit-scrollbar { display: none; }
+
+.control-cluster.open .control-panel {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateX(0) scale(1);
+}
+
+.control-cluster.open .control-launcher {
+  border-color: var(--link);
+}
+
+.control-panel button:active,
+.control-launcher:active { transform: translateY(1px); }
+
+.control-panel button:hover,
+.control-launcher:hover { border-color: var(--link); }
+
+.control-panel button:disabled {
+  opacity: .36;
+  cursor: default;
+}
+
+.control-panel .font-reset {
+  width: 38px;
+  min-width: 38px;
+  font-size: 9px;
+  letter-spacing: -.03em;
+}
+
+.control-panel .mode-toggle { font-size: 14px; }
+
+.control-panel .home-icon svg {
+  width: 17px;
+  height: 17px;
+  display: block;
+}
+
+/*
+  Responsive reading geometry for iPad/iPhone.
+  The page follows the actual Visual Viewport width. When rotating to
+  landscape it expands across the wider screen instead of staying at
+  portrait width. Reader-anchor JS below restores the same logical text
+  position after the reflow.
+*/
+@media (pointer: coarse) {
+  body > main,
+  body > .page-shell {
+    width: min(calc(var(--app-viewport-width, 100vw) - 16px), 1320px) !important;
+    max-width: 1320px !important;
+  }
+
+
+  .hero {
+    padding: 1rem !important;
+  }
+
+  body > main > section:not(#toc),
+  body > .page-shell > section:not(#toc),
+  body > .page-shell > main > section,
+  .topic,
+  .aggregate-section {
+    padding: 1rem !important;
+  }
+}
+
+
+@media (pointer: coarse) and (orientation: portrait) {
+  .study-grid,
+  .lang-grid,
+  .bilingual-note {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+@media (pointer: coarse) and (orientation: landscape) {
+  body > main,
+  body > .page-shell {
+    width: min(calc(var(--app-viewport-width, 100dvw) - 20px), 1320px) !important;
+  }
+}
+
+/* TOC drawer */
+#toc {
+  position: fixed !important;
+  left: 0 !important;
+  top: 0 !important;
+  bottom: 0 !important;
+  z-index: 2100 !important;
+  width: min(82vw, 390px) !important;
+  max-height: 100dvh !important;
+  overflow-y: auto !important;
+  margin: 0 !important;
+  padding: 74px 20px 28px !important;
+  background: var(--surface) !important;
+  border: 0 !important;
+  border-right: 1px solid var(--border) !important;
+  border-radius: 0 16px 16px 0 !important;
+  box-shadow: 10px 0 30px var(--shadow) !important;
+  transform: translateX(-105%);
+  transition: transform .2s ease;
+}
+body.toc-open #toc { transform: translateX(0); }
+#toc .toc-grid { columns: 1 !important; display: block !important; }
+#toc ol { margin-top: .35rem; }
+.toc-drawer-head {
+  position: sticky;
+  top: -74px;
+  margin: -74px -20px 18px;
+  padding: 13px 14px;
+  min-height: 58px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  z-index: 2;
+}
+.toc-drawer-head strong { color: var(--heading); }
+.toc-close {
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  background: var(--surface-alt);
+  color: var(--text);
+  font: 700 1.25rem var(--font-vi);
+  cursor: pointer;
+}
+.toc-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  background: var(--overlay);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .2s ease;
+}
+body.toc-open .toc-overlay { opacity: 1; pointer-events: auto; }
+body.toc-open { overflow: hidden; }
+
+@media (max-width: 900px) {
+  .study-grid, .lang-grid, .bilingual-note { grid-template-columns: 1fr; }
+  body > main, body > .page-shell { width: min(100% - 20px, 780px); padding-top: 14px; }
+  .section-head { display: block; }
+  .source-ref { display: block; margin-top: .45rem; }
+  table { min-width: 620px; }
+}
+
+@media (max-width: 560px) {
+  body { font-size: 1rem; }
+  body > main, body > .page-shell { width: calc(100% - 14px); }
+  .hero { padding: 1rem; border-radius: 12px; }
+  body > main > section:not(#toc),
+  body > .page-shell > section:not(#toc),
+  body > .page-shell > main > section,
+  .topic, .aggregate-section { padding: 1rem; border-radius: 12px; }
+}
+
+
+/*
+  iPad/tablet landscape:
+  Japanese and Vietnamese return to two side-by-side columns.
+  The min-height condition avoids forcing ordinary phone landscape into
+  two columns that would be too narrow.
+*/
+@media (pointer: coarse) and (orientation: landscape) and (min-width: 700px) and (min-height: 600px) {
+  body > main,
+  body > .page-shell {
+    width: min(calc(var(--app-viewport-width, 100dvw) - 20px), 1320px) !important;
+    max-width: 1320px !important;
+  }
+
+  .study-grid,
+  .lang-grid,
+  .bilingual-note {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important;
+    gap: clamp(.75rem, 1.4vw, 1rem) !important;
+    align-items: start;
+  }
+
+  .study-card,
+  .lang-card,
+  .note-pane {
+    min-width: 0;
+  }
+}
+
+@media print {
+  .control-cluster { display: none !important; }
+  :root,
+  html[data-theme="dark"],
+  html[data-theme="light"] {
+    --bg: #FFFFFF;
+    --surface: #FFFFFF;
+    --surface-alt: #F1F3F5;
+    --text: #111111;
+    --text-muted: #555555;
+    --heading: #000000;
+    --border: #B8BEC6;
+    --original-bg: #FFFFFF;
+    --translation-bg: #F7FBFD;
+    --note-bg: #F7F7F7;
+    --memory-bg: #FAFAF0;
+    --keyword: #005A86;
+    --keyword-bg: #E4F4FC;
+    --critical-bg: #FFF0B8;
+    --critical-text: #4A3600;
+    --trap: #9E1B12;
+    --trap-underline: #9E1B12;
+    --relation-bg: #F0EDFF;
+    --relation-border: #5B4FD6;
+    --shadow: transparent;
+  }
+  body { background: #fff; color: #111; font-size: 11pt; padding-bottom: 0; }
+  .control-cluster, .toc-overlay, .toc-drawer-head { display: none !important; }
+  #toc {
+    position: static !important;
+    transform: none !important;
+    width: auto !important;
+    max-height: none !important;
+    padding: 1rem !important;
+    border: 1px solid var(--border) !important;
+    border-radius: 10px !important;
+    box-shadow: none !important;
+    margin: 1rem 0 !important;
+  }
+  body > main, body > .page-shell { width: 100%; padding: 0; }
+  .hero, .study-card, .lang-card, .summary-box, .note-box, .note, .memory-box, .warning-box, .figure-box, .figure-card { break-inside: avoid; }
+  a { color: #000; text-decoration: none; }
+  .backlink, .back-toc, .back { display: none; }
+}
+</style><script>
+try {
+  if ("scrollRestoration" in history) {
+    history.scrollRestoration = "manual";
+  }
+} catch (e) {}
+(function () {
+  const root = document.documentElement;
+  try {
+    const savedTheme = localStorage.getItem('study-theme');
+    root.dataset.theme = savedTheme === 'light' ? 'light' : 'dark';
+
+    const savedMode = localStorage.getItem('study-mode');
+    root.dataset.studyMode = savedMode === 'keywords' ? 'keywords' : 'full';
+
+    const savedScale = Number(localStorage.getItem('study-font-scale'));
+    const scale = Number.isFinite(savedScale) && savedScale >= 50 && savedScale <= 150 && savedScale % 5 === 0
+      ? savedScale : 100;
+    root.style.setProperty('--base-font-size', (16 * scale / 100) + 'px');
+  } catch (e) {
+    root.dataset.theme = 'dark';
+    root.dataset.studyMode = 'full';
+    root.style.setProperty('--base-font-size', '16px');
+  }
+})();
+</script><meta name="study-sync-version" content="6.2-production-silent"/>
+<meta name="tts-engine-version" content="4.0-cloudflare-worker-production"/>
+<style id="tts-cloudflare-style">
+/* ===== Google Translate TTS via Cloudflare Worker proxy pilot ===== */
+.gttts-control-host { position: relative; }
+.gttts-control-host > .card-title { padding-right: 5.1rem; }
+.gttts-unit:not(.subsection) > h2:first-of-type,
+.gttts-unit:not(.subsection) > h3:first-of-type,
+.gttts-unit:not(.subsection) > .section-head:first-child { padding-right: 5.2rem; }
+.gttts-section-controls {
+  position: absolute;
+  top: .55rem;
+  right: .55rem;
+  z-index: 4;
+  display: inline-flex;
+  align-items: center;
+  gap: .2rem;
+  padding: .18rem;
+  border: 1px solid var(--border, rgba(127,127,127,.25));
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--surface, #171B22) 90%, transparent);
+  box-shadow: 0 4px 16px rgba(0,0,0,.12);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+.gttts-btn {
+  width: 2.15rem;
+  height: 2.15rem;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  display: inline-grid;
+  place-items: center;
+  background: transparent;
+  color: var(--text, #fff);
+  font: inherit;
+  font-size: 1.02rem;
+  line-height: 1;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+.gttts-btn:active { transform: scale(.94); }
+.gttts-btn:focus-visible { outline: 2px solid var(--link, #7CC4FF); outline-offset: 2px; }
+.gttts-btn[hidden] { display: none !important; }
+.gttts-unit.gttts-active .gttts-control-host {
+  box-shadow: inset 3px 0 0 var(--link, #7CC4FF);
+}
+.gttts-mini {
+  position: fixed;
+  right: max(12px, env(safe-area-inset-right));
+  bottom: calc(max(12px, env(safe-area-inset-bottom)) + 58px);
+  z-index: 9998;
+  display: inline-flex;
+  align-items: center;
+  gap: .2rem;
+  padding: .22rem;
+  border: 1px solid var(--border, rgba(127,127,127,.28));
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--surface, #171B22) 94%, transparent);
+  box-shadow: 0 7px 24px rgba(0,0,0,.22);
+  backdrop-filter: blur(9px);
+  -webkit-backdrop-filter: blur(9px);
+}
+.gttts-mini[hidden] { display: none !important; }
+.gttts-mini .gttts-btn { width: 2rem; height: 2rem; }
+.gttts-toast {
+  position: fixed;
+  left: 50%;
+  bottom: calc(max(12px, env(safe-area-inset-bottom)) + 14px);
+  z-index: 10000;
+  max-width: min(88vw, 38rem);
+  transform: translate(-50%, 12px);
+  opacity: 0;
+  pointer-events: none;
+  padding: .58rem .82rem;
+  border: 1px solid var(--border, rgba(127,127,127,.3));
+  border-radius: .75rem;
+  background: color-mix(in srgb, var(--surface, #171B22) 96%, transparent);
+  color: var(--text, #fff);
+  box-shadow: 0 8px 28px rgba(0,0,0,.22);
+  font-size: .82rem;
+  line-height: 1.4;
+  transition: opacity .16s ease, transform .16s ease;
+}
+.gttts-toast.is-visible { opacity: 1; transform: translate(-50%, 0); }
+.gttts-toast.is-error { border-color: var(--trap, #FF8585); }
+@media (max-width: 520px) {
+  .gttts-section-controls { top: .42rem; right: .42rem; }
+  .gttts-btn { width: 2rem; height: 2rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .gttts-btn:active { transform: none; }
+  .gttts-toast { transition: none; }
+}
+</style>
+<style id="chapter-navigation-style">
+.chapter-navigation {
+  width: min(1320px, calc(100% - 28px));
+  margin: 3rem auto 7rem;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: .8rem;
+}
+.chapter-navigation a,
+.chapter-navigation .chapter-nav-disabled {
+  min-height: 66px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: .18rem;
+  padding: .75rem 1rem;
+  border: 1px solid var(--border, #323A46);
+  border-radius: 12px;
+  background: var(--surface, #171B22);
+  color: var(--text, #E3E7ED);
+  text-decoration: none;
+  box-shadow: 0 5px 18px var(--shadow, rgba(0,0,0,.18));
+  touch-action: manipulation;
+}
+.chapter-navigation a:active { transform: scale(.99); }
+.chapter-navigation .chapter-next { text-align: right; align-items: flex-end; }
+.chapter-navigation .chapter-prev { text-align: left; align-items: flex-start; }
+.chapter-navigation .chapter-nav-kicker {
+  color: var(--text-muted, #9DA8B5);
+  font-size: .76rem;
+  font-weight: 700;
+  letter-spacing: .035em;
+  text-transform: uppercase;
+}
+.chapter-navigation .chapter-nav-title {
+  color: var(--heading, #F4F7FA);
+  font-size: .94rem;
+  font-weight: 750;
+  overflow-wrap: anywhere;
+}
+.chapter-navigation .chapter-nav-disabled {
+  opacity: .36;
+  box-shadow: none;
+}
+@media (max-width: 560px) {
+  .chapter-navigation { width: calc(100% - 20px); gap: .55rem; }
+  .chapter-navigation a,
+  .chapter-navigation .chapter-nav-disabled { min-height: 60px; padding: .62rem .72rem; }
+  .chapter-navigation .chapter-nav-title { font-size: .85rem; }
+}
+</style>
+</head>
+<body>
+<!--
+HTML TEMPLATE CONTRACT 2.4 CLOUD-SYNC SILENT
+- Based on latest pinch-zoom-safe test.html.
+- Default theme: dark; persistent Dark/Light toggle.
+- Font: 50%-150%, 5% step; persistent.
+- Native two-finger pinch zoom MUST NOT trigger responsive reflow.
+- Real orientation change MAY update layout and restore logical reading position.
+- iPad/tablet portrait: one-column bilingual flow.
+- iPad/tablet landscape: Japanese/Vietnamese side-by-side.
+- Controls: collapsed by default at bottom-left; tap to expand horizontally.
+- Home button: index.html.
+- Back/Next: TOC item navigation, not browser history.
+- Do not redesign CSS/JS/control behavior per lesson.
+-->
+<div class="control-cluster" id="control-cluster">
+<button aria-controls="control-panel" aria-expanded="false" aria-label="Mở công cụ" class="control-launcher" id="controls-toggle" title="Mở công cụ" type="button">⋯</button>
+<div aria-label="Công cụ học tập" class="control-panel" id="control-panel" role="toolbar">
+<button aria-controls="toc" aria-expanded="false" aria-label="Mục lục" id="toc-toggle" title="Mục lục" type="button">☰</button>
+<button aria-label="Mục trước" id="section-prev" title="Mục trước" type="button">‹</button>
+<button aria-label="Mục tiếp theo" id="section-next" title="Mục tiếp theo" type="button">›</button>
+<button aria-label="Đổi Dark/Light" aria-pressed="false" id="theme-toggle" title="Đổi Dark/Light" type="button">☀</button>
+<button aria-label="Đổi Full/Keywords" aria-pressed="false" class="mode-toggle" id="mode-toggle" title="Đổi Full/Keywords" type="button">🎯</button>
+<button aria-label="Giảm cỡ chữ" id="font-down" title="Giảm cỡ chữ 5%" type="button">A−</button>
+<button aria-label="Đặt lại cỡ chữ 100%" class="font-reset" id="font-reset" title="Đặt lại cỡ chữ 100%" type="button">100%</button>
+<button aria-label="Tăng cỡ chữ" id="font-up" title="Tăng cỡ chữ 5%" type="button">A+</button>
+<button aria-label="Top Page" class="home-icon" id="home-button" title="Top Page" type="button"><svg aria-hidden="true" fill="none" viewbox="0 0 24 24"><path d="M3.5 10.5 12 3.8l8.5 6.7v9.2h-5.3v-6H8.8v6H3.5z" stroke="currentColor" stroke-linejoin="round" stroke-width="1.8"></path></svg></button>
+</div>
+</div><div aria-hidden="true" class="toc-overlay" id="toc-overlay"></div>
+<div class="page-shell">
+<header class="hero" id="top">
+<h1>平成28年度 問題1 施工経験記述｜Book 117-121</h1>
+</header>
+<nav aria-label="Mục lục" class="toc" id="toc">
+<div class="toc-drawer-head">
+<strong>Mục lục</strong>
+<button aria-label="Đóng mục lục" class="toc-close" id="toc-close" type="button">×</button>
+</div>
+<h2>Mục lục</h2>
+<!-- TOC_ITEMS_START -->
+
+<!-- TOC_ITEMS_END -->
+<ol><li><a href="#sec-problem">平成28年度 問題1 施工経験記述</a><ol><li><a href="#sub-problem-overview">Đề bài và phạm vi</a></li><li><a href="#sub-problem-q1">設問1：担当工種における品質管理活動</a></li><li><a href="#sub-problem-q2">設問2：品質管理活動の周知と確認</a></li></ol></li><li><a href="#sec-answer1">平成28年度 問題1 施工経験記述 解答例①</a><ol><li><a href="#sub-answer1-overview">〔工事概要〕</a></li><li><a href="#sub-answer1-concrete">事例1：構造物に使用するコンクリートの品質管理（躯体工事）</a></li><li><a href="#sub-answer1-rebar">事例2：鉄筋の継手部の品質管理（躯体工事）</a></li><li><a href="#sub-answer1-org">設問2：品質管理活動の周知方法および確認方法</a></li></ol></li><li><a href="#sec-answer2">平成28年度 問題1 施工経験記述 解答例②</a><ol><li><a href="#sub-answer2-overview">〔工事概要〕</a></li><li><a href="#sub-answer2-waterproof">事例1：防水工事の品質管理（仕上げ工事）</a></li><li><a href="#sub-answer2-plaster">事例2：左官工事の品質管理（仕上げ工事）</a></li><li><a href="#sub-answer2-org">設問2：品質管理活動の周知方法および確認方法</a></li></ol></li><li><a href="#sec-quality">施工経験記述の考え方・書き方：品質管理活動</a><ol><li><a href="#sub-quality-framework">品質管理の基本構造</a></li><li><a href="#sub-quality-roles">建築上の立場ごとの品質管理活動と品質管理項目</a></li><li><a href="#sub-quality-trades">工種別の品質管理：要求品質 → 目標 → 管理項目 → 試験方法</a></li><li><a href="#sub-quality-sharing">品質管理方法の周知</a></li></ol></li><li><a href="#terms">Professional terminology</a></li><li><a href="#background">Background knowledge</a></li><li><a href="#memory">Key points and memory aids</a></li></ol></nav>
+<!-- CONTENT_START -->
+<main id="lesson"><section class="study-section" id="sec-problem">
+<div class="section-head">
+<h2>平成28年度 問題1 施工経験記述</h2>
+<span class="source-ref">Nguồn: Book 117 / P1</span>
+</div>
+<section class="subsection" id="sub-problem-overview">
+<h3>Đề bài và phạm vi</h3>
+<div class="study-grid">
+<article class="study-card original">
+<div class="card-title">原文</div>
+<div class="recall-source" lang="ja">
+<p>建築工事の施工者に対して、建築物の施工品質の確保が強く求められている。あなたが経験した<strong class="kw">建築工事</strong>のうち、発注者や設計図書等により要求された品質を実現するため、<span class="relation">品質計画に基づき品質管理を行った工事を1つ選び</span>、工事概要を具体的に記入したうえで、次の設問1と設問2に答えなさい。</p>
+<p>なお、<strong class="kw">建築工事</strong>とは、建築基準法に定める建築物に係る工事とし、<span class="trap">建築設備工事を除く</span>ものとする。</p>
+<h4>〔工事概要〕</h4>
+<ul>
+<li>（イ）工事名</li>
+<li>（ロ）工事場所</li>
+<li>（ハ）工事の内容<br/>新築等の場合：建物用途、構造、階数、延べ面積又は施工数量、主な外部仕上げ、主要室の内部仕上げ<br/>改修等の場合：建物用途、主な改修内容、施工数量又は建物規模</li>
+<li>（ニ）工期（年号又は西暦で年月まで記入）</li>
+<li>（ホ）あなたの立場</li>
+</ul>
+</div>
+</article>
+<article class="study-card translation">
+<div class="card-title">Bản dịch tiếng Việt</div>
+<div class="recall-source" lang="vi">
+<p>Đối với người thực hiện thi công công trình xây dựng, việc bảo đảm chất lượng thi công của công trình đang được yêu cầu rất nghiêm ngặt. Trong các <strong class="kw">công trình kiến trúc</strong> mà thí sinh đã có kinh nghiệm, nhằm đáp ứng chất lượng do chủ đầu tư, hồ sơ thiết kế v.v. yêu cầu, <span class="relation">hãy chọn một công trình đã thực hiện quản lý chất lượng dựa trên kế hoạch chất lượng</span>, ghi cụ thể khái quát công trình rồi trả lời Câu 1 và Câu 2.</p>
+<p>Trong đề này, <strong class="kw">công trình kiến trúc（建築工事）</strong> là công trình liên quan đến công trình xây dựng theo Luật Tiêu chuẩn Xây dựng, <span class="trap">không bao gồm công tác thiết bị kỹ thuật công trình（建築設備工事）</span>.</p>
+<h4>〔Khái quát công trình〕</h4>
+<ul>
+<li>(イ) Tên công trình</li>
+<li>(ロ) Địa điểm công trình</li>
+<li>(ハ) Nội dung công trình<br/>Trường hợp xây mới: công năng, kết cấu, số tầng, tổng diện tích sàn hoặc khối lượng thi công, hoàn thiện bên ngoài chủ yếu, hoàn thiện bên trong các phòng chính.<br/>Trường hợp cải tạo: công năng, nội dung cải tạo chủ yếu, khối lượng thi công hoặc quy mô công trình.</li>
+<li>(ニ) Thời gian thi công, ghi đến tháng theo niên hiệu Nhật Bản hoặc dương lịch.</li>
+<li>(ホ) Vị trí/chức vụ của thí sinh trong công trình.</li>
+</ul>
+</div>
+</article>
+</div>
+</section>
+<section class="subsection" id="sub-problem-q1">
+<h3>設問1：担当工種における品質管理活動</h3>
+<div class="study-grid">
+<article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja">
+<p>工事概要であげた工事で、あなたが担当した工種において実施した品質管理活動の事例を<strong class="kw">2つ</strong>あげ、次の①から③についてそれぞれ記述しなさい。</p>
+<p>ただし、<span class="trap">2つの品質管理活動は、それぞれ異なる内容の記述とすること</span>。</p>
+<ol>
+<li>発注者や設計図書等により要求された<strong class="kw">品質</strong>及びその品質を満足させるために特に設定した<strong class="kw">品質管理項目</strong>を、工種名をあげて具体的に記述しなさい。</li>
+<li>①で設定した品質管理項目について<strong class="kw">取り上げた理由</strong>を具体的に記述しなさい。</li>
+<li>①で設定した品質管理項目をどのように管理したか、その<strong class="kw">実施した内容</strong>を具体的に記述しなさい。</li>
+</ol>
+</div></article>
+<article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi">
+<p>Trong công trình đã nêu ở phần khái quát, hãy đưa ra <strong class="kw">2 ví dụ</strong> về hoạt động quản lý chất lượng đã thực hiện đối với loại công tác mà thí sinh phụ trách, rồi trình bày các mục ① đến ③.</p>
+<p>Tuy nhiên, <span class="trap">hai hoạt động quản lý chất lượng phải có nội dung khác nhau</span>.</p>
+<ol>
+<li>Nêu cụ thể <strong class="kw">chất lượng được yêu cầu</strong> bởi chủ đầu tư, hồ sơ thiết kế v.v. và <strong class="kw">hạng mục quản lý chất lượng</strong> được đặc biệt thiết lập để đáp ứng chất lượng đó, kèm tên loại công tác.</li>
+<li>Trình bày cụ thể <strong class="kw">lý do lựa chọn hạng mục quản lý chất lượng</strong> ở ①.</li>
+<li>Trình bày cụ thể <strong class="kw">nội dung đã thực hiện</strong>, tức đã quản lý hạng mục đó như thế nào.</li>
+</ol>
+</div></article>
+</div>
+</section>
+<section class="subsection" id="sub-problem-q2">
+<h3>設問2：品質管理活動の周知と確認</h3>
+<div class="study-grid">
+<article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja">
+<p>工事概要にあげた工事にかかわらず、あなたの今日までの工事経験に照らして、品質管理目標、品質管理項目及び活動内容を協力業者等に、<strong class="kw">周知するため</strong>及びそれらに基づいて施工されていることを<strong class="kw">確認するため</strong>の方法・手段を具体的に記述しなさい。</p>
+<p>なお、<span class="trap">設問1③の「実施した内容」と同一の記述は不可</span>とする。</p>
+<p>本テキストに示す解答例はすべて、考え方を示すもので、その要点だけを記述したものである。実際には解答用紙のスペース（行数等）に応じた字数で記述すること。</p>
+</div></article>
+<article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi">
+<p>Không phụ thuộc vào công trình đã ghi ở phần khái quát, căn cứ vào kinh nghiệm thi công cho đến nay, hãy trình bày cụ thể phương pháp/biện pháp để <strong class="kw">phổ biến</strong> cho các nhà thầu hợp tác về mục tiêu quản lý chất lượng, hạng mục quản lý chất lượng và nội dung hoạt động; đồng thời trình bày phương pháp/biện pháp để <strong class="kw">xác nhận</strong> rằng công việc đang được thi công đúng theo các nội dung đó.</p>
+<p><span class="trap">Không được dùng lại cùng nội dung với phần 「実施した内容」 của Câu 1③</span>.</p>
+<p>Các đáp án mẫu trong giáo trình chỉ trình bày cách tư duy và các ý chính. Khi thi thực tế phải viết với lượng chữ phù hợp với số dòng và không gian trên phiếu trả lời.</p>
+</div></article>
+</div>
+</section>
+</section><section class="study-section" id="sec-answer1">
+<div class="section-head"><h2>平成28年度 問題1 施工経験記述　解答例①</h2><span class="source-ref">Nguồn: Book 118 / P2</span></div>
+<section class="subsection" id="sub-answer1-overview">
+<h3>〔工事概要〕</h3>
+<div class="study-grid">
+<article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja">
+<div class="table-wrap"><table><tbody>
+<tr><th>工事名</th><td>名古屋あざみ老人福祉ホーム増築工事</td></tr>
+<tr><th>工事場所</th><td>愛知県名古屋市千種区丸業3丁目</td></tr>
+<tr><th>工事の内容</th><td>老人施設、RC造30階建、<strong class="kw">増築面積</strong> <mark class="critical">680m²</mark>、外壁タイル仕上げ、内装木板張り</td></tr>
+<tr><th>工期</th><td>平成27年1月～平成28年3月</td></tr>
+<tr><th>あなたの立場</th><td>現場代理人</td></tr>
+</tbody></table></div>
+<p>記述上のポイント：増築工事の例／増築面積を示す／長すぎや短すぎに注意／誤字に注意。</p>
+</div></article>
+<article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi">
+<div class="table-wrap"><table><tbody>
+<tr><th>Tên công trình</th><td>Công trình mở rộng Nhà phúc lợi người cao tuổi Nagoya Azami</td></tr>
+<tr><th>Địa điểm</th><td>Marugyō 3-chōme, Chikusa-ku, Nagoya-shi, Aichi</td></tr>
+<tr><th>Nội dung</th><td>Cơ sở dành cho người cao tuổi, kết cấu RC 30 tầng, <strong class="kw">diện tích mở rộng</strong> <mark class="critical">680 m²</mark>, tường ngoài hoàn thiện bằng gạch ốp, nội thất ốp tấm gỗ</td></tr>
+<tr><th>Thời gian</th><td>01/2015 đến 03/2016</td></tr>
+<tr><th>Vị trí</th><td>Đại diện hiện trường（現場代理人）</td></tr>
+</tbody></table></div>
+<p>Điểm khi viết: đây là ví dụ về công trình mở rộng; phải ghi diện tích mở rộng; tránh viết quá dài hoặc quá ngắn; chú ý lỗi chính tả.</p>
+</div></article>
+</div>
+</section>
+<section class="subsection" id="sub-answer1-concrete">
+<h3>事例1：構造物に使用するコンクリートの品質管理（躯体工事）</h3>
+<div class="study-grid">
+<article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja">
+<div class="table-wrap"><table><tbody>
+<tr><th>要求された品質</th><td><strong class="kw">構造物の耐力</strong></td></tr>
+<tr><th>① 品質管理項目</th><td><strong class="kw">コンクリートの圧縮強度</strong></td></tr>
+<tr><th>工種名</th><td>コンクリート工事</td></tr>
+<tr><th>② 取り上げた理由</th><td><span class="relation">RC造の構造物の耐力は、コンクリートの圧縮強度で定まるため。</span></td></tr>
+<tr><th>③ 実施した内容</th><td>コンクリート打込み時に<strong class="kw">スランプ・空気量</strong>を管理し、<strong class="kw">材齢28日の圧縮強度</strong>を確認した。</td></tr>
+</tbody></table></div>
+<p>記述上のポイント：発注者の要求事項／品質特性はコンクリート圧縮強度／RC造の耐力は、コンクリートの耐久性能（強度）で定まる／材齢28日の圧縮強度が、コンクリートの耐久性能（強度）を表す。</p>
+</div></article>
+<article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi">
+<div class="table-wrap"><table><tbody>
+<tr><th>Chất lượng được yêu cầu</th><td><strong class="kw">Khả năng chịu lực của kết cấu</strong></td></tr>
+<tr><th>① Hạng mục quản lý chất lượng</th><td><strong class="kw">Cường độ nén của bê tông</strong></td></tr>
+<tr><th>Loại công tác</th><td>Công tác bê tông</td></tr>
+<tr><th>② Lý do lựa chọn</th><td><span class="relation">Khả năng chịu lực của kết cấu RC được quyết định bởi cường độ nén của bê tông.</span></td></tr>
+<tr><th>③ Nội dung đã thực hiện</th><td>Khi đổ bê tông, quản lý <strong class="kw">độ sụt và hàm lượng khí</strong>, sau đó xác nhận <strong class="kw">cường độ nén ở 28 ngày tuổi</strong>.</td></tr>
+</tbody></table></div>
+<p>Điểm viết mà sách nhấn mạnh là phải liên kết rõ yêu cầu của chủ đầu tư, đặc tính chất lượng và trị số dùng để xác nhận.</p>
+</div></article>
+</div>
+</section>
+<section class="subsection" id="sub-answer1-rebar">
+<h3>事例2：鉄筋の継手部の品質管理（躯体工事）</h3>
+<div class="study-grid">
+<article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja">
+<div class="table-wrap"><table><tbody>
+<tr><th>要求された品質</th><td><strong class="kw">鉄筋コンクリートの耐力</strong></td></tr>
+<tr><th>① 品質管理項目</th><td><strong class="kw">鉄筋の圧接部のふくらみ</strong></td></tr>
+<tr><th>工種名</th><td>鉄筋工事</td></tr>
+<tr><th>② 取り上げた理由</th><td><span class="relation">鉄筋継手の耐力は、圧接部の形状により定まるため。</span></td></tr>
+<tr><th>③ 実施した内容</th><td>ガス圧接後、<strong class="kw">圧接面のふくらみ</strong>が<mark class="critical">鉄筋径の1.4倍以上</mark>であることなどを確認した。</td></tr>
+</tbody></table></div>
+<p>記述上のポイント：発注者の要求事項／鉄筋の継手性能は、圧接精度で定まる／ふくらみは、ノギスなどで測定し、確認する。</p>
+</div></article>
+<article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi">
+<div class="table-wrap"><table><tbody>
+<tr><th>Chất lượng được yêu cầu</th><td><strong class="kw">Khả năng chịu lực của bê tông cốt thép</strong></td></tr>
+<tr><th>① Hạng mục quản lý chất lượng</th><td><strong class="kw">Độ phình của phần nối ép cốt thép</strong></td></tr>
+<tr><th>Loại công tác</th><td>Công tác cốt thép</td></tr>
+<tr><th>② Lý do lựa chọn</th><td><span class="relation">Khả năng chịu lực của mối nối cốt thép được quyết định bởi hình dạng của phần nối ép.</span></td></tr>
+<tr><th>③ Nội dung đã thực hiện</th><td>Sau khi nối ép khí gas, xác nhận <strong class="kw">độ phình tại mặt nối</strong> đạt <mark class="critical">từ 1,4 lần đường kính cốt thép trở lên</mark>, v.v.</td></tr>
+</tbody></table></div>
+<p>Độ phình được đo và xác nhận bằng thước cặp（ノギス）hoặc dụng cụ tương đương.</p>
+</div></article>
+</div>
+</section>
+<section class="subsection" id="sub-answer1-org">
+<h3>設問2：品質管理活動の周知方法および確認方法</h3>
+<div class="study-grid">
+<article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja">
+<p><strong class="kw">周知するための方法・手段</strong>：<span class="relation">QC工程表を作成し、協力会社と一体化して活動することで、品質管理活動を明確化する。</span></p>
+<p><strong class="kw">確認するための方法・手段</strong>：<span class="relation">施工後に、予め定めた品質試験を行い、その数値が許容差の範囲内であることを確認する。</span></p>
+<p>記述上のポイント：自社と協力会社とが一体化した組織となって品質管理を行う。品質試験を実施して適合性を確認する。</p>
+</div></article>
+<article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi">
+<p><strong class="kw">Phương pháp phổ biến</strong>: <span class="relation">lập QC工程表, phối hợp thành một thể thống nhất với công ty hợp tác để làm rõ các hoạt động quản lý chất lượng.</span></p>
+<p><strong class="kw">Phương pháp xác nhận</strong>: <span class="relation">sau thi công, thực hiện phép thử chất lượng đã quy định trước và kiểm tra trị số có nằm trong phạm vi sai số cho phép hay không.</span></p>
+<p>Điểm viết: nhà thầu chính và công ty hợp tác cùng trở thành một tổ chức thống nhất để quản lý chất lượng; thực hiện thử nghiệm chất lượng để xác nhận tính phù hợp.</p>
+</div></article>
+</div>
+</section>
+</section><section class="study-section" id="sec-answer2">
+<div class="section-head"><h2>平成28年度 問題1 施工経験記述　解答例②</h2><span class="source-ref">Nguồn: Book 119 / P3</span></div>
+<section class="subsection" id="sub-answer2-overview">
+<h3>〔工事概要〕</h3>
+<div class="study-grid">
+<article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja">
+<div class="table-wrap"><table><tbody>
+<tr><th>工事名</th><td>江東臨海スカイマンション新築工事</td></tr>
+<tr><th>工事場所</th><td>東京都江東区南砂町6-3-3</td></tr>
+<tr><th>工事の内容</th><td>共同住宅、SRC造23階建（地下2階）、延べ面積8900m²、外装タイル張り、内装石膏ボード張り</td></tr>
+<tr><th>工期</th><td>平成26年6月～平成28年1月</td></tr>
+<tr><th>あなたの立場</th><td>現場代理人</td></tr>
+</tbody></table></div>
+<p>記述上のポイント：新築工事の例／主な外装・内装を示す／長すぎや短すぎに注意／誤字に注意。</p>
+</div></article>
+<article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi">
+<div class="table-wrap"><table><tbody>
+<tr><th>Tên công trình</th><td>Công trình xây mới Koto Rinkai Sky Mansion</td></tr>
+<tr><th>Địa điểm</th><td>6-3-3 Minamisunamachi, Koto-ku, Tokyo</td></tr>
+<tr><th>Nội dung</th><td>Nhà ở chung cư, kết cấu SRC 23 tầng, 2 tầng hầm, tổng diện tích sàn 8.900 m², bên ngoài ốp gạch, bên trong ốp tấm thạch cao</td></tr>
+<tr><th>Thời gian</th><td>06/2014 đến 01/2016</td></tr>
+<tr><th>Vị trí</th><td>Đại diện hiện trường</td></tr>
+</tbody></table></div>
+<p>Điểm khi viết: đây là ví dụ công trình xây mới; phải thể hiện hoàn thiện bên ngoài và bên trong chủ yếu; chú ý độ dài bài viết và lỗi chính tả.</p>
+</div></article>
+</div>
+</section>
+<section class="subsection" id="sub-answer2-waterproof">
+<h3>事例1：防水工事の品質管理（仕上げ工事）</h3>
+<div class="study-grid">
+<article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja">
+<div class="table-wrap"><table><tbody>
+<tr><th>要求された品質</th><td><strong class="kw">漏水のない建築物</strong></td></tr>
+<tr><th>① 品質管理項目</th><td><strong class="kw">漏水量</strong></td></tr>
+<tr><th>工種名</th><td>防水工事</td></tr>
+<tr><th>② 取り上げた理由</th><td><span class="relation">屋上からの漏水を完全に防止することで、耐漏水性能を確保できるため。</span></td></tr>
+<tr><th>③ 実施した内容</th><td><strong class="kw">塗継ぎ重ね幅</strong> <mark class="critical">100mm</mark>を確保したウレタン系防水材密着工法を採用し、<strong class="kw">水張り試験</strong>により<strong class="kw">漏水量</strong>が<mark class="critical">0m³</mark>であることを確認した。</td></tr>
+</tbody></table></div>
+<p>記述上のポイント：発注者の要求事項／屋上で漏水診断を行う／<strong class="kw">水張り試験</strong> <mark class="critical">24時間</mark>で漏水が全くないことを確認する。</p>
+</div></article>
+<article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi">
+<div class="table-wrap"><table><tbody>
+<tr><th>Chất lượng được yêu cầu</th><td><strong class="kw">Công trình không bị rò rỉ nước</strong></td></tr>
+<tr><th>① Hạng mục quản lý chất lượng</th><td><strong class="kw">Lượng nước rò rỉ</strong></td></tr>
+<tr><th>Loại công tác</th><td>Chống thấm</td></tr>
+<tr><th>② Lý do</th><td><span class="relation">Bằng cách ngăn hoàn toàn nước rò từ mái, có thể bảo đảm tính năng chống rò nước.</span></td></tr>
+<tr><th>③ Nội dung thực hiện</th><td>Áp dụng phương pháp chống thấm bám dính bằng urethane, bảo đảm <strong class="kw">bề rộng chồng mí tại vị trí nối lớp</strong> <mark class="critical">100 mm</mark>, sau đó thực hiện <strong class="kw">thử ngâm nước</strong> và xác nhận <strong class="kw">lượng rò nước</strong> bằng <mark class="critical">0 m³</mark>.</td></tr>
+</tbody></table></div>
+<p>Điểm ghi chú của sách: tiến hành chẩn đoán rò nước tại mái và dùng <strong class="kw">thử ngâm nước</strong> <mark class="critical">24 giờ</mark> để xác nhận hoàn toàn không có rò nước.</p>
+</div></article>
+</div>
+</section>
+<section class="subsection" id="sub-answer2-plaster">
+<h3>事例2：左官工事の品質管理（仕上げ工事）</h3>
+<div class="study-grid">
+<article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja">
+<div class="table-wrap"><table><tbody>
+<tr><th>要求された品質</th><td><strong class="kw">床タイルの平坦性</strong></td></tr>
+<tr><th>① 品質管理項目</th><td><strong class="kw">セメントモルタル面の平面性</strong></td></tr>
+<tr><th>工種名</th><td>左官工事</td></tr>
+<tr><th>② 取り上げた理由</th><td><span class="relation">床タイルの平面性は、その下地のセメントモルタル面の仕上げ精度に影響されるため。</span></td></tr>
+<tr><th>③ 実施した内容</th><td>セルフレベリング材塗り工法を採用し、<strong class="kw">各方向2mにつき高低差</strong>が<mark class="critical">6mm以下</mark>であることを確認した。</td></tr>
+</tbody></table></div>
+<p>記述上のポイント：発注者の要求事項／平面性＝平坦性＝床に傾きがないこと／高低差の測定には、レベル（水準器）・スケールなどを用いる。</p>
+</div></article>
+<article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi">
+<div class="table-wrap"><table><tbody>
+<tr><th>Chất lượng được yêu cầu</th><td><strong class="kw">Độ phẳng của gạch lát sàn</strong></td></tr>
+<tr><th>① Hạng mục quản lý chất lượng</th><td><strong class="kw">Độ phẳng bề mặt vữa xi măng</strong></td></tr>
+<tr><th>Loại công tác</th><td>Công tác trát（左官工事）</td></tr>
+<tr><th>② Lý do</th><td><span class="relation">Độ phẳng của gạch lát sàn chịu ảnh hưởng bởi độ chính xác hoàn thiện của bề mặt vữa xi măng làm lớp nền.</span></td></tr>
+<tr><th>③ Nội dung thực hiện</th><td>Áp dụng phương pháp thi công vật liệu tự san phẳng và xác nhận <strong class="kw">chênh cao theo từng phương trên chiều dài 2 m</strong> <mark class="critical">không quá 6 mm</mark>.</td></tr>
+</tbody></table></div>
+<p>Để đo chênh cao, sách nêu có thể dùng level/thước thủy（水準器）và thước đo.</p>
+</div></article>
+</div>
+</section>
+<section class="subsection" id="sub-answer2-org">
+<h3>設問2：品質管理活動の周知方法および確認方法</h3>
+<div class="study-grid">
+<article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja">
+<p><strong class="kw">周知するための方法・手段</strong>：<span class="relation">協力会社に施工要領書を作成させ、協力会社と一体となって品質管理活動をする。</span></p>
+<p><strong class="kw">確認するための方法・手段</strong>：<span class="relation">協力会社が施工した部分について、施工品質が所要値通りであるかどうかを、定規などで測定して確認する。</span></p>
+<p>記述上のポイント：自社と協力会社とが一体化した組織となって品質管理を行う。協力会社が施工した部分の品質を確認する。</p>
+</div></article>
+<article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi">
+<p><strong class="kw">Phổ biến</strong>: <span class="relation">yêu cầu công ty hợp tác lập 施工要領書, sau đó tổ chức hoạt động quản lý chất lượng thống nhất giữa nhà thầu chính và công ty hợp tác.</span></p>
+<p><strong class="kw">Xác nhận</strong>: <span class="relation">đối với phần việc do công ty hợp tác thi công, dùng thước v.v. để đo và xác nhận chất lượng thi công có đạt trị số yêu cầu hay không.</span></p>
+<p>Điểm viết: nhà thầu chính và công ty hợp tác cùng trở thành một tổ chức thống nhất để quản lý chất lượng; xác nhận chất lượng phần việc do công ty hợp tác thi công.</p>
+</div></article>
+</div>
+</section>
+</section><section class="study-section" id="sec-quality">
+<div class="section-head"><h2>施工経験記述の考え方・書き方：品質管理活動</h2><span class="source-ref">Nguồn: Book 120-121 / P4-P5</span></div>
+<section class="subsection" id="sub-quality-framework">
+<h3>品質管理の基本構造</h3>
+<div class="study-grid">
+<article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja">
+<p>施工者が行う<strong class="kw">品質管理活動</strong>は、<span class="relation">施工の品質を確保するための活動</span>である。施工の品質を確保するためには、最初に、顧客である発注者に要求された品質を、設計者がしっかりと聴き取り、具現化しなければならない。次に、要求された品質の要点をまとめ、設計の品質となる<strong class="kw">重点品質管理目標</strong>を定め、設計図書として文書化する。</p>
+<p>施工者は、こうした発注者や設計者の意図、施工の品質を確保するための手法・技術、施工の品質を検証するための各種試験方法・指標となる数値などについて、十分に理解する必要がある。重点品質管理目標は、発注者や設計図書等により要求された品質を満たし、施工の品質の確保が容易なものでなければならない。<strong class="kw">品質管理項目</strong>は、施工が重点品質管理目標に適合しているかどうかを判断できるものでなければならない。</p>
+<p>一例として、鉄筋コンクリート構造物（RC造）の建築工事では、<span class="relation"><strong class="kw">要求品質：構造耐力</strong>、<strong class="kw">重点品質管理目標：コンクリート圧縮強度</strong>、<strong class="kw">品質管理項目：スランプ・空気量・温度</strong></span>などとなる。</p>
+<p>施工経験記述を書くときは、ひとつの品質管理項目（施工の品質特性）を選択し、その品質を確保するための施工方法や、その品質を確認するための試験方法を明記する。</p>
+</div></article>
+<article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi">
+<p><strong class="kw">Hoạt động quản lý chất lượng</strong> do nhà thầu thi công thực hiện là <span class="relation">hoạt động nhằm bảo đảm chất lượng thi công</span>. Để bảo đảm chất lượng thi công, trước tiên người thiết kế phải nghe và nắm chắc chất lượng mà chủ đầu tư, tức khách hàng, yêu cầu rồi cụ thể hóa yêu cầu đó. Tiếp theo, các điểm chính của chất lượng được yêu cầu được tổng hợp để xác định <strong class="kw">mục tiêu quản lý chất lượng trọng điểm</strong>, là chất lượng ở cấp thiết kế, rồi được văn bản hóa trong hồ sơ thiết kế.</p>
+<p>Nhà thầu thi công phải hiểu đầy đủ ý đồ của chủ đầu tư và người thiết kế, biện pháp và kỹ thuật để bảo đảm chất lượng thi công, các phương pháp thử nghiệm để kiểm chứng chất lượng và các trị số dùng làm chỉ tiêu đánh giá. Mục tiêu quản lý chất lượng trọng điểm phải đáp ứng chất lượng do chủ đầu tư hoặc hồ sơ thiết kế yêu cầu, đồng thời phải giúp dễ dàng bảo đảm chất lượng thi công. <strong class="kw">Hạng mục quản lý chất lượng</strong> phải là hạng mục có thể dùng để phán đoán công tác thi công có phù hợp với mục tiêu quản lý chất lượng trọng điểm hay không.</p>
+<p>Ví dụ trong công trình kết cấu RC: <span class="relation"><strong class="kw">yêu cầu chất lượng: khả năng chịu lực kết cấu</strong>, <strong class="kw">mục tiêu quản lý trọng điểm: cường độ nén bê tông</strong>, <strong class="kw">hạng mục quản lý: độ sụt, hàm lượng khí, nhiệt độ</strong></span>.</p>
+<p>Khi viết 施工経験記述, cần chọn một hạng mục quản lý chất lượng, tức một đặc tính chất lượng của thi công, rồi ghi rõ phương pháp thi công để bảo đảm đặc tính đó và phương pháp thử nghiệm để xác nhận đặc tính đó.</p>
+</div></article>
+</div>
+</section>
+<section class="subsection" id="sub-quality-roles">
+<h3>建築上の立場ごとの品質管理活動と品質管理項目</h3>
+<div class="study-grid">
+<article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja">
+<div class="table-wrap"><table><thead><tr><th>建築上の立場</th><th>品質管理活動</th><th>品質管理項目</th></tr></thead><tbody>
+<tr><td><strong class="kw">発注者（顧客）</strong></td><td>要求品質の明示</td><td>安全性・機能性・耐久性・美観性・無欠陥</td></tr>
+<tr><td><strong class="kw">設計者（監理者）</strong></td><td>設計の品質の確保</td><td>耐震性・耐火性・耐水性・耐力性能・仕上げ精度</td></tr>
+<tr><td><strong class="kw">施工者（専門業者）</strong></td><td>施工の品質の確保</td><td>スランプ・各種強度・組立精度・仕上げ精度・平坦性</td></tr>
+</tbody></table></div>
+</div></article>
+<article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi">
+<div class="table-wrap"><table><thead><tr><th>Vị trí</th><th>Hoạt động quản lý chất lượng</th><th>Hạng mục quản lý chất lượng</th></tr></thead><tbody>
+<tr><td><strong class="kw">Chủ đầu tư/khách hàng</strong></td><td>Xác định rõ chất lượng yêu cầu</td><td>An toàn, công năng, độ bền, mỹ quan, không có khuyết tật</td></tr>
+<tr><td><strong class="kw">Người thiết kế/người giám sát</strong></td><td>Bảo đảm chất lượng thiết kế</td><td>Kháng chấn, chịu lửa, chống nước, khả năng chịu lực, độ chính xác hoàn thiện</td></tr>
+<tr><td><strong class="kw">Nhà thầu/nhà thầu chuyên môn</strong></td><td>Bảo đảm chất lượng thi công</td><td>Độ sụt, các loại cường độ, độ chính xác lắp ráp, độ chính xác hoàn thiện, độ phẳng</td></tr>
+</tbody></table></div>
+</div></article>
+</div>
+</section>
+<section class="subsection" id="sub-quality-trades">
+<h3>工種別の品質管理：要求品質 → 目標 → 管理項目 → 試験方法</h3>
+<div class="study-grid">
+<article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja">
+<div class="table-wrap"><table><thead><tr><th>工事</th><th>工種</th><th>顧客が要望する要求品質</th><th>設計者が定める重点品質管理目標</th><th>施工者が定める品質管理項目</th><th>品質を確認するための試験方法</th></tr></thead><tbody>
+<tr><td>躯体工事</td><td><strong class="kw">杭工事</strong></td><td>基礎杭耐力</td><td>杭の支持力</td><td>杭の鉛直性、地盤耐力</td><td>心ずれ、鉛直精度、支持地盤のN値</td></tr>
+<tr><td>躯体工事</td><td><strong class="kw">コンクリート工事</strong></td><td>構造耐力</td><td>圧縮強度、耐久性、水密性</td><td>スランプ、空気量、強度、塩化物含有量</td><td>スランプ値許容差、<strong class="kw">空気量許容差</strong> <mark class="critical">±1.5%</mark>、圧縮強度受入基準、<strong class="kw">塩化物含有量</strong> <mark class="critical">0.3kg/m³以下</mark></td></tr>
+<tr><td>躯体工事</td><td><strong class="kw">型枠工事</strong></td><td>仕上げ面の見栄え</td><td>鉛直面と水平面の平坦性</td><td>水平面平坦性能、鉛直面平坦性能</td><td>基準面からの凹凸の精度</td></tr>
+<tr><td>躯体工事</td><td><strong class="kw">鉄筋工事</strong></td><td>鉄筋の耐力</td><td>鉄筋の継手性能、鉄筋の加工組立精度</td><td>鉄筋継手寸法、鉄筋の配置形状</td><td>寸法の許容値、鉄筋の間隔、配置、かぶり厚さ制限</td></tr>
+<tr><td>仕上げ工事</td><td><strong class="kw">防水工事</strong></td><td>防水性能</td><td>耐漏水性能</td><td>漏水量</td><td><strong class="kw">水張り試験</strong> <mark class="critical">0m³/24h</mark></td></tr>
+<tr><td>仕上げ工事</td><td><strong class="kw">石工事</strong></td><td>仕上げ面の見栄え</td><td>仕上げ面平坦性</td><td>仕上げ面平坦性能</td><td><strong class="kw">基準面からの凹凸の精度</strong> <mark class="critical">±10mm</mark></td></tr>
+<tr><td>仕上げ工事</td><td><strong class="kw">タイル工事</strong></td><td>耐剥離性</td><td>耐剥離性能</td><td>タイル引張り接着強度</td><td>接着力試験（<strong class="kw">引張接着強度</strong> <mark class="critical">0.4N/mm²以上</mark>かつ<strong class="kw">破壊率</strong> <mark class="critical">50％以下</mark>）</td></tr>
+<tr><td>仕上げ工事</td><td><strong class="kw">金属工事</strong></td><td>アンカー耐力</td><td>施工アンカー構造耐力</td><td>引抜き耐力</td><td>引抜き耐力試験（基準値以上）</td></tr>
+<tr><td>仕上げ工事</td><td><strong class="kw">左官工事</strong></td><td>タイル下地面平坦性</td><td>モルタル下地平坦性</td><td>仕上げ面平坦性能</td><td><strong class="kw">平坦性</strong> <mark class="critical">2mにつき6mm以下</mark></td></tr>
+<tr><td>仕上げ工事</td><td><strong class="kw">建具工事</strong></td><td>建具取付け精度</td><td>建具の取付け精度</td><td>建具取付け精度</td><td><strong class="kw">建具組立許容差</strong> <mark class="critical">2～3mm</mark></td></tr>
+<tr><td>仕上げ工事</td><td><strong class="kw">塗装工事</strong></td><td>塗装欠陥防止</td><td>乾燥速度</td><td>むら、しわ、へこみ、はじき、つぶ</td><td>目視確認（見本塗板と比較）</td></tr>
+<tr><td>仕上げ工事</td><td><strong class="kw">PCカーテンウォール工事</strong></td><td>取付け精度</td><td>取付け位置</td><td>取付け寸法許容差</td><td><strong class="kw">目地</strong> <mark class="critical">±5mm</mark>、<strong class="kw">目地段差</strong> <mark class="critical">4mm以下</mark></td></tr>
+</tbody></table></div>
+</div></article>
+<article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi">
+<div class="table-wrap"><table><thead><tr><th>Nhóm công tác</th><th>Loại công tác</th><th>Chất lượng khách hàng yêu cầu</th><th>Mục tiêu quản lý trọng điểm do thiết kế xác định</th><th>Hạng mục quản lý do bên thi công xác định</th><th>Phương pháp kiểm tra chất lượng</th></tr></thead><tbody>
+<tr><td>Kết cấu</td><td><strong class="kw">Cọc</strong></td><td>Khả năng chịu lực của cọc móng</td><td>Sức chịu tải của cọc</td><td>Độ thẳng đứng của cọc, khả năng chịu lực của nền đất</td><td>Độ lệch tim, độ chính xác thẳng đứng, trị số N của lớp đất chịu lực</td></tr>
+<tr><td>Kết cấu</td><td><strong class="kw">Bê tông</strong></td><td>Khả năng chịu lực kết cấu</td><td>Cường độ nén, độ bền lâu, tính kín nước</td><td>Độ sụt, hàm lượng khí, cường độ, hàm lượng chloride</td><td>Dung sai độ sụt; <strong class="kw">dung sai hàm lượng khí</strong> <mark class="critical">±1,5%</mark>; tiêu chuẩn nghiệm thu cường độ nén; <strong class="kw">hàm lượng chloride</strong> <mark class="critical">≤ 0,3 kg/m³</mark></td></tr>
+<tr><td>Kết cấu</td><td><strong class="kw">Ván khuôn</strong></td><td>Hình thức bề mặt hoàn thiện</td><td>Độ phẳng của bề mặt đứng và ngang</td><td>Tính năng độ phẳng bề mặt ngang và đứng</td><td>Độ chính xác độ lồi lõm so với mặt chuẩn</td></tr>
+<tr><td>Kết cấu</td><td><strong class="kw">Cốt thép</strong></td><td>Khả năng chịu lực của cốt thép</td><td>Tính năng mối nối; độ chính xác gia công và lắp dựng cốt thép</td><td>Kích thước mối nối; hình dạng bố trí cốt thép</td><td>Dung sai kích thước; khoảng cách, bố trí cốt thép; giới hạn chiều dày lớp bê tông bảo vệ</td></tr>
+<tr><td>Hoàn thiện</td><td><strong class="kw">Chống thấm</strong></td><td>Tính năng chống thấm</td><td>Tính năng chống rò nước</td><td>Lượng nước rò</td><td><strong class="kw">Thử ngâm nước</strong> <mark class="critical">0 m³/24 h</mark></td></tr>
+<tr><td>Hoàn thiện</td><td><strong class="kw">Đá</strong></td><td>Hình thức bề mặt hoàn thiện</td><td>Độ phẳng bề mặt hoàn thiện</td><td>Tính năng độ phẳng bề mặt</td><td><strong class="kw">Độ lồi lõm so với mặt chuẩn</strong> <mark class="critical">±10 mm</mark></td></tr>
+<tr><td>Hoàn thiện</td><td><strong class="kw">Gạch ốp/lát</strong></td><td>Khả năng chống bong tách</td><td>Tính năng chống bong tách</td><td>Cường độ bám dính kéo của gạch</td><td>Thử lực bám dính: <strong class="kw">cường độ bám dính kéo</strong> <mark class="critical">≥ 0,4 N/mm²</mark> và <strong class="kw">tỷ lệ phá hoại</strong> <mark class="critical">≤ 50%</mark></td></tr>
+<tr><td>Hoàn thiện</td><td><strong class="kw">Kim loại</strong></td><td>Khả năng chịu lực của anchor</td><td>Khả năng chịu lực kết cấu của anchor thi công</td><td>Khả năng chịu kéo bật</td><td>Thử khả năng chịu kéo bật, đạt từ trị số tiêu chuẩn trở lên</td></tr>
+<tr><td>Hoàn thiện</td><td><strong class="kw">Trát</strong></td><td>Độ phẳng lớp nền gạch</td><td>Độ phẳng lớp nền vữa</td><td>Tính năng độ phẳng bề mặt hoàn thiện</td><td><strong class="kw">Độ phẳng</strong> <mark class="critical">≤ 6 mm trên 2 m</mark></td></tr>
+<tr><td>Hoàn thiện</td><td><strong class="kw">Cửa</strong></td><td>Độ chính xác lắp đặt cửa</td><td>Độ chính xác lắp đặt cửa</td><td>Độ chính xác lắp đặt cửa</td><td><strong class="kw">Dung sai lắp ráp cửa</strong> <mark class="critical">2 đến 3 mm</mark></td></tr>
+<tr><td>Hoàn thiện</td><td><strong class="kw">Sơn</strong></td><td>Ngăn ngừa khuyết tật sơn</td><td>Tốc độ khô</td><td>Không đều màu/bề mặt, nhăn, lõm, hiện tượng はじき, つぶ</td><td>Kiểm tra trực quan, so với tấm sơn mẫu</td></tr>
+<tr><td>Hoàn thiện</td><td><strong class="kw">PC curtain wall</strong></td><td>Độ chính xác lắp đặt</td><td>Vị trí lắp đặt</td><td>Dung sai kích thước lắp đặt</td><td><strong class="kw">Mạch nối</strong> <mark class="critical">±5 mm</mark>, <strong class="kw">chênh cao mạch nối</strong> <mark class="critical">≤ 4 mm</mark></td></tr>
+</tbody></table></div>
+</div></article>
+</div>
+</section>
+<section class="subsection" id="sub-quality-sharing">
+<h3>品質管理方法の周知</h3>
+<div class="study-grid">
+<article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja">
+<p>建築物は、多くの施工工程を経て造られるものなので、発注者や設計図書等により要求された品質を確保するためには、各種の協力業者との<strong class="kw">一致団結（組織的な品質管理活動）</strong>が不可欠である。</p>
+<p>組織的な品質管理活動を実現するためには、自社が設定した<strong class="kw">品質管理目標・品質管理項目・品質管理活動</strong>などについて、協力業者に周知徹底することが不可欠である。</p>
+<p>品質管理活動を周知するためには、<span class="relation"><strong class="kw">QC工程表を協力業者に作成させる</strong>など、協力業者の主体性を引き出す工夫をする</span>方法が考えられる。協力業者と一体化した組織を構築して品質管理活動を行うことにより、品質管理目標・品質管理項目・活動内容などが明確になる。</p>
+<p>周知した内容に基づいて施工されていることを確認するためには、一例として、<span class="relation"><strong class="kw">品質試験</strong>を行い、<strong class="kw">品質特性の管理値</strong>と照合する</span>方法が考えられる。場合によっては、<strong class="kw">目視確認</strong>も有効な方法となる。</p>
+</div></article>
+<article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi">
+<p>Một công trình được tạo thành qua rất nhiều công đoạn thi công. Vì vậy, để bảo đảm chất lượng mà chủ đầu tư và hồ sơ thiết kế yêu cầu, <strong class="kw">sự phối hợp thống nhất với các công ty hợp tác, tức hoạt động quản lý chất lượng có tổ chức</strong>, là không thể thiếu.</p>
+<p>Để thực hiện quản lý chất lượng có tổ chức, cần phổ biến triệt để cho công ty hợp tác về <strong class="kw">mục tiêu quản lý chất lượng, hạng mục quản lý chất lượng và hoạt động quản lý chất lượng</strong> mà công ty đã thiết lập.</p>
+<p>Một phương pháp phổ biến hoạt động quản lý chất lượng là <span class="relation"><strong class="kw">yêu cầu công ty hợp tác tự lập QC工程表</strong>, qua đó tạo điều kiện để họ chủ động tham gia</span>. Việc hình thành một tổ chức thống nhất với các công ty hợp tác và cùng thực hiện quản lý chất lượng sẽ làm rõ mục tiêu quản lý, hạng mục quản lý và nội dung hoạt động.</p>
+<p>Để xác nhận rằng thi công thực tế đang được thực hiện theo nội dung đã phổ biến, có thể <span class="relation"><strong class="kw">thực hiện thử nghiệm chất lượng</strong> rồi đối chiếu với <strong class="kw">trị số quản lý của đặc tính chất lượng</strong></span>. Trong một số trường hợp, <strong class="kw">kiểm tra trực quan</strong> cũng là phương pháp hữu hiệu.</p>
+</div></article>
+</div>
+</section>
+</section></main>
+<!-- CONTENT_END -->
+<section id="terms">
+<h2>Thuật ngữ chuyên môn</h2><div class="section-head">
+<h2>Thuật ngữ chuyên môn</h2>
+</div><div class="table-wrap">
+<table>
+<thead><tr><th>日本語</th><th>読み方</th><th>Tiếng Việt</th><th>Giải thích</th></tr></thead>
+<tbody>
+<tr><td>品質管理</td><td>ひんしつかんり</td><td>Quản lý chất lượng</td><td>Hoạt động quản lý nhằm bảo đảm chất lượng thi công.</td></tr>
+<tr><td>品質計画</td><td>ひんしつけいかく</td><td>Kế hoạch chất lượng</td><td>Kế hoạch làm cơ sở thực hiện quản lý chất lượng.</td></tr>
+<tr><td>要求品質</td><td>ようきゅうひんしつ</td><td>Chất lượng yêu cầu</td><td>Yêu cầu chất lượng ở phía khách hàng/chủ đầu tư.</td></tr>
+<tr><td>重点品質管理目標</td><td>じゅうてんひんしつかんりもくひょう</td><td>Mục tiêu quản lý chất lượng trọng điểm</td><td>Mục tiêu kỹ thuật được xác lập ở cấp thiết kế để hiện thực hóa yêu cầu chất lượng.</td></tr>
+<tr><td>品質管理項目</td><td>ひんしつかんりこうもく</td><td>Hạng mục quản lý chất lượng</td><td>Đại lượng hoặc đặc tính mà bên thi công quản lý để đánh giá mức độ phù hợp.</td></tr>
+<tr><td>品質特性</td><td>ひんしつとくせい</td><td>Đặc tính chất lượng</td><td>Đặc tính cụ thể có thể quản lý hoặc kiểm tra.</td></tr>
+<tr><td>周知</td><td>しゅうち</td><td>Phổ biến, quán triệt</td><td>Làm cho các bên liên quan biết và hiểu nội dung cần tuân thủ.</td></tr>
+<tr><td>協力業者</td><td>きょうりょくぎょうしゃ</td><td>Nhà thầu hợp tác / nhà thầu phụ</td><td>Đơn vị phối hợp thực hiện các công tác thi công.</td></tr>
+<tr><td>圧縮強度</td><td>あっしゅくきょうど</td><td>Cường độ nén</td><td>Chỉ tiêu chất lượng được dùng trong ví dụ bê tông.</td></tr>
+<tr><td>スランプ</td><td>すらんぷ</td><td>Độ sụt</td><td>Chỉ tiêu được quản lý khi tiếp nhận/đổ bê tông.</td></tr>
+<tr><td>空気量</td><td>くうきりょう</td><td>Hàm lượng khí</td><td>Chỉ tiêu chất lượng bê tông.</td></tr>
+<tr><td>圧接部のふくらみ</td><td>あっせつぶのふくらみ</td><td>Độ phình của phần nối ép</td><td>Hình dạng phần nối sau gas pressure welding.</td></tr>
+<tr><td>ノギス</td><td>のぎす</td><td>Thước cặp</td><td>Dụng cụ dùng để đo kích thước phần phình.</td></tr>
+<tr><td>QC工程表</td><td>キューシーこうていひょう</td><td>Bảng/quy trình QC theo công đoạn</td><td>Công cụ làm rõ hạng mục và hoạt động quản lý chất lượng.</td></tr>
+<tr><td>許容差</td><td>きょようさ</td><td>Sai số cho phép</td><td>Phạm vi chấp nhận của trị số kiểm tra.</td></tr>
+<tr><td>耐漏水性能</td><td>たいろうすいせいのう</td><td>Tính năng chống rò nước</td><td>Khả năng ngăn nước rò qua cấu tạo.</td></tr>
+<tr><td>水張り試験</td><td>みずはりしけん</td><td>Thử ngâm nước</td><td>Phương pháp kiểm tra rò nước bằng cách giữ nước trong thời gian quy định.</td></tr>
+<tr><td>塗継ぎ重ね幅</td><td>ぬりつぎかさねはば</td><td>Bề rộng chồng mí tại chỗ nối</td><td>Trị số được kiểm soát trong ví dụ chống thấm.</td></tr>
+<tr><td>左官工事</td><td>さかんこうじ</td><td>Công tác trát</td><td>Công tác hoàn thiện bằng vữa, lớp nền v.v.</td></tr>
+<tr><td>平面性 / 平坦性</td><td>へいめんせい / へいたんせい</td><td>Độ phẳng bề mặt</td><td>Đặc tính hình học của bề mặt hoàn thiện.</td></tr>
+<tr><td>セルフレベリング材</td><td>セルフレベリングざい</td><td>Vật liệu tự san phẳng</td><td>Vật liệu tạo bề mặt nền phẳng.</td></tr>
+<tr><td>施工要領書</td><td>せこうようりょうしょ</td><td>Biện pháp/hướng dẫn thi công</td><td>Tài liệu quy định cách thực hiện công tác.</td></tr>
+<tr><td>心ずれ</td><td>しんずれ</td><td>Độ lệch tim</td><td>Sai lệch vị trí tim cọc so với vị trí thiết kế.</td></tr>
+<tr><td>鉛直精度</td><td>えんちょくせいど</td><td>Độ chính xác thẳng đứng</td><td>Chỉ tiêu hình học của cọc.</td></tr>
+<tr><td>支持地盤のN値</td><td>しじじばんのエヌち</td><td>Trị số N của lớp đất chịu lực</td><td>Chỉ tiêu được sách liệt kê để xác nhận nền đỡ cọc.</td></tr>
+<tr><td>塩化物含有量</td><td>えんかぶつがんゆうりょう</td><td>Hàm lượng chloride</td><td>Một hạng mục quản lý chất lượng bê tông.</td></tr>
+<tr><td>引張接着強度</td><td>ひっぱりせっちゃくきょうど</td><td>Cường độ bám dính kéo</td><td>Chỉ tiêu của công tác gạch ốp/lát.</td></tr>
+<tr><td>引抜き耐力</td><td>ひきぬきたいりょく</td><td>Khả năng chịu kéo bật</td><td>Chỉ tiêu kiểm tra anchor.</td></tr>
+<tr><td>目視確認</td><td>もくしかくにん</td><td>Kiểm tra trực quan</td><td>Xác nhận trực tiếp bằng quan sát.</td></tr>
+<tr><td>一致団結</td><td>いっちだんけつ</td><td>Phối hợp thống nhất</td><td>Trong trang này dùng để diễn đạt hoạt động quản lý chất lượng có tổ chức.</td></tr>
+</tbody>
+</table>
+</div></section>
+<section id="background">
+<h2>Kiến thức nền cần biết</h2><div class="section-head">
+<h2>Kiến thức nền cần biết</h2>
+</div><div class="note-box">
+<strong>Khung logic quản lý chất lượng trong Book 120-121</strong>
+<p>Ba cấp không nên dùng lẫn khi viết bài: <strong>① Chủ đầu tư</strong> nêu yêu cầu kết quả cuối cùng; <strong>② Thiết kế</strong> chuyển yêu cầu thành mục tiêu kỹ thuật; <strong>③ Thi công</strong> lựa chọn đại lượng cụ thể để quản lý và kiểm tra.</p>
+</div><div class="formula-box"><div class="formula-line"><span class="flow-node">要求品質<br/>Yêu cầu chất lượng</span><span class="flow-arrow">→</span><span class="flow-node">重点品質管理目標<br/>Mục tiêu trọng điểm</span><span class="flow-arrow">→</span><span class="flow-node">品質管理項目<br/>Hạng mục quản lý</span><span class="flow-arrow">→</span><span class="flow-node">試験・確認<br/>Thử / xác nhận</span></div></div><div class="note-box">
+<strong>Cách hiểu bảng Book 121</strong>
+<p>Ví dụ công tác tile: <strong>耐剥離性</strong> → <strong>耐剥離性能</strong> → <strong>タイル引張り接着強度</strong> → <strong>接着力試験</strong>. Yêu cầu tổng quát được chuyển thành tính năng cần đạt, sau đó thành đại lượng có thể quản lý và cuối cùng là phép thử có thể xác nhận bằng trị số.</p>
+</div></section>
+<section id="memory">
+<h2>Điểm cần nhớ và mẹo nhớ</h2><div class="section-head">
+<h2>Điểm cần nhớ và mẹo nhớ</h2>
+</div><div class="memory-box"><strong>Khung trả lời Câu 1</strong><p><span class="relation">Yêu cầu chất lượng → Hạng mục quản lý chất lượng → Lý do chọn → Nội dung quản lý thực tế</span>.</p></div><div class="memory-box"><strong>Phân biệt Câu 2</strong><p><strong>周知</strong> = làm cho nhà thầu hợp tác biết và hiểu phải làm gì. <strong>確認</strong> = kiểm tra thực tế có thi công đúng nội dung đã phổ biến hay không.</p></div><div class="warning-box"><strong>Điều kiện dễ mất điểm</strong><p>Trong đề H28, <span class="trap">建築設備工事 bị loại khỏi phạm vi 建築工事</span>. Ngoài ra, nội dung Câu 2 <span class="trap">không được trùng với 設問1③「実施した内容」</span>.</p></div><div class="table-wrap">
+<table>
+<caption>Các trị số đáng nhớ trực tiếp từ Book 118-121</caption>
+<thead><tr><th>Đối tượng / công tác</th><th>Trị số / tiêu chuẩn</th></tr></thead>
+<tbody>
+<tr><td>Nối ép cốt thép</td><td><strong class="kw">Độ phình</strong> <mark class="critical">≥ 1,4 × đường kính cốt thép</mark></td></tr>
+<tr><td>Chống thấm urethane</td><td><strong class="kw">Bề rộng chồng mí</strong> <mark class="critical">100 mm</mark>; <strong class="kw">thử ngâm nước</strong> <mark class="critical">24 h</mark>; <strong class="kw">lượng rò</strong> <mark class="critical">0 m³</mark></td></tr>
+<tr><td>Trát / lớp nền</td><td><strong class="kw">Độ phẳng</strong> <mark class="critical">≤ 6 mm / 2 m</mark></td></tr>
+<tr><td>Bê tông</td><td><strong class="kw">Dung sai hàm lượng khí</strong> <mark class="critical">±1,5%</mark>; <strong class="kw">chloride</strong> <mark class="critical">≤ 0,3 kg/m³</mark></td></tr>
+<tr><td>Đá</td><td><strong class="kw">Độ lồi lõm so với mặt chuẩn</strong> <mark class="critical">±10 mm</mark></td></tr>
+<tr><td>Tile</td><td><strong class="kw">Cường độ bám dính kéo</strong> <mark class="critical">≥ 0,4 N/mm²</mark>; <strong class="kw">tỷ lệ phá hoại</strong> <mark class="critical">≤ 50%</mark></td></tr>
+<tr><td>Cửa</td><td><strong class="kw">Dung sai lắp ráp</strong> <mark class="critical">2-3 mm</mark></td></tr>
+<tr><td>PC curtain wall</td><td><strong class="kw">Mạch nối</strong> <mark class="critical">±5 mm</mark>; <strong class="kw">chênh cao mạch nối</strong> <mark class="critical">≤ 4 mm</mark></td></tr>
+</tbody>
+</table>
+</div></section>
+<template id="component-library">
+<div class="table-wrap">
+<table>
+<caption>{{TABLE_CAPTION}}</caption>
+<thead><tr><th>{{HEADER_1}}</th><th>{{HEADER_2}}</th></tr></thead>
+<tbody><tr><td><strong class="kw">{{ROW_KEY}}</strong></td><td><span class="relation">{{ROW_RELATION}}</span></td></tr></tbody>
+</table>
+</div>
+<figure class="figure-card">
+<img alt="{{IMAGE_ALT}}" height="{{IMAGE_HEIGHT}}" src="{{IMAGE_SOURCE}}" width="{{IMAGE_WIDTH}}"/>
+<figcaption>{{IMAGE_CAPTION}}</figcaption>
+</figure>
+<div class="figure-grid">
+<figure class="figure-card">
+<img alt="{{IMAGE_ALT_1}}" height="{{IMAGE_HEIGHT_1}}" src="{{IMAGE_SOURCE_1}}" width="{{IMAGE_WIDTH_1}}"/>
+<figcaption>{{IMAGE_CAPTION_1}}</figcaption>
+</figure>
+<figure class="figure-card">
+<img alt="{{IMAGE_ALT_2}}" height="{{IMAGE_HEIGHT_2}}" src="{{IMAGE_SOURCE_2}}" width="{{IMAGE_WIDTH_2}}"/>
+<figcaption>{{IMAGE_CAPTION_2}}</figcaption>
+</figure>
+</div>
+<section class="note-box"><h3>{{NOTE_TITLE}}</h3><p>{{NOTE_CONTENT}}</p></section>
+<section class="warning-box"><h3>{{WARNING_TITLE}}</h3><p>{{WARNING_CONTENT}}</p></section>
+<section class="memory-box"><h3>{{MEMORY_TITLE}}</h3><p>{{MEMORY_ITEM}}</p></section>
+</template>
+</div>
+<script>
+(function () {
+  'use strict';
+
+  const root = document.documentElement;
+  const body = document.body;
+  const q = id => document.getElementById(id);
+  const FONT_LEVELS = Array.from({ length: 21 }, (_, i) => 50 + i * 5);
+
+  const controls = q('control-cluster');
+  const controlsToggle = q('controls-toggle');
+  const controlPanel = q('control-panel');
+  const themeButton = q('theme-toggle');
+  const modeButton = q('mode-toggle');
+  const fontDown = q('font-down');
+  const fontUp = q('font-up');
+  const fontReset = q('font-reset');
+  const tocButton = q('toc-toggle');
+  const tocClose = q('toc-close');
+  const overlay = q('toc-overlay');
+  const prevButton = q('section-prev');
+  const nextButton = q('section-next');
+  const homeButton = q('home-button');
+
+  const pageKey = location.pathname + location.search;
+  const activeUserId = safeGet('study-active-user-id', 'guest');
+  const readerStateKey = 'study-reader-position:' + activeUserId + ':' + pageKey;
+  const legacyReaderStateKey = 'study-reader-position:' + pageKey;
+  const legacyRenamedFileName = "01k_施工経験記述_H28_p117-121_VN.html";
+  const legacyRenamedPageKeys = [
+    location.pathname.replace(/[^/]*$/, encodeURI(legacyRenamedFileName)) + location.search,
+    location.pathname.replace(/[^/]*$/, legacyRenamedFileName) + location.search
+  ];
+  const legacyRenamedReaderStateKeys = [...new Set(legacyRenamedPageKeys)].map(
+    key => 'study-reader-position:' + activeUserId + ':' + key
+  );
+  const lastPageKey = 'study-last-page:' + activeUserId;
+  const explicitHomeKey = 'study-explicit-home';
+  const anchorSelector = [
+    '.page-shell h1', '.page-shell h2', '.page-shell h3', '.page-shell h4',
+    '.page-shell p', '.page-shell li', '.page-shell td', '.page-shell th',
+    '.page-shell figcaption', '.page-shell .card-title'
+  ].join(', ');
+
+  let anchorElements = [];
+  let lastStablePosition = null;
+  let scrollSaveTimer = 0;
+  let resizeRestoreTimer = 0;
+  let resizeAnchor = null;
+  let suppressScrollSaveUntil = 0;
+  function layoutViewportSize() {
+    const de = document.documentElement;
+    return {
+      width: de.clientWidth || window.innerWidth,
+      height: de.clientHeight || window.innerHeight
+    };
+  }
+
+  function visualViewportScale() {
+    const vv = window.visualViewport;
+    return vv && Number.isFinite(vv.scale) ? vv.scale : 1;
+  }
+
+  function isPinchZoomActive() {
+    return Math.abs(visualViewportScale() - 1) > 0.015;
+  }
+
+  const initialLayoutViewport = layoutViewportSize();
+  let lastViewportWidth = initialLayoutViewport.width;
+  let lastViewportHeight = initialLayoutViewport.height;
+  let pinchZoomSession = false;
+
+  try {
+    if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+  } catch (e) {}
+
+  function safeGet(key, fallback = null) {
+    try {
+      const value = localStorage.getItem(key);
+      return value === null ? fallback : value;
+    } catch (e) {
+      return fallback;
+    }
+  }
+
+  function safeSet(key, value) {
+    try { localStorage.setItem(key, value); } catch (e) {}
+  }
+
+  function safeRemove(key) {
+    try { localStorage.removeItem(key); } catch (e) {}
+  }
+
+  /* ---------- Persistent page / PWA resume metadata ---------- */
+
+  function rememberCurrentPage() {
+    safeSet(lastPageKey, pageKey);
+    safeSet('study-last-active-at', String(Date.now()));
+  }
+
+  rememberCurrentPage();
+
+  /* ---------- Layout viewport geometry ---------- */
+
+  /*
+    Pinch zoom changes visualViewport.width / height / scale.
+    It must NOT change the document layout width.
+
+    Therefore --app-viewport-width is derived only from the layout viewport
+    (documentElement.clientWidth / innerWidth), never from visualViewport.width.
+  */
+  function syncViewportGeometry() {
+    const { width } = layoutViewportSize();
+    root.style.setProperty(
+      '--app-viewport-width',
+      `${Math.round(width * 100) / 100}px`
+    );
+  }
+
+  syncViewportGeometry();
+
+  /* ---------- Reader anchors ---------- */
+
+  function rebuildReaderAnchors() {
+    anchorElements = Array.from(document.querySelectorAll(anchorSelector));
+    anchorElements.forEach((el, index) => {
+      el.dataset.readerKey = 'r' + index;
+    });
+  }
+
+  function closestReaderElement(node) {
+    if (!node) return null;
+    const el = node.nodeType === Node.ELEMENT_NODE ? node : node.parentElement;
+    return el ? el.closest('[data-reader-key]') : null;
+  }
+
+  function caretAtPoint(x, y) {
+    try {
+      if (document.caretPositionFromPoint) {
+        const pos = document.caretPositionFromPoint(x, y);
+        if (!pos || !pos.offsetNode) return null;
+        return { node: pos.offsetNode, offset: pos.offset };
+      }
+      if (document.caretRangeFromPoint) {
+        const range = document.caretRangeFromPoint(x, y);
+        if (!range) return null;
+        return { node: range.startContainer, offset: range.startOffset };
+      }
+    } catch (e) {}
+    return null;
+  }
+
+  function textOffsetFromElementStart(element, node, offset) {
+    try {
+      const range = document.createRange();
+      range.setStart(element, 0);
+      range.setEnd(node, offset);
+      return range.toString().length;
+    } catch (e) {
+      return 0;
+    }
+  }
+
+  function domPositionFromTextOffset(element, targetOffset) {
+    const walker = document.createTreeWalker(element, NodeFilter.SHOW_TEXT);
+    let remaining = Math.max(0, targetOffset);
+    let node = walker.nextNode();
+    let last = null;
+
+    while (node) {
+      last = node;
+      const len = node.nodeValue ? node.nodeValue.length : 0;
+      if (remaining <= len) {
+        return { node, offset: remaining };
+      }
+      remaining -= len;
+      node = walker.nextNode();
+    }
+
+    if (last) return { node: last, offset: last.nodeValue ? last.nodeValue.length : 0 };
+    return { node: element, offset: 0 };
+  }
+
+  function characterRect(node, offset) {
+    try {
+      if (node.nodeType !== Node.TEXT_NODE) {
+        const r = node.getBoundingClientRect ? node.getBoundingClientRect() : null;
+        return r && r.height ? r : null;
+      }
+
+      const len = node.nodeValue ? node.nodeValue.length : 0;
+      if (!len) return node.parentElement ? node.parentElement.getBoundingClientRect() : null;
+
+      let start = Math.max(0, Math.min(offset, len - 1));
+      let end = Math.min(len, start + 1);
+      if (offset >= len && len > 0) {
+        start = len - 1;
+        end = len;
+      }
+
+      const range = document.createRange();
+      range.setStart(node, start);
+      range.setEnd(node, end);
+      const rects = range.getClientRects();
+      return rects.length ? rects[0] : range.getBoundingClientRect();
+    } catch (e) {
+      return null;
+    }
+  }
+
+  function captureReadingPosition() {
+    if (!anchorElements.length) rebuildReaderAnchors();
+    if (!anchorElements.length) return null;
+
+    const vv = window.visualViewport;
+    const viewportWidth = vv ? vv.width : window.innerWidth;
+    const topProbe = 6;
+    const ys = [topProbe, 12, 18, 26, 36, 50];
+    const xs = [];
+
+    for (let x = 12; x <= Math.min(viewportWidth - 12, 220); x += 16) xs.push(x);
+    xs.push(viewportWidth * .25, viewportWidth * .5, viewportWidth * .75);
+
+    for (const y of ys) {
+      for (const x of xs) {
+        if (x <= 0 || x >= viewportWidth) continue;
+        const caret = caretAtPoint(x, y);
+        if (!caret) continue;
+        const element = closestReaderElement(caret.node);
+        if (!element || !document.querySelector('.page-shell')?.contains(element)) continue;
+
+        const offset = textOffsetFromElementStart(element, caret.node, caret.offset);
+        const rect = characterRect(caret.node, caret.offset);
+        const key = element.dataset.readerKey;
+        if (key && rect && Number.isFinite(rect.top)) {
+          return { key, offset, top: rect.top };
+        }
+      }
+    }
+
+    /* Fallback: nearest textual block to the top edge. */
+    let best = null;
+    let bestDistance = Infinity;
+    for (const element of anchorElements) {
+      const rect = element.getBoundingClientRect();
+      if (rect.bottom < 0 || rect.top > (vv ? vv.height : window.innerHeight)) continue;
+      const distance = Math.abs(rect.top);
+      if (distance < bestDistance) {
+        bestDistance = distance;
+        best = { key: element.dataset.readerKey, offset: 0, top: rect.top };
+      }
+    }
+    return best;
+  }
+
+  function restoreReadingPosition(state) {
+    if (!state || !state.key) return false;
+    if (!anchorElements.length) rebuildReaderAnchors();
+
+    const element = document.querySelector('[data-reader-key="' + CSS.escape(state.key) + '"]');
+    if (!element) return false;
+
+    const pos = domPositionFromTextOffset(element, Number(state.offset) || 0);
+    const rect = characterRect(pos.node, pos.offset);
+    if (!rect || !Number.isFinite(rect.top)) return false;
+
+    const desiredTop = Number.isFinite(Number(state.top)) ? Number(state.top) : 6;
+    const delta = rect.top - desiredTop;
+    if (Math.abs(delta) < .5) return true;
+
+    suppressScrollSaveUntil = Date.now() + 700;
+    const oldBehavior = root.style.scrollBehavior;
+    root.style.scrollBehavior = 'auto';
+    window.scrollBy(0, delta);
+    root.style.scrollBehavior = oldBehavior;
+    return true;
+  }
+
+  function saveReaderState(state) {
+    if (!state) return;
+    lastStablePosition = state;
+    safeSet(readerStateKey, JSON.stringify(state));
+  }
+
+  function readReaderState() {
+    try {
+      const raw = safeGet(readerStateKey);
+      if (raw) return JSON.parse(raw);
+
+      // Import the user-scoped position saved under the pre-rename filename.
+      for (const oldKey of legacyRenamedReaderStateKeys) {
+        const renamedRaw = safeGet(oldKey);
+        if (renamedRaw) {
+          safeSet(readerStateKey, renamedRaw);
+          return JSON.parse(renamedRaw);
+        }
+      }
+
+      // One-time backward-compatible import of the pre-sync local position.
+      const legacyOwner = safeGet('study-legacy-import-owner');
+      const mayImportLegacy = activeUserId !== 'guest' && (!legacyOwner || legacyOwner === activeUserId);
+      if (mayImportLegacy) {
+        const legacyRaw = safeGet(legacyReaderStateKey);
+        if (legacyRaw) {
+          safeSet('study-legacy-import-owner', activeUserId);
+          safeSet(readerStateKey, legacyRaw);
+          return JSON.parse(legacyRaw);
+        }
+      }
+      return null;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  function settleRestore(state, delays = [0, 60, 180, 420]) {
+    if (!state) return;
+    suppressScrollSaveUntil = Date.now() + Math.max(...delays) + 350;
+    delays.forEach(delay => {
+      window.setTimeout(() => {
+        requestAnimationFrame(() => restoreReadingPosition(state));
+      }, delay);
+    });
+    window.setTimeout(() => {
+      saveReaderState(state);
+    }, Math.max(...delays) + 120);
+  }
+
+  function preserveReadingPosition(mutator) {
+    const state = captureReadingPosition() || lastStablePosition || readReaderState();
+    if (state) saveReaderState(state);
+    mutator();
+    rebuildReaderAnchors();
+    settleRestore(state);
+  }
+
+  function scheduleReaderSave() {
+    if (Date.now() < suppressScrollSaveUntil) return;
+    clearTimeout(scrollSaveTimer);
+    scrollSaveTimer = window.setTimeout(() => {
+      if (Date.now() < suppressScrollSaveUntil) return;
+      const state = captureReadingPosition();
+      if (state) saveReaderState(state);
+    }, 130);
+  }
+
+  rebuildReaderAnchors();
+  lastStablePosition = readReaderState();
+
+  /* ---------- Theme ---------- */
+
+  function applyTheme(theme) {
+    theme = theme === 'light' ? 'light' : 'dark';
+    root.dataset.theme = theme;
+    safeSet('study-theme', theme);
+    if (themeButton) {
+      themeButton.textContent = theme === 'dark' ? '☀' : '☾';
+      themeButton.title = theme === 'dark' ? 'Chuyển sang Light theme' : 'Chuyển sang Dark theme';
+      themeButton.setAttribute('aria-label', themeButton.title);
+      themeButton.setAttribute('aria-pressed', theme === 'light' ? 'true' : 'false');
+    }
+  }
+
+  /* ---------- Full / Keywords ---------- */
+
+  function applyMode(mode) {
+    mode = mode === 'keywords' ? 'keywords' : 'full';
+    root.dataset.studyMode = mode;
+    body.classList.toggle('keyword-focus', mode === 'keywords');
+    safeSet('study-mode', mode);
+    if (modeButton) {
+      modeButton.textContent = mode === 'full' ? '🎯' : '📖';
+      modeButton.title = mode === 'full' ? 'Chuyển sang Keywords mode' : 'Trở lại Full mode';
+      modeButton.setAttribute('aria-label', modeButton.title);
+      modeButton.setAttribute('aria-pressed', mode === 'keywords' ? 'true' : 'false');
+    }
+  }
+
+  /* ---------- Font 50-150%, step 5% ---------- */
+
+  function currentScale() {
+    const saved = Number(safeGet('study-font-scale', '100'));
+    return FONT_LEVELS.includes(saved) ? saved : 100;
+  }
+
+  function applyFontScale(scale) {
+    if (!FONT_LEVELS.includes(scale)) scale = 100;
+    root.style.setProperty('--base-font-size', (16 * scale / 100) + 'px');
+    safeSet('study-font-scale', String(scale));
+
+    if (fontReset) {
+      fontReset.textContent = scale + '%';
+      fontReset.title = 'Cỡ chữ hiện tại ' + scale + '%. Chạm để về 100%';
+      fontReset.setAttribute('aria-label', fontReset.title);
+    }
+    if (fontDown) fontDown.disabled = scale === FONT_LEVELS[0];
+    if (fontUp) fontUp.disabled = scale === FONT_LEVELS[FONT_LEVELS.length - 1];
+  }
+
+  /* ---------- Collapsible controls ---------- */
+
+  function setControlsOpen(open) {
+    if (!controls) return;
+    controls.classList.toggle('open', open);
+    controlsToggle?.setAttribute('aria-expanded', String(open));
+    controlsToggle?.setAttribute('aria-label', open ? 'Đóng công cụ' : 'Mở công cụ');
+    controlsToggle?.setAttribute('title', open ? 'Đóng công cụ' : 'Mở công cụ');
+  }
+
+  controlsToggle?.addEventListener('click', event => {
+    event.stopPropagation();
+    setControlsOpen(!controls.classList.contains('open'));
+  });
+
+  controlPanel?.addEventListener('click', event => event.stopPropagation());
+  document.addEventListener('pointerdown', event => {
+    if (controls?.classList.contains('open') && !controls.contains(event.target)) setControlsOpen(false);
+  });
+
+  /* ---------- TOC ---------- */
+
+  function openToc() {
+    body.classList.add('toc-open');
+    tocButton?.setAttribute('aria-expanded', 'true');
+    setControlsOpen(false);
+  }
+
+  function closeToc() {
+    body.classList.remove('toc-open');
+    tocButton?.setAttribute('aria-expanded', 'false');
+  }
+
+  tocButton?.addEventListener('click', openToc);
+  tocClose?.addEventListener('click', closeToc);
+  overlay?.addEventListener('click', closeToc);
+
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape') {
+      closeToc();
+      setControlsOpen(false);
+    }
+  });
+
+  document.querySelectorAll('a[href="#toc"]').forEach(a => {
+    a.addEventListener('click', event => {
+      event.preventDefault();
+      openToc();
+    });
+  });
+
+  /* TOC navigation does not add hash-history entries. */
+  document.querySelectorAll('#toc a[href^="#"]').forEach(a => {
+    a.addEventListener('click', event => {
+      const href = a.getAttribute('href');
+      if (!href || href === '#toc') return;
+      const target = document.getElementById(decodeURIComponent(href.slice(1)));
+      if (!target) return;
+      event.preventDefault();
+      closeToc();
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      window.setTimeout(scheduleReaderSave, 450);
+    });
+  });
+
+  /* ---------- Previous / next lesson item ---------- */
+
+  const tocTargets = Array.from(document.querySelectorAll('#toc a[href^="#"]'))
+    .map(a => document.getElementById(decodeURIComponent(a.getAttribute('href').slice(1))))
+    .filter((el, i, arr) => el && el.id !== 'toc' && arr.indexOf(el) === i);
+
+  function currentSectionIndex() {
+    let idx = -1;
+    const threshold = 24;
+    tocTargets.forEach((el, i) => {
+      if (el.getBoundingClientRect().top <= threshold) idx = i;
+    });
+    return idx;
+  }
+
+  function updateSectionButtons() {
+    const i = currentSectionIndex();
+    if (prevButton) prevButton.disabled = !tocTargets.length || i <= 0;
+    if (nextButton) nextButton.disabled = !tocTargets.length || i >= tocTargets.length - 1;
+  }
+
+  function goToIndex(i) {
+    if (!tocTargets.length) return;
+    i = Math.max(0, Math.min(tocTargets.length - 1, i));
+    tocTargets[i].scrollIntoView({ behavior: 'smooth', block: 'start' });
+    window.setTimeout(() => {
+      const state = captureReadingPosition();
+      if (state) saveReaderState(state);
+      updateSectionButtons();
+    }, 450);
+  }
+
+  prevButton?.addEventListener('click', () => goToIndex(Math.max(0, currentSectionIndex() - 1)));
+  nextButton?.addEventListener('click', () => goToIndex(Math.min(tocTargets.length - 1, currentSectionIndex() + 1)));
+
+  /* ---------- Home ---------- */
+
+  homeButton?.addEventListener('click', () => {
+    const state = captureReadingPosition();
+    if (state) saveReaderState(state);
+    safeSet(explicitHomeKey, '1');
+    safeSet('study-home-click-at', String(Date.now()));
+    window.location.href = new URL('index.html', window.location.href).href;
+  });
+
+  /* ---------- Initialize state ---------- */
+
+  applyTheme(root.dataset.theme === 'light' ? 'light' : 'dark');
+  applyMode(root.dataset.studyMode || 'full');
+  applyFontScale(currentScale());
+
+  themeButton?.addEventListener('click', () => applyTheme(root.dataset.theme === 'dark' ? 'light' : 'dark'));
+  modeButton?.addEventListener('click', () => applyMode(root.dataset.studyMode === 'keywords' ? 'full' : 'keywords'));
+
+  fontDown?.addEventListener('click', () => {
+    const i = FONT_LEVELS.indexOf(currentScale());
+    if (i > 0) preserveReadingPosition(() => applyFontScale(FONT_LEVELS[i - 1]));
+  });
+
+  fontUp?.addEventListener('click', () => {
+    const i = FONT_LEVELS.indexOf(currentScale());
+    if (i >= 0 && i < FONT_LEVELS.length - 1) preserveReadingPosition(() => applyFontScale(FONT_LEVELS[i + 1]));
+  });
+
+  fontReset?.addEventListener('click', () => preserveReadingPosition(() => applyFontScale(100)));
+
+  /* ---------- Scroll / rotation / resize persistence ---------- */
+
+  window.addEventListener('scroll', () => {
+    scheduleReaderSave();
+    updateSectionButtons();
+  }, { passive: true });
+
+  function handleLayoutViewportChange() {
+    /*
+      A native two-finger pinch changes VisualViewport but normally does not
+      change the layout viewport. Ignore it completely so the page does not
+      recalculate width or fight the browser's native zoom.
+    */
+    if (isPinchZoomActive()) {
+      pinchZoomSession = true;
+      return;
+    }
+
+    const { width: w, height: h } = layoutViewportSize();
+
+    /*
+      When pinch zoom returns to scale 1, VisualViewport may emit another
+      resize. If the layout viewport itself did not change, this was only zoom,
+      so do nothing.
+    */
+    const layoutChanged =
+      Math.abs(w - lastViewportWidth) >= 1 ||
+      Math.abs(h - lastViewportHeight) >= 1;
+
+    if (!layoutChanged) {
+      pinchZoomSession = false;
+      return;
+    }
+
+    pinchZoomSession = false;
+
+    if (!resizeAnchor) {
+      resizeAnchor =
+        lastStablePosition ||
+        readReaderState() ||
+        captureReadingPosition();
+    }
+
+    /*
+      Only a real layout change, such as portrait <-> landscape, updates
+      --app-viewport-width.
+    */
+    syncViewportGeometry();
+    lastViewportWidth = w;
+    lastViewportHeight = h;
+
+    if (resizeAnchor) {
+      settleRestore(resizeAnchor, [0, 50, 140, 300]);
+    }
+
+    clearTimeout(resizeRestoreTimer);
+    resizeRestoreTimer = window.setTimeout(() => {
+      if (resizeAnchor) {
+        settleRestore(resizeAnchor, [0, 80, 220]);
+      }
+
+      window.setTimeout(() => {
+        lastStablePosition =
+          resizeAnchor ||
+          captureReadingPosition();
+
+        if (lastStablePosition) {
+          saveReaderState(lastStablePosition);
+        }
+
+        resizeAnchor = null;
+        updateSectionButtons();
+      }, 320);
+    }, 260);
+  }
+
+  function handleVisualViewportResize() {
+    /*
+      visualViewport resize is the main signal used by Safari/WebKit while
+      pinch-zooming. At scale != 1 this is zoom, not a responsive-layout event.
+    */
+    if (isPinchZoomActive()) {
+      pinchZoomSession = true;
+      return;
+    }
+
+    handleLayoutViewportChange();
+  }
+
+  window.addEventListener(
+    'resize',
+    handleLayoutViewportChange,
+    { passive: true }
+  );
+
+  window.addEventListener('orientationchange', () => {
+    /*
+      Rotation is a genuine layout change. Use the stored logical reading
+      position, then wait for iOS to finish updating its layout viewport.
+    */
+    resizeAnchor =
+      lastStablePosition ||
+      readReaderState() ||
+      captureReadingPosition();
+
+    [40, 120, 280].forEach(delay => {
+      window.setTimeout(() => {
+        if (isPinchZoomActive()) return;
+
+        const size = layoutViewportSize();
+        syncViewportGeometry();
+
+        if (
+          Math.abs(size.width - lastViewportWidth) >= 1 ||
+          Math.abs(size.height - lastViewportHeight) >= 1
+        ) {
+          lastViewportWidth = size.width;
+          lastViewportHeight = size.height;
+        }
+
+        if (resizeAnchor) {
+          settleRestore(resizeAnchor, [0, 70, 180]);
+        }
+      }, delay);
+    });
+
+    window.setTimeout(() => {
+      resizeAnchor = null;
+      updateSectionButtons();
+    }, 620);
+  }, { passive: true });
+
+  window.visualViewport?.addEventListener(
+    'resize',
+    handleVisualViewportResize,
+    { passive: true }
+  );
+
+  function saveLifecycleState() {
+    const state = captureReadingPosition() || lastStablePosition;
+    if (state) saveReaderState(state);
+    rememberCurrentPage();
+  }
+
+  document.addEventListener('visibilitychange', () => {
+    if (document.visibilityState === 'hidden') saveLifecycleState();
+    else {
+      rememberCurrentPage();
+      const state = readReaderState();
+      if (state) settleRestore(state, [0, 80, 220]);
+    }
+  });
+
+  window.addEventListener('pagehide', saveLifecycleState);
+  window.addEventListener('beforeunload', saveLifecycleState);
+
+  window.addEventListener('pageshow', () => {
+    rememberCurrentPage();
+    rebuildReaderAnchors();
+    const state = readReaderState();
+    if (!location.hash && state) settleRestore(state, [0, 80, 220, 500]);
+    window.setTimeout(updateSectionButtons, 80);
+  });
+
+  window.addEventListener('load', () => {
+    rebuildReaderAnchors();
+    const state = readReaderState();
+    if (!location.hash && state) settleRestore(state, [0, 80, 220, 500]);
+    else {
+      const current = captureReadingPosition();
+      if (current) saveReaderState(current);
+    }
+    updateSectionButtons();
+  });
+
+
+  // Public bridge used by the cloud synchronization engine.
+  window.StudyReader = Object.freeze({
+    pageKey,
+    capture: captureReadingPosition,
+    restore: restoreReadingPosition,
+    rebuild: rebuildReaderAnchors,
+    readLocal: readReaderState,
+    saveLocal: saveReaderState,
+    settleRestore,
+    getLastStable: () => lastStablePosition,
+    isPinchZoomActive
+  });
+  window.dispatchEvent(new CustomEvent('studyreaderready'));
+})();
+</script>
+<script>
+// Cloud runtime v6.2 for lesson pages.
+// Public browser configuration for the study app. Cloud sync pilot v6.2.
+window.STUDY_CONFIG = Object.freeze({
+  SUPABASE_URL: 'https://aniaxezhssgumxmbxkhl.supabase.co',
+  SUPABASE_PUBLISHABLE_KEY: 'sb_publishable_6NbASFJULfnuggdm6MukFg_UknPZCIB',
+  APP_ROOT_URL: 'https://beinpubi.github.io/kenchiku-sekou-2ji/'
+});
+
+(function () {
+  'use strict';
+
+  const SESSION_KEY = 'study-cloud-session-v5';
+  window.__STUDY_CLOUD_CLIENT_VERSION__ = '6.2';
+  const listeners = new Set();
+
+  function config() {
+    const cfg = window.STUDY_CONFIG || {};
+    const url = String(cfg.SUPABASE_URL || '').replace(/\/+$/, '');
+    const key = String(cfg.SUPABASE_PUBLISHABLE_KEY || '');
+    if (!url || !key) throw new Error('Embedded Supabase configuration is missing or incomplete');
+    return { url, key };
+  }
+
+  function safeGet(key) {
+    try { return localStorage.getItem(key); } catch (e) { return null; }
+  }
+
+  function safeSet(key, value) {
+    try { localStorage.setItem(key, value); } catch (e) {}
+  }
+
+  function safeRemove(key) {
+    try { localStorage.removeItem(key); } catch (e) {}
+  }
+
+  function readSession() {
+    const raw = safeGet(SESSION_KEY);
+    if (!raw) return null;
+    try {
+      const value = JSON.parse(raw);
+      return value && value.access_token && value.refresh_token && value.user ? value : null;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  function saveSession(session) {
+    if (!session) {
+      safeRemove(SESSION_KEY);
+      return;
+    }
+    safeSet(SESSION_KEY, JSON.stringify(session));
+  }
+
+  function normalizeSession(payload) {
+    if (!payload || !payload.access_token || !payload.refresh_token) return null;
+    const expiresAt = Number(payload.expires_at) ||
+      (Math.floor(Date.now() / 1000) + (Number(payload.expires_in) || 3600));
+    return {
+      access_token: payload.access_token,
+      token_type: payload.token_type || 'bearer',
+      expires_in: Number(payload.expires_in) || 3600,
+      expires_at: expiresAt,
+      refresh_token: payload.refresh_token,
+      user: payload.user || null
+    };
+  }
+
+  function errorObject(message, status, raw) {
+    return {
+      message: String(message || 'Request failed'),
+      status: Number(status) || 0,
+      raw: raw || null
+    };
+  }
+
+  async function parseResponse(response) {
+    const text = await response.text();
+    if (!text) return null;
+    try { return JSON.parse(text); } catch (e) { return text; }
+  }
+
+  function messageFromBody(body, fallback) {
+    if (!body) return fallback;
+    if (typeof body === 'string') return body;
+    return body.msg || body.message || body.error_description || body.error || body.details || fallback;
+  }
+
+  async function authRequest(path, options) {
+    const { url, key } = config();
+    const headers = Object.assign({
+      'apikey': key,
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+      'X-Client-Info': 'kenchiku-study-sync/6.2'
+    }, options?.headers || {});
+
+    let response;
+    try {
+      response = await fetch(url + path, {
+        method: options?.method || 'GET',
+        headers,
+        body: options?.body === undefined ? undefined : JSON.stringify(options.body),
+        cache: 'no-store'
+      });
+    } catch (e) {
+      throw errorObject('Could not connect to Supabase Auth: ' + (e?.message || e), 0, null);
+    }
+
+    const body = await parseResponse(response);
+    if (!response.ok) {
+      throw errorObject(messageFromBody(body, 'Supabase Auth request failed'), response.status, body);
+    }
+    return body;
+  }
+
+  function notify(event, session) {
+    for (const callback of listeners) {
+      try { callback(event, session || null); } catch (e) { console.error(e); }
+    }
+  }
+
+  async function refreshSession(current) {
+    if (!current?.refresh_token) return null;
+    try {
+      const payload = await authRequest('/auth/v1/token?grant_type=refresh_token', {
+        method: 'POST',
+        body: { refresh_token: current.refresh_token }
+      });
+      const session = normalizeSession(payload);
+      if (!session || !session.user) throw new Error('Invalid refresh response');
+      saveSession(session);
+      notify('TOKEN_REFRESHED', session);
+      return session;
+    } catch (e) {
+      safeRemove(SESSION_KEY);
+      notify('SIGNED_OUT', null);
+      throw e;
+    }
+  }
+
+  async function getValidSession() {
+    let session = readSession();
+    if (!session) return null;
+    const now = Math.floor(Date.now() / 1000);
+    if (!session.expires_at || session.expires_at <= now + 60) {
+      session = await refreshSession(session);
+    }
+    return session;
+  }
+
+  const auth = {
+    async signInWithPassword(credentials) {
+      try {
+        const payload = await authRequest('/auth/v1/token?grant_type=password', {
+          method: 'POST',
+          body: {
+            email: String(credentials?.email || '').trim(),
+            password: String(credentials?.password || '')
+          }
+        });
+        const session = normalizeSession(payload);
+        if (!session || !session.user) {
+          return { data: { session: null, user: null }, error: errorObject('Supabase returned no session', 0, payload) };
+        }
+        saveSession(session);
+        notify('SIGNED_IN', session);
+        return { data: { session, user: session.user }, error: null };
+      } catch (e) {
+        return { data: { session: null, user: null }, error: errorObject(e?.message || e, e?.status, e?.raw) };
+      }
+    },
+
+    async getSession() {
+      try {
+        const session = await getValidSession();
+        return { data: { session }, error: null };
+      } catch (e) {
+        return { data: { session: null }, error: errorObject(e?.message || e, e?.status, e?.raw) };
+      }
+    },
+
+    async signOut() {
+      let serverError = null;
+      const session = readSession();
+      if (session?.access_token) {
+        try {
+          await authRequest('/auth/v1/logout?scope=local', {
+            method: 'POST',
+            headers: { 'Authorization': 'Bearer ' + session.access_token },
+            body: {}
+          });
+        } catch (e) {
+          serverError = e;
+          console.warn('[study-cloud] Remote sign-out failed; local session will still be cleared.', e);
+        }
+      }
+      safeRemove(SESSION_KEY);
+      notify('SIGNED_OUT', null);
+      return { error: serverError ? errorObject(serverError?.message || serverError, serverError?.status, serverError?.raw) : null };
+    },
+
+    onAuthStateChange(callback) {
+      if (typeof callback === 'function') listeners.add(callback);
+      const subscription = {
+        unsubscribe() { listeners.delete(callback); }
+      };
+      return { data: { subscription } };
+    }
+  };
+
+  class QueryBuilder {
+    constructor(table) {
+      this.table = table;
+      this.operation = 'select';
+      this.columns = '*';
+      this.payload = null;
+      this.filters = [];
+      this.orderBy = null;
+      this.limitCount = null;
+    }
+
+    select(columns) {
+      this.columns = columns || '*';
+      return this;
+    }
+
+    insert(payload) {
+      this.operation = 'insert';
+      this.payload = payload;
+      return this;
+    }
+
+    update(payload) {
+      this.operation = 'update';
+      this.payload = payload;
+      return this;
+    }
+
+    eq(column, value) {
+      this.filters.push([column, value]);
+      return this;
+    }
+
+    order(column, options) {
+      this.orderBy = [column, options?.ascending !== false];
+      return this;
+    }
+
+    limit(value) {
+      this.limitCount = Math.max(0, Number(value) || 0);
+      return this;
+    }
+
+    async maybeSingle() {
+      const result = await this.execute();
+      if (result.error) return result;
+      const rows = Array.isArray(result.data) ? result.data : (result.data ? [result.data] : []);
+      return { data: rows.length ? rows[0] : null, error: null };
+    }
+
+    async execute() {
+      const { url, key } = config();
+      let session;
+      try {
+        session = await getValidSession();
+      } catch (e) {
+        return { data: null, error: errorObject(e?.message || e, e?.status, e?.raw) };
+      }
+
+      if (!session?.access_token) {
+        return { data: null, error: errorObject('No active Supabase session', 401, null) };
+      }
+
+      const endpoint = new URL(url + '/rest/v1/' + encodeURIComponent(this.table));
+      if (this.columns) endpoint.searchParams.set('select', this.columns);
+      for (const [column, value] of this.filters) {
+        endpoint.searchParams.set(column, 'eq.' + String(value));
+      }
+      if (this.orderBy) {
+        endpoint.searchParams.set('order', this.orderBy[0] + '.' + (this.orderBy[1] ? 'asc' : 'desc'));
+      }
+      if (this.limitCount !== null) endpoint.searchParams.set('limit', String(this.limitCount));
+
+      const headers = {
+        'apikey': key,
+        'Authorization': 'Bearer ' + session.access_token,
+        'Accept': 'application/json'
+      };
+      let method = 'GET';
+      let body;
+      if (this.operation === 'insert') {
+        method = 'POST';
+        headers['Content-Type'] = 'application/json';
+        headers['Prefer'] = 'return=representation';
+        body = JSON.stringify(this.payload);
+      } else if (this.operation === 'update') {
+        method = 'PATCH';
+        headers['Content-Type'] = 'application/json';
+        headers['Prefer'] = 'return=representation';
+        body = JSON.stringify(this.payload);
+      }
+
+      let response;
+      try {
+        response = await fetch(endpoint.href, {
+          method,
+          headers,
+          body,
+          cache: 'no-store'
+        });
+      } catch (e) {
+        return { data: null, error: errorObject('Could not connect to Supabase Data API: ' + (e?.message || e), 0, null) };
+      }
+
+      const responseBody = await parseResponse(response);
+      if (!response.ok) {
+        return {
+          data: null,
+          error: errorObject(messageFromBody(responseBody, 'Supabase Data API request failed'), response.status, responseBody)
+        };
+      }
+      return { data: responseBody || [], error: null };
+    }
+  }
+
+  const client = {
+    auth,
+    from(table) { return new QueryBuilder(table); }
+  };
+
+  window.StudySupabaseReady = Promise.resolve(client);
+  window.createStudySupabaseClient = async function () {
+    config();
+    return client;
+  };
+  window.__STUDY_CLOUD_CLIENT_READY__ = true;
+})();
+</script>
+<script>
+(async function () {
+'use strict';
+
+const VERSION = '6.2';
+const FILE_PATH = decodeURIComponent(location.pathname.split('/').pop() || '');
+const LEGACY_FILE_PATH = "01k_施工経験記述_H28_p117-121_VN.html";
+const DEVICE_ID_KEY = 'study-device-id';
+const ACTIVE_USER_KEY = 'study-active-user-id';
+const LAST_PAGE_PREFIX = 'study-last-page:';
+const SYNC_EVENT = 'study-sync-status';
+const SYNC_DEBUG = new URLSearchParams(location.search).get('syncdebug') === '1';
+
+let supabase = null;
+let currentUser = null;
+let knownRevision = null;
+let knownUpdatedAt = null;
+let dirty = false;
+let dirtyVersion = 0;
+let saveTimer = 0;
+let applyingRemote = false;
+let initializationComplete = false;
+let ignoreScrollUntil = Date.now() + 1800;
+let lastSyncedSignature = '';
+let startupPromise = null;
+let synchronizationPromise = null;
+
+function safeGet(key, fallback = null) {
+  try {
+    const value = localStorage.getItem(key);
+    return value === null ? fallback : value;
+  } catch (e) {
+    return fallback;
+  }
+}
+
+function safeSet(key, value) {
+  try { localStorage.setItem(key, String(value)); } catch (e) {}
+}
+
+function delay(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+function normalizeText(value) {
+  return String(value || '').replace(/\s+/g, ' ').trim();
+}
+
+function payloadSignature(payload) {
+  if (!payload) return '';
+  return JSON.stringify({
+    file_path: payload.file_path || '',
+    section_id: payload.section_id || '',
+    anchor_key: payload.anchor_key || '',
+    text_offset: Number(payload.text_offset) || 0,
+    top_offset: Math.round((Number(payload.top_offset) || 0) * 10) / 10,
+    context_text: payload.context_text || ''
+  });
+}
+
+function remoteSignature(progress) {
+  if (!progress) return '';
+  return payloadSignature(progress);
+}
+
+function ensureStatusIndicator() {
+  let el = document.getElementById('study-cloud-sync-indicator');
+  if (el) return el;
+  el = document.createElement('div');
+  el.id = 'study-cloud-sync-indicator';
+  el.setAttribute('role', 'status');
+  el.setAttribute('aria-live', 'polite');
+  Object.assign(el.style, {
+    position: 'fixed',
+    right: 'max(8px, env(safe-area-inset-right))',
+    bottom: 'max(10px, env(safe-area-inset-bottom))',
+    zIndex: '2300',
+    maxWidth: 'min(78vw, 420px)',
+    padding: '7px 10px',
+    border: '1px solid var(--border, #39465b)',
+    borderRadius: '10px',
+    background: 'var(--dock-bg, rgba(18,27,43,.95))',
+    color: 'var(--text, #edf2f7)',
+    font: '600 12px Arial, sans-serif',
+    boxShadow: '0 6px 18px rgba(0,0,0,.25)',
+    opacity: '0',
+    pointerEvents: 'none',
+    transition: 'opacity .18s ease'
+  });
+  document.body.appendChild(el);
+  return el;
+}
+
+let statusHideTimer = 0;
+function emitStatus(state, detail = '') {
+  const message = detail || state;
+  console.log('[study-sync ' + VERSION + ']', state, message);
+  window.dispatchEvent(new CustomEvent(SYNC_EVENT, {
+    detail: { state, detail: message, file: FILE_PATH, version: VERSION }
+  }));
+
+  /*
+    Production mode is deliberately silent while synchronization is healthy.
+    Add ?syncdebug=1 to the lesson URL to display loading/pending/saving/synced.
+    Real errors remain visible without debug mode.
+  */
+  const shouldDisplay = state === 'error' || SYNC_DEBUG;
+  const existing = document.getElementById('study-cloud-sync-indicator');
+
+  if (!shouldDisplay) {
+    if (existing) {
+      existing.style.opacity = '0';
+      existing.hidden = true;
+    }
+    return;
+  }
+
+  if (!document.body) return;
+  const el = ensureStatusIndicator();
+  el.hidden = false;
+  const labels = {
+    loading: 'Cloud: loading…',
+    saving: 'Cloud: saving…',
+    pending: 'Cloud: pending…',
+    synced: 'Cloud: synced',
+    ready: 'Cloud: ready',
+    offline: 'Cloud: offline',
+    signed_out: 'Cloud: signed out',
+    error: 'Cloud error: '
+  };
+  el.textContent = state === 'error' ? labels.error + message : (labels[state] || 'Cloud: ' + message);
+  el.style.color = state === 'error' ? '#ff8585' : 'var(--text, #edf2f7)';
+  el.style.opacity = '1';
+  clearTimeout(statusHideTimer);
+
+  if (SYNC_DEBUG && (state === 'synced' || state === 'ready')) {
+    statusHideTimer = setTimeout(() => {
+      el.style.opacity = '0';
+      el.hidden = true;
+    }, 2800);
+  }
+}
+
+function getDeviceId() {
+  let id = safeGet(DEVICE_ID_KEY);
+  if (!id) {
+    try { id = crypto.randomUUID(); }
+    catch (e) { id = 'device-' + Date.now() + '-' + Math.random().toString(36).slice(2); }
+    safeSet(DEVICE_ID_KEY, id);
+  }
+  return id;
+}
+const DEVICE_ID = getDeviceId();
+
+async function waitForDocumentReady() {
+  if (document.readyState === 'complete') return;
+  await new Promise(resolve => window.addEventListener('load', resolve, { once: true }));
+}
+
+async function waitForReader(timeoutMs = 8000) {
+  if (window.StudyReader) return window.StudyReader;
+  return new Promise(resolve => {
+    let finished = false;
+    const done = value => {
+      if (finished) return;
+      finished = true;
+      window.removeEventListener('studyreaderready', onReady);
+      clearTimeout(timer);
+      resolve(value);
+    };
+    const onReady = () => done(window.StudyReader || null);
+    const timer = setTimeout(() => done(window.StudyReader || null), timeoutMs);
+    window.addEventListener('studyreaderready', onReady, { once: true });
+  });
+}
+
+function readerElementForKey(key) {
+  if (!key) return null;
+  try { return document.querySelector('[data-reader-key="' + CSS.escape(key) + '"]'); }
+  catch (e) { return null; }
+}
+
+function normalizeState(reader, state) {
+  if (state && state.key && readerElementForKey(state.key)) return state;
+  reader?.rebuild?.();
+  const first = document.querySelector('[data-reader-key]');
+  if (!first) return null;
+  return { key: first.dataset.readerKey, offset: 0, top: 6 };
+}
+
+function buildPayloadFromState(state) {
+  if (!state || !state.key) return null;
+  const element = readerElementForKey(state.key);
+  if (!element) return null;
+  const section = element.closest('section[id]');
+  return {
+    file_path: FILE_PATH,
+    section_id: section?.id || null,
+    anchor_key: state.key,
+    text_offset: Math.max(0, Number(state.offset) || 0),
+    top_offset: Number.isFinite(Number(state.top)) ? Number(state.top) : 6,
+    context_text: normalizeText(element.textContent).slice(0, 220) || null,
+    device_id: DEVICE_ID
+  };
+}
+
+async function captureStablePayload() {
+  const reader = await waitForReader();
+  if (!reader) return null;
+  const waits = [0, 80, 220, 500, 900];
+  for (const ms of waits) {
+    if (ms) await delay(ms);
+    reader.rebuild?.();
+    const state = normalizeState(
+      reader,
+      reader.capture?.() || reader.getLastStable?.() || reader.readLocal?.()
+    );
+    const payload = buildPayloadFromState(state);
+    if (payload) return payload;
+  }
+  return null;
+}
+
+function findAnchorByContext(contextText) {
+  const needle = normalizeText(contextText);
+  if (!needle) return null;
+  const probe = needle.slice(0, Math.min(90, needle.length));
+  for (const node of document.querySelectorAll('[data-reader-key]')) {
+    const hay = normalizeText(node.textContent);
+    if (hay.includes(probe) || (hay && probe.includes(hay.slice(0, Math.min(70, hay.length))))) return node;
+  }
+  return null;
+}
+
+function restoreRemoteProgress(progress) {
+  const reader = window.StudyReader;
+  if (!reader || !progress) return false;
+  applyingRemote = true;
+  ignoreScrollUntil = Date.now() + 1400;
+  try {
+    reader.rebuild?.();
+    let key = progress.anchor_key || '';
+    let element = readerElementForKey(key);
+    if (!element && progress.context_text) {
+      element = findAnchorByContext(progress.context_text);
+      key = element?.dataset?.readerKey || '';
+    }
+    if (element && key) {
+      const state = {
+        key,
+        offset: Math.max(0, Number(progress.text_offset) || 0),
+        top: Number.isFinite(Number(progress.top_offset)) ? Number(progress.top_offset) : 6
+      };
+      reader.saveLocal?.(state);
+      if (reader.settleRestore) reader.settleRestore(state, [0, 80, 220, 500]);
+      else reader.restore?.(state);
+      return true;
+    }
+    if (progress.section_id) {
+      const section = document.getElementById(progress.section_id);
+      if (section) {
+        section.scrollIntoView({ behavior: 'auto', block: 'start' });
+        return true;
+      }
+    }
+  } finally {
+    setTimeout(() => { applyingRemote = false; }, 950);
+  }
+  return false;
+}
+
+async function fetchProgressByPath(filePath, quiet = false) {
+  if (!currentUser || !navigator.onLine || !filePath) return null;
+  const { data, error } = await supabase
+    .from('study_progress')
+    .select('*')
+    .eq('user_id', currentUser.id)
+    .eq('file_path', filePath)
+    .maybeSingle();
+  if (error) {
+    if (!quiet) emitStatus('error', error.message || 'Could not load progress');
+    return null;
+  }
+  return data || null;
+}
+
+async function migrateLegacyCloudProgress(legacy) {
+  if (!legacy || !currentUser || !LEGACY_FILE_PATH || LEGACY_FILE_PATH === FILE_PATH) return null;
+  const payload = {
+    user_id: currentUser.id,
+    file_path: FILE_PATH,
+    section_id: legacy.section_id || null,
+    anchor_key: legacy.anchor_key || null,
+    text_offset: Math.max(0, Number(legacy.text_offset) || 0),
+    top_offset: Number.isFinite(Number(legacy.top_offset)) ? Number(legacy.top_offset) : 6,
+    context_text: legacy.context_text || null,
+    context_hash: legacy.context_hash || null,
+    device_id: legacy.device_id || DEVICE_ID
+  };
+
+  const { data, error } = await supabase
+    .from('study_progress')
+    .insert(payload)
+    .select('*')
+    .maybeSingle();
+
+  if (!error && data) {
+    emitStatus('synced', 'Legacy progress migrated to the short filename');
+    return data;
+  }
+
+  // A second device may have created the new row first.
+  const existing = await fetchProgressByPath(FILE_PATH, true);
+  if (existing) return existing;
+  emitStatus('error', error?.message || 'Could not migrate legacy progress');
+  return null;
+}
+
+async function fetchProgress() {
+  const current = await fetchProgressByPath(FILE_PATH);
+  if (current) return current;
+
+  if (LEGACY_FILE_PATH && LEGACY_FILE_PATH !== FILE_PATH) {
+    const legacy = await fetchProgressByPath(LEGACY_FILE_PATH, true);
+    if (legacy) {
+      const migrated = await migrateLegacyCloudProgress(legacy);
+      return migrated || legacy;
+    }
+  }
+  return null;
+}
+
+function rememberScopedLastPage() {
+  if (!currentUser) return;
+  safeSet(LAST_PAGE_PREFIX + currentUser.id, location.pathname + location.search);
+  safeSet('study-last-active-at:' + currentUser.id, Date.now());
+}
+
+async function insertInitialProgress(payload) {
+  const { data, error } = await supabase
+    .from('study_progress')
+    .insert({ user_id: currentUser.id, ...payload })
+    .select('*')
+    .maybeSingle();
+  if (!error && data) {
+    knownRevision = Number(data.revision) || 1;
+    knownUpdatedAt = data.updated_at || null;
+    lastSyncedSignature = remoteSignature(data);
+    rememberScopedLastPage();
+    emitStatus('synced', 'Initial progress created');
+    return true;
+  }
+  const remote = await fetchProgress();
+  if (remote) {
+    knownRevision = Number(remote.revision) || 1;
+    knownUpdatedAt = remote.updated_at || null;
+    lastSyncedSignature = remoteSignature(remote);
+    return false;
+  }
+  emitStatus('error', error?.message || 'Could not create progress row');
+  return false;
+}
+
+async function updateProgress(payload, expectedRevision) {
+  const { data, error } = await supabase
+    .from('study_progress')
+    .update(payload)
+    .eq('user_id', currentUser.id)
+    .eq('file_path', FILE_PATH)
+    .eq('revision', expectedRevision)
+    .select('*')
+    .maybeSingle();
+  if (error) {
+    emitStatus('error', error.message || 'Could not save progress');
+    return { ok: false, conflict: false };
+  }
+  if (!data) return { ok: false, conflict: true };
+  knownRevision = Number(data.revision) || expectedRevision + 1;
+  knownUpdatedAt = data.updated_at || null;
+  lastSyncedSignature = remoteSignature(data);
+  rememberScopedLastPage();
+  emitStatus('synced', 'Progress saved');
+  return { ok: true, conflict: false };
+}
+
+async function saveCloudProgress(force = false, retryOnConflict = true) {
+  if (!currentUser || !navigator.onLine || applyingRemote) return false;
+  if (!dirty && !force) return false;
+  const payload = await captureStablePayload();
+  if (!payload) {
+    emitStatus('error', 'Could not capture the current reading position');
+    return false;
+  }
+  const signature = payloadSignature(payload);
+  if (!force && signature === lastSyncedSignature) {
+    dirty = false;
+    return true;
+  }
+  const versionAtStart = dirtyVersion;
+  emitStatus('saving', 'Saving progress');
+  if (knownRevision === null) {
+    const created = await insertInitialProgress(payload);
+    if (created) {
+      if (dirtyVersion === versionAtStart) dirty = false;
+      return true;
+    }
+  }
+  if (knownRevision !== null) {
+    const result = await updateProgress(payload, knownRevision);
+    if (result.ok) {
+      if (dirtyVersion === versionAtStart) dirty = false;
+      return true;
+    }
+    if (result.conflict) {
+      const remote = await fetchProgress();
+      if (remote) {
+        knownRevision = Number(remote.revision) || 1;
+        knownUpdatedAt = remote.updated_at || null;
+        lastSyncedSignature = remoteSignature(remote);
+        if ((dirty || force) && retryOnConflict) return saveCloudProgress(force, false);
+        if (!dirty) restoreRemoteProgress(remote);
+      }
+    }
+  }
+  return false;
+}
+
+function scheduleSave(delayMs = 550) {
+  if (!dirty || !currentUser) return;
+  clearTimeout(saveTimer);
+  saveTimer = setTimeout(() => { void saveCloudProgress(false); }, delayMs);
+}
+
+function markDirtyFromScroll() {
+  if (!initializationComplete || applyingRemote || Date.now() < ignoreScrollUntil) return;
+  dirty = true;
+  dirtyVersion += 1;
+  emitStatus('pending', 'Reading position changed');
+  scheduleSave(550);
+}
+
+async function refreshFromCloud() {
+  if (!currentUser || dirty || !navigator.onLine) return;
+  const remote = await fetchProgress();
+  if (!remote) return;
+  const remoteRevision = Number(remote.revision) || 1;
+  if (knownRevision === null || remoteRevision > knownRevision) {
+    knownRevision = remoteRevision;
+    knownUpdatedAt = remote.updated_at || null;
+    lastSyncedSignature = remoteSignature(remote);
+    restoreRemoteProgress(remote);
+    rememberScopedLastPage();
+    emitStatus('synced', 'Newer progress loaded from cloud');
+  }
+}
+
+async function seedOrRestore() {
+  initializationComplete = false;
+  await waitForDocumentReady();
+  await delay(60);
+  const reader = await waitForReader();
+  if (!reader || !currentUser) {
+    emitStatus('error', 'Reader engine or signed-in user is unavailable');
+    return;
+  }
+  reader.rebuild?.();
+  const remote = await fetchProgress();
+  if (remote) {
+    knownRevision = Number(remote.revision) || 1;
+    knownUpdatedAt = remote.updated_at || null;
+    lastSyncedSignature = remoteSignature(remote);
+    restoreRemoteProgress(remote);
+    rememberScopedLastPage();
+    emitStatus('synced', 'Cloud progress loaded');
+  } else {
+    const payload = await captureStablePayload();
+    if (payload) await insertInitialProgress(payload);
+    else emitStatus('error', 'No readable position was found; progress row was not created');
+  }
+  ignoreScrollUntil = Date.now() + 1200;
+  initializationComplete = true;
+}
+
+async function readCurrentSession() {
+  const { data, error } = await supabase.auth.getSession();
+  if (error) {
+    emitStatus('error', error.message || 'Could not read login session');
+    return null;
+  }
+  return data.session || null;
+}
+
+async function ensureSessionAndSyncImpl(forceSeed = false) {
+  const session = await readCurrentSession();
+  const nextUser = session?.user || null;
+  if (!nextUser) {
+    currentUser = null;
+    emitStatus('signed_out', 'Not signed in; local progress only');
+    return;
+  }
+  const userChanged = !currentUser || currentUser.id !== nextUser.id;
+  currentUser = nextUser;
+  safeSet(ACTIVE_USER_KEY, currentUser.id);
+  if (userChanged) {
+    knownRevision = null;
+    knownUpdatedAt = null;
+    lastSyncedSignature = '';
+  }
+  if (userChanged || forceSeed || !initializationComplete) {
+    emitStatus('loading', 'Loading cloud progress');
+    await seedOrRestore();
+  } else {
+    await refreshFromCloud();
+  }
+}
+
+
+async function ensureSessionAndSync(forceSeed = false) {
+  if (synchronizationPromise) return synchronizationPromise;
+  synchronizationPromise = ensureSessionAndSyncImpl(forceSeed);
+  try {
+    return await synchronizationPromise;
+  } finally {
+    synchronizationPromise = null;
+  }
+}
+
+async function startSync() {
+  if (startupPromise) return startupPromise;
+  startupPromise = (async () => {
+    try {
+      supabase = await window.createStudySupabaseClient();
+    } catch (error) {
+      console.error('[study-sync] Cloud client unavailable:', error);
+      emitStatus('error', 'Cloud client unavailable: ' + (error?.message || error));
+      return;
+    }
+    await ensureSessionAndSync(true);
+  })();
+  return startupPromise;
+}
+
+window.addEventListener('scroll', markDirtyFromScroll, { passive: true });
+window.addEventListener('touchend', () => { if (dirty) scheduleSave(180); }, { passive: true });
+window.addEventListener('pointerup', () => { if (dirty) scheduleSave(220); }, { passive: true });
+window.addEventListener('wheel', () => { if (dirty) scheduleSave(250); }, { passive: true });
+window.addEventListener('online', () => { void ensureSessionAndSync(false); });
+
+document.addEventListener('visibilitychange', () => {
+  if (document.visibilityState === 'hidden') {
+    if (dirty) void saveCloudProgress(false);
+  } else {
+    void ensureSessionAndSync(false);
+  }
+});
+window.addEventListener('pageshow', () => { void ensureSessionAndSync(false); });
+window.addEventListener('pagehide', () => { if (dirty) void saveCloudProgress(false); });
+
+setInterval(() => {
+  if (dirty && document.visibilityState === 'visible') void saveCloudProgress(false);
+}, 4000);
+
+window.StudySync = Object.freeze({
+  version: VERSION,
+  filePath: FILE_PATH,
+  saveNow: () => saveCloudProgress(true),
+  refreshNow: () => ensureSessionAndSync(false),
+  getState: () => ({
+    userId: currentUser?.id || null,
+    knownRevision,
+    knownUpdatedAt,
+    dirty,
+    initializationComplete,
+    deviceId: DEVICE_ID
+  })
+});
+
+void startSync();
+})();
+</script>
+
+<nav class="chapter-navigation" aria-label="Previous and next chapter">
+    <a class="chapter-prev" data-chapter-link href="01j.html">
+      <span class="chapter-nav-kicker">← Previous Chapter</span>
+      <span class="chapter-nav-title">01j · 平成29年度 | p.112-117</span>
+    </a>
+    <a class="chapter-next" data-chapter-link href="02a.html">
+      <span class="chapter-nav-kicker">Next Chapter →</span>
+      <span class="chapter-nav-title">02a · 重要項目 | p.122-132</span>
+    </a>
+  </nav>
+<script id="chapter-navigation-script">
+(() => {
+  'use strict';
+  const links = [...document.querySelectorAll('.chapter-navigation a[data-chapter-link]')];
+  links.forEach(link => {
+    link.addEventListener('click', async event => {
+      event.preventDefault();
+      try { window.StudyGoogleTTS?.stop?.(true); } catch (_) {}
+      try {
+        if (window.StudySync?.saveNow) {
+          await Promise.race([
+            Promise.resolve(window.StudySync.saveNow()),
+            new Promise(resolve => setTimeout(resolve, 700))
+          ]);
+        }
+      } catch (_) {}
+      location.href = link.href;
+    });
+  });
+})();
+</script>
+<script id="tts-cloudflare-script">
+(() => {
+  'use strict';
+
+  const VERSION = '4.0-cloudflare-worker-production';
+  const TTS_PROXY_URL = 'https://kenchiku-google-tts.duysdoor.workers.dev/tts';
+  const MAX_CHARS = 170;
+
+  const state = {
+    section: null,
+    chunks: [],
+    index: 0,
+    status: 'idle', // idle | loading | playing | paused
+    requestSerial: 0,
+    objectUrl: '',
+    prefetch: null
+  };
+
+  const audio = new Audio();
+  audio.preload = 'auto';
+  audio.playsInline = true;
+
+  function normalizeMultiline(text) {
+    return String(text || '')
+      .replace(/\r\n?/g, '\n')
+      .replace(/\u00a0/g, ' ')
+      .replace(/[ \t]+\n/g, '\n')
+      .replace(/\n[ \t]+/g, '\n')
+      .replace(/[ \t]{2,}/g, ' ')
+      .replace(/\n{3,}/g, '\n\n')
+      .trim();
+  }
+
+  const JAPANESE_RE = /[\u3040-\u30ff\u3400-\u9fff]/;
+  const SOURCE_SELECTORS = [
+    '.study-card.original .recall-source[lang="ja"]',
+    '.study-card.original .recall-source',
+    '.study-card.original [lang="ja"]',
+    '.lang-card.original .recall-source[lang="ja"]',
+    '.lang-card.original .card-body[lang="ja"]',
+    '.lang-card.original [lang="ja"]',
+    '.note-pane.original-cell[lang="ja"]',
+    '.original-cell[lang="ja"]',
+    '.jp-topic[lang="ja"]',
+    '.jp-answer[lang="ja"]',
+    '.card.original[lang="ja"]',
+    '.card.original [lang="ja"]',
+    '.card.orig[lang="ja"]',
+    '.card.orig',
+    '.original[lang="ja"]',
+    '.recall-source[lang="ja"]'
+  ].join(', ');
+
+  function hasJapaneseText(value) {
+    return JAPANESE_RE.test(String(value || ''));
+  }
+
+  function sourceNodes(unit) {
+    const all = [...unit.querySelectorAll(SOURCE_SELECTORS)]
+      .filter(node => hasJapaneseText(node.innerText || node.textContent || ''));
+    const unique = [...new Set(all)];
+    // Keep outer nodes and discard nested duplicates.
+    return unique.filter(node => !unique.some(other => other !== node && other.contains(node)));
+  }
+
+  function japaneseHeading(unit) {
+    const node = unit.querySelector(':scope > h2, :scope > h3, :scope > h4, :scope > .subsection-title, :scope > .section-head h2, :scope > .section-head h3, h3, h2');
+    const raw = normalizeMultiline(node?.innerText || node?.textContent || '');
+    if (!raw || !hasJapaneseText(raw)) return '';
+    const parts = raw.split(/[|｜/／]/).map(v => v.trim()).filter(Boolean);
+    return parts.find(hasJapaneseText) || raw;
+  }
+
+  function extractJapanese(unit) {
+    const nodes = sourceNodes(unit);
+    if (!nodes.length) return null;
+    const body = nodes
+      .map(node => normalizeMultiline(node.innerText || node.textContent || ''))
+      .filter(Boolean)
+      .join('\n');
+    if (!body) return null;
+    const heading = japaneseHeading(unit);
+    return { source: nodes[0], sources: nodes, text: heading ? `${heading}\n${body}` : body };
+  }
+
+  function collectTtsUnits() {
+    const result = [];
+    const seen = new Set();
+    const add = node => {
+      if (!node || seen.has(node) || !extractJapanese(node)) return;
+      seen.add(node);
+      result.push(node);
+    };
+
+    // Preferred granularity: one control per subsection.
+    document.querySelectorAll('.subsection').forEach(add);
+
+    // Fallback for table-based and older lesson layouts without .subsection.
+    const fallback = [...document.querySelectorAll(
+      'section.study-section, section.topic, section.aggregate-section, main#lesson > section, main > section, section[id]'
+    )].filter(node => {
+      if (result.some(primary => node.contains(primary))) return false;
+      return !!extractJapanese(node);
+    });
+    // Prefer the deepest matching section so controls are not duplicated on nested sections.
+    fallback
+      .filter(node => !fallback.some(other => other !== node && node.contains(other)))
+      .forEach(add);
+
+    // Last resort for uncommon layouts: one unit per standalone original card.
+    if (!result.length) {
+      document.querySelectorAll('.study-card.original, .lang-card.original, .card.original, .card.orig').forEach(add);
+    }
+
+    result.forEach((unit, index) => {
+      unit.classList.add('gttts-unit');
+      if (!unit.id) unit.dataset.gtttsUnit = String(index + 1);
+    });
+    return result;
+  }
+
+  function controlHost(unit) {
+    const card = unit.querySelector(
+      '.study-card.original, .lang-card.original, .note-pane.original-cell, .card.original, .card.orig'
+    );
+    const host = card || unit;
+    host.classList.add('gttts-control-host');
+    return host;
+  }
+  function hardSplit(text, maxChars = MAX_CHARS) {
+    const s = text.trim();
+    if (!s) return [];
+    if (s.length <= maxChars) return [s];
+    const out = [];
+    let rest = s;
+    while (rest.length > maxChars) {
+      const windowText = rest.slice(0, maxChars + 1);
+      let cut = -1;
+      for (const mark of ['。', '！', '？', '!', '?', '；', ';', '：', ':', '、', '，', ',', '）', ')', ' ']) {
+        const p = windowText.lastIndexOf(mark);
+        if (p >= Math.floor(maxChars * 0.55)) {
+          cut = p + 1;
+          break;
+        }
+      }
+      if (cut < 1) cut = maxChars;
+      out.push(rest.slice(0, cut).trim());
+      rest = rest.slice(cut).trim();
+    }
+    if (rest) out.push(rest);
+    return out.filter(Boolean);
+  }
+
+  function splitForTts(text) {
+    const normalized = normalizeMultiline(text);
+    const logical = [];
+    for (const rawLine of normalized.split(/\n+/)) {
+      const line = rawLine.trim();
+      if (!line) continue;
+      const sentences = line.match(/[^。！？!?]+[。！？!?]?/g) || [line];
+      for (const sentence of sentences) {
+        const s = sentence.trim();
+        if (s) logical.push(s);
+      }
+    }
+    return logical.flatMap(part => hardSplit(part));
+  }
+
+  function showToast(message, isError = false, duration = 2800) {
+    let toast = document.getElementById('gttts-toast');
+    if (!toast) {
+      toast = document.createElement('div');
+      toast.id = 'gttts-toast';
+      toast.className = 'gttts-toast';
+      document.body.appendChild(toast);
+    }
+    toast.textContent = message;
+    toast.classList.toggle('is-error', !!isError);
+    toast.classList.add('is-visible');
+    clearTimeout(showToast.timer);
+    showToast.timer = setTimeout(() => toast.classList.remove('is-visible'), duration);
+  }
+
+  async function fetchAudioBlob(text, signal) {
+    const response = await fetch(TTS_PROXY_URL, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'text/plain;charset=UTF-8',
+        'Accept': 'audio/mpeg,audio/*;q=0.9,*/*;q=0.1'
+      },
+      body: text,
+      cache: 'no-store',
+      signal
+    });
+
+    const contentType = response.headers.get('content-type') || '';
+
+    if (!response.ok) {
+      let detail = `HTTP ${response.status}`;
+      try {
+        if (contentType.includes('application/json')) {
+          const body = await response.json();
+          detail = body?.message || body?.error || detail;
+        } else {
+          const body = (await response.text()).trim();
+          if (body) detail = body.slice(0, 220);
+        }
+      } catch (_) {}
+      throw new Error(detail);
+    }
+
+    if (!contentType.includes('audio/')) {
+      const body = (await response.text()).trim();
+      throw new Error(
+        `Cloudflare proxy không trả audio (${contentType || 'unknown'}): ${body.slice(0, 180)}`
+      );
+    }
+
+    return await response.blob();
+  }
+
+  function revokeCurrentObjectUrl() {
+    if (state.objectUrl) {
+      try { URL.revokeObjectURL(state.objectUrl); } catch (_) {}
+      state.objectUrl = '';
+    }
+  }
+
+  function clearPrefetch() {
+    if (state.prefetch?.controller) {
+      try { state.prefetch.controller.abort(); } catch (_) {}
+    }
+    if (state.prefetch?.url) {
+      try { URL.revokeObjectURL(state.prefetch.url); } catch (_) {}
+    }
+    state.prefetch = null;
+  }
+
+  function updateUi() {
+    document.querySelectorAll('.gttts-unit.gttts-active').forEach(el => {
+      if (el !== state.section || state.status === 'idle') el.classList.remove('gttts-active');
+    });
+    if (state.section && state.status !== 'idle') state.section.classList.add('gttts-active');
+
+    document.querySelectorAll('.gttts-section-controls').forEach(controls => {
+      const section = controls.closest('.gttts-unit');
+      const play = controls.querySelector('[data-role="play"]');
+      const stop = controls.querySelector('[data-role="stop"]');
+      const active = section === state.section && state.status !== 'idle';
+      if (play) {
+        play.textContent = active && state.status === 'playing' ? '⏸' : active && state.status === 'paused' ? '▶' : active && state.status === 'loading' ? '…' : '🔊';
+        play.disabled = active && state.status === 'loading';
+        play.title = active && state.status === 'playing' ? 'Pause' : active && state.status === 'paused' ? 'Resume' : 'Đọc tiếng Nhật bằng Google Translate TTS';
+        play.setAttribute('aria-label', play.title);
+      }
+      if (stop) stop.hidden = !active;
+    });
+
+    const mini = document.getElementById('gttts-mini');
+    if (mini) {
+      const active = state.status !== 'idle';
+      mini.hidden = !active;
+      const toggle = mini.querySelector('[data-role="toggle"]');
+      if (toggle) {
+        toggle.textContent = state.status === 'playing' ? '⏸' : state.status === 'paused' ? '▶' : '…';
+        toggle.disabled = state.status === 'loading';
+      }
+    }
+  }
+
+  async function ensureChunkUrl(index, serial) {
+    if (index < 0 || index >= state.chunks.length) throw new Error('Chunk index ngoài phạm vi.');
+
+    if (state.prefetch && state.prefetch.index === index && state.prefetch.url) {
+      const url = state.prefetch.url;
+      state.prefetch.url = '';
+      state.prefetch = null;
+      return url;
+    }
+
+    const controller = new AbortController();
+    const blob = await fetchAudioBlob(state.chunks[index], controller.signal);
+    if (serial !== state.requestSerial) throw new DOMException('Stale request', 'AbortError');
+    return URL.createObjectURL(blob);
+  }
+
+  function prefetchNext(serial) {
+    clearPrefetch();
+    const next = state.index + 1;
+    if (next >= state.chunks.length || serial !== state.requestSerial) return;
+    const controller = new AbortController();
+    state.prefetch = { index: next, controller, url: '' };
+    fetchAudioBlob(state.chunks[next], controller.signal)
+      .then(blob => {
+        if (!state.prefetch || state.prefetch.index !== next || serial !== state.requestSerial) return;
+        state.prefetch.url = URL.createObjectURL(blob);
+      })
+      .catch(err => {
+        if (err?.name !== 'AbortError') console.warn('[GT TTS Proxy] prefetch failed:', err);
+        if (state.prefetch?.index === next) state.prefetch = null;
+      });
+  }
+
+  async function playCurrentChunk(serial) {
+    if (serial !== state.requestSerial) return;
+    if (state.index >= state.chunks.length) {
+      stop(true);
+      return;
+    }
+
+    state.status = 'loading';
+    updateUi();
+    try {
+      const url = await ensureChunkUrl(state.index, serial);
+      if (serial !== state.requestSerial) {
+        URL.revokeObjectURL(url);
+        return;
+      }
+      revokeCurrentObjectUrl();
+      state.objectUrl = url;
+      audio.src = url;
+      audio.currentTime = 0;
+      await audio.play();
+      state.status = 'playing';
+      updateUi();
+      prefetchNext(serial);
+    } catch (err) {
+      if (err?.name === 'AbortError') return;
+      console.error('[GT TTS Proxy] playback failed:', err);
+      state.status = 'idle';
+      updateUi();
+      showToast(`Không phát được Google TTS: ${err?.message || err}`, true, 7000);
+    }
+  }
+
+  function stop(finished = false) {
+    state.requestSerial += 1;
+    try { audio.pause(); } catch (_) {}
+    try { audio.removeAttribute('src'); audio.load(); } catch (_) {}
+    revokeCurrentObjectUrl();
+    clearPrefetch();
+    state.status = 'idle';
+    state.index = 0;
+    if (!finished) showToast('Đã dừng. Lần sau sẽ đọc lại từ đầu.', false, 1700);
+    updateUi();
+  }
+
+  async function startSection(section) {
+    const data = extractJapanese(section);
+    if (!data?.text) {
+      showToast('Không tìm thấy phần tiếng Nhật của section này.', true, 4500);
+      return;
+    }
+    if (state.status !== 'idle') stop(true);
+
+    const chunks = splitForTts(data.text);
+    if (!chunks.length) {
+      showToast('Không có nội dung để đọc.', true, 4000);
+      return;
+    }
+    state.section = section;
+    state.chunks = chunks;
+    state.index = 0;
+    const serial = ++state.requestSerial;
+    await playCurrentChunk(serial);
+  }
+
+  async function toggleSection(section) {
+    const same = section === state.section && state.status !== 'idle';
+    if (!same) {
+      await startSection(section);
+      return;
+    }
+    if (state.status === 'playing') {
+      audio.pause();
+      state.status = 'paused';
+      updateUi();
+      return;
+    }
+    if (state.status === 'paused') {
+      try {
+        await audio.play();
+        state.status = 'playing';
+        updateUi();
+      } catch (err) {
+        showToast(`Không resume được audio: ${err?.message || err}`, true, 5000);
+      }
+    }
+  }
+
+  audio.addEventListener('ended', () => {
+    if (state.status === 'idle') return;
+    state.index += 1;
+    const serial = state.requestSerial;
+    void playCurrentChunk(serial);
+  });
+
+  audio.addEventListener('error', () => {
+    if (state.status === 'idle') return;
+    const code = audio.error?.code || 0;
+    console.error('[GT TTS Proxy] HTMLAudioElement error:', code, audio.error);
+    state.status = 'idle';
+    updateUi();
+    showToast(`Lỗi phát audio trên trình duyệt (code ${code}).`, true, 6000);
+  });
+
+  function makeButton(text, label, role) {
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'gttts-btn';
+    btn.textContent = text;
+    btn.dataset.role = role;
+    btn.setAttribute('aria-label', label);
+    btn.title = label;
+    return btn;
+  }
+
+  function installMiniPlayer() {
+    if (document.getElementById('gttts-mini')) return;
+    const mini = document.createElement('div');
+    mini.id = 'gttts-mini';
+    mini.className = 'gttts-mini';
+    mini.hidden = true;
+    const toggle = makeButton('⏸', 'Pause/Resume', 'toggle');
+    const stopBtn = makeButton('■', 'Stop và trở về đầu', 'stop');
+    toggle.addEventListener('click', async () => {
+      if (!state.section) return;
+      await toggleSection(state.section);
+    });
+    stopBtn.addEventListener('click', () => stop(false));
+    mini.append(toggle, stopBtn);
+    document.body.appendChild(mini);
+  }
+
+  function installControls() {
+    let installed = 0;
+    for (const section of collectTtsUnits()) {
+      const host = controlHost(section);
+      if (host.querySelector(':scope > .gttts-section-controls')) continue;
+
+      const controls = document.createElement('div');
+      controls.className = 'gttts-section-controls';
+      controls.dataset.engine = VERSION;
+
+      const play = makeButton('🔊', 'Đọc tiếng Nhật bằng Google Translate TTS', 'play');
+      const stopBtn = makeButton('■', 'Stop và trở về đầu', 'stop');
+      stopBtn.hidden = true;
+
+      play.addEventListener('click', async e => {
+        e.preventDefault();
+        e.stopPropagation();
+        await toggleSection(section);
+      });
+      stopBtn.addEventListener('click', e => {
+        e.preventDefault();
+        e.stopPropagation();
+        stop(false);
+      });
+
+      controls.append(play, stopBtn);
+      host.appendChild(controls);
+      installed += 1;
+    }
+    installMiniPlayer();
+    updateUi();
+    console.info(`[GT TTS Cloudflare] v${VERSION} installed on ${installed} Japanese unit(s)`);
+  }
+  function init() { installControls(); }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init, { once: true });
+  } else {
+    init();
+  }
+
+  window.addEventListener('pagehide', () => stop(true));
+
+  window.StudyGoogleTTS = Object.freeze({
+    version: VERSION,
+    start: startSection,
+    stop,
+    extract: extractJapanese,
+    split: splitForTts,
+    state: () => ({ status: state.status, index: state.index, total: state.chunks.length })
+  });
+})();
+</script>
+</body>
+</html>
