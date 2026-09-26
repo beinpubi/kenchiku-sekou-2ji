@@ -1,0 +1,3366 @@
+<!DOCTYPE html>
+<html data-study-mode="full" data-theme="dark" lang="vi">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<meta content="dark light" name="color-scheme"/>
+<meta content="test-2.1-responsive-landscape" name="study-template-version"/>
+<title>躯体工事 H29 - Book 429-436</title>
+<style>
+:root {
+  --app-viewport-width: 100vw;
+  --font-vi: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  --font-ja: "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic UI", "Yu Gothic", Meiryo, sans-serif;
+  --base-font-size: 16px;
+  color-scheme: dark;
+}
+
+html[data-theme="dark"] {
+  --bg: #101318;
+  --surface: #171B22;
+  --surface-alt: #1D232C;
+  --text: #E3E7ED;
+  --text-muted: #9DA8B5;
+  --focus-muted: #68717D;
+  --heading: #F4F7FA;
+  --border: #323A46;
+  --link: #7CC4FF;
+  --original-bg: #15181E;
+  --translation-bg: #16202A;
+  --note-bg: #1C2028;
+  --memory-bg: #20231C;
+  --keyword: #74D7FF;
+  --keyword-bg: rgba(75, 190, 255, 0.10);
+  --critical-bg: #594613;
+  --critical-text: #FFE39A;
+  --trap: #FF8585;
+  --trap-underline: #FF5F5F;
+  --relation-bg: rgba(139, 126, 255, 0.12);
+  --relation-border: #8F86FF;
+  --shadow: rgba(0, 0, 0, .28);
+  --dock-bg: rgba(23, 27, 34, .94);
+  --overlay: rgba(0, 0, 0, .48);
+  color-scheme: dark;
+}
+
+html[data-theme="light"] {
+  --bg: #F4F6F8;
+  --surface: #FFFFFF;
+  --surface-alt: #EEF1F5;
+  --text: #20242A;
+  --text-muted: #626B77;
+  --focus-muted: #A0A7B0;
+  --heading: #111418;
+  --border: #CCD2DA;
+  --link: #0068B5;
+  --original-bg: #F8FAFC;
+  --translation-bg: #EDF7FC;
+  --note-bg: #F2F4F7;
+  --memory-bg: #F6F7E9;
+  --keyword: #006B9F;
+  --keyword-bg: #E4F4FC;
+  --critical-bg: #FFF0B8;
+  --critical-text: #654900;
+  --trap: #B42318;
+  --trap-underline: #D92D20;
+  --relation-bg: #EEEBFF;
+  --relation-border: #6C5CE7;
+  --shadow: rgba(31, 38, 49, .12);
+  --dock-bg: rgba(255, 255, 255, .94);
+  --overlay: rgba(19, 26, 35, .28);
+  color-scheme: light;
+}
+
+* { box-sizing: border-box; }
+html {
+  scroll-behavior: smooth;
+  font-size: var(--base-font-size);
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+body { overflow-anchor: none;
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-vi);
+  font-size: 1rem;
+  line-height: 1.72;
+  padding-bottom: 11rem;
+}
+:lang(vi), .translation, .translation-cell, .vn-topic, .vn-answer { font-family: var(--font-vi); }
+:lang(ja), .original, .original-cell, .jp-topic, .jp-answer { font-family: var(--font-ja); }
+strong, b { font-weight: 700; }
+a { color: var(--link); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+a:hover { text-decoration-thickness: 2px; }
+h1, h2, h3, h4 { color: var(--heading); line-height: 1.35; }
+h1 { font-size: clamp(1.8rem, 4vw, 2.8rem); margin: 0 0 .55rem; }
+h2 { font-size: clamp(1.38rem, 2.8vw, 2rem); margin: 0; }
+h3 { font-size: clamp(1.12rem, 2vw, 1.48rem); }
+h4 { font-size: 1.02rem; }
+[id] { scroll-margin-top: 22px; }
+p { margin: .62rem 0; }
+ul, ol { padding-left: 1.5rem; }
+li { margin: .34rem 0; }
+
+body > main,
+body > .page-shell {
+  width: min(1320px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 26px 0 70px;
+}
+body > .page-shell > main { width: 100%; margin: 0; padding: 0; }
+
+.hero {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  box-shadow: 0 8px 28px var(--shadow);
+  padding: clamp(22px, 4vw, 42px);
+  margin: 0 0 24px;
+}
+.eyebrow, .hero-subtitle, .subtitle, .meta-line, .source-ref, .mini-label, .small, .meta-label {
+  color: var(--text-muted);
+}
+.eyebrow { font-size: .82rem; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; }
+.hero-subtitle, .subtitle { font-size: 1.08rem; }
+.source-ref, .mini-label, .small, .meta-label { font-size: .86rem; }
+
+.summary-grid, .meta-grid, .mini-grid, .coverage {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: .72rem;
+  margin-top: 1rem;
+}
+.summary-card, .summary-item, .meta-item, .mini-card, .coverage > div {
+  background: var(--surface-alt);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: .75rem .85rem;
+}
+.summary-item b, .summary-card strong { color: var(--heading); }
+.source-list { color: var(--text-muted); }
+
+body > main > section:not(#toc),
+body > .page-shell > section:not(#toc),
+body > .page-shell > main > section,
+.topic,
+.aggregate-section {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  box-shadow: 0 7px 22px var(--shadow);
+  padding: clamp(18px, 3vw, 30px);
+  margin: 22px 0;
+}
+.subsection { margin: 1.7rem 0 2.1rem; }
+.subsection-title, .section-head {
+  border-bottom: 1px solid var(--border);
+  padding-bottom: .65rem;
+  margin-bottom: 1rem;
+}
+.section-head { display: flex; gap: 12px; align-items: baseline; justify-content: space-between; }
+
+.study-grid, .lang-grid, .bilingual-note {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 1rem;
+  align-items: start;
+}
+.study-card, .lang-card, .note-pane {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  min-width: 0;
+  background: var(--surface-alt);
+}
+.study-card.original, .lang-card.original, .original-cell, .jp-topic, .jp-answer { background: var(--original-bg); }
+.study-card.translation, .lang-card.translation, .translation-cell, .vn-topic, .vn-answer { background: var(--translation-bg); }
+.card-title {
+  padding: .62rem .85rem;
+  background: var(--surface-alt);
+  border-bottom: 1px solid var(--border);
+  color: var(--heading);
+  font-weight: 700;
+  letter-spacing: .02em;
+}
+.card-body, .recall-source { padding: .9rem 1rem; }
+.card-body.recall-source { padding: 1rem 1.05rem; }
+.item-block { border-top: 1px dashed var(--border); padding-top: .72rem; margin-top: .72rem; }
+.item-block:first-child { border-top: 0; padding-top: 0; margin-top: 0; }
+.item-label { font-weight: 700; color: var(--heading); margin-right: .35em; }
+
+.table-wrap { overflow-x: auto; margin: .9rem 0; border: 1px solid var(--border); border-radius: 10px; }
+table { width: 100%; border-collapse: collapse; min-width: 650px; background: var(--surface); }
+th, td { border: 1px solid var(--border); padding: .62rem .7rem; vertical-align: top; text-align: left; }
+th { background: var(--surface-alt); color: var(--heading); font-weight: 700; }
+caption { text-align: left; font-weight: 700; color: var(--heading); padding: .58rem .7rem; background: var(--surface-alt); caption-side: top; }
+.compact th, .compact td { padding: .48rem .55rem; }
+.study-table { min-width: 1040px; }
+.study-table .meta { white-space: nowrap; text-align: center; background: var(--surface-alt); }
+.glossary-table { min-width: 920px; }
+.memory-table, .number-table, .num-table { min-width: 760px; }
+
+.summary-box, .note-box, .note, .info-box, .background-box, .exam-note, .memory-box, .warning-box, .warning, .figure-box, .figure-card {
+  border: 1px solid var(--border);
+  border-left-width: 4px;
+  border-radius: 10px;
+  padding: .9rem 1rem;
+  margin: 1rem 0;
+  background: var(--note-bg);
+}
+.summary-box, .note-box, .note, .info-box, .background-box { border-left-color: var(--link); }
+.memory-box, .exam-note { background: var(--memory-bg); border-left-color: var(--critical-text); }
+.warning-box, .warning { border-left-color: var(--trap); }
+.figure-box, .figure-card { border-left-color: var(--relation-border); }
+.figure-card { overflow: hidden; padding: 0; }
+.figure-card img { display: block; width: 100%; height: auto; background: #fff; }
+.figure-card figcaption, .figure-explain { padding: .8rem 1rem; }
+
+.formula, .formula-line {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .45rem;
+  align-items: center;
+  padding: .75rem;
+  background: var(--surface-alt);
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  margin: .75rem 0;
+}
+.flow-node { border: 1px solid var(--border); border-radius: 7px; padding: .35rem .55rem; background: var(--surface); font-weight: 700; }
+.flow-arrow { color: var(--text-muted); font-weight: 700; }
+
+.kw {
+  font-weight: 700;
+  color: var(--keyword);
+  background: var(--keyword-bg);
+  padding: .02em .16em;
+  border-radius: .2em;
+}
+.critical {
+  font-weight: 700;
+  color: var(--critical-text);
+  background: var(--critical-bg);
+  padding: .04em .22em;
+  border-radius: .22em;
+}
+.trap {
+  font-weight: 700;
+  color: var(--trap);
+  text-decoration-line: underline;
+  text-decoration-color: var(--trap-underline);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+}
+.relation {
+  font-weight: 600;
+  color: var(--text);
+  background: var(--relation-bg);
+  border-bottom: 2px solid var(--relation-border);
+  padding: .02em .14em;
+}
+
+html[data-study-mode="keywords"] .recall-source { color: var(--focus-muted); }
+html[data-study-mode="keywords"] .recall-source .kw { color: var(--keyword); background: var(--keyword-bg); }
+html[data-study-mode="keywords"] .recall-source .critical { color: var(--critical-text); background: var(--critical-bg); }
+html[data-study-mode="keywords"] .recall-source .trap { color: var(--trap); }
+html[data-study-mode="keywords"] .recall-source .relation { color: var(--text); background: var(--relation-bg); }
+html[data-study-mode="keywords"] .recall-source th,
+html[data-study-mode="keywords"] .recall-source .card-title,
+html[data-study-mode="keywords"] .recall-source .item-label { color: var(--heading); }
+
+.backlink, .back-toc, .back { display: inline-block; margin-top: .8rem; font-size: .9rem; }
+
+/* Collapsible study controls: one launcher at bottom-left. */
+.control-cluster {
+  position: fixed;
+  left: max(8px, env(safe-area-inset-left));
+  bottom: max(10px, env(safe-area-inset-bottom));
+  z-index: 2200;
+  width: 38px;
+  height: 38px;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.control-launcher,
+.control-panel button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  width: 32px;
+  height: 32px;
+  min-width: 32px;
+  min-height: 32px;
+  padding: 0;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface-alt);
+  color: var(--text);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1;
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.control-launcher {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  z-index: 2;
+  width: 38px;
+  height: 38px;
+  min-width: 38px;
+  min-height: 38px;
+  border-radius: 11px;
+  background: var(--dock-bg);
+  box-shadow: 0 6px 18px var(--shadow);
+  font-size: 20px;
+  letter-spacing: 1px;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+}
+
+.control-panel {
+  position: absolute;
+  left: 43px;
+  bottom: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 2px;
+  width: max-content;
+  max-width: calc(100dvw - max(59px, env(safe-area-inset-left) + 59px) - max(8px, env(safe-area-inset-right)));
+  padding: 3px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  overscroll-behavior-x: contain;
+  scrollbar-width: none;
+  border: 1px solid var(--border);
+  border-radius: 11px;
+  background: var(--dock-bg);
+  box-shadow: 0 6px 18px var(--shadow);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateX(-10px) scale(.98);
+  transform-origin: left bottom;
+  transition: opacity .14s ease, transform .14s ease, visibility .14s ease;
+}
+
+.control-panel::-webkit-scrollbar { display: none; }
+
+.control-cluster.open .control-panel {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateX(0) scale(1);
+}
+
+.control-cluster.open .control-launcher {
+  border-color: var(--link);
+}
+
+.control-panel button:active,
+.control-launcher:active { transform: translateY(1px); }
+
+.control-panel button:hover,
+.control-launcher:hover { border-color: var(--link); }
+
+.control-panel button:disabled {
+  opacity: .36;
+  cursor: default;
+}
+
+.control-panel .font-reset {
+  width: 38px;
+  min-width: 38px;
+  font-size: 9px;
+  letter-spacing: -.03em;
+}
+
+.control-panel .mode-toggle { font-size: 14px; }
+
+.control-panel .home-icon svg {
+  width: 17px;
+  height: 17px;
+  display: block;
+}
+
+/*
+  Responsive reading geometry for iPad/iPhone.
+  The page follows the actual Visual Viewport width. When rotating to
+  landscape it expands across the wider screen instead of staying at
+  portrait width. Reader-anchor JS below restores the same logical text
+  position after the reflow.
+*/
+@media (pointer: coarse) {
+  body > main,
+  body > .page-shell {
+    width: min(calc(var(--app-viewport-width, 100vw) - 16px), 1320px) !important;
+    max-width: 1320px !important;
+  }
+
+
+  .hero {
+    padding: 1rem !important;
+  }
+
+  body > main > section:not(#toc),
+  body > .page-shell > section:not(#toc),
+  body > .page-shell > main > section,
+  .topic,
+  .aggregate-section {
+    padding: 1rem !important;
+  }
+}
+
+
+@media (pointer: coarse) and (orientation: portrait) {
+  .study-grid,
+  .lang-grid,
+  .bilingual-note {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+@media (pointer: coarse) and (orientation: landscape) {
+  body > main,
+  body > .page-shell {
+    width: min(calc(var(--app-viewport-width, 100dvw) - 20px), 1320px) !important;
+  }
+}
+
+/* TOC drawer */
+#toc {
+  position: fixed !important;
+  left: 0 !important;
+  top: 0 !important;
+  bottom: 0 !important;
+  z-index: 2100 !important;
+  width: min(82vw, 390px) !important;
+  max-height: 100dvh !important;
+  overflow-y: auto !important;
+  margin: 0 !important;
+  padding: 74px 20px 28px !important;
+  background: var(--surface) !important;
+  border: 0 !important;
+  border-right: 1px solid var(--border) !important;
+  border-radius: 0 16px 16px 0 !important;
+  box-shadow: 10px 0 30px var(--shadow) !important;
+  transform: translateX(-105%);
+  transition: transform .2s ease;
+}
+body.toc-open #toc { transform: translateX(0); }
+#toc .toc-grid { columns: 1 !important; display: block !important; }
+#toc ol { margin-top: .35rem; }
+.toc-drawer-head {
+  position: sticky;
+  top: -74px;
+  margin: -74px -20px 18px;
+  padding: 13px 14px;
+  min-height: 58px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  z-index: 2;
+}
+.toc-drawer-head strong { color: var(--heading); }
+.toc-close {
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  background: var(--surface-alt);
+  color: var(--text);
+  font: 700 1.25rem var(--font-vi);
+  cursor: pointer;
+}
+.toc-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  background: var(--overlay);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .2s ease;
+}
+body.toc-open .toc-overlay { opacity: 1; pointer-events: auto; }
+body.toc-open { overflow: hidden; }
+
+@media (max-width: 900px) {
+  .study-grid, .lang-grid, .bilingual-note { grid-template-columns: 1fr; }
+  body > main, body > .page-shell { width: min(100% - 20px, 780px); padding-top: 14px; }
+  .section-head { display: block; }
+  .source-ref { display: block; margin-top: .45rem; }
+  table { min-width: 620px; }
+}
+
+@media (max-width: 560px) {
+  body { font-size: 1rem; }
+  body > main, body > .page-shell { width: calc(100% - 14px); }
+  .hero { padding: 1rem; border-radius: 12px; }
+  body > main > section:not(#toc),
+  body > .page-shell > section:not(#toc),
+  body > .page-shell > main > section,
+  .topic, .aggregate-section { padding: 1rem; border-radius: 12px; }
+}
+
+
+/*
+  iPad/tablet landscape:
+  Japanese and Vietnamese return to two side-by-side columns.
+  The min-height condition avoids forcing ordinary phone landscape into
+  two columns that would be too narrow.
+*/
+@media (pointer: coarse) and (orientation: landscape) and (min-width: 700px) and (min-height: 600px) {
+  body > main,
+  body > .page-shell {
+    width: min(calc(var(--app-viewport-width, 100dvw) - 20px), 1320px) !important;
+    max-width: 1320px !important;
+  }
+
+  .study-grid,
+  .lang-grid,
+  .bilingual-note {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important;
+    gap: clamp(.75rem, 1.4vw, 1rem) !important;
+    align-items: start;
+  }
+
+  .study-card,
+  .lang-card,
+  .note-pane {
+    min-width: 0;
+  }
+}
+
+@media print {
+  .control-cluster { display: none !important; }
+  :root,
+  html[data-theme="dark"],
+  html[data-theme="light"] {
+    --bg: #FFFFFF;
+    --surface: #FFFFFF;
+    --surface-alt: #F1F3F5;
+    --text: #111111;
+    --text-muted: #555555;
+    --heading: #000000;
+    --border: #B8BEC6;
+    --original-bg: #FFFFFF;
+    --translation-bg: #F7FBFD;
+    --note-bg: #F7F7F7;
+    --memory-bg: #FAFAF0;
+    --keyword: #005A86;
+    --keyword-bg: #E4F4FC;
+    --critical-bg: #FFF0B8;
+    --critical-text: #4A3600;
+    --trap: #9E1B12;
+    --trap-underline: #9E1B12;
+    --relation-bg: #F0EDFF;
+    --relation-border: #5B4FD6;
+    --shadow: transparent;
+  }
+  body { background: #fff; color: #111; font-size: 11pt; padding-bottom: 0; }
+  .control-cluster, .toc-overlay, .toc-drawer-head { display: none !important; }
+  #toc {
+    position: static !important;
+    transform: none !important;
+    width: auto !important;
+    max-height: none !important;
+    padding: 1rem !important;
+    border: 1px solid var(--border) !important;
+    border-radius: 10px !important;
+    box-shadow: none !important;
+    margin: 1rem 0 !important;
+  }
+  body > main, body > .page-shell { width: 100%; padding: 0; }
+  .hero, .study-card, .lang-card, .summary-box, .note-box, .note, .memory-box, .warning-box, .figure-box, .figure-card { break-inside: avoid; }
+  a { color: #000; text-decoration: none; }
+  .backlink, .back-toc, .back { display: none; }
+}
+</style><script>
+try {
+  if ("scrollRestoration" in history) {
+    history.scrollRestoration = "manual";
+  }
+} catch (e) {}
+(function () {
+  const root = document.documentElement;
+  try {
+    const savedTheme = localStorage.getItem('study-theme');
+    root.dataset.theme = savedTheme === 'light' ? 'light' : 'dark';
+
+    const savedMode = localStorage.getItem('study-mode');
+    root.dataset.studyMode = savedMode === 'keywords' ? 'keywords' : 'full';
+
+    const savedScale = Number(localStorage.getItem('study-font-scale'));
+    const scale = Number.isFinite(savedScale) && savedScale >= 50 && savedScale <= 150 && savedScale % 5 === 0
+      ? savedScale : 100;
+    root.style.setProperty('--base-font-size', (16 * scale / 100) + 'px');
+  } catch (e) {
+    root.dataset.theme = 'dark';
+    root.dataset.studyMode = 'full';
+    root.style.setProperty('--base-font-size', '16px');
+  }
+})();
+</script><meta name="study-sync-version" content="6.2-production-silent"/>
+<meta name="tts-engine-version" content="4.0-cloudflare-worker-production"/>
+<style id="tts-cloudflare-style">
+/* ===== Google Translate TTS via Cloudflare Worker proxy pilot ===== */
+.gttts-control-host { position: relative; }
+.gttts-control-host > .card-title { padding-right: 5.1rem; }
+.gttts-unit:not(.subsection) > h2:first-of-type,
+.gttts-unit:not(.subsection) > h3:first-of-type,
+.gttts-unit:not(.subsection) > .section-head:first-child { padding-right: 5.2rem; }
+.gttts-section-controls {
+  position: absolute;
+  top: .55rem;
+  right: .55rem;
+  z-index: 4;
+  display: inline-flex;
+  align-items: center;
+  gap: .2rem;
+  padding: .18rem;
+  border: 1px solid var(--border, rgba(127,127,127,.25));
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--surface, #171B22) 90%, transparent);
+  box-shadow: 0 4px 16px rgba(0,0,0,.12);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+.gttts-btn {
+  width: 2.15rem;
+  height: 2.15rem;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  display: inline-grid;
+  place-items: center;
+  background: transparent;
+  color: var(--text, #fff);
+  font: inherit;
+  font-size: 1.02rem;
+  line-height: 1;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+.gttts-btn:active { transform: scale(.94); }
+.gttts-btn:focus-visible { outline: 2px solid var(--link, #7CC4FF); outline-offset: 2px; }
+.gttts-btn[hidden] { display: none !important; }
+.gttts-unit.gttts-active .gttts-control-host {
+  box-shadow: inset 3px 0 0 var(--link, #7CC4FF);
+}
+.gttts-mini {
+  position: fixed;
+  right: max(12px, env(safe-area-inset-right));
+  bottom: calc(max(12px, env(safe-area-inset-bottom)) + 58px);
+  z-index: 9998;
+  display: inline-flex;
+  align-items: center;
+  gap: .2rem;
+  padding: .22rem;
+  border: 1px solid var(--border, rgba(127,127,127,.28));
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--surface, #171B22) 94%, transparent);
+  box-shadow: 0 7px 24px rgba(0,0,0,.22);
+  backdrop-filter: blur(9px);
+  -webkit-backdrop-filter: blur(9px);
+}
+.gttts-mini[hidden] { display: none !important; }
+.gttts-mini .gttts-btn { width: 2rem; height: 2rem; }
+.gttts-toast {
+  position: fixed;
+  left: 50%;
+  bottom: calc(max(12px, env(safe-area-inset-bottom)) + 14px);
+  z-index: 10000;
+  max-width: min(88vw, 38rem);
+  transform: translate(-50%, 12px);
+  opacity: 0;
+  pointer-events: none;
+  padding: .58rem .82rem;
+  border: 1px solid var(--border, rgba(127,127,127,.3));
+  border-radius: .75rem;
+  background: color-mix(in srgb, var(--surface, #171B22) 96%, transparent);
+  color: var(--text, #fff);
+  box-shadow: 0 8px 28px rgba(0,0,0,.22);
+  font-size: .82rem;
+  line-height: 1.4;
+  transition: opacity .16s ease, transform .16s ease;
+}
+.gttts-toast.is-visible { opacity: 1; transform: translate(-50%, 0); }
+.gttts-toast.is-error { border-color: var(--trap, #FF8585); }
+@media (max-width: 520px) {
+  .gttts-section-controls { top: .42rem; right: .42rem; }
+  .gttts-btn { width: 2rem; height: 2rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .gttts-btn:active { transform: none; }
+  .gttts-toast { transition: none; }
+}
+</style>
+<style id="chapter-navigation-style">
+.chapter-navigation {
+  width: min(1320px, calc(100% - 28px));
+  margin: 3rem auto 7rem;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: .8rem;
+}
+.chapter-navigation a,
+.chapter-navigation .chapter-nav-disabled {
+  min-height: 66px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: .18rem;
+  padding: .75rem 1rem;
+  border: 1px solid var(--border, #323A46);
+  border-radius: 12px;
+  background: var(--surface, #171B22);
+  color: var(--text, #E3E7ED);
+  text-decoration: none;
+  box-shadow: 0 5px 18px var(--shadow, rgba(0,0,0,.18));
+  touch-action: manipulation;
+}
+.chapter-navigation a:active { transform: scale(.99); }
+.chapter-navigation .chapter-next { text-align: right; align-items: flex-end; }
+.chapter-navigation .chapter-prev { text-align: left; align-items: flex-start; }
+.chapter-navigation .chapter-nav-kicker {
+  color: var(--text-muted, #9DA8B5);
+  font-size: .76rem;
+  font-weight: 700;
+  letter-spacing: .035em;
+  text-transform: uppercase;
+}
+.chapter-navigation .chapter-nav-title {
+  color: var(--heading, #F4F7FA);
+  font-size: .94rem;
+  font-weight: 750;
+  overflow-wrap: anywhere;
+}
+.chapter-navigation .chapter-nav-disabled {
+  opacity: .36;
+  box-shadow: none;
+}
+@media (max-width: 560px) {
+  .chapter-navigation { width: calc(100% - 20px); gap: .55rem; }
+  .chapter-navigation a,
+  .chapter-navigation .chapter-nav-disabled { min-height: 60px; padding: .62rem .72rem; }
+  .chapter-navigation .chapter-nav-title { font-size: .85rem; }
+}
+</style>
+</head>
+<body>
+<!--
+HTML TEMPLATE CONTRACT 2.4 CLOUD-SYNC SILENT
+- Based on latest pinch-zoom-safe test.html.
+- Default theme: dark; persistent Dark/Light toggle.
+- Font: 50%-150%, 5% step; persistent.
+- Native two-finger pinch zoom MUST NOT trigger responsive reflow.
+- Real orientation change MAY update layout and restore logical reading position.
+- iPad/tablet portrait: one-column bilingual flow.
+- iPad/tablet landscape: Japanese/Vietnamese side-by-side.
+- Controls: collapsed by default at bottom-left; tap to expand horizontally.
+- Home button: index.html.
+- Back/Next: TOC item navigation, not browser history.
+- Do not redesign CSS/JS/control behavior per lesson.
+-->
+<div class="control-cluster" id="control-cluster">
+<button aria-controls="control-panel" aria-expanded="false" aria-label="Mở công cụ" class="control-launcher" id="controls-toggle" title="Mở công cụ" type="button">⋯</button>
+<div aria-label="Công cụ học tập" class="control-panel" id="control-panel" role="toolbar">
+<button aria-controls="toc" aria-expanded="false" aria-label="Mục lục" id="toc-toggle" title="Mục lục" type="button">☰</button>
+<button aria-label="Mục trước" id="section-prev" title="Mục trước" type="button">‹</button>
+<button aria-label="Mục tiếp theo" id="section-next" title="Mục tiếp theo" type="button">›</button>
+<button aria-label="Đổi Dark/Light" aria-pressed="false" id="theme-toggle" title="Đổi Dark/Light" type="button">☀</button>
+<button aria-label="Đổi Full/Keywords" aria-pressed="false" class="mode-toggle" id="mode-toggle" title="Đổi Full/Keywords" type="button">🎯</button>
+<button aria-label="Giảm cỡ chữ" id="font-down" title="Giảm cỡ chữ 5%" type="button">A−</button>
+<button aria-label="Đặt lại cỡ chữ 100%" class="font-reset" id="font-reset" title="Đặt lại cỡ chữ 100%" type="button">100%</button>
+<button aria-label="Tăng cỡ chữ" id="font-up" title="Tăng cỡ chữ 5%" type="button">A+</button>
+<button aria-label="Top Page" class="home-icon" id="home-button" title="Top Page" type="button"><svg aria-hidden="true" fill="none" viewbox="0 0 24 24"><path d="M3.5 10.5 12 3.8l8.5 6.7v9.2h-5.3v-6H8.8v6H3.5z" stroke="currentColor" stroke-linejoin="round" stroke-width="1.8"></path></svg></button>
+</div>
+</div><div aria-hidden="true" class="toc-overlay" id="toc-overlay"></div>
+<div class="page-shell">
+<header class="hero" id="top">
+<h1>躯体工事 H29 - Book 429-436</h1>
+</header>
+<nav aria-label="Mục lục" class="toc" id="toc">
+<div class="toc-drawer-head">
+<strong>Mục lục</strong>
+<button aria-label="Đóng mục lục" class="toc-close" id="toc-close" type="button">×</button>
+</div>
+<h2>Mục lục</h2>
+<!-- TOC_ITEMS_START -->
+
+<!-- TOC_ITEMS_END -->
+<ol><li><a href="#stud-weld">スタッド溶接後の仕上がり高さ・傾きの検査</a></li><li><a href="#h29-q3">平成29年度 問題3 躯体工事</a><ol><li><a href="#answers">解答例 / Ví dụ đáp án</a></li></ol></li><li><a href="#pile">設問1 既製コンクリート杭の埋込み工法</a><ol><li><a href="#preboring">(1) プレボーリング工法の施工要領</a></li><li><a href="#inner-boring">(2) 中掘り工法の施工要領</a></li><li><a href="#bearing-check">(3) 支持力を確保するための施工管理上の確認方法</a></li></ol></li><li><a href="#rebar-support">設問2 バーサポート・スペーサー</a></li><li><a href="#cold-joint">設問3 コールドジョイントの発生防止</a></li><li><a href="#fireproof">設問4 耐火被覆・吹付けロックウール</a><ol><li><a href="#fireproof-basic">耐火被覆と耐火構造</a></li><li><a href="#fireproof-types">(1) 耐火被覆工法の種類</a></li><li><a href="#rockwool-method">(2) 吹付けロックウール工法</a></li><li><a href="#rockwool-cautions">(3) 吹付けロックウール工法の施工上の留意事項</a></li></ol></li><li><a href="#terms">Professional terminology</a></li><li><a href="#background">Background knowledge</a></li><li><a href="#memory">Key points and memory aids</a></li></ol></nav>
+<!-- CONTENT_START -->
+<main id="lesson"><section class="study-section" id="stud-weld">
+<div class="section-head">
+<h2>スタッド溶接後の仕上がり高さ・傾きの検査</h2>
+<span class="source-ref">Nguồn: Book page 429</span>
+</div>
+<div class="study-grid">
+<article class="study-card original">
+<div class="card-title">原文</div>
+<div class="recall-source" lang="ja">
+<p>(4) <strong class="kw">スタッド溶接後の仕上がり高さ</strong>は、指定された寸法の<mark class="critical">±2mm以内</mark>でなければならない。指定された寸法Lに対する限界許容差ΔLは<mark class="critical">±2mm以内</mark>である。なお、スタッドが傾いている場合は、<span class="relation">軸の中心における軸長を仕上がり高さとみなす</span>。</p>
+<p>(5) <strong class="kw">スタッド溶接後の傾きθ</strong>は、<mark class="critical">5度以内</mark>でなければならない。</p>
+<p>(6) スタッド溶接における検査基準をまとめると、下表のようになる。</p>
+<div class="table-wrap"><table>
+<caption>スタッド溶接後の仕上り高さ（ΔL）と傾き（θ）</caption>
+<thead><tr><th>項目</th><th>基準</th></tr></thead>
+<tbody>
+<tr><td><strong class="kw">管理許容差</strong></td><td><span class="relation">−1.5mm ≦ ΔL ≦ ＋1.5mm</span><br/><span class="relation">θ ≦ 3度</span></td></tr>
+<tr><td><strong class="kw">限界許容差</strong></td><td><mark class="critical">−2mm ≦ ΔL ≦ ＋2mm</mark><br/><mark class="critical">θ ≦ 5度</mark></td></tr>
+<tr><td>測定器具</td><td>金属製直尺、限界ゲージ、コンベックスルール</td></tr>
+<tr><td>測定方法</td><td><span class="relation">スタッドが傾いている場合は、軸の中心でその軸長を測定する。</span></td></tr>
+</tbody>
+</table></div>
+<p>以上により、①と②は正しいが、③は<span class="trap">15ではなく5</span>である。</p>
+</div>
+</article>
+<article class="study-card translation">
+<div class="card-title">Bản dịch tiếng Việt</div>
+<div class="recall-source" lang="vi">
+<p>(4) <strong class="kw">Chiều cao hoàn thiện sau khi hàn stud</strong> phải nằm trong phạm vi <mark class="critical">±2 mm</mark> so với kích thước chỉ định. Dung sai giới hạn ΔL đối với kích thước chỉ định L là <mark class="critical">±2 mm</mark>. Khi stud bị nghiêng, <span class="relation">chiều dài trục đo tại tâm trục được coi là chiều cao hoàn thiện</span>.</p>
+<p>(5) <strong class="kw">Độ nghiêng θ sau khi hàn stud</strong> phải <mark class="critical">≤ 5°</mark>.</p>
+<p>(6) Tiêu chuẩn kiểm tra hàn stud được tổng hợp như bảng dưới đây.</p>
+<div class="table-wrap"><table>
+<caption>Chiều cao hoàn thiện (ΔL) và độ nghiêng (θ) sau khi hàn stud</caption>
+<thead><tr><th>Hạng mục</th><th>Tiêu chuẩn</th></tr></thead>
+<tbody>
+<tr><td><strong class="kw">Dung sai quản lý</strong></td><td><span class="relation">−1,5 mm ≦ ΔL ≦ ＋1,5 mm</span><br/><span class="relation">θ ≦ 3°</span></td></tr>
+<tr><td><strong class="kw">Dung sai giới hạn</strong></td><td><mark class="critical">−2 mm ≦ ΔL ≦ ＋2 mm</mark><br/><mark class="critical">θ ≦ 5°</mark></td></tr>
+<tr><td>Dụng cụ đo</td><td>Thước thẳng kim loại, dưỡng kiểm giới hạn, thước cuộn</td></tr>
+<tr><td>Phương pháp đo</td><td><span class="relation">Nếu stud bị nghiêng, đo chiều dài trục tại tâm của trục stud.</span></td></tr>
+</tbody>
+</table></div>
+<p>Do đó, ① và ② đúng, còn ③ phải là <span class="trap">5°, không phải 15°</span>.</p>
+</div>
+</article>
+</div>
+</section><section class="study-section" id="h29-q3">
+<div class="section-head">
+<h2>平成29年度 問題3 躯体工事</h2>
+<span class="source-ref">Nguồn: Book page 429</span>
+</div>
+<div class="study-grid">
+<article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja">
+<p>次の設問1から設問4に答えなさい。</p>
+<p>ただし、解答はそれぞれ異なる内容の記述とし、<span class="trap">作業環境（気象条件等）、材料の品質、材料の調合、材料の保管及び作業員の安全に関する記述は除く</span>ものとする。</p>
+<p><strong class="kw">設問1</strong> 既製コンクリート杭の埋込み工法における、支持力を確保するための施工管理上の確認方法を2つ具体的に記述しなさい。</p>
+<p><strong class="kw">設問2</strong> 鉄筋工事における、バーサポート又はスペーサーを設置する際の施工上の留意事項を2つ具体的に記述しなさい。</p>
+<p><strong class="kw">設問3</strong> コンクリート工事の打込み時における、コールドジョイントの発生を防止するための施工上の留意事項を2つ具体的に記述しなさい。</p>
+<p><strong class="kw">設問4</strong> 鉄骨工事の耐火被覆における、吹付けロックウール（乾式又は半乾式）工法の施工上の留意事項を2つ具体的に記述しなさい。</p>
+</div></article>
+<article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi">
+<p>Trả lời từ câu 1 đến câu 4.</p>
+<p>Mỗi câu trả lời phải có nội dung khác nhau. <span class="trap">Không được sử dụng nội dung về môi trường làm việc như điều kiện khí tượng, chất lượng vật liệu, cấp phối vật liệu, bảo quản vật liệu hoặc an toàn của người lao động</span>.</p>
+<p><strong class="kw">Câu 1</strong> Đối với phương pháp chôn cọc bê tông đúc sẵn, trình bày cụ thể 2 phương pháp kiểm tra trong quản lý thi công nhằm bảo đảm sức chịu tải của cọc.</p>
+<p><strong class="kw">Câu 2</strong> Trong công tác cốt thép, trình bày cụ thể 2 điểm cần lưu ý khi lắp bar support hoặc spacer.</p>
+<p><strong class="kw">Câu 3</strong> Trong quá trình đổ bê tông, trình bày cụ thể 2 điểm cần lưu ý nhằm ngăn ngừa phát sinh cold joint.</p>
+<p><strong class="kw">Câu 4</strong> Trong công tác lớp phủ chống cháy kết cấu thép, trình bày cụ thể 2 điểm cần lưu ý khi thi công phương pháp phun rock wool dạng khô hoặc bán khô.</p>
+</div></article>
+</div>
+<section class="subsection" id="answers">
+<h3>解答例 / Ví dụ đáp án</h3>
+<div class="study-grid">
+<article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja">
+<div class="item-block"><span class="item-label">設問1</span><p>① <span class="relation">深度ごとに、オーガ駆動電流値の変化と、土質柱状図におけるN値の変化を比較する。</span></p><p>② <span class="relation">オーガ先端に付着した掘削土を採取し、土質標本と照合する。</span></p></div>
+<div class="item-block"><span class="item-label">設問2</span><p>① 鋼製のバーサポートは、鉄筋の水平位置を保持できるように配置し、<strong class="kw">防錆処理</strong>を行う。</p><p>② スペーサーは、鋼製とし、その<strong class="kw">数量や配置を施工図で確認する</strong>。</p></div>
+<div class="item-block"><span class="item-label">設問3</span><p>① <strong class="kw">打重ね時間間隔</strong>は、外気温が<mark class="critical">25℃超なら120分以内</mark>、<mark class="critical">25℃以下でも150分以内</mark>とする。</p><p>② 後打ちコンクリートは、<span class="relation">内部振動機を先打ちコンクリート下層に挿入し、一体化させる</span>。</p></div>
+<div class="item-block"><span class="item-label">設問4</span><p>① 吹付け前に、<strong class="kw">鉄骨表面の浮き錆を除去し、素地調整</strong>を行う。</p><p>② 乾式工法で工場配合のロックウールを吹き付ける時は、<strong class="kw">飛散防止対策</strong>を講じる。</p></div>
+</div></article>
+<article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi">
+<div class="item-block"><span class="item-label">Câu 1</span><p>① <span class="relation">Ở từng độ sâu, so sánh sự biến đổi của dòng điện dẫn động auger với sự biến đổi của giá trị N trên biểu đồ trụ địa chất.</span></p><p>② <span class="relation">Lấy mẫu đất đào bám ở đầu auger và đối chiếu với mẫu đất chuẩn.</span></p></div>
+<div class="item-block"><span class="item-label">Câu 2</span><p>① Bar support bằng thép phải được bố trí để duy trì vị trí ngang của cốt thép và thực hiện <strong class="kw">xử lý chống gỉ</strong>.</p><p>② Spacer phải làm bằng thép; <strong class="kw">số lượng và cách bố trí phải được xác nhận trên bản vẽ thi công</strong>.</p></div>
+<div class="item-block"><span class="item-label">Câu 3</span><p>① <strong class="kw">Khoảng thời gian giữa hai lớp đổ</strong>: nhiệt độ ngoài trời <mark class="critical">&gt;25°C: trong 120 phút</mark>; <mark class="critical">≤25°C: trong 150 phút</mark>.</p><p>② Khi đổ lớp bê tông sau, <span class="relation">đưa đầm rung trong vào bê tông đã đổ trước để hai lớp trở thành một khối thống nhất</span>.</p></div>
+<div class="item-block"><span class="item-label">Câu 4</span><p>① Trước khi phun phải <strong class="kw">loại bỏ gỉ nổi trên bề mặt kết cấu thép và xử lý bề mặt nền</strong>.</p><p>② Khi phun rock wool đã phối trộn tại nhà máy bằng phương pháp khô, phải có <strong class="kw">biện pháp ngăn vật liệu phát tán</strong>.</p></div>
+</div></article>
+</div>
+<p><a href="#toc">↑ Mục lục</a></p>
+</section>
+</section><section class="study-section" id="pile">
+<div class="section-head"><h2>設問1 既製コンクリート杭の埋込み工法</h2><span class="source-ref">Nguồn: Book page 430-431</span></div>
+<section class="subsection" id="preboring"><h3>(1) プレボーリング工法の施工要領</h3>
+<div class="study-grid">
+<article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja">
+<p><strong class="kw">既製コンクリート杭の埋込み工法</strong>は、<span class="relation">プレボーリング工法と、中掘り工法に大別される</span>。</p>
+<p><strong class="kw">プレボーリング工法</strong>は、地盤に穴を開けてから既製杭を埋め込み、打撃またはセメントミルクなどによる根固めを行う工法である。</p>
+<p>施工手順を簡潔に示すと、「<mark class="critical">杭径よりも10cm程度大きな径の穴を掘削する</mark>」→「根固め液となるセメントミルクを注入して球根を造る」→「杭周固定液を充填する」→「掘削ビットを引き上げる」→「既製杭を挿入する」→「杭を自沈させるか、回転圧入する」→「杭の先端を根固め部に埋め込み、定着させる」となる。</p>
+<p>プレボーリング工法における施工の留意点には、次のようなものがある。</p>
+<ol>
+<li><span class="relation">孔壁の崩壊が生じないよう、地盤の状態に応じた掘削速度とする。</span></li>
+<li><span class="relation">アースオーガーの引き上げは、負圧によって地盤を緩めないよう、ゆっくりと行う。</span></li>
+<li><strong class="kw">安定液</strong>を<mark class="critical">地下水位以上</mark>になるまで補充する。</li>
+<li>掘削土は、しっかりと排出する。</li>
+<li>根固め液の配合は、特記仕様書に従って行う。</li>
+<li>杭周固定液は、杭の全長にわたって、空隙を充填できるだけの量を注入する。</li>
+<li>杭の建込み後に、杭が自沈するようなときは、固定治具で杭を保持する。</li>
+</ol>
+</div></article>
+<article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi">
+<p><strong class="kw">Phương pháp chôn cọc bê tông đúc sẵn</strong> được <span class="relation">chia chủ yếu thành pre-boring và khoan trong lòng cọc</span>.</p>
+<p><strong class="kw">Pre-boring</strong> là phương pháp khoan lỗ trong nền trước, sau đó hạ cọc đúc sẵn và gia cố chân cọc bằng đóng hoặc cement milk.</p>
+<p>Trình tự: “<mark class="critical">khoan lỗ có đường kính lớn hơn đường kính cọc khoảng 10 cm</mark>” → bơm cement milk làm dung dịch gia cố chân cọc để tạo bầu gia cố → bơm dung dịch cố định quanh cọc → rút mũi khoan → đưa cọc đúc sẵn vào → cho cọc tự chìm hoặc ép xoay → chôn đầu cọc vào phần gia cố chân cọc và cố định.</p>
+<p>Các điểm cần lưu ý:</p>
+<ol>
+<li><span class="relation">Điều chỉnh tốc độ khoan theo trạng thái nền để không làm sập thành lỗ.</span></li>
+<li><span class="relation">Rút earth auger từ từ để áp suất âm không làm nền đất bị nới lỏng.</span></li>
+<li>Bổ sung <strong class="kw">dung dịch ổn định</strong> đến mức <mark class="critical">cao hơn mực nước ngầm</mark>.</li>
+<li>Đất đào phải được thải ra đầy đủ.</li>
+<li>Cấp phối dung dịch gia cố chân cọc phải theo đặc tả kỹ thuật riêng.</li>
+<li>Dung dịch cố định quanh cọc phải đủ để lấp kín khe rỗng dọc toàn bộ chiều dài cọc.</li>
+<li>Nếu cọc có xu hướng tự chìm sau khi dựng, phải giữ cọc bằng đồ gá cố định.</li>
+</ol>
+</div></article>
+</div>
+</section>
+<section class="subsection" id="inner-boring"><h3>(2) 中掘り工法の施工要領</h3>
+<div class="study-grid">
+<article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja">
+<p><strong class="kw">中掘り工法</strong>は、大口径の鋼管を建て込み、鋼管の中（既製杭の中空部）からスパイラルオーガーで掘削して杭を埋め込み、打撃またはモルタル拡大根固めを行い、杭と支持地盤を一体化させる工法である。</p>
+<p>施工手順は、「既製杭の中空部にスパイラルオーガーを挿入する」→「杭とスパイラルオーガーを吊り上げて建て込む」→「穴を掘削する」→「杭を沈設する」→「ディーゼルパイルハンマで打撃して支持地盤に杭を固定するか、根固め部にセメントミルクで球根を造って杭を固定する」→「スパイラルオーガーを引き上げる」となる。</p>
+<ol>
+<li><span class="trap">杭の損傷や地盤の緩みが生じないよう、先掘りをしない。</span></li>
+<li><span class="relation">スパイラルオーガーを引き上げるときは、負圧によって地盤を緩めないよう、ゆっくりとした速度で引き上げる。</span></li>
+<li>根固め液の配合は、特記仕様書に従って行う。</li>
+<li>杭周固定液は、杭の全長にわたって、空隙を充填できるだけの量を注入する。</li>
+</ol>
+</div></article>
+<article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi">
+<p><strong class="kw">Phương pháp khoan trong lòng cọc</strong> là phương pháp dựng cọc/ống thép đường kính lớn, khoan bằng spiral auger từ phần rỗng bên trong cọc đúc sẵn, đồng thời hạ cọc; sau đó đóng hoặc gia cố mở rộng chân cọc bằng mortar để liên kết cọc với tầng đất chịu lực thành một khối.</p>
+<p>Trình tự: đưa spiral auger vào phần rỗng của cọc → cẩu cọc cùng auger và dựng vào vị trí → khoan → hạ cọc → đóng bằng diesel pile hammer để cố định vào tầng chịu lực hoặc tạo bầu cement milk tại phần gia cố chân cọc → rút spiral auger.</p>
+<ol>
+<li><span class="trap">Không được khoan vượt trước, nhằm tránh hư hại cọc hoặc làm nền đất bị nới lỏng.</span></li>
+<li><span class="relation">Khi rút spiral auger phải rút chậm để áp suất âm không làm nền đất bị nới lỏng.</span></li>
+<li>Cấp phối dung dịch gia cố chân cọc phải theo đặc tả kỹ thuật riêng.</li>
+<li>Dung dịch cố định quanh cọc phải đủ để lấp đầy khe rỗng trên toàn bộ chiều dài cọc.</li>
+</ol>
+</div></article>
+</div>
+</section>
+<section class="subsection" id="bearing-check"><h3>(3) 支持力を確保するための施工管理上の確認方法</h3>
+<div class="study-grid">
+<article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja">
+<p>既製コンクリート杭の埋込み工法において、支持力を確保するための施工管理上の確認方法には、次のようなものがある。</p>
+<ol><li><span class="relation">支持層の深度を、土質調査結果や地層断面図によって確認する。</span></li><li><span class="relation">深度ごとに、オーガ駆動電流値の変化と、土質柱状図におけるN値の変化を比較する。</span></li><li><span class="relation">オーガヘッドの先端に付着した掘削土を採取し、仕様書に示されている土質標本と照合する。</span></li></ol>
+</div></article>
+<article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi">
+<p>Đối với cọc bê tông đúc sẵn thi công bằng phương pháp chôn, các phương pháp kiểm tra quản lý thi công để bảo đảm sức chịu tải gồm:</p>
+<ol><li><span class="relation">Xác nhận độ sâu tầng chịu lực bằng kết quả khảo sát địa chất và mặt cắt địa tầng.</span></li><li><span class="relation">Ở từng độ sâu, so sánh biến đổi dòng điện dẫn động auger với biến đổi giá trị N trên biểu đồ trụ địa chất.</span></li><li><span class="relation">Lấy đất đào bám ở đầu auger head và đối chiếu với mẫu đất nêu trong đặc tả kỹ thuật.</span></li></ol>
+</div></article>
+</div>
+<p><a href="#toc">↑ Mục lục</a></p>
+</section>
+</section><section class="study-section" id="rebar-support">
+<div class="section-head"><h2>設問2 バーサポート・スペーサー</h2><span class="source-ref">Nguồn: Book page 432-433</span></div>
+<div class="study-grid">
+<article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja">
+<p><strong class="kw">スペーサー</strong>とは、せき板（側面の型枠）やスラブ鉄筋と、鉄筋との間隔を保つために必要となる、<span class="relation">鉄筋のかぶりを確保するための部材</span>である。<strong class="kw">バーサポート</strong>とは、<span class="relation">鉄筋の水平位置を保持するための部材</span>であり、スペーサーの一種である。</p>
+<p>鉄筋工事のスペーサーは、鉄筋を支持すると共に、鉄筋のかぶり厚さ（コンクリート表面から鉄筋表面までの最小距離）を確保するための部材である。</p>
+<div class="table-wrap"><table>
+<caption>鉄筋のサポートおよびスペーサの種類・配置の標準（JASS5）</caption>
+<thead><tr><th>部位</th><th>種類</th><th>配置の標準</th><th>備考</th></tr></thead>
+<tbody>
+<tr><td><strong class="kw">スラブ</strong></td><td>鋼製・コンクリート製・モルタル製</td><td>上端筋・下端筋それぞれ<mark class="critical">間隔0.9m程度</mark>、<mark class="critical">端部0.1m以内</mark></td><td></td></tr>
+<tr><td><strong class="kw">梁</strong></td><td>鋼製・コンクリート製・モルタル製</td><td><mark class="critical">間隔1.5m程度</mark>、<mark class="critical">端部0.5m程度</mark></td><td>上または下いずれかと、側面の両側へ対称に設置</td></tr>
+<tr><td><strong class="kw">柱</strong></td><td>鋼製・コンクリート製・モルタル製</td><td>上段は梁下より<mark class="critical">0.5m程度</mark>、中段は上段より<mark class="critical">1.5m間隔程度</mark>。柱幅方向は<mark class="critical">1.0m以下2個、1.0m超え3個</mark></td><td>同一平面に点対称となるように設置</td></tr>
+<tr><td><strong class="kw">基礎</strong></td><td>鋼製・コンクリート製・モルタル製</td><td><mark class="critical">間隔0.9m程度</mark></td><td>基礎の四隅と柱の四隅に設置</td></tr>
+<tr><td><strong class="kw">基礎梁</strong></td><td>鋼製・コンクリート製・モルタル製</td><td><mark class="critical">間隔1.5m程度</mark>、<mark class="critical">端部0.5m程度</mark></td><td>上または下いずれかと、側面の両側へ対称に設置</td></tr>
+<tr><td><strong class="kw">壁・地下外壁</strong></td><td>鋼製・コンクリート製・モルタル製</td><td>上段は梁下より<mark class="critical">0.5m程度</mark>まで、中段は上段より<mark class="critical">1.5m間隔程度</mark>、横間隔<mark class="critical">1.5m程度</mark>、端部<mark class="critical">0.5m程度</mark></td><td></td></tr>
+</tbody>
+</table></div>
+<p>［注］(1) スペーサは、<span class="trap">側面に限りプラスチック製でもよい</span>。(2) 断熱材打込み時のスペーサは、支持重量に対して、めり込まない程度の設置面積を持ったものとする。</p>
+<p>コンクリート中の鉄筋が、設計図に示されている位置を確保できるよう、鉄筋相互の結束はバーサポートやスペーサーを用いて行う。</p>
+<ol>
+<li>バーサポートやスペーサーは、組み立てられた鉄筋を安全に支持し、コンクリートの打込み圧力がかかっても変形せず、剛性・強度を有しており、コンクリートと同等以上の耐久性があるものとする。</li>
+<li>使用するバーサポートやスペーサーは、スラブ・梁・柱などの部位ごとに、種類・数量・配置の標準と適合していることを確認する。</li>
+<li>バーサポートやスペーサーは、原則として、鋼製・コンクリート製・モルタル製のいずれかとするが、<span class="trap">側面ではプラスチック製でもよい</span>。また、<span class="relation">スラブのスペーサーは、原則として鋼製</span>とする。</li>
+<li>鋼製のバーサポートやスペーサーを使用するときは、<strong class="kw">かぶりに等しい厚さに相当する部分に、防錆処理</strong>をしていることを確認する。</li>
+<li>断熱材打込み時のスペーサーは、作用荷重に対して、<span class="relation">めり込まないだけの面積</span>を有するものであることを確認する。</li>
+<li>バーサポートやスペーサーは、かぶり厚さを確保できるものとするが、過大とならないようにする必要もあるので、その<strong class="kw">数量や配置を施工図で確認する</strong>。</li>
+</ol>
+<p>※「建築工事標準仕様書・同解説（日本建築学会）」では、「バーサポート」の名称は「サポート」、「スペーサー」の名称は「スペーサ」と表記されているが、その意味するところに違いはない。</p>
+</div></article>
+<article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi">
+<p><strong class="kw">Spacer</strong> là cấu kiện dùng để duy trì khoảng cách giữa cốt thép với ván khuôn mặt bên hoặc giữa các lớp cốt thép, qua đó <span class="relation">bảo đảm chiều dày lớp bê tông bảo vệ</span>. <strong class="kw">Bar support</strong> là <span class="relation">cấu kiện giữ vị trí ngang của cốt thép</span> và là một loại spacer.</p>
+<p>Spacer vừa đỡ cốt thép vừa bảo đảm chiều dày lớp bảo vệ, tức khoảng cách nhỏ nhất từ bề mặt bê tông đến bề mặt cốt thép.</p>
+<div class="table-wrap"><table>
+<caption>Tiêu chuẩn về loại và bố trí support/spacer theo JASS 5</caption>
+<thead><tr><th>Vị trí</th><th>Vật liệu</th><th>Bố trí tiêu chuẩn</th><th>Ghi chú</th></tr></thead>
+<tbody>
+<tr><td><strong class="kw">Sàn</strong></td><td>Thép, bê tông hoặc mortar</td><td>Cho cả thép lớp trên và dưới: <mark class="critical">khoảng 0,9 m</mark>; tại đầu <mark class="critical">≤0,1 m</mark></td><td></td></tr>
+<tr><td><strong class="kw">Dầm</strong></td><td>Thép, bê tông hoặc mortar</td><td><mark class="critical">Khoảng 1,5 m</mark>; đầu khoảng <mark class="critical">0,5 m</mark></td><td>Bố trí phía trên hoặc dưới và đối xứng hai mặt bên</td></tr>
+<tr><td><strong class="kw">Cột</strong></td><td>Thép, bê tông hoặc mortar</td><td>Hàng trên cách đáy dầm <mark class="critical">0,5 m</mark>; hàng giữa cách hàng trên <mark class="critical">1,5 m</mark>; theo chiều rộng cột: <mark class="critical">≤1,0 m: 2 cái; &gt;1,0 m: 3 cái</mark></td><td>Bố trí đối xứng điểm trên cùng một mặt phẳng</td></tr>
+<tr><td><strong class="kw">Móng</strong></td><td>Thép, bê tông hoặc mortar</td><td><mark class="critical">Khoảng 0,9 m</mark></td><td>Đặt tại bốn góc móng và bốn góc cột</td></tr>
+<tr><td><strong class="kw">Dầm móng</strong></td><td>Thép, bê tông hoặc mortar</td><td><mark class="critical">Khoảng 1,5 m</mark>; đầu khoảng <mark class="critical">0,5 m</mark></td><td>Bố trí phía trên hoặc dưới và đối xứng hai mặt bên</td></tr>
+<tr><td><strong class="kw">Tường / tường ngoài tầng hầm</strong></td><td>Thép, bê tông hoặc mortar</td><td>Hàng trên đến khoảng <mark class="critical">0,5 m dưới dầm</mark>; hàng giữa <mark class="critical">1,5 m</mark>; phương ngang <mark class="critical">1,5 m</mark>; đầu <mark class="critical">0,5 m</mark></td><td></td></tr>
+</tbody>
+</table></div>
+<p>Chú ý: (1) <span class="trap">chỉ spacer ở mặt bên mới có thể dùng loại bằng nhựa</span>. (2) Khi đổ bê tông cùng vật liệu cách nhiệt, spacer phải có diện tích tiếp xúc đủ để không bị lún dưới tải trọng đỡ.</p>
+<p>Cần dùng bar support và spacer để cốt thép trong bê tông duy trì đúng vị trí thể hiện trên bản vẽ thiết kế.</p>
+<ol>
+<li>Bar support và spacer phải đỡ an toàn cốt thép đã lắp dựng, không biến dạng dưới áp lực đổ bê tông, có đủ độ cứng, cường độ và độ bền lâu bằng hoặc cao hơn bê tông.</li>
+<li>Với từng vị trí như sàn, dầm, cột, phải xác nhận loại, số lượng và cách bố trí phù hợp tiêu chuẩn.</li>
+<li>Về nguyên tắc dùng thép, bê tông hoặc mortar; <span class="trap">ở mặt bên có thể dùng spacer bằng nhựa</span>. <span class="relation">Spacer của sàn về nguyên tắc làm bằng thép</span>.</li>
+<li>Khi dùng loại bằng thép, phải xác nhận đã <strong class="kw">xử lý chống gỉ phần tương ứng với chiều dày lớp bảo vệ</strong>.</li>
+<li>Khi đổ cùng vật liệu cách nhiệt, spacer phải có <span class="relation">diện tích đủ để không bị lún dưới tải trọng tác dụng</span>.</li>
+<li>Phải bảo đảm chiều dày lớp bảo vệ nhưng không để quá lớn, vì vậy phải <strong class="kw">kiểm tra số lượng và cách bố trí trên bản vẽ thi công</strong>.</li>
+</ol>
+<p>Trong JASS của Viện Kiến trúc Nhật Bản, `バーサポート` được ghi là `サポート`, còn `スペーサー` được ghi là `スペーサ`; ý nghĩa kỹ thuật không khác nhau.</p>
+</div></article>
+</div>
+<div class="figure-box"><strong>Giải thích hình Book 432</strong><p>Hình minh họa spacer nằm giữa cốt thép và ván khuôn: chức năng là giữ cốt thép ở vị trí thích hợp và bảo đảm <em>所要のかぶり</em>, tức chiều dày lớp bê tông bảo vệ theo yêu cầu.</p></div>
+<p><a href="#toc">↑ Mục lục</a></p>
+</section><section class="study-section" id="cold-joint">
+<div class="section-head"><h2>設問3 コールドジョイントの発生防止</h2><span class="source-ref">Nguồn: Book page 433-434</span></div>
+<div class="study-grid">
+<article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja">
+<p><strong class="kw">コールドジョイント</strong>とは、上下層（先打ちコンクリートと後打ちコンクリート）が一体化していない不連続な不良打継目のことである。<span class="relation">下層の先打ちコンクリートが硬化してから、上層の後打ちコンクリートを施工すると発生しやすい</span>。</p>
+<p>また、<strong class="kw">暑中コンクリート</strong>（日平均気温が<mark class="critical">25℃を超える</mark>時期に施工するコンクリート）や<strong class="kw">マスコンクリート</strong>（部材断面の最小寸法が<mark class="critical">80cm以上</mark>となるコンクリート）では、特に発生しやすい。</p>
+<p><span class="relation">コールドジョイントが発生した部位では、構造としての強度が低下し、打継ぎ部分において鉄筋の錆が生じるため、鉄筋コンクリート躯体の耐久性が著しく低下する</span>。</p>
+<p>旧（先打ち）コンクリートに新（後打ち）コンクリートを打ち込むときは、<strong class="kw">旧コンクリート表面のレイタンスを取り除き、その表面を湿潤にしておく</strong>。</p>
+<h4>(1) コールドジョイントの発生を防止するための施工上の留意事項</h4>
+<ol>
+<li><strong class="kw">許容打重ね時間間隔</strong>を厳守し、連続打設する。外気温が<mark class="critical">25℃以下: 2.5時間以内</mark>、<mark class="critical">25℃超: 2.0時間以内</mark>。</li>
+<li>後打ちコンクリートの施工時には、<span class="relation">内部振動機を先打ちコンクリート中に10cm程度挿入して一体化させる</span>。</li>
+<li><strong class="kw">再振動</strong>は、コンクリートの締固め後、<span class="relation">コンクリートが硬化する直前</span>に行う。</li>
+<li>暑中コンクリートやマスコンクリートでは、工事監理者の承認を受けてから<strong class="kw">遅延形AE剤</strong>を使用し、許容打重ね時間間隔を延ばすことができる。</li>
+<li><strong class="kw">コンクリートの打込み温度</strong>が<mark class="critical">35℃以下</mark>であることを確認してから打込みを開始する。</li>
+<li>コンクリートの輸送管に、直射日光が当たらないように措置を講じる。</li>
+<li>打込み区画の範囲を、外気温に適合するよう定め、工事監理者の承認を受ける。</li>
+</ol>
+</div></article>
+<article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi">
+<p><strong class="kw">Cold joint</strong> là mạch nối không tốt và không liên tục, tại đó lớp bê tông đổ trước và lớp đổ sau không liên kết thành một khối. <span class="relation">Hiện tượng dễ phát sinh khi bê tông đổ trước đã cứng rồi mới thi công lớp bê tông đổ sau</span>.</p>
+<p>Hiện tượng đặc biệt dễ phát sinh với <strong class="kw">bê tông mùa nóng</strong> thi công khi nhiệt độ trung bình ngày <mark class="critical">&gt;25°C</mark> và <strong class="kw">bê tông khối lớn</strong> có kích thước nhỏ nhất của tiết diện cấu kiện <mark class="critical">≥80 cm</mark>.</p>
+<p><span class="relation">Khi xuất hiện cold joint, cường độ kết cấu giảm, cốt thép tại mạch nối dễ bị gỉ và độ bền lâu của kết cấu bê tông cốt thép giảm đáng kể</span>.</p>
+<p>Khi đổ bê tông mới lên bê tông cũ, phải <strong class="kw">loại bỏ laitance trên bề mặt bê tông cũ và làm ẩm bề mặt</strong>.</p>
+<h4>(1) Các điểm cần lưu ý để ngăn ngừa cold joint</h4>
+<ol>
+<li>Tuân thủ <strong class="kw">khoảng thời gian cho phép giữa các lớp đổ</strong> và đổ liên tục: nhiệt độ ngoài trời <mark class="critical">≤25°C: ≤2,5 giờ</mark>; <mark class="critical">&gt;25°C: ≤2,0 giờ</mark>.</li>
+<li>Khi đổ lớp sau, <span class="relation">đưa đầm rung trong vào bê tông đổ trước khoảng 10 cm để hai lớp liên kết thành một khối</span>.</li>
+<li><strong class="kw">Rung lại</strong> được thực hiện sau khi đầm chặt và <span class="relation">ngay trước khi bê tông bắt đầu cứng</span>.</li>
+<li>Với bê tông mùa nóng hoặc bê tông khối lớn, sau khi được giám sát công trình phê duyệt có thể dùng <strong class="kw">phụ gia AE loại chậm đông kết</strong> để kéo dài khoảng thời gian cho phép giữa các lớp đổ.</li>
+<li>Chỉ bắt đầu đổ sau khi xác nhận <strong class="kw">nhiệt độ bê tông khi đổ</strong> <mark class="critical">≤35°C</mark>.</li>
+<li>Phải có biện pháp để ống vận chuyển bê tông không bị ánh nắng trực tiếp chiếu vào.</li>
+<li>Phạm vi phân khu đổ phải phù hợp với nhiệt độ ngoài trời và được giám sát công trình phê duyệt.</li>
+</ol>
+</div></article>
+</div>
+<div class="figure-box"><strong>Giải thích hình Book 433</strong><p>Hình thể hiện bê tông đổ sau nằm trên bê tông đổ trước, còn đường biên gồ ghề giữa hai lớp là <em>不良打継目（コールドジョイント）</em>. Đây là mặt phân cách không liên kết nguyên khối.</p></div>
+<p><a href="#toc">↑ Mục lục</a></p>
+</section><section class="study-section" id="fireproof">
+<div class="section-head"><h2>設問4 耐火被覆・吹付けロックウール</h2><span class="source-ref">Nguồn: Book page 434-436</span></div>
+<section class="subsection" id="fireproof-basic"><h3>耐火被覆と耐火構造</h3>
+<div class="study-grid">
+<article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja">
+<p><strong class="kw">耐火被覆</strong>とは、鉄骨構造の建物を耐火構造とするために、鉄骨工事において、壁・柱・梁・床などを定められた材料で覆うことである。</p>
+<p><strong class="kw">耐火構造</strong>とは、壁・柱・梁・床などの建築物の部位の構造のうち、耐火性能（通常の火災が終了するまでの間、当該火災による建築物の倒壊・延焼を防止するために、当該建築物の部分に必要とされる性能）に関して、政令で定める技術的基準に適合する鉄筋コンクリート造・煉瓦造などの構造で、国土交通大臣が定めた構造方法を用いるものまたは国土交通大臣の認定を受けたものをいう。</p>
+</div></article>
+<article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi">
+<p><strong class="kw">Lớp phủ chống cháy</strong> là việc phủ các cấu kiện như tường, cột, dầm, sàn bằng vật liệu quy định nhằm làm cho công trình kết cấu thép đáp ứng yêu cầu của kết cấu chịu lửa.</p>
+<p><strong class="kw">Kết cấu chịu lửa</strong> là kết cấu của các bộ phận công trình như tường, cột, dầm, sàn đáp ứng các tiêu chuẩn kỹ thuật do pháp lệnh quy định về khả năng chịu lửa, tức khả năng cần thiết để ngăn công trình sụp đổ và ngăn cháy lan trong khoảng thời gian cho tới khi một đám cháy thông thường kết thúc. Các kết cấu phải sử dụng phương pháp cấu tạo do Bộ trưởng Bộ Đất đai, Hạ tầng, Giao thông và Du lịch quy định hoặc được Bộ trưởng công nhận.</p>
+</div></article>
+</div>
+</section>
+<section class="subsection" id="fireproof-types"><h3>(1) 耐火被覆工法の種類</h3>
+<div class="study-grid">
+<article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja">
+<p>一般的に用いられる耐火被覆工法には、次のようなものがある。鉄骨構造の建物を耐火構造とするための耐火被覆は、<span class="relation">建築基準法に例示されている仕様か、国土交通大臣が認定した仕様に準じた品質</span>を有していなければならない。</p>
+<div class="table-wrap"><table><caption>耐火被覆工法の分類（出典：建築工事監理指針）</caption><thead><tr><th>工法</th><th>耐火被覆材料</th><th>材料の主成分</th><th>仕様区分</th></tr></thead><tbody>
+<tr><td rowspan="2"><strong class="kw">打設工法</strong></td><td>コンクリート</td><td>セメント、砂、砂利</td><td>例示</td></tr><tr><td>軽量コンクリート</td><td>セメント、軽量骨材</td><td>例示</td></tr>
+<tr><td rowspan="2"><strong class="kw">左官工法</strong></td><td>鉄網モルタル</td><td>セメント、砂</td><td>例示</td></tr><tr><td>鉄網パーライトモルタル</td><td>セメント、パーライト</td><td>例示</td></tr>
+<tr><td rowspan="5"><strong class="kw">吹付け工法</strong></td><td><strong class="kw">吹付けロックウール</strong></td><td>ロックウール、セメント</td><td>認定</td></tr><tr><td>軽量セメントモルタル</td><td>セメント、パーライト、水酸化アルミニウム</td><td>認定</td></tr><tr><td>吹付けパーライトモルタル</td><td>セメント、パーライト</td><td>認定</td></tr><tr><td>水酸化アルミニウム混入湿式吹付けモルタル</td><td>セメント、シリカ、アルミナ</td><td>認定</td></tr><tr><td>耐火塗料</td><td>燐酸アンモニウム</td><td>認定</td></tr>
+<tr><td rowspan="5"><strong class="kw">張付け工法</strong></td><td>繊維混入珪酸カルシウム板</td><td>珪酸カルシウム</td><td>認定</td></tr><tr><td>ALCパネル</td><td>セメント、珪石、生石灰</td><td>認定</td></tr><tr><td>強化石膏ボード</td><td>石膏</td><td>認定</td></tr><tr><td>押出成形セメント板</td><td>セメント</td><td>認定</td></tr><tr><td>軽量コンクリート板</td><td>セメント、軽量骨材</td><td>認定</td></tr>
+<tr><td rowspan="2"><strong class="kw">巻付け工法</strong></td><td>セラミックファイバー系材料</td><td>セラミックファイバー</td><td>認定</td></tr><tr><td>ロックウールフェルト</td><td>ロックウール</td><td>認定</td></tr>
+<tr><td rowspan="3"><strong class="kw">組積工法</strong></td><td>コンクリートブロック</td><td>セメント、砂、砂利</td><td>例示</td></tr><tr><td>軽量コンクリートブロック</td><td>セメント、軽量骨材</td><td>例示</td></tr><tr><td>石または煉瓦</td><td>石または煉瓦</td><td>例示</td></tr>
+<tr><td><strong class="kw">合成工法</strong></td><td>各種材料や工法の組み合わせ</td><td>各種の耐火材</td><td>認定</td></tr>
+</tbody></table></div>
+</div></article>
+<article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi">
+<p>Các phương pháp lớp phủ chống cháy được sử dụng phổ biến như bảng dưới đây. Lớp phủ chống cháy cho công trình kết cấu thép phải có <span class="relation">chất lượng phù hợp với cấu tạo được Luật Tiêu chuẩn Xây dựng nêu ví dụ hoặc cấu tạo đã được Bộ trưởng MLIT công nhận</span>.</p>
+<div class="table-wrap"><table><caption>Phân loại phương pháp lớp phủ chống cháy</caption><thead><tr><th>Phương pháp</th><th>Vật liệu</th><th>Thành phần chính</th><th>Phân loại</th></tr></thead><tbody>
+<tr><td rowspan="2"><strong class="kw">Đổ tại chỗ</strong></td><td>Bê tông</td><td>Xi măng, cát, sỏi</td><td>例示</td></tr><tr><td>Bê tông nhẹ</td><td>Xi măng, cốt liệu nhẹ</td><td>例示</td></tr>
+<tr><td rowspan="2"><strong class="kw">Trát</strong></td><td>Mortar lưới thép</td><td>Xi măng, cát</td><td>例示</td></tr><tr><td>Mortar perlite có lưới thép</td><td>Xi măng, perlite</td><td>例示</td></tr>
+<tr><td rowspan="5"><strong class="kw">Phun</strong></td><td><strong class="kw">Rock wool phun</strong></td><td>Rock wool, xi măng</td><td>認定</td></tr><tr><td>Mortar xi măng nhẹ</td><td>Xi măng, perlite, nhôm hydroxide</td><td>認定</td></tr><tr><td>Mortar perlite phun</td><td>Xi măng, perlite</td><td>認定</td></tr><tr><td>Mortar phun ướt có nhôm hydroxide</td><td>Xi măng, silica, alumina</td><td>認定</td></tr><tr><td>Sơn chống cháy</td><td>Amoni phosphat</td><td>認定</td></tr>
+<tr><td rowspan="5"><strong class="kw">Gắn tấm</strong></td><td>Tấm calcium silicate gia cường sợi</td><td>Calcium silicate</td><td>認定</td></tr><tr><td>Panel ALC</td><td>Xi măng, đá silica, vôi sống</td><td>認定</td></tr><tr><td>Tấm thạch cao gia cường</td><td>Thạch cao</td><td>認定</td></tr><tr><td>Tấm xi măng đùn ép</td><td>Xi măng</td><td>認定</td></tr><tr><td>Tấm bê tông nhẹ</td><td>Xi măng, cốt liệu nhẹ</td><td>認定</td></tr>
+<tr><td rowspan="2"><strong class="kw">Bọc/cuốn</strong></td><td>Vật liệu ceramic fiber</td><td>Ceramic fiber</td><td>認定</td></tr><tr><td>Nỉ rock wool</td><td>Rock wool</td><td>認定</td></tr>
+<tr><td rowspan="3"><strong class="kw">Xây bao</strong></td><td>Block bê tông</td><td>Xi măng, cát, sỏi</td><td>例示</td></tr><tr><td>Block bê tông nhẹ</td><td>Xi măng, cốt liệu nhẹ</td><td>例示</td></tr><tr><td>Đá hoặc gạch</td><td>Đá hoặc gạch</td><td>例示</td></tr>
+<tr><td><strong class="kw">Phương pháp hỗn hợp</strong></td><td>Kết hợp nhiều vật liệu/công pháp</td><td>Các loại vật liệu chịu lửa</td><td>認定</td></tr>
+</tbody></table></div>
+</div></article>
+</div>
+</section>
+<section class="subsection" id="rockwool-method"><h3>(2) 吹付けロックウール工法</h3>
+<div class="study-grid">
+<article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja">
+<p>耐火被覆材料として吹付けロックウールを使用する吹付け工法は、鉄骨工事における代表的な耐火被覆工法である。吹付けロックウール工法は、<span class="relation">工場配合されたロックウールを用いる乾式工法</span>と、<span class="relation">現場配合のセメントスラリーを用いる半乾式工法</span>に分類されている。</p>
+<p>① <strong class="kw">乾式工法</strong>は、工場配合されたロックウールおよびセメントと、水を別々に圧送し、<span class="relation">ノズルの先端で混合して吹き付ける</span>工法である。施工時に<span class="relation">ロックウールが飛散するおそれ</span>がある。</p>
+<p>② <strong class="kw">半乾式工法</strong>は、現場配合されたセメントスラリー（水およびセメント）と、ロックウールを別々に圧送し、<span class="relation">ノズルの先端で混合して吹き付ける</span>工法である。</p>
+</div></article>
+<article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi">
+<p>Phương pháp phun dùng rock wool là một phương pháp phủ chống cháy tiêu biểu cho kết cấu thép. Công pháp được chia thành <span class="relation">phương pháp khô dùng rock wool phối trộn tại nhà máy</span> và <span class="relation">phương pháp bán khô dùng cement slurry phối trộn tại công trường</span>.</p>
+<p>① <strong class="kw">Phương pháp khô</strong>: hỗn hợp rock wool + xi măng đã phối trộn tại nhà máy và nước được vận chuyển riêng, sau đó <span class="relation">trộn tại đầu nozzle rồi phun</span>. Khi thi công có <span class="relation">nguy cơ rock wool phát tán</span>.</p>
+<p>② <strong class="kw">Phương pháp bán khô</strong>: cement slurry gồm nước + xi măng phối trộn tại công trường và rock wool được vận chuyển riêng, sau đó <span class="relation">trộn tại đầu nozzle rồi phun</span>.</p>
+</div></article>
+</div>
+<div class="figure-box"><strong>Giải thích hai sơ đồ hệ thống phun</strong><p><b>乾式:</b> rock wool + xi măng đi theo tuyến vật liệu khô, nước đi tuyến riêng, gặp nhau tại nozzle. <b>半乾式:</b> rock wool đi tuyến riêng; nước + xi măng được khuấy thành cement slurry, bơm theo tuyến riêng, sau đó gặp rock wool tại nozzle. Điểm phân biệt không phải “có nước hay không”, mà là trạng thái vật liệu trước nozzle.</p></div>
+</section>
+<section class="subsection" id="rockwool-cautions"><h3>(3) 吹付けロックウール工法の施工上の留意事項</h3>
+<div class="study-grid">
+<article class="study-card original"><div class="card-title">原文</div><div class="recall-source" lang="ja">
+<ol><li><strong class="kw">鉄骨表面の浮き錆</strong>は、ワイヤーブラシなどの手道具で除去する。</li><li><strong class="kw">吹付け機械の設置場所</strong>は、資材搬入動線を考慮して定める。</li><li><span class="relation">鉄骨の構造材貫通部や、鉄骨の取付け金物などには、主要な鉄骨と同様の耐火被覆を行う。</span></li><li>工場配合されたロックウールを吹き付ける<strong class="kw">乾式工法</strong>では、<span class="relation">ロックウールの飛散を防ぐための措置を講じる</span>。</li></ol>
+</div></article>
+<article class="study-card translation"><div class="card-title">Bản dịch tiếng Việt</div><div class="recall-source" lang="vi">
+<ol><li><strong class="kw">Gỉ nổi trên bề mặt kết cấu thép</strong> phải được loại bỏ bằng dụng cụ cầm tay như bàn chải thép.</li><li><strong class="kw">Vị trí đặt máy phun</strong> phải được xác định có xét đến tuyến vận chuyển vật liệu.</li><li><span class="relation">Các vị trí kết cấu xuyên qua cấu kiện thép và phụ kiện lắp vào kết cấu thép phải được phủ chống cháy tương đương với kết cấu thép chính.</span></li><li>Đối với <strong class="kw">phương pháp khô</strong> dùng rock wool phối trộn tại nhà máy, phải <span class="relation">thực hiện biện pháp ngăn rock wool phát tán</span>.</li></ol>
+</div></article>
+</div>
+<p><a href="#toc">↑ Mục lục</a></p>
+</section>
+</section></main>
+<!-- CONTENT_END -->
+<section id="terms">
+<h2>Thuật ngữ chuyên môn</h2><div class="section-head">
+<h2>Thuật ngữ chuyên môn</h2>
+</div><div class="table-wrap"><table>
+<thead><tr><th>日本語</th><th>読み方</th><th>Tiếng Việt</th><th>Giải thích</th><th>Liên quan</th></tr></thead>
+<tbody>
+<tr><td>スタッド溶接</td><td>スタッドようせつ</td><td>Hàn stud / hàn chốt</td><td>Hàn trực tiếp stud vào thép nền.</td><td>仕上がり高さ, 傾き</td></tr>
+<tr><td>管理許容差</td><td>かんりきょようさ</td><td>Dung sai quản lý</td><td>Mức mục tiêu dùng trong quản lý thi công.</td><td>限界許容差</td></tr>
+<tr><td>限界許容差</td><td>げんかいきょようさ</td><td>Dung sai giới hạn</td><td>Giới hạn dùng để đánh giá đạt/không đạt.</td><td>スタッド検査</td></tr>
+<tr><td>埋込み工法</td><td>うめこみこうほう</td><td>Phương pháp chôn cọc</td><td>Nhóm công pháp hạ cọc đúc sẵn bằng cách tạo lỗ/khoan kết hợp gia cố mũi.</td><td>プレボーリング, 中掘り</td></tr>
+<tr><td>支持層</td><td>しじそう</td><td>Tầng chịu lực</td><td>Tầng đất tiếp nhận tải trọng từ cọc.</td><td>N値, オーガ駆動電流値</td></tr>
+<tr><td>根固め液</td><td>ねがためえき</td><td>Dung dịch gia cố chân cọc</td><td>Vật liệu gốc xi măng dùng tạo phần gia cố mũi cọc.</td><td>球根</td></tr>
+<tr><td>杭周固定液</td><td>くいしゅうこていえき</td><td>Dung dịch cố định quanh cọc</td><td>Lấp khe rỗng dọc thân cọc.</td><td>埋込み工法</td></tr>
+<tr><td>負圧</td><td>ふあつ</td><td>Áp suất âm</td><td>Có thể phát sinh khi rút auger quá nhanh và làm nền đất bị nới lỏng.</td><td>オーガ引上げ</td></tr>
+<tr><td>先掘り</td><td>さきぼり</td><td>Khoan vượt trước</td><td>Mũi khoan đi trước quá sâu so với cọc.</td><td>中掘り工法</td></tr>
+<tr><td>スペーサー</td><td>スペーサー</td><td>Spacer / con kê</td><td>Duy trì vị trí cốt thép và lớp bê tông bảo vệ.</td><td>かぶり厚さ</td></tr>
+<tr><td>バーサポート</td><td>バーサポート</td><td>Bar support</td><td>Giữ vị trí ngang của cốt thép, là một loại spacer.</td><td>鉄筋工事</td></tr>
+<tr><td>かぶり厚さ</td><td>かぶりあつさ</td><td>Chiều dày lớp bê tông bảo vệ</td><td>Khoảng cách nhỏ nhất từ bề mặt bê tông đến bề mặt cốt thép.</td><td>スペーサー</td></tr>
+<tr><td>コールドジョイント</td><td>コールドジョイント</td><td>Cold joint / mạch ngừng lạnh</td><td>Mạch nối không liên kết nguyên khối giữa hai lớp bê tông.</td><td>打重ね</td></tr>
+<tr><td>許容打重ね時間間隔</td><td>きょよううちかさねじかんかんかく</td><td>Khoảng thời gian cho phép giữa các lớp đổ</td><td>Giới hạn thời gian nhằm ngăn cold joint.</td><td>外気温</td></tr>
+<tr><td>再振動</td><td>さいしんどう</td><td>Rung lại</td><td>Rung lại sau đầm chặt, trước khi bê tông cứng.</td><td>内部振動機</td></tr>
+<tr><td>レイタンス</td><td>レイタンス</td><td>Laitance</td><td>Lớp hồ xi măng yếu trên bề mặt bê tông.</td><td>打継ぎ</td></tr>
+<tr><td>耐火被覆</td><td>たいかひふく</td><td>Lớp phủ chống cháy</td><td>Vật liệu phủ bảo vệ cấu kiện nhằm đạt yêu cầu chịu lửa.</td><td>耐火構造</td></tr>
+<tr><td>吹付けロックウール</td><td>ふきつけロックウール</td><td>Rock wool phun</td><td>Vật liệu phủ chống cháy tiêu biểu cho kết cấu thép.</td><td>乾式, 半乾式</td></tr>
+<tr><td>乾式工法</td><td>かんしきこうほう</td><td>Phương pháp khô</td><td>Rock wool + xi măng và nước được cấp riêng, trộn tại nozzle.</td><td>飛散</td></tr>
+<tr><td>半乾式工法</td><td>はんかんしきこうほう</td><td>Phương pháp bán khô</td><td>Cement slurry và rock wool được cấp riêng, trộn tại nozzle.</td><td>セメントスラリー</td></tr>
+<tr><td>浮き錆</td><td>うきさび</td><td>Gỉ nổi</td><td>Lớp gỉ bong, không bám chắc vào bề mặt thép.</td><td>ワイヤーブラシ</td></tr>
+<tr><td>飛散</td><td>ひさん</td><td>Phát tán</td><td>Vật liệu dạng sợi/hạt phát tán ra xung quanh.</td><td>乾式工法</td></tr>
+</tbody>
+</table></div></section>
+<section id="background">
+<h2>Kiến thức nền cần biết</h2><div class="section-head">
+<h2>Kiến thức nền cần biết</h2>
+</div><div class="comparison-box">
+<strong>Logic kiểm tra tầng chịu lực của cọc</strong>
+<p>Không dựa vào một tín hiệu đơn lẻ. Sách đặt ba nguồn kiểm tra cạnh nhau: độ sâu theo khảo sát/địa tầng; biến đổi dòng điện auger so với N値; và đất thực tế bám ở đầu auger so với mẫu đất.</p>
+</div><div class="comparison-box">
+<strong>乾式 và 半乾式 của rock wool phun</strong>
+<p>Cả hai đều trộn các dòng vật liệu tại đầu nozzle. Khác biệt cốt lõi là trạng thái cấp liệu trước nozzle: 乾式 dùng rock wool + xi măng phối trộn tại nhà máy và nước đi riêng; 半乾式 dùng cement slurry pha tại hiện trường và rock wool đi riêng.</p>
+</div></section>
+<section id="memory">
+<h2>Điểm cần nhớ và mẹo nhớ</h2><div class="section-head">
+<h2>Điểm cần nhớ và mẹo nhớ</h2>
+</div><div class="memory-box"><strong>Stud hàn</strong><p>管理許容差: ΔL ±1,5 mm / θ ≤3°. 限界許容差: ΔL ±2 mm / θ ≤5°.</p></div><div class="memory-box"><strong>Pre-boring</strong><p>Khoan lỗ lớn hơn đường kính cọc khoảng 10 cm → tạo bầu gia cố → bơm dung dịch quanh cọc → rút bit → hạ cọc → định vị mũi cọc.</p></div><div class="memory-box"><strong>Support / spacer</strong><p>Sàn: 0,9 m, đầu 0,1 m. Dầm: 1,5 m, đầu 0,5 m. Móng: 0,9 m. Tường: ngang 1,5 m, đầu 0,5 m.</p></div><div class="memory-box"><strong>Cold joint</strong><p>外気温 ≤25℃ → 2,5 giờ; &gt;25℃ → 2,0 giờ. Đầm rung trong xuyên vào lớp trước khoảng 10 cm. Nhiệt độ bê tông khi đổ ≤35℃.</p></div><div class="memory-box"><strong>吹付けロックウール</strong><p>乾式: 工場配合 + 水別送 + ノズル混合 + 飛散防止. 半乾式: 現場配合セメントスラリー + ロックウール別送 + ノズル混合.</p></div></section>
+<template id="component-library">
+<div class="table-wrap">
+<table>
+<caption>{{TABLE_CAPTION}}</caption>
+<thead><tr><th>{{HEADER_1}}</th><th>{{HEADER_2}}</th></tr></thead>
+<tbody><tr><td><strong class="kw">{{ROW_KEY}}</strong></td><td><span class="relation">{{ROW_RELATION}}</span></td></tr></tbody>
+</table>
+</div>
+<figure class="figure-card">
+<img alt="{{IMAGE_ALT}}" height="{{IMAGE_HEIGHT}}" src="{{IMAGE_SOURCE}}" width="{{IMAGE_WIDTH}}"/>
+<figcaption>{{IMAGE_CAPTION}}</figcaption>
+</figure>
+<div class="figure-grid">
+<figure class="figure-card">
+<img alt="{{IMAGE_ALT_1}}" height="{{IMAGE_HEIGHT_1}}" src="{{IMAGE_SOURCE_1}}" width="{{IMAGE_WIDTH_1}}"/>
+<figcaption>{{IMAGE_CAPTION_1}}</figcaption>
+</figure>
+<figure class="figure-card">
+<img alt="{{IMAGE_ALT_2}}" height="{{IMAGE_HEIGHT_2}}" src="{{IMAGE_SOURCE_2}}" width="{{IMAGE_WIDTH_2}}"/>
+<figcaption>{{IMAGE_CAPTION_2}}</figcaption>
+</figure>
+</div>
+<section class="note-box"><h3>{{NOTE_TITLE}}</h3><p>{{NOTE_CONTENT}}</p></section>
+<section class="warning-box"><h3>{{WARNING_TITLE}}</h3><p>{{WARNING_CONTENT}}</p></section>
+<section class="memory-box"><h3>{{MEMORY_TITLE}}</h3><p>{{MEMORY_ITEM}}</p></section>
+</template>
+</div>
+<script>
+(function () {
+  'use strict';
+
+  const root = document.documentElement;
+  const body = document.body;
+  const q = id => document.getElementById(id);
+  const FONT_LEVELS = Array.from({ length: 21 }, (_, i) => 50 + i * 5);
+
+  const controls = q('control-cluster');
+  const controlsToggle = q('controls-toggle');
+  const controlPanel = q('control-panel');
+  const themeButton = q('theme-toggle');
+  const modeButton = q('mode-toggle');
+  const fontDown = q('font-down');
+  const fontUp = q('font-up');
+  const fontReset = q('font-reset');
+  const tocButton = q('toc-toggle');
+  const tocClose = q('toc-close');
+  const overlay = q('toc-overlay');
+  const prevButton = q('section-prev');
+  const nextButton = q('section-next');
+  const homeButton = q('home-button');
+
+  const pageKey = location.pathname + location.search;
+  const activeUserId = safeGet('study-active-user-id', 'guest');
+  const readerStateKey = 'study-reader-position:' + activeUserId + ':' + pageKey;
+  const legacyReaderStateKey = 'study-reader-position:' + pageKey;
+  const legacyRenamedFileName = "04j_躯体工事_H29_p429-437_VN.html";
+  const legacyRenamedPageKeys = [
+    location.pathname.replace(/[^/]*$/, encodeURI(legacyRenamedFileName)) + location.search,
+    location.pathname.replace(/[^/]*$/, legacyRenamedFileName) + location.search
+  ];
+  const legacyRenamedReaderStateKeys = [...new Set(legacyRenamedPageKeys)].map(
+    key => 'study-reader-position:' + activeUserId + ':' + key
+  );
+  const lastPageKey = 'study-last-page:' + activeUserId;
+  const explicitHomeKey = 'study-explicit-home';
+  const anchorSelector = [
+    '.page-shell h1', '.page-shell h2', '.page-shell h3', '.page-shell h4',
+    '.page-shell p', '.page-shell li', '.page-shell td', '.page-shell th',
+    '.page-shell figcaption', '.page-shell .card-title'
+  ].join(', ');
+
+  let anchorElements = [];
+  let lastStablePosition = null;
+  let scrollSaveTimer = 0;
+  let resizeRestoreTimer = 0;
+  let resizeAnchor = null;
+  let suppressScrollSaveUntil = 0;
+  function layoutViewportSize() {
+    const de = document.documentElement;
+    return {
+      width: de.clientWidth || window.innerWidth,
+      height: de.clientHeight || window.innerHeight
+    };
+  }
+
+  function visualViewportScale() {
+    const vv = window.visualViewport;
+    return vv && Number.isFinite(vv.scale) ? vv.scale : 1;
+  }
+
+  function isPinchZoomActive() {
+    return Math.abs(visualViewportScale() - 1) > 0.015;
+  }
+
+  const initialLayoutViewport = layoutViewportSize();
+  let lastViewportWidth = initialLayoutViewport.width;
+  let lastViewportHeight = initialLayoutViewport.height;
+  let pinchZoomSession = false;
+
+  try {
+    if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+  } catch (e) {}
+
+  function safeGet(key, fallback = null) {
+    try {
+      const value = localStorage.getItem(key);
+      return value === null ? fallback : value;
+    } catch (e) {
+      return fallback;
+    }
+  }
+
+  function safeSet(key, value) {
+    try { localStorage.setItem(key, value); } catch (e) {}
+  }
+
+  function safeRemove(key) {
+    try { localStorage.removeItem(key); } catch (e) {}
+  }
+
+  /* ---------- Persistent page / PWA resume metadata ---------- */
+
+  function rememberCurrentPage() {
+    safeSet(lastPageKey, pageKey);
+    safeSet('study-last-active-at', String(Date.now()));
+  }
+
+  rememberCurrentPage();
+
+  /* ---------- Layout viewport geometry ---------- */
+
+  /*
+    Pinch zoom changes visualViewport.width / height / scale.
+    It must NOT change the document layout width.
+
+    Therefore --app-viewport-width is derived only from the layout viewport
+    (documentElement.clientWidth / innerWidth), never from visualViewport.width.
+  */
+  function syncViewportGeometry() {
+    const { width } = layoutViewportSize();
+    root.style.setProperty(
+      '--app-viewport-width',
+      `${Math.round(width * 100) / 100}px`
+    );
+  }
+
+  syncViewportGeometry();
+
+  /* ---------- Reader anchors ---------- */
+
+  function rebuildReaderAnchors() {
+    anchorElements = Array.from(document.querySelectorAll(anchorSelector));
+    anchorElements.forEach((el, index) => {
+      el.dataset.readerKey = 'r' + index;
+    });
+  }
+
+  function closestReaderElement(node) {
+    if (!node) return null;
+    const el = node.nodeType === Node.ELEMENT_NODE ? node : node.parentElement;
+    return el ? el.closest('[data-reader-key]') : null;
+  }
+
+  function caretAtPoint(x, y) {
+    try {
+      if (document.caretPositionFromPoint) {
+        const pos = document.caretPositionFromPoint(x, y);
+        if (!pos || !pos.offsetNode) return null;
+        return { node: pos.offsetNode, offset: pos.offset };
+      }
+      if (document.caretRangeFromPoint) {
+        const range = document.caretRangeFromPoint(x, y);
+        if (!range) return null;
+        return { node: range.startContainer, offset: range.startOffset };
+      }
+    } catch (e) {}
+    return null;
+  }
+
+  function textOffsetFromElementStart(element, node, offset) {
+    try {
+      const range = document.createRange();
+      range.setStart(element, 0);
+      range.setEnd(node, offset);
+      return range.toString().length;
+    } catch (e) {
+      return 0;
+    }
+  }
+
+  function domPositionFromTextOffset(element, targetOffset) {
+    const walker = document.createTreeWalker(element, NodeFilter.SHOW_TEXT);
+    let remaining = Math.max(0, targetOffset);
+    let node = walker.nextNode();
+    let last = null;
+
+    while (node) {
+      last = node;
+      const len = node.nodeValue ? node.nodeValue.length : 0;
+      if (remaining <= len) {
+        return { node, offset: remaining };
+      }
+      remaining -= len;
+      node = walker.nextNode();
+    }
+
+    if (last) return { node: last, offset: last.nodeValue ? last.nodeValue.length : 0 };
+    return { node: element, offset: 0 };
+  }
+
+  function characterRect(node, offset) {
+    try {
+      if (node.nodeType !== Node.TEXT_NODE) {
+        const r = node.getBoundingClientRect ? node.getBoundingClientRect() : null;
+        return r && r.height ? r : null;
+      }
+
+      const len = node.nodeValue ? node.nodeValue.length : 0;
+      if (!len) return node.parentElement ? node.parentElement.getBoundingClientRect() : null;
+
+      let start = Math.max(0, Math.min(offset, len - 1));
+      let end = Math.min(len, start + 1);
+      if (offset >= len && len > 0) {
+        start = len - 1;
+        end = len;
+      }
+
+      const range = document.createRange();
+      range.setStart(node, start);
+      range.setEnd(node, end);
+      const rects = range.getClientRects();
+      return rects.length ? rects[0] : range.getBoundingClientRect();
+    } catch (e) {
+      return null;
+    }
+  }
+
+  function captureReadingPosition() {
+    if (!anchorElements.length) rebuildReaderAnchors();
+    if (!anchorElements.length) return null;
+
+    const vv = window.visualViewport;
+    const viewportWidth = vv ? vv.width : window.innerWidth;
+    const topProbe = 6;
+    const ys = [topProbe, 12, 18, 26, 36, 50];
+    const xs = [];
+
+    for (let x = 12; x <= Math.min(viewportWidth - 12, 220); x += 16) xs.push(x);
+    xs.push(viewportWidth * .25, viewportWidth * .5, viewportWidth * .75);
+
+    for (const y of ys) {
+      for (const x of xs) {
+        if (x <= 0 || x >= viewportWidth) continue;
+        const caret = caretAtPoint(x, y);
+        if (!caret) continue;
+        const element = closestReaderElement(caret.node);
+        if (!element || !document.querySelector('.page-shell')?.contains(element)) continue;
+
+        const offset = textOffsetFromElementStart(element, caret.node, caret.offset);
+        const rect = characterRect(caret.node, caret.offset);
+        const key = element.dataset.readerKey;
+        if (key && rect && Number.isFinite(rect.top)) {
+          return { key, offset, top: rect.top };
+        }
+      }
+    }
+
+    /* Fallback: nearest textual block to the top edge. */
+    let best = null;
+    let bestDistance = Infinity;
+    for (const element of anchorElements) {
+      const rect = element.getBoundingClientRect();
+      if (rect.bottom < 0 || rect.top > (vv ? vv.height : window.innerHeight)) continue;
+      const distance = Math.abs(rect.top);
+      if (distance < bestDistance) {
+        bestDistance = distance;
+        best = { key: element.dataset.readerKey, offset: 0, top: rect.top };
+      }
+    }
+    return best;
+  }
+
+  function restoreReadingPosition(state) {
+    if (!state || !state.key) return false;
+    if (!anchorElements.length) rebuildReaderAnchors();
+
+    const element = document.querySelector('[data-reader-key="' + CSS.escape(state.key) + '"]');
+    if (!element) return false;
+
+    const pos = domPositionFromTextOffset(element, Number(state.offset) || 0);
+    const rect = characterRect(pos.node, pos.offset);
+    if (!rect || !Number.isFinite(rect.top)) return false;
+
+    const desiredTop = Number.isFinite(Number(state.top)) ? Number(state.top) : 6;
+    const delta = rect.top - desiredTop;
+    if (Math.abs(delta) < .5) return true;
+
+    suppressScrollSaveUntil = Date.now() + 700;
+    const oldBehavior = root.style.scrollBehavior;
+    root.style.scrollBehavior = 'auto';
+    window.scrollBy(0, delta);
+    root.style.scrollBehavior = oldBehavior;
+    return true;
+  }
+
+  function saveReaderState(state) {
+    if (!state) return;
+    lastStablePosition = state;
+    safeSet(readerStateKey, JSON.stringify(state));
+  }
+
+  function readReaderState() {
+    try {
+      const raw = safeGet(readerStateKey);
+      if (raw) return JSON.parse(raw);
+
+      // Import the user-scoped position saved under the pre-rename filename.
+      for (const oldKey of legacyRenamedReaderStateKeys) {
+        const renamedRaw = safeGet(oldKey);
+        if (renamedRaw) {
+          safeSet(readerStateKey, renamedRaw);
+          return JSON.parse(renamedRaw);
+        }
+      }
+
+      // One-time backward-compatible import of the pre-sync local position.
+      const legacyOwner = safeGet('study-legacy-import-owner');
+      const mayImportLegacy = activeUserId !== 'guest' && (!legacyOwner || legacyOwner === activeUserId);
+      if (mayImportLegacy) {
+        const legacyRaw = safeGet(legacyReaderStateKey);
+        if (legacyRaw) {
+          safeSet('study-legacy-import-owner', activeUserId);
+          safeSet(readerStateKey, legacyRaw);
+          return JSON.parse(legacyRaw);
+        }
+      }
+      return null;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  function settleRestore(state, delays = [0, 60, 180, 420]) {
+    if (!state) return;
+    suppressScrollSaveUntil = Date.now() + Math.max(...delays) + 350;
+    delays.forEach(delay => {
+      window.setTimeout(() => {
+        requestAnimationFrame(() => restoreReadingPosition(state));
+      }, delay);
+    });
+    window.setTimeout(() => {
+      saveReaderState(state);
+    }, Math.max(...delays) + 120);
+  }
+
+  function preserveReadingPosition(mutator) {
+    const state = captureReadingPosition() || lastStablePosition || readReaderState();
+    if (state) saveReaderState(state);
+    mutator();
+    rebuildReaderAnchors();
+    settleRestore(state);
+  }
+
+  function scheduleReaderSave() {
+    if (Date.now() < suppressScrollSaveUntil) return;
+    clearTimeout(scrollSaveTimer);
+    scrollSaveTimer = window.setTimeout(() => {
+      if (Date.now() < suppressScrollSaveUntil) return;
+      const state = captureReadingPosition();
+      if (state) saveReaderState(state);
+    }, 130);
+  }
+
+  rebuildReaderAnchors();
+  lastStablePosition = readReaderState();
+
+  /* ---------- Theme ---------- */
+
+  function applyTheme(theme) {
+    theme = theme === 'light' ? 'light' : 'dark';
+    root.dataset.theme = theme;
+    safeSet('study-theme', theme);
+    if (themeButton) {
+      themeButton.textContent = theme === 'dark' ? '☀' : '☾';
+      themeButton.title = theme === 'dark' ? 'Chuyển sang Light theme' : 'Chuyển sang Dark theme';
+      themeButton.setAttribute('aria-label', themeButton.title);
+      themeButton.setAttribute('aria-pressed', theme === 'light' ? 'true' : 'false');
+    }
+  }
+
+  /* ---------- Full / Keywords ---------- */
+
+  function applyMode(mode) {
+    mode = mode === 'keywords' ? 'keywords' : 'full';
+    root.dataset.studyMode = mode;
+    body.classList.toggle('keyword-focus', mode === 'keywords');
+    safeSet('study-mode', mode);
+    if (modeButton) {
+      modeButton.textContent = mode === 'full' ? '🎯' : '📖';
+      modeButton.title = mode === 'full' ? 'Chuyển sang Keywords mode' : 'Trở lại Full mode';
+      modeButton.setAttribute('aria-label', modeButton.title);
+      modeButton.setAttribute('aria-pressed', mode === 'keywords' ? 'true' : 'false');
+    }
+  }
+
+  /* ---------- Font 50-150%, step 5% ---------- */
+
+  function currentScale() {
+    const saved = Number(safeGet('study-font-scale', '100'));
+    return FONT_LEVELS.includes(saved) ? saved : 100;
+  }
+
+  function applyFontScale(scale) {
+    if (!FONT_LEVELS.includes(scale)) scale = 100;
+    root.style.setProperty('--base-font-size', (16 * scale / 100) + 'px');
+    safeSet('study-font-scale', String(scale));
+
+    if (fontReset) {
+      fontReset.textContent = scale + '%';
+      fontReset.title = 'Cỡ chữ hiện tại ' + scale + '%. Chạm để về 100%';
+      fontReset.setAttribute('aria-label', fontReset.title);
+    }
+    if (fontDown) fontDown.disabled = scale === FONT_LEVELS[0];
+    if (fontUp) fontUp.disabled = scale === FONT_LEVELS[FONT_LEVELS.length - 1];
+  }
+
+  /* ---------- Collapsible controls ---------- */
+
+  function setControlsOpen(open) {
+    if (!controls) return;
+    controls.classList.toggle('open', open);
+    controlsToggle?.setAttribute('aria-expanded', String(open));
+    controlsToggle?.setAttribute('aria-label', open ? 'Đóng công cụ' : 'Mở công cụ');
+    controlsToggle?.setAttribute('title', open ? 'Đóng công cụ' : 'Mở công cụ');
+  }
+
+  controlsToggle?.addEventListener('click', event => {
+    event.stopPropagation();
+    setControlsOpen(!controls.classList.contains('open'));
+  });
+
+  controlPanel?.addEventListener('click', event => event.stopPropagation());
+  document.addEventListener('pointerdown', event => {
+    if (controls?.classList.contains('open') && !controls.contains(event.target)) setControlsOpen(false);
+  });
+
+  /* ---------- TOC ---------- */
+
+  function openToc() {
+    body.classList.add('toc-open');
+    tocButton?.setAttribute('aria-expanded', 'true');
+    setControlsOpen(false);
+  }
+
+  function closeToc() {
+    body.classList.remove('toc-open');
+    tocButton?.setAttribute('aria-expanded', 'false');
+  }
+
+  tocButton?.addEventListener('click', openToc);
+  tocClose?.addEventListener('click', closeToc);
+  overlay?.addEventListener('click', closeToc);
+
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape') {
+      closeToc();
+      setControlsOpen(false);
+    }
+  });
+
+  document.querySelectorAll('a[href="#toc"]').forEach(a => {
+    a.addEventListener('click', event => {
+      event.preventDefault();
+      openToc();
+    });
+  });
+
+  /* TOC navigation does not add hash-history entries. */
+  document.querySelectorAll('#toc a[href^="#"]').forEach(a => {
+    a.addEventListener('click', event => {
+      const href = a.getAttribute('href');
+      if (!href || href === '#toc') return;
+      const target = document.getElementById(decodeURIComponent(href.slice(1)));
+      if (!target) return;
+      event.preventDefault();
+      closeToc();
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      window.setTimeout(scheduleReaderSave, 450);
+    });
+  });
+
+  /* ---------- Previous / next lesson item ---------- */
+
+  const tocTargets = Array.from(document.querySelectorAll('#toc a[href^="#"]'))
+    .map(a => document.getElementById(decodeURIComponent(a.getAttribute('href').slice(1))))
+    .filter((el, i, arr) => el && el.id !== 'toc' && arr.indexOf(el) === i);
+
+  function currentSectionIndex() {
+    let idx = -1;
+    const threshold = 24;
+    tocTargets.forEach((el, i) => {
+      if (el.getBoundingClientRect().top <= threshold) idx = i;
+    });
+    return idx;
+  }
+
+  function updateSectionButtons() {
+    const i = currentSectionIndex();
+    if (prevButton) prevButton.disabled = !tocTargets.length || i <= 0;
+    if (nextButton) nextButton.disabled = !tocTargets.length || i >= tocTargets.length - 1;
+  }
+
+  function goToIndex(i) {
+    if (!tocTargets.length) return;
+    i = Math.max(0, Math.min(tocTargets.length - 1, i));
+    tocTargets[i].scrollIntoView({ behavior: 'smooth', block: 'start' });
+    window.setTimeout(() => {
+      const state = captureReadingPosition();
+      if (state) saveReaderState(state);
+      updateSectionButtons();
+    }, 450);
+  }
+
+  prevButton?.addEventListener('click', () => goToIndex(Math.max(0, currentSectionIndex() - 1)));
+  nextButton?.addEventListener('click', () => goToIndex(Math.min(tocTargets.length - 1, currentSectionIndex() + 1)));
+
+  /* ---------- Home ---------- */
+
+  homeButton?.addEventListener('click', () => {
+    const state = captureReadingPosition();
+    if (state) saveReaderState(state);
+    safeSet(explicitHomeKey, '1');
+    safeSet('study-home-click-at', String(Date.now()));
+    window.location.href = new URL('index.html', window.location.href).href;
+  });
+
+  /* ---------- Initialize state ---------- */
+
+  applyTheme(root.dataset.theme === 'light' ? 'light' : 'dark');
+  applyMode(root.dataset.studyMode || 'full');
+  applyFontScale(currentScale());
+
+  themeButton?.addEventListener('click', () => applyTheme(root.dataset.theme === 'dark' ? 'light' : 'dark'));
+  modeButton?.addEventListener('click', () => applyMode(root.dataset.studyMode === 'keywords' ? 'full' : 'keywords'));
+
+  fontDown?.addEventListener('click', () => {
+    const i = FONT_LEVELS.indexOf(currentScale());
+    if (i > 0) preserveReadingPosition(() => applyFontScale(FONT_LEVELS[i - 1]));
+  });
+
+  fontUp?.addEventListener('click', () => {
+    const i = FONT_LEVELS.indexOf(currentScale());
+    if (i >= 0 && i < FONT_LEVELS.length - 1) preserveReadingPosition(() => applyFontScale(FONT_LEVELS[i + 1]));
+  });
+
+  fontReset?.addEventListener('click', () => preserveReadingPosition(() => applyFontScale(100)));
+
+  /* ---------- Scroll / rotation / resize persistence ---------- */
+
+  window.addEventListener('scroll', () => {
+    scheduleReaderSave();
+    updateSectionButtons();
+  }, { passive: true });
+
+  function handleLayoutViewportChange() {
+    /*
+      A native two-finger pinch changes VisualViewport but normally does not
+      change the layout viewport. Ignore it completely so the page does not
+      recalculate width or fight the browser's native zoom.
+    */
+    if (isPinchZoomActive()) {
+      pinchZoomSession = true;
+      return;
+    }
+
+    const { width: w, height: h } = layoutViewportSize();
+
+    /*
+      When pinch zoom returns to scale 1, VisualViewport may emit another
+      resize. If the layout viewport itself did not change, this was only zoom,
+      so do nothing.
+    */
+    const layoutChanged =
+      Math.abs(w - lastViewportWidth) >= 1 ||
+      Math.abs(h - lastViewportHeight) >= 1;
+
+    if (!layoutChanged) {
+      pinchZoomSession = false;
+      return;
+    }
+
+    pinchZoomSession = false;
+
+    if (!resizeAnchor) {
+      resizeAnchor =
+        lastStablePosition ||
+        readReaderState() ||
+        captureReadingPosition();
+    }
+
+    /*
+      Only a real layout change, such as portrait <-> landscape, updates
+      --app-viewport-width.
+    */
+    syncViewportGeometry();
+    lastViewportWidth = w;
+    lastViewportHeight = h;
+
+    if (resizeAnchor) {
+      settleRestore(resizeAnchor, [0, 50, 140, 300]);
+    }
+
+    clearTimeout(resizeRestoreTimer);
+    resizeRestoreTimer = window.setTimeout(() => {
+      if (resizeAnchor) {
+        settleRestore(resizeAnchor, [0, 80, 220]);
+      }
+
+      window.setTimeout(() => {
+        lastStablePosition =
+          resizeAnchor ||
+          captureReadingPosition();
+
+        if (lastStablePosition) {
+          saveReaderState(lastStablePosition);
+        }
+
+        resizeAnchor = null;
+        updateSectionButtons();
+      }, 320);
+    }, 260);
+  }
+
+  function handleVisualViewportResize() {
+    /*
+      visualViewport resize is the main signal used by Safari/WebKit while
+      pinch-zooming. At scale != 1 this is zoom, not a responsive-layout event.
+    */
+    if (isPinchZoomActive()) {
+      pinchZoomSession = true;
+      return;
+    }
+
+    handleLayoutViewportChange();
+  }
+
+  window.addEventListener(
+    'resize',
+    handleLayoutViewportChange,
+    { passive: true }
+  );
+
+  window.addEventListener('orientationchange', () => {
+    /*
+      Rotation is a genuine layout change. Use the stored logical reading
+      position, then wait for iOS to finish updating its layout viewport.
+    */
+    resizeAnchor =
+      lastStablePosition ||
+      readReaderState() ||
+      captureReadingPosition();
+
+    [40, 120, 280].forEach(delay => {
+      window.setTimeout(() => {
+        if (isPinchZoomActive()) return;
+
+        const size = layoutViewportSize();
+        syncViewportGeometry();
+
+        if (
+          Math.abs(size.width - lastViewportWidth) >= 1 ||
+          Math.abs(size.height - lastViewportHeight) >= 1
+        ) {
+          lastViewportWidth = size.width;
+          lastViewportHeight = size.height;
+        }
+
+        if (resizeAnchor) {
+          settleRestore(resizeAnchor, [0, 70, 180]);
+        }
+      }, delay);
+    });
+
+    window.setTimeout(() => {
+      resizeAnchor = null;
+      updateSectionButtons();
+    }, 620);
+  }, { passive: true });
+
+  window.visualViewport?.addEventListener(
+    'resize',
+    handleVisualViewportResize,
+    { passive: true }
+  );
+
+  function saveLifecycleState() {
+    const state = captureReadingPosition() || lastStablePosition;
+    if (state) saveReaderState(state);
+    rememberCurrentPage();
+  }
+
+  document.addEventListener('visibilitychange', () => {
+    if (document.visibilityState === 'hidden') saveLifecycleState();
+    else {
+      rememberCurrentPage();
+      const state = readReaderState();
+      if (state) settleRestore(state, [0, 80, 220]);
+    }
+  });
+
+  window.addEventListener('pagehide', saveLifecycleState);
+  window.addEventListener('beforeunload', saveLifecycleState);
+
+  window.addEventListener('pageshow', () => {
+    rememberCurrentPage();
+    rebuildReaderAnchors();
+    const state = readReaderState();
+    if (!location.hash && state) settleRestore(state, [0, 80, 220, 500]);
+    window.setTimeout(updateSectionButtons, 80);
+  });
+
+  window.addEventListener('load', () => {
+    rebuildReaderAnchors();
+    const state = readReaderState();
+    if (!location.hash && state) settleRestore(state, [0, 80, 220, 500]);
+    else {
+      const current = captureReadingPosition();
+      if (current) saveReaderState(current);
+    }
+    updateSectionButtons();
+  });
+
+
+  // Public bridge used by the cloud synchronization engine.
+  window.StudyReader = Object.freeze({
+    pageKey,
+    capture: captureReadingPosition,
+    restore: restoreReadingPosition,
+    rebuild: rebuildReaderAnchors,
+    readLocal: readReaderState,
+    saveLocal: saveReaderState,
+    settleRestore,
+    getLastStable: () => lastStablePosition,
+    isPinchZoomActive
+  });
+  window.dispatchEvent(new CustomEvent('studyreaderready'));
+})();
+</script>
+<script>
+// Cloud runtime v6.2 for lesson pages.
+// Public browser configuration for the study app. Cloud sync pilot v6.2.
+window.STUDY_CONFIG = Object.freeze({
+  SUPABASE_URL: 'https://aniaxezhssgumxmbxkhl.supabase.co',
+  SUPABASE_PUBLISHABLE_KEY: 'sb_publishable_6NbASFJULfnuggdm6MukFg_UknPZCIB',
+  APP_ROOT_URL: 'https://beinpubi.github.io/kenchiku-sekou-2ji/'
+});
+
+(function () {
+  'use strict';
+
+  const SESSION_KEY = 'study-cloud-session-v5';
+  window.__STUDY_CLOUD_CLIENT_VERSION__ = '6.2';
+  const listeners = new Set();
+
+  function config() {
+    const cfg = window.STUDY_CONFIG || {};
+    const url = String(cfg.SUPABASE_URL || '').replace(/\/+$/, '');
+    const key = String(cfg.SUPABASE_PUBLISHABLE_KEY || '');
+    if (!url || !key) throw new Error('Embedded Supabase configuration is missing or incomplete');
+    return { url, key };
+  }
+
+  function safeGet(key) {
+    try { return localStorage.getItem(key); } catch (e) { return null; }
+  }
+
+  function safeSet(key, value) {
+    try { localStorage.setItem(key, value); } catch (e) {}
+  }
+
+  function safeRemove(key) {
+    try { localStorage.removeItem(key); } catch (e) {}
+  }
+
+  function readSession() {
+    const raw = safeGet(SESSION_KEY);
+    if (!raw) return null;
+    try {
+      const value = JSON.parse(raw);
+      return value && value.access_token && value.refresh_token && value.user ? value : null;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  function saveSession(session) {
+    if (!session) {
+      safeRemove(SESSION_KEY);
+      return;
+    }
+    safeSet(SESSION_KEY, JSON.stringify(session));
+  }
+
+  function normalizeSession(payload) {
+    if (!payload || !payload.access_token || !payload.refresh_token) return null;
+    const expiresAt = Number(payload.expires_at) ||
+      (Math.floor(Date.now() / 1000) + (Number(payload.expires_in) || 3600));
+    return {
+      access_token: payload.access_token,
+      token_type: payload.token_type || 'bearer',
+      expires_in: Number(payload.expires_in) || 3600,
+      expires_at: expiresAt,
+      refresh_token: payload.refresh_token,
+      user: payload.user || null
+    };
+  }
+
+  function errorObject(message, status, raw) {
+    return {
+      message: String(message || 'Request failed'),
+      status: Number(status) || 0,
+      raw: raw || null
+    };
+  }
+
+  async function parseResponse(response) {
+    const text = await response.text();
+    if (!text) return null;
+    try { return JSON.parse(text); } catch (e) { return text; }
+  }
+
+  function messageFromBody(body, fallback) {
+    if (!body) return fallback;
+    if (typeof body === 'string') return body;
+    return body.msg || body.message || body.error_description || body.error || body.details || fallback;
+  }
+
+  async function authRequest(path, options) {
+    const { url, key } = config();
+    const headers = Object.assign({
+      'apikey': key,
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+      'X-Client-Info': 'kenchiku-study-sync/6.2'
+    }, options?.headers || {});
+
+    let response;
+    try {
+      response = await fetch(url + path, {
+        method: options?.method || 'GET',
+        headers,
+        body: options?.body === undefined ? undefined : JSON.stringify(options.body),
+        cache: 'no-store'
+      });
+    } catch (e) {
+      throw errorObject('Could not connect to Supabase Auth: ' + (e?.message || e), 0, null);
+    }
+
+    const body = await parseResponse(response);
+    if (!response.ok) {
+      throw errorObject(messageFromBody(body, 'Supabase Auth request failed'), response.status, body);
+    }
+    return body;
+  }
+
+  function notify(event, session) {
+    for (const callback of listeners) {
+      try { callback(event, session || null); } catch (e) { console.error(e); }
+    }
+  }
+
+  async function refreshSession(current) {
+    if (!current?.refresh_token) return null;
+    try {
+      const payload = await authRequest('/auth/v1/token?grant_type=refresh_token', {
+        method: 'POST',
+        body: { refresh_token: current.refresh_token }
+      });
+      const session = normalizeSession(payload);
+      if (!session || !session.user) throw new Error('Invalid refresh response');
+      saveSession(session);
+      notify('TOKEN_REFRESHED', session);
+      return session;
+    } catch (e) {
+      safeRemove(SESSION_KEY);
+      notify('SIGNED_OUT', null);
+      throw e;
+    }
+  }
+
+  async function getValidSession() {
+    let session = readSession();
+    if (!session) return null;
+    const now = Math.floor(Date.now() / 1000);
+    if (!session.expires_at || session.expires_at <= now + 60) {
+      session = await refreshSession(session);
+    }
+    return session;
+  }
+
+  const auth = {
+    async signInWithPassword(credentials) {
+      try {
+        const payload = await authRequest('/auth/v1/token?grant_type=password', {
+          method: 'POST',
+          body: {
+            email: String(credentials?.email || '').trim(),
+            password: String(credentials?.password || '')
+          }
+        });
+        const session = normalizeSession(payload);
+        if (!session || !session.user) {
+          return { data: { session: null, user: null }, error: errorObject('Supabase returned no session', 0, payload) };
+        }
+        saveSession(session);
+        notify('SIGNED_IN', session);
+        return { data: { session, user: session.user }, error: null };
+      } catch (e) {
+        return { data: { session: null, user: null }, error: errorObject(e?.message || e, e?.status, e?.raw) };
+      }
+    },
+
+    async getSession() {
+      try {
+        const session = await getValidSession();
+        return { data: { session }, error: null };
+      } catch (e) {
+        return { data: { session: null }, error: errorObject(e?.message || e, e?.status, e?.raw) };
+      }
+    },
+
+    async signOut() {
+      let serverError = null;
+      const session = readSession();
+      if (session?.access_token) {
+        try {
+          await authRequest('/auth/v1/logout?scope=local', {
+            method: 'POST',
+            headers: { 'Authorization': 'Bearer ' + session.access_token },
+            body: {}
+          });
+        } catch (e) {
+          serverError = e;
+          console.warn('[study-cloud] Remote sign-out failed; local session will still be cleared.', e);
+        }
+      }
+      safeRemove(SESSION_KEY);
+      notify('SIGNED_OUT', null);
+      return { error: serverError ? errorObject(serverError?.message || serverError, serverError?.status, serverError?.raw) : null };
+    },
+
+    onAuthStateChange(callback) {
+      if (typeof callback === 'function') listeners.add(callback);
+      const subscription = {
+        unsubscribe() { listeners.delete(callback); }
+      };
+      return { data: { subscription } };
+    }
+  };
+
+  class QueryBuilder {
+    constructor(table) {
+      this.table = table;
+      this.operation = 'select';
+      this.columns = '*';
+      this.payload = null;
+      this.filters = [];
+      this.orderBy = null;
+      this.limitCount = null;
+    }
+
+    select(columns) {
+      this.columns = columns || '*';
+      return this;
+    }
+
+    insert(payload) {
+      this.operation = 'insert';
+      this.payload = payload;
+      return this;
+    }
+
+    update(payload) {
+      this.operation = 'update';
+      this.payload = payload;
+      return this;
+    }
+
+    eq(column, value) {
+      this.filters.push([column, value]);
+      return this;
+    }
+
+    order(column, options) {
+      this.orderBy = [column, options?.ascending !== false];
+      return this;
+    }
+
+    limit(value) {
+      this.limitCount = Math.max(0, Number(value) || 0);
+      return this;
+    }
+
+    async maybeSingle() {
+      const result = await this.execute();
+      if (result.error) return result;
+      const rows = Array.isArray(result.data) ? result.data : (result.data ? [result.data] : []);
+      return { data: rows.length ? rows[0] : null, error: null };
+    }
+
+    async execute() {
+      const { url, key } = config();
+      let session;
+      try {
+        session = await getValidSession();
+      } catch (e) {
+        return { data: null, error: errorObject(e?.message || e, e?.status, e?.raw) };
+      }
+
+      if (!session?.access_token) {
+        return { data: null, error: errorObject('No active Supabase session', 401, null) };
+      }
+
+      const endpoint = new URL(url + '/rest/v1/' + encodeURIComponent(this.table));
+      if (this.columns) endpoint.searchParams.set('select', this.columns);
+      for (const [column, value] of this.filters) {
+        endpoint.searchParams.set(column, 'eq.' + String(value));
+      }
+      if (this.orderBy) {
+        endpoint.searchParams.set('order', this.orderBy[0] + '.' + (this.orderBy[1] ? 'asc' : 'desc'));
+      }
+      if (this.limitCount !== null) endpoint.searchParams.set('limit', String(this.limitCount));
+
+      const headers = {
+        'apikey': key,
+        'Authorization': 'Bearer ' + session.access_token,
+        'Accept': 'application/json'
+      };
+      let method = 'GET';
+      let body;
+      if (this.operation === 'insert') {
+        method = 'POST';
+        headers['Content-Type'] = 'application/json';
+        headers['Prefer'] = 'return=representation';
+        body = JSON.stringify(this.payload);
+      } else if (this.operation === 'update') {
+        method = 'PATCH';
+        headers['Content-Type'] = 'application/json';
+        headers['Prefer'] = 'return=representation';
+        body = JSON.stringify(this.payload);
+      }
+
+      let response;
+      try {
+        response = await fetch(endpoint.href, {
+          method,
+          headers,
+          body,
+          cache: 'no-store'
+        });
+      } catch (e) {
+        return { data: null, error: errorObject('Could not connect to Supabase Data API: ' + (e?.message || e), 0, null) };
+      }
+
+      const responseBody = await parseResponse(response);
+      if (!response.ok) {
+        return {
+          data: null,
+          error: errorObject(messageFromBody(responseBody, 'Supabase Data API request failed'), response.status, responseBody)
+        };
+      }
+      return { data: responseBody || [], error: null };
+    }
+  }
+
+  const client = {
+    auth,
+    from(table) { return new QueryBuilder(table); }
+  };
+
+  window.StudySupabaseReady = Promise.resolve(client);
+  window.createStudySupabaseClient = async function () {
+    config();
+    return client;
+  };
+  window.__STUDY_CLOUD_CLIENT_READY__ = true;
+})();
+</script>
+<script>
+(async function () {
+'use strict';
+
+const VERSION = '6.2';
+const FILE_PATH = decodeURIComponent(location.pathname.split('/').pop() || '');
+const LEGACY_FILE_PATH = "04j_躯体工事_H29_p429-437_VN.html";
+const DEVICE_ID_KEY = 'study-device-id';
+const ACTIVE_USER_KEY = 'study-active-user-id';
+const LAST_PAGE_PREFIX = 'study-last-page:';
+const SYNC_EVENT = 'study-sync-status';
+const SYNC_DEBUG = new URLSearchParams(location.search).get('syncdebug') === '1';
+
+let supabase = null;
+let currentUser = null;
+let knownRevision = null;
+let knownUpdatedAt = null;
+let dirty = false;
+let dirtyVersion = 0;
+let saveTimer = 0;
+let applyingRemote = false;
+let initializationComplete = false;
+let ignoreScrollUntil = Date.now() + 1800;
+let lastSyncedSignature = '';
+let startupPromise = null;
+let synchronizationPromise = null;
+
+function safeGet(key, fallback = null) {
+  try {
+    const value = localStorage.getItem(key);
+    return value === null ? fallback : value;
+  } catch (e) {
+    return fallback;
+  }
+}
+
+function safeSet(key, value) {
+  try { localStorage.setItem(key, String(value)); } catch (e) {}
+}
+
+function delay(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+function normalizeText(value) {
+  return String(value || '').replace(/\s+/g, ' ').trim();
+}
+
+function payloadSignature(payload) {
+  if (!payload) return '';
+  return JSON.stringify({
+    file_path: payload.file_path || '',
+    section_id: payload.section_id || '',
+    anchor_key: payload.anchor_key || '',
+    text_offset: Number(payload.text_offset) || 0,
+    top_offset: Math.round((Number(payload.top_offset) || 0) * 10) / 10,
+    context_text: payload.context_text || ''
+  });
+}
+
+function remoteSignature(progress) {
+  if (!progress) return '';
+  return payloadSignature(progress);
+}
+
+function ensureStatusIndicator() {
+  let el = document.getElementById('study-cloud-sync-indicator');
+  if (el) return el;
+  el = document.createElement('div');
+  el.id = 'study-cloud-sync-indicator';
+  el.setAttribute('role', 'status');
+  el.setAttribute('aria-live', 'polite');
+  Object.assign(el.style, {
+    position: 'fixed',
+    right: 'max(8px, env(safe-area-inset-right))',
+    bottom: 'max(10px, env(safe-area-inset-bottom))',
+    zIndex: '2300',
+    maxWidth: 'min(78vw, 420px)',
+    padding: '7px 10px',
+    border: '1px solid var(--border, #39465b)',
+    borderRadius: '10px',
+    background: 'var(--dock-bg, rgba(18,27,43,.95))',
+    color: 'var(--text, #edf2f7)',
+    font: '600 12px Arial, sans-serif',
+    boxShadow: '0 6px 18px rgba(0,0,0,.25)',
+    opacity: '0',
+    pointerEvents: 'none',
+    transition: 'opacity .18s ease'
+  });
+  document.body.appendChild(el);
+  return el;
+}
+
+let statusHideTimer = 0;
+function emitStatus(state, detail = '') {
+  const message = detail || state;
+  console.log('[study-sync ' + VERSION + ']', state, message);
+  window.dispatchEvent(new CustomEvent(SYNC_EVENT, {
+    detail: { state, detail: message, file: FILE_PATH, version: VERSION }
+  }));
+
+  /*
+    Production mode is deliberately silent while synchronization is healthy.
+    Add ?syncdebug=1 to the lesson URL to display loading/pending/saving/synced.
+    Real errors remain visible without debug mode.
+  */
+  const shouldDisplay = state === 'error' || SYNC_DEBUG;
+  const existing = document.getElementById('study-cloud-sync-indicator');
+
+  if (!shouldDisplay) {
+    if (existing) {
+      existing.style.opacity = '0';
+      existing.hidden = true;
+    }
+    return;
+  }
+
+  if (!document.body) return;
+  const el = ensureStatusIndicator();
+  el.hidden = false;
+  const labels = {
+    loading: 'Cloud: loading…',
+    saving: 'Cloud: saving…',
+    pending: 'Cloud: pending…',
+    synced: 'Cloud: synced',
+    ready: 'Cloud: ready',
+    offline: 'Cloud: offline',
+    signed_out: 'Cloud: signed out',
+    error: 'Cloud error: '
+  };
+  el.textContent = state === 'error' ? labels.error + message : (labels[state] || 'Cloud: ' + message);
+  el.style.color = state === 'error' ? '#ff8585' : 'var(--text, #edf2f7)';
+  el.style.opacity = '1';
+  clearTimeout(statusHideTimer);
+
+  if (SYNC_DEBUG && (state === 'synced' || state === 'ready')) {
+    statusHideTimer = setTimeout(() => {
+      el.style.opacity = '0';
+      el.hidden = true;
+    }, 2800);
+  }
+}
+
+function getDeviceId() {
+  let id = safeGet(DEVICE_ID_KEY);
+  if (!id) {
+    try { id = crypto.randomUUID(); }
+    catch (e) { id = 'device-' + Date.now() + '-' + Math.random().toString(36).slice(2); }
+    safeSet(DEVICE_ID_KEY, id);
+  }
+  return id;
+}
+const DEVICE_ID = getDeviceId();
+
+async function waitForDocumentReady() {
+  if (document.readyState === 'complete') return;
+  await new Promise(resolve => window.addEventListener('load', resolve, { once: true }));
+}
+
+async function waitForReader(timeoutMs = 8000) {
+  if (window.StudyReader) return window.StudyReader;
+  return new Promise(resolve => {
+    let finished = false;
+    const done = value => {
+      if (finished) return;
+      finished = true;
+      window.removeEventListener('studyreaderready', onReady);
+      clearTimeout(timer);
+      resolve(value);
+    };
+    const onReady = () => done(window.StudyReader || null);
+    const timer = setTimeout(() => done(window.StudyReader || null), timeoutMs);
+    window.addEventListener('studyreaderready', onReady, { once: true });
+  });
+}
+
+function readerElementForKey(key) {
+  if (!key) return null;
+  try { return document.querySelector('[data-reader-key="' + CSS.escape(key) + '"]'); }
+  catch (e) { return null; }
+}
+
+function normalizeState(reader, state) {
+  if (state && state.key && readerElementForKey(state.key)) return state;
+  reader?.rebuild?.();
+  const first = document.querySelector('[data-reader-key]');
+  if (!first) return null;
+  return { key: first.dataset.readerKey, offset: 0, top: 6 };
+}
+
+function buildPayloadFromState(state) {
+  if (!state || !state.key) return null;
+  const element = readerElementForKey(state.key);
+  if (!element) return null;
+  const section = element.closest('section[id]');
+  return {
+    file_path: FILE_PATH,
+    section_id: section?.id || null,
+    anchor_key: state.key,
+    text_offset: Math.max(0, Number(state.offset) || 0),
+    top_offset: Number.isFinite(Number(state.top)) ? Number(state.top) : 6,
+    context_text: normalizeText(element.textContent).slice(0, 220) || null,
+    device_id: DEVICE_ID
+  };
+}
+
+async function captureStablePayload() {
+  const reader = await waitForReader();
+  if (!reader) return null;
+  const waits = [0, 80, 220, 500, 900];
+  for (const ms of waits) {
+    if (ms) await delay(ms);
+    reader.rebuild?.();
+    const state = normalizeState(
+      reader,
+      reader.capture?.() || reader.getLastStable?.() || reader.readLocal?.()
+    );
+    const payload = buildPayloadFromState(state);
+    if (payload) return payload;
+  }
+  return null;
+}
+
+function findAnchorByContext(contextText) {
+  const needle = normalizeText(contextText);
+  if (!needle) return null;
+  const probe = needle.slice(0, Math.min(90, needle.length));
+  for (const node of document.querySelectorAll('[data-reader-key]')) {
+    const hay = normalizeText(node.textContent);
+    if (hay.includes(probe) || (hay && probe.includes(hay.slice(0, Math.min(70, hay.length))))) return node;
+  }
+  return null;
+}
+
+function restoreRemoteProgress(progress) {
+  const reader = window.StudyReader;
+  if (!reader || !progress) return false;
+  applyingRemote = true;
+  ignoreScrollUntil = Date.now() + 1400;
+  try {
+    reader.rebuild?.();
+    let key = progress.anchor_key || '';
+    let element = readerElementForKey(key);
+    if (!element && progress.context_text) {
+      element = findAnchorByContext(progress.context_text);
+      key = element?.dataset?.readerKey || '';
+    }
+    if (element && key) {
+      const state = {
+        key,
+        offset: Math.max(0, Number(progress.text_offset) || 0),
+        top: Number.isFinite(Number(progress.top_offset)) ? Number(progress.top_offset) : 6
+      };
+      reader.saveLocal?.(state);
+      if (reader.settleRestore) reader.settleRestore(state, [0, 80, 220, 500]);
+      else reader.restore?.(state);
+      return true;
+    }
+    if (progress.section_id) {
+      const section = document.getElementById(progress.section_id);
+      if (section) {
+        section.scrollIntoView({ behavior: 'auto', block: 'start' });
+        return true;
+      }
+    }
+  } finally {
+    setTimeout(() => { applyingRemote = false; }, 950);
+  }
+  return false;
+}
+
+async function fetchProgressByPath(filePath, quiet = false) {
+  if (!currentUser || !navigator.onLine || !filePath) return null;
+  const { data, error } = await supabase
+    .from('study_progress')
+    .select('*')
+    .eq('user_id', currentUser.id)
+    .eq('file_path', filePath)
+    .maybeSingle();
+  if (error) {
+    if (!quiet) emitStatus('error', error.message || 'Could not load progress');
+    return null;
+  }
+  return data || null;
+}
+
+async function migrateLegacyCloudProgress(legacy) {
+  if (!legacy || !currentUser || !LEGACY_FILE_PATH || LEGACY_FILE_PATH === FILE_PATH) return null;
+  const payload = {
+    user_id: currentUser.id,
+    file_path: FILE_PATH,
+    section_id: legacy.section_id || null,
+    anchor_key: legacy.anchor_key || null,
+    text_offset: Math.max(0, Number(legacy.text_offset) || 0),
+    top_offset: Number.isFinite(Number(legacy.top_offset)) ? Number(legacy.top_offset) : 6,
+    context_text: legacy.context_text || null,
+    context_hash: legacy.context_hash || null,
+    device_id: legacy.device_id || DEVICE_ID
+  };
+
+  const { data, error } = await supabase
+    .from('study_progress')
+    .insert(payload)
+    .select('*')
+    .maybeSingle();
+
+  if (!error && data) {
+    emitStatus('synced', 'Legacy progress migrated to the short filename');
+    return data;
+  }
+
+  // A second device may have created the new row first.
+  const existing = await fetchProgressByPath(FILE_PATH, true);
+  if (existing) return existing;
+  emitStatus('error', error?.message || 'Could not migrate legacy progress');
+  return null;
+}
+
+async function fetchProgress() {
+  const current = await fetchProgressByPath(FILE_PATH);
+  if (current) return current;
+
+  if (LEGACY_FILE_PATH && LEGACY_FILE_PATH !== FILE_PATH) {
+    const legacy = await fetchProgressByPath(LEGACY_FILE_PATH, true);
+    if (legacy) {
+      const migrated = await migrateLegacyCloudProgress(legacy);
+      return migrated || legacy;
+    }
+  }
+  return null;
+}
+
+function rememberScopedLastPage() {
+  if (!currentUser) return;
+  safeSet(LAST_PAGE_PREFIX + currentUser.id, location.pathname + location.search);
+  safeSet('study-last-active-at:' + currentUser.id, Date.now());
+}
+
+async function insertInitialProgress(payload) {
+  const { data, error } = await supabase
+    .from('study_progress')
+    .insert({ user_id: currentUser.id, ...payload })
+    .select('*')
+    .maybeSingle();
+  if (!error && data) {
+    knownRevision = Number(data.revision) || 1;
+    knownUpdatedAt = data.updated_at || null;
+    lastSyncedSignature = remoteSignature(data);
+    rememberScopedLastPage();
+    emitStatus('synced', 'Initial progress created');
+    return true;
+  }
+  const remote = await fetchProgress();
+  if (remote) {
+    knownRevision = Number(remote.revision) || 1;
+    knownUpdatedAt = remote.updated_at || null;
+    lastSyncedSignature = remoteSignature(remote);
+    return false;
+  }
+  emitStatus('error', error?.message || 'Could not create progress row');
+  return false;
+}
+
+async function updateProgress(payload, expectedRevision) {
+  const { data, error } = await supabase
+    .from('study_progress')
+    .update(payload)
+    .eq('user_id', currentUser.id)
+    .eq('file_path', FILE_PATH)
+    .eq('revision', expectedRevision)
+    .select('*')
+    .maybeSingle();
+  if (error) {
+    emitStatus('error', error.message || 'Could not save progress');
+    return { ok: false, conflict: false };
+  }
+  if (!data) return { ok: false, conflict: true };
+  knownRevision = Number(data.revision) || expectedRevision + 1;
+  knownUpdatedAt = data.updated_at || null;
+  lastSyncedSignature = remoteSignature(data);
+  rememberScopedLastPage();
+  emitStatus('synced', 'Progress saved');
+  return { ok: true, conflict: false };
+}
+
+async function saveCloudProgress(force = false, retryOnConflict = true) {
+  if (!currentUser || !navigator.onLine || applyingRemote) return false;
+  if (!dirty && !force) return false;
+  const payload = await captureStablePayload();
+  if (!payload) {
+    emitStatus('error', 'Could not capture the current reading position');
+    return false;
+  }
+  const signature = payloadSignature(payload);
+  if (!force && signature === lastSyncedSignature) {
+    dirty = false;
+    return true;
+  }
+  const versionAtStart = dirtyVersion;
+  emitStatus('saving', 'Saving progress');
+  if (knownRevision === null) {
+    const created = await insertInitialProgress(payload);
+    if (created) {
+      if (dirtyVersion === versionAtStart) dirty = false;
+      return true;
+    }
+  }
+  if (knownRevision !== null) {
+    const result = await updateProgress(payload, knownRevision);
+    if (result.ok) {
+      if (dirtyVersion === versionAtStart) dirty = false;
+      return true;
+    }
+    if (result.conflict) {
+      const remote = await fetchProgress();
+      if (remote) {
+        knownRevision = Number(remote.revision) || 1;
+        knownUpdatedAt = remote.updated_at || null;
+        lastSyncedSignature = remoteSignature(remote);
+        if ((dirty || force) && retryOnConflict) return saveCloudProgress(force, false);
+        if (!dirty) restoreRemoteProgress(remote);
+      }
+    }
+  }
+  return false;
+}
+
+function scheduleSave(delayMs = 550) {
+  if (!dirty || !currentUser) return;
+  clearTimeout(saveTimer);
+  saveTimer = setTimeout(() => { void saveCloudProgress(false); }, delayMs);
+}
+
+function markDirtyFromScroll() {
+  if (!initializationComplete || applyingRemote || Date.now() < ignoreScrollUntil) return;
+  dirty = true;
+  dirtyVersion += 1;
+  emitStatus('pending', 'Reading position changed');
+  scheduleSave(550);
+}
+
+async function refreshFromCloud() {
+  if (!currentUser || dirty || !navigator.onLine) return;
+  const remote = await fetchProgress();
+  if (!remote) return;
+  const remoteRevision = Number(remote.revision) || 1;
+  if (knownRevision === null || remoteRevision > knownRevision) {
+    knownRevision = remoteRevision;
+    knownUpdatedAt = remote.updated_at || null;
+    lastSyncedSignature = remoteSignature(remote);
+    restoreRemoteProgress(remote);
+    rememberScopedLastPage();
+    emitStatus('synced', 'Newer progress loaded from cloud');
+  }
+}
+
+async function seedOrRestore() {
+  initializationComplete = false;
+  await waitForDocumentReady();
+  await delay(60);
+  const reader = await waitForReader();
+  if (!reader || !currentUser) {
+    emitStatus('error', 'Reader engine or signed-in user is unavailable');
+    return;
+  }
+  reader.rebuild?.();
+  const remote = await fetchProgress();
+  if (remote) {
+    knownRevision = Number(remote.revision) || 1;
+    knownUpdatedAt = remote.updated_at || null;
+    lastSyncedSignature = remoteSignature(remote);
+    restoreRemoteProgress(remote);
+    rememberScopedLastPage();
+    emitStatus('synced', 'Cloud progress loaded');
+  } else {
+    const payload = await captureStablePayload();
+    if (payload) await insertInitialProgress(payload);
+    else emitStatus('error', 'No readable position was found; progress row was not created');
+  }
+  ignoreScrollUntil = Date.now() + 1200;
+  initializationComplete = true;
+}
+
+async function readCurrentSession() {
+  const { data, error } = await supabase.auth.getSession();
+  if (error) {
+    emitStatus('error', error.message || 'Could not read login session');
+    return null;
+  }
+  return data.session || null;
+}
+
+async function ensureSessionAndSyncImpl(forceSeed = false) {
+  const session = await readCurrentSession();
+  const nextUser = session?.user || null;
+  if (!nextUser) {
+    currentUser = null;
+    emitStatus('signed_out', 'Not signed in; local progress only');
+    return;
+  }
+  const userChanged = !currentUser || currentUser.id !== nextUser.id;
+  currentUser = nextUser;
+  safeSet(ACTIVE_USER_KEY, currentUser.id);
+  if (userChanged) {
+    knownRevision = null;
+    knownUpdatedAt = null;
+    lastSyncedSignature = '';
+  }
+  if (userChanged || forceSeed || !initializationComplete) {
+    emitStatus('loading', 'Loading cloud progress');
+    await seedOrRestore();
+  } else {
+    await refreshFromCloud();
+  }
+}
+
+
+async function ensureSessionAndSync(forceSeed = false) {
+  if (synchronizationPromise) return synchronizationPromise;
+  synchronizationPromise = ensureSessionAndSyncImpl(forceSeed);
+  try {
+    return await synchronizationPromise;
+  } finally {
+    synchronizationPromise = null;
+  }
+}
+
+async function startSync() {
+  if (startupPromise) return startupPromise;
+  startupPromise = (async () => {
+    try {
+      supabase = await window.createStudySupabaseClient();
+    } catch (error) {
+      console.error('[study-sync] Cloud client unavailable:', error);
+      emitStatus('error', 'Cloud client unavailable: ' + (error?.message || error));
+      return;
+    }
+    await ensureSessionAndSync(true);
+  })();
+  return startupPromise;
+}
+
+window.addEventListener('scroll', markDirtyFromScroll, { passive: true });
+window.addEventListener('touchend', () => { if (dirty) scheduleSave(180); }, { passive: true });
+window.addEventListener('pointerup', () => { if (dirty) scheduleSave(220); }, { passive: true });
+window.addEventListener('wheel', () => { if (dirty) scheduleSave(250); }, { passive: true });
+window.addEventListener('online', () => { void ensureSessionAndSync(false); });
+
+document.addEventListener('visibilitychange', () => {
+  if (document.visibilityState === 'hidden') {
+    if (dirty) void saveCloudProgress(false);
+  } else {
+    void ensureSessionAndSync(false);
+  }
+});
+window.addEventListener('pageshow', () => { void ensureSessionAndSync(false); });
+window.addEventListener('pagehide', () => { if (dirty) void saveCloudProgress(false); });
+
+setInterval(() => {
+  if (dirty && document.visibilityState === 'visible') void saveCloudProgress(false);
+}, 4000);
+
+window.StudySync = Object.freeze({
+  version: VERSION,
+  filePath: FILE_PATH,
+  saveNow: () => saveCloudProgress(true),
+  refreshNow: () => ensureSessionAndSync(false),
+  getState: () => ({
+    userId: currentUser?.id || null,
+    knownRevision,
+    knownUpdatedAt,
+    dirty,
+    initializationComplete,
+    deviceId: DEVICE_ID
+  })
+});
+
+void startSync();
+})();
+</script>
+
+<nav class="chapter-navigation" aria-label="Previous and next chapter">
+    <a class="chapter-prev" data-chapter-link href="04i.html">
+      <span class="chapter-nav-kicker">← Previous Chapter</span>
+      <span class="chapter-nav-title">04i · 平成30年度 | p.417-429</span>
+    </a>
+    <a class="chapter-next" data-chapter-link href="04k.html">
+      <span class="chapter-nav-kicker">Next Chapter →</span>
+      <span class="chapter-nav-title">04k · 平成28年度 | p.437-444</span>
+    </a>
+  </nav>
+<script id="chapter-navigation-script">
+(() => {
+  'use strict';
+  const links = [...document.querySelectorAll('.chapter-navigation a[data-chapter-link]')];
+  links.forEach(link => {
+    link.addEventListener('click', async event => {
+      event.preventDefault();
+      try { window.StudyGoogleTTS?.stop?.(true); } catch (_) {}
+      try {
+        if (window.StudySync?.saveNow) {
+          await Promise.race([
+            Promise.resolve(window.StudySync.saveNow()),
+            new Promise(resolve => setTimeout(resolve, 700))
+          ]);
+        }
+      } catch (_) {}
+      location.href = link.href;
+    });
+  });
+})();
+</script>
+<script id="tts-cloudflare-script">
+(() => {
+  'use strict';
+
+  const VERSION = '4.0-cloudflare-worker-production';
+  const TTS_PROXY_URL = 'https://kenchiku-google-tts.duysdoor.workers.dev/tts';
+  const MAX_CHARS = 170;
+
+  const state = {
+    section: null,
+    chunks: [],
+    index: 0,
+    status: 'idle', // idle | loading | playing | paused
+    requestSerial: 0,
+    objectUrl: '',
+    prefetch: null
+  };
+
+  const audio = new Audio();
+  audio.preload = 'auto';
+  audio.playsInline = true;
+
+  function normalizeMultiline(text) {
+    return String(text || '')
+      .replace(/\r\n?/g, '\n')
+      .replace(/\u00a0/g, ' ')
+      .replace(/[ \t]+\n/g, '\n')
+      .replace(/\n[ \t]+/g, '\n')
+      .replace(/[ \t]{2,}/g, ' ')
+      .replace(/\n{3,}/g, '\n\n')
+      .trim();
+  }
+
+  const JAPANESE_RE = /[\u3040-\u30ff\u3400-\u9fff]/;
+  const SOURCE_SELECTORS = [
+    '.study-card.original .recall-source[lang="ja"]',
+    '.study-card.original .recall-source',
+    '.study-card.original [lang="ja"]',
+    '.lang-card.original .recall-source[lang="ja"]',
+    '.lang-card.original .card-body[lang="ja"]',
+    '.lang-card.original [lang="ja"]',
+    '.note-pane.original-cell[lang="ja"]',
+    '.original-cell[lang="ja"]',
+    '.jp-topic[lang="ja"]',
+    '.jp-answer[lang="ja"]',
+    '.card.original[lang="ja"]',
+    '.card.original [lang="ja"]',
+    '.card.orig[lang="ja"]',
+    '.card.orig',
+    '.original[lang="ja"]',
+    '.recall-source[lang="ja"]'
+  ].join(', ');
+
+  function hasJapaneseText(value) {
+    return JAPANESE_RE.test(String(value || ''));
+  }
+
+  function sourceNodes(unit) {
+    const all = [...unit.querySelectorAll(SOURCE_SELECTORS)]
+      .filter(node => hasJapaneseText(node.innerText || node.textContent || ''));
+    const unique = [...new Set(all)];
+    // Keep outer nodes and discard nested duplicates.
+    return unique.filter(node => !unique.some(other => other !== node && other.contains(node)));
+  }
+
+  function japaneseHeading(unit) {
+    const node = unit.querySelector(':scope > h2, :scope > h3, :scope > h4, :scope > .subsection-title, :scope > .section-head h2, :scope > .section-head h3, h3, h2');
+    const raw = normalizeMultiline(node?.innerText || node?.textContent || '');
+    if (!raw || !hasJapaneseText(raw)) return '';
+    const parts = raw.split(/[|｜/／]/).map(v => v.trim()).filter(Boolean);
+    return parts.find(hasJapaneseText) || raw;
+  }
+
+  function extractJapanese(unit) {
+    const nodes = sourceNodes(unit);
+    if (!nodes.length) return null;
+    const body = nodes
+      .map(node => normalizeMultiline(node.innerText || node.textContent || ''))
+      .filter(Boolean)
+      .join('\n');
+    if (!body) return null;
+    const heading = japaneseHeading(unit);
+    return { source: nodes[0], sources: nodes, text: heading ? `${heading}\n${body}` : body };
+  }
+
+  function collectTtsUnits() {
+    const result = [];
+    const seen = new Set();
+    const add = node => {
+      if (!node || seen.has(node) || !extractJapanese(node)) return;
+      seen.add(node);
+      result.push(node);
+    };
+
+    // Preferred granularity: one control per subsection.
+    document.querySelectorAll('.subsection').forEach(add);
+
+    // Fallback for table-based and older lesson layouts without .subsection.
+    const fallback = [...document.querySelectorAll(
+      'section.study-section, section.topic, section.aggregate-section, main#lesson > section, main > section, section[id]'
+    )].filter(node => {
+      if (result.some(primary => node.contains(primary))) return false;
+      return !!extractJapanese(node);
+    });
+    // Prefer the deepest matching section so controls are not duplicated on nested sections.
+    fallback
+      .filter(node => !fallback.some(other => other !== node && node.contains(other)))
+      .forEach(add);
+
+    // Last resort for uncommon layouts: one unit per standalone original card.
+    if (!result.length) {
+      document.querySelectorAll('.study-card.original, .lang-card.original, .card.original, .card.orig').forEach(add);
+    }
+
+    result.forEach((unit, index) => {
+      unit.classList.add('gttts-unit');
+      if (!unit.id) unit.dataset.gtttsUnit = String(index + 1);
+    });
+    return result;
+  }
+
+  function controlHost(unit) {
+    const card = unit.querySelector(
+      '.study-card.original, .lang-card.original, .note-pane.original-cell, .card.original, .card.orig'
+    );
+    const host = card || unit;
+    host.classList.add('gttts-control-host');
+    return host;
+  }
+  function hardSplit(text, maxChars = MAX_CHARS) {
+    const s = text.trim();
+    if (!s) return [];
+    if (s.length <= maxChars) return [s];
+    const out = [];
+    let rest = s;
+    while (rest.length > maxChars) {
+      const windowText = rest.slice(0, maxChars + 1);
+      let cut = -1;
+      for (const mark of ['。', '！', '？', '!', '?', '；', ';', '：', ':', '、', '，', ',', '）', ')', ' ']) {
+        const p = windowText.lastIndexOf(mark);
+        if (p >= Math.floor(maxChars * 0.55)) {
+          cut = p + 1;
+          break;
+        }
+      }
+      if (cut < 1) cut = maxChars;
+      out.push(rest.slice(0, cut).trim());
+      rest = rest.slice(cut).trim();
+    }
+    if (rest) out.push(rest);
+    return out.filter(Boolean);
+  }
+
+  function splitForTts(text) {
+    const normalized = normalizeMultiline(text);
+    const logical = [];
+    for (const rawLine of normalized.split(/\n+/)) {
+      const line = rawLine.trim();
+      if (!line) continue;
+      const sentences = line.match(/[^。！？!?]+[。！？!?]?/g) || [line];
+      for (const sentence of sentences) {
+        const s = sentence.trim();
+        if (s) logical.push(s);
+      }
+    }
+    return logical.flatMap(part => hardSplit(part));
+  }
+
+  function showToast(message, isError = false, duration = 2800) {
+    let toast = document.getElementById('gttts-toast');
+    if (!toast) {
+      toast = document.createElement('div');
+      toast.id = 'gttts-toast';
+      toast.className = 'gttts-toast';
+      document.body.appendChild(toast);
+    }
+    toast.textContent = message;
+    toast.classList.toggle('is-error', !!isError);
+    toast.classList.add('is-visible');
+    clearTimeout(showToast.timer);
+    showToast.timer = setTimeout(() => toast.classList.remove('is-visible'), duration);
+  }
+
+  async function fetchAudioBlob(text, signal) {
+    const response = await fetch(TTS_PROXY_URL, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'text/plain;charset=UTF-8',
+        'Accept': 'audio/mpeg,audio/*;q=0.9,*/*;q=0.1'
+      },
+      body: text,
+      cache: 'no-store',
+      signal
+    });
+
+    const contentType = response.headers.get('content-type') || '';
+
+    if (!response.ok) {
+      let detail = `HTTP ${response.status}`;
+      try {
+        if (contentType.includes('application/json')) {
+          const body = await response.json();
+          detail = body?.message || body?.error || detail;
+        } else {
+          const body = (await response.text()).trim();
+          if (body) detail = body.slice(0, 220);
+        }
+      } catch (_) {}
+      throw new Error(detail);
+    }
+
+    if (!contentType.includes('audio/')) {
+      const body = (await response.text()).trim();
+      throw new Error(
+        `Cloudflare proxy không trả audio (${contentType || 'unknown'}): ${body.slice(0, 180)}`
+      );
+    }
+
+    return await response.blob();
+  }
+
+  function revokeCurrentObjectUrl() {
+    if (state.objectUrl) {
+      try { URL.revokeObjectURL(state.objectUrl); } catch (_) {}
+      state.objectUrl = '';
+    }
+  }
+
+  function clearPrefetch() {
+    if (state.prefetch?.controller) {
+      try { state.prefetch.controller.abort(); } catch (_) {}
+    }
+    if (state.prefetch?.url) {
+      try { URL.revokeObjectURL(state.prefetch.url); } catch (_) {}
+    }
+    state.prefetch = null;
+  }
+
+  function updateUi() {
+    document.querySelectorAll('.gttts-unit.gttts-active').forEach(el => {
+      if (el !== state.section || state.status === 'idle') el.classList.remove('gttts-active');
+    });
+    if (state.section && state.status !== 'idle') state.section.classList.add('gttts-active');
+
+    document.querySelectorAll('.gttts-section-controls').forEach(controls => {
+      const section = controls.closest('.gttts-unit');
+      const play = controls.querySelector('[data-role="play"]');
+      const stop = controls.querySelector('[data-role="stop"]');
+      const active = section === state.section && state.status !== 'idle';
+      if (play) {
+        play.textContent = active && state.status === 'playing' ? '⏸' : active && state.status === 'paused' ? '▶' : active && state.status === 'loading' ? '…' : '🔊';
+        play.disabled = active && state.status === 'loading';
+        play.title = active && state.status === 'playing' ? 'Pause' : active && state.status === 'paused' ? 'Resume' : 'Đọc tiếng Nhật bằng Google Translate TTS';
+        play.setAttribute('aria-label', play.title);
+      }
+      if (stop) stop.hidden = !active;
+    });
+
+    const mini = document.getElementById('gttts-mini');
+    if (mini) {
+      const active = state.status !== 'idle';
+      mini.hidden = !active;
+      const toggle = mini.querySelector('[data-role="toggle"]');
+      if (toggle) {
+        toggle.textContent = state.status === 'playing' ? '⏸' : state.status === 'paused' ? '▶' : '…';
+        toggle.disabled = state.status === 'loading';
+      }
+    }
+  }
+
+  async function ensureChunkUrl(index, serial) {
+    if (index < 0 || index >= state.chunks.length) throw new Error('Chunk index ngoài phạm vi.');
+
+    if (state.prefetch && state.prefetch.index === index && state.prefetch.url) {
+      const url = state.prefetch.url;
+      state.prefetch.url = '';
+      state.prefetch = null;
+      return url;
+    }
+
+    const controller = new AbortController();
+    const blob = await fetchAudioBlob(state.chunks[index], controller.signal);
+    if (serial !== state.requestSerial) throw new DOMException('Stale request', 'AbortError');
+    return URL.createObjectURL(blob);
+  }
+
+  function prefetchNext(serial) {
+    clearPrefetch();
+    const next = state.index + 1;
+    if (next >= state.chunks.length || serial !== state.requestSerial) return;
+    const controller = new AbortController();
+    state.prefetch = { index: next, controller, url: '' };
+    fetchAudioBlob(state.chunks[next], controller.signal)
+      .then(blob => {
+        if (!state.prefetch || state.prefetch.index !== next || serial !== state.requestSerial) return;
+        state.prefetch.url = URL.createObjectURL(blob);
+      })
+      .catch(err => {
+        if (err?.name !== 'AbortError') console.warn('[GT TTS Proxy] prefetch failed:', err);
+        if (state.prefetch?.index === next) state.prefetch = null;
+      });
+  }
+
+  async function playCurrentChunk(serial) {
+    if (serial !== state.requestSerial) return;
+    if (state.index >= state.chunks.length) {
+      stop(true);
+      return;
+    }
+
+    state.status = 'loading';
+    updateUi();
+    try {
+      const url = await ensureChunkUrl(state.index, serial);
+      if (serial !== state.requestSerial) {
+        URL.revokeObjectURL(url);
+        return;
+      }
+      revokeCurrentObjectUrl();
+      state.objectUrl = url;
+      audio.src = url;
+      audio.currentTime = 0;
+      await audio.play();
+      state.status = 'playing';
+      updateUi();
+      prefetchNext(serial);
+    } catch (err) {
+      if (err?.name === 'AbortError') return;
+      console.error('[GT TTS Proxy] playback failed:', err);
+      state.status = 'idle';
+      updateUi();
+      showToast(`Không phát được Google TTS: ${err?.message || err}`, true, 7000);
+    }
+  }
+
+  function stop(finished = false) {
+    state.requestSerial += 1;
+    try { audio.pause(); } catch (_) {}
+    try { audio.removeAttribute('src'); audio.load(); } catch (_) {}
+    revokeCurrentObjectUrl();
+    clearPrefetch();
+    state.status = 'idle';
+    state.index = 0;
+    if (!finished) showToast('Đã dừng. Lần sau sẽ đọc lại từ đầu.', false, 1700);
+    updateUi();
+  }
+
+  async function startSection(section) {
+    const data = extractJapanese(section);
+    if (!data?.text) {
+      showToast('Không tìm thấy phần tiếng Nhật của section này.', true, 4500);
+      return;
+    }
+    if (state.status !== 'idle') stop(true);
+
+    const chunks = splitForTts(data.text);
+    if (!chunks.length) {
+      showToast('Không có nội dung để đọc.', true, 4000);
+      return;
+    }
+    state.section = section;
+    state.chunks = chunks;
+    state.index = 0;
+    const serial = ++state.requestSerial;
+    await playCurrentChunk(serial);
+  }
+
+  async function toggleSection(section) {
+    const same = section === state.section && state.status !== 'idle';
+    if (!same) {
+      await startSection(section);
+      return;
+    }
+    if (state.status === 'playing') {
+      audio.pause();
+      state.status = 'paused';
+      updateUi();
+      return;
+    }
+    if (state.status === 'paused') {
+      try {
+        await audio.play();
+        state.status = 'playing';
+        updateUi();
+      } catch (err) {
+        showToast(`Không resume được audio: ${err?.message || err}`, true, 5000);
+      }
+    }
+  }
+
+  audio.addEventListener('ended', () => {
+    if (state.status === 'idle') return;
+    state.index += 1;
+    const serial = state.requestSerial;
+    void playCurrentChunk(serial);
+  });
+
+  audio.addEventListener('error', () => {
+    if (state.status === 'idle') return;
+    const code = audio.error?.code || 0;
+    console.error('[GT TTS Proxy] HTMLAudioElement error:', code, audio.error);
+    state.status = 'idle';
+    updateUi();
+    showToast(`Lỗi phát audio trên trình duyệt (code ${code}).`, true, 6000);
+  });
+
+  function makeButton(text, label, role) {
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'gttts-btn';
+    btn.textContent = text;
+    btn.dataset.role = role;
+    btn.setAttribute('aria-label', label);
+    btn.title = label;
+    return btn;
+  }
+
+  function installMiniPlayer() {
+    if (document.getElementById('gttts-mini')) return;
+    const mini = document.createElement('div');
+    mini.id = 'gttts-mini';
+    mini.className = 'gttts-mini';
+    mini.hidden = true;
+    const toggle = makeButton('⏸', 'Pause/Resume', 'toggle');
+    const stopBtn = makeButton('■', 'Stop và trở về đầu', 'stop');
+    toggle.addEventListener('click', async () => {
+      if (!state.section) return;
+      await toggleSection(state.section);
+    });
+    stopBtn.addEventListener('click', () => stop(false));
+    mini.append(toggle, stopBtn);
+    document.body.appendChild(mini);
+  }
+
+  function installControls() {
+    let installed = 0;
+    for (const section of collectTtsUnits()) {
+      const host = controlHost(section);
+      if (host.querySelector(':scope > .gttts-section-controls')) continue;
+
+      const controls = document.createElement('div');
+      controls.className = 'gttts-section-controls';
+      controls.dataset.engine = VERSION;
+
+      const play = makeButton('🔊', 'Đọc tiếng Nhật bằng Google Translate TTS', 'play');
+      const stopBtn = makeButton('■', 'Stop và trở về đầu', 'stop');
+      stopBtn.hidden = true;
+
+      play.addEventListener('click', async e => {
+        e.preventDefault();
+        e.stopPropagation();
+        await toggleSection(section);
+      });
+      stopBtn.addEventListener('click', e => {
+        e.preventDefault();
+        e.stopPropagation();
+        stop(false);
+      });
+
+      controls.append(play, stopBtn);
+      host.appendChild(controls);
+      installed += 1;
+    }
+    installMiniPlayer();
+    updateUi();
+    console.info(`[GT TTS Cloudflare] v${VERSION} installed on ${installed} Japanese unit(s)`);
+  }
+  function init() { installControls(); }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init, { once: true });
+  } else {
+    init();
+  }
+
+  window.addEventListener('pagehide', () => stop(true));
+
+  window.StudyGoogleTTS = Object.freeze({
+    version: VERSION,
+    start: startSection,
+    stop,
+    extract: extractJapanese,
+    split: splitForTts,
+    state: () => ({ status: state.status, index: state.index, total: state.chunks.length })
+  });
+})();
+</script>
+</body>
+</html>

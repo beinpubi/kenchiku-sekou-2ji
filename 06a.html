@@ -1,0 +1,3798 @@
+<!DOCTYPE html>
+<html data-study-mode="full" data-theme="dark" lang="vi">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<meta content="dark light" name="color-scheme"/>
+<meta content="test-2.1-responsive-landscape" name="study-template-version"/>
+<title>第6章 建築法規 問題6 - Song ngữ Nhật-Việt</title>
+<style>
+:root {
+  --app-viewport-width: 100vw;
+  --font-vi: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  --font-ja: "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic UI", "Yu Gothic", Meiryo, sans-serif;
+  --base-font-size: 16px;
+  color-scheme: dark;
+}
+
+html[data-theme="dark"] {
+  --bg: #101318;
+  --surface: #171B22;
+  --surface-alt: #1D232C;
+  --text: #E3E7ED;
+  --text-muted: #9DA8B5;
+  --focus-muted: #68717D;
+  --heading: #F4F7FA;
+  --border: #323A46;
+  --link: #7CC4FF;
+  --original-bg: #15181E;
+  --translation-bg: #16202A;
+  --note-bg: #1C2028;
+  --memory-bg: #20231C;
+  --keyword: #74D7FF;
+  --keyword-bg: rgba(75, 190, 255, 0.10);
+  --critical-bg: #594613;
+  --critical-text: #FFE39A;
+  --trap: #FF8585;
+  --trap-underline: #FF5F5F;
+  --relation-bg: rgba(139, 126, 255, 0.12);
+  --relation-border: #8F86FF;
+  --shadow: rgba(0, 0, 0, .28);
+  --dock-bg: rgba(23, 27, 34, .94);
+  --overlay: rgba(0, 0, 0, .48);
+  color-scheme: dark;
+}
+
+html[data-theme="light"] {
+  --bg: #F4F6F8;
+  --surface: #FFFFFF;
+  --surface-alt: #EEF1F5;
+  --text: #20242A;
+  --text-muted: #626B77;
+  --focus-muted: #A0A7B0;
+  --heading: #111418;
+  --border: #CCD2DA;
+  --link: #0068B5;
+  --original-bg: #F8FAFC;
+  --translation-bg: #EDF7FC;
+  --note-bg: #F2F4F7;
+  --memory-bg: #F6F7E9;
+  --keyword: #006B9F;
+  --keyword-bg: #E4F4FC;
+  --critical-bg: #FFF0B8;
+  --critical-text: #654900;
+  --trap: #B42318;
+  --trap-underline: #D92D20;
+  --relation-bg: #EEEBFF;
+  --relation-border: #6C5CE7;
+  --shadow: rgba(31, 38, 49, .12);
+  --dock-bg: rgba(255, 255, 255, .94);
+  --overlay: rgba(19, 26, 35, .28);
+  color-scheme: light;
+}
+
+* { box-sizing: border-box; }
+html {
+  scroll-behavior: smooth;
+  font-size: var(--base-font-size);
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+body { overflow-anchor: none;
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-vi);
+  font-size: 1rem;
+  line-height: 1.72;
+  padding-bottom: 11rem;
+}
+:lang(vi), .translation, .translation-cell, .vn-topic, .vn-answer { font-family: var(--font-vi); }
+:lang(ja), .original, .original-cell, .jp-topic, .jp-answer { font-family: var(--font-ja); }
+strong, b { font-weight: 700; }
+a { color: var(--link); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+a:hover { text-decoration-thickness: 2px; }
+h1, h2, h3, h4 { color: var(--heading); line-height: 1.35; }
+h1 { font-size: clamp(1.8rem, 4vw, 2.8rem); margin: 0 0 .55rem; }
+h2 { font-size: clamp(1.38rem, 2.8vw, 2rem); margin: 0; }
+h3 { font-size: clamp(1.12rem, 2vw, 1.48rem); }
+h4 { font-size: 1.02rem; }
+[id] { scroll-margin-top: 22px; }
+p { margin: .62rem 0; }
+ul, ol { padding-left: 1.5rem; }
+li { margin: .34rem 0; }
+
+body > main,
+body > .page-shell {
+  width: min(1320px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 26px 0 70px;
+}
+body > .page-shell > main { width: 100%; margin: 0; padding: 0; }
+
+.hero {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  box-shadow: 0 8px 28px var(--shadow);
+  padding: clamp(22px, 4vw, 42px);
+  margin: 0 0 24px;
+}
+.eyebrow, .hero-subtitle, .subtitle, .meta-line, .source-ref, .mini-label, .small, .meta-label {
+  color: var(--text-muted);
+}
+.eyebrow { font-size: .82rem; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; }
+.hero-subtitle, .subtitle { font-size: 1.08rem; }
+.source-ref, .mini-label, .small, .meta-label { font-size: .86rem; }
+
+.summary-grid, .meta-grid, .mini-grid, .coverage {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: .72rem;
+  margin-top: 1rem;
+}
+.summary-card, .summary-item, .meta-item, .mini-card, .coverage > div {
+  background: var(--surface-alt);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: .75rem .85rem;
+}
+.summary-item b, .summary-card strong { color: var(--heading); }
+.source-list { color: var(--text-muted); }
+
+body > main > section:not(#toc),
+body > .page-shell > section:not(#toc),
+body > .page-shell > main > section,
+.topic,
+.aggregate-section {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  box-shadow: 0 7px 22px var(--shadow);
+  padding: clamp(18px, 3vw, 30px);
+  margin: 22px 0;
+}
+.subsection { margin: 1.7rem 0 2.1rem; }
+.subsection-title, .section-head {
+  border-bottom: 1px solid var(--border);
+  padding-bottom: .65rem;
+  margin-bottom: 1rem;
+}
+.section-head { display: flex; gap: 12px; align-items: baseline; justify-content: space-between; }
+
+.study-grid, .lang-grid, .bilingual-note {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 1rem;
+  align-items: start;
+}
+.study-card, .lang-card, .note-pane {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  min-width: 0;
+  background: var(--surface-alt);
+}
+.study-card.original, .lang-card.original, .original-cell, .jp-topic, .jp-answer { background: var(--original-bg); }
+.study-card.translation, .lang-card.translation, .translation-cell, .vn-topic, .vn-answer { background: var(--translation-bg); }
+.card-title {
+  padding: .62rem .85rem;
+  background: var(--surface-alt);
+  border-bottom: 1px solid var(--border);
+  color: var(--heading);
+  font-weight: 700;
+  letter-spacing: .02em;
+}
+.card-body, .recall-source { padding: .9rem 1rem; }
+.card-body.recall-source { padding: 1rem 1.05rem; }
+.item-block { border-top: 1px dashed var(--border); padding-top: .72rem; margin-top: .72rem; }
+.item-block:first-child { border-top: 0; padding-top: 0; margin-top: 0; }
+.item-label { font-weight: 700; color: var(--heading); margin-right: .35em; }
+
+.table-wrap { overflow-x: auto; margin: .9rem 0; border: 1px solid var(--border); border-radius: 10px; }
+table { width: 100%; border-collapse: collapse; min-width: 650px; background: var(--surface); }
+th, td { border: 1px solid var(--border); padding: .62rem .7rem; vertical-align: top; text-align: left; }
+th { background: var(--surface-alt); color: var(--heading); font-weight: 700; }
+caption { text-align: left; font-weight: 700; color: var(--heading); padding: .58rem .7rem; background: var(--surface-alt); caption-side: top; }
+.compact th, .compact td { padding: .48rem .55rem; }
+.study-table { min-width: 1040px; }
+.study-table .meta { white-space: nowrap; text-align: center; background: var(--surface-alt); }
+.glossary-table { min-width: 920px; }
+.memory-table, .number-table, .num-table { min-width: 760px; }
+
+.summary-box, .note-box, .note, .info-box, .background-box, .exam-note, .memory-box, .warning-box, .warning, .figure-box, .figure-card {
+  border: 1px solid var(--border);
+  border-left-width: 4px;
+  border-radius: 10px;
+  padding: .9rem 1rem;
+  margin: 1rem 0;
+  background: var(--note-bg);
+}
+.summary-box, .note-box, .note, .info-box, .background-box { border-left-color: var(--link); }
+.memory-box, .exam-note { background: var(--memory-bg); border-left-color: var(--critical-text); }
+.warning-box, .warning { border-left-color: var(--trap); }
+.figure-box, .figure-card { border-left-color: var(--relation-border); }
+.figure-card { overflow: hidden; padding: 0; }
+.figure-card img { display: block; width: 100%; height: auto; background: #fff; }
+.figure-card figcaption, .figure-explain { padding: .8rem 1rem; }
+
+.formula, .formula-line {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .45rem;
+  align-items: center;
+  padding: .75rem;
+  background: var(--surface-alt);
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  margin: .75rem 0;
+}
+.flow-node { border: 1px solid var(--border); border-radius: 7px; padding: .35rem .55rem; background: var(--surface); font-weight: 700; }
+.flow-arrow { color: var(--text-muted); font-weight: 700; }
+
+.kw {
+  font-weight: 700;
+  color: var(--keyword);
+  background: var(--keyword-bg);
+  padding: .02em .16em;
+  border-radius: .2em;
+}
+.critical {
+  font-weight: 700;
+  color: var(--critical-text);
+  background: var(--critical-bg);
+  padding: .04em .22em;
+  border-radius: .22em;
+}
+.trap {
+  font-weight: 700;
+  color: var(--trap);
+  text-decoration-line: underline;
+  text-decoration-color: var(--trap-underline);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+}
+.relation {
+  font-weight: 600;
+  color: var(--text);
+  background: var(--relation-bg);
+  border-bottom: 2px solid var(--relation-border);
+  padding: .02em .14em;
+}
+
+html[data-study-mode="keywords"] .recall-source { color: var(--focus-muted); }
+html[data-study-mode="keywords"] .recall-source .kw { color: var(--keyword); background: var(--keyword-bg); }
+html[data-study-mode="keywords"] .recall-source .critical { color: var(--critical-text); background: var(--critical-bg); }
+html[data-study-mode="keywords"] .recall-source .trap { color: var(--trap); }
+html[data-study-mode="keywords"] .recall-source .relation { color: var(--text); background: var(--relation-bg); }
+html[data-study-mode="keywords"] .recall-source th,
+html[data-study-mode="keywords"] .recall-source .card-title,
+html[data-study-mode="keywords"] .recall-source .item-label { color: var(--heading); }
+
+.backlink, .back-toc, .back { display: inline-block; margin-top: .8rem; font-size: .9rem; }
+
+/* Collapsible study controls: one launcher at bottom-left. */
+.control-cluster {
+  position: fixed;
+  left: max(8px, env(safe-area-inset-left));
+  bottom: max(10px, env(safe-area-inset-bottom));
+  z-index: 2200;
+  width: 38px;
+  height: 38px;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.control-launcher,
+.control-panel button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  width: 32px;
+  height: 32px;
+  min-width: 32px;
+  min-height: 32px;
+  padding: 0;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface-alt);
+  color: var(--text);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1;
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.control-launcher {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  z-index: 2;
+  width: 38px;
+  height: 38px;
+  min-width: 38px;
+  min-height: 38px;
+  border-radius: 11px;
+  background: var(--dock-bg);
+  box-shadow: 0 6px 18px var(--shadow);
+  font-size: 20px;
+  letter-spacing: 1px;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+}
+
+.control-panel {
+  position: absolute;
+  left: 43px;
+  bottom: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 2px;
+  width: max-content;
+  max-width: calc(100dvw - max(59px, env(safe-area-inset-left) + 59px) - max(8px, env(safe-area-inset-right)));
+  padding: 3px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  overscroll-behavior-x: contain;
+  scrollbar-width: none;
+  border: 1px solid var(--border);
+  border-radius: 11px;
+  background: var(--dock-bg);
+  box-shadow: 0 6px 18px var(--shadow);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateX(-10px) scale(.98);
+  transform-origin: left bottom;
+  transition: opacity .14s ease, transform .14s ease, visibility .14s ease;
+}
+
+.control-panel::-webkit-scrollbar { display: none; }
+
+.control-cluster.open .control-panel {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateX(0) scale(1);
+}
+
+.control-cluster.open .control-launcher {
+  border-color: var(--link);
+}
+
+.control-panel button:active,
+.control-launcher:active { transform: translateY(1px); }
+
+.control-panel button:hover,
+.control-launcher:hover { border-color: var(--link); }
+
+.control-panel button:disabled {
+  opacity: .36;
+  cursor: default;
+}
+
+.control-panel .font-reset {
+  width: 38px;
+  min-width: 38px;
+  font-size: 9px;
+  letter-spacing: -.03em;
+}
+
+.control-panel .mode-toggle { font-size: 14px; }
+
+.control-panel .home-icon svg {
+  width: 17px;
+  height: 17px;
+  display: block;
+}
+
+/*
+  Responsive reading geometry for iPad/iPhone.
+  The page follows the actual Visual Viewport width. When rotating to
+  landscape it expands across the wider screen instead of staying at
+  portrait width. Reader-anchor JS below restores the same logical text
+  position after the reflow.
+*/
+@media (pointer: coarse) {
+  body > main,
+  body > .page-shell {
+    width: min(calc(var(--app-viewport-width, 100vw) - 16px), 1320px) !important;
+    max-width: 1320px !important;
+  }
+
+
+  .hero {
+    padding: 1rem !important;
+  }
+
+  body > main > section:not(#toc),
+  body > .page-shell > section:not(#toc),
+  body > .page-shell > main > section,
+  .topic,
+  .aggregate-section {
+    padding: 1rem !important;
+  }
+}
+
+
+@media (pointer: coarse) and (orientation: portrait) {
+  .study-grid,
+  .lang-grid,
+  .bilingual-note {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+@media (pointer: coarse) and (orientation: landscape) {
+  body > main,
+  body > .page-shell {
+    width: min(calc(var(--app-viewport-width, 100dvw) - 20px), 1320px) !important;
+  }
+}
+
+/* TOC drawer */
+#toc {
+  position: fixed !important;
+  left: 0 !important;
+  top: 0 !important;
+  bottom: 0 !important;
+  z-index: 2100 !important;
+  width: min(82vw, 390px) !important;
+  max-height: 100dvh !important;
+  overflow-y: auto !important;
+  margin: 0 !important;
+  padding: 74px 20px 28px !important;
+  background: var(--surface) !important;
+  border: 0 !important;
+  border-right: 1px solid var(--border) !important;
+  border-radius: 0 16px 16px 0 !important;
+  box-shadow: 10px 0 30px var(--shadow) !important;
+  transform: translateX(-105%);
+  transition: transform .2s ease;
+}
+body.toc-open #toc { transform: translateX(0); }
+#toc .toc-grid { columns: 1 !important; display: block !important; }
+#toc ol { margin-top: .35rem; }
+.toc-drawer-head {
+  position: sticky;
+  top: -74px;
+  margin: -74px -20px 18px;
+  padding: 13px 14px;
+  min-height: 58px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  z-index: 2;
+}
+.toc-drawer-head strong { color: var(--heading); }
+.toc-close {
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  background: var(--surface-alt);
+  color: var(--text);
+  font: 700 1.25rem var(--font-vi);
+  cursor: pointer;
+}
+.toc-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  background: var(--overlay);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .2s ease;
+}
+body.toc-open .toc-overlay { opacity: 1; pointer-events: auto; }
+body.toc-open { overflow: hidden; }
+
+@media (max-width: 900px) {
+  .study-grid, .lang-grid, .bilingual-note { grid-template-columns: 1fr; }
+  body > main, body > .page-shell { width: min(100% - 20px, 780px); padding-top: 14px; }
+  .section-head { display: block; }
+  .source-ref { display: block; margin-top: .45rem; }
+  table { min-width: 620px; }
+}
+
+@media (max-width: 560px) {
+  body { font-size: 1rem; }
+  body > main, body > .page-shell { width: calc(100% - 14px); }
+  .hero { padding: 1rem; border-radius: 12px; }
+  body > main > section:not(#toc),
+  body > .page-shell > section:not(#toc),
+  body > .page-shell > main > section,
+  .topic, .aggregate-section { padding: 1rem; border-radius: 12px; }
+}
+
+
+/*
+  iPad/tablet landscape:
+  Japanese and Vietnamese return to two side-by-side columns.
+  The min-height condition avoids forcing ordinary phone landscape into
+  two columns that would be too narrow.
+*/
+@media (pointer: coarse) and (orientation: landscape) and (min-width: 700px) and (min-height: 600px) {
+  body > main,
+  body > .page-shell {
+    width: min(calc(var(--app-viewport-width, 100dvw) - 20px), 1320px) !important;
+    max-width: 1320px !important;
+  }
+
+  .study-grid,
+  .lang-grid,
+  .bilingual-note {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important;
+    gap: clamp(.75rem, 1.4vw, 1rem) !important;
+    align-items: start;
+  }
+
+  .study-card,
+  .lang-card,
+  .note-pane {
+    min-width: 0;
+  }
+}
+
+@media print {
+  .control-cluster { display: none !important; }
+  :root,
+  html[data-theme="dark"],
+  html[data-theme="light"] {
+    --bg: #FFFFFF;
+    --surface: #FFFFFF;
+    --surface-alt: #F1F3F5;
+    --text: #111111;
+    --text-muted: #555555;
+    --heading: #000000;
+    --border: #B8BEC6;
+    --original-bg: #FFFFFF;
+    --translation-bg: #F7FBFD;
+    --note-bg: #F7F7F7;
+    --memory-bg: #FAFAF0;
+    --keyword: #005A86;
+    --keyword-bg: #E4F4FC;
+    --critical-bg: #FFF0B8;
+    --critical-text: #4A3600;
+    --trap: #9E1B12;
+    --trap-underline: #9E1B12;
+    --relation-bg: #F0EDFF;
+    --relation-border: #5B4FD6;
+    --shadow: transparent;
+  }
+  body { background: #fff; color: #111; font-size: 11pt; padding-bottom: 0; }
+  .control-cluster, .toc-overlay, .toc-drawer-head { display: none !important; }
+  #toc {
+    position: static !important;
+    transform: none !important;
+    width: auto !important;
+    max-height: none !important;
+    padding: 1rem !important;
+    border: 1px solid var(--border) !important;
+    border-radius: 10px !important;
+    box-shadow: none !important;
+    margin: 1rem 0 !important;
+  }
+  body > main, body > .page-shell { width: 100%; padding: 0; }
+  .hero, .study-card, .lang-card, .summary-box, .note-box, .note, .memory-box, .warning-box, .figure-box, .figure-card { break-inside: avoid; }
+  a { color: #000; text-decoration: none; }
+  .backlink, .back-toc, .back { display: none; }
+}
+</style><script>
+try {
+  if ("scrollRestoration" in history) {
+    history.scrollRestoration = "manual";
+  }
+} catch (e) {}
+(function () {
+  const root = document.documentElement;
+  try {
+    const savedTheme = localStorage.getItem('study-theme');
+    root.dataset.theme = savedTheme === 'light' ? 'light' : 'dark';
+
+    const savedMode = localStorage.getItem('study-mode');
+    root.dataset.studyMode = savedMode === 'keywords' ? 'keywords' : 'full';
+
+    const savedScale = Number(localStorage.getItem('study-font-scale'));
+    const scale = Number.isFinite(savedScale) && savedScale >= 50 && savedScale <= 150 && savedScale % 5 === 0
+      ? savedScale : 100;
+    root.style.setProperty('--base-font-size', (16 * scale / 100) + 'px');
+  } catch (e) {
+    root.dataset.theme = 'dark';
+    root.dataset.studyMode = 'full';
+    root.style.setProperty('--base-font-size', '16px');
+  }
+})();
+</script><meta name="study-sync-version" content="6.2-production-silent"/>
+<meta name="tts-engine-version" content="4.0-cloudflare-worker-production"/>
+<style id="tts-cloudflare-style">
+/* ===== Google Translate TTS via Cloudflare Worker proxy pilot ===== */
+.gttts-control-host { position: relative; }
+.gttts-control-host > .card-title { padding-right: 5.1rem; }
+.gttts-unit:not(.subsection) > h2:first-of-type,
+.gttts-unit:not(.subsection) > h3:first-of-type,
+.gttts-unit:not(.subsection) > .section-head:first-child { padding-right: 5.2rem; }
+.gttts-section-controls {
+  position: absolute;
+  top: .55rem;
+  right: .55rem;
+  z-index: 4;
+  display: inline-flex;
+  align-items: center;
+  gap: .2rem;
+  padding: .18rem;
+  border: 1px solid var(--border, rgba(127,127,127,.25));
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--surface, #171B22) 90%, transparent);
+  box-shadow: 0 4px 16px rgba(0,0,0,.12);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+.gttts-btn {
+  width: 2.15rem;
+  height: 2.15rem;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  display: inline-grid;
+  place-items: center;
+  background: transparent;
+  color: var(--text, #fff);
+  font: inherit;
+  font-size: 1.02rem;
+  line-height: 1;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+.gttts-btn:active { transform: scale(.94); }
+.gttts-btn:focus-visible { outline: 2px solid var(--link, #7CC4FF); outline-offset: 2px; }
+.gttts-btn[hidden] { display: none !important; }
+.gttts-unit.gttts-active .gttts-control-host {
+  box-shadow: inset 3px 0 0 var(--link, #7CC4FF);
+}
+.gttts-mini {
+  position: fixed;
+  right: max(12px, env(safe-area-inset-right));
+  bottom: calc(max(12px, env(safe-area-inset-bottom)) + 58px);
+  z-index: 9998;
+  display: inline-flex;
+  align-items: center;
+  gap: .2rem;
+  padding: .22rem;
+  border: 1px solid var(--border, rgba(127,127,127,.28));
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--surface, #171B22) 94%, transparent);
+  box-shadow: 0 7px 24px rgba(0,0,0,.22);
+  backdrop-filter: blur(9px);
+  -webkit-backdrop-filter: blur(9px);
+}
+.gttts-mini[hidden] { display: none !important; }
+.gttts-mini .gttts-btn { width: 2rem; height: 2rem; }
+.gttts-toast {
+  position: fixed;
+  left: 50%;
+  bottom: calc(max(12px, env(safe-area-inset-bottom)) + 14px);
+  z-index: 10000;
+  max-width: min(88vw, 38rem);
+  transform: translate(-50%, 12px);
+  opacity: 0;
+  pointer-events: none;
+  padding: .58rem .82rem;
+  border: 1px solid var(--border, rgba(127,127,127,.3));
+  border-radius: .75rem;
+  background: color-mix(in srgb, var(--surface, #171B22) 96%, transparent);
+  color: var(--text, #fff);
+  box-shadow: 0 8px 28px rgba(0,0,0,.22);
+  font-size: .82rem;
+  line-height: 1.4;
+  transition: opacity .16s ease, transform .16s ease;
+}
+.gttts-toast.is-visible { opacity: 1; transform: translate(-50%, 0); }
+.gttts-toast.is-error { border-color: var(--trap, #FF8585); }
+@media (max-width: 520px) {
+  .gttts-section-controls { top: .42rem; right: .42rem; }
+  .gttts-btn { width: 2rem; height: 2rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .gttts-btn:active { transform: none; }
+  .gttts-toast { transition: none; }
+}
+</style>
+<style id="chapter-navigation-style">
+.chapter-navigation {
+  width: min(1320px, calc(100% - 28px));
+  margin: 3rem auto 7rem;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: .8rem;
+}
+.chapter-navigation a,
+.chapter-navigation .chapter-nav-disabled {
+  min-height: 66px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: .18rem;
+  padding: .75rem 1rem;
+  border: 1px solid var(--border, #323A46);
+  border-radius: 12px;
+  background: var(--surface, #171B22);
+  color: var(--text, #E3E7ED);
+  text-decoration: none;
+  box-shadow: 0 5px 18px var(--shadow, rgba(0,0,0,.18));
+  touch-action: manipulation;
+}
+.chapter-navigation a:active { transform: scale(.99); }
+.chapter-navigation .chapter-next { text-align: right; align-items: flex-end; }
+.chapter-navigation .chapter-prev { text-align: left; align-items: flex-start; }
+.chapter-navigation .chapter-nav-kicker {
+  color: var(--text-muted, #9DA8B5);
+  font-size: .76rem;
+  font-weight: 700;
+  letter-spacing: .035em;
+  text-transform: uppercase;
+}
+.chapter-navigation .chapter-nav-title {
+  color: var(--heading, #F4F7FA);
+  font-size: .94rem;
+  font-weight: 750;
+  overflow-wrap: anywhere;
+}
+.chapter-navigation .chapter-nav-disabled {
+  opacity: .36;
+  box-shadow: none;
+}
+@media (max-width: 560px) {
+  .chapter-navigation { width: calc(100% - 20px); gap: .55rem; }
+  .chapter-navigation a,
+  .chapter-navigation .chapter-nav-disabled { min-height: 60px; padding: .62rem .72rem; }
+  .chapter-navigation .chapter-nav-title { font-size: .85rem; }
+}
+</style>
+</head>
+<body>
+<!--
+HTML TEMPLATE CONTRACT 2.4 CLOUD-SYNC SILENT
+- Based on latest pinch-zoom-safe test.html.
+- Default theme: dark; persistent Dark/Light toggle.
+- Font: 50%-150%, 5% step; persistent.
+- Native two-finger pinch zoom MUST NOT trigger responsive reflow.
+- Real orientation change MAY update layout and restore logical reading position.
+- iPad/tablet portrait: one-column bilingual flow.
+- iPad/tablet landscape: Japanese/Vietnamese side-by-side.
+- Controls: collapsed by default at bottom-left; tap to expand horizontally.
+- Home button: index.html.
+- Back/Next: TOC item navigation, not browser history.
+- Do not redesign CSS/JS/control behavior per lesson.
+-->
+<div class="control-cluster" id="control-cluster">
+<button aria-controls="control-panel" aria-expanded="false" aria-label="Mở công cụ" class="control-launcher" id="controls-toggle" title="Mở công cụ" type="button">⋯</button>
+<div aria-label="Công cụ học tập" class="control-panel" id="control-panel" role="toolbar">
+<button aria-controls="toc" aria-expanded="false" aria-label="Mục lục" id="toc-toggle" title="Mục lục" type="button">☰</button>
+<button aria-label="Mục trước" id="section-prev" title="Mục trước" type="button">‹</button>
+<button aria-label="Mục tiếp theo" id="section-next" title="Mục tiếp theo" type="button">›</button>
+<button aria-label="Đổi Dark/Light" aria-pressed="false" id="theme-toggle" title="Đổi Dark/Light" type="button">☀</button>
+<button aria-label="Đổi Full/Keywords" aria-pressed="false" class="mode-toggle" id="mode-toggle" title="Đổi Full/Keywords" type="button">🎯</button>
+<button aria-label="Giảm cỡ chữ" id="font-down" title="Giảm cỡ chữ 5%" type="button">A−</button>
+<button aria-label="Đặt lại cỡ chữ 100%" class="font-reset" id="font-reset" title="Đặt lại cỡ chữ 100%" type="button">100%</button>
+<button aria-label="Tăng cỡ chữ" id="font-up" title="Tăng cỡ chữ 5%" type="button">A+</button>
+<button aria-label="Top Page" class="home-icon" id="home-button" title="Top Page" type="button"><svg aria-hidden="true" fill="none" viewbox="0 0 24 24"><path d="M3.5 10.5 12 3.8l8.5 6.7v9.2h-5.3v-6H8.8v6H3.5z" stroke="currentColor" stroke-linejoin="round" stroke-width="1.8"></path></svg></button>
+</div>
+</div><div aria-hidden="true" class="toc-overlay" id="toc-overlay"></div>
+<div class="page-shell">
+<header class="hero" id="top">
+<h1>第6章 建築法規 問題6 - Song ngữ Nhật-Việt</h1>
+</header>
+<nav aria-label="Mục lục" class="toc" id="toc">
+<div class="toc-drawer-head">
+<strong>Mục lục</strong>
+<button aria-label="Đóng mục lục" class="toc-close" id="toc-close" type="button">×</button>
+</div>
+<h2>Mục lục</h2>
+<!-- TOC_ITEMS_START -->
+
+<!-- TOC_ITEMS_END -->
+<ol><li><a href="#sec-overview">Xu hướng và đối sách của pháp quy xây dựng</a><ol><li><a href="#sec-amendments">建設業法施行令の改正について</a></li><li><a href="#sec-trends">最新10年間の建築法規の傾向と対策</a></li></ol></li><li><a href="#sec-kensetsugyo">6.1.1 建設業法の要点</a><ol><li><a href="#sec-kensetsugyo-general">総則・建設業の許可・請負契約の原則</a></li><li><a href="#sec-estimate-contract">見積期間・下請負人の変更請求・請負契約とみなす場合</a></li><li><a href="#sec-main-contractor">元請負人の義務</a></li><li><a href="#sec-orgchart">施工体制台帳及び施工体系図</a></li><li><a href="#sec-tech-management">施工技術の確保・主任技術者・監理技術者</a></li><li><a href="#sec-tech-exam">技術検定・監理技術者資格者証</a></li></ol></li><li><a href="#sec-kijun">6.1.2 建築基準法（工事現場の危害の防止）の要点</a><ol><li><a href="#sec-fence-excavation">仮囲い・根切り・山留め</a></li><li><a href="#sec-site-safety">転倒・落下物・建て方・材料集積・火災</a></li></ol></li><li><a href="#sec-osh">6.1.3 労働安全衛生法の要点</a><ol><li><a href="#sec-osh-purpose">目的・用語の定義</a></li><li><a href="#sec-osh-responsibilities">事業者等の責務・総括安全衛生管理者</a></li><li><a href="#sec-work-supervisor">作業主任者</a></li><li><a href="#sec-motokata">元方事業者・特定元方事業者の措置</a></li><li><a href="#sec-education">安全衛生教育・職長教育・就業制限</a></li></ol></li><li><a href="#terms">Professional terminology</a></li><li><a href="#background">Background knowledge</a></li><li><a href="#memory">Key points and memory aids</a></li></ol></nav>
+<!-- CONTENT_START -->
+<main id="lesson"><section class="study-section" id="sec-overview">
+<div class="section-head">
+<h2>Xu hướng và đối sách của pháp quy xây dựng</h2>
+<span class="source-ref">Nguồn: Book page 574-576</span>
+</div>
+<section class="subsection" id="sec-amendments">
+<h3>建設業法施行令の改正について</h3>
+<div class="study-grid">
+<article class="study-card original">
+<div class="card-title">原文</div>
+<div class="recall-source" lang="ja">
+<h4>第6章　建築法規　問題6</h4>
+<p><strong class="kw">最新10年間の建築法規の傾向と対策</strong></p>
+<ul>
+<li>6.1　建築法規 技術検定試験 重要項目集</li>
+<li>6.2　建築法規 最新問題解説</li>
+</ul>
+<h4>建設業法施行令の改正について</h4>
+<p>2023年（令和5年）1月1日に、建設業法施行令に定められた金額要件の見直しが行われました。この改正により、一般建設業の許可で制限される下請代金総額や、主任技術者・監理技術者の配置に関する金額などが変更されています。その概要は、以下の通りです。</p>
+<p>近年の工事費の上昇を踏まえ、金額要件の見直しを行います。※（　）内は建築一式工事の場合</p>
+<div class="table-wrap"><table>
+<caption>2023年改正の概要</caption>
+<thead><tr><th>項目</th><th>現行</th><th>改正後</th></tr></thead>
+<tbody>
+<tr><td><strong class="kw">特定建設業の許可・監理技術者の配置・施工体制台帳の作成を要する下請代金額の下限</strong></td><td>4000万円（6000万円）</td><td>4500万円（7000万円）</td></tr>
+<tr><td><strong class="kw">主任技術者及び監理技術者の専任を要する請負代金額の下限</strong></td><td>3500万円（7000万円）</td><td>4000万円（8000万円）</td></tr>
+<tr><td><strong class="kw">特定専門工事の下請代金額の上限</strong></td><td>3500万円</td><td>4000万円</td></tr>
+</tbody></table></div>
+<p>出典：国土交通省ウェブサイト</p>
+<p>令和6年12月6日に国土交通省から公表された「報道発表資料」では、近年における建設工事費の更なる高騰への対応のために、上表の「改正後」の金額要件を、下記の「新政令」のように改定することなどが発表されました。そのため、本年度の受検に際しては、このような金額要件について、最新の法改正情報や、本年度の試験で適用される法規を確認することが望ましいと思われます。なお、この改定の施行日は、令和7年2月1日です。本書の内容は、この改正に合わせて修正しています。</p>
+<div class="table-wrap"><table>
+<caption>本書で使用する新政令の金額要件</caption>
+<thead><tr><th>項目</th><th>改正後</th><th>新政令</th></tr></thead>
+<tbody>
+<tr><td><strong class="kw">特定建設業の許可・監理技術者の配置・施工体制台帳の作成を要する下請代金額の下限</strong></td><td>4500万円（7000万円）</td><td><mark class="critical">5000万円（8000万円）</mark></td></tr>
+<tr><td><strong class="kw">主任技術者及び監理技術者の専任を要する請負代金額の下限</strong></td><td>4000万円（8000万円）</td><td><mark class="critical">4500万円（9000万円）</mark></td></tr>
+<tr><td><strong class="kw">特定専門工事の下請代金額の上限</strong></td><td>4000万円</td><td><mark class="critical">4500万円</mark></td></tr>
+</tbody></table></div>
+<p>※本書に記載されている金額要件は、本文中において特に断りや併記のない限り、令和7年度の建設工事に適用されるものです。</p>
+</div>
+</article>
+<article class="study-card translation">
+<div class="card-title">Bản dịch tiếng Việt</div>
+<div class="recall-source" lang="vi">
+<h4>Chương 6: Pháp quy xây dựng, Câu 6</h4>
+<p><strong class="kw">Xu hướng và đối sách của lĩnh vực pháp quy xây dựng trong 10 năm gần nhất</strong></p>
+<ul>
+<li>6.1 Tập hợp các hạng mục quan trọng của kỳ thi kiểm định kỹ thuật về pháp quy xây dựng</li>
+<li>6.2 Giải thích các câu hỏi mới nhất về pháp quy xây dựng</li>
+</ul>
+<h4>Về việc sửa đổi Nghị định thi hành Luật Xây dựng（建設業法施行令）</h4>
+<p>Ngày 01/01/2023, Reiwa 5, các điều kiện về mức tiền được quy định trong Nghị định thi hành Luật Xây dựng đã được rà soát lại. Theo sửa đổi này, các mức tiền như tổng giá trị hợp đồng thầu phụ bị giới hạn đối với giấy phép xây dựng thông thường, cũng như các mức tiền liên quan đến việc bố trí kỹ sư phụ trách（主任技術者）và kỹ sư quản lý giám sát（監理技術者）đã được thay đổi. Nội dung khái quát như sau.</p>
+<p>Do chi phí xây dựng tăng trong những năm gần đây, các điều kiện về mức tiền được điều chỉnh. ※ Số trong ngoặc là trường hợp công trình xây dựng tổng hợp（建築一式工事）.</p>
+<div class="table-wrap"><table>
+<caption>Khái quát sửa đổi năm 2023</caption>
+<thead><tr><th>Nội dung</th><th>Trước sửa đổi</th><th>Sau sửa đổi</th></tr></thead>
+<tbody>
+<tr><td><strong class="kw">Ngưỡng dưới của tổng giá trị thầu phụ làm phát sinh yêu cầu về 特定建設業, bố trí 監理技術者 và lập 施工体制台帳</strong></td><td>4000万円（6000万円）</td><td>4500万円（7000万円）</td></tr>
+<tr><td><strong class="kw">Ngưỡng dưới của giá trị hợp đồng yêu cầu 主任技術者 hoặc 監理技術者 phải làm việc chuyên trách</strong></td><td>3500万円（7000万円）</td><td>4000万円（8000万円）</td></tr>
+<tr><td><strong class="kw">Giới hạn trên của giá trị thầu phụ đối với 特定専門工事</strong></td><td>3500万円</td><td>4000万円</td></tr>
+</tbody></table></div>
+<p>Nguồn được sách ghi: trang web của Bộ Đất đai, Hạ tầng, Giao thông và Du lịch.</p>
+<p>Trong tài liệu báo chí được Bộ Đất đai, Hạ tầng, Giao thông và Du lịch công bố ngày 06/12/Reiwa 6, để ứng phó với việc chi phí xây dựng tiếp tục tăng mạnh, các mức tiền “sau sửa đổi” ở bảng trên được công bố sẽ tiếp tục sửa thành mức của nghị định mới（新政令）như dưới đây. Do đó, khi dự thi năm nay, đối với các điều kiện về mức tiền này, cần kiểm tra thông tin sửa đổi pháp luật mới nhất và các quy định được áp dụng cho kỳ thi của năm tương ứng. Ngày có hiệu lực của sửa đổi này là 01/02/Reiwa 7. Nội dung của sách đã được sửa phù hợp với quy định này.</p>
+<div class="table-wrap"><table>
+<caption>Các mức của nghị định mới được sách sử dụng</caption>
+<thead><tr><th>Nội dung</th><th>Sau sửa đổi trước đó</th><th>Nghị định mới</th></tr></thead>
+<tbody>
+<tr><td><strong class="kw">Ngưỡng dưới của tổng giá trị thầu phụ làm phát sinh yêu cầu về 特定建設業, bố trí 監理技術者 và lập 施工体制台帳</strong></td><td>4500万円（7000万円）</td><td><mark class="critical">5000万円（8000万円）</mark></td></tr>
+<tr><td><strong class="kw">Ngưỡng dưới của giá trị hợp đồng yêu cầu 主任技術者 hoặc 監理技術者 làm việc chuyên trách</strong></td><td>4000万円（8000万円）</td><td><mark class="critical">4500万円（9000万円）</mark></td></tr>
+<tr><td><strong class="kw">Giới hạn trên của 特定専門工事</strong></td><td>4000万円</td><td><mark class="critical">4500万円</mark></td></tr>
+</tbody></table></div>
+<p>※ Trừ khi trong phần nội dung có ghi chú hoặc nêu song song một mức khác, các điều kiện về mức tiền trong sách này áp dụng đối với công trình xây dựng của Reiwa 7.</p>
+</div>
+</article>
+</div>
+<p class="back-to-toc"><a href="#toc">↑ Mục lục</a></p>
+</section><section class="subsection" id="sec-trends">
+<h3>最新10年間の建築法規の傾向と対策</h3>
+<div class="study-grid">
+<article class="study-card original">
+<div class="card-title">原文</div>
+<div class="recall-source" lang="ja">
+<h4>建築法規分野の問題と傾向</h4>
+<p>最新10年間の試験の建築法規分野では、<strong class="kw">建設業法・建築基準法施行令・労働安全衛生法から1題ずつ</strong>出題されている。本年度の第二次検定においても、この傾向は変わらないと考えられる。</p>
+<p>ただし、建築法規の解答形式は、令和2年度以前の実地試験（第二次検定の旧称）では<strong class="kw">記述式</strong>（空欄に当てはまる語句又は数値を記述する形式）であったが、令和3年度以降の第二次検定では<strong class="kw">五肢択一式</strong>（空欄に当てはまる正しい語句又は数値を選択する形式）に変更されている。</p>
+<h4>最新10年間の建築法規分野の出題条文</h4>
+<div class="table-wrap"><table>
+<caption>建設業法</caption>
+<thead><tr><th>条文・内容</th><th>R7</th><th>R6</th><th>R5</th><th>R4</th><th>R3</th><th>R2</th><th>R元</th><th>H30</th><th>H29</th><th>H28</th><th>小計</th></tr></thead>
+<tbody>
+<tr><td>第4条 附帯工事</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>0</td></tr>
+<tr><td>第19条の2 現場代理人の選任等に関する通知</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>0</td></tr>
+<tr><td>第20条 建設工事の見積等</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>●</td><td></td><td></td><td>1</td></tr>
+<tr><td>第23条 下請負人の変更請求</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>0</td></tr>
+<tr><td>第24条 請負契約とみなす場合</td><td></td><td></td><td></td><td></td><td>●</td><td></td><td></td><td></td><td></td><td></td><td>1</td></tr>
+<tr><td>第24条の2 下請負人の意見の聴取</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>0</td></tr>
+<tr><td>第24条の3 下請代金の支払</td><td></td><td></td><td>●</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>1</td></tr>
+<tr><td>第24条の4 検査及び引渡し</td><td></td><td></td><td></td><td></td><td></td><td>●</td><td></td><td></td><td></td><td></td><td>1</td></tr>
+<tr><td>第24条の6 特定建設業者の下請代金の支払期日等</td><td></td><td></td><td></td><td>●</td><td></td><td></td><td></td><td></td><td></td><td></td><td>1</td></tr>
+<tr><td>第24条の7 下請負人に対する特定建設業者の指導等</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>0</td></tr>
+<tr><td><strong class="kw">第24条の8 施工体制台帳及び施工体系図の作成等</strong></td><td></td><td>●</td><td></td><td></td><td></td><td></td><td></td><td></td><td>●</td><td></td><td>2</td></tr>
+<tr><td>第25条の27 建設業者等の責務</td><td>●</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>1</td></tr>
+<tr><td><strong class="kw">第26条の4 主任技術者及び監理技術者の職務等</strong></td><td></td><td></td><td></td><td></td><td></td><td></td><td>●</td><td></td><td></td><td>●</td><td>2</td></tr>
+</tbody></table></div>
+<div class="table-wrap"><table>
+<caption>建築基準法施行令・労働安全衛生法</caption>
+<thead><tr><th>法令</th><th>条文・内容</th><th>R7</th><th>R6</th><th>R5</th><th>R4</th><th>R3</th><th>R2</th><th>R元</th><th>H30</th><th>H29</th><th>H28</th><th>小計</th></tr></thead>
+<tbody>
+<tr><td rowspan="3">建築基準法施行令</td><td><strong class="kw">仮囲い・山留め</strong></td><td>●</td><td></td><td>●</td><td></td><td></td><td>●</td><td></td><td>●</td><td>●</td><td></td><td>5</td></tr>
+<tr><td><strong class="kw">建て方・転倒</strong></td><td></td><td>●</td><td></td><td></td><td>●</td><td></td><td></td><td></td><td></td><td>●</td><td>3</td></tr>
+<tr><td><strong class="kw">集積・落下物防護</strong></td><td></td><td></td><td></td><td>●</td><td></td><td></td><td>●</td><td></td><td></td><td></td><td>2</td></tr>
+<tr><td rowspan="7">労働安全衛生法</td><td>第1条 目的</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>0</td></tr>
+<tr><td>第3条 事業者等の責務</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>●</td><td></td><td>●</td><td>2</td></tr>
+<tr><td>第10条 総括安全衛生管理者</td><td></td><td></td><td>●</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>1</td></tr>
+<tr><td>第29条 元方事業者の講ずべき措置</td><td></td><td></td><td></td><td>●</td><td>●</td><td></td><td></td><td></td><td></td><td></td><td>2</td></tr>
+<tr><td><strong class="kw">第30条 特定元方事業者の講ずべき措置</strong></td><td>●</td><td></td><td></td><td></td><td></td><td></td><td>●</td><td></td><td></td><td></td><td>2</td></tr>
+<tr><td>第59・60条 安全衛生教育</td><td></td><td></td><td></td><td></td><td></td><td>●</td><td></td><td></td><td>●</td><td></td><td>2</td></tr>
+<tr><td>第71条 事業者の講ずべき措置</td><td></td><td>●</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>1</td></tr>
+</tbody></table></div>
+<p>※すべての年度が空欄の項目は、平成27年度以前にのみ出題があった項目です。</p>
+<h4>本年度の対策</h4>
+<ol>
+<li><strong class="kw">建設業法</strong>からの出題は、元請負人の義務（第24条）が中心である。本年度は、<span class="relation">現場代理人の選任等に関する通知（第19条の2）、下請負人に対する特定建設業者の指導等（第24条の7）、主任技術者及び監理技術者の職務等（第26条の4）</span>に関する事項を中心に学習しよう。</li>
+<li><strong class="kw">建築基準法施行令</strong>からの出題は、現場（労働者）の安全確保や公衆（第三者）への危害防止に関する事項が多い。本年度は、<span class="relation">仮囲い（第136条の2の20）、落下物に対する防護（第136条の5）</span>に関する事項を中心に学習しよう。</li>
+<li><strong class="kw">労働安全衛生法</strong>からの出題は、事業者等の責務と事業者の行う安全衛生教育に限定されており、学習の要点が明らかである。すなわち、特定元方事業者等が講ずべき労働災害防止の措置（第30条）に関する事項が問われている。本年度は、<span class="relation">事業者等の責務（第3条）、安全衛生教育（第59条・第60条）</span>について理解しておこう。</li>
+</ol>
+</div>
+</article>
+<article class="study-card translation">
+<div class="card-title">Bản dịch tiếng Việt</div>
+<div class="recall-source" lang="vi">
+<h4>Câu hỏi và xu hướng trong lĩnh vực pháp quy xây dựng</h4>
+<p>Trong các kỳ thi của 10 năm gần nhất, phần pháp quy xây dựng đều có <strong class="kw">mỗi luật một câu từ 建設業法, 建築基準法施行令 và 労働安全衛生法</strong>. Sách cho rằng xu hướng này cũng sẽ không thay đổi trong kỳ kiểm định lần hai của năm nay.</p>
+<p>Tuy nhiên, hình thức trả lời đã thay đổi. Đến Reiwa 2, kỳ thi thực hành, tên cũ của 第二次検定, sử dụng <strong class="kw">記述式, dạng tự điền thuật ngữ hoặc trị số</strong>. Từ Reiwa 3, 第二次検定 chuyển sang <strong class="kw">五肢択一式, dạng chọn một đáp án đúng trong năm phương án</strong>.</p>
+<h4>Các điều luật đã được ra trong 10 năm gần nhất</h4>
+<div class="table-wrap"><table>
+<caption>建設業法</caption>
+<thead><tr><th>Điều luật và nội dung</th><th>R7</th><th>R6</th><th>R5</th><th>R4</th><th>R3</th><th>R2</th><th>R元</th><th>H30</th><th>H29</th><th>H28</th><th>Tổng phụ</th></tr></thead>
+<tbody>
+<tr><td>Điều 4: 附帯工事</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>0</td></tr>
+<tr><td>Điều 19-2: thông báo lựa chọn 現場代理人</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>0</td></tr>
+<tr><td>Điều 20: báo giá công trình</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>●</td><td></td><td></td><td>1</td></tr>
+<tr><td>Điều 23: yêu cầu thay đổi nhà thầu phụ</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>0</td></tr>
+<tr><td>Điều 24: trường hợp được coi là hợp đồng nhận thầu</td><td></td><td></td><td></td><td></td><td>●</td><td></td><td></td><td></td><td></td><td></td><td>1</td></tr>
+<tr><td>Điều 24-2: lắng nghe ý kiến nhà thầu phụ</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>0</td></tr>
+<tr><td>Điều 24-3: thanh toán tiền thầu phụ</td><td></td><td></td><td>●</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>1</td></tr>
+<tr><td>Điều 24-4: kiểm tra và bàn giao</td><td></td><td></td><td></td><td></td><td></td><td>●</td><td></td><td></td><td></td><td></td><td>1</td></tr>
+<tr><td>Điều 24-6: thời hạn thanh toán tiền thầu phụ của 特定建設業者</td><td></td><td></td><td></td><td>●</td><td></td><td></td><td></td><td></td><td></td><td></td><td>1</td></tr>
+<tr><td>Điều 24-7: chỉ đạo của 特定建設業者 đối với nhà thầu phụ</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>0</td></tr>
+<tr><td><strong class="kw">Điều 24-8: lập 施工体制台帳 và 施工体系図</strong></td><td></td><td>●</td><td></td><td></td><td></td><td></td><td></td><td></td><td>●</td><td></td><td>2</td></tr>
+<tr><td>Điều 25-27: trách nhiệm của doanh nghiệp xây dựng</td><td>●</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>1</td></tr>
+<tr><td><strong class="kw">Điều 26-4: nhiệm vụ của 主任技術者 và 監理技術者</strong></td><td></td><td></td><td></td><td></td><td></td><td></td><td>●</td><td></td><td></td><td>●</td><td>2</td></tr>
+</tbody></table></div>
+<div class="table-wrap"><table>
+<caption>建築基準法施行令 và 労働安全衛生法</caption>
+<thead><tr><th>Luật</th><th>Điều luật và nội dung</th><th>R7</th><th>R6</th><th>R5</th><th>R4</th><th>R3</th><th>R2</th><th>R元</th><th>H30</th><th>H29</th><th>H28</th><th>Tổng phụ</th></tr></thead>
+<tbody>
+<tr><td rowspan="3">建築基準法施行令</td><td><strong class="kw">仮囲い・山留め</strong></td><td>●</td><td></td><td>●</td><td></td><td></td><td>●</td><td></td><td>●</td><td>●</td><td></td><td>5</td></tr>
+<tr><td><strong class="kw">Dựng lắp và lật/đổ</strong></td><td></td><td>●</td><td></td><td></td><td>●</td><td></td><td></td><td></td><td></td><td>●</td><td>3</td></tr>
+<tr><td><strong class="kw">Tập kết vật liệu và phòng hộ vật rơi</strong></td><td></td><td></td><td></td><td>●</td><td></td><td></td><td>●</td><td></td><td></td><td></td><td>2</td></tr>
+<tr><td rowspan="7">労働安全衛生法</td><td>Điều 1: mục đích</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>0</td></tr>
+<tr><td>Điều 3: trách nhiệm của người sử dụng lao động</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>●</td><td></td><td>●</td><td>2</td></tr>
+<tr><td>Điều 10: 総括安全衛生管理者</td><td></td><td></td><td>●</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>1</td></tr>
+<tr><td>Điều 29: biện pháp của 元方事業者</td><td></td><td></td><td></td><td>●</td><td>●</td><td></td><td></td><td></td><td></td><td></td><td>2</td></tr>
+<tr><td><strong class="kw">Điều 30: biện pháp của 特定元方事業者</strong></td><td>●</td><td></td><td></td><td></td><td></td><td></td><td>●</td><td></td><td></td><td></td><td>2</td></tr>
+<tr><td>Điều 59, 60: giáo dục an toàn và vệ sinh</td><td></td><td></td><td></td><td></td><td></td><td>●</td><td></td><td></td><td>●</td><td></td><td>2</td></tr>
+<tr><td>Điều 71: biện pháp của 事業者</td><td></td><td>●</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>1</td></tr>
+</tbody></table></div>
+<p>※ Các mục hoàn toàn trống trong 10 năm được thống kê là những mục chỉ từng xuất hiện từ Heisei 27 trở về trước.</p>
+<h4>Đối sách học tập cho năm nay</h4>
+<ol>
+<li><strong class="kw">建設業法</strong>: câu hỏi tập trung chủ yếu vào nghĩa vụ của nhà thầu chính, Điều 24. Năm nay tập trung vào <span class="relation">thông báo lựa chọn 現場代理人, Điều 19-2; chỉ đạo nhà thầu phụ của 特定建設業者, Điều 24-7; và nhiệm vụ của 主任技術者, 監理技術者, Điều 26-4</span>.</li>
+<li><strong class="kw">建築基準法施行令</strong>: thường liên quan đến an toàn người lao động tại công trường và phòng ngừa nguy hại cho công chúng. Năm nay tập trung vào <span class="relation">仮囲い, Điều 136-2-20; và 落下物に対する防護, Điều 136-5</span>.</li>
+<li><strong class="kw">労働安全衛生法</strong>: trọng tâm là trách nhiệm của người sử dụng lao động và giáo dục an toàn, vệ sinh. Đặc biệt là các biện pháp phòng ngừa tai nạn của 特定元方事業者 theo Điều 30. Năm nay cần nắm <span class="relation">trách nhiệm của 事業者, Điều 3; giáo dục an toàn và vệ sinh, Điều 59 và 60</span>.</li>
+</ol>
+</div>
+</article>
+</div>
+<p class="back-to-toc"><a href="#toc">↑ Mục lục</a></p>
+</section>
+</section><section class="study-section" id="sec-kensetsugyo">
+<div class="section-head">
+<h2>6.1.1 建設業法の要点</h2>
+<span class="source-ref">Nguồn: Book page 577-580</span>
+</div>
+<section class="subsection" id="sec-kensetsugyo-general">
+<h3>総則・建設業の許可・請負契約の原則</h3>
+<div class="study-grid">
+<article class="study-card original">
+<div class="card-title">原文</div>
+<div class="recall-source" lang="ja">
+<h4>1　総則</h4>
+<h4>第1条　建設業法の目的</h4>
+<p>建設業を営む者の資質を向上させ、請負契約を適正化し、発注者の保護と建設業の健全な発展を促し、公共の福祉の増進に寄与する。</p>
+<h4>2　建設業の許可</h4>
+<h4>第4条　附帯工事</h4>
+<ol>
+<li>建設業者は、許可を受けた建設業に係る建設工事を請け負う場合においては、当該建設工事に<strong class="kw">附帯する他の建設業に係る建設工事</strong>を請け負うことができる。</li>
+<li>許可のない業種の附帯工事は、<span class="relation">その業種の主任技術者の資格を有する者の管理により自社で行うか、又は、許可を有する建設業者による施工</span>とする。</li>
+</ol>
+<h4>3　建設工事の請負契約</h4>
+<h4>第18条　建設工事の請負契約の原則</h4>
+<p>発注者と請負契約者は<strong class="kw">対等な立場</strong>に立って合意し公正な契約を締結し、信義に従って誠実にこれを履行する。</p>
+<h4>第19条の2　現場代理人の選任通知</h4>
+<ol>
+<li>請負人は、<strong class="kw">現場代理人の氏名及び権限</strong>を注文者に<strong class="kw">書面で通知</strong>する（書面主義）。</li>
+<li>注文者の請負人に対する意見の申し出の方法を書面により通知する。</li>
+</ol>
+</div>
+</article>
+<article class="study-card translation">
+<div class="card-title">Bản dịch tiếng Việt</div>
+<div class="recall-source" lang="vi">
+<h4>1. Quy định chung</h4>
+<h4>Điều 1: Mục đích của 建設業法</h4>
+<p>Nâng cao năng lực và tư cách của những người hoạt động trong ngành xây dựng, làm cho hợp đồng nhận thầu được thực hiện đúng đắn, bảo vệ chủ đầu tư, thúc đẩy sự phát triển lành mạnh của ngành xây dựng và góp phần nâng cao phúc lợi công cộng.</p>
+<h4>2. Giấy phép kinh doanh xây dựng</h4>
+<h4>Điều 4: Công việc phụ kèm（附帯工事）</h4>
+<ol>
+<li>Khi một doanh nghiệp xây dựng nhận một công trình thuộc ngành nghề mà doanh nghiệp đó đã được cấp phép, doanh nghiệp có thể đồng thời nhận <strong class="kw">công việc xây dựng thuộc ngành nghề khác nhưng mang tính phụ kèm trực tiếp với công trình đó</strong>.</li>
+<li>Nếu công việc phụ kèm thuộc ngành nghề mà doanh nghiệp không có giấy phép, phải <span class="relation">tự thi công dưới sự quản lý của người có đủ tư cách 主任技術者 đối với ngành nghề đó, hoặc giao cho doanh nghiệp xây dựng có giấy phép tương ứng thi công</span>.</li>
+</ol>
+<h4>3. Hợp đồng nhận thầu công trình xây dựng</h4>
+<h4>Điều 18: Nguyên tắc của hợp đồng nhận thầu</h4>
+<p>Chủ đầu tư và bên nhận thầu phải đứng trên <strong class="kw">vị thế bình đẳng</strong>, đạt được sự đồng thuận, ký kết hợp đồng công bằng và thực hiện hợp đồng một cách thành thực theo nguyên tắc thiện chí.</p>
+<h4>Điều 19-2: Thông báo về việc bổ nhiệm 現場代理人</h4>
+<ol>
+<li>Bên nhận thầu phải thông báo <strong class="kw">họ tên và phạm vi quyền hạn của 現場代理人</strong> cho bên đặt hàng <strong class="kw">bằng văn bản</strong>. Đây là nguyên tắc 書面主義.</li>
+<li>Phương thức để bên đặt hàng đưa ra ý kiến đối với bên nhận thầu cũng phải được thông báo bằng văn bản.</li>
+</ol>
+</div>
+</article>
+</div>
+<p class="back-to-toc"><a href="#toc">↑ Mục lục</a></p>
+</section><section class="subsection" id="sec-estimate-contract">
+<h3>見積期間・下請負人の変更請求・請負契約とみなす場合</h3>
+<div class="study-grid">
+<article class="study-card original">
+<div class="card-title">原文</div>
+<div class="recall-source" lang="ja">
+<h4>第20条　建設工事の見積期間（令6条）</h4>
+<p>請負契約を締結するときは、種別ごとに、<strong class="kw">材料費・労務費等の経費の内訳</strong>を明らかにする。注文者から請求があったときは、請負契約が成立するまでの間に、<strong class="kw">見積書を交付</strong>する。</p>
+<ol>
+<li><strong class="kw">1件の予定価額が500万円に満たない</strong>ときは、<mark class="critical">1日以上</mark></li>
+<li><strong class="kw">1件の予定価額が500万円以上5,000万円に満たない</strong>ときは、<mark class="critical">10日以上</mark></li>
+<li><strong class="kw">1件の予定価額が5,000万円以上</strong>のときは、<mark class="critical">15日以上</mark></li>
+<li>入札の方法は、<strong class="kw">入札10日前</strong>に官報、新聞等で公示しなければならない。又、急を要するときは、その期間を<mark class="critical">5日まで短縮できる</mark>（予算決算及び会計令による）。</li>
+</ol>
+<h4>第23条　下請負人の変更請求</h4>
+<p>注文者は、請負人に対して、建設工事の施工につき<strong class="kw">著しく不適当と認められる下請負人</strong>があるとき、変更を請求できる。ただし、<span class="trap">書面によりあらかじめ承諾を得た場合は除く</span>。</p>
+<h4>第24条　請負契約とみなす場合</h4>
+<p>委託その他いかなる名義をもってするかを問わず、<span class="relation">報酬を得て建設工事の完成を目的として締結する契約</span>は、建設工事の請負契約とみなして、この法律の規定を適用する。</p>
+</div>
+</article>
+<article class="study-card translation">
+<div class="card-title">Bản dịch tiếng Việt</div>
+<div class="recall-source" lang="vi">
+<h4>Điều 20: Thời gian dành cho việc lập báo giá</h4>
+<p>Khi ký hợp đồng nhận thầu, phải làm rõ <strong class="kw">cơ cấu chi phí theo từng loại công việc, gồm chi phí vật liệu, chi phí lao động và các chi phí khác</strong>. Nếu bên đặt hàng yêu cầu, bên nhận thầu phải <strong class="kw">giao bản báo giá（見積書）</strong> trước khi hợp đồng nhận thầu được xác lập.</p>
+<ol>
+<li><strong class="kw">Giá dự toán dưới 500万円</strong>: <mark class="critical">1 ngày trở lên</mark>.</li>
+<li><strong class="kw">Từ 500万円 đến dưới 5,000万円</strong>: <mark class="critical">10 ngày trở lên</mark>.</li>
+<li><strong class="kw">Từ 5,000万円 trở lên</strong>: <mark class="critical">15 ngày trở lên</mark>.</li>
+<li>Đối với phương thức đấu thầu, phải công bố trên công báo, báo chí hoặc phương tiện tương đương <strong class="kw">trước ngày đấu thầu 10 ngày</strong>. Trong trường hợp khẩn cấp, thời hạn này có thể <mark class="critical">rút ngắn xuống còn 5 ngày</mark>.</li>
+</ol>
+<h4>Điều 23: Yêu cầu thay đổi nhà thầu phụ</h4>
+<p>Nếu có <strong class="kw">nhà thầu phụ được đánh giá là rõ ràng không phù hợp đối với việc thi công công trình</strong>, bên đặt hàng có thể yêu cầu bên nhận thầu thay đổi nhà thầu phụ đó. Tuy nhiên, <span class="trap">không áp dụng nếu đã được chấp thuận trước bằng văn bản</span>.</p>
+<h4>Điều 24: Trường hợp được coi là hợp đồng nhận thầu</h4>
+<p>Không phụ thuộc hợp đồng được gọi là ủy thác hay bằng bất kỳ tên gọi nào khác, nếu <span class="relation">hợp đồng có nhận thù lao và được ký kết với mục đích hoàn thành công trình xây dựng</span> thì được coi là hợp đồng nhận thầu công trình xây dựng và áp dụng các quy định của luật này.</p>
+</div>
+</article>
+</div>
+<p class="back-to-toc"><a href="#toc">↑ Mục lục</a></p>
+</section><section class="subsection" id="sec-main-contractor">
+<h3>元請負人の義務</h3>
+<div class="study-grid">
+<article class="study-card original">
+<div class="card-title">原文</div>
+<div class="recall-source" lang="ja">
+<h4>4　元請負人の義務</h4>
+<h4>第24条の2　下請負人の意見の聴取</h4>
+<p>元請負人は、必要な工程の細目、作業方法、その他、元請負人において定めるべき事項があるとき、<strong class="kw">下請負人の意見を聞かなければならない</strong>。</p>
+<h4>第24条の3　下請代金の支払</h4>
+<p>元請負人が請負代金の支払を受けたときは、下請負人の出来形部分に対して、<strong class="kw">1月以内</strong>の<mark class="critical">できる限り短い期間内</mark>に下請代金を支払わなければならない。下請代金のうち、<strong class="kw">労務費に相当する部分</strong>は、<span class="relation">現金で支払うよう配慮</span>する。また、元請負人が前払金の支払を受けたときは、下請負人に対して、資材の購入・労働者の募集等の費用として前払金を支払うよう配慮する。</p>
+<h4>第24条の4　検査と引渡し</h4>
+<p>元請負人は下請負人から完成の通知を受けた日から<strong class="kw">20日以内</strong>の<mark class="critical">できる限り短い期間内</mark>にその完成を検査して確認し、<span class="trap">特約がなければ</span>、申し出があるときは、<strong class="kw">ただちに引き受けなければならない</strong>。</p>
+<h4>第24条の5　不利益取扱いの禁止</h4>
+<p>元請負人は、当該元請負人について「不当に低い請負代金の禁止」・「不当な使用資材等の購入強制の禁止」・「下請代金の支払」・「検査及び引渡し」・「手形の交付」・「遅延利息の支払」に違反する行為があるとして、下請負人が国土交通大臣等・公正取引委員会・中小企業庁長官にその事実を通報したことを理由として、当該下請負人に対して、<span class="trap">取引の停止・その他の不利益な取扱いをしてはならない</span>。※この条項は令和元年6月の法改正により新たに加えられた規定である。</p>
+<h4>第24条の6　特定建設業者の下請代金の支払期日</h4>
+<p>特定建設業者が注文者となった下請契約で、完成を検査して確認し、引き渡して後、<strong class="kw">50日以内</strong>の<mark class="critical">できる限り短い期間</mark>に支払期日を定める。<span class="trap">支払期日がこれに違反するとき50日と定めたものとする</span>。</p>
+<h4>第24条の7　下請負人に対する特定建設業者の指導</h4>
+<p>発注者から直接請け負った特定建設業者（特定元方事業者）は、下請負人が、当該工事において、労働者の使用や工事の施工に関して、<strong class="kw">法令に触れないように指導</strong>しなければならない。指導に従わない下請負人に対して、その建設業の許可を与えた国土交通大臣、都道府県知事又は建設工事の現場を管轄する都道府県知事にその旨を通報する。</p>
+</div>
+</article>
+<article class="study-card translation">
+<div class="card-title">Bản dịch tiếng Việt</div>
+<div class="recall-source" lang="vi">
+<h4>4. Nghĩa vụ của nhà thầu chính（元請負人）</h4>
+<h4>Điều 24-2: Lắng nghe ý kiến của nhà thầu phụ</h4>
+<p>Khi nhà thầu chính cần quyết định chi tiết tiến độ, phương pháp thi công hoặc các nội dung khác mà nhà thầu chính phải quyết định, <strong class="kw">phải lắng nghe ý kiến của nhà thầu phụ</strong>.</p>
+<h4>Điều 24-3: Thanh toán tiền thầu phụ</h4>
+<p>Khi nhà thầu chính đã nhận được tiền thanh toán của hợp đồng, đối với phần khối lượng đã hoàn thành của nhà thầu phụ, phải thanh toán <strong class="kw">trong vòng 1 tháng</strong> và <mark class="critical">trong thời gian ngắn nhất có thể</mark>. Đối với <strong class="kw">phần tương ứng với chi phí lao động</strong>, phải <span class="relation">lưu ý để thanh toán bằng tiền mặt</span>. Khi nhà thầu chính nhận được tiền tạm ứng, phải lưu ý để thanh toán tạm ứng cho nhà thầu phụ nhằm chi trả chi phí mua vật tư, tuyển dụng lao động, v.v.</p>
+<h4>Điều 24-4: Kiểm tra và bàn giao</h4>
+<p>Sau khi nhận được thông báo hoàn thành từ nhà thầu phụ, nhà thầu chính phải kiểm tra và xác nhận việc hoàn thành <strong class="kw">trong vòng 20 ngày</strong> và <mark class="critical">trong thời gian ngắn nhất có thể</mark>. <span class="trap">Nếu không có thỏa thuận đặc biệt</span> và nhà thầu phụ đề nghị bàn giao thì <strong class="kw">phải nhận bàn giao ngay</strong>.</p>
+<h4>Điều 24-5: Cấm đối xử bất lợi</h4>
+<p>Nếu nhà thầu phụ thông báo cho Bộ trưởng Bộ Đất đai, Hạ tầng, Giao thông và Du lịch hoặc Thống đốc tỉnh đã cấp phép cho nhà thầu chính, Ủy ban Thương mại Công bằng hoặc Cục trưởng Cục Doanh nghiệp vừa và nhỏ về việc nhà thầu chính có hành vi vi phạm các quy định liên quan đến cấm giá nhận thầu thấp một cách bất hợp lý, cấm ép mua vật tư sử dụng một cách bất hợp lý, thanh toán tiền thầu phụ, kiểm tra và bàn giao, giao hối phiếu hoặc thanh toán lãi do chậm trả, thì nhà thầu chính <span class="trap">không được lấy việc nhà thầu phụ đã thông báo sự việc làm lý do để dừng giao dịch hoặc áp dụng bất kỳ cách đối xử bất lợi nào khác đối với nhà thầu phụ đó</span>. ※ Điều khoản này được bổ sung mới theo sửa đổi pháp luật tháng 6 năm Reiwa 1.</p>
+<h4>Điều 24-6: Thời hạn thanh toán tiền thầu phụ của 特定建設業者</h4>
+<p>Trong hợp đồng thầu phụ mà 特定建設業者 là bên đặt hàng, sau khi đã kiểm tra, xác nhận hoàn thành và nhận bàn giao, phải quy định ngày đến hạn thanh toán <strong class="kw">trong vòng 50 ngày</strong> và <mark class="critical">trong thời gian ngắn nhất có thể</mark>. <span class="trap">Nếu quy định trái yêu cầu này thì được coi là ngày thanh toán đã được ấn định vào ngày thứ 50</span>.</p>
+<h4>Điều 24-7: Sự chỉ đạo của 特定建設業者 đối với nhà thầu phụ</h4>
+<p>特定建設業者 trực tiếp nhận công trình từ chủ đầu tư phải <strong class="kw">chỉ đạo để nhà thầu phụ không vi phạm pháp luật</strong> trong vấn đề sử dụng người lao động và thi công công trình. Đối với nhà thầu phụ không tuân theo sự chỉ đạo, phải thông báo sự việc cho Bộ trưởng Bộ Đất đai, Hạ tầng, Giao thông và Du lịch đã cấp giấy phép kinh doanh xây dựng, Thống đốc tỉnh đã cấp giấy phép, hoặc Thống đốc tỉnh có thẩm quyền đối với địa bàn nơi có công trường.</p>
+</div>
+</article>
+</div>
+<p class="back-to-toc"><a href="#toc">↑ Mục lục</a></p>
+</section><section class="subsection" id="sec-orgchart">
+<h3>施工体制台帳及び施工体系図</h3>
+<div class="study-grid">
+<article class="study-card original">
+<div class="card-title">原文</div>
+<div class="recall-source" lang="ja">
+<h4>第24条の8　施工体制台帳及び施工体系図の作成等（読み替え）要旨</h4>
+<ol>
+<li><strong class="kw">施工体製台帳</strong>は、適正な施工と発注者を保護する目的で製作する。</li>
+<li><strong class="kw">公共工事</strong>では、発注者から直接建設工事を請け負った建設業者は、<span class="relation">下請代金の額に係らず、施工体制台帳および施工体系図を作成</span>しなければならない。<strong class="kw">民間工事</strong>では、下請代金の総額が<mark class="critical">5000万円以上（建築一式工事では8000万円以上）</mark>となる特定建設業者は、施工体制台帳および施工体系図を作成しなければならない。</li>
+<li>施工体制台帳には、当該工事について、建設業の許可を受けた下請負人の商号または名称・建設工事の内容・建設工事の工期など、省令で定める事項を記載する。<strong class="kw">施工体制台帳</strong>は、工事現場ごとに備え置き、工事完了後<mark class="critical">5年間保存</mark>する。</li>
+<li>施工体系図には、現場における現在の責任分担などの事項を記載する。<strong class="kw">施工体系図</strong>は、労働者および公衆が見やすい位置に掲げ、工事完了後<mark class="critical">10年間保存</mark>する。</li>
+<li>特定建設業者から下請負した下請負人が他請負人に請け負わせたときは、国土交通省令により、その者の商号又は名称と工事の内容及び工期その他省令の定める事項を、特定建設業者に通知する。</li>
+<li>発注者の請求に対して、(1)商号又は名称、(2)現場代理人の氏名・権限、(3)監理技術者の氏名・権限等を記載した施工体制台帳を発注者の閲覧に供しなければならない。</li>
+</ol>
+</div>
+</article>
+<article class="study-card translation">
+<div class="card-title">Bản dịch tiếng Việt</div>
+<div class="recall-source" lang="vi">
+<h4>Điều 24-8: Lập 施工体制台帳 và 施工体系図, nội dung tóm lược sau khi đọc thay thế</h4>
+<ol>
+<li><strong class="kw">施工体製台帳</strong> được lập nhằm bảo đảm thi công thích hợp và bảo vệ chủ đầu tư.<br/>※ Ở câu ①, sách in là <code>施工体製台帳</code>; các phần còn lại của chính trang này sử dụng thuật ngữ <code>施工体制台帳</code>.</li>
+<li>Đối với <strong class="kw">công trình công cộng</strong>, doanh nghiệp xây dựng trực tiếp nhận công trình từ chủ đầu tư phải <span class="relation">lập 施工体制台帳 và 施工体系図 không phụ thuộc vào giá trị tiền thầu phụ</span>. Đối với <strong class="kw">công trình tư nhân</strong>, 特定建設業者 phải lập hai tài liệu này khi tổng giá trị thầu phụ đạt <mark class="critical">5000万円 trở lên, hoặc 8000万円 trở lên đối với 建築一式工事</mark>.</li>
+<li>施工体制台帳 phải ghi tên thương mại hoặc tên của nhà thầu phụ có giấy phép, nội dung công trình, thời hạn thi công và các nội dung do quy định của Bộ quy định. <strong class="kw">施工体制台帳</strong> phải lưu tại từng công trường và <mark class="critical">bảo quản 5 năm sau khi công trình hoàn thành</mark>.</li>
+<li>施工体系図 phải ghi các nội dung như phân công trách nhiệm hiện tại tại công trường. <strong class="kw">施工体系図</strong> phải niêm yết tại vị trí mà người lao động và công chúng dễ nhìn thấy và <mark class="critical">bảo quản 10 năm sau khi công trình hoàn thành</mark>.</li>
+<li>Khi nhà thầu phụ nhận thầu từ 特定建設業者 rồi tiếp tục giao công việc cho nhà thầu khác, phải thông báo cho 特定建設業者 các nội dung như tên thương mại hoặc tên, nội dung công việc, thời hạn thi công và các nội dung khác được quy định.</li>
+<li>Khi chủ đầu tư yêu cầu, phải cho chủ đầu tư xem 施工体制台帳 có ghi tên thương mại hoặc tên, họ tên và quyền hạn của 現場代理人, họ tên và quyền hạn của 監理技術者, v.v.</li>
+</ol>
+</div>
+</article>
+</div>
+<p class="back-to-toc"><a href="#toc">↑ Mục lục</a></p>
+</section><section class="subsection" id="sec-tech-management">
+<h3>施工技術の確保・主任技術者・監理技術者</h3>
+<div class="study-grid">
+<article class="study-card original">
+<div class="card-title">原文</div>
+<div class="recall-source" lang="ja">
+<h4>5　施工技術の確保</h4>
+<h4>第25条の27　施工技術の確保に関する建設業者等の責務</h4>
+<ol>
+<li>建設業者は、建設工事の担い手の育成・確保・その他の施工技術の確保に努める。</li>
+<li>建設業者は、労働者が有する知識・技能・その他の能力についての公正な評価に基づく適正な賃金の支払・その他の適切な処遇を確保するための措置を効果的に実施する。</li>
+<li>建設工事に従事する者は、建設工事を適正に実施するために必要な知識・技術・技能の向上に努める。</li>
+<li>国土交通大臣は、これらの取組に資するため、必要に応じ、講習の実施・調査の実施・資料の提供・その他の措置を講ずるものとする。</li>
+</ol>
+<h4>第26条　主任技術者及び監理技術者の設置</h4>
+<ol>
+<li>建設工事を施工する建設業者は、施工の技術上の管理をつかさどる<strong class="kw">主任技術者</strong>を専任技術者（建設業者が常用する技術者）の中から選任し設置する。</li>
+<li>特定建設業者が、<mark class="critical">5000万円（建築一式工事では8000万円）以上</mark>を下請負契約している場合、工事現場に施工上の管理をつかさどる<strong class="kw">監理技術者</strong>を専任技術者の中から選任し設置する。</li>
+<li>建設工事が指定建設業である場合、特定建設業者が、<mark class="critical">5000万円（建築一式工事では8000万円）以上</mark>で下請負契約しているときは、工事現場で施工上の管理をつかさどるための監理技術者は、国家試験に合格した者又は国土交通大臣がこれと同等以上と認める者で「<strong class="kw">監理技術者資格者証</strong>」の交付を受けている者とする。</li>
+</ol>
+<h4>第26条の4　主任技術者及び監理技術者の職務</h4>
+<ol>
+<li>主任技術者及び監理技術者は、工事現場における工事を適正に実施するため<strong class="kw">施工計画の作成、工程管理、品質管理その他技術的事項の管理</strong>と工事に従事する者の<strong class="kw">技術上の指導監督</strong>の職務を誠実に行う。</li>
+<li>建設工事に従事する者は主任技術者又は監理技術者がその職務として行う指導に従わなければならない。</li>
+</ol>
+</div>
+</article>
+<article class="study-card translation">
+<div class="card-title">Bản dịch tiếng Việt</div>
+<div class="recall-source" lang="vi">
+<h4>5. Bảo đảm kỹ thuật thi công</h4>
+<h4>Điều 25-27: Trách nhiệm của doanh nghiệp xây dựng và các chủ thể liên quan</h4>
+<ol>
+<li>Doanh nghiệp xây dựng phải nỗ lực đào tạo, bảo đảm nguồn nhân lực đảm nhiệm công trình và bảo đảm kỹ thuật thi công.</li>
+<li>Doanh nghiệp xây dựng phải thực hiện có hiệu quả các biện pháp nhằm bảo đảm trả lương thích hợp và chế độ đãi ngộ thích hợp khác, dựa trên đánh giá công bằng về kiến thức, kỹ năng và các năng lực khác của người lao động.</li>
+<li>Người tham gia công trình xây dựng phải nỗ lực nâng cao kiến thức, kỹ thuật và kỹ năng cần thiết để thi công công trình một cách thích hợp.</li>
+<li>Bộ trưởng Bộ Đất đai, Hạ tầng, Giao thông và Du lịch, khi cần thiết, thực hiện các biện pháp như tổ chức khóa học, điều tra, cung cấp tài liệu và các biện pháp khác.</li>
+</ol>
+<h4>Điều 26: Bố trí 主任技術者 và 監理技術者</h4>
+<ol>
+<li>Doanh nghiệp xây dựng thi công công trình phải lựa chọn và bố trí <strong class="kw">主任技術者</strong>, người phụ trách quản lý về mặt kỹ thuật thi công, từ trong số 専任技術者.</li>
+<li>Khi 特定建設業者 ký hợp đồng thầu phụ từ <mark class="critical">5000万円 trở lên, hoặc 8000万円 trở lên đối với 建築一式工事</mark>, phải lựa chọn và bố trí tại công trường <strong class="kw">監理技術者</strong> phụ trách quản lý thi công.</li>
+<li>Nếu công trình thuộc 指定建設業 và 特定建設業者 ký hợp đồng thầu phụ từ <mark class="critical">5000万円 trở lên, hoặc 8000万円 trở lên đối với 建築一式工事</mark>, 監理技術者 phải là người đã đỗ kỳ thi quốc gia hoặc được Bộ trưởng Bộ Đất đai, Hạ tầng, Giao thông và Du lịch công nhận có trình độ tương đương trở lên, đồng thời đã được cấp <strong class="kw">監理技術者資格者証</strong>.</li>
+</ol>
+<h4>Điều 26-4: Nhiệm vụ của 主任技術者 và 監理技術者</h4>
+<ol>
+<li>Để công trình được thi công thích hợp, 主任技術者 và 監理技術者 phải thực hiện trung thực các nhiệm vụ <strong class="kw">lập kế hoạch thi công, quản lý tiến độ, quản lý chất lượng và các vấn đề kỹ thuật khác</strong>, đồng thời <strong class="kw">chỉ đạo, giám sát kỹ thuật</strong> đối với người tham gia thi công.</li>
+<li>Người tham gia công trình xây dựng phải tuân theo sự chỉ đạo mà 主任技術者 hoặc 監理技術者 thực hiện trong phạm vi nhiệm vụ.</li>
+</ol>
+</div>
+</article>
+</div>
+<p class="back-to-toc"><a href="#toc">↑ Mục lục</a></p>
+</section><section class="subsection" id="sec-tech-exam">
+<h3>技術検定・監理技術者資格者証</h3>
+<div class="study-grid">
+<article class="study-card original">
+<div class="card-title">原文</div>
+<div class="recall-source" lang="ja">
+<h4>第27条　技術検定</h4>
+<ol>
+<li>国土交通大臣は、施工技術の向上を図るため、建設業者の施工する建設工事に従事し又はしようとする者について、政令の定めるところにより、技術検定を行うことができる。</li>
+<li><strong class="kw">第一次検定</strong>は、建設工事に従事し又はしようとする者が<strong class="kw">施工技術の基礎となる知識及び能力</strong>を有するかどうかを判定するために行う。</li>
+<li><strong class="kw">第二次検定</strong>は、建設工事に従事し又はしようとする者が施工技術のうち<strong class="kw">技術上の管理及び指導監督に係る知識及び能力</strong>を有するかどうかを判定するために行う。</li>
+</ol>
+<h4>第27条の18　監理技術者資格者証の交付</h4>
+<ol>
+<li>国土交通大臣は、国家試験に合格した者又は国土交通大臣の認定を受けた者に、その申請により「資格者証」の交付をする。</li>
+<li>「資格者証」には、建設業の種類、その他省令で定める事項を記載する。申請者が2つ以上の資格を有するときは、合わせて記載する。</li>
+<li>「資格者証」を受けようとする者は、国土交通大臣の指定する講習で<strong class="kw">交付前</strong><mark class="critical">1年以内</mark>に行われるものを受講しなければならない。</li>
+<li>「資格者証」は<strong class="kw">有効期間</strong>が<mark class="critical">5年</mark>で、申請により更新する。</li>
+</ol>
+</div>
+</article>
+<article class="study-card translation">
+<div class="card-title">Bản dịch tiếng Việt</div>
+<div class="recall-source" lang="vi">
+<h4>Điều 27: Kỳ thi kiểm định kỹ thuật</h4>
+<ol>
+<li>Bộ trưởng Bộ Đất đai, Hạ tầng, Giao thông và Du lịch có thể tổ chức kỳ thi kiểm định kỹ thuật theo quy định của nghị định đối với người đang hoặc dự định tham gia công trình xây dựng, nhằm nâng cao kỹ thuật thi công.</li>
+<li><strong class="kw">第一次検定</strong> được thực hiện để đánh giá xem người đang hoặc dự định tham gia công trình xây dựng có <strong class="kw">kiến thức và năng lực làm nền tảng cho kỹ thuật thi công</strong> hay không.</li>
+<li><strong class="kw">第二次検定</strong> được thực hiện để đánh giá xem người đó có <strong class="kw">kiến thức và năng lực liên quan đến quản lý kỹ thuật và chỉ đạo, giám sát</strong> hay không.</li>
+</ol>
+<h4>Điều 27-18: Cấp 監理技術者資格者証</h4>
+<ol>
+<li>Bộ trưởng cấp 資格者証 theo đơn đề nghị cho người đã đỗ kỳ thi quốc gia hoặc được Bộ trưởng công nhận.</li>
+<li>資格者証 ghi loại hình ngành xây dựng và các nội dung khác theo quy định. Nếu người nộp đơn có từ hai tư cách trở lên, các tư cách đó được ghi chung.</li>
+<li>Người muốn được cấp 資格者証 phải tham gia khóa học do Bộ trưởng chỉ định, được tổ chức <strong class="kw">trước thời điểm cấp thẻ</strong> trong vòng <mark class="critical">1 năm</mark>.</li>
+<li>資格者証 có <strong class="kw">thời hạn hiệu lực</strong> <mark class="critical">5 năm</mark> và được gia hạn theo đơn đề nghị.</li>
+</ol>
+</div>
+</article>
+</div>
+<p class="back-to-toc"><a href="#toc">↑ Mục lục</a></p>
+</section>
+</section><section class="study-section" id="sec-kijun">
+<div class="section-head">
+<h2>6.1.2 建築基準法（工事現場の危害の防止）の要点</h2>
+<span class="source-ref">Nguồn: Book page 581-582</span>
+</div>
+<section class="subsection" id="sec-fence-excavation">
+<h3>仮囲い・根切り・山留め</h3>
+<div class="study-grid">
+<article class="study-card original">
+<div class="card-title">原文</div>
+<div class="recall-source" lang="ja">
+<h4>施行令第136条の2の20　仮囲い</h4>
+<p>木造の建築物で<strong class="kw">高さが13m若しくは軒の高さが9mを超えるもの</strong>又は木造以外の建築物で<strong class="kw">2以上の階数</strong>を有する建築、修繕、模様替え又は除去のための工事を行う場合においては、地盤面（周辺地盤面よりも低い場合は周辺地盤面）からの<strong class="kw">仮囲いの高さ</strong>が<mark class="critical">1.8m以上</mark>の板塀その他これに類する仮囲いを設けなければならない。</p>
+<h4>施行令第136条の3　根切り工事、山留め工事を行う場合の危害の防止</h4>
+<ol>
+<li>根切り工事、山留め工事、ウェル工事、ケーソン工事その他基礎工事を行うときは、あらかじめ、<strong class="kw">ガス管、ケーブル、水道管及び下水道管の損壊を防止</strong>する。</li>
+<li>地階の根切り工事・その他の深い根切り工事は、<span class="relation">地盤調査による地層および地下水の状況に応じて作成した施工図に基づいて行う</span>。</li>
+<li>工作物に近接して根切り工事を行う場合は、<span class="relation">その工作物の基礎または地盤を補強して構造耐力の低下を防止し、急激な排水を避ける</span>など、その傾斜または倒壊による危害の発生を防止する。</li>
+<li>建築工事等において、<strong class="kw">根切りの深さ</strong><mark class="critical">1.5m以上</mark>の場合、<span class="trap">地盤が崩壊するおそれがないときを除き</span>、山留めを設けなければならない。山留めの根入れは、周辺の地盤の安定を保持するために相当な深さとする。</li>
+<li>山留めの切ばり、矢板、腹起しその他の主要な部分は、土圧に対して、安全であることが確かめられる最低の耐力以上の耐力を有する構造とする。土圧の計算によって求められる応力度が、許容応力度を超えないことを確かめる。</li>
+<li>根切り及び山留めについては、施工中必要に応じて点検を行い、山留めを補強し、排水を適当に行い、安全な状態を維持する。矢板等の抜取りに際しては、<span class="relation">周辺の地盤の沈下による危害を防止</span>する。</li>
+</ol>
+</div>
+</article>
+<article class="study-card translation">
+<div class="card-title">Bản dịch tiếng Việt</div>
+<div class="recall-source" lang="vi">
+<h4>Điều 136-2-20: 仮囲い</h4>
+<p>Khi thực hiện xây dựng, sửa chữa, cải tạo hoặc tháo bỏ đối với <strong class="kw">công trình gỗ cao quá 13 m hoặc chiều cao mái hiên quá 9 m</strong>, hoặc công trình không phải kết cấu gỗ có <strong class="kw">từ 2 tầng trở lên</strong>, phải bố trí <strong class="kw">hàng rào tạm cao</strong> <mark class="critical">từ 1,8 m trở lên</mark> tính từ mặt đất. Nếu mặt đất của công trường thấp hơn mặt đất xung quanh thì lấy mặt đất xung quanh làm mốc.</p>
+<h4>Điều 136-3: Phòng ngừa nguy hại khi đào đất và chống giữ đất</h4>
+<ol>
+<li>Khi thực hiện đào đất, chống giữ đất, công tác well, caisson hoặc công tác móng khác, phải <strong class="kw">phòng ngừa hư hỏng đường ống gas, cáp, đường ống cấp nước và thoát nước</strong>.</li>
+<li>Đào phần tầng hầm và các công tác đào sâu khác phải <span class="relation">thi công theo bản vẽ thi công được lập dựa trên khảo sát địa chất, phù hợp với lớp đất và tình trạng nước ngầm</span>.</li>
+<li>Khi đào gần công trình hiện hữu, phải <span class="relation">gia cường móng hoặc nền đất để ngăn suy giảm khả năng chịu lực và tránh thoát nước đột ngột</span>, qua đó phòng ngừa nguy hại do nghiêng hoặc đổ.</li>
+<li>Khi <strong class="kw">chiều sâu đào</strong> <mark class="critical">từ 1,5 m trở lên</mark>, <span class="trap">trừ trường hợp không có nguy cơ đất sụp</span>, phải bố trí 山留め. Phần chôn sâu của 山留め phải đủ để duy trì ổn định đất xung quanh.</li>
+<li>Các bộ phận chính như 切ばり, 矢板, 腹起し phải có khả năng chịu lực không thấp hơn mức tối thiểu được xác nhận an toàn đối với áp lực đất. Phải kiểm tra ứng suất tính toán không vượt quá ứng suất cho phép.</li>
+<li>Trong quá trình đào và chống giữ đất, khi cần phải kiểm tra, gia cường, thoát nước thích hợp và duy trì trạng thái an toàn. Khi rút 矢板 phải <span class="relation">phòng ngừa nguy hại do lún nền đất xung quanh</span>.</li>
+</ol>
+</div>
+</article>
+</div>
+<p class="back-to-toc"><a href="#toc">↑ Mục lục</a></p>
+</section><section class="subsection" id="sec-site-safety">
+<h3>転倒・落下物・建て方・材料集積・火災</h3>
+<div class="study-grid">
+<article class="study-card original">
+<div class="card-title">原文</div>
+<div class="recall-source" lang="ja">
+<h4>施行令第136条の4　基礎工事用機械等の転倒による危害の防止</h4>
+<p>基礎工事用機械又は<strong class="kw">吊り上げ荷重</strong>が<mark class="critical">0.5t以上</mark>の移動式クレーンを使用するとき、<span class="relation">敷板、敷角等の使用等によりその転倒を防止</span>する。</p>
+<h4>施行令第136条の5　落下物に対する防護</h4>
+<ol>
+<li><strong class="kw">工事現場の境界線からの水平距離</strong>が<mark class="critical">5m以内</mark>で、かつ、<strong class="kw">地盤面からの高さ</strong>が<mark class="critical">3m以上</mark>の場所からくず、ごみその他飛散するおそれのある物を投下する場合においては、<span class="relation">ダストシュートを用いる等、周辺への飛散を防止</span>する。</li>
+<li><strong class="kw">工事現場の境界線からの水平距離</strong>が<mark class="critical">5m以内</mark>で、かつ、<strong class="kw">地盤面からの高さ</strong>が<mark class="critical">7m以上</mark>にあるとき、その他はつり、除却、外壁の修繕等に伴う落下物によって工事現場の周辺に危害を生ずるおそれがあるときは、<span class="relation">必要な部分を鉄網又は帆布でおおい、危害を防止</span>する。</li>
+</ol>
+<h4>施行令第136条の6　建て方</h4>
+<ol>
+<li>建築物の建て方を行うに当たっては、<span class="relation">仮筋かいを取り付ける等、荷重又は外力による倒壊を防止</span>する。</li>
+<li>鉄骨造の建築物の建て方の仮締は、荷重及び外力に対して安全なものとする。</li>
+</ol>
+<h4>施行令第136条の7　工事用材料の集積</h4>
+<ol>
+<li>工事用材料の集積は、その倒壊、崩落等による危害の少ない場所に安全にする。</li>
+<li>山留めの周辺又は架構の上に工事用材料を集積する場合においては、<span class="trap">当該山留め又は架構に予定した荷重以上の荷重を与えない</span>。</li>
+</ol>
+<h4>施行令第136条の8　火災の防止</h4>
+<p>火気を使用する場合においては、その場所に不燃材料の囲いを設ける等、防火上必要な措置を講じる。</p>
+</div>
+</article>
+<article class="study-card translation">
+<div class="card-title">Bản dịch tiếng Việt</div>
+<div class="recall-source" lang="vi">
+<h4>Điều 136-4: Phòng ngừa lật máy thi công móng</h4>
+<p>Khi sử dụng máy thi công móng hoặc cần trục di động có <strong class="kw">tải trọng nâng</strong> <mark class="critical">từ 0,5 t trở lên</mark>, phải <span class="relation">dùng 敷板, 敷角 hoặc biện pháp tương đương để phòng ngừa lật máy</span>.</p>
+<h4>Điều 136-5: Phòng hộ đối với vật rơi</h4>
+<ol>
+<li>Khi ném rác, phế thải hoặc vật có nguy cơ phát tán từ vị trí có <strong class="kw">khoảng cách ngang tới ranh giới công trường</strong> <mark class="critical">không quá 5 m</mark> và <strong class="kw">chiều cao so với mặt đất</strong> <mark class="critical">từ 3 m trở lên</mark>, phải <span class="relation">dùng ダストシュート hoặc biện pháp tương đương để ngăn vật phát tán ra xung quanh</span>.</li>
+<li>Khi phần thi công có <strong class="kw">khoảng cách ngang tới ranh giới công trường</strong> <mark class="critical">không quá 5 m</mark> và <strong class="kw">chiều cao so với mặt đất</strong> <mark class="critical">từ 7 m trở lên</mark>, hoặc có nguy cơ vật rơi do đục phá, tháo dỡ, sửa chữa tường ngoài gây hại xung quanh, phải <span class="relation">phủ phần cần thiết bằng lưới thép hoặc bạt để phòng ngừa nguy hại</span>.</li>
+</ol>
+<h4>Điều 136-6: Dựng lắp công trình</h4>
+<ol>
+<li>Khi dựng lắp công trình, phải <span class="relation">lắp giằng tạm（仮筋かい）hoặc biện pháp tương đương để ngăn đổ do tải trọng hoặc ngoại lực</span>.</li>
+<li>Liên kết tạm（仮締）trong quá trình dựng kết cấu thép phải bảo đảm an toàn đối với tải trọng và ngoại lực.</li>
+</ol>
+<h4>Điều 136-7: Tập kết vật liệu thi công</h4>
+<ol>
+<li>Vật liệu phải được tập kết an toàn tại nơi ít nguy cơ gây tai nạn do đổ hoặc sụp.</li>
+<li>Khi tập kết quanh 山留め hoặc trên 架構, <span class="trap">không được tác dụng tải trọng vượt quá tải trọng đã dự kiến cho 山留め hoặc 架構</span>.</li>
+</ol>
+<h4>Điều 136-8: Phòng cháy</h4>
+<p>Khi sử dụng lửa hoặc nguồn nhiệt, phải thực hiện các biện pháp phòng cháy cần thiết như bố trí vách bao bằng vật liệu không cháy.</p>
+</div>
+</article>
+</div>
+<p class="back-to-toc"><a href="#toc">↑ Mục lục</a></p>
+</section>
+</section><section class="study-section" id="sec-osh">
+<div class="section-head">
+<h2>6.1.3 労働安全衛生法の要点</h2>
+<span class="source-ref">Nguồn: Book page 582-584</span>
+</div>
+<section class="subsection" id="sec-osh-purpose">
+<h3>目的・用語の定義</h3>
+<div class="study-grid">
+<article class="study-card original">
+<div class="card-title">原文</div>
+<div class="recall-source" lang="ja">
+<h4>第1条　目的</h4>
+<p>この法律は、労働基準法と相まって、労働災害の防止のための危害防止基準の確立、責任体制の明確化及び自主的活動の促進の措置を講ずる等その防止に関する総合的計画的な対策を推進することにより<strong class="kw">職場における労働者の安全と健康を確保</strong>するとともに、<strong class="kw">快適な職場環境の形成を促進</strong>することを目的とする。</p>
+<h4>第2条　用語の定義</h4>
+<div class="table-wrap"><table>
+<thead><tr><th>用語</th><th>定義の要点</th></tr></thead><tbody>
+<tr><td><strong class="kw">事業者</strong></td><td>事業を行う者で、労働者を使用する者（第2条）</td></tr>
+<tr><td><strong class="kw">元方事業者</strong></td><td>最も先次の請負契約における注文者（第15条）</td></tr>
+<tr><td><strong class="kw">特定元方事業者</strong></td><td>元方事業者のうち、建設業その他政令で定める業種に属する事業を行う者（第15条）</td></tr>
+<tr><td><strong class="kw">関係請負人</strong></td><td>当該事業の仕事が数次の下請負契約となるとき、すべての下請負人をいう（第15条）</td></tr>
+</tbody></table></div>
+<p><span class="relation">特定元方事業者は労働者の混在する事業場の協議組織の設置等の措置をする（第30条）</span>。</p>
+</div>
+</article>
+<article class="study-card translation">
+<div class="card-title">Bản dịch tiếng Việt</div>
+<div class="recall-source" lang="vi">
+<h4>Điều 1: Mục đích</h4>
+<p>Luật này, kết hợp với Luật Tiêu chuẩn Lao động, thúc đẩy các biện pháp tổng hợp và có kế hoạch về phòng ngừa tai nạn lao động như thiết lập tiêu chuẩn phòng ngừa nguy hại, làm rõ hệ thống trách nhiệm và thúc đẩy hoạt động tự chủ, nhằm <strong class="kw">bảo đảm an toàn và sức khỏe của người lao động tại nơi làm việc</strong>, đồng thời <strong class="kw">thúc đẩy hình thành môi trường làm việc thoải mái</strong>.</p>
+<h4>Điều 2: Định nghĩa thuật ngữ</h4>
+<div class="table-wrap"><table>
+<thead><tr><th>Thuật ngữ</th><th>Nội dung định nghĩa chính</th></tr></thead><tbody>
+<tr><td><strong class="kw">事業者</strong></td><td>Người thực hiện hoạt động kinh doanh và sử dụng người lao động.</td></tr>
+<tr><td><strong class="kw">元方事業者</strong></td><td>Bên đặt hàng trong hợp đồng nhận thầu ở cấp đầu tiên.</td></tr>
+<tr><td><strong class="kw">特定元方事業者</strong></td><td>Trong số 元方事業者, chủ thể hoạt động trong ngành xây dựng hoặc ngành khác được quy định bằng nghị định.</td></tr>
+<tr><td><strong class="kw">関係請負人</strong></td><td>Khi công việc được giao thầu phụ qua nhiều cấp, chỉ toàn bộ các nhà thầu phụ.</td></tr>
+</tbody></table></div>
+<p><span class="relation">特定元方事業者 phải thực hiện các biện pháp như thiết lập tổ chức hiệp nghị tại nơi làm việc có lao động của nhiều đơn vị cùng làm việc, theo Điều 30</span>.</p>
+</div>
+</article>
+</div>
+<p class="back-to-toc"><a href="#toc">↑ Mục lục</a></p>
+</section><section class="subsection" id="sec-osh-responsibilities">
+<h3>事業者等の責務・総括安全衛生管理者</h3>
+<div class="study-grid">
+<article class="study-card original">
+<div class="card-title">原文</div>
+<div class="recall-source" lang="ja">
+<h4>第3条　事業者等の責務</h4>
+<ol>
+<li><strong class="kw">労働安全衛生法の定めの基準</strong>は<mark class="critical">最低基準</mark>である。</li>
+<li>快適な職場環境の改善と労働条件の改善を通じて、労働者の安全と健康を確保する。</li>
+<li>注文者は施工方法、工期等について、<span class="trap">安全で衛生的な作業を損う条件を与えない</span>ように配慮する。</li>
+</ol>
+<h4>第10条　総括安全衛生管理者</h4>
+<p>事業者は、政令で定める規模の事業場（原則としては<strong class="kw">常時</strong><mark class="critical">100人以上</mark>の労働者を使用する建設業の事業場）ごとに、<strong class="kw">総括安全衛生管理者</strong>を選任する。その者には、安全管理者・衛生管理者・技術的事項を管理する者の指揮をさせるとともに、次の業務を統括管理させる。</p>
+<ol>
+<li>労働者の危険または健康障害を防止するための措置に関すること。</li>
+<li>労働者の安全または衛生のための教育の実施に関すること。</li>
+<li>健康診断の実施・その他健康の保持増進のための措置に関すること。</li>
+<li>労働災害の原因の調査および再発防止対策に関すること。</li>
+<li>上記の他、労働災害を防止するために必要な業務で、厚生労働省令で定めるもの。</li>
+</ol>
+</div>
+</article>
+<article class="study-card translation">
+<div class="card-title">Bản dịch tiếng Việt</div>
+<div class="recall-source" lang="vi">
+<h4>Điều 3: Trách nhiệm của người sử dụng lao động và các chủ thể liên quan</h4>
+<ol>
+<li><strong class="kw">Các tiêu chuẩn của Luật An toàn và Sức khỏe lao động</strong> là <mark class="critical">tiêu chuẩn tối thiểu</mark>.</li>
+<li>Phải bảo đảm an toàn và sức khỏe của người lao động thông qua cải thiện môi trường làm việc thoải mái và cải thiện điều kiện lao động.</li>
+<li>Bên đặt hàng phải lưu ý để <span class="trap">không đưa ra điều kiện về phương pháp thi công, thời hạn thi công, v.v. làm tổn hại đến việc thực hiện công việc an toàn và vệ sinh</span>.</li>
+</ol>
+<h4>Điều 10: 総括安全衛生管理者</h4>
+<p>Người sử dụng lao động phải bổ nhiệm <strong class="kw">総括安全衛生管理者</strong> tại từng cơ sở có quy mô quy định. Đối với ngành xây dựng, theo nguyên tắc nêu trong sách, đó là cơ sở <strong class="kw">thường xuyên sử dụng</strong> <mark class="critical">từ 100 người lao động trở lên</mark>. Người này chỉ huy 安全管理者, 衛生管理者 và người quản lý vấn đề kỹ thuật, đồng thời quản lý tổng hợp các nghiệp vụ sau.</p>
+<ol>
+<li>Biện pháp phòng ngừa nguy hiểm hoặc tổn hại sức khỏe cho người lao động.</li>
+<li>Thực hiện giáo dục an toàn hoặc vệ sinh cho người lao động.</li>
+<li>Khám sức khỏe và các biện pháp duy trì, tăng cường sức khỏe.</li>
+<li>Điều tra nguyên nhân tai nạn lao động và xây dựng biện pháp ngăn ngừa tái diễn.</li>
+<li>Các nhiệm vụ khác cần thiết để phòng ngừa tai nạn lao động và được quy định bằng quy định của Bộ Y tế, Lao động và Phúc lợi.</li>
+</ol>
+</div>
+</article>
+</div>
+<p class="back-to-toc"><a href="#toc">↑ Mục lục</a></p>
+</section><section class="subsection" id="sec-work-supervisor">
+<h3>作業主任者</h3>
+<div class="study-grid">
+<article class="study-card original">
+<div class="card-title">原文</div>
+<div class="recall-source" lang="ja">
+<h4>第14条　作業主任者</h4>
+<ol>
+<li>高圧室内作業その他労働災害を防止するための管理を必要とする作業を政令で定め、事業者はこの作業を行うとき、<strong class="kw">作業主任者を選任</strong>する。</li>
+<li>作業主任者の資格には、<strong class="kw">免許によるものと技能講習修了によるもの</strong>がある。<br/>i) 免許証は都道府県労働局長の免許とする。<br/>ii) 技能講習修了者証は、都道府県労働局長の登録を受けた者が行う技能講習を修了した者が受ける。<br/>iii) 事業者は作業の区分ごとに作業主任者を選任する。</li>
+<li>作業主任者は労働者の指揮、作業方法の決定などの職務を行うが、<span class="trap">点検は行わない</span>。</li>
+</ol>
+</div>
+</article>
+<article class="study-card translation">
+<div class="card-title">Bản dịch tiếng Việt</div>
+<div class="recall-source" lang="vi">
+<h4>Điều 14: 作業主任者</h4>
+<ol>
+<li>Đối với công việc được quy định bằng nghị định là cần quản lý để phòng ngừa tai nạn lao động, như công việc trong buồng áp suất cao, người sử dụng lao động phải <strong class="kw">bổ nhiệm 作業主任者</strong>.</li>
+<li>Tư cách của 作業主任者 gồm <strong class="kw">loại dựa trên giấy phép（免許）và loại dựa trên hoàn thành khóa huấn luyện kỹ năng（技能講習修了）</strong>.<br/>i) Giấy phép do Cục trưởng Cục Lao động tỉnh（都道府県労働局長）cấp.<br/>ii) Chứng nhận hoàn thành khóa huấn luyện kỹ năng được cấp cho người đã hoàn thành khóa học do đơn vị/người đã được 都道府県労働局長 đăng ký tổ chức.<br/>iii) Người sử dụng lao động phải bổ nhiệm 作業主任者 theo từng loại công việc.</li>
+<li>作業主任者 thực hiện các nhiệm vụ như chỉ huy người lao động và quyết định phương pháp làm việc, nhưng <span class="trap">không thực hiện 点検</span>.</li>
+</ol>
+</div>
+</article>
+</div>
+<p class="back-to-toc"><a href="#toc">↑ Mục lục</a></p>
+</section><section class="subsection" id="sec-motokata">
+<h3>元方事業者・特定元方事業者の措置</h3>
+<div class="study-grid">
+<article class="study-card original">
+<div class="card-title">原文</div>
+<div class="recall-source" lang="ja">
+<h4>第29条　元方事業者の講ずべき措置等</h4>
+<ol>
+<li>元方事業者は、関係請負人及び関係請負人の労働者が、当該仕事に関し、この法律又はこれに基づく命令の規定に違反しないよう<strong class="kw">必要な指導</strong>を行わなければならない。</li>
+<li>元方事業者は、関係請負人又は関係請負人の労働者が、当該仕事に関し、この法律又はこれに基づく命令の規定に<strong class="kw">違反していると認めるとき</strong>は、<span class="relation">是正のため必要な指示</span>を行わなければならない。</li>
+<li>建設業の元方事業者は、関係請負人の労働者が作業を行うときは、関係請負人が講じるべき危険を防止するための措置が適正に講じられるよう、<strong class="kw">技術上の指導</strong>を行う。</li>
+</ol>
+<h4>第30条　特定元方事業者等の講ずべき措置</h4>
+<p>特定元方事業者は、その労働者及び関係請負人の労働者の作業が<strong class="kw">同一の場所</strong>において行われることによって生ずる<strong class="kw">労働災害を防止</strong>するため、次の事項に関する必要な措置を講じなければならない。</p>
+<ol>
+<li><strong class="kw">協議組織の設置及び運営</strong>を行うこと。</li>
+<li><strong class="kw">作業間の連絡及び調整</strong>を行うこと。</li>
+<li><strong class="kw">作業場所を巡視</strong>すること。</li>
+<li>関係請負人が行う労働者の安全又は衛生のための教育に対する<strong class="kw">指導及び援助</strong>を行うこと。</li>
+<li>仕事を行う場所が仕事ごとに異なることを常態とする業種で、厚生労働省令で定めるものに属する事業を行う特定元方事業者にあっては、<span class="relation">仕事の工程に関する計画及び作業場所における機械、設備等の配置に関する計画を作成</span>するとともに、当該機械、設備等を使用する作業に関し関係請負人がこの法律又はこれに基づく命令の規定に基づき講ずべき措置についての指導を行うこと。</li>
+<li>前各号に掲げるもののほか、当該労働災害を防止するため必要な事項。</li>
+</ol>
+</div>
+</article>
+<article class="study-card translation">
+<div class="card-title">Bản dịch tiếng Việt</div>
+<div class="recall-source" lang="vi">
+<h4>Điều 29: Các biện pháp mà 元方事業者 phải thực hiện</h4>
+<ol>
+<li>元方事業者 phải thực hiện <strong class="kw">sự chỉ đạo cần thiết</strong> để 関係請負人 và người lao động của họ không vi phạm Luật An toàn và Sức khỏe lao động hoặc các quy định ban hành dựa trên luật.</li>
+<li>Khi <strong class="kw">nhận thấy đã có vi phạm</strong>, 元方事業者 phải đưa ra <span class="relation">chỉ thị cần thiết để khắc phục（是正）</span>.</li>
+<li>Đối với 元方事業者 thuộc ngành xây dựng, khi người lao động của 関係請負人 thực hiện công việc, phải thực hiện <strong class="kw">chỉ đạo về kỹ thuật</strong> để các biện pháp phòng ngừa nguy hiểm của 関係請負人 được triển khai thích hợp.</li>
+</ol>
+<h4>Điều 30: Các biện pháp mà 特定元方事業者 và các chủ thể liên quan phải thực hiện</h4>
+<p>Để phòng ngừa <strong class="kw">tai nạn lao động</strong> phát sinh do người lao động của 特定元方事業者 và người lao động của các nhà thầu liên quan cùng làm việc tại <strong class="kw">một địa điểm</strong>, 特定元方事業者 phải thực hiện các biện pháp sau.</p>
+<ol>
+<li><strong class="kw">Thiết lập và vận hành tổ chức hiệp nghị（協議組織）</strong>.</li>
+<li><strong class="kw">Liên lạc và điều phối giữa các công việc</strong>.</li>
+<li><strong class="kw">Tuần tra nơi làm việc</strong>.</li>
+<li>Thực hiện <strong class="kw">chỉ đạo và hỗ trợ</strong> đối với giáo dục an toàn hoặc vệ sinh do các nhà thầu liên quan thực hiện.</li>
+<li>Đối với 特定元方事業者 hoạt động trong ngành nghề mà địa điểm làm việc thường xuyên thay đổi theo từng công việc và thuộc loại ngành nghề do quy định của Bộ Y tế, Lao động và Phúc lợi quy định, phải <span class="relation">lập kế hoạch về trình tự, tiến độ công việc và kế hoạch bố trí máy móc, thiết bị tại nơi làm việc</span>; đồng thời, đối với công việc sử dụng các máy móc, thiết bị đó, phải chỉ đạo các nhà thầu liên quan về những biện pháp mà họ phải thực hiện theo Luật An toàn và Sức khỏe lao động hoặc các quy định ban hành dựa trên luật này.</li>
+<li>Các nội dung cần thiết khác để phòng ngừa tai nạn lao động nói trên.</li>
+</ol>
+</div>
+</article>
+</div>
+<p class="back-to-toc"><a href="#toc">↑ Mục lục</a></p>
+</section><section class="subsection" id="sec-education">
+<h3>安全衛生教育・職長教育・就業制限</h3>
+<div class="study-grid">
+<article class="study-card original">
+<div class="card-title">原文</div>
+<div class="recall-source" lang="ja">
+<h4>第59条　安全衛生教育</h4>
+<ol>
+<li>事業者は<strong class="kw">労働者を雇い入れたとき</strong>、厚生労働省令の定めるところにより従事する業務の安全又は衛生の教育をする。</li>
+<li><strong class="kw">労働者の作業内容を変更したとき</strong>も雇い入れた者と同じ教育を行う。</li>
+<li>事業者は<strong class="kw">危険又は有害な業務</strong>で厚生労働省令で定めるところにより、<span class="relation">安全又は衛生のための特別の教育</span>を行う。</li>
+</ol>
+<h4>第60条　職長教育</h4>
+<p><strong class="kw">新たに職長につくことになった職長</strong>（<span class="trap">作業主任者は除く</span>）に対し、次の安全又は衛生の教育を行う。</p>
+<ol>
+<li>作業方法の決定及び労働者の配置</li>
+<li>労働者に対する指導又は監督の方法</li>
+<li>労働災害を防止するための必要な措置</li>
+</ol>
+<h4>第61条　就業制限</h4>
+<ol>
+<li>政令に定めるクレーンの運転等は、<span class="trap">都道府県労働局長の免許を受けた者か、都道府県労働局の登録を受けた者が行う技能講習を修了した者でなければならない</span>。</li>
+<li>就業制限のある業務に従事するときは、<strong class="kw">免許証その他資格を証する書面を携帯</strong>しなければならない。</li>
+</ol>
+</div>
+</article>
+<article class="study-card translation">
+<div class="card-title">Bản dịch tiếng Việt</div>
+<div class="recall-source" lang="vi">
+<h4>Điều 59: Giáo dục an toàn và vệ sinh lao động</h4>
+<ol>
+<li>Khi <strong class="kw">tuyển dụng người lao động</strong>, người sử dụng lao động phải thực hiện giáo dục về an toàn hoặc vệ sinh liên quan đến công việc mà người lao động sẽ đảm nhiệm.</li>
+<li>Khi <strong class="kw">thay đổi nội dung công việc</strong> của người lao động, cũng phải thực hiện giáo dục tương tự như khi mới tuyển dụng.</li>
+<li>Đối với <strong class="kw">công việc nguy hiểm hoặc có hại</strong>, người sử dụng lao động phải thực hiện <span class="relation">giáo dục đặc biệt về an toàn hoặc vệ sinh（特別教育）</span>.</li>
+</ol>
+<h4>Điều 60: Giáo dục dành cho tổ trưởng（職長教育）</h4>
+<p>Đối với người <strong class="kw">mới đảm nhiệm chức vụ 職長</strong>, <span class="trap">trừ 作業主任者</span>, phải thực hiện giáo dục về an toàn hoặc vệ sinh đối với các nội dung sau.</p>
+<ol>
+<li>Quyết định phương pháp làm việc và bố trí người lao động.</li>
+<li>Phương pháp chỉ đạo hoặc giám sát người lao động.</li>
+<li>Các biện pháp cần thiết để phòng ngừa tai nạn lao động.</li>
+</ol>
+<h4>Điều 61: Hạn chế làm việc（就業制限）</h4>
+<ol>
+<li>Đối với việc vận hành cần trục và các công việc khác được quy định, <span class="trap">chỉ người có giấy phép của 都道府県労働局長 hoặc đã hoàn thành 技能講習 theo quy định mới được thực hiện</span>.</li>
+<li>Khi thực hiện công việc thuộc diện hạn chế, phải <strong class="kw">mang theo giấy phép hoặc tài liệu khác chứng minh tư cách tương ứng</strong>.</li>
+</ol>
+</div>
+</article>
+</div>
+<p class="back-to-toc"><a href="#toc">↑ Mục lục</a></p>
+</section>
+</section></main>
+<!-- CONTENT_END -->
+<section id="terms">
+<h2>Thuật ngữ chuyên môn</h2><div class="section-head">
+<h2>Thuật ngữ chuyên môn</h2>
+</div><div class="table-wrap"><table><thead><tr><th>日本語</th><th>読み方</th><th>Tiếng Việt</th><th>Giải thích</th><th>Liên quan</th></tr></thead><tbody><tr><td lang="ja">建設業法施行令</td><td lang="ja">けんせつぎょうほう しこうれい</td><td>Nghị định thi hành Luật Xây dựng</td><td>Quy định thi hành chi tiết của 建設業法.</td><td>Book 574</td></tr><tr><td lang="ja">特定建設業</td><td lang="ja">とくていけんせつぎょう</td><td>ngành xây dựng theo giấy phép đặc định</td><td>Loại giấy phép liên quan đến quy mô thầu phụ lớn.</td><td>Book 574, 579-580</td></tr><tr><td lang="ja">主任技術者</td><td lang="ja">しゅにんぎじゅつしゃ</td><td>kỹ sư phụ trách</td><td>Phụ trách quản lý kỹ thuật thi công theo nội dung luật được sách trình bày.</td><td>Book 574, 577, 580</td></tr><tr><td lang="ja">監理技術者</td><td lang="ja">かんりぎじゅつしゃ</td><td>kỹ sư quản lý giám sát</td><td>Được bố trí trong các trường hợp đáp ứng điều kiện luật định.</td><td>Book 574, 580</td></tr><tr><td lang="ja">施工体制台帳</td><td lang="ja">せこうたいせいだいちょう</td><td>hồ sơ hệ thống tổ chức thi công</td><td>Ghi thông tin về hệ thống nhà thầu và tổ chức thi công.</td><td>Book 574, 579</td></tr><tr><td lang="ja">施工体系図</td><td lang="ja">せこうたいけいず</td><td>sơ đồ hệ thống thi công</td><td>Thể hiện quan hệ, phân công trách nhiệm của các đơn vị thi công.</td><td>Book 575, 579</td></tr><tr><td lang="ja">記述式</td><td lang="ja">きじゅつしき</td><td>dạng tự luận/điền đáp án</td><td>Người thi tự ghi thuật ngữ hoặc trị số.</td><td>Book 575</td></tr><tr><td lang="ja">五肢択一式</td><td lang="ja">ごしたくいつしき</td><td>dạng chọn 1 trong 5</td><td>Chọn một đáp án đúng trong năm phương án.</td><td>Book 575</td></tr><tr><td lang="ja">附帯工事</td><td lang="ja">ふたいこうじ</td><td>công việc phụ kèm</td><td>Công việc thuộc ngành khác nhưng gắn với công trình chính.</td><td>Book 577</td></tr><tr><td lang="ja">請負契約</td><td lang="ja">うけおいけいやく</td><td>hợp đồng nhận thầu</td><td>Hợp đồng lấy việc hoàn thành công việc làm mục đích.</td><td>Book 577-578</td></tr><tr><td lang="ja">現場代理人</td><td lang="ja">げんばだいりにん</td><td>người đại diện công trường</td><td>Đại diện của nhà thầu tại công trường.</td><td>Book 577, 579</td></tr><tr><td lang="ja">見積書</td><td lang="ja">みつもりしょ</td><td>bản báo giá</td><td>Tài liệu thể hiện giá và cơ cấu chi phí.</td><td>Book 577</td></tr><tr><td lang="ja">元請負人</td><td lang="ja">もとうけおいにん</td><td>nhà thầu chính</td><td>Chủ thể nhận hợp đồng chính và giao một phần công việc cho nhà thầu phụ.</td><td>Book 578</td></tr><tr><td lang="ja">下請負人</td><td lang="ja">したうけおいにん</td><td>nhà thầu phụ</td><td>Chủ thể nhận công việc từ nhà thầu cấp trên.</td><td>Book 578-579</td></tr><tr><td lang="ja">出来形部分</td><td lang="ja">できがたぶぶん</td><td>phần khối lượng đã hoàn thành</td><td>Phần công việc đã thực hiện, dùng làm cơ sở thanh toán.</td><td>Book 578</td></tr><tr><td lang="ja">前払金</td><td lang="ja">まえばらいきん</td><td>tiền tạm ứng</td><td>Khoản thanh toán trước phục vụ mua vật tư, tuyển lao động, v.v.</td><td>Book 578</td></tr><tr><td lang="ja">不利益取扱い</td><td lang="ja">ふりえきとりあつかい</td><td>đối xử bất lợi</td><td>Biện pháp gây bất lợi đối với bên đã thực hiện quyền thông báo hợp pháp.</td><td>Book 578</td></tr><tr><td lang="ja">監理技術者資格者証</td><td lang="ja">かんりぎじゅつしゃしかくしゃしょう</td><td>thẻ chứng nhận tư cách 監理技術者</td><td>Chứng nhận tư cách của 監理技術者.</td><td>Book 580</td></tr><tr><td lang="ja">技術検定</td><td lang="ja">ぎじゅつけんてい</td><td>kỳ thi kiểm định kỹ thuật</td><td>Gồm 第一次検定 và 第二次検定.</td><td>Book 580</td></tr><tr><td lang="ja">仮囲い</td><td lang="ja">かりがこい</td><td>hàng rào tạm công trường</td><td>Ngăn cách công trường với khu vực bên ngoài.</td><td>Book 581</td></tr><tr><td lang="ja">根切り</td><td lang="ja">ねぎり</td><td>đào đất móng</td><td>Đào đất đến cao độ phục vụ móng hoặc tầng hầm.</td><td>Book 581</td></tr><tr><td lang="ja">山留め</td><td lang="ja">やまどめ</td><td>chống giữ đất</td><td>Hệ thống giữ ổn định thành hố đào.</td><td>Book 581</td></tr><tr><td lang="ja">切ばり</td><td lang="ja">きりばり</td><td>thanh chống ngang</td><td>Chống áp lực đất giữa các phía của hệ 山留め.</td><td>Book 581</td></tr><tr><td lang="ja">矢板</td><td lang="ja">やいた</td><td>ván/cọc bản chắn đất</td><td>Bộ phận trực tiếp giữ đất.</td><td>Book 581</td></tr><tr><td lang="ja">腹起し</td><td lang="ja">はらおこし</td><td>thanh waler</td><td>Truyền tải từ vách chắn vào hệ chống.</td><td>Book 581</td></tr><tr><td lang="ja">ダストシュート</td><td lang="ja">だすとしゅーと</td><td>ống/máng đổ phế thải</td><td>Dẫn phế thải xuống thấp và hạn chế phát tán.</td><td>Book 581</td></tr><tr><td lang="ja">仮筋かい</td><td lang="ja">かりすじかい</td><td>giằng tạm</td><td>Giữ ổn định kết cấu trong quá trình dựng lắp.</td><td>Book 582</td></tr><tr><td lang="ja">仮締</td><td lang="ja">かりじめ</td><td>liên kết tạm</td><td>Liên kết tạm thời trước khi hoàn thiện liên kết chính.</td><td>Book 582</td></tr><tr><td lang="ja">元方事業者</td><td lang="ja">もとかたじぎょうしゃ</td><td>nhà thầu chính theo Luật ATVSLĐ</td><td>Bên đặt hàng trong hợp đồng nhận thầu ở cấp đầu tiên.</td><td>Book 582-583</td></tr><tr><td lang="ja">特定元方事業者</td><td lang="ja">とくていもとかたじぎょうしゃ</td><td>nhà thầu chính đặc định</td><td>Chủ thể có nghĩa vụ điều phối an toàn khi lao động nhiều đơn vị cùng làm việc.</td><td>Book 582-584</td></tr><tr><td lang="ja">関係請負人</td><td lang="ja">かんけいうけおいにん</td><td>nhà thầu liên quan</td><td>Toàn bộ nhà thầu phụ trong hệ thống nhiều cấp.</td><td>Book 582-584</td></tr><tr><td lang="ja">総括安全衛生管理者</td><td lang="ja">そうかつあんぜんえいせいかんりしゃ</td><td>người quản lý tổng hợp an toàn và vệ sinh</td><td>Quản lý tổng hợp các nghiệp vụ an toàn và sức khỏe trong cơ sở.</td><td>Book 583</td></tr><tr><td lang="ja">作業主任者</td><td lang="ja">さぎょうしゅにんしゃ</td><td>người phụ trách công việc</td><td>Được bổ nhiệm cho các loại công việc có nguy cơ theo quy định.</td><td>Book 583</td></tr><tr><td lang="ja">技能講習</td><td lang="ja">ぎのうこうしゅう</td><td>khóa huấn luyện kỹ năng</td><td>Một hình thức xác lập tư cách để thực hiện công việc được quy định.</td><td>Book 583-584</td></tr><tr><td lang="ja">協議組織</td><td lang="ja">きょうぎそしき</td><td>tổ chức hiệp nghị</td><td>Cơ chế phối hợp an toàn giữa các đơn vị tại công trường.</td><td>Book 584</td></tr><tr><td lang="ja">安全衛生教育</td><td lang="ja">あんぜんえいせいきょういく</td><td>giáo dục an toàn và vệ sinh lao động</td><td>Giáo dục khi tuyển dụng, thay đổi công việc và các trường hợp luật định.</td><td>Book 584</td></tr><tr><td lang="ja">特別教育</td><td lang="ja">とくべつきょういく</td><td>giáo dục đặc biệt</td><td>Giáo dục bắt buộc đối với một số công việc nguy hiểm hoặc có hại.</td><td>Book 584</td></tr><tr><td lang="ja">職長教育</td><td lang="ja">しょくちょうきょういく</td><td>giáo dục dành cho tổ trưởng</td><td>Giáo dục về tổ chức, chỉ đạo, giám sát và phòng ngừa tai nạn.</td><td>Book 584</td></tr><tr><td lang="ja">就業制限</td><td lang="ja">しゅうぎょうせいげん</td><td>hạn chế làm việc</td><td>Chỉ người có tư cách theo quy định mới được thực hiện công việc.</td><td>Book 584</td></tr></tbody></table></div></section>
+<section id="background">
+<h2>Kiến thức nền cần biết</h2><div class="section-head">
+<h2>Kiến thức nền cần biết</h2>
+</div><div class="note-box">
+<strong>Phân biệt 第一次検定 và 第二次検定</strong>
+<p><strong>第一次検定</strong> đánh giá kiến thức và năng lực nền tảng của kỹ thuật thi công. <strong>第二次検定</strong> đánh giá kiến thức và năng lực về quản lý kỹ thuật và chỉ đạo, giám sát.</p>
+</div><div class="note-box">
+<strong>Quan hệ giữa Điều 29 và Điều 30 của 労働安全衛生法</strong>
+<p>Điều 29 quy định nghĩa vụ của <strong>元方事業者</strong> đối với việc chỉ đạo, khắc phục vi phạm và chỉ đạo kỹ thuật. Điều 30 quy định các biện pháp phối hợp cụ thể của <strong>特定元方事業者</strong> khi lao động của nhiều doanh nghiệp cùng làm việc tại một địa điểm.</p>
+</div><div class="note-box">
+<strong>Phân biệt 第59条 và 第60条</strong>
+<p>Điều 59 tập trung vào người lao động nói chung khi mới tuyển dụng, thay đổi nội dung công việc hoặc làm công việc nguy hiểm, có hại. Điều 60 tập trung vào người mới đảm nhiệm vai trò <strong>職長</strong>, trừ 作業主任者.</p>
+</div></section>
+<section id="memory">
+<h2>Điểm cần nhớ và mẹo nhớ</h2><div class="section-head">
+<h2>Điểm cần nhớ và mẹo nhớ</h2>
+</div><div class="memory-box">
+<strong>Các ngưỡng tiền được sách sử dụng</strong>
+<div class="table-wrap"><table><thead><tr><th>Hạng mục</th><th>Ngưỡng</th></tr></thead><tbody>
+<tr><td>特定建設業・監理技術者・施工体制台帳</td><td><mark class="critical">5000万円</mark> / 建築一式工事 <mark class="critical">8000万円</mark></td></tr>
+<tr><td>主任技術者・監理技術者の専任</td><td><mark class="critical">4500万円</mark> / 建築一式工事 <mark class="critical">9000万円</mark></td></tr>
+<tr><td>特定専門工事</td><td><mark class="critical">4500万円</mark></td></tr>
+</tbody></table></div>
+</div><div class="memory-box">
+<strong>見積期間</strong>
+<p><strong>&lt; 500万円</strong> → <mark class="critical">1日以上</mark> ／ <strong>500万円以上5,000万円未満</strong> → <mark class="critical">10日以上</mark> ／ <strong>5,000万円以上</strong> → <mark class="critical">15日以上</mark>.</p>
+</div><div class="memory-box">
+<strong>元請負人の期限</strong>
+<p>下請代金の支払 → <mark class="critical">1月以内</mark> ／ 検査 → <mark class="critical">20日以内</mark> ／ 特定建設業者の支払期日 → <mark class="critical">50日以内</mark>.</p>
+</div><div class="memory-box">
+<strong>施工体制台帳と施工体系図</strong>
+<p><strong>施工体制台帳</strong> → <mark class="critical">5年間保存</mark> ／ <strong>施工体系図</strong> → <mark class="critical">10年間保存</mark>.</p>
+</div><div class="memory-box">
+<strong>工事現場の危害防止の数字</strong>
+<p><strong>仮囲い</strong> → <mark class="critical">1.8m以上</mark> ／ <strong>山留めが必要となる根切り深さ</strong> → <mark class="critical">1.5m以上</mark> ／ <strong>移動式クレーン</strong> → <mark class="critical">0.5t以上</mark>.</p>
+<p><strong>くず・ごみ投下</strong> → 水平 <mark class="critical">5m以内</mark> + 高さ <mark class="critical">3m以上</mark> ／ <strong>落下物防護</strong> → 水平 <mark class="critical">5m以内</mark> + 高さ <mark class="critical">7m以上</mark>.</p>
+</div><div class="memory-box">
+<strong>元方事業者の対応</strong>
+<p>違反しないようにする段階 → <strong>指導</strong> ／ 違反していると認めた段階 → <strong>是正のための指示</strong>.</p>
+</div><div class="memory-box">
+<strong>第30条の6グループ</strong>
+<p>協議組織 → 連絡・調整 → 巡視 → 教育の指導・援助 → 工程・機械設備配置の計画 → その他必要事項。</p>
+</div><div class="memory-box">
+<strong>第59条・第60条・第61条</strong>
+<p>雇入れ・作業変更・危険有害業務 → 第59条 ／ 新たに職長になる → 第60条 ／ 就業制限業務 → 資格が必要、作業時は資格証明書面を携帯。</p>
+</div></section>
+<template id="component-library">
+<div class="table-wrap">
+<table>
+<caption>{{TABLE_CAPTION}}</caption>
+<thead><tr><th>{{HEADER_1}}</th><th>{{HEADER_2}}</th></tr></thead>
+<tbody><tr><td><strong class="kw">{{ROW_KEY}}</strong></td><td><span class="relation">{{ROW_RELATION}}</span></td></tr></tbody>
+</table>
+</div>
+<figure class="figure-card">
+<img alt="{{IMAGE_ALT}}" height="{{IMAGE_HEIGHT}}" src="{{IMAGE_SOURCE}}" width="{{IMAGE_WIDTH}}"/>
+<figcaption>{{IMAGE_CAPTION}}</figcaption>
+</figure>
+<div class="figure-grid">
+<figure class="figure-card">
+<img alt="{{IMAGE_ALT_1}}" height="{{IMAGE_HEIGHT_1}}" src="{{IMAGE_SOURCE_1}}" width="{{IMAGE_WIDTH_1}}"/>
+<figcaption>{{IMAGE_CAPTION_1}}</figcaption>
+</figure>
+<figure class="figure-card">
+<img alt="{{IMAGE_ALT_2}}" height="{{IMAGE_HEIGHT_2}}" src="{{IMAGE_SOURCE_2}}" width="{{IMAGE_WIDTH_2}}"/>
+<figcaption>{{IMAGE_CAPTION_2}}</figcaption>
+</figure>
+</div>
+<section class="note-box"><h3>{{NOTE_TITLE}}</h3><p>{{NOTE_CONTENT}}</p></section>
+<section class="warning-box"><h3>{{WARNING_TITLE}}</h3><p>{{WARNING_CONTENT}}</p></section>
+<section class="memory-box"><h3>{{MEMORY_TITLE}}</h3><p>{{MEMORY_ITEM}}</p></section>
+</template>
+</div>
+<script>
+(function () {
+  'use strict';
+
+  const root = document.documentElement;
+  const body = document.body;
+  const q = id => document.getElementById(id);
+  const FONT_LEVELS = Array.from({ length: 21 }, (_, i) => 50 + i * 5);
+
+  const controls = q('control-cluster');
+  const controlsToggle = q('controls-toggle');
+  const controlPanel = q('control-panel');
+  const themeButton = q('theme-toggle');
+  const modeButton = q('mode-toggle');
+  const fontDown = q('font-down');
+  const fontUp = q('font-up');
+  const fontReset = q('font-reset');
+  const tocButton = q('toc-toggle');
+  const tocClose = q('toc-close');
+  const overlay = q('toc-overlay');
+  const prevButton = q('section-prev');
+  const nextButton = q('section-next');
+  const homeButton = q('home-button');
+
+  const pageKey = location.pathname + location.search;
+  const activeUserId = safeGet('study-active-user-id', 'guest');
+  const readerStateKey = 'study-reader-position:' + activeUserId + ':' + pageKey;
+  const legacyReaderStateKey = 'study-reader-position:' + pageKey;
+  const legacyRenamedFileName = "06a_建築法規_重要項目_p574-584_VN.html";
+  const legacyRenamedPageKeys = [
+    location.pathname.replace(/[^/]*$/, encodeURI(legacyRenamedFileName)) + location.search,
+    location.pathname.replace(/[^/]*$/, legacyRenamedFileName) + location.search
+  ];
+  const legacyRenamedReaderStateKeys = [...new Set(legacyRenamedPageKeys)].map(
+    key => 'study-reader-position:' + activeUserId + ':' + key
+  );
+  const lastPageKey = 'study-last-page:' + activeUserId;
+  const explicitHomeKey = 'study-explicit-home';
+  const anchorSelector = [
+    '.page-shell h1', '.page-shell h2', '.page-shell h3', '.page-shell h4',
+    '.page-shell p', '.page-shell li', '.page-shell td', '.page-shell th',
+    '.page-shell figcaption', '.page-shell .card-title'
+  ].join(', ');
+
+  let anchorElements = [];
+  let lastStablePosition = null;
+  let scrollSaveTimer = 0;
+  let resizeRestoreTimer = 0;
+  let resizeAnchor = null;
+  let suppressScrollSaveUntil = 0;
+  function layoutViewportSize() {
+    const de = document.documentElement;
+    return {
+      width: de.clientWidth || window.innerWidth,
+      height: de.clientHeight || window.innerHeight
+    };
+  }
+
+  function visualViewportScale() {
+    const vv = window.visualViewport;
+    return vv && Number.isFinite(vv.scale) ? vv.scale : 1;
+  }
+
+  function isPinchZoomActive() {
+    return Math.abs(visualViewportScale() - 1) > 0.015;
+  }
+
+  const initialLayoutViewport = layoutViewportSize();
+  let lastViewportWidth = initialLayoutViewport.width;
+  let lastViewportHeight = initialLayoutViewport.height;
+  let pinchZoomSession = false;
+
+  try {
+    if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+  } catch (e) {}
+
+  function safeGet(key, fallback = null) {
+    try {
+      const value = localStorage.getItem(key);
+      return value === null ? fallback : value;
+    } catch (e) {
+      return fallback;
+    }
+  }
+
+  function safeSet(key, value) {
+    try { localStorage.setItem(key, value); } catch (e) {}
+  }
+
+  function safeRemove(key) {
+    try { localStorage.removeItem(key); } catch (e) {}
+  }
+
+  /* ---------- Persistent page / PWA resume metadata ---------- */
+
+  function rememberCurrentPage() {
+    safeSet(lastPageKey, pageKey);
+    safeSet('study-last-active-at', String(Date.now()));
+  }
+
+  rememberCurrentPage();
+
+  /* ---------- Layout viewport geometry ---------- */
+
+  /*
+    Pinch zoom changes visualViewport.width / height / scale.
+    It must NOT change the document layout width.
+
+    Therefore --app-viewport-width is derived only from the layout viewport
+    (documentElement.clientWidth / innerWidth), never from visualViewport.width.
+  */
+  function syncViewportGeometry() {
+    const { width } = layoutViewportSize();
+    root.style.setProperty(
+      '--app-viewport-width',
+      `${Math.round(width * 100) / 100}px`
+    );
+  }
+
+  syncViewportGeometry();
+
+  /* ---------- Reader anchors ---------- */
+
+  function rebuildReaderAnchors() {
+    anchorElements = Array.from(document.querySelectorAll(anchorSelector));
+    anchorElements.forEach((el, index) => {
+      el.dataset.readerKey = 'r' + index;
+    });
+  }
+
+  function closestReaderElement(node) {
+    if (!node) return null;
+    const el = node.nodeType === Node.ELEMENT_NODE ? node : node.parentElement;
+    return el ? el.closest('[data-reader-key]') : null;
+  }
+
+  function caretAtPoint(x, y) {
+    try {
+      if (document.caretPositionFromPoint) {
+        const pos = document.caretPositionFromPoint(x, y);
+        if (!pos || !pos.offsetNode) return null;
+        return { node: pos.offsetNode, offset: pos.offset };
+      }
+      if (document.caretRangeFromPoint) {
+        const range = document.caretRangeFromPoint(x, y);
+        if (!range) return null;
+        return { node: range.startContainer, offset: range.startOffset };
+      }
+    } catch (e) {}
+    return null;
+  }
+
+  function textOffsetFromElementStart(element, node, offset) {
+    try {
+      const range = document.createRange();
+      range.setStart(element, 0);
+      range.setEnd(node, offset);
+      return range.toString().length;
+    } catch (e) {
+      return 0;
+    }
+  }
+
+  function domPositionFromTextOffset(element, targetOffset) {
+    const walker = document.createTreeWalker(element, NodeFilter.SHOW_TEXT);
+    let remaining = Math.max(0, targetOffset);
+    let node = walker.nextNode();
+    let last = null;
+
+    while (node) {
+      last = node;
+      const len = node.nodeValue ? node.nodeValue.length : 0;
+      if (remaining <= len) {
+        return { node, offset: remaining };
+      }
+      remaining -= len;
+      node = walker.nextNode();
+    }
+
+    if (last) return { node: last, offset: last.nodeValue ? last.nodeValue.length : 0 };
+    return { node: element, offset: 0 };
+  }
+
+  function characterRect(node, offset) {
+    try {
+      if (node.nodeType !== Node.TEXT_NODE) {
+        const r = node.getBoundingClientRect ? node.getBoundingClientRect() : null;
+        return r && r.height ? r : null;
+      }
+
+      const len = node.nodeValue ? node.nodeValue.length : 0;
+      if (!len) return node.parentElement ? node.parentElement.getBoundingClientRect() : null;
+
+      let start = Math.max(0, Math.min(offset, len - 1));
+      let end = Math.min(len, start + 1);
+      if (offset >= len && len > 0) {
+        start = len - 1;
+        end = len;
+      }
+
+      const range = document.createRange();
+      range.setStart(node, start);
+      range.setEnd(node, end);
+      const rects = range.getClientRects();
+      return rects.length ? rects[0] : range.getBoundingClientRect();
+    } catch (e) {
+      return null;
+    }
+  }
+
+  function captureReadingPosition() {
+    if (!anchorElements.length) rebuildReaderAnchors();
+    if (!anchorElements.length) return null;
+
+    const vv = window.visualViewport;
+    const viewportWidth = vv ? vv.width : window.innerWidth;
+    const topProbe = 6;
+    const ys = [topProbe, 12, 18, 26, 36, 50];
+    const xs = [];
+
+    for (let x = 12; x <= Math.min(viewportWidth - 12, 220); x += 16) xs.push(x);
+    xs.push(viewportWidth * .25, viewportWidth * .5, viewportWidth * .75);
+
+    for (const y of ys) {
+      for (const x of xs) {
+        if (x <= 0 || x >= viewportWidth) continue;
+        const caret = caretAtPoint(x, y);
+        if (!caret) continue;
+        const element = closestReaderElement(caret.node);
+        if (!element || !document.querySelector('.page-shell')?.contains(element)) continue;
+
+        const offset = textOffsetFromElementStart(element, caret.node, caret.offset);
+        const rect = characterRect(caret.node, caret.offset);
+        const key = element.dataset.readerKey;
+        if (key && rect && Number.isFinite(rect.top)) {
+          return { key, offset, top: rect.top };
+        }
+      }
+    }
+
+    /* Fallback: nearest textual block to the top edge. */
+    let best = null;
+    let bestDistance = Infinity;
+    for (const element of anchorElements) {
+      const rect = element.getBoundingClientRect();
+      if (rect.bottom < 0 || rect.top > (vv ? vv.height : window.innerHeight)) continue;
+      const distance = Math.abs(rect.top);
+      if (distance < bestDistance) {
+        bestDistance = distance;
+        best = { key: element.dataset.readerKey, offset: 0, top: rect.top };
+      }
+    }
+    return best;
+  }
+
+  function restoreReadingPosition(state) {
+    if (!state || !state.key) return false;
+    if (!anchorElements.length) rebuildReaderAnchors();
+
+    const element = document.querySelector('[data-reader-key="' + CSS.escape(state.key) + '"]');
+    if (!element) return false;
+
+    const pos = domPositionFromTextOffset(element, Number(state.offset) || 0);
+    const rect = characterRect(pos.node, pos.offset);
+    if (!rect || !Number.isFinite(rect.top)) return false;
+
+    const desiredTop = Number.isFinite(Number(state.top)) ? Number(state.top) : 6;
+    const delta = rect.top - desiredTop;
+    if (Math.abs(delta) < .5) return true;
+
+    suppressScrollSaveUntil = Date.now() + 700;
+    const oldBehavior = root.style.scrollBehavior;
+    root.style.scrollBehavior = 'auto';
+    window.scrollBy(0, delta);
+    root.style.scrollBehavior = oldBehavior;
+    return true;
+  }
+
+  function saveReaderState(state) {
+    if (!state) return;
+    lastStablePosition = state;
+    safeSet(readerStateKey, JSON.stringify(state));
+  }
+
+  function readReaderState() {
+    try {
+      const raw = safeGet(readerStateKey);
+      if (raw) return JSON.parse(raw);
+
+      // Import the user-scoped position saved under the pre-rename filename.
+      for (const oldKey of legacyRenamedReaderStateKeys) {
+        const renamedRaw = safeGet(oldKey);
+        if (renamedRaw) {
+          safeSet(readerStateKey, renamedRaw);
+          return JSON.parse(renamedRaw);
+        }
+      }
+
+      // One-time backward-compatible import of the pre-sync local position.
+      const legacyOwner = safeGet('study-legacy-import-owner');
+      const mayImportLegacy = activeUserId !== 'guest' && (!legacyOwner || legacyOwner === activeUserId);
+      if (mayImportLegacy) {
+        const legacyRaw = safeGet(legacyReaderStateKey);
+        if (legacyRaw) {
+          safeSet('study-legacy-import-owner', activeUserId);
+          safeSet(readerStateKey, legacyRaw);
+          return JSON.parse(legacyRaw);
+        }
+      }
+      return null;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  function settleRestore(state, delays = [0, 60, 180, 420]) {
+    if (!state) return;
+    suppressScrollSaveUntil = Date.now() + Math.max(...delays) + 350;
+    delays.forEach(delay => {
+      window.setTimeout(() => {
+        requestAnimationFrame(() => restoreReadingPosition(state));
+      }, delay);
+    });
+    window.setTimeout(() => {
+      saveReaderState(state);
+    }, Math.max(...delays) + 120);
+  }
+
+  function preserveReadingPosition(mutator) {
+    const state = captureReadingPosition() || lastStablePosition || readReaderState();
+    if (state) saveReaderState(state);
+    mutator();
+    rebuildReaderAnchors();
+    settleRestore(state);
+  }
+
+  function scheduleReaderSave() {
+    if (Date.now() < suppressScrollSaveUntil) return;
+    clearTimeout(scrollSaveTimer);
+    scrollSaveTimer = window.setTimeout(() => {
+      if (Date.now() < suppressScrollSaveUntil) return;
+      const state = captureReadingPosition();
+      if (state) saveReaderState(state);
+    }, 130);
+  }
+
+  rebuildReaderAnchors();
+  lastStablePosition = readReaderState();
+
+  /* ---------- Theme ---------- */
+
+  function applyTheme(theme) {
+    theme = theme === 'light' ? 'light' : 'dark';
+    root.dataset.theme = theme;
+    safeSet('study-theme', theme);
+    if (themeButton) {
+      themeButton.textContent = theme === 'dark' ? '☀' : '☾';
+      themeButton.title = theme === 'dark' ? 'Chuyển sang Light theme' : 'Chuyển sang Dark theme';
+      themeButton.setAttribute('aria-label', themeButton.title);
+      themeButton.setAttribute('aria-pressed', theme === 'light' ? 'true' : 'false');
+    }
+  }
+
+  /* ---------- Full / Keywords ---------- */
+
+  function applyMode(mode) {
+    mode = mode === 'keywords' ? 'keywords' : 'full';
+    root.dataset.studyMode = mode;
+    body.classList.toggle('keyword-focus', mode === 'keywords');
+    safeSet('study-mode', mode);
+    if (modeButton) {
+      modeButton.textContent = mode === 'full' ? '🎯' : '📖';
+      modeButton.title = mode === 'full' ? 'Chuyển sang Keywords mode' : 'Trở lại Full mode';
+      modeButton.setAttribute('aria-label', modeButton.title);
+      modeButton.setAttribute('aria-pressed', mode === 'keywords' ? 'true' : 'false');
+    }
+  }
+
+  /* ---------- Font 50-150%, step 5% ---------- */
+
+  function currentScale() {
+    const saved = Number(safeGet('study-font-scale', '100'));
+    return FONT_LEVELS.includes(saved) ? saved : 100;
+  }
+
+  function applyFontScale(scale) {
+    if (!FONT_LEVELS.includes(scale)) scale = 100;
+    root.style.setProperty('--base-font-size', (16 * scale / 100) + 'px');
+    safeSet('study-font-scale', String(scale));
+
+    if (fontReset) {
+      fontReset.textContent = scale + '%';
+      fontReset.title = 'Cỡ chữ hiện tại ' + scale + '%. Chạm để về 100%';
+      fontReset.setAttribute('aria-label', fontReset.title);
+    }
+    if (fontDown) fontDown.disabled = scale === FONT_LEVELS[0];
+    if (fontUp) fontUp.disabled = scale === FONT_LEVELS[FONT_LEVELS.length - 1];
+  }
+
+  /* ---------- Collapsible controls ---------- */
+
+  function setControlsOpen(open) {
+    if (!controls) return;
+    controls.classList.toggle('open', open);
+    controlsToggle?.setAttribute('aria-expanded', String(open));
+    controlsToggle?.setAttribute('aria-label', open ? 'Đóng công cụ' : 'Mở công cụ');
+    controlsToggle?.setAttribute('title', open ? 'Đóng công cụ' : 'Mở công cụ');
+  }
+
+  controlsToggle?.addEventListener('click', event => {
+    event.stopPropagation();
+    setControlsOpen(!controls.classList.contains('open'));
+  });
+
+  controlPanel?.addEventListener('click', event => event.stopPropagation());
+  document.addEventListener('pointerdown', event => {
+    if (controls?.classList.contains('open') && !controls.contains(event.target)) setControlsOpen(false);
+  });
+
+  /* ---------- TOC ---------- */
+
+  function openToc() {
+    body.classList.add('toc-open');
+    tocButton?.setAttribute('aria-expanded', 'true');
+    setControlsOpen(false);
+  }
+
+  function closeToc() {
+    body.classList.remove('toc-open');
+    tocButton?.setAttribute('aria-expanded', 'false');
+  }
+
+  tocButton?.addEventListener('click', openToc);
+  tocClose?.addEventListener('click', closeToc);
+  overlay?.addEventListener('click', closeToc);
+
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape') {
+      closeToc();
+      setControlsOpen(false);
+    }
+  });
+
+  document.querySelectorAll('a[href="#toc"]').forEach(a => {
+    a.addEventListener('click', event => {
+      event.preventDefault();
+      openToc();
+    });
+  });
+
+  /* TOC navigation does not add hash-history entries. */
+  document.querySelectorAll('#toc a[href^="#"]').forEach(a => {
+    a.addEventListener('click', event => {
+      const href = a.getAttribute('href');
+      if (!href || href === '#toc') return;
+      const target = document.getElementById(decodeURIComponent(href.slice(1)));
+      if (!target) return;
+      event.preventDefault();
+      closeToc();
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      window.setTimeout(scheduleReaderSave, 450);
+    });
+  });
+
+  /* ---------- Previous / next lesson item ---------- */
+
+  const tocTargets = Array.from(document.querySelectorAll('#toc a[href^="#"]'))
+    .map(a => document.getElementById(decodeURIComponent(a.getAttribute('href').slice(1))))
+    .filter((el, i, arr) => el && el.id !== 'toc' && arr.indexOf(el) === i);
+
+  function currentSectionIndex() {
+    let idx = -1;
+    const threshold = 24;
+    tocTargets.forEach((el, i) => {
+      if (el.getBoundingClientRect().top <= threshold) idx = i;
+    });
+    return idx;
+  }
+
+  function updateSectionButtons() {
+    const i = currentSectionIndex();
+    if (prevButton) prevButton.disabled = !tocTargets.length || i <= 0;
+    if (nextButton) nextButton.disabled = !tocTargets.length || i >= tocTargets.length - 1;
+  }
+
+  function goToIndex(i) {
+    if (!tocTargets.length) return;
+    i = Math.max(0, Math.min(tocTargets.length - 1, i));
+    tocTargets[i].scrollIntoView({ behavior: 'smooth', block: 'start' });
+    window.setTimeout(() => {
+      const state = captureReadingPosition();
+      if (state) saveReaderState(state);
+      updateSectionButtons();
+    }, 450);
+  }
+
+  prevButton?.addEventListener('click', () => goToIndex(Math.max(0, currentSectionIndex() - 1)));
+  nextButton?.addEventListener('click', () => goToIndex(Math.min(tocTargets.length - 1, currentSectionIndex() + 1)));
+
+  /* ---------- Home ---------- */
+
+  homeButton?.addEventListener('click', () => {
+    const state = captureReadingPosition();
+    if (state) saveReaderState(state);
+    safeSet(explicitHomeKey, '1');
+    safeSet('study-home-click-at', String(Date.now()));
+    window.location.href = new URL('index.html', window.location.href).href;
+  });
+
+  /* ---------- Initialize state ---------- */
+
+  applyTheme(root.dataset.theme === 'light' ? 'light' : 'dark');
+  applyMode(root.dataset.studyMode || 'full');
+  applyFontScale(currentScale());
+
+  themeButton?.addEventListener('click', () => applyTheme(root.dataset.theme === 'dark' ? 'light' : 'dark'));
+  modeButton?.addEventListener('click', () => applyMode(root.dataset.studyMode === 'keywords' ? 'full' : 'keywords'));
+
+  fontDown?.addEventListener('click', () => {
+    const i = FONT_LEVELS.indexOf(currentScale());
+    if (i > 0) preserveReadingPosition(() => applyFontScale(FONT_LEVELS[i - 1]));
+  });
+
+  fontUp?.addEventListener('click', () => {
+    const i = FONT_LEVELS.indexOf(currentScale());
+    if (i >= 0 && i < FONT_LEVELS.length - 1) preserveReadingPosition(() => applyFontScale(FONT_LEVELS[i + 1]));
+  });
+
+  fontReset?.addEventListener('click', () => preserveReadingPosition(() => applyFontScale(100)));
+
+  /* ---------- Scroll / rotation / resize persistence ---------- */
+
+  window.addEventListener('scroll', () => {
+    scheduleReaderSave();
+    updateSectionButtons();
+  }, { passive: true });
+
+  function handleLayoutViewportChange() {
+    /*
+      A native two-finger pinch changes VisualViewport but normally does not
+      change the layout viewport. Ignore it completely so the page does not
+      recalculate width or fight the browser's native zoom.
+    */
+    if (isPinchZoomActive()) {
+      pinchZoomSession = true;
+      return;
+    }
+
+    const { width: w, height: h } = layoutViewportSize();
+
+    /*
+      When pinch zoom returns to scale 1, VisualViewport may emit another
+      resize. If the layout viewport itself did not change, this was only zoom,
+      so do nothing.
+    */
+    const layoutChanged =
+      Math.abs(w - lastViewportWidth) >= 1 ||
+      Math.abs(h - lastViewportHeight) >= 1;
+
+    if (!layoutChanged) {
+      pinchZoomSession = false;
+      return;
+    }
+
+    pinchZoomSession = false;
+
+    if (!resizeAnchor) {
+      resizeAnchor =
+        lastStablePosition ||
+        readReaderState() ||
+        captureReadingPosition();
+    }
+
+    /*
+      Only a real layout change, such as portrait <-> landscape, updates
+      --app-viewport-width.
+    */
+    syncViewportGeometry();
+    lastViewportWidth = w;
+    lastViewportHeight = h;
+
+    if (resizeAnchor) {
+      settleRestore(resizeAnchor, [0, 50, 140, 300]);
+    }
+
+    clearTimeout(resizeRestoreTimer);
+    resizeRestoreTimer = window.setTimeout(() => {
+      if (resizeAnchor) {
+        settleRestore(resizeAnchor, [0, 80, 220]);
+      }
+
+      window.setTimeout(() => {
+        lastStablePosition =
+          resizeAnchor ||
+          captureReadingPosition();
+
+        if (lastStablePosition) {
+          saveReaderState(lastStablePosition);
+        }
+
+        resizeAnchor = null;
+        updateSectionButtons();
+      }, 320);
+    }, 260);
+  }
+
+  function handleVisualViewportResize() {
+    /*
+      visualViewport resize is the main signal used by Safari/WebKit while
+      pinch-zooming. At scale != 1 this is zoom, not a responsive-layout event.
+    */
+    if (isPinchZoomActive()) {
+      pinchZoomSession = true;
+      return;
+    }
+
+    handleLayoutViewportChange();
+  }
+
+  window.addEventListener(
+    'resize',
+    handleLayoutViewportChange,
+    { passive: true }
+  );
+
+  window.addEventListener('orientationchange', () => {
+    /*
+      Rotation is a genuine layout change. Use the stored logical reading
+      position, then wait for iOS to finish updating its layout viewport.
+    */
+    resizeAnchor =
+      lastStablePosition ||
+      readReaderState() ||
+      captureReadingPosition();
+
+    [40, 120, 280].forEach(delay => {
+      window.setTimeout(() => {
+        if (isPinchZoomActive()) return;
+
+        const size = layoutViewportSize();
+        syncViewportGeometry();
+
+        if (
+          Math.abs(size.width - lastViewportWidth) >= 1 ||
+          Math.abs(size.height - lastViewportHeight) >= 1
+        ) {
+          lastViewportWidth = size.width;
+          lastViewportHeight = size.height;
+        }
+
+        if (resizeAnchor) {
+          settleRestore(resizeAnchor, [0, 70, 180]);
+        }
+      }, delay);
+    });
+
+    window.setTimeout(() => {
+      resizeAnchor = null;
+      updateSectionButtons();
+    }, 620);
+  }, { passive: true });
+
+  window.visualViewport?.addEventListener(
+    'resize',
+    handleVisualViewportResize,
+    { passive: true }
+  );
+
+  function saveLifecycleState() {
+    const state = captureReadingPosition() || lastStablePosition;
+    if (state) saveReaderState(state);
+    rememberCurrentPage();
+  }
+
+  document.addEventListener('visibilitychange', () => {
+    if (document.visibilityState === 'hidden') saveLifecycleState();
+    else {
+      rememberCurrentPage();
+      const state = readReaderState();
+      if (state) settleRestore(state, [0, 80, 220]);
+    }
+  });
+
+  window.addEventListener('pagehide', saveLifecycleState);
+  window.addEventListener('beforeunload', saveLifecycleState);
+
+  window.addEventListener('pageshow', () => {
+    rememberCurrentPage();
+    rebuildReaderAnchors();
+    const state = readReaderState();
+    if (!location.hash && state) settleRestore(state, [0, 80, 220, 500]);
+    window.setTimeout(updateSectionButtons, 80);
+  });
+
+  window.addEventListener('load', () => {
+    rebuildReaderAnchors();
+    const state = readReaderState();
+    if (!location.hash && state) settleRestore(state, [0, 80, 220, 500]);
+    else {
+      const current = captureReadingPosition();
+      if (current) saveReaderState(current);
+    }
+    updateSectionButtons();
+  });
+
+
+  // Public bridge used by the cloud synchronization engine.
+  window.StudyReader = Object.freeze({
+    pageKey,
+    capture: captureReadingPosition,
+    restore: restoreReadingPosition,
+    rebuild: rebuildReaderAnchors,
+    readLocal: readReaderState,
+    saveLocal: saveReaderState,
+    settleRestore,
+    getLastStable: () => lastStablePosition,
+    isPinchZoomActive
+  });
+  window.dispatchEvent(new CustomEvent('studyreaderready'));
+})();
+</script>
+<script>
+// Cloud runtime v6.2 for lesson pages.
+// Public browser configuration for the study app. Cloud sync pilot v6.2.
+window.STUDY_CONFIG = Object.freeze({
+  SUPABASE_URL: 'https://aniaxezhssgumxmbxkhl.supabase.co',
+  SUPABASE_PUBLISHABLE_KEY: 'sb_publishable_6NbASFJULfnuggdm6MukFg_UknPZCIB',
+  APP_ROOT_URL: 'https://beinpubi.github.io/kenchiku-sekou-2ji/'
+});
+
+(function () {
+  'use strict';
+
+  const SESSION_KEY = 'study-cloud-session-v5';
+  window.__STUDY_CLOUD_CLIENT_VERSION__ = '6.2';
+  const listeners = new Set();
+
+  function config() {
+    const cfg = window.STUDY_CONFIG || {};
+    const url = String(cfg.SUPABASE_URL || '').replace(/\/+$/, '');
+    const key = String(cfg.SUPABASE_PUBLISHABLE_KEY || '');
+    if (!url || !key) throw new Error('Embedded Supabase configuration is missing or incomplete');
+    return { url, key };
+  }
+
+  function safeGet(key) {
+    try { return localStorage.getItem(key); } catch (e) { return null; }
+  }
+
+  function safeSet(key, value) {
+    try { localStorage.setItem(key, value); } catch (e) {}
+  }
+
+  function safeRemove(key) {
+    try { localStorage.removeItem(key); } catch (e) {}
+  }
+
+  function readSession() {
+    const raw = safeGet(SESSION_KEY);
+    if (!raw) return null;
+    try {
+      const value = JSON.parse(raw);
+      return value && value.access_token && value.refresh_token && value.user ? value : null;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  function saveSession(session) {
+    if (!session) {
+      safeRemove(SESSION_KEY);
+      return;
+    }
+    safeSet(SESSION_KEY, JSON.stringify(session));
+  }
+
+  function normalizeSession(payload) {
+    if (!payload || !payload.access_token || !payload.refresh_token) return null;
+    const expiresAt = Number(payload.expires_at) ||
+      (Math.floor(Date.now() / 1000) + (Number(payload.expires_in) || 3600));
+    return {
+      access_token: payload.access_token,
+      token_type: payload.token_type || 'bearer',
+      expires_in: Number(payload.expires_in) || 3600,
+      expires_at: expiresAt,
+      refresh_token: payload.refresh_token,
+      user: payload.user || null
+    };
+  }
+
+  function errorObject(message, status, raw) {
+    return {
+      message: String(message || 'Request failed'),
+      status: Number(status) || 0,
+      raw: raw || null
+    };
+  }
+
+  async function parseResponse(response) {
+    const text = await response.text();
+    if (!text) return null;
+    try { return JSON.parse(text); } catch (e) { return text; }
+  }
+
+  function messageFromBody(body, fallback) {
+    if (!body) return fallback;
+    if (typeof body === 'string') return body;
+    return body.msg || body.message || body.error_description || body.error || body.details || fallback;
+  }
+
+  async function authRequest(path, options) {
+    const { url, key } = config();
+    const headers = Object.assign({
+      'apikey': key,
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+      'X-Client-Info': 'kenchiku-study-sync/6.2'
+    }, options?.headers || {});
+
+    let response;
+    try {
+      response = await fetch(url + path, {
+        method: options?.method || 'GET',
+        headers,
+        body: options?.body === undefined ? undefined : JSON.stringify(options.body),
+        cache: 'no-store'
+      });
+    } catch (e) {
+      throw errorObject('Could not connect to Supabase Auth: ' + (e?.message || e), 0, null);
+    }
+
+    const body = await parseResponse(response);
+    if (!response.ok) {
+      throw errorObject(messageFromBody(body, 'Supabase Auth request failed'), response.status, body);
+    }
+    return body;
+  }
+
+  function notify(event, session) {
+    for (const callback of listeners) {
+      try { callback(event, session || null); } catch (e) { console.error(e); }
+    }
+  }
+
+  async function refreshSession(current) {
+    if (!current?.refresh_token) return null;
+    try {
+      const payload = await authRequest('/auth/v1/token?grant_type=refresh_token', {
+        method: 'POST',
+        body: { refresh_token: current.refresh_token }
+      });
+      const session = normalizeSession(payload);
+      if (!session || !session.user) throw new Error('Invalid refresh response');
+      saveSession(session);
+      notify('TOKEN_REFRESHED', session);
+      return session;
+    } catch (e) {
+      safeRemove(SESSION_KEY);
+      notify('SIGNED_OUT', null);
+      throw e;
+    }
+  }
+
+  async function getValidSession() {
+    let session = readSession();
+    if (!session) return null;
+    const now = Math.floor(Date.now() / 1000);
+    if (!session.expires_at || session.expires_at <= now + 60) {
+      session = await refreshSession(session);
+    }
+    return session;
+  }
+
+  const auth = {
+    async signInWithPassword(credentials) {
+      try {
+        const payload = await authRequest('/auth/v1/token?grant_type=password', {
+          method: 'POST',
+          body: {
+            email: String(credentials?.email || '').trim(),
+            password: String(credentials?.password || '')
+          }
+        });
+        const session = normalizeSession(payload);
+        if (!session || !session.user) {
+          return { data: { session: null, user: null }, error: errorObject('Supabase returned no session', 0, payload) };
+        }
+        saveSession(session);
+        notify('SIGNED_IN', session);
+        return { data: { session, user: session.user }, error: null };
+      } catch (e) {
+        return { data: { session: null, user: null }, error: errorObject(e?.message || e, e?.status, e?.raw) };
+      }
+    },
+
+    async getSession() {
+      try {
+        const session = await getValidSession();
+        return { data: { session }, error: null };
+      } catch (e) {
+        return { data: { session: null }, error: errorObject(e?.message || e, e?.status, e?.raw) };
+      }
+    },
+
+    async signOut() {
+      let serverError = null;
+      const session = readSession();
+      if (session?.access_token) {
+        try {
+          await authRequest('/auth/v1/logout?scope=local', {
+            method: 'POST',
+            headers: { 'Authorization': 'Bearer ' + session.access_token },
+            body: {}
+          });
+        } catch (e) {
+          serverError = e;
+          console.warn('[study-cloud] Remote sign-out failed; local session will still be cleared.', e);
+        }
+      }
+      safeRemove(SESSION_KEY);
+      notify('SIGNED_OUT', null);
+      return { error: serverError ? errorObject(serverError?.message || serverError, serverError?.status, serverError?.raw) : null };
+    },
+
+    onAuthStateChange(callback) {
+      if (typeof callback === 'function') listeners.add(callback);
+      const subscription = {
+        unsubscribe() { listeners.delete(callback); }
+      };
+      return { data: { subscription } };
+    }
+  };
+
+  class QueryBuilder {
+    constructor(table) {
+      this.table = table;
+      this.operation = 'select';
+      this.columns = '*';
+      this.payload = null;
+      this.filters = [];
+      this.orderBy = null;
+      this.limitCount = null;
+    }
+
+    select(columns) {
+      this.columns = columns || '*';
+      return this;
+    }
+
+    insert(payload) {
+      this.operation = 'insert';
+      this.payload = payload;
+      return this;
+    }
+
+    update(payload) {
+      this.operation = 'update';
+      this.payload = payload;
+      return this;
+    }
+
+    eq(column, value) {
+      this.filters.push([column, value]);
+      return this;
+    }
+
+    order(column, options) {
+      this.orderBy = [column, options?.ascending !== false];
+      return this;
+    }
+
+    limit(value) {
+      this.limitCount = Math.max(0, Number(value) || 0);
+      return this;
+    }
+
+    async maybeSingle() {
+      const result = await this.execute();
+      if (result.error) return result;
+      const rows = Array.isArray(result.data) ? result.data : (result.data ? [result.data] : []);
+      return { data: rows.length ? rows[0] : null, error: null };
+    }
+
+    async execute() {
+      const { url, key } = config();
+      let session;
+      try {
+        session = await getValidSession();
+      } catch (e) {
+        return { data: null, error: errorObject(e?.message || e, e?.status, e?.raw) };
+      }
+
+      if (!session?.access_token) {
+        return { data: null, error: errorObject('No active Supabase session', 401, null) };
+      }
+
+      const endpoint = new URL(url + '/rest/v1/' + encodeURIComponent(this.table));
+      if (this.columns) endpoint.searchParams.set('select', this.columns);
+      for (const [column, value] of this.filters) {
+        endpoint.searchParams.set(column, 'eq.' + String(value));
+      }
+      if (this.orderBy) {
+        endpoint.searchParams.set('order', this.orderBy[0] + '.' + (this.orderBy[1] ? 'asc' : 'desc'));
+      }
+      if (this.limitCount !== null) endpoint.searchParams.set('limit', String(this.limitCount));
+
+      const headers = {
+        'apikey': key,
+        'Authorization': 'Bearer ' + session.access_token,
+        'Accept': 'application/json'
+      };
+      let method = 'GET';
+      let body;
+      if (this.operation === 'insert') {
+        method = 'POST';
+        headers['Content-Type'] = 'application/json';
+        headers['Prefer'] = 'return=representation';
+        body = JSON.stringify(this.payload);
+      } else if (this.operation === 'update') {
+        method = 'PATCH';
+        headers['Content-Type'] = 'application/json';
+        headers['Prefer'] = 'return=representation';
+        body = JSON.stringify(this.payload);
+      }
+
+      let response;
+      try {
+        response = await fetch(endpoint.href, {
+          method,
+          headers,
+          body,
+          cache: 'no-store'
+        });
+      } catch (e) {
+        return { data: null, error: errorObject('Could not connect to Supabase Data API: ' + (e?.message || e), 0, null) };
+      }
+
+      const responseBody = await parseResponse(response);
+      if (!response.ok) {
+        return {
+          data: null,
+          error: errorObject(messageFromBody(responseBody, 'Supabase Data API request failed'), response.status, responseBody)
+        };
+      }
+      return { data: responseBody || [], error: null };
+    }
+  }
+
+  const client = {
+    auth,
+    from(table) { return new QueryBuilder(table); }
+  };
+
+  window.StudySupabaseReady = Promise.resolve(client);
+  window.createStudySupabaseClient = async function () {
+    config();
+    return client;
+  };
+  window.__STUDY_CLOUD_CLIENT_READY__ = true;
+})();
+</script>
+<script>
+(async function () {
+'use strict';
+
+const VERSION = '6.2';
+const FILE_PATH = decodeURIComponent(location.pathname.split('/').pop() || '');
+const LEGACY_FILE_PATH = "06a_建築法規_重要項目_p574-584_VN.html";
+const DEVICE_ID_KEY = 'study-device-id';
+const ACTIVE_USER_KEY = 'study-active-user-id';
+const LAST_PAGE_PREFIX = 'study-last-page:';
+const SYNC_EVENT = 'study-sync-status';
+const SYNC_DEBUG = new URLSearchParams(location.search).get('syncdebug') === '1';
+
+let supabase = null;
+let currentUser = null;
+let knownRevision = null;
+let knownUpdatedAt = null;
+let dirty = false;
+let dirtyVersion = 0;
+let saveTimer = 0;
+let applyingRemote = false;
+let initializationComplete = false;
+let ignoreScrollUntil = Date.now() + 1800;
+let lastSyncedSignature = '';
+let startupPromise = null;
+let synchronizationPromise = null;
+
+function safeGet(key, fallback = null) {
+  try {
+    const value = localStorage.getItem(key);
+    return value === null ? fallback : value;
+  } catch (e) {
+    return fallback;
+  }
+}
+
+function safeSet(key, value) {
+  try { localStorage.setItem(key, String(value)); } catch (e) {}
+}
+
+function delay(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+function normalizeText(value) {
+  return String(value || '').replace(/\s+/g, ' ').trim();
+}
+
+function payloadSignature(payload) {
+  if (!payload) return '';
+  return JSON.stringify({
+    file_path: payload.file_path || '',
+    section_id: payload.section_id || '',
+    anchor_key: payload.anchor_key || '',
+    text_offset: Number(payload.text_offset) || 0,
+    top_offset: Math.round((Number(payload.top_offset) || 0) * 10) / 10,
+    context_text: payload.context_text || ''
+  });
+}
+
+function remoteSignature(progress) {
+  if (!progress) return '';
+  return payloadSignature(progress);
+}
+
+function ensureStatusIndicator() {
+  let el = document.getElementById('study-cloud-sync-indicator');
+  if (el) return el;
+  el = document.createElement('div');
+  el.id = 'study-cloud-sync-indicator';
+  el.setAttribute('role', 'status');
+  el.setAttribute('aria-live', 'polite');
+  Object.assign(el.style, {
+    position: 'fixed',
+    right: 'max(8px, env(safe-area-inset-right))',
+    bottom: 'max(10px, env(safe-area-inset-bottom))',
+    zIndex: '2300',
+    maxWidth: 'min(78vw, 420px)',
+    padding: '7px 10px',
+    border: '1px solid var(--border, #39465b)',
+    borderRadius: '10px',
+    background: 'var(--dock-bg, rgba(18,27,43,.95))',
+    color: 'var(--text, #edf2f7)',
+    font: '600 12px Arial, sans-serif',
+    boxShadow: '0 6px 18px rgba(0,0,0,.25)',
+    opacity: '0',
+    pointerEvents: 'none',
+    transition: 'opacity .18s ease'
+  });
+  document.body.appendChild(el);
+  return el;
+}
+
+let statusHideTimer = 0;
+function emitStatus(state, detail = '') {
+  const message = detail || state;
+  console.log('[study-sync ' + VERSION + ']', state, message);
+  window.dispatchEvent(new CustomEvent(SYNC_EVENT, {
+    detail: { state, detail: message, file: FILE_PATH, version: VERSION }
+  }));
+
+  /*
+    Production mode is deliberately silent while synchronization is healthy.
+    Add ?syncdebug=1 to the lesson URL to display loading/pending/saving/synced.
+    Real errors remain visible without debug mode.
+  */
+  const shouldDisplay = state === 'error' || SYNC_DEBUG;
+  const existing = document.getElementById('study-cloud-sync-indicator');
+
+  if (!shouldDisplay) {
+    if (existing) {
+      existing.style.opacity = '0';
+      existing.hidden = true;
+    }
+    return;
+  }
+
+  if (!document.body) return;
+  const el = ensureStatusIndicator();
+  el.hidden = false;
+  const labels = {
+    loading: 'Cloud: loading…',
+    saving: 'Cloud: saving…',
+    pending: 'Cloud: pending…',
+    synced: 'Cloud: synced',
+    ready: 'Cloud: ready',
+    offline: 'Cloud: offline',
+    signed_out: 'Cloud: signed out',
+    error: 'Cloud error: '
+  };
+  el.textContent = state === 'error' ? labels.error + message : (labels[state] || 'Cloud: ' + message);
+  el.style.color = state === 'error' ? '#ff8585' : 'var(--text, #edf2f7)';
+  el.style.opacity = '1';
+  clearTimeout(statusHideTimer);
+
+  if (SYNC_DEBUG && (state === 'synced' || state === 'ready')) {
+    statusHideTimer = setTimeout(() => {
+      el.style.opacity = '0';
+      el.hidden = true;
+    }, 2800);
+  }
+}
+
+function getDeviceId() {
+  let id = safeGet(DEVICE_ID_KEY);
+  if (!id) {
+    try { id = crypto.randomUUID(); }
+    catch (e) { id = 'device-' + Date.now() + '-' + Math.random().toString(36).slice(2); }
+    safeSet(DEVICE_ID_KEY, id);
+  }
+  return id;
+}
+const DEVICE_ID = getDeviceId();
+
+async function waitForDocumentReady() {
+  if (document.readyState === 'complete') return;
+  await new Promise(resolve => window.addEventListener('load', resolve, { once: true }));
+}
+
+async function waitForReader(timeoutMs = 8000) {
+  if (window.StudyReader) return window.StudyReader;
+  return new Promise(resolve => {
+    let finished = false;
+    const done = value => {
+      if (finished) return;
+      finished = true;
+      window.removeEventListener('studyreaderready', onReady);
+      clearTimeout(timer);
+      resolve(value);
+    };
+    const onReady = () => done(window.StudyReader || null);
+    const timer = setTimeout(() => done(window.StudyReader || null), timeoutMs);
+    window.addEventListener('studyreaderready', onReady, { once: true });
+  });
+}
+
+function readerElementForKey(key) {
+  if (!key) return null;
+  try { return document.querySelector('[data-reader-key="' + CSS.escape(key) + '"]'); }
+  catch (e) { return null; }
+}
+
+function normalizeState(reader, state) {
+  if (state && state.key && readerElementForKey(state.key)) return state;
+  reader?.rebuild?.();
+  const first = document.querySelector('[data-reader-key]');
+  if (!first) return null;
+  return { key: first.dataset.readerKey, offset: 0, top: 6 };
+}
+
+function buildPayloadFromState(state) {
+  if (!state || !state.key) return null;
+  const element = readerElementForKey(state.key);
+  if (!element) return null;
+  const section = element.closest('section[id]');
+  return {
+    file_path: FILE_PATH,
+    section_id: section?.id || null,
+    anchor_key: state.key,
+    text_offset: Math.max(0, Number(state.offset) || 0),
+    top_offset: Number.isFinite(Number(state.top)) ? Number(state.top) : 6,
+    context_text: normalizeText(element.textContent).slice(0, 220) || null,
+    device_id: DEVICE_ID
+  };
+}
+
+async function captureStablePayload() {
+  const reader = await waitForReader();
+  if (!reader) return null;
+  const waits = [0, 80, 220, 500, 900];
+  for (const ms of waits) {
+    if (ms) await delay(ms);
+    reader.rebuild?.();
+    const state = normalizeState(
+      reader,
+      reader.capture?.() || reader.getLastStable?.() || reader.readLocal?.()
+    );
+    const payload = buildPayloadFromState(state);
+    if (payload) return payload;
+  }
+  return null;
+}
+
+function findAnchorByContext(contextText) {
+  const needle = normalizeText(contextText);
+  if (!needle) return null;
+  const probe = needle.slice(0, Math.min(90, needle.length));
+  for (const node of document.querySelectorAll('[data-reader-key]')) {
+    const hay = normalizeText(node.textContent);
+    if (hay.includes(probe) || (hay && probe.includes(hay.slice(0, Math.min(70, hay.length))))) return node;
+  }
+  return null;
+}
+
+function restoreRemoteProgress(progress) {
+  const reader = window.StudyReader;
+  if (!reader || !progress) return false;
+  applyingRemote = true;
+  ignoreScrollUntil = Date.now() + 1400;
+  try {
+    reader.rebuild?.();
+    let key = progress.anchor_key || '';
+    let element = readerElementForKey(key);
+    if (!element && progress.context_text) {
+      element = findAnchorByContext(progress.context_text);
+      key = element?.dataset?.readerKey || '';
+    }
+    if (element && key) {
+      const state = {
+        key,
+        offset: Math.max(0, Number(progress.text_offset) || 0),
+        top: Number.isFinite(Number(progress.top_offset)) ? Number(progress.top_offset) : 6
+      };
+      reader.saveLocal?.(state);
+      if (reader.settleRestore) reader.settleRestore(state, [0, 80, 220, 500]);
+      else reader.restore?.(state);
+      return true;
+    }
+    if (progress.section_id) {
+      const section = document.getElementById(progress.section_id);
+      if (section) {
+        section.scrollIntoView({ behavior: 'auto', block: 'start' });
+        return true;
+      }
+    }
+  } finally {
+    setTimeout(() => { applyingRemote = false; }, 950);
+  }
+  return false;
+}
+
+async function fetchProgressByPath(filePath, quiet = false) {
+  if (!currentUser || !navigator.onLine || !filePath) return null;
+  const { data, error } = await supabase
+    .from('study_progress')
+    .select('*')
+    .eq('user_id', currentUser.id)
+    .eq('file_path', filePath)
+    .maybeSingle();
+  if (error) {
+    if (!quiet) emitStatus('error', error.message || 'Could not load progress');
+    return null;
+  }
+  return data || null;
+}
+
+async function migrateLegacyCloudProgress(legacy) {
+  if (!legacy || !currentUser || !LEGACY_FILE_PATH || LEGACY_FILE_PATH === FILE_PATH) return null;
+  const payload = {
+    user_id: currentUser.id,
+    file_path: FILE_PATH,
+    section_id: legacy.section_id || null,
+    anchor_key: legacy.anchor_key || null,
+    text_offset: Math.max(0, Number(legacy.text_offset) || 0),
+    top_offset: Number.isFinite(Number(legacy.top_offset)) ? Number(legacy.top_offset) : 6,
+    context_text: legacy.context_text || null,
+    context_hash: legacy.context_hash || null,
+    device_id: legacy.device_id || DEVICE_ID
+  };
+
+  const { data, error } = await supabase
+    .from('study_progress')
+    .insert(payload)
+    .select('*')
+    .maybeSingle();
+
+  if (!error && data) {
+    emitStatus('synced', 'Legacy progress migrated to the short filename');
+    return data;
+  }
+
+  // A second device may have created the new row first.
+  const existing = await fetchProgressByPath(FILE_PATH, true);
+  if (existing) return existing;
+  emitStatus('error', error?.message || 'Could not migrate legacy progress');
+  return null;
+}
+
+async function fetchProgress() {
+  const current = await fetchProgressByPath(FILE_PATH);
+  if (current) return current;
+
+  if (LEGACY_FILE_PATH && LEGACY_FILE_PATH !== FILE_PATH) {
+    const legacy = await fetchProgressByPath(LEGACY_FILE_PATH, true);
+    if (legacy) {
+      const migrated = await migrateLegacyCloudProgress(legacy);
+      return migrated || legacy;
+    }
+  }
+  return null;
+}
+
+function rememberScopedLastPage() {
+  if (!currentUser) return;
+  safeSet(LAST_PAGE_PREFIX + currentUser.id, location.pathname + location.search);
+  safeSet('study-last-active-at:' + currentUser.id, Date.now());
+}
+
+async function insertInitialProgress(payload) {
+  const { data, error } = await supabase
+    .from('study_progress')
+    .insert({ user_id: currentUser.id, ...payload })
+    .select('*')
+    .maybeSingle();
+  if (!error && data) {
+    knownRevision = Number(data.revision) || 1;
+    knownUpdatedAt = data.updated_at || null;
+    lastSyncedSignature = remoteSignature(data);
+    rememberScopedLastPage();
+    emitStatus('synced', 'Initial progress created');
+    return true;
+  }
+  const remote = await fetchProgress();
+  if (remote) {
+    knownRevision = Number(remote.revision) || 1;
+    knownUpdatedAt = remote.updated_at || null;
+    lastSyncedSignature = remoteSignature(remote);
+    return false;
+  }
+  emitStatus('error', error?.message || 'Could not create progress row');
+  return false;
+}
+
+async function updateProgress(payload, expectedRevision) {
+  const { data, error } = await supabase
+    .from('study_progress')
+    .update(payload)
+    .eq('user_id', currentUser.id)
+    .eq('file_path', FILE_PATH)
+    .eq('revision', expectedRevision)
+    .select('*')
+    .maybeSingle();
+  if (error) {
+    emitStatus('error', error.message || 'Could not save progress');
+    return { ok: false, conflict: false };
+  }
+  if (!data) return { ok: false, conflict: true };
+  knownRevision = Number(data.revision) || expectedRevision + 1;
+  knownUpdatedAt = data.updated_at || null;
+  lastSyncedSignature = remoteSignature(data);
+  rememberScopedLastPage();
+  emitStatus('synced', 'Progress saved');
+  return { ok: true, conflict: false };
+}
+
+async function saveCloudProgress(force = false, retryOnConflict = true) {
+  if (!currentUser || !navigator.onLine || applyingRemote) return false;
+  if (!dirty && !force) return false;
+  const payload = await captureStablePayload();
+  if (!payload) {
+    emitStatus('error', 'Could not capture the current reading position');
+    return false;
+  }
+  const signature = payloadSignature(payload);
+  if (!force && signature === lastSyncedSignature) {
+    dirty = false;
+    return true;
+  }
+  const versionAtStart = dirtyVersion;
+  emitStatus('saving', 'Saving progress');
+  if (knownRevision === null) {
+    const created = await insertInitialProgress(payload);
+    if (created) {
+      if (dirtyVersion === versionAtStart) dirty = false;
+      return true;
+    }
+  }
+  if (knownRevision !== null) {
+    const result = await updateProgress(payload, knownRevision);
+    if (result.ok) {
+      if (dirtyVersion === versionAtStart) dirty = false;
+      return true;
+    }
+    if (result.conflict) {
+      const remote = await fetchProgress();
+      if (remote) {
+        knownRevision = Number(remote.revision) || 1;
+        knownUpdatedAt = remote.updated_at || null;
+        lastSyncedSignature = remoteSignature(remote);
+        if ((dirty || force) && retryOnConflict) return saveCloudProgress(force, false);
+        if (!dirty) restoreRemoteProgress(remote);
+      }
+    }
+  }
+  return false;
+}
+
+function scheduleSave(delayMs = 550) {
+  if (!dirty || !currentUser) return;
+  clearTimeout(saveTimer);
+  saveTimer = setTimeout(() => { void saveCloudProgress(false); }, delayMs);
+}
+
+function markDirtyFromScroll() {
+  if (!initializationComplete || applyingRemote || Date.now() < ignoreScrollUntil) return;
+  dirty = true;
+  dirtyVersion += 1;
+  emitStatus('pending', 'Reading position changed');
+  scheduleSave(550);
+}
+
+async function refreshFromCloud() {
+  if (!currentUser || dirty || !navigator.onLine) return;
+  const remote = await fetchProgress();
+  if (!remote) return;
+  const remoteRevision = Number(remote.revision) || 1;
+  if (knownRevision === null || remoteRevision > knownRevision) {
+    knownRevision = remoteRevision;
+    knownUpdatedAt = remote.updated_at || null;
+    lastSyncedSignature = remoteSignature(remote);
+    restoreRemoteProgress(remote);
+    rememberScopedLastPage();
+    emitStatus('synced', 'Newer progress loaded from cloud');
+  }
+}
+
+async function seedOrRestore() {
+  initializationComplete = false;
+  await waitForDocumentReady();
+  await delay(60);
+  const reader = await waitForReader();
+  if (!reader || !currentUser) {
+    emitStatus('error', 'Reader engine or signed-in user is unavailable');
+    return;
+  }
+  reader.rebuild?.();
+  const remote = await fetchProgress();
+  if (remote) {
+    knownRevision = Number(remote.revision) || 1;
+    knownUpdatedAt = remote.updated_at || null;
+    lastSyncedSignature = remoteSignature(remote);
+    restoreRemoteProgress(remote);
+    rememberScopedLastPage();
+    emitStatus('synced', 'Cloud progress loaded');
+  } else {
+    const payload = await captureStablePayload();
+    if (payload) await insertInitialProgress(payload);
+    else emitStatus('error', 'No readable position was found; progress row was not created');
+  }
+  ignoreScrollUntil = Date.now() + 1200;
+  initializationComplete = true;
+}
+
+async function readCurrentSession() {
+  const { data, error } = await supabase.auth.getSession();
+  if (error) {
+    emitStatus('error', error.message || 'Could not read login session');
+    return null;
+  }
+  return data.session || null;
+}
+
+async function ensureSessionAndSyncImpl(forceSeed = false) {
+  const session = await readCurrentSession();
+  const nextUser = session?.user || null;
+  if (!nextUser) {
+    currentUser = null;
+    emitStatus('signed_out', 'Not signed in; local progress only');
+    return;
+  }
+  const userChanged = !currentUser || currentUser.id !== nextUser.id;
+  currentUser = nextUser;
+  safeSet(ACTIVE_USER_KEY, currentUser.id);
+  if (userChanged) {
+    knownRevision = null;
+    knownUpdatedAt = null;
+    lastSyncedSignature = '';
+  }
+  if (userChanged || forceSeed || !initializationComplete) {
+    emitStatus('loading', 'Loading cloud progress');
+    await seedOrRestore();
+  } else {
+    await refreshFromCloud();
+  }
+}
+
+
+async function ensureSessionAndSync(forceSeed = false) {
+  if (synchronizationPromise) return synchronizationPromise;
+  synchronizationPromise = ensureSessionAndSyncImpl(forceSeed);
+  try {
+    return await synchronizationPromise;
+  } finally {
+    synchronizationPromise = null;
+  }
+}
+
+async function startSync() {
+  if (startupPromise) return startupPromise;
+  startupPromise = (async () => {
+    try {
+      supabase = await window.createStudySupabaseClient();
+    } catch (error) {
+      console.error('[study-sync] Cloud client unavailable:', error);
+      emitStatus('error', 'Cloud client unavailable: ' + (error?.message || error));
+      return;
+    }
+    await ensureSessionAndSync(true);
+  })();
+  return startupPromise;
+}
+
+window.addEventListener('scroll', markDirtyFromScroll, { passive: true });
+window.addEventListener('touchend', () => { if (dirty) scheduleSave(180); }, { passive: true });
+window.addEventListener('pointerup', () => { if (dirty) scheduleSave(220); }, { passive: true });
+window.addEventListener('wheel', () => { if (dirty) scheduleSave(250); }, { passive: true });
+window.addEventListener('online', () => { void ensureSessionAndSync(false); });
+
+document.addEventListener('visibilitychange', () => {
+  if (document.visibilityState === 'hidden') {
+    if (dirty) void saveCloudProgress(false);
+  } else {
+    void ensureSessionAndSync(false);
+  }
+});
+window.addEventListener('pageshow', () => { void ensureSessionAndSync(false); });
+window.addEventListener('pagehide', () => { if (dirty) void saveCloudProgress(false); });
+
+setInterval(() => {
+  if (dirty && document.visibilityState === 'visible') void saveCloudProgress(false);
+}, 4000);
+
+window.StudySync = Object.freeze({
+  version: VERSION,
+  filePath: FILE_PATH,
+  saveNow: () => saveCloudProgress(true),
+  refreshNow: () => ensureSessionAndSync(false),
+  getState: () => ({
+    userId: currentUser?.id || null,
+    knownRevision,
+    knownUpdatedAt,
+    dirty,
+    initializationComplete,
+    deviceId: DEVICE_ID
+  })
+});
+
+void startSync();
+})();
+</script>
+
+<nav class="chapter-navigation" aria-label="Previous and next chapter">
+    <a class="chapter-prev" data-chapter-link href="05k.html">
+      <span class="chapter-nav-kicker">← Previous Chapter</span>
+      <span class="chapter-nav-title">05k · 平成28年度 | p.569-573</span>
+    </a>
+    <a class="chapter-next" data-chapter-link href="06b.html">
+      <span class="chapter-nav-kicker">Next Chapter →</span>
+      <span class="chapter-nav-title">06b · 令和7年度 | p.585-592</span>
+    </a>
+  </nav>
+<script id="chapter-navigation-script">
+(() => {
+  'use strict';
+  const links = [...document.querySelectorAll('.chapter-navigation a[data-chapter-link]')];
+  links.forEach(link => {
+    link.addEventListener('click', async event => {
+      event.preventDefault();
+      try { window.StudyGoogleTTS?.stop?.(true); } catch (_) {}
+      try {
+        if (window.StudySync?.saveNow) {
+          await Promise.race([
+            Promise.resolve(window.StudySync.saveNow()),
+            new Promise(resolve => setTimeout(resolve, 700))
+          ]);
+        }
+      } catch (_) {}
+      location.href = link.href;
+    });
+  });
+})();
+</script>
+<script id="tts-cloudflare-script">
+(() => {
+  'use strict';
+
+  const VERSION = '4.0-cloudflare-worker-production';
+  const TTS_PROXY_URL = 'https://kenchiku-google-tts.duysdoor.workers.dev/tts';
+  const MAX_CHARS = 170;
+
+  const state = {
+    section: null,
+    chunks: [],
+    index: 0,
+    status: 'idle', // idle | loading | playing | paused
+    requestSerial: 0,
+    objectUrl: '',
+    prefetch: null
+  };
+
+  const audio = new Audio();
+  audio.preload = 'auto';
+  audio.playsInline = true;
+
+  function normalizeMultiline(text) {
+    return String(text || '')
+      .replace(/\r\n?/g, '\n')
+      .replace(/\u00a0/g, ' ')
+      .replace(/[ \t]+\n/g, '\n')
+      .replace(/\n[ \t]+/g, '\n')
+      .replace(/[ \t]{2,}/g, ' ')
+      .replace(/\n{3,}/g, '\n\n')
+      .trim();
+  }
+
+  const JAPANESE_RE = /[\u3040-\u30ff\u3400-\u9fff]/;
+  const SOURCE_SELECTORS = [
+    '.study-card.original .recall-source[lang="ja"]',
+    '.study-card.original .recall-source',
+    '.study-card.original [lang="ja"]',
+    '.lang-card.original .recall-source[lang="ja"]',
+    '.lang-card.original .card-body[lang="ja"]',
+    '.lang-card.original [lang="ja"]',
+    '.note-pane.original-cell[lang="ja"]',
+    '.original-cell[lang="ja"]',
+    '.jp-topic[lang="ja"]',
+    '.jp-answer[lang="ja"]',
+    '.card.original[lang="ja"]',
+    '.card.original [lang="ja"]',
+    '.card.orig[lang="ja"]',
+    '.card.orig',
+    '.original[lang="ja"]',
+    '.recall-source[lang="ja"]'
+  ].join(', ');
+
+  function hasJapaneseText(value) {
+    return JAPANESE_RE.test(String(value || ''));
+  }
+
+  function sourceNodes(unit) {
+    const all = [...unit.querySelectorAll(SOURCE_SELECTORS)]
+      .filter(node => hasJapaneseText(node.innerText || node.textContent || ''));
+    const unique = [...new Set(all)];
+    // Keep outer nodes and discard nested duplicates.
+    return unique.filter(node => !unique.some(other => other !== node && other.contains(node)));
+  }
+
+  function japaneseHeading(unit) {
+    const node = unit.querySelector(':scope > h2, :scope > h3, :scope > h4, :scope > .subsection-title, :scope > .section-head h2, :scope > .section-head h3, h3, h2');
+    const raw = normalizeMultiline(node?.innerText || node?.textContent || '');
+    if (!raw || !hasJapaneseText(raw)) return '';
+    const parts = raw.split(/[|｜/／]/).map(v => v.trim()).filter(Boolean);
+    return parts.find(hasJapaneseText) || raw;
+  }
+
+  function extractJapanese(unit) {
+    const nodes = sourceNodes(unit);
+    if (!nodes.length) return null;
+    const body = nodes
+      .map(node => normalizeMultiline(node.innerText || node.textContent || ''))
+      .filter(Boolean)
+      .join('\n');
+    if (!body) return null;
+    const heading = japaneseHeading(unit);
+    return { source: nodes[0], sources: nodes, text: heading ? `${heading}\n${body}` : body };
+  }
+
+  function collectTtsUnits() {
+    const result = [];
+    const seen = new Set();
+    const add = node => {
+      if (!node || seen.has(node) || !extractJapanese(node)) return;
+      seen.add(node);
+      result.push(node);
+    };
+
+    // Preferred granularity: one control per subsection.
+    document.querySelectorAll('.subsection').forEach(add);
+
+    // Fallback for table-based and older lesson layouts without .subsection.
+    const fallback = [...document.querySelectorAll(
+      'section.study-section, section.topic, section.aggregate-section, main#lesson > section, main > section, section[id]'
+    )].filter(node => {
+      if (result.some(primary => node.contains(primary))) return false;
+      return !!extractJapanese(node);
+    });
+    // Prefer the deepest matching section so controls are not duplicated on nested sections.
+    fallback
+      .filter(node => !fallback.some(other => other !== node && node.contains(other)))
+      .forEach(add);
+
+    // Last resort for uncommon layouts: one unit per standalone original card.
+    if (!result.length) {
+      document.querySelectorAll('.study-card.original, .lang-card.original, .card.original, .card.orig').forEach(add);
+    }
+
+    result.forEach((unit, index) => {
+      unit.classList.add('gttts-unit');
+      if (!unit.id) unit.dataset.gtttsUnit = String(index + 1);
+    });
+    return result;
+  }
+
+  function controlHost(unit) {
+    const card = unit.querySelector(
+      '.study-card.original, .lang-card.original, .note-pane.original-cell, .card.original, .card.orig'
+    );
+    const host = card || unit;
+    host.classList.add('gttts-control-host');
+    return host;
+  }
+  function hardSplit(text, maxChars = MAX_CHARS) {
+    const s = text.trim();
+    if (!s) return [];
+    if (s.length <= maxChars) return [s];
+    const out = [];
+    let rest = s;
+    while (rest.length > maxChars) {
+      const windowText = rest.slice(0, maxChars + 1);
+      let cut = -1;
+      for (const mark of ['。', '！', '？', '!', '?', '；', ';', '：', ':', '、', '，', ',', '）', ')', ' ']) {
+        const p = windowText.lastIndexOf(mark);
+        if (p >= Math.floor(maxChars * 0.55)) {
+          cut = p + 1;
+          break;
+        }
+      }
+      if (cut < 1) cut = maxChars;
+      out.push(rest.slice(0, cut).trim());
+      rest = rest.slice(cut).trim();
+    }
+    if (rest) out.push(rest);
+    return out.filter(Boolean);
+  }
+
+  function splitForTts(text) {
+    const normalized = normalizeMultiline(text);
+    const logical = [];
+    for (const rawLine of normalized.split(/\n+/)) {
+      const line = rawLine.trim();
+      if (!line) continue;
+      const sentences = line.match(/[^。！？!?]+[。！？!?]?/g) || [line];
+      for (const sentence of sentences) {
+        const s = sentence.trim();
+        if (s) logical.push(s);
+      }
+    }
+    return logical.flatMap(part => hardSplit(part));
+  }
+
+  function showToast(message, isError = false, duration = 2800) {
+    let toast = document.getElementById('gttts-toast');
+    if (!toast) {
+      toast = document.createElement('div');
+      toast.id = 'gttts-toast';
+      toast.className = 'gttts-toast';
+      document.body.appendChild(toast);
+    }
+    toast.textContent = message;
+    toast.classList.toggle('is-error', !!isError);
+    toast.classList.add('is-visible');
+    clearTimeout(showToast.timer);
+    showToast.timer = setTimeout(() => toast.classList.remove('is-visible'), duration);
+  }
+
+  async function fetchAudioBlob(text, signal) {
+    const response = await fetch(TTS_PROXY_URL, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'text/plain;charset=UTF-8',
+        'Accept': 'audio/mpeg,audio/*;q=0.9,*/*;q=0.1'
+      },
+      body: text,
+      cache: 'no-store',
+      signal
+    });
+
+    const contentType = response.headers.get('content-type') || '';
+
+    if (!response.ok) {
+      let detail = `HTTP ${response.status}`;
+      try {
+        if (contentType.includes('application/json')) {
+          const body = await response.json();
+          detail = body?.message || body?.error || detail;
+        } else {
+          const body = (await response.text()).trim();
+          if (body) detail = body.slice(0, 220);
+        }
+      } catch (_) {}
+      throw new Error(detail);
+    }
+
+    if (!contentType.includes('audio/')) {
+      const body = (await response.text()).trim();
+      throw new Error(
+        `Cloudflare proxy không trả audio (${contentType || 'unknown'}): ${body.slice(0, 180)}`
+      );
+    }
+
+    return await response.blob();
+  }
+
+  function revokeCurrentObjectUrl() {
+    if (state.objectUrl) {
+      try { URL.revokeObjectURL(state.objectUrl); } catch (_) {}
+      state.objectUrl = '';
+    }
+  }
+
+  function clearPrefetch() {
+    if (state.prefetch?.controller) {
+      try { state.prefetch.controller.abort(); } catch (_) {}
+    }
+    if (state.prefetch?.url) {
+      try { URL.revokeObjectURL(state.prefetch.url); } catch (_) {}
+    }
+    state.prefetch = null;
+  }
+
+  function updateUi() {
+    document.querySelectorAll('.gttts-unit.gttts-active').forEach(el => {
+      if (el !== state.section || state.status === 'idle') el.classList.remove('gttts-active');
+    });
+    if (state.section && state.status !== 'idle') state.section.classList.add('gttts-active');
+
+    document.querySelectorAll('.gttts-section-controls').forEach(controls => {
+      const section = controls.closest('.gttts-unit');
+      const play = controls.querySelector('[data-role="play"]');
+      const stop = controls.querySelector('[data-role="stop"]');
+      const active = section === state.section && state.status !== 'idle';
+      if (play) {
+        play.textContent = active && state.status === 'playing' ? '⏸' : active && state.status === 'paused' ? '▶' : active && state.status === 'loading' ? '…' : '🔊';
+        play.disabled = active && state.status === 'loading';
+        play.title = active && state.status === 'playing' ? 'Pause' : active && state.status === 'paused' ? 'Resume' : 'Đọc tiếng Nhật bằng Google Translate TTS';
+        play.setAttribute('aria-label', play.title);
+      }
+      if (stop) stop.hidden = !active;
+    });
+
+    const mini = document.getElementById('gttts-mini');
+    if (mini) {
+      const active = state.status !== 'idle';
+      mini.hidden = !active;
+      const toggle = mini.querySelector('[data-role="toggle"]');
+      if (toggle) {
+        toggle.textContent = state.status === 'playing' ? '⏸' : state.status === 'paused' ? '▶' : '…';
+        toggle.disabled = state.status === 'loading';
+      }
+    }
+  }
+
+  async function ensureChunkUrl(index, serial) {
+    if (index < 0 || index >= state.chunks.length) throw new Error('Chunk index ngoài phạm vi.');
+
+    if (state.prefetch && state.prefetch.index === index && state.prefetch.url) {
+      const url = state.prefetch.url;
+      state.prefetch.url = '';
+      state.prefetch = null;
+      return url;
+    }
+
+    const controller = new AbortController();
+    const blob = await fetchAudioBlob(state.chunks[index], controller.signal);
+    if (serial !== state.requestSerial) throw new DOMException('Stale request', 'AbortError');
+    return URL.createObjectURL(blob);
+  }
+
+  function prefetchNext(serial) {
+    clearPrefetch();
+    const next = state.index + 1;
+    if (next >= state.chunks.length || serial !== state.requestSerial) return;
+    const controller = new AbortController();
+    state.prefetch = { index: next, controller, url: '' };
+    fetchAudioBlob(state.chunks[next], controller.signal)
+      .then(blob => {
+        if (!state.prefetch || state.prefetch.index !== next || serial !== state.requestSerial) return;
+        state.prefetch.url = URL.createObjectURL(blob);
+      })
+      .catch(err => {
+        if (err?.name !== 'AbortError') console.warn('[GT TTS Proxy] prefetch failed:', err);
+        if (state.prefetch?.index === next) state.prefetch = null;
+      });
+  }
+
+  async function playCurrentChunk(serial) {
+    if (serial !== state.requestSerial) return;
+    if (state.index >= state.chunks.length) {
+      stop(true);
+      return;
+    }
+
+    state.status = 'loading';
+    updateUi();
+    try {
+      const url = await ensureChunkUrl(state.index, serial);
+      if (serial !== state.requestSerial) {
+        URL.revokeObjectURL(url);
+        return;
+      }
+      revokeCurrentObjectUrl();
+      state.objectUrl = url;
+      audio.src = url;
+      audio.currentTime = 0;
+      await audio.play();
+      state.status = 'playing';
+      updateUi();
+      prefetchNext(serial);
+    } catch (err) {
+      if (err?.name === 'AbortError') return;
+      console.error('[GT TTS Proxy] playback failed:', err);
+      state.status = 'idle';
+      updateUi();
+      showToast(`Không phát được Google TTS: ${err?.message || err}`, true, 7000);
+    }
+  }
+
+  function stop(finished = false) {
+    state.requestSerial += 1;
+    try { audio.pause(); } catch (_) {}
+    try { audio.removeAttribute('src'); audio.load(); } catch (_) {}
+    revokeCurrentObjectUrl();
+    clearPrefetch();
+    state.status = 'idle';
+    state.index = 0;
+    if (!finished) showToast('Đã dừng. Lần sau sẽ đọc lại từ đầu.', false, 1700);
+    updateUi();
+  }
+
+  async function startSection(section) {
+    const data = extractJapanese(section);
+    if (!data?.text) {
+      showToast('Không tìm thấy phần tiếng Nhật của section này.', true, 4500);
+      return;
+    }
+    if (state.status !== 'idle') stop(true);
+
+    const chunks = splitForTts(data.text);
+    if (!chunks.length) {
+      showToast('Không có nội dung để đọc.', true, 4000);
+      return;
+    }
+    state.section = section;
+    state.chunks = chunks;
+    state.index = 0;
+    const serial = ++state.requestSerial;
+    await playCurrentChunk(serial);
+  }
+
+  async function toggleSection(section) {
+    const same = section === state.section && state.status !== 'idle';
+    if (!same) {
+      await startSection(section);
+      return;
+    }
+    if (state.status === 'playing') {
+      audio.pause();
+      state.status = 'paused';
+      updateUi();
+      return;
+    }
+    if (state.status === 'paused') {
+      try {
+        await audio.play();
+        state.status = 'playing';
+        updateUi();
+      } catch (err) {
+        showToast(`Không resume được audio: ${err?.message || err}`, true, 5000);
+      }
+    }
+  }
+
+  audio.addEventListener('ended', () => {
+    if (state.status === 'idle') return;
+    state.index += 1;
+    const serial = state.requestSerial;
+    void playCurrentChunk(serial);
+  });
+
+  audio.addEventListener('error', () => {
+    if (state.status === 'idle') return;
+    const code = audio.error?.code || 0;
+    console.error('[GT TTS Proxy] HTMLAudioElement error:', code, audio.error);
+    state.status = 'idle';
+    updateUi();
+    showToast(`Lỗi phát audio trên trình duyệt (code ${code}).`, true, 6000);
+  });
+
+  function makeButton(text, label, role) {
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'gttts-btn';
+    btn.textContent = text;
+    btn.dataset.role = role;
+    btn.setAttribute('aria-label', label);
+    btn.title = label;
+    return btn;
+  }
+
+  function installMiniPlayer() {
+    if (document.getElementById('gttts-mini')) return;
+    const mini = document.createElement('div');
+    mini.id = 'gttts-mini';
+    mini.className = 'gttts-mini';
+    mini.hidden = true;
+    const toggle = makeButton('⏸', 'Pause/Resume', 'toggle');
+    const stopBtn = makeButton('■', 'Stop và trở về đầu', 'stop');
+    toggle.addEventListener('click', async () => {
+      if (!state.section) return;
+      await toggleSection(state.section);
+    });
+    stopBtn.addEventListener('click', () => stop(false));
+    mini.append(toggle, stopBtn);
+    document.body.appendChild(mini);
+  }
+
+  function installControls() {
+    let installed = 0;
+    for (const section of collectTtsUnits()) {
+      const host = controlHost(section);
+      if (host.querySelector(':scope > .gttts-section-controls')) continue;
+
+      const controls = document.createElement('div');
+      controls.className = 'gttts-section-controls';
+      controls.dataset.engine = VERSION;
+
+      const play = makeButton('🔊', 'Đọc tiếng Nhật bằng Google Translate TTS', 'play');
+      const stopBtn = makeButton('■', 'Stop và trở về đầu', 'stop');
+      stopBtn.hidden = true;
+
+      play.addEventListener('click', async e => {
+        e.preventDefault();
+        e.stopPropagation();
+        await toggleSection(section);
+      });
+      stopBtn.addEventListener('click', e => {
+        e.preventDefault();
+        e.stopPropagation();
+        stop(false);
+      });
+
+      controls.append(play, stopBtn);
+      host.appendChild(controls);
+      installed += 1;
+    }
+    installMiniPlayer();
+    updateUi();
+    console.info(`[GT TTS Cloudflare] v${VERSION} installed on ${installed} Japanese unit(s)`);
+  }
+  function init() { installControls(); }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init, { once: true });
+  } else {
+    init();
+  }
+
+  window.addEventListener('pagehide', () => stop(true));
+
+  window.StudyGoogleTTS = Object.freeze({
+    version: VERSION,
+    start: startSection,
+    stop,
+    extract: extractJapanese,
+    split: splitForTts,
+    state: () => ({ status: state.status, index: state.index, total: state.chunks.length })
+  });
+})();
+</script>
+</body>
+</html>

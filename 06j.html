@@ -1,0 +1,3337 @@
+<!DOCTYPE html>
+<html data-study-mode="full" data-theme="dark" lang="vi">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<meta content="dark light" name="color-scheme"/>
+<meta content="test-2.1-responsive-landscape" name="study-template-version"/>
+<title>建築法規・平成29年度 問題6｜Book 629–632</title>
+<style>
+:root {
+  --app-viewport-width: 100vw;
+  --font-vi: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  --font-ja: "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic UI", "Yu Gothic", Meiryo, sans-serif;
+  --base-font-size: 16px;
+  color-scheme: dark;
+}
+
+html[data-theme="dark"] {
+  --bg: #101318;
+  --surface: #171B22;
+  --surface-alt: #1D232C;
+  --text: #E3E7ED;
+  --text-muted: #9DA8B5;
+  --focus-muted: #68717D;
+  --heading: #F4F7FA;
+  --border: #323A46;
+  --link: #7CC4FF;
+  --original-bg: #15181E;
+  --translation-bg: #16202A;
+  --note-bg: #1C2028;
+  --memory-bg: #20231C;
+  --keyword: #74D7FF;
+  --keyword-bg: rgba(75, 190, 255, 0.10);
+  --critical-bg: #594613;
+  --critical-text: #FFE39A;
+  --trap: #FF8585;
+  --trap-underline: #FF5F5F;
+  --relation-bg: rgba(139, 126, 255, 0.12);
+  --relation-border: #8F86FF;
+  --shadow: rgba(0, 0, 0, .28);
+  --dock-bg: rgba(23, 27, 34, .94);
+  --overlay: rgba(0, 0, 0, .48);
+  color-scheme: dark;
+}
+
+html[data-theme="light"] {
+  --bg: #F4F6F8;
+  --surface: #FFFFFF;
+  --surface-alt: #EEF1F5;
+  --text: #20242A;
+  --text-muted: #626B77;
+  --focus-muted: #A0A7B0;
+  --heading: #111418;
+  --border: #CCD2DA;
+  --link: #0068B5;
+  --original-bg: #F8FAFC;
+  --translation-bg: #EDF7FC;
+  --note-bg: #F2F4F7;
+  --memory-bg: #F6F7E9;
+  --keyword: #006B9F;
+  --keyword-bg: #E4F4FC;
+  --critical-bg: #FFF0B8;
+  --critical-text: #654900;
+  --trap: #B42318;
+  --trap-underline: #D92D20;
+  --relation-bg: #EEEBFF;
+  --relation-border: #6C5CE7;
+  --shadow: rgba(31, 38, 49, .12);
+  --dock-bg: rgba(255, 255, 255, .94);
+  --overlay: rgba(19, 26, 35, .28);
+  color-scheme: light;
+}
+
+* { box-sizing: border-box; }
+html {
+  scroll-behavior: smooth;
+  font-size: var(--base-font-size);
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+body { overflow-anchor: none;
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-vi);
+  font-size: 1rem;
+  line-height: 1.72;
+  padding-bottom: 11rem;
+}
+:lang(vi), .translation, .translation-cell, .vn-topic, .vn-answer { font-family: var(--font-vi); }
+:lang(ja), .original, .original-cell, .jp-topic, .jp-answer { font-family: var(--font-ja); }
+strong, b { font-weight: 700; }
+a { color: var(--link); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+a:hover { text-decoration-thickness: 2px; }
+h1, h2, h3, h4 { color: var(--heading); line-height: 1.35; }
+h1 { font-size: clamp(1.8rem, 4vw, 2.8rem); margin: 0 0 .55rem; }
+h2 { font-size: clamp(1.38rem, 2.8vw, 2rem); margin: 0; }
+h3 { font-size: clamp(1.12rem, 2vw, 1.48rem); }
+h4 { font-size: 1.02rem; }
+[id] { scroll-margin-top: 22px; }
+p { margin: .62rem 0; }
+ul, ol { padding-left: 1.5rem; }
+li { margin: .34rem 0; }
+
+body > main,
+body > .page-shell {
+  width: min(1320px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 26px 0 70px;
+}
+body > .page-shell > main { width: 100%; margin: 0; padding: 0; }
+
+.hero {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  box-shadow: 0 8px 28px var(--shadow);
+  padding: clamp(22px, 4vw, 42px);
+  margin: 0 0 24px;
+}
+.eyebrow, .hero-subtitle, .subtitle, .meta-line, .source-ref, .mini-label, .small, .meta-label {
+  color: var(--text-muted);
+}
+.eyebrow { font-size: .82rem; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; }
+.hero-subtitle, .subtitle { font-size: 1.08rem; }
+.source-ref, .mini-label, .small, .meta-label { font-size: .86rem; }
+
+.summary-grid, .meta-grid, .mini-grid, .coverage {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: .72rem;
+  margin-top: 1rem;
+}
+.summary-card, .summary-item, .meta-item, .mini-card, .coverage > div {
+  background: var(--surface-alt);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: .75rem .85rem;
+}
+.summary-item b, .summary-card strong { color: var(--heading); }
+.source-list { color: var(--text-muted); }
+
+body > main > section:not(#toc),
+body > .page-shell > section:not(#toc),
+body > .page-shell > main > section,
+.topic,
+.aggregate-section {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  box-shadow: 0 7px 22px var(--shadow);
+  padding: clamp(18px, 3vw, 30px);
+  margin: 22px 0;
+}
+.subsection { margin: 1.7rem 0 2.1rem; }
+.subsection-title, .section-head {
+  border-bottom: 1px solid var(--border);
+  padding-bottom: .65rem;
+  margin-bottom: 1rem;
+}
+.section-head { display: flex; gap: 12px; align-items: baseline; justify-content: space-between; }
+
+.study-grid, .lang-grid, .bilingual-note {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 1rem;
+  align-items: start;
+}
+.study-card, .lang-card, .note-pane {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  min-width: 0;
+  background: var(--surface-alt);
+}
+.study-card.original, .lang-card.original, .original-cell, .jp-topic, .jp-answer { background: var(--original-bg); }
+.study-card.translation, .lang-card.translation, .translation-cell, .vn-topic, .vn-answer { background: var(--translation-bg); }
+.card-title {
+  padding: .62rem .85rem;
+  background: var(--surface-alt);
+  border-bottom: 1px solid var(--border);
+  color: var(--heading);
+  font-weight: 700;
+  letter-spacing: .02em;
+}
+.card-body, .recall-source { padding: .9rem 1rem; }
+.card-body.recall-source { padding: 1rem 1.05rem; }
+.item-block { border-top: 1px dashed var(--border); padding-top: .72rem; margin-top: .72rem; }
+.item-block:first-child { border-top: 0; padding-top: 0; margin-top: 0; }
+.item-label { font-weight: 700; color: var(--heading); margin-right: .35em; }
+
+.table-wrap { overflow-x: auto; margin: .9rem 0; border: 1px solid var(--border); border-radius: 10px; }
+table { width: 100%; border-collapse: collapse; min-width: 650px; background: var(--surface); }
+th, td { border: 1px solid var(--border); padding: .62rem .7rem; vertical-align: top; text-align: left; }
+th { background: var(--surface-alt); color: var(--heading); font-weight: 700; }
+caption { text-align: left; font-weight: 700; color: var(--heading); padding: .58rem .7rem; background: var(--surface-alt); caption-side: top; }
+.compact th, .compact td { padding: .48rem .55rem; }
+.study-table { min-width: 1040px; }
+.study-table .meta { white-space: nowrap; text-align: center; background: var(--surface-alt); }
+.glossary-table { min-width: 920px; }
+.memory-table, .number-table, .num-table { min-width: 760px; }
+
+.summary-box, .note-box, .note, .info-box, .background-box, .exam-note, .memory-box, .warning-box, .warning, .figure-box, .figure-card {
+  border: 1px solid var(--border);
+  border-left-width: 4px;
+  border-radius: 10px;
+  padding: .9rem 1rem;
+  margin: 1rem 0;
+  background: var(--note-bg);
+}
+.summary-box, .note-box, .note, .info-box, .background-box { border-left-color: var(--link); }
+.memory-box, .exam-note { background: var(--memory-bg); border-left-color: var(--critical-text); }
+.warning-box, .warning { border-left-color: var(--trap); }
+.figure-box, .figure-card { border-left-color: var(--relation-border); }
+.figure-card { overflow: hidden; padding: 0; }
+.figure-card img { display: block; width: 100%; height: auto; background: #fff; }
+.figure-card figcaption, .figure-explain { padding: .8rem 1rem; }
+
+.formula, .formula-line {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .45rem;
+  align-items: center;
+  padding: .75rem;
+  background: var(--surface-alt);
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  margin: .75rem 0;
+}
+.flow-node { border: 1px solid var(--border); border-radius: 7px; padding: .35rem .55rem; background: var(--surface); font-weight: 700; }
+.flow-arrow { color: var(--text-muted); font-weight: 700; }
+
+.kw {
+  font-weight: 700;
+  color: var(--keyword);
+  background: var(--keyword-bg);
+  padding: .02em .16em;
+  border-radius: .2em;
+}
+.critical {
+  font-weight: 700;
+  color: var(--critical-text);
+  background: var(--critical-bg);
+  padding: .04em .22em;
+  border-radius: .22em;
+}
+.trap {
+  font-weight: 700;
+  color: var(--trap);
+  text-decoration-line: underline;
+  text-decoration-color: var(--trap-underline);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+}
+.relation {
+  font-weight: 600;
+  color: var(--text);
+  background: var(--relation-bg);
+  border-bottom: 2px solid var(--relation-border);
+  padding: .02em .14em;
+}
+
+html[data-study-mode="keywords"] .recall-source { color: var(--focus-muted); }
+html[data-study-mode="keywords"] .recall-source .kw { color: var(--keyword); background: var(--keyword-bg); }
+html[data-study-mode="keywords"] .recall-source .critical { color: var(--critical-text); background: var(--critical-bg); }
+html[data-study-mode="keywords"] .recall-source .trap { color: var(--trap); }
+html[data-study-mode="keywords"] .recall-source .relation { color: var(--text); background: var(--relation-bg); }
+html[data-study-mode="keywords"] .recall-source th,
+html[data-study-mode="keywords"] .recall-source .card-title,
+html[data-study-mode="keywords"] .recall-source .item-label { color: var(--heading); }
+
+.backlink, .back-toc, .back { display: inline-block; margin-top: .8rem; font-size: .9rem; }
+
+/* Collapsible study controls: one launcher at bottom-left. */
+.control-cluster {
+  position: fixed;
+  left: max(8px, env(safe-area-inset-left));
+  bottom: max(10px, env(safe-area-inset-bottom));
+  z-index: 2200;
+  width: 38px;
+  height: 38px;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.control-launcher,
+.control-panel button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  width: 32px;
+  height: 32px;
+  min-width: 32px;
+  min-height: 32px;
+  padding: 0;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface-alt);
+  color: var(--text);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1;
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.control-launcher {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  z-index: 2;
+  width: 38px;
+  height: 38px;
+  min-width: 38px;
+  min-height: 38px;
+  border-radius: 11px;
+  background: var(--dock-bg);
+  box-shadow: 0 6px 18px var(--shadow);
+  font-size: 20px;
+  letter-spacing: 1px;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+}
+
+.control-panel {
+  position: absolute;
+  left: 43px;
+  bottom: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 2px;
+  width: max-content;
+  max-width: calc(100dvw - max(59px, env(safe-area-inset-left) + 59px) - max(8px, env(safe-area-inset-right)));
+  padding: 3px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  overscroll-behavior-x: contain;
+  scrollbar-width: none;
+  border: 1px solid var(--border);
+  border-radius: 11px;
+  background: var(--dock-bg);
+  box-shadow: 0 6px 18px var(--shadow);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateX(-10px) scale(.98);
+  transform-origin: left bottom;
+  transition: opacity .14s ease, transform .14s ease, visibility .14s ease;
+}
+
+.control-panel::-webkit-scrollbar { display: none; }
+
+.control-cluster.open .control-panel {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateX(0) scale(1);
+}
+
+.control-cluster.open .control-launcher {
+  border-color: var(--link);
+}
+
+.control-panel button:active,
+.control-launcher:active { transform: translateY(1px); }
+
+.control-panel button:hover,
+.control-launcher:hover { border-color: var(--link); }
+
+.control-panel button:disabled {
+  opacity: .36;
+  cursor: default;
+}
+
+.control-panel .font-reset {
+  width: 38px;
+  min-width: 38px;
+  font-size: 9px;
+  letter-spacing: -.03em;
+}
+
+.control-panel .mode-toggle { font-size: 14px; }
+
+.control-panel .home-icon svg {
+  width: 17px;
+  height: 17px;
+  display: block;
+}
+
+/*
+  Responsive reading geometry for iPad/iPhone.
+  The page follows the actual Visual Viewport width. When rotating to
+  landscape it expands across the wider screen instead of staying at
+  portrait width. Reader-anchor JS below restores the same logical text
+  position after the reflow.
+*/
+@media (pointer: coarse) {
+  body > main,
+  body > .page-shell {
+    width: min(calc(var(--app-viewport-width, 100vw) - 16px), 1320px) !important;
+    max-width: 1320px !important;
+  }
+
+
+  .hero {
+    padding: 1rem !important;
+  }
+
+  body > main > section:not(#toc),
+  body > .page-shell > section:not(#toc),
+  body > .page-shell > main > section,
+  .topic,
+  .aggregate-section {
+    padding: 1rem !important;
+  }
+}
+
+
+@media (pointer: coarse) and (orientation: portrait) {
+  .study-grid,
+  .lang-grid,
+  .bilingual-note {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+@media (pointer: coarse) and (orientation: landscape) {
+  body > main,
+  body > .page-shell {
+    width: min(calc(var(--app-viewport-width, 100dvw) - 20px), 1320px) !important;
+  }
+}
+
+/* TOC drawer */
+#toc {
+  position: fixed !important;
+  left: 0 !important;
+  top: 0 !important;
+  bottom: 0 !important;
+  z-index: 2100 !important;
+  width: min(82vw, 390px) !important;
+  max-height: 100dvh !important;
+  overflow-y: auto !important;
+  margin: 0 !important;
+  padding: 74px 20px 28px !important;
+  background: var(--surface) !important;
+  border: 0 !important;
+  border-right: 1px solid var(--border) !important;
+  border-radius: 0 16px 16px 0 !important;
+  box-shadow: 10px 0 30px var(--shadow) !important;
+  transform: translateX(-105%);
+  transition: transform .2s ease;
+}
+body.toc-open #toc { transform: translateX(0); }
+#toc .toc-grid { columns: 1 !important; display: block !important; }
+#toc ol { margin-top: .35rem; }
+.toc-drawer-head {
+  position: sticky;
+  top: -74px;
+  margin: -74px -20px 18px;
+  padding: 13px 14px;
+  min-height: 58px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  z-index: 2;
+}
+.toc-drawer-head strong { color: var(--heading); }
+.toc-close {
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  background: var(--surface-alt);
+  color: var(--text);
+  font: 700 1.25rem var(--font-vi);
+  cursor: pointer;
+}
+.toc-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  background: var(--overlay);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .2s ease;
+}
+body.toc-open .toc-overlay { opacity: 1; pointer-events: auto; }
+body.toc-open { overflow: hidden; }
+
+@media (max-width: 900px) {
+  .study-grid, .lang-grid, .bilingual-note { grid-template-columns: 1fr; }
+  body > main, body > .page-shell { width: min(100% - 20px, 780px); padding-top: 14px; }
+  .section-head { display: block; }
+  .source-ref { display: block; margin-top: .45rem; }
+  table { min-width: 620px; }
+}
+
+@media (max-width: 560px) {
+  body { font-size: 1rem; }
+  body > main, body > .page-shell { width: calc(100% - 14px); }
+  .hero { padding: 1rem; border-radius: 12px; }
+  body > main > section:not(#toc),
+  body > .page-shell > section:not(#toc),
+  body > .page-shell > main > section,
+  .topic, .aggregate-section { padding: 1rem; border-radius: 12px; }
+}
+
+
+/*
+  iPad/tablet landscape:
+  Japanese and Vietnamese return to two side-by-side columns.
+  The min-height condition avoids forcing ordinary phone landscape into
+  two columns that would be too narrow.
+*/
+@media (pointer: coarse) and (orientation: landscape) and (min-width: 700px) and (min-height: 600px) {
+  body > main,
+  body > .page-shell {
+    width: min(calc(var(--app-viewport-width, 100dvw) - 20px), 1320px) !important;
+    max-width: 1320px !important;
+  }
+
+  .study-grid,
+  .lang-grid,
+  .bilingual-note {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important;
+    gap: clamp(.75rem, 1.4vw, 1rem) !important;
+    align-items: start;
+  }
+
+  .study-card,
+  .lang-card,
+  .note-pane {
+    min-width: 0;
+  }
+}
+
+@media print {
+  .control-cluster { display: none !important; }
+  :root,
+  html[data-theme="dark"],
+  html[data-theme="light"] {
+    --bg: #FFFFFF;
+    --surface: #FFFFFF;
+    --surface-alt: #F1F3F5;
+    --text: #111111;
+    --text-muted: #555555;
+    --heading: #000000;
+    --border: #B8BEC6;
+    --original-bg: #FFFFFF;
+    --translation-bg: #F7FBFD;
+    --note-bg: #F7F7F7;
+    --memory-bg: #FAFAF0;
+    --keyword: #005A86;
+    --keyword-bg: #E4F4FC;
+    --critical-bg: #FFF0B8;
+    --critical-text: #4A3600;
+    --trap: #9E1B12;
+    --trap-underline: #9E1B12;
+    --relation-bg: #F0EDFF;
+    --relation-border: #5B4FD6;
+    --shadow: transparent;
+  }
+  body { background: #fff; color: #111; font-size: 11pt; padding-bottom: 0; }
+  .control-cluster, .toc-overlay, .toc-drawer-head { display: none !important; }
+  #toc {
+    position: static !important;
+    transform: none !important;
+    width: auto !important;
+    max-height: none !important;
+    padding: 1rem !important;
+    border: 1px solid var(--border) !important;
+    border-radius: 10px !important;
+    box-shadow: none !important;
+    margin: 1rem 0 !important;
+  }
+  body > main, body > .page-shell { width: 100%; padding: 0; }
+  .hero, .study-card, .lang-card, .summary-box, .note-box, .note, .memory-box, .warning-box, .figure-box, .figure-card { break-inside: avoid; }
+  a { color: #000; text-decoration: none; }
+  .backlink, .back-toc, .back { display: none; }
+}
+</style><script>
+try {
+  if ("scrollRestoration" in history) {
+    history.scrollRestoration = "manual";
+  }
+} catch (e) {}
+(function () {
+  const root = document.documentElement;
+  try {
+    const savedTheme = localStorage.getItem('study-theme');
+    root.dataset.theme = savedTheme === 'light' ? 'light' : 'dark';
+
+    const savedMode = localStorage.getItem('study-mode');
+    root.dataset.studyMode = savedMode === 'keywords' ? 'keywords' : 'full';
+
+    const savedScale = Number(localStorage.getItem('study-font-scale'));
+    const scale = Number.isFinite(savedScale) && savedScale >= 50 && savedScale <= 150 && savedScale % 5 === 0
+      ? savedScale : 100;
+    root.style.setProperty('--base-font-size', (16 * scale / 100) + 'px');
+  } catch (e) {
+    root.dataset.theme = 'dark';
+    root.dataset.studyMode = 'full';
+    root.style.setProperty('--base-font-size', '16px');
+  }
+})();
+</script><meta name="study-sync-version" content="6.2-production-silent"/>
+<meta name="tts-engine-version" content="4.0-cloudflare-worker-production"/>
+<style id="tts-cloudflare-style">
+/* ===== Google Translate TTS via Cloudflare Worker proxy pilot ===== */
+.gttts-control-host { position: relative; }
+.gttts-control-host > .card-title { padding-right: 5.1rem; }
+.gttts-unit:not(.subsection) > h2:first-of-type,
+.gttts-unit:not(.subsection) > h3:first-of-type,
+.gttts-unit:not(.subsection) > .section-head:first-child { padding-right: 5.2rem; }
+.gttts-section-controls {
+  position: absolute;
+  top: .55rem;
+  right: .55rem;
+  z-index: 4;
+  display: inline-flex;
+  align-items: center;
+  gap: .2rem;
+  padding: .18rem;
+  border: 1px solid var(--border, rgba(127,127,127,.25));
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--surface, #171B22) 90%, transparent);
+  box-shadow: 0 4px 16px rgba(0,0,0,.12);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+.gttts-btn {
+  width: 2.15rem;
+  height: 2.15rem;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  display: inline-grid;
+  place-items: center;
+  background: transparent;
+  color: var(--text, #fff);
+  font: inherit;
+  font-size: 1.02rem;
+  line-height: 1;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+.gttts-btn:active { transform: scale(.94); }
+.gttts-btn:focus-visible { outline: 2px solid var(--link, #7CC4FF); outline-offset: 2px; }
+.gttts-btn[hidden] { display: none !important; }
+.gttts-unit.gttts-active .gttts-control-host {
+  box-shadow: inset 3px 0 0 var(--link, #7CC4FF);
+}
+.gttts-mini {
+  position: fixed;
+  right: max(12px, env(safe-area-inset-right));
+  bottom: calc(max(12px, env(safe-area-inset-bottom)) + 58px);
+  z-index: 9998;
+  display: inline-flex;
+  align-items: center;
+  gap: .2rem;
+  padding: .22rem;
+  border: 1px solid var(--border, rgba(127,127,127,.28));
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--surface, #171B22) 94%, transparent);
+  box-shadow: 0 7px 24px rgba(0,0,0,.22);
+  backdrop-filter: blur(9px);
+  -webkit-backdrop-filter: blur(9px);
+}
+.gttts-mini[hidden] { display: none !important; }
+.gttts-mini .gttts-btn { width: 2rem; height: 2rem; }
+.gttts-toast {
+  position: fixed;
+  left: 50%;
+  bottom: calc(max(12px, env(safe-area-inset-bottom)) + 14px);
+  z-index: 10000;
+  max-width: min(88vw, 38rem);
+  transform: translate(-50%, 12px);
+  opacity: 0;
+  pointer-events: none;
+  padding: .58rem .82rem;
+  border: 1px solid var(--border, rgba(127,127,127,.3));
+  border-radius: .75rem;
+  background: color-mix(in srgb, var(--surface, #171B22) 96%, transparent);
+  color: var(--text, #fff);
+  box-shadow: 0 8px 28px rgba(0,0,0,.22);
+  font-size: .82rem;
+  line-height: 1.4;
+  transition: opacity .16s ease, transform .16s ease;
+}
+.gttts-toast.is-visible { opacity: 1; transform: translate(-50%, 0); }
+.gttts-toast.is-error { border-color: var(--trap, #FF8585); }
+@media (max-width: 520px) {
+  .gttts-section-controls { top: .42rem; right: .42rem; }
+  .gttts-btn { width: 2rem; height: 2rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .gttts-btn:active { transform: none; }
+  .gttts-toast { transition: none; }
+}
+</style>
+<style id="chapter-navigation-style">
+.chapter-navigation {
+  width: min(1320px, calc(100% - 28px));
+  margin: 3rem auto 7rem;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: .8rem;
+}
+.chapter-navigation a,
+.chapter-navigation .chapter-nav-disabled {
+  min-height: 66px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: .18rem;
+  padding: .75rem 1rem;
+  border: 1px solid var(--border, #323A46);
+  border-radius: 12px;
+  background: var(--surface, #171B22);
+  color: var(--text, #E3E7ED);
+  text-decoration: none;
+  box-shadow: 0 5px 18px var(--shadow, rgba(0,0,0,.18));
+  touch-action: manipulation;
+}
+.chapter-navigation a:active { transform: scale(.99); }
+.chapter-navigation .chapter-next { text-align: right; align-items: flex-end; }
+.chapter-navigation .chapter-prev { text-align: left; align-items: flex-start; }
+.chapter-navigation .chapter-nav-kicker {
+  color: var(--text-muted, #9DA8B5);
+  font-size: .76rem;
+  font-weight: 700;
+  letter-spacing: .035em;
+  text-transform: uppercase;
+}
+.chapter-navigation .chapter-nav-title {
+  color: var(--heading, #F4F7FA);
+  font-size: .94rem;
+  font-weight: 750;
+  overflow-wrap: anywhere;
+}
+.chapter-navigation .chapter-nav-disabled {
+  opacity: .36;
+  box-shadow: none;
+}
+@media (max-width: 560px) {
+  .chapter-navigation { width: calc(100% - 20px); gap: .55rem; }
+  .chapter-navigation a,
+  .chapter-navigation .chapter-nav-disabled { min-height: 60px; padding: .62rem .72rem; }
+  .chapter-navigation .chapter-nav-title { font-size: .85rem; }
+}
+</style>
+</head>
+<body>
+<!--
+HTML TEMPLATE CONTRACT 2.4 CLOUD-SYNC SILENT
+- Based on latest pinch-zoom-safe test.html.
+- Default theme: dark; persistent Dark/Light toggle.
+- Font: 50%-150%, 5% step; persistent.
+- Native two-finger pinch zoom MUST NOT trigger responsive reflow.
+- Real orientation change MAY update layout and restore logical reading position.
+- iPad/tablet portrait: one-column bilingual flow.
+- iPad/tablet landscape: Japanese/Vietnamese side-by-side.
+- Controls: collapsed by default at bottom-left; tap to expand horizontally.
+- Home button: index.html.
+- Back/Next: TOC item navigation, not browser history.
+- Do not redesign CSS/JS/control behavior per lesson.
+-->
+<div class="control-cluster" id="control-cluster">
+<button aria-controls="control-panel" aria-expanded="false" aria-label="Mở công cụ" class="control-launcher" id="controls-toggle" title="Mở công cụ" type="button">⋯</button>
+<div aria-label="Công cụ học tập" class="control-panel" id="control-panel" role="toolbar">
+<button aria-controls="toc" aria-expanded="false" aria-label="Mục lục" id="toc-toggle" title="Mục lục" type="button">☰</button>
+<button aria-label="Mục trước" id="section-prev" title="Mục trước" type="button">‹</button>
+<button aria-label="Mục tiếp theo" id="section-next" title="Mục tiếp theo" type="button">›</button>
+<button aria-label="Đổi Dark/Light" aria-pressed="false" id="theme-toggle" title="Đổi Dark/Light" type="button">☀</button>
+<button aria-label="Đổi Full/Keywords" aria-pressed="false" class="mode-toggle" id="mode-toggle" title="Đổi Full/Keywords" type="button">🎯</button>
+<button aria-label="Giảm cỡ chữ" id="font-down" title="Giảm cỡ chữ 5%" type="button">A−</button>
+<button aria-label="Đặt lại cỡ chữ 100%" class="font-reset" id="font-reset" title="Đặt lại cỡ chữ 100%" type="button">100%</button>
+<button aria-label="Tăng cỡ chữ" id="font-up" title="Tăng cỡ chữ 5%" type="button">A+</button>
+<button aria-label="Top Page" class="home-icon" id="home-button" title="Top Page" type="button"><svg aria-hidden="true" fill="none" viewbox="0 0 24 24"><path d="M3.5 10.5 12 3.8l8.5 6.7v9.2h-5.3v-6H8.8v6H3.5z" stroke="currentColor" stroke-linejoin="round" stroke-width="1.8"></path></svg></button>
+</div>
+</div><div aria-hidden="true" class="toc-overlay" id="toc-overlay"></div>
+<div class="page-shell">
+<header class="hero" id="top">
+<h1>建築法規・平成29年度 問題6｜Book 629–632</h1>
+</header>
+<nav aria-label="Mục lục" class="toc" id="toc">
+<div class="toc-drawer-head">
+<strong>Mục lục</strong>
+<button aria-label="Đóng mục lục" class="toc-close" id="toc-close" type="button">×</button>
+</div>
+<h2>Mục lục</h2>
+<!-- TOC_ITEMS_START -->
+
+<!-- TOC_ITEMS_END -->
+<ol><li><a href="#sec-overview">平成29年度 問題6 建築法規</a><ol><li><a href="#sub-overview-intro">問題構成 / Cấu trúc đề</a></li><li><a href="#sub-answer-list">解答一覧 / Bảng đáp án</a></li></ol></li><li><a href="#sec-q1">設問1 建設業法／施工体系図の作成</a><ol><li><a href="#sub-q1-question">問題文・解答 / Đề bài và đáp án</a></li><li><a href="#sub-q1-law">考え方・解き方 / Cách tư duy và giải bài</a></li></ol></li><li><a href="#sec-q2">設問2 建築基準法施行令／工事現場における危害の防止</a><ol><li><a href="#sub-q2-question">問題文・解答 / Đề bài và đáp án</a></li><li><a href="#sub-q2-law">考え方・解き方 / Cách tư duy và giải bài</a></li></ol></li><li><a href="#sec-q3">設問3 労働安全衛生法／職長等に対する安全衛生教育</a><ol><li><a href="#sub-q3-question">問題文・解答 / Đề bài và đáp án</a></li><li><a href="#sub-q3-law">考え方・解き方 / Cách tư duy và giải bài</a></li></ol></li><li><a href="#terms">Professional terminology</a></li><li><a href="#background">Background knowledge</a></li><li><a href="#memory">Key points and memory aids</a></li></ol></nav>
+<!-- CONTENT_START -->
+<main id="lesson"><section class="study-section" id="sec-overview">
+<div class="section-head">
+<h2>平成29年度 問題6 建築法規</h2>
+<span class="source-ref">Nguồn: Book page 629–632</span>
+</div>
+<section class="subsection" id="sub-overview-intro">
+<h3>問題構成 / Cấu trúc đề</h3>
+<div class="study-grid">
+<article class="study-card original">
+<div class="card-title">原文</div>
+<div class="recall-source" lang="ja">
+<p>次の設問1から設問3に答えなさい。</p>
+<ol>
+<li><strong class="kw">建設業法</strong>に基づく元請負人の義務</li>
+<li><strong class="kw">建築基準法施行令</strong>に基づく工事現場の危害の防止</li>
+<li><strong class="kw">労働安全衛生法</strong>に基づく労働者の就業に当たっての措置</li>
+</ol>
+</div>
+</article>
+<article class="study-card translation">
+<div class="card-title">Bản dịch tiếng Việt</div>
+<div class="recall-source" lang="vi">
+<p>Hãy trả lời từ Câu hỏi 1 đến Câu hỏi 3.</p>
+<ol>
+<li>Nghĩa vụ của nhà thầu chính theo <strong class="kw">Luật Kinh doanh Xây dựng</strong>.</li>
+<li>Phòng ngừa nguy hại tại công trường theo <strong class="kw">Nghị định thi hành Luật Tiêu chuẩn Xây dựng</strong>.</li>
+<li>Các biện pháp khi bố trí người lao động làm việc theo <strong class="kw">Luật An toàn và Sức khỏe Lao động</strong>.</li>
+</ol>
+</div>
+</article>
+</div>
+</section>
+<section class="subsection" id="sub-answer-list">
+<h3>解答一覧 / Bảng đáp án</h3>
+<div class="study-grid">
+<article class="study-card original">
+<div class="card-title">原文</div>
+<div class="recall-source" lang="ja">
+<div class="table-wrap">
+<table>
+<thead><tr><th>設問</th><th>問</th><th>当てはまる語句</th><th>出典</th></tr></thead>
+<tbody>
+<tr><td>設問1</td><td>①</td><td><strong class="kw">分担</strong></td><td>建設業法第24条の8第4項</td></tr>
+<tr><td></td><td>②</td><td><strong class="kw">施工体系図</strong></td><td>施工体制台帳及び施工体系図の作成等</td></tr>
+<tr><td>設問2</td><td>③</td><td><strong class="kw">排水</strong></td><td>建築基準法施行令第136条の3第6項</td></tr>
+<tr><td></td><td>④</td><td><strong class="kw">沈下</strong></td><td>根切り工事、山留め工事等を行う場合の危害の防止</td></tr>
+<tr><td>設問3</td><td>⑤</td><td><strong class="kw">指導</strong></td><td>労働安全衛生法第60条</td></tr>
+<tr><td></td><td>⑥</td><td><strong class="kw">労働災害</strong></td><td>安全衛生教育（職長教育）</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+</article>
+<article class="study-card translation">
+<div class="card-title">Bản dịch tiếng Việt</div>
+<div class="recall-source" lang="vi">
+<div class="table-wrap">
+<table>
+<thead><tr><th>Câu hỏi</th><th>Ô</th><th>Đáp án</th><th>Căn cứ được sách ghi</th></tr></thead>
+<tbody>
+<tr><td>Câu 1</td><td>①</td><td><strong class="kw">分担: phân công / phân chia phần việc</strong></td><td>Điều 24-8 khoản 4, Luật Kinh doanh Xây dựng</td></tr>
+<tr><td></td><td>②</td><td><strong class="kw">施工体系図: sơ đồ hệ thống tổ chức thi công</strong></td><td>Lập 施工体制台帳 và 施工体系図</td></tr>
+<tr><td>Câu 2</td><td>③</td><td><strong class="kw">排水: thoát nước</strong></td><td>Điều 136-3 khoản 6, Nghị định thi hành Luật Tiêu chuẩn Xây dựng</td></tr>
+<tr><td></td><td>④</td><td><strong class="kw">沈下: lún</strong></td><td>Phòng ngừa nguy hại khi đào đất, chắn giữ đất v.v.</td></tr>
+<tr><td>Câu 3</td><td>⑤</td><td><strong class="kw">指導: chỉ đạo, hướng dẫn</strong></td><td>Điều 60, Luật An toàn và Sức khỏe Lao động</td></tr>
+<tr><td></td><td>⑥</td><td><strong class="kw">労働災害: tai nạn lao động</strong></td><td>Đào tạo an toàn vệ sinh cho tổ trưởng</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+</article>
+</div>
+<p><a href="#toc">↑ Mục lục</a></p>
+</section>
+</section><section class="study-section" id="sec-q1">
+<div class="section-head">
+<h2>設問1　建設業法／施工体系図の作成</h2>
+<span class="source-ref">Nguồn: Book page 629–631</span>
+</div>
+<section class="subsection" id="sub-q1-question">
+<h3>問題文・解答 / Đề bài và đáp án</h3>
+<div class="study-grid">
+<article class="study-card original">
+<div class="card-title">原文</div>
+<div class="recall-source" lang="ja">
+<p>「建設業法」に基づく元請負人の義務に関する次の文章において、□に当てはまる語句を記入しなさい。</p>
+<p>特定建設業者は、国土交通省令で定めるところにより、当該建設工事における各下請負人の施工の <strong class="kw">① 分担関係</strong> を表示した <strong class="kw">② 施工体系図</strong> を作成し、これを <span class="relation">当該工事現場の見やすい場所に掲げなければならない</span>。</p>
+</div>
+</article>
+<article class="study-card translation">
+<div class="card-title">Bản dịch tiếng Việt</div>
+<div class="recall-source" lang="vi">
+<p>Trong đoạn văn sau về nghĩa vụ của nhà thầu chính theo Luật Kinh doanh Xây dựng, hãy điền thuật ngữ thích hợp vào các ô trống.</p>
+<p>Nhà thầu xây dựng đặc định, theo quy định của Bộ Đất đai, Hạ tầng, Giao thông và Du lịch, phải lập <strong class="kw">② sơ đồ hệ thống tổ chức thi công（施工体系図）</strong> thể hiện <strong class="kw">① mối quan hệ phân công（分担）thi công của từng nhà thầu phụ</strong>, và phải <span class="relation">niêm yết tài liệu này tại vị trí dễ nhìn thấy trong công trường</span>.</p>
+</div>
+</article>
+</div>
+</section>
+<section class="subsection" id="sub-q1-law">
+<h3>考え方・解き方 / Cách tư duy và giải bài</h3>
+<div class="study-grid">
+<article class="study-card original">
+<div class="card-title">原文</div>
+<div class="recall-source" lang="ja">
+<p><strong class="kw">関係法令　建設業法第24条の8　施工体制台帳及び施工体系図の作成等</strong></p>
+<p><strong>1</strong>　特定建設業者は、発注者から直接建設工事を請け負った場合において、当該建設工事を施工するために締結した <strong class="kw">下請契約の請負代金の額</strong>（当該下請契約が2以上あるときは、それらの請負代金の額の総額）が <span class="relation">政令で定める金額以上になるとき</span> は、建設工事の適正な施工を確保するため、国土交通省令で定めるところにより、当該建設工事について、下請負人の商号又は名称、当該下請負人に係る建設工事の内容及び工期その他の国土交通省令で定める事項を記載した <strong class="kw">施工体制台帳</strong> を作成し、<span class="relation">工事現場ごとに備え置かなければならない</span>。</p>
+<p><strong>2</strong>　第1項の建設工事の下請負人は、その請け負った建設工事を他の建設業を営む者に請け負わせたときは、国土交通省令で定めるところにより、同項の特定建設業者に対して、当該他の建設業を営む者の商号又は名称、当該者の請け負った建設工事の内容及び工期その他の国土交通省令で定める事項を <strong class="kw">通知しなければならない</strong>。</p>
+<p><strong>3</strong>　第1項の特定建設業者は、同項の <strong class="kw">発注者から請求があったとき</strong> は、同項の規定により備え置かれた <strong class="kw">施工体制台帳</strong> を、<span class="relation">その発注者の閲覧に供しなければならない</span>。</p>
+<p><strong>4</strong>　第1項の特定建設業者は、国土交通省令で定めるところにより、当該建設工事における各下請負人の施工の <strong class="kw">分担関係</strong> を表示した <strong class="kw">施工体系図</strong> を作成し、これを <span class="relation">当該工事現場の見やすい場所に掲げなければならない</span>。</p>
+</div>
+</article>
+<article class="study-card translation">
+<div class="card-title">Bản dịch tiếng Việt</div>
+<div class="recall-source" lang="vi">
+<p><strong class="kw">Văn bản liên quan: Điều 24-8 Luật Kinh doanh Xây dựng, việc lập 施工体制台帳 và 施工体系図</strong>.</p>
+<p><strong>1.</strong> Khi nhà thầu xây dựng đặc định trực tiếp nhận công trình từ chủ đầu tư và <strong class="kw">giá trị hợp đồng thầu phụ</strong> được ký để thi công công trình đó, hoặc tổng giá trị của từ hai hợp đồng thầu phụ trở lên, <span class="relation">đạt từ mức tiền được quy định trong nghị định trở lên</span>, thì để bảo đảm thi công công trình một cách thích hợp, nhà thầu phải lập <strong class="kw">sổ hệ thống tổ chức thi công（施工体制台帳）</strong>. 施工体制台帳 phải ghi tên thương mại hoặc tên của nhà thầu phụ, nội dung công trình xây dựng do nhà thầu phụ đó đảm nhận, thời hạn thi công（工期）và các nội dung khác theo quy định; đồng thời phải <span class="relation">được lưu giữ tại từng công trường</span>.</p>
+<p><strong>2.</strong> Khi nhà thầu phụ của công trình quy định tại khoản 1 lại giao công trình mà mình nhận thầu cho một doanh nghiệp xây dựng khác, nhà thầu phụ đó phải <strong class="kw">thông báo</strong> cho nhà thầu xây dựng đặc định nêu tại khoản 1 về tên thương mại hoặc tên của doanh nghiệp xây dựng đó, nội dung công trình mà doanh nghiệp đó nhận thầu, thời hạn thi công và các nội dung khác được quy định.</p>
+<p><strong>3.</strong> Khi <strong class="kw">chủ đầu tư yêu cầu</strong>, nhà thầu xây dựng đặc định nêu tại khoản 1 phải cung cấp <strong class="kw">施工体制台帳</strong> đã được lưu giữ theo quy định để <span class="relation">chủ đầu tư xem</span>.</p>
+<p><strong>4.</strong> Nhà thầu xây dựng đặc định phải lập <strong class="kw">施工体系図</strong> thể hiện <strong class="kw">mối quan hệ phân công thi công của từng nhà thầu phụ</strong> và phải <span class="relation">niêm yết sơ đồ này tại vị trí dễ nhìn thấy trong công trường</span>.</p>
+</div>
+</article>
+</div>
+<p><a href="#toc">↑ Mục lục</a></p>
+</section>
+</section><section class="study-section" id="sec-q2">
+<div class="section-head">
+<h2>設問2　建築基準法施行令／工事現場における危害の防止</h2>
+<span class="source-ref">Nguồn: Book page 629, 631–632</span>
+</div>
+<section class="subsection" id="sub-q2-question">
+<h3>問題文・解答 / Đề bài và đáp án</h3>
+<div class="study-grid">
+<article class="study-card original">
+<div class="card-title">原文</div>
+<div class="recall-source" lang="ja">
+<p>「建築基準法施行令」に基づく工事現場の危害の防止に関する次の文章において、□に当てはまる語句を記入しなさい。</p>
+<p>建築工事等における根切り及び山留めについては、その工事の施工中必要に応じて <strong class="kw">点検</strong> を行ない、<strong class="kw">山留めを補強</strong> し、<strong class="kw">③ 排水</strong> を適当に行なう等これを安全な状態に維持するための措置を講ずるとともに、<strong class="kw">矢板等の抜取り</strong> に際しては、周辺の地盤の <strong class="kw">④ 沈下</strong> による危害を防止するための措置を講じなければならない。</p>
+</div>
+</article>
+<article class="study-card translation">
+<div class="card-title">Bản dịch tiếng Việt</div>
+<div class="recall-source" lang="vi">
+<p>Trong đoạn văn sau về phòng ngừa nguy hại tại công trường theo Nghị định thi hành Luật Tiêu chuẩn Xây dựng, hãy điền thuật ngữ thích hợp vào các ô trống.</p>
+<p>Đối với công tác đào đất và chắn giữ đất trong công trình xây dựng, trong quá trình thi công phải <strong class="kw">tiến hành kiểm tra khi cần thiết</strong>, <strong class="kw">gia cường hệ chắn giữ đất</strong>, thực hiện <strong class="kw">③ thoát nước（排水）</strong> một cách thích hợp và thực hiện các biện pháp khác để duy trì trạng thái an toàn. Đồng thời, khi <strong class="kw">nhổ cọc ván（矢板）v.v.</strong>, phải thực hiện các biện pháp phòng ngừa nguy hại do <strong class="kw">④ lún（沈下）của nền đất xung quanh</strong>.</p>
+</div>
+</article>
+</div>
+</section>
+<section class="subsection" id="sub-q2-law">
+<h3>考え方・解き方 / Cách tư duy và giải bài</h3>
+<div class="study-grid">
+<article class="study-card original">
+<div class="card-title">原文</div>
+<div class="recall-source" lang="ja">
+<p><strong class="kw">関係法令　建築基準法施行令第136条の3　根切り工事、山留め工事等を行う場合の危害の防止</strong></p>
+<p><strong>1</strong>　建築工事等において根切り工事、山留め工事、ウェル工事、ケーソン工事その他基礎工事を行う場合においては、あらかじめ、<strong class="kw">地下に埋設されたガス管、ケーブル、水道管及び下水道管</strong> の損壊による危害の発生を防止するための措置を講じなければならない。</p>
+<p><strong>2</strong>　建築工事等における地階の根切り工事その他の深い根切り工事（これに伴う山留め工事を含む）は、<strong class="kw">地盤調査による地層及び地下水の状況</strong> に応じて作成した <span class="relation">施工図に基づいて行わなければならない</span>。</p>
+<p><strong>3</strong>　建築工事等において建築物その他の工作物に近接して根切り工事その他土地の掘削を行う場合においては、<strong class="kw">当該工作物の基礎又は地盤を補強</strong> して構造耐力の低下を防止し、<span class="trap">急激な排水を避ける</span> 等その傾斜又は倒壊による危害の発生を防止するための措置を講じなければならない。</p>
+<p><strong>4</strong>　建築工事等において <strong class="kw">根切り工事の深さ</strong> が <mark class="critical">1.5m以上</mark> の場合においては、<span class="trap">地盤が崩壊するおそれがないとき、及び周辺の状況により危害防止上支障がないときを除き</span>、<span class="relation">山留めを設けなければならない</span>。この場合において、<strong class="kw">山留めの根入れ</strong> は、周辺の地盤の安定を保持するために相当な深さとしなければならない。</p>
+<p><strong>5</strong>　第4項の規定により設ける山留めの <strong class="kw">切梁、矢板、腹起しその他の主要な部分</strong> は、土圧に対して、規定の構造計算によった場合に安全であることが確かめられる <span class="relation">最低の耐力以上の耐力を有する構造</span> としなければならない。</p>
+<p><strong>6</strong>　建築工事等における根切り及び山留めについては、その工事の施工中必要に応じて <strong class="kw">点検</strong> を行い、<strong class="kw">山留めを補強</strong> し、<strong class="kw">排水を適当に行う</strong> 等これを安全な状態に維持するための措置を講ずるとともに、<strong class="kw">矢板等の抜取り</strong> に際しては、周辺の地盤の <strong class="kw">沈下</strong> による危害を防止するための措置を講じなければならない。</p>
+</div>
+</article>
+<article class="study-card translation">
+<div class="card-title">Bản dịch tiếng Việt</div>
+<div class="recall-source" lang="vi">
+<p><strong class="kw">Văn bản liên quan: Điều 136-3 Nghị định thi hành Luật Tiêu chuẩn Xây dựng, phòng ngừa nguy hại khi thực hiện công tác đào đất, chắn giữ đất v.v.</strong></p>
+<p><strong>1.</strong> Khi tiến hành đào đất, chắn giữ đất, thi công giếng（ウェル工事）, thi công caisson（ケーソン工事）hoặc các công tác móng khác, trước khi thi công phải thực hiện biện pháp phòng ngừa nguy hại do làm hư hỏng <strong class="kw">đường ống gas ngầm, cáp ngầm, đường ống cấp nước và đường ống thoát nước</strong>.</p>
+<p><strong>2.</strong> Đối với công tác đào sâu tầng hầm và các công tác đào sâu khác, bao gồm cả công tác chắn giữ đất đi kèm, phải thi công dựa trên <span class="relation">bản vẽ thi công được lập phù hợp với <strong class="kw">địa tầng và tình trạng nước ngầm xác định bằng khảo sát địa chất</strong></span>.</p>
+<p><strong>3.</strong> Khi đào đất gần công trình xây dựng hoặc kết cấu hiện hữu khác, phải <strong class="kw">gia cường móng hoặc nền đất của công trình đó</strong> để ngăn giảm khả năng chịu lực, <span class="trap">tránh thoát nước đột ngột</span> và thực hiện các biện pháp phòng ngừa nguy hại do công trình bị nghiêng hoặc sụp đổ.</p>
+<p><strong>4.</strong> Khi thực hiện <strong class="kw">công tác đào đất có độ sâu</strong> <mark class="critical">từ 1,5 m trở lên</mark>, phải <span class="relation">bố trí hệ chắn giữ đất</span>, <span class="trap">ngoại trừ trường hợp không có nguy cơ nền đất sụp đổ hoặc điều kiện xung quanh không gây trở ngại về phòng ngừa nguy hại</span>. Trong trường hợp này, <strong class="kw">độ chôn sâu（根入れ）của hệ chắn giữ đất</strong> phải đủ để duy trì ổn định nền đất xung quanh.</p>
+<p><strong>5.</strong> Các bộ phận chủ yếu của hệ chắn giữ đất gồm <strong class="kw">thanh chống ngang（切梁）, cọc ván（矢板）, đà waler（腹起し）</strong> và các bộ phận chủ yếu khác phải có kết cấu với <span class="relation">khả năng chịu lực không thấp hơn khả năng chịu lực tối thiểu được xác nhận là an toàn đối với áp lực đất theo phương pháp tính toán kết cấu quy định</span>.</p>
+<p><strong>6.</strong> Đối với công tác đào đất và chắn giữ đất, trong quá trình thi công phải <strong class="kw">kiểm tra khi cần thiết</strong>, <strong class="kw">gia cường hệ chắn giữ đất</strong>, <strong class="kw">thực hiện thoát nước thích hợp</strong> và áp dụng các biện pháp khác để duy trì trạng thái an toàn. Đồng thời, khi <strong class="kw">nhổ cọc ván v.v.</strong>, phải thực hiện biện pháp phòng ngừa nguy hại do <strong class="kw">lún nền đất xung quanh</strong>.</p>
+</div>
+</article>
+</div>
+<p><a href="#toc">↑ Mục lục</a></p>
+</section>
+</section><section class="study-section" id="sec-q3">
+<div class="section-head">
+<h2>設問3　労働安全衛生法／職長等に対する安全衛生教育</h2>
+<span class="source-ref">Nguồn: Book page 629, 632</span>
+</div>
+<section class="subsection" id="sub-q3-question">
+<h3>問題文・解答 / Đề bài và đáp án</h3>
+<div class="study-grid">
+<article class="study-card original">
+<div class="card-title">原文</div>
+<div class="recall-source" lang="ja">
+<p>「労働安全衛生法」に基づく労働者の就業に当たっての措置に関する次の文章において、□に当てはまる語句を記入しなさい。</p>
+<p>事業者は、その事業場が建設業に該当するときは、新たに職務につくこととなった職長その他の作業中の労働者を <strong class="kw">直接 ⑤ 指導 又は監督する者</strong><span class="trap">（作業主任者を除く。）</span> に対し、次の事項について、厚生労働省令で定めるところにより、安全又は衛生のための教育を行なわなければならない。</p>
+<ol>
+<li><strong class="kw">作業方法の決定及び労働者の配置</strong> に関すること。</li>
+<li>労働者に対する <strong class="kw">⑤ 指導 又は監督の方法</strong> に関すること。</li>
+<li>前二号に掲げるもののほか、<strong class="kw">⑥ 労働災害を防止するため必要な事項</strong> で、厚生労働省令で定めるもの。</li>
+</ol>
+</div>
+</article>
+<article class="study-card translation">
+<div class="card-title">Bản dịch tiếng Việt</div>
+<div class="recall-source" lang="vi">
+<p>Trong đoạn văn sau về các biện pháp khi bố trí người lao động làm việc theo Luật An toàn và Sức khỏe Lao động, hãy điền thuật ngữ thích hợp vào các ô trống.</p>
+<p>Khi ngành nghề của cơ sở kinh doanh thuộc lĩnh vực xây dựng, người sử dụng lao động phải tổ chức đào tạo về an toàn hoặc vệ sinh cho tổ trưởng mới được bổ nhiệm và những người khác <strong class="kw">trực tiếp ⑤ chỉ đạo hoặc giám sát người lao động đang làm việc</strong><span class="trap">, ngoại trừ người phụ trách công việc chuyên trách（作業主任者）</span>.</p>
+<ol>
+<li><strong class="kw">Việc quyết định phương pháp làm việc và bố trí người lao động</strong>.</li>
+<li>Phương pháp <strong class="kw">⑤ chỉ đạo hoặc giám sát người lao động</strong>.</li>
+<li>Ngoài hai nội dung trên, những vấn đề cần thiết để <strong class="kw">phòng ngừa ⑥ tai nạn lao động（労働災害）</strong>, theo quy định của Bộ Y tế, Lao động và Phúc lợi.</li>
+</ol>
+</div>
+</article>
+</div>
+</section>
+<section class="subsection" id="sub-q3-law">
+<h3>考え方・解き方 / Cách tư duy và giải bài</h3>
+<div class="study-grid">
+<article class="study-card original">
+<div class="card-title">原文</div>
+<div class="recall-source" lang="ja">
+<p><strong class="kw">関係法令　労働安全衛生法第60条　安全衛生教育</strong></p>
+<p>事業者は、その事業場の業種が政令で定めるものに該当するときは、新たに職務につくこととなった職長その他の作業中の労働者を <strong class="kw">直接指導又は監督する者</strong><span class="trap">（作業主任者を除く）</span> に対し、次の事項について、厚生労働省令で定めるところにより、安全又は衛生のための教育を行わなければならない。</p>
+<ol>
+<li><strong class="kw">作業方法の決定及び労働者の配置</strong> に関すること。</li>
+<li>労働者に対する <strong class="kw">指導又は監督の方法</strong> に関すること。</li>
+<li>2号に掲げるもののほか、<strong class="kw">労働災害を防止するため必要な事項</strong> で、厚生労働省令で定めるもの。</li>
+</ol>
+</div>
+</article>
+<article class="study-card translation">
+<div class="card-title">Bản dịch tiếng Việt</div>
+<div class="recall-source" lang="vi">
+<p><strong class="kw">Văn bản liên quan: Điều 60 Luật An toàn và Sức khỏe Lao động, đào tạo an toàn và vệ sinh</strong>.</p>
+<p>Người sử dụng lao động phải tổ chức đào tạo an toàn hoặc vệ sinh cho người mới đảm nhận chức vụ tổ trưởng và những người <strong class="kw">trực tiếp chỉ đạo hoặc giám sát người lao động</strong> trong các ngành nghề thuộc đối tượng được nghị định quy định<span class="trap">, ngoại trừ 作業主任者</span>.</p>
+<ol>
+<li><strong class="kw">Quyết định phương pháp làm việc và bố trí người lao động</strong>.</li>
+<li><strong class="kw">Phương pháp chỉ đạo hoặc giám sát người lao động</strong>.</li>
+<li>Các vấn đề cần thiết khác để <strong class="kw">phòng ngừa tai nạn lao động</strong>.</li>
+</ol>
+</div>
+</article>
+</div>
+<p><a href="#toc">↑ Mục lục</a></p>
+</section>
+</section></main>
+<!-- CONTENT_END -->
+<section id="terms">
+<h2>Thuật ngữ chuyên môn</h2><div class="section-head">
+<h2>Thuật ngữ chuyên môn</h2>
+</div><div class="table-wrap">
+<table>
+<thead><tr><th>日本語</th><th>読み方</th><th>Tiếng Việt</th><th>Giải thích</th><th>Liên quan</th></tr></thead>
+<tbody>
+<tr><td>元請負人</td><td>もとうけおいにん</td><td>nhà thầu chính</td><td>Nhà thầu nhận công việc ở cấp trên và giao một phần cho nhà thầu phụ.</td><td>建設業法</td></tr>
+<tr><td>特定建設業者</td><td>とくていけんせつぎょうしゃ</td><td>nhà thầu xây dựng đặc định</td><td>Thuật ngữ pháp lý trong 建設業法.</td><td>施工体制台帳</td></tr>
+<tr><td>下請負人</td><td>したうけおいにん</td><td>nhà thầu phụ</td><td>Chủ thể nhận thi công phần việc theo hợp đồng thầu phụ.</td><td>下請契約</td></tr>
+<tr><td>分担</td><td>ぶんたん</td><td>phân công, phân chia phần việc</td><td>Trong câu hỏi này là quan hệ phân chia phạm vi thi công giữa các nhà thầu phụ.</td><td>施工体系図</td></tr>
+<tr><td>施工体系図</td><td>せこうたいけいず</td><td>sơ đồ hệ thống tổ chức thi công</td><td>Thể hiện trực quan quan hệ phân công thi công giữa các nhà thầu tham gia.</td><td>分担関係</td></tr>
+<tr><td>施工体制台帳</td><td>せこうたいせいだいちょう</td><td>sổ hệ thống tổ chức thi công</td><td>Hồ sơ ghi thông tin về các nhà thầu phụ, nội dung công việc, thời hạn thi công v.v.</td><td>施工体系図</td></tr>
+<tr><td>発注者</td><td>はっちゅうしゃ</td><td>chủ đầu tư / bên đặt hàng</td><td>Bên trực tiếp đặt công trình cho nhà thầu.</td><td>元請負人</td></tr>
+<tr><td>下請契約</td><td>したうけけいやく</td><td>hợp đồng thầu phụ</td><td>Hợp đồng giao một phần công việc xây dựng xuống cấp thầu phụ.</td><td>下請負人</td></tr>
+<tr><td>工期</td><td>こうき</td><td>thời hạn thi công</td><td>Khoảng thời gian thực hiện công việc xây dựng.</td><td>施工体制台帳</td></tr>
+<tr><td>根切り</td><td>ねぎり</td><td>đào đất hố móng</td><td>Công tác đào đất phục vụ móng, tầng hầm v.v.</td><td>山留め</td></tr>
+<tr><td>山留め</td><td>やまどめ</td><td>chắn giữ đất</td><td>Hệ thống giữ ổn định thành hố đào và đất xung quanh.</td><td>切梁・腹起し・矢板</td></tr>
+<tr><td>矢板</td><td>やいた</td><td>cọc ván / ván chắn đất</td><td>Cấu kiện của hệ chắn giữ đất.</td><td>山留め</td></tr>
+<tr><td>排水</td><td>はいすい</td><td>thoát nước</td><td>Điều chỉnh, dẫn nước ra khỏi khu vực đào để duy trì điều kiện thi công an toàn.</td><td>沈下</td></tr>
+<tr><td>沈下</td><td>ちんか</td><td>lún</td><td>Sự hạ thấp cao độ của nền đất; đặc biệt cần lưu ý khi rút cọc ván.</td><td>矢板抜取り</td></tr>
+<tr><td>地盤調査</td><td>じばんちょうさ</td><td>khảo sát địa chất / khảo sát nền đất</td><td>Cơ sở để xác định địa tầng và tình trạng nước ngầm.</td><td>施工図</td></tr>
+<tr><td>根入れ</td><td>ねいれ</td><td>độ chôn sâu</td><td>Phần cấu kiện chắn giữ đất được chôn xuống dưới cao độ đào.</td><td>山留め</td></tr>
+<tr><td>ウェル工事</td><td>ウェルこうじ</td><td>thi công giếng</td><td>Một loại công tác nền móng được điều khoản này liệt kê.</td><td>基礎工事</td></tr>
+<tr><td>ケーソン工事</td><td>ケーソンこうじ</td><td>thi công caisson</td><td>Công tác móng sử dụng kết cấu caisson.</td><td>基礎工事</td></tr>
+<tr><td>傾斜</td><td>けいしゃ</td><td>nghiêng</td><td>Biến dạng nghiêng của công trình hoặc kết cấu.</td><td>倒壊</td></tr>
+<tr><td>倒壊</td><td>とうかい</td><td>sụp đổ</td><td>Trạng thái công trình hoặc kết cấu mất ổn định và đổ.</td><td>傾斜</td></tr>
+<tr><td>切梁</td><td>きりばり</td><td>thanh chống ngang</td><td>Cấu kiện chống giữa các phía của hệ chắn đất để chống lại áp lực đất.</td><td>腹起し</td></tr>
+<tr><td>腹起し</td><td>はらおこし</td><td>đà waler / đà phân phối</td><td>Cấu kiện chạy dọc hệ chắn đất, nhận và truyền tải sang 切梁.</td><td>切梁</td></tr>
+<tr><td>土圧</td><td>どあつ</td><td>áp lực đất</td><td>Tải trọng do đất tác dụng lên hệ chắn giữ đất.</td><td>耐力</td></tr>
+<tr><td>耐力</td><td>たいりょく</td><td>khả năng chịu lực</td><td>Khả năng kết cấu chịu tác động của tải trọng.</td><td>土圧</td></tr>
+<tr><td>職長</td><td>しょくちょう</td><td>tổ trưởng</td><td>Người trực tiếp chỉ huy hoặc giám sát nhóm lao động.</td><td>安全衛生教育</td></tr>
+<tr><td>指導</td><td>しどう</td><td>chỉ đạo, hướng dẫn</td><td>Từ chính xác được dùng trong câu hỏi và đáp án.</td><td>監督</td></tr>
+<tr><td>安全衛生教育</td><td>あんぜんえいせいきょういく</td><td>đào tạo an toàn và vệ sinh lao động</td><td>Giáo dục bắt buộc đối với các đối tượng được quy định trong điều khoản.</td><td>職長</td></tr>
+<tr><td>労働災害</td><td>ろうどうさいがい</td><td>tai nạn lao động</td><td>Thiệt hại đối với người lao động phát sinh liên quan đến công việc.</td><td>労働安全衛生法</td></tr>
+<tr><td>作業主任者</td><td>さぎょうしゅにんしゃ</td><td>người phụ trách công việc chuyên trách</td><td>Chức danh được pháp luật quy định cho một số công việc nhất định.</td><td>職長教育の対象外</td></tr>
+</tbody>
+</table>
+</div></section>
+<section id="background">
+<h2>Kiến thức nền cần biết</h2><div class="section-head">
+<h2>Kiến thức nền cần biết</h2>
+</div><section class="subsection" id="bg-q1">
+<h3>施工体制台帳 và 施工体系図</h3>
+<div class="comparison-box">
+<div class="table-wrap">
+<table>
+<thead><tr><th>Thuật ngữ</th><th>Bản chất</th><th>Điểm cần phân biệt</th></tr></thead>
+<tbody>
+<tr><td><strong class="kw">施工体制台帳</strong></td><td>Hồ sơ dạng <strong>台帳</strong>, chứa thông tin chi tiết về hệ thống nhà thầu.</td><td>Được lập và lưu giữ tại từng công trường; khi chủ đầu tư yêu cầu thì cung cấp để xem.</td></tr>
+<tr><td><strong class="kw">施工体系図</strong></td><td><strong>図</strong>, tức sơ đồ thể hiện quan hệ phân công thi công.</td><td>Thể hiện <strong class="kw">分担関係</strong> và được niêm yết tại vị trí dễ nhìn trong công trường.</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+</section><section class="subsection" id="bg-q2">
+<h3>Logic kỹ thuật của đào đất và hệ chắn giữ đất</h3>
+<p>Logic kỹ thuật được dùng để hiểu nhóm quy định trong trang 631–632: <strong class="kw">đào sâu / đào gần công trình</strong> có thể ảnh hưởng nền đất và nước ngầm, từ đó ảnh hưởng công trình xung quanh; vì vậy phải khảo sát, gia cường, kiểm soát thoát nước và chắn giữ đất.</p>
+<div class="formula-box">
+<div class="formula-line">
+<span class="flow-node">土圧</span><span class="flow-arrow">→</span>
+<span class="flow-node">矢板・山留め壁</span><span class="flow-arrow">→</span>
+<span class="flow-node">腹起し</span><span class="flow-arrow">→</span>
+<span class="flow-node">切梁</span>
+</div>
+</div>
+<p><strong class="kw">排水を適当に行う</strong>: phải thoát nước một cách thích hợp để duy trì hố đào an toàn. Ngược lại, khi đào sát công trình hiện hữu, <span class="trap">急激な排水を避ける</span>: phải tránh thoát nước đột ngột để hạn chế nguy cơ nền đất và công trình lân cận bị ảnh hưởng.</p>
+</section><section class="subsection" id="bg-q3">
+<h3>Trọng tâm của 職長教育</h3>
+<p>Trọng tâm không chỉ là “đào tạo an toàn” nói chung, mà là đào tạo đối với người <strong class="kw">trực tiếp 指導 hoặc 監督</strong> người lao động: <span class="relation">phương pháp công việc + bố trí nhân lực + chỉ đạo/giám sát + phòng ngừa 労働災害</span>.</p>
+</section></section>
+<section id="memory">
+<h2>Điểm cần nhớ và mẹo nhớ</h2><div class="section-head">
+<h2>Điểm cần nhớ và mẹo nhớ</h2>
+</div><section class="subsection" id="mem-answers">
+<h3>Chuỗi 6 đáp án</h3>
+<div class="memory-box">
+<strong>Ba cặp theo ba luật</strong>
+<p><strong class="kw">建設業法</strong>: <strong>① 分担</strong> + <strong>② 施工体系図</strong><br/>
+<strong class="kw">建築基準法施行令</strong>: <strong>③ 排水</strong> + <strong>④ 沈下</strong><br/>
+<strong class="kw">労働安全衛生法</strong>: <strong>⑤ 指導</strong> + <strong>⑥ 労働災害</strong></p>
+</div>
+</section><section class="subsection" id="mem-q2">
+<h3>根切り・山留め</h3>
+<div class="memory-box">
+<strong>Trị số và cặp hành động</strong>
+<p><strong class="kw">根切り深さ</strong> <mark class="critical">1.5m以上</mark> → <span class="relation">原則として山留めを設ける</span>.<br/>
+        Trong quá trình thi công: <strong class="kw">点検 → 山留め補強 → 排水</strong>.<br/>
+        Khi rút cọc ván: <strong class="kw">矢板抜取り → 周辺地盤の沈下を防止</strong>.</p>
+</div>
+</section><section class="subsection" id="mem-q3">
+<h3>職長教育</h3>
+<div class="memory-box">
+<strong>Hai từ khóa phải nhớ nguyên dạng pháp luật</strong>
+<p><strong class="kw">直接「指導」又は監督する者</strong><br/>
+<strong class="kw">「労働災害」を防止する</strong></p>
+</div>
+</section></section>
+<template id="component-library">
+<div class="table-wrap">
+<table>
+<caption>{{TABLE_CAPTION}}</caption>
+<thead><tr><th>{{HEADER_1}}</th><th>{{HEADER_2}}</th></tr></thead>
+<tbody><tr><td><strong class="kw">{{ROW_KEY}}</strong></td><td><span class="relation">{{ROW_RELATION}}</span></td></tr></tbody>
+</table>
+</div>
+<figure class="figure-card">
+<img alt="{{IMAGE_ALT}}" height="{{IMAGE_HEIGHT}}" src="{{IMAGE_SOURCE}}" width="{{IMAGE_WIDTH}}"/>
+<figcaption>{{IMAGE_CAPTION}}</figcaption>
+</figure>
+<div class="figure-grid">
+<figure class="figure-card">
+<img alt="{{IMAGE_ALT_1}}" height="{{IMAGE_HEIGHT_1}}" src="{{IMAGE_SOURCE_1}}" width="{{IMAGE_WIDTH_1}}"/>
+<figcaption>{{IMAGE_CAPTION_1}}</figcaption>
+</figure>
+<figure class="figure-card">
+<img alt="{{IMAGE_ALT_2}}" height="{{IMAGE_HEIGHT_2}}" src="{{IMAGE_SOURCE_2}}" width="{{IMAGE_WIDTH_2}}"/>
+<figcaption>{{IMAGE_CAPTION_2}}</figcaption>
+</figure>
+</div>
+<section class="note-box"><h3>{{NOTE_TITLE}}</h3><p>{{NOTE_CONTENT}}</p></section>
+<section class="warning-box"><h3>{{WARNING_TITLE}}</h3><p>{{WARNING_CONTENT}}</p></section>
+<section class="memory-box"><h3>{{MEMORY_TITLE}}</h3><p>{{MEMORY_ITEM}}</p></section>
+</template>
+</div>
+<script>
+(function () {
+  'use strict';
+
+  const root = document.documentElement;
+  const body = document.body;
+  const q = id => document.getElementById(id);
+  const FONT_LEVELS = Array.from({ length: 21 }, (_, i) => 50 + i * 5);
+
+  const controls = q('control-cluster');
+  const controlsToggle = q('controls-toggle');
+  const controlPanel = q('control-panel');
+  const themeButton = q('theme-toggle');
+  const modeButton = q('mode-toggle');
+  const fontDown = q('font-down');
+  const fontUp = q('font-up');
+  const fontReset = q('font-reset');
+  const tocButton = q('toc-toggle');
+  const tocClose = q('toc-close');
+  const overlay = q('toc-overlay');
+  const prevButton = q('section-prev');
+  const nextButton = q('section-next');
+  const homeButton = q('home-button');
+
+  const pageKey = location.pathname + location.search;
+  const activeUserId = safeGet('study-active-user-id', 'guest');
+  const readerStateKey = 'study-reader-position:' + activeUserId + ':' + pageKey;
+  const legacyReaderStateKey = 'study-reader-position:' + pageKey;
+  const legacyRenamedFileName = "06j_建築法規_H29_p629-633_VN.html";
+  const legacyRenamedPageKeys = [
+    location.pathname.replace(/[^/]*$/, encodeURI(legacyRenamedFileName)) + location.search,
+    location.pathname.replace(/[^/]*$/, legacyRenamedFileName) + location.search
+  ];
+  const legacyRenamedReaderStateKeys = [...new Set(legacyRenamedPageKeys)].map(
+    key => 'study-reader-position:' + activeUserId + ':' + key
+  );
+  const lastPageKey = 'study-last-page:' + activeUserId;
+  const explicitHomeKey = 'study-explicit-home';
+  const anchorSelector = [
+    '.page-shell h1', '.page-shell h2', '.page-shell h3', '.page-shell h4',
+    '.page-shell p', '.page-shell li', '.page-shell td', '.page-shell th',
+    '.page-shell figcaption', '.page-shell .card-title'
+  ].join(', ');
+
+  let anchorElements = [];
+  let lastStablePosition = null;
+  let scrollSaveTimer = 0;
+  let resizeRestoreTimer = 0;
+  let resizeAnchor = null;
+  let suppressScrollSaveUntil = 0;
+  function layoutViewportSize() {
+    const de = document.documentElement;
+    return {
+      width: de.clientWidth || window.innerWidth,
+      height: de.clientHeight || window.innerHeight
+    };
+  }
+
+  function visualViewportScale() {
+    const vv = window.visualViewport;
+    return vv && Number.isFinite(vv.scale) ? vv.scale : 1;
+  }
+
+  function isPinchZoomActive() {
+    return Math.abs(visualViewportScale() - 1) > 0.015;
+  }
+
+  const initialLayoutViewport = layoutViewportSize();
+  let lastViewportWidth = initialLayoutViewport.width;
+  let lastViewportHeight = initialLayoutViewport.height;
+  let pinchZoomSession = false;
+
+  try {
+    if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+  } catch (e) {}
+
+  function safeGet(key, fallback = null) {
+    try {
+      const value = localStorage.getItem(key);
+      return value === null ? fallback : value;
+    } catch (e) {
+      return fallback;
+    }
+  }
+
+  function safeSet(key, value) {
+    try { localStorage.setItem(key, value); } catch (e) {}
+  }
+
+  function safeRemove(key) {
+    try { localStorage.removeItem(key); } catch (e) {}
+  }
+
+  /* ---------- Persistent page / PWA resume metadata ---------- */
+
+  function rememberCurrentPage() {
+    safeSet(lastPageKey, pageKey);
+    safeSet('study-last-active-at', String(Date.now()));
+  }
+
+  rememberCurrentPage();
+
+  /* ---------- Layout viewport geometry ---------- */
+
+  /*
+    Pinch zoom changes visualViewport.width / height / scale.
+    It must NOT change the document layout width.
+
+    Therefore --app-viewport-width is derived only from the layout viewport
+    (documentElement.clientWidth / innerWidth), never from visualViewport.width.
+  */
+  function syncViewportGeometry() {
+    const { width } = layoutViewportSize();
+    root.style.setProperty(
+      '--app-viewport-width',
+      `${Math.round(width * 100) / 100}px`
+    );
+  }
+
+  syncViewportGeometry();
+
+  /* ---------- Reader anchors ---------- */
+
+  function rebuildReaderAnchors() {
+    anchorElements = Array.from(document.querySelectorAll(anchorSelector));
+    anchorElements.forEach((el, index) => {
+      el.dataset.readerKey = 'r' + index;
+    });
+  }
+
+  function closestReaderElement(node) {
+    if (!node) return null;
+    const el = node.nodeType === Node.ELEMENT_NODE ? node : node.parentElement;
+    return el ? el.closest('[data-reader-key]') : null;
+  }
+
+  function caretAtPoint(x, y) {
+    try {
+      if (document.caretPositionFromPoint) {
+        const pos = document.caretPositionFromPoint(x, y);
+        if (!pos || !pos.offsetNode) return null;
+        return { node: pos.offsetNode, offset: pos.offset };
+      }
+      if (document.caretRangeFromPoint) {
+        const range = document.caretRangeFromPoint(x, y);
+        if (!range) return null;
+        return { node: range.startContainer, offset: range.startOffset };
+      }
+    } catch (e) {}
+    return null;
+  }
+
+  function textOffsetFromElementStart(element, node, offset) {
+    try {
+      const range = document.createRange();
+      range.setStart(element, 0);
+      range.setEnd(node, offset);
+      return range.toString().length;
+    } catch (e) {
+      return 0;
+    }
+  }
+
+  function domPositionFromTextOffset(element, targetOffset) {
+    const walker = document.createTreeWalker(element, NodeFilter.SHOW_TEXT);
+    let remaining = Math.max(0, targetOffset);
+    let node = walker.nextNode();
+    let last = null;
+
+    while (node) {
+      last = node;
+      const len = node.nodeValue ? node.nodeValue.length : 0;
+      if (remaining <= len) {
+        return { node, offset: remaining };
+      }
+      remaining -= len;
+      node = walker.nextNode();
+    }
+
+    if (last) return { node: last, offset: last.nodeValue ? last.nodeValue.length : 0 };
+    return { node: element, offset: 0 };
+  }
+
+  function characterRect(node, offset) {
+    try {
+      if (node.nodeType !== Node.TEXT_NODE) {
+        const r = node.getBoundingClientRect ? node.getBoundingClientRect() : null;
+        return r && r.height ? r : null;
+      }
+
+      const len = node.nodeValue ? node.nodeValue.length : 0;
+      if (!len) return node.parentElement ? node.parentElement.getBoundingClientRect() : null;
+
+      let start = Math.max(0, Math.min(offset, len - 1));
+      let end = Math.min(len, start + 1);
+      if (offset >= len && len > 0) {
+        start = len - 1;
+        end = len;
+      }
+
+      const range = document.createRange();
+      range.setStart(node, start);
+      range.setEnd(node, end);
+      const rects = range.getClientRects();
+      return rects.length ? rects[0] : range.getBoundingClientRect();
+    } catch (e) {
+      return null;
+    }
+  }
+
+  function captureReadingPosition() {
+    if (!anchorElements.length) rebuildReaderAnchors();
+    if (!anchorElements.length) return null;
+
+    const vv = window.visualViewport;
+    const viewportWidth = vv ? vv.width : window.innerWidth;
+    const topProbe = 6;
+    const ys = [topProbe, 12, 18, 26, 36, 50];
+    const xs = [];
+
+    for (let x = 12; x <= Math.min(viewportWidth - 12, 220); x += 16) xs.push(x);
+    xs.push(viewportWidth * .25, viewportWidth * .5, viewportWidth * .75);
+
+    for (const y of ys) {
+      for (const x of xs) {
+        if (x <= 0 || x >= viewportWidth) continue;
+        const caret = caretAtPoint(x, y);
+        if (!caret) continue;
+        const element = closestReaderElement(caret.node);
+        if (!element || !document.querySelector('.page-shell')?.contains(element)) continue;
+
+        const offset = textOffsetFromElementStart(element, caret.node, caret.offset);
+        const rect = characterRect(caret.node, caret.offset);
+        const key = element.dataset.readerKey;
+        if (key && rect && Number.isFinite(rect.top)) {
+          return { key, offset, top: rect.top };
+        }
+      }
+    }
+
+    /* Fallback: nearest textual block to the top edge. */
+    let best = null;
+    let bestDistance = Infinity;
+    for (const element of anchorElements) {
+      const rect = element.getBoundingClientRect();
+      if (rect.bottom < 0 || rect.top > (vv ? vv.height : window.innerHeight)) continue;
+      const distance = Math.abs(rect.top);
+      if (distance < bestDistance) {
+        bestDistance = distance;
+        best = { key: element.dataset.readerKey, offset: 0, top: rect.top };
+      }
+    }
+    return best;
+  }
+
+  function restoreReadingPosition(state) {
+    if (!state || !state.key) return false;
+    if (!anchorElements.length) rebuildReaderAnchors();
+
+    const element = document.querySelector('[data-reader-key="' + CSS.escape(state.key) + '"]');
+    if (!element) return false;
+
+    const pos = domPositionFromTextOffset(element, Number(state.offset) || 0);
+    const rect = characterRect(pos.node, pos.offset);
+    if (!rect || !Number.isFinite(rect.top)) return false;
+
+    const desiredTop = Number.isFinite(Number(state.top)) ? Number(state.top) : 6;
+    const delta = rect.top - desiredTop;
+    if (Math.abs(delta) < .5) return true;
+
+    suppressScrollSaveUntil = Date.now() + 700;
+    const oldBehavior = root.style.scrollBehavior;
+    root.style.scrollBehavior = 'auto';
+    window.scrollBy(0, delta);
+    root.style.scrollBehavior = oldBehavior;
+    return true;
+  }
+
+  function saveReaderState(state) {
+    if (!state) return;
+    lastStablePosition = state;
+    safeSet(readerStateKey, JSON.stringify(state));
+  }
+
+  function readReaderState() {
+    try {
+      const raw = safeGet(readerStateKey);
+      if (raw) return JSON.parse(raw);
+
+      // Import the user-scoped position saved under the pre-rename filename.
+      for (const oldKey of legacyRenamedReaderStateKeys) {
+        const renamedRaw = safeGet(oldKey);
+        if (renamedRaw) {
+          safeSet(readerStateKey, renamedRaw);
+          return JSON.parse(renamedRaw);
+        }
+      }
+
+      // One-time backward-compatible import of the pre-sync local position.
+      const legacyOwner = safeGet('study-legacy-import-owner');
+      const mayImportLegacy = activeUserId !== 'guest' && (!legacyOwner || legacyOwner === activeUserId);
+      if (mayImportLegacy) {
+        const legacyRaw = safeGet(legacyReaderStateKey);
+        if (legacyRaw) {
+          safeSet('study-legacy-import-owner', activeUserId);
+          safeSet(readerStateKey, legacyRaw);
+          return JSON.parse(legacyRaw);
+        }
+      }
+      return null;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  function settleRestore(state, delays = [0, 60, 180, 420]) {
+    if (!state) return;
+    suppressScrollSaveUntil = Date.now() + Math.max(...delays) + 350;
+    delays.forEach(delay => {
+      window.setTimeout(() => {
+        requestAnimationFrame(() => restoreReadingPosition(state));
+      }, delay);
+    });
+    window.setTimeout(() => {
+      saveReaderState(state);
+    }, Math.max(...delays) + 120);
+  }
+
+  function preserveReadingPosition(mutator) {
+    const state = captureReadingPosition() || lastStablePosition || readReaderState();
+    if (state) saveReaderState(state);
+    mutator();
+    rebuildReaderAnchors();
+    settleRestore(state);
+  }
+
+  function scheduleReaderSave() {
+    if (Date.now() < suppressScrollSaveUntil) return;
+    clearTimeout(scrollSaveTimer);
+    scrollSaveTimer = window.setTimeout(() => {
+      if (Date.now() < suppressScrollSaveUntil) return;
+      const state = captureReadingPosition();
+      if (state) saveReaderState(state);
+    }, 130);
+  }
+
+  rebuildReaderAnchors();
+  lastStablePosition = readReaderState();
+
+  /* ---------- Theme ---------- */
+
+  function applyTheme(theme) {
+    theme = theme === 'light' ? 'light' : 'dark';
+    root.dataset.theme = theme;
+    safeSet('study-theme', theme);
+    if (themeButton) {
+      themeButton.textContent = theme === 'dark' ? '☀' : '☾';
+      themeButton.title = theme === 'dark' ? 'Chuyển sang Light theme' : 'Chuyển sang Dark theme';
+      themeButton.setAttribute('aria-label', themeButton.title);
+      themeButton.setAttribute('aria-pressed', theme === 'light' ? 'true' : 'false');
+    }
+  }
+
+  /* ---------- Full / Keywords ---------- */
+
+  function applyMode(mode) {
+    mode = mode === 'keywords' ? 'keywords' : 'full';
+    root.dataset.studyMode = mode;
+    body.classList.toggle('keyword-focus', mode === 'keywords');
+    safeSet('study-mode', mode);
+    if (modeButton) {
+      modeButton.textContent = mode === 'full' ? '🎯' : '📖';
+      modeButton.title = mode === 'full' ? 'Chuyển sang Keywords mode' : 'Trở lại Full mode';
+      modeButton.setAttribute('aria-label', modeButton.title);
+      modeButton.setAttribute('aria-pressed', mode === 'keywords' ? 'true' : 'false');
+    }
+  }
+
+  /* ---------- Font 50-150%, step 5% ---------- */
+
+  function currentScale() {
+    const saved = Number(safeGet('study-font-scale', '100'));
+    return FONT_LEVELS.includes(saved) ? saved : 100;
+  }
+
+  function applyFontScale(scale) {
+    if (!FONT_LEVELS.includes(scale)) scale = 100;
+    root.style.setProperty('--base-font-size', (16 * scale / 100) + 'px');
+    safeSet('study-font-scale', String(scale));
+
+    if (fontReset) {
+      fontReset.textContent = scale + '%';
+      fontReset.title = 'Cỡ chữ hiện tại ' + scale + '%. Chạm để về 100%';
+      fontReset.setAttribute('aria-label', fontReset.title);
+    }
+    if (fontDown) fontDown.disabled = scale === FONT_LEVELS[0];
+    if (fontUp) fontUp.disabled = scale === FONT_LEVELS[FONT_LEVELS.length - 1];
+  }
+
+  /* ---------- Collapsible controls ---------- */
+
+  function setControlsOpen(open) {
+    if (!controls) return;
+    controls.classList.toggle('open', open);
+    controlsToggle?.setAttribute('aria-expanded', String(open));
+    controlsToggle?.setAttribute('aria-label', open ? 'Đóng công cụ' : 'Mở công cụ');
+    controlsToggle?.setAttribute('title', open ? 'Đóng công cụ' : 'Mở công cụ');
+  }
+
+  controlsToggle?.addEventListener('click', event => {
+    event.stopPropagation();
+    setControlsOpen(!controls.classList.contains('open'));
+  });
+
+  controlPanel?.addEventListener('click', event => event.stopPropagation());
+  document.addEventListener('pointerdown', event => {
+    if (controls?.classList.contains('open') && !controls.contains(event.target)) setControlsOpen(false);
+  });
+
+  /* ---------- TOC ---------- */
+
+  function openToc() {
+    body.classList.add('toc-open');
+    tocButton?.setAttribute('aria-expanded', 'true');
+    setControlsOpen(false);
+  }
+
+  function closeToc() {
+    body.classList.remove('toc-open');
+    tocButton?.setAttribute('aria-expanded', 'false');
+  }
+
+  tocButton?.addEventListener('click', openToc);
+  tocClose?.addEventListener('click', closeToc);
+  overlay?.addEventListener('click', closeToc);
+
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape') {
+      closeToc();
+      setControlsOpen(false);
+    }
+  });
+
+  document.querySelectorAll('a[href="#toc"]').forEach(a => {
+    a.addEventListener('click', event => {
+      event.preventDefault();
+      openToc();
+    });
+  });
+
+  /* TOC navigation does not add hash-history entries. */
+  document.querySelectorAll('#toc a[href^="#"]').forEach(a => {
+    a.addEventListener('click', event => {
+      const href = a.getAttribute('href');
+      if (!href || href === '#toc') return;
+      const target = document.getElementById(decodeURIComponent(href.slice(1)));
+      if (!target) return;
+      event.preventDefault();
+      closeToc();
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      window.setTimeout(scheduleReaderSave, 450);
+    });
+  });
+
+  /* ---------- Previous / next lesson item ---------- */
+
+  const tocTargets = Array.from(document.querySelectorAll('#toc a[href^="#"]'))
+    .map(a => document.getElementById(decodeURIComponent(a.getAttribute('href').slice(1))))
+    .filter((el, i, arr) => el && el.id !== 'toc' && arr.indexOf(el) === i);
+
+  function currentSectionIndex() {
+    let idx = -1;
+    const threshold = 24;
+    tocTargets.forEach((el, i) => {
+      if (el.getBoundingClientRect().top <= threshold) idx = i;
+    });
+    return idx;
+  }
+
+  function updateSectionButtons() {
+    const i = currentSectionIndex();
+    if (prevButton) prevButton.disabled = !tocTargets.length || i <= 0;
+    if (nextButton) nextButton.disabled = !tocTargets.length || i >= tocTargets.length - 1;
+  }
+
+  function goToIndex(i) {
+    if (!tocTargets.length) return;
+    i = Math.max(0, Math.min(tocTargets.length - 1, i));
+    tocTargets[i].scrollIntoView({ behavior: 'smooth', block: 'start' });
+    window.setTimeout(() => {
+      const state = captureReadingPosition();
+      if (state) saveReaderState(state);
+      updateSectionButtons();
+    }, 450);
+  }
+
+  prevButton?.addEventListener('click', () => goToIndex(Math.max(0, currentSectionIndex() - 1)));
+  nextButton?.addEventListener('click', () => goToIndex(Math.min(tocTargets.length - 1, currentSectionIndex() + 1)));
+
+  /* ---------- Home ---------- */
+
+  homeButton?.addEventListener('click', () => {
+    const state = captureReadingPosition();
+    if (state) saveReaderState(state);
+    safeSet(explicitHomeKey, '1');
+    safeSet('study-home-click-at', String(Date.now()));
+    window.location.href = new URL('index.html', window.location.href).href;
+  });
+
+  /* ---------- Initialize state ---------- */
+
+  applyTheme(root.dataset.theme === 'light' ? 'light' : 'dark');
+  applyMode(root.dataset.studyMode || 'full');
+  applyFontScale(currentScale());
+
+  themeButton?.addEventListener('click', () => applyTheme(root.dataset.theme === 'dark' ? 'light' : 'dark'));
+  modeButton?.addEventListener('click', () => applyMode(root.dataset.studyMode === 'keywords' ? 'full' : 'keywords'));
+
+  fontDown?.addEventListener('click', () => {
+    const i = FONT_LEVELS.indexOf(currentScale());
+    if (i > 0) preserveReadingPosition(() => applyFontScale(FONT_LEVELS[i - 1]));
+  });
+
+  fontUp?.addEventListener('click', () => {
+    const i = FONT_LEVELS.indexOf(currentScale());
+    if (i >= 0 && i < FONT_LEVELS.length - 1) preserveReadingPosition(() => applyFontScale(FONT_LEVELS[i + 1]));
+  });
+
+  fontReset?.addEventListener('click', () => preserveReadingPosition(() => applyFontScale(100)));
+
+  /* ---------- Scroll / rotation / resize persistence ---------- */
+
+  window.addEventListener('scroll', () => {
+    scheduleReaderSave();
+    updateSectionButtons();
+  }, { passive: true });
+
+  function handleLayoutViewportChange() {
+    /*
+      A native two-finger pinch changes VisualViewport but normally does not
+      change the layout viewport. Ignore it completely so the page does not
+      recalculate width or fight the browser's native zoom.
+    */
+    if (isPinchZoomActive()) {
+      pinchZoomSession = true;
+      return;
+    }
+
+    const { width: w, height: h } = layoutViewportSize();
+
+    /*
+      When pinch zoom returns to scale 1, VisualViewport may emit another
+      resize. If the layout viewport itself did not change, this was only zoom,
+      so do nothing.
+    */
+    const layoutChanged =
+      Math.abs(w - lastViewportWidth) >= 1 ||
+      Math.abs(h - lastViewportHeight) >= 1;
+
+    if (!layoutChanged) {
+      pinchZoomSession = false;
+      return;
+    }
+
+    pinchZoomSession = false;
+
+    if (!resizeAnchor) {
+      resizeAnchor =
+        lastStablePosition ||
+        readReaderState() ||
+        captureReadingPosition();
+    }
+
+    /*
+      Only a real layout change, such as portrait <-> landscape, updates
+      --app-viewport-width.
+    */
+    syncViewportGeometry();
+    lastViewportWidth = w;
+    lastViewportHeight = h;
+
+    if (resizeAnchor) {
+      settleRestore(resizeAnchor, [0, 50, 140, 300]);
+    }
+
+    clearTimeout(resizeRestoreTimer);
+    resizeRestoreTimer = window.setTimeout(() => {
+      if (resizeAnchor) {
+        settleRestore(resizeAnchor, [0, 80, 220]);
+      }
+
+      window.setTimeout(() => {
+        lastStablePosition =
+          resizeAnchor ||
+          captureReadingPosition();
+
+        if (lastStablePosition) {
+          saveReaderState(lastStablePosition);
+        }
+
+        resizeAnchor = null;
+        updateSectionButtons();
+      }, 320);
+    }, 260);
+  }
+
+  function handleVisualViewportResize() {
+    /*
+      visualViewport resize is the main signal used by Safari/WebKit while
+      pinch-zooming. At scale != 1 this is zoom, not a responsive-layout event.
+    */
+    if (isPinchZoomActive()) {
+      pinchZoomSession = true;
+      return;
+    }
+
+    handleLayoutViewportChange();
+  }
+
+  window.addEventListener(
+    'resize',
+    handleLayoutViewportChange,
+    { passive: true }
+  );
+
+  window.addEventListener('orientationchange', () => {
+    /*
+      Rotation is a genuine layout change. Use the stored logical reading
+      position, then wait for iOS to finish updating its layout viewport.
+    */
+    resizeAnchor =
+      lastStablePosition ||
+      readReaderState() ||
+      captureReadingPosition();
+
+    [40, 120, 280].forEach(delay => {
+      window.setTimeout(() => {
+        if (isPinchZoomActive()) return;
+
+        const size = layoutViewportSize();
+        syncViewportGeometry();
+
+        if (
+          Math.abs(size.width - lastViewportWidth) >= 1 ||
+          Math.abs(size.height - lastViewportHeight) >= 1
+        ) {
+          lastViewportWidth = size.width;
+          lastViewportHeight = size.height;
+        }
+
+        if (resizeAnchor) {
+          settleRestore(resizeAnchor, [0, 70, 180]);
+        }
+      }, delay);
+    });
+
+    window.setTimeout(() => {
+      resizeAnchor = null;
+      updateSectionButtons();
+    }, 620);
+  }, { passive: true });
+
+  window.visualViewport?.addEventListener(
+    'resize',
+    handleVisualViewportResize,
+    { passive: true }
+  );
+
+  function saveLifecycleState() {
+    const state = captureReadingPosition() || lastStablePosition;
+    if (state) saveReaderState(state);
+    rememberCurrentPage();
+  }
+
+  document.addEventListener('visibilitychange', () => {
+    if (document.visibilityState === 'hidden') saveLifecycleState();
+    else {
+      rememberCurrentPage();
+      const state = readReaderState();
+      if (state) settleRestore(state, [0, 80, 220]);
+    }
+  });
+
+  window.addEventListener('pagehide', saveLifecycleState);
+  window.addEventListener('beforeunload', saveLifecycleState);
+
+  window.addEventListener('pageshow', () => {
+    rememberCurrentPage();
+    rebuildReaderAnchors();
+    const state = readReaderState();
+    if (!location.hash && state) settleRestore(state, [0, 80, 220, 500]);
+    window.setTimeout(updateSectionButtons, 80);
+  });
+
+  window.addEventListener('load', () => {
+    rebuildReaderAnchors();
+    const state = readReaderState();
+    if (!location.hash && state) settleRestore(state, [0, 80, 220, 500]);
+    else {
+      const current = captureReadingPosition();
+      if (current) saveReaderState(current);
+    }
+    updateSectionButtons();
+  });
+
+
+  // Public bridge used by the cloud synchronization engine.
+  window.StudyReader = Object.freeze({
+    pageKey,
+    capture: captureReadingPosition,
+    restore: restoreReadingPosition,
+    rebuild: rebuildReaderAnchors,
+    readLocal: readReaderState,
+    saveLocal: saveReaderState,
+    settleRestore,
+    getLastStable: () => lastStablePosition,
+    isPinchZoomActive
+  });
+  window.dispatchEvent(new CustomEvent('studyreaderready'));
+})();
+</script>
+<script>
+// Cloud runtime v6.2 for lesson pages.
+// Public browser configuration for the study app. Cloud sync pilot v6.2.
+window.STUDY_CONFIG = Object.freeze({
+  SUPABASE_URL: 'https://aniaxezhssgumxmbxkhl.supabase.co',
+  SUPABASE_PUBLISHABLE_KEY: 'sb_publishable_6NbASFJULfnuggdm6MukFg_UknPZCIB',
+  APP_ROOT_URL: 'https://beinpubi.github.io/kenchiku-sekou-2ji/'
+});
+
+(function () {
+  'use strict';
+
+  const SESSION_KEY = 'study-cloud-session-v5';
+  window.__STUDY_CLOUD_CLIENT_VERSION__ = '6.2';
+  const listeners = new Set();
+
+  function config() {
+    const cfg = window.STUDY_CONFIG || {};
+    const url = String(cfg.SUPABASE_URL || '').replace(/\/+$/, '');
+    const key = String(cfg.SUPABASE_PUBLISHABLE_KEY || '');
+    if (!url || !key) throw new Error('Embedded Supabase configuration is missing or incomplete');
+    return { url, key };
+  }
+
+  function safeGet(key) {
+    try { return localStorage.getItem(key); } catch (e) { return null; }
+  }
+
+  function safeSet(key, value) {
+    try { localStorage.setItem(key, value); } catch (e) {}
+  }
+
+  function safeRemove(key) {
+    try { localStorage.removeItem(key); } catch (e) {}
+  }
+
+  function readSession() {
+    const raw = safeGet(SESSION_KEY);
+    if (!raw) return null;
+    try {
+      const value = JSON.parse(raw);
+      return value && value.access_token && value.refresh_token && value.user ? value : null;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  function saveSession(session) {
+    if (!session) {
+      safeRemove(SESSION_KEY);
+      return;
+    }
+    safeSet(SESSION_KEY, JSON.stringify(session));
+  }
+
+  function normalizeSession(payload) {
+    if (!payload || !payload.access_token || !payload.refresh_token) return null;
+    const expiresAt = Number(payload.expires_at) ||
+      (Math.floor(Date.now() / 1000) + (Number(payload.expires_in) || 3600));
+    return {
+      access_token: payload.access_token,
+      token_type: payload.token_type || 'bearer',
+      expires_in: Number(payload.expires_in) || 3600,
+      expires_at: expiresAt,
+      refresh_token: payload.refresh_token,
+      user: payload.user || null
+    };
+  }
+
+  function errorObject(message, status, raw) {
+    return {
+      message: String(message || 'Request failed'),
+      status: Number(status) || 0,
+      raw: raw || null
+    };
+  }
+
+  async function parseResponse(response) {
+    const text = await response.text();
+    if (!text) return null;
+    try { return JSON.parse(text); } catch (e) { return text; }
+  }
+
+  function messageFromBody(body, fallback) {
+    if (!body) return fallback;
+    if (typeof body === 'string') return body;
+    return body.msg || body.message || body.error_description || body.error || body.details || fallback;
+  }
+
+  async function authRequest(path, options) {
+    const { url, key } = config();
+    const headers = Object.assign({
+      'apikey': key,
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+      'X-Client-Info': 'kenchiku-study-sync/6.2'
+    }, options?.headers || {});
+
+    let response;
+    try {
+      response = await fetch(url + path, {
+        method: options?.method || 'GET',
+        headers,
+        body: options?.body === undefined ? undefined : JSON.stringify(options.body),
+        cache: 'no-store'
+      });
+    } catch (e) {
+      throw errorObject('Could not connect to Supabase Auth: ' + (e?.message || e), 0, null);
+    }
+
+    const body = await parseResponse(response);
+    if (!response.ok) {
+      throw errorObject(messageFromBody(body, 'Supabase Auth request failed'), response.status, body);
+    }
+    return body;
+  }
+
+  function notify(event, session) {
+    for (const callback of listeners) {
+      try { callback(event, session || null); } catch (e) { console.error(e); }
+    }
+  }
+
+  async function refreshSession(current) {
+    if (!current?.refresh_token) return null;
+    try {
+      const payload = await authRequest('/auth/v1/token?grant_type=refresh_token', {
+        method: 'POST',
+        body: { refresh_token: current.refresh_token }
+      });
+      const session = normalizeSession(payload);
+      if (!session || !session.user) throw new Error('Invalid refresh response');
+      saveSession(session);
+      notify('TOKEN_REFRESHED', session);
+      return session;
+    } catch (e) {
+      safeRemove(SESSION_KEY);
+      notify('SIGNED_OUT', null);
+      throw e;
+    }
+  }
+
+  async function getValidSession() {
+    let session = readSession();
+    if (!session) return null;
+    const now = Math.floor(Date.now() / 1000);
+    if (!session.expires_at || session.expires_at <= now + 60) {
+      session = await refreshSession(session);
+    }
+    return session;
+  }
+
+  const auth = {
+    async signInWithPassword(credentials) {
+      try {
+        const payload = await authRequest('/auth/v1/token?grant_type=password', {
+          method: 'POST',
+          body: {
+            email: String(credentials?.email || '').trim(),
+            password: String(credentials?.password || '')
+          }
+        });
+        const session = normalizeSession(payload);
+        if (!session || !session.user) {
+          return { data: { session: null, user: null }, error: errorObject('Supabase returned no session', 0, payload) };
+        }
+        saveSession(session);
+        notify('SIGNED_IN', session);
+        return { data: { session, user: session.user }, error: null };
+      } catch (e) {
+        return { data: { session: null, user: null }, error: errorObject(e?.message || e, e?.status, e?.raw) };
+      }
+    },
+
+    async getSession() {
+      try {
+        const session = await getValidSession();
+        return { data: { session }, error: null };
+      } catch (e) {
+        return { data: { session: null }, error: errorObject(e?.message || e, e?.status, e?.raw) };
+      }
+    },
+
+    async signOut() {
+      let serverError = null;
+      const session = readSession();
+      if (session?.access_token) {
+        try {
+          await authRequest('/auth/v1/logout?scope=local', {
+            method: 'POST',
+            headers: { 'Authorization': 'Bearer ' + session.access_token },
+            body: {}
+          });
+        } catch (e) {
+          serverError = e;
+          console.warn('[study-cloud] Remote sign-out failed; local session will still be cleared.', e);
+        }
+      }
+      safeRemove(SESSION_KEY);
+      notify('SIGNED_OUT', null);
+      return { error: serverError ? errorObject(serverError?.message || serverError, serverError?.status, serverError?.raw) : null };
+    },
+
+    onAuthStateChange(callback) {
+      if (typeof callback === 'function') listeners.add(callback);
+      const subscription = {
+        unsubscribe() { listeners.delete(callback); }
+      };
+      return { data: { subscription } };
+    }
+  };
+
+  class QueryBuilder {
+    constructor(table) {
+      this.table = table;
+      this.operation = 'select';
+      this.columns = '*';
+      this.payload = null;
+      this.filters = [];
+      this.orderBy = null;
+      this.limitCount = null;
+    }
+
+    select(columns) {
+      this.columns = columns || '*';
+      return this;
+    }
+
+    insert(payload) {
+      this.operation = 'insert';
+      this.payload = payload;
+      return this;
+    }
+
+    update(payload) {
+      this.operation = 'update';
+      this.payload = payload;
+      return this;
+    }
+
+    eq(column, value) {
+      this.filters.push([column, value]);
+      return this;
+    }
+
+    order(column, options) {
+      this.orderBy = [column, options?.ascending !== false];
+      return this;
+    }
+
+    limit(value) {
+      this.limitCount = Math.max(0, Number(value) || 0);
+      return this;
+    }
+
+    async maybeSingle() {
+      const result = await this.execute();
+      if (result.error) return result;
+      const rows = Array.isArray(result.data) ? result.data : (result.data ? [result.data] : []);
+      return { data: rows.length ? rows[0] : null, error: null };
+    }
+
+    async execute() {
+      const { url, key } = config();
+      let session;
+      try {
+        session = await getValidSession();
+      } catch (e) {
+        return { data: null, error: errorObject(e?.message || e, e?.status, e?.raw) };
+      }
+
+      if (!session?.access_token) {
+        return { data: null, error: errorObject('No active Supabase session', 401, null) };
+      }
+
+      const endpoint = new URL(url + '/rest/v1/' + encodeURIComponent(this.table));
+      if (this.columns) endpoint.searchParams.set('select', this.columns);
+      for (const [column, value] of this.filters) {
+        endpoint.searchParams.set(column, 'eq.' + String(value));
+      }
+      if (this.orderBy) {
+        endpoint.searchParams.set('order', this.orderBy[0] + '.' + (this.orderBy[1] ? 'asc' : 'desc'));
+      }
+      if (this.limitCount !== null) endpoint.searchParams.set('limit', String(this.limitCount));
+
+      const headers = {
+        'apikey': key,
+        'Authorization': 'Bearer ' + session.access_token,
+        'Accept': 'application/json'
+      };
+      let method = 'GET';
+      let body;
+      if (this.operation === 'insert') {
+        method = 'POST';
+        headers['Content-Type'] = 'application/json';
+        headers['Prefer'] = 'return=representation';
+        body = JSON.stringify(this.payload);
+      } else if (this.operation === 'update') {
+        method = 'PATCH';
+        headers['Content-Type'] = 'application/json';
+        headers['Prefer'] = 'return=representation';
+        body = JSON.stringify(this.payload);
+      }
+
+      let response;
+      try {
+        response = await fetch(endpoint.href, {
+          method,
+          headers,
+          body,
+          cache: 'no-store'
+        });
+      } catch (e) {
+        return { data: null, error: errorObject('Could not connect to Supabase Data API: ' + (e?.message || e), 0, null) };
+      }
+
+      const responseBody = await parseResponse(response);
+      if (!response.ok) {
+        return {
+          data: null,
+          error: errorObject(messageFromBody(responseBody, 'Supabase Data API request failed'), response.status, responseBody)
+        };
+      }
+      return { data: responseBody || [], error: null };
+    }
+  }
+
+  const client = {
+    auth,
+    from(table) { return new QueryBuilder(table); }
+  };
+
+  window.StudySupabaseReady = Promise.resolve(client);
+  window.createStudySupabaseClient = async function () {
+    config();
+    return client;
+  };
+  window.__STUDY_CLOUD_CLIENT_READY__ = true;
+})();
+</script>
+<script>
+(async function () {
+'use strict';
+
+const VERSION = '6.2';
+const FILE_PATH = decodeURIComponent(location.pathname.split('/').pop() || '');
+const LEGACY_FILE_PATH = "06j_建築法規_H29_p629-633_VN.html";
+const DEVICE_ID_KEY = 'study-device-id';
+const ACTIVE_USER_KEY = 'study-active-user-id';
+const LAST_PAGE_PREFIX = 'study-last-page:';
+const SYNC_EVENT = 'study-sync-status';
+const SYNC_DEBUG = new URLSearchParams(location.search).get('syncdebug') === '1';
+
+let supabase = null;
+let currentUser = null;
+let knownRevision = null;
+let knownUpdatedAt = null;
+let dirty = false;
+let dirtyVersion = 0;
+let saveTimer = 0;
+let applyingRemote = false;
+let initializationComplete = false;
+let ignoreScrollUntil = Date.now() + 1800;
+let lastSyncedSignature = '';
+let startupPromise = null;
+let synchronizationPromise = null;
+
+function safeGet(key, fallback = null) {
+  try {
+    const value = localStorage.getItem(key);
+    return value === null ? fallback : value;
+  } catch (e) {
+    return fallback;
+  }
+}
+
+function safeSet(key, value) {
+  try { localStorage.setItem(key, String(value)); } catch (e) {}
+}
+
+function delay(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+function normalizeText(value) {
+  return String(value || '').replace(/\s+/g, ' ').trim();
+}
+
+function payloadSignature(payload) {
+  if (!payload) return '';
+  return JSON.stringify({
+    file_path: payload.file_path || '',
+    section_id: payload.section_id || '',
+    anchor_key: payload.anchor_key || '',
+    text_offset: Number(payload.text_offset) || 0,
+    top_offset: Math.round((Number(payload.top_offset) || 0) * 10) / 10,
+    context_text: payload.context_text || ''
+  });
+}
+
+function remoteSignature(progress) {
+  if (!progress) return '';
+  return payloadSignature(progress);
+}
+
+function ensureStatusIndicator() {
+  let el = document.getElementById('study-cloud-sync-indicator');
+  if (el) return el;
+  el = document.createElement('div');
+  el.id = 'study-cloud-sync-indicator';
+  el.setAttribute('role', 'status');
+  el.setAttribute('aria-live', 'polite');
+  Object.assign(el.style, {
+    position: 'fixed',
+    right: 'max(8px, env(safe-area-inset-right))',
+    bottom: 'max(10px, env(safe-area-inset-bottom))',
+    zIndex: '2300',
+    maxWidth: 'min(78vw, 420px)',
+    padding: '7px 10px',
+    border: '1px solid var(--border, #39465b)',
+    borderRadius: '10px',
+    background: 'var(--dock-bg, rgba(18,27,43,.95))',
+    color: 'var(--text, #edf2f7)',
+    font: '600 12px Arial, sans-serif',
+    boxShadow: '0 6px 18px rgba(0,0,0,.25)',
+    opacity: '0',
+    pointerEvents: 'none',
+    transition: 'opacity .18s ease'
+  });
+  document.body.appendChild(el);
+  return el;
+}
+
+let statusHideTimer = 0;
+function emitStatus(state, detail = '') {
+  const message = detail || state;
+  console.log('[study-sync ' + VERSION + ']', state, message);
+  window.dispatchEvent(new CustomEvent(SYNC_EVENT, {
+    detail: { state, detail: message, file: FILE_PATH, version: VERSION }
+  }));
+
+  /*
+    Production mode is deliberately silent while synchronization is healthy.
+    Add ?syncdebug=1 to the lesson URL to display loading/pending/saving/synced.
+    Real errors remain visible without debug mode.
+  */
+  const shouldDisplay = state === 'error' || SYNC_DEBUG;
+  const existing = document.getElementById('study-cloud-sync-indicator');
+
+  if (!shouldDisplay) {
+    if (existing) {
+      existing.style.opacity = '0';
+      existing.hidden = true;
+    }
+    return;
+  }
+
+  if (!document.body) return;
+  const el = ensureStatusIndicator();
+  el.hidden = false;
+  const labels = {
+    loading: 'Cloud: loading…',
+    saving: 'Cloud: saving…',
+    pending: 'Cloud: pending…',
+    synced: 'Cloud: synced',
+    ready: 'Cloud: ready',
+    offline: 'Cloud: offline',
+    signed_out: 'Cloud: signed out',
+    error: 'Cloud error: '
+  };
+  el.textContent = state === 'error' ? labels.error + message : (labels[state] || 'Cloud: ' + message);
+  el.style.color = state === 'error' ? '#ff8585' : 'var(--text, #edf2f7)';
+  el.style.opacity = '1';
+  clearTimeout(statusHideTimer);
+
+  if (SYNC_DEBUG && (state === 'synced' || state === 'ready')) {
+    statusHideTimer = setTimeout(() => {
+      el.style.opacity = '0';
+      el.hidden = true;
+    }, 2800);
+  }
+}
+
+function getDeviceId() {
+  let id = safeGet(DEVICE_ID_KEY);
+  if (!id) {
+    try { id = crypto.randomUUID(); }
+    catch (e) { id = 'device-' + Date.now() + '-' + Math.random().toString(36).slice(2); }
+    safeSet(DEVICE_ID_KEY, id);
+  }
+  return id;
+}
+const DEVICE_ID = getDeviceId();
+
+async function waitForDocumentReady() {
+  if (document.readyState === 'complete') return;
+  await new Promise(resolve => window.addEventListener('load', resolve, { once: true }));
+}
+
+async function waitForReader(timeoutMs = 8000) {
+  if (window.StudyReader) return window.StudyReader;
+  return new Promise(resolve => {
+    let finished = false;
+    const done = value => {
+      if (finished) return;
+      finished = true;
+      window.removeEventListener('studyreaderready', onReady);
+      clearTimeout(timer);
+      resolve(value);
+    };
+    const onReady = () => done(window.StudyReader || null);
+    const timer = setTimeout(() => done(window.StudyReader || null), timeoutMs);
+    window.addEventListener('studyreaderready', onReady, { once: true });
+  });
+}
+
+function readerElementForKey(key) {
+  if (!key) return null;
+  try { return document.querySelector('[data-reader-key="' + CSS.escape(key) + '"]'); }
+  catch (e) { return null; }
+}
+
+function normalizeState(reader, state) {
+  if (state && state.key && readerElementForKey(state.key)) return state;
+  reader?.rebuild?.();
+  const first = document.querySelector('[data-reader-key]');
+  if (!first) return null;
+  return { key: first.dataset.readerKey, offset: 0, top: 6 };
+}
+
+function buildPayloadFromState(state) {
+  if (!state || !state.key) return null;
+  const element = readerElementForKey(state.key);
+  if (!element) return null;
+  const section = element.closest('section[id]');
+  return {
+    file_path: FILE_PATH,
+    section_id: section?.id || null,
+    anchor_key: state.key,
+    text_offset: Math.max(0, Number(state.offset) || 0),
+    top_offset: Number.isFinite(Number(state.top)) ? Number(state.top) : 6,
+    context_text: normalizeText(element.textContent).slice(0, 220) || null,
+    device_id: DEVICE_ID
+  };
+}
+
+async function captureStablePayload() {
+  const reader = await waitForReader();
+  if (!reader) return null;
+  const waits = [0, 80, 220, 500, 900];
+  for (const ms of waits) {
+    if (ms) await delay(ms);
+    reader.rebuild?.();
+    const state = normalizeState(
+      reader,
+      reader.capture?.() || reader.getLastStable?.() || reader.readLocal?.()
+    );
+    const payload = buildPayloadFromState(state);
+    if (payload) return payload;
+  }
+  return null;
+}
+
+function findAnchorByContext(contextText) {
+  const needle = normalizeText(contextText);
+  if (!needle) return null;
+  const probe = needle.slice(0, Math.min(90, needle.length));
+  for (const node of document.querySelectorAll('[data-reader-key]')) {
+    const hay = normalizeText(node.textContent);
+    if (hay.includes(probe) || (hay && probe.includes(hay.slice(0, Math.min(70, hay.length))))) return node;
+  }
+  return null;
+}
+
+function restoreRemoteProgress(progress) {
+  const reader = window.StudyReader;
+  if (!reader || !progress) return false;
+  applyingRemote = true;
+  ignoreScrollUntil = Date.now() + 1400;
+  try {
+    reader.rebuild?.();
+    let key = progress.anchor_key || '';
+    let element = readerElementForKey(key);
+    if (!element && progress.context_text) {
+      element = findAnchorByContext(progress.context_text);
+      key = element?.dataset?.readerKey || '';
+    }
+    if (element && key) {
+      const state = {
+        key,
+        offset: Math.max(0, Number(progress.text_offset) || 0),
+        top: Number.isFinite(Number(progress.top_offset)) ? Number(progress.top_offset) : 6
+      };
+      reader.saveLocal?.(state);
+      if (reader.settleRestore) reader.settleRestore(state, [0, 80, 220, 500]);
+      else reader.restore?.(state);
+      return true;
+    }
+    if (progress.section_id) {
+      const section = document.getElementById(progress.section_id);
+      if (section) {
+        section.scrollIntoView({ behavior: 'auto', block: 'start' });
+        return true;
+      }
+    }
+  } finally {
+    setTimeout(() => { applyingRemote = false; }, 950);
+  }
+  return false;
+}
+
+async function fetchProgressByPath(filePath, quiet = false) {
+  if (!currentUser || !navigator.onLine || !filePath) return null;
+  const { data, error } = await supabase
+    .from('study_progress')
+    .select('*')
+    .eq('user_id', currentUser.id)
+    .eq('file_path', filePath)
+    .maybeSingle();
+  if (error) {
+    if (!quiet) emitStatus('error', error.message || 'Could not load progress');
+    return null;
+  }
+  return data || null;
+}
+
+async function migrateLegacyCloudProgress(legacy) {
+  if (!legacy || !currentUser || !LEGACY_FILE_PATH || LEGACY_FILE_PATH === FILE_PATH) return null;
+  const payload = {
+    user_id: currentUser.id,
+    file_path: FILE_PATH,
+    section_id: legacy.section_id || null,
+    anchor_key: legacy.anchor_key || null,
+    text_offset: Math.max(0, Number(legacy.text_offset) || 0),
+    top_offset: Number.isFinite(Number(legacy.top_offset)) ? Number(legacy.top_offset) : 6,
+    context_text: legacy.context_text || null,
+    context_hash: legacy.context_hash || null,
+    device_id: legacy.device_id || DEVICE_ID
+  };
+
+  const { data, error } = await supabase
+    .from('study_progress')
+    .insert(payload)
+    .select('*')
+    .maybeSingle();
+
+  if (!error && data) {
+    emitStatus('synced', 'Legacy progress migrated to the short filename');
+    return data;
+  }
+
+  // A second device may have created the new row first.
+  const existing = await fetchProgressByPath(FILE_PATH, true);
+  if (existing) return existing;
+  emitStatus('error', error?.message || 'Could not migrate legacy progress');
+  return null;
+}
+
+async function fetchProgress() {
+  const current = await fetchProgressByPath(FILE_PATH);
+  if (current) return current;
+
+  if (LEGACY_FILE_PATH && LEGACY_FILE_PATH !== FILE_PATH) {
+    const legacy = await fetchProgressByPath(LEGACY_FILE_PATH, true);
+    if (legacy) {
+      const migrated = await migrateLegacyCloudProgress(legacy);
+      return migrated || legacy;
+    }
+  }
+  return null;
+}
+
+function rememberScopedLastPage() {
+  if (!currentUser) return;
+  safeSet(LAST_PAGE_PREFIX + currentUser.id, location.pathname + location.search);
+  safeSet('study-last-active-at:' + currentUser.id, Date.now());
+}
+
+async function insertInitialProgress(payload) {
+  const { data, error } = await supabase
+    .from('study_progress')
+    .insert({ user_id: currentUser.id, ...payload })
+    .select('*')
+    .maybeSingle();
+  if (!error && data) {
+    knownRevision = Number(data.revision) || 1;
+    knownUpdatedAt = data.updated_at || null;
+    lastSyncedSignature = remoteSignature(data);
+    rememberScopedLastPage();
+    emitStatus('synced', 'Initial progress created');
+    return true;
+  }
+  const remote = await fetchProgress();
+  if (remote) {
+    knownRevision = Number(remote.revision) || 1;
+    knownUpdatedAt = remote.updated_at || null;
+    lastSyncedSignature = remoteSignature(remote);
+    return false;
+  }
+  emitStatus('error', error?.message || 'Could not create progress row');
+  return false;
+}
+
+async function updateProgress(payload, expectedRevision) {
+  const { data, error } = await supabase
+    .from('study_progress')
+    .update(payload)
+    .eq('user_id', currentUser.id)
+    .eq('file_path', FILE_PATH)
+    .eq('revision', expectedRevision)
+    .select('*')
+    .maybeSingle();
+  if (error) {
+    emitStatus('error', error.message || 'Could not save progress');
+    return { ok: false, conflict: false };
+  }
+  if (!data) return { ok: false, conflict: true };
+  knownRevision = Number(data.revision) || expectedRevision + 1;
+  knownUpdatedAt = data.updated_at || null;
+  lastSyncedSignature = remoteSignature(data);
+  rememberScopedLastPage();
+  emitStatus('synced', 'Progress saved');
+  return { ok: true, conflict: false };
+}
+
+async function saveCloudProgress(force = false, retryOnConflict = true) {
+  if (!currentUser || !navigator.onLine || applyingRemote) return false;
+  if (!dirty && !force) return false;
+  const payload = await captureStablePayload();
+  if (!payload) {
+    emitStatus('error', 'Could not capture the current reading position');
+    return false;
+  }
+  const signature = payloadSignature(payload);
+  if (!force && signature === lastSyncedSignature) {
+    dirty = false;
+    return true;
+  }
+  const versionAtStart = dirtyVersion;
+  emitStatus('saving', 'Saving progress');
+  if (knownRevision === null) {
+    const created = await insertInitialProgress(payload);
+    if (created) {
+      if (dirtyVersion === versionAtStart) dirty = false;
+      return true;
+    }
+  }
+  if (knownRevision !== null) {
+    const result = await updateProgress(payload, knownRevision);
+    if (result.ok) {
+      if (dirtyVersion === versionAtStart) dirty = false;
+      return true;
+    }
+    if (result.conflict) {
+      const remote = await fetchProgress();
+      if (remote) {
+        knownRevision = Number(remote.revision) || 1;
+        knownUpdatedAt = remote.updated_at || null;
+        lastSyncedSignature = remoteSignature(remote);
+        if ((dirty || force) && retryOnConflict) return saveCloudProgress(force, false);
+        if (!dirty) restoreRemoteProgress(remote);
+      }
+    }
+  }
+  return false;
+}
+
+function scheduleSave(delayMs = 550) {
+  if (!dirty || !currentUser) return;
+  clearTimeout(saveTimer);
+  saveTimer = setTimeout(() => { void saveCloudProgress(false); }, delayMs);
+}
+
+function markDirtyFromScroll() {
+  if (!initializationComplete || applyingRemote || Date.now() < ignoreScrollUntil) return;
+  dirty = true;
+  dirtyVersion += 1;
+  emitStatus('pending', 'Reading position changed');
+  scheduleSave(550);
+}
+
+async function refreshFromCloud() {
+  if (!currentUser || dirty || !navigator.onLine) return;
+  const remote = await fetchProgress();
+  if (!remote) return;
+  const remoteRevision = Number(remote.revision) || 1;
+  if (knownRevision === null || remoteRevision > knownRevision) {
+    knownRevision = remoteRevision;
+    knownUpdatedAt = remote.updated_at || null;
+    lastSyncedSignature = remoteSignature(remote);
+    restoreRemoteProgress(remote);
+    rememberScopedLastPage();
+    emitStatus('synced', 'Newer progress loaded from cloud');
+  }
+}
+
+async function seedOrRestore() {
+  initializationComplete = false;
+  await waitForDocumentReady();
+  await delay(60);
+  const reader = await waitForReader();
+  if (!reader || !currentUser) {
+    emitStatus('error', 'Reader engine or signed-in user is unavailable');
+    return;
+  }
+  reader.rebuild?.();
+  const remote = await fetchProgress();
+  if (remote) {
+    knownRevision = Number(remote.revision) || 1;
+    knownUpdatedAt = remote.updated_at || null;
+    lastSyncedSignature = remoteSignature(remote);
+    restoreRemoteProgress(remote);
+    rememberScopedLastPage();
+    emitStatus('synced', 'Cloud progress loaded');
+  } else {
+    const payload = await captureStablePayload();
+    if (payload) await insertInitialProgress(payload);
+    else emitStatus('error', 'No readable position was found; progress row was not created');
+  }
+  ignoreScrollUntil = Date.now() + 1200;
+  initializationComplete = true;
+}
+
+async function readCurrentSession() {
+  const { data, error } = await supabase.auth.getSession();
+  if (error) {
+    emitStatus('error', error.message || 'Could not read login session');
+    return null;
+  }
+  return data.session || null;
+}
+
+async function ensureSessionAndSyncImpl(forceSeed = false) {
+  const session = await readCurrentSession();
+  const nextUser = session?.user || null;
+  if (!nextUser) {
+    currentUser = null;
+    emitStatus('signed_out', 'Not signed in; local progress only');
+    return;
+  }
+  const userChanged = !currentUser || currentUser.id !== nextUser.id;
+  currentUser = nextUser;
+  safeSet(ACTIVE_USER_KEY, currentUser.id);
+  if (userChanged) {
+    knownRevision = null;
+    knownUpdatedAt = null;
+    lastSyncedSignature = '';
+  }
+  if (userChanged || forceSeed || !initializationComplete) {
+    emitStatus('loading', 'Loading cloud progress');
+    await seedOrRestore();
+  } else {
+    await refreshFromCloud();
+  }
+}
+
+
+async function ensureSessionAndSync(forceSeed = false) {
+  if (synchronizationPromise) return synchronizationPromise;
+  synchronizationPromise = ensureSessionAndSyncImpl(forceSeed);
+  try {
+    return await synchronizationPromise;
+  } finally {
+    synchronizationPromise = null;
+  }
+}
+
+async function startSync() {
+  if (startupPromise) return startupPromise;
+  startupPromise = (async () => {
+    try {
+      supabase = await window.createStudySupabaseClient();
+    } catch (error) {
+      console.error('[study-sync] Cloud client unavailable:', error);
+      emitStatus('error', 'Cloud client unavailable: ' + (error?.message || error));
+      return;
+    }
+    await ensureSessionAndSync(true);
+  })();
+  return startupPromise;
+}
+
+window.addEventListener('scroll', markDirtyFromScroll, { passive: true });
+window.addEventListener('touchend', () => { if (dirty) scheduleSave(180); }, { passive: true });
+window.addEventListener('pointerup', () => { if (dirty) scheduleSave(220); }, { passive: true });
+window.addEventListener('wheel', () => { if (dirty) scheduleSave(250); }, { passive: true });
+window.addEventListener('online', () => { void ensureSessionAndSync(false); });
+
+document.addEventListener('visibilitychange', () => {
+  if (document.visibilityState === 'hidden') {
+    if (dirty) void saveCloudProgress(false);
+  } else {
+    void ensureSessionAndSync(false);
+  }
+});
+window.addEventListener('pageshow', () => { void ensureSessionAndSync(false); });
+window.addEventListener('pagehide', () => { if (dirty) void saveCloudProgress(false); });
+
+setInterval(() => {
+  if (dirty && document.visibilityState === 'visible') void saveCloudProgress(false);
+}, 4000);
+
+window.StudySync = Object.freeze({
+  version: VERSION,
+  filePath: FILE_PATH,
+  saveNow: () => saveCloudProgress(true),
+  refreshNow: () => ensureSessionAndSync(false),
+  getState: () => ({
+    userId: currentUser?.id || null,
+    knownRevision,
+    knownUpdatedAt,
+    dirty,
+    initializationComplete,
+    deviceId: DEVICE_ID
+  })
+});
+
+void startSync();
+})();
+</script>
+
+<nav class="chapter-navigation" aria-label="Previous and next chapter">
+    <a class="chapter-prev" data-chapter-link href="06i.html">
+      <span class="chapter-nav-kicker">← Previous Chapter</span>
+      <span class="chapter-nav-title">06i · 平成30年度 | p.625-629</span>
+    </a>
+    <a class="chapter-next" data-chapter-link href="06k.html">
+      <span class="chapter-nav-kicker">Next Chapter →</span>
+      <span class="chapter-nav-title">06k · 平成28年度 | p.633-635</span>
+    </a>
+  </nav>
+<script id="chapter-navigation-script">
+(() => {
+  'use strict';
+  const links = [...document.querySelectorAll('.chapter-navigation a[data-chapter-link]')];
+  links.forEach(link => {
+    link.addEventListener('click', async event => {
+      event.preventDefault();
+      try { window.StudyGoogleTTS?.stop?.(true); } catch (_) {}
+      try {
+        if (window.StudySync?.saveNow) {
+          await Promise.race([
+            Promise.resolve(window.StudySync.saveNow()),
+            new Promise(resolve => setTimeout(resolve, 700))
+          ]);
+        }
+      } catch (_) {}
+      location.href = link.href;
+    });
+  });
+})();
+</script>
+<script id="tts-cloudflare-script">
+(() => {
+  'use strict';
+
+  const VERSION = '4.0-cloudflare-worker-production';
+  const TTS_PROXY_URL = 'https://kenchiku-google-tts.duysdoor.workers.dev/tts';
+  const MAX_CHARS = 170;
+
+  const state = {
+    section: null,
+    chunks: [],
+    index: 0,
+    status: 'idle', // idle | loading | playing | paused
+    requestSerial: 0,
+    objectUrl: '',
+    prefetch: null
+  };
+
+  const audio = new Audio();
+  audio.preload = 'auto';
+  audio.playsInline = true;
+
+  function normalizeMultiline(text) {
+    return String(text || '')
+      .replace(/\r\n?/g, '\n')
+      .replace(/\u00a0/g, ' ')
+      .replace(/[ \t]+\n/g, '\n')
+      .replace(/\n[ \t]+/g, '\n')
+      .replace(/[ \t]{2,}/g, ' ')
+      .replace(/\n{3,}/g, '\n\n')
+      .trim();
+  }
+
+  const JAPANESE_RE = /[\u3040-\u30ff\u3400-\u9fff]/;
+  const SOURCE_SELECTORS = [
+    '.study-card.original .recall-source[lang="ja"]',
+    '.study-card.original .recall-source',
+    '.study-card.original [lang="ja"]',
+    '.lang-card.original .recall-source[lang="ja"]',
+    '.lang-card.original .card-body[lang="ja"]',
+    '.lang-card.original [lang="ja"]',
+    '.note-pane.original-cell[lang="ja"]',
+    '.original-cell[lang="ja"]',
+    '.jp-topic[lang="ja"]',
+    '.jp-answer[lang="ja"]',
+    '.card.original[lang="ja"]',
+    '.card.original [lang="ja"]',
+    '.card.orig[lang="ja"]',
+    '.card.orig',
+    '.original[lang="ja"]',
+    '.recall-source[lang="ja"]'
+  ].join(', ');
+
+  function hasJapaneseText(value) {
+    return JAPANESE_RE.test(String(value || ''));
+  }
+
+  function sourceNodes(unit) {
+    const all = [...unit.querySelectorAll(SOURCE_SELECTORS)]
+      .filter(node => hasJapaneseText(node.innerText || node.textContent || ''));
+    const unique = [...new Set(all)];
+    // Keep outer nodes and discard nested duplicates.
+    return unique.filter(node => !unique.some(other => other !== node && other.contains(node)));
+  }
+
+  function japaneseHeading(unit) {
+    const node = unit.querySelector(':scope > h2, :scope > h3, :scope > h4, :scope > .subsection-title, :scope > .section-head h2, :scope > .section-head h3, h3, h2');
+    const raw = normalizeMultiline(node?.innerText || node?.textContent || '');
+    if (!raw || !hasJapaneseText(raw)) return '';
+    const parts = raw.split(/[|｜/／]/).map(v => v.trim()).filter(Boolean);
+    return parts.find(hasJapaneseText) || raw;
+  }
+
+  function extractJapanese(unit) {
+    const nodes = sourceNodes(unit);
+    if (!nodes.length) return null;
+    const body = nodes
+      .map(node => normalizeMultiline(node.innerText || node.textContent || ''))
+      .filter(Boolean)
+      .join('\n');
+    if (!body) return null;
+    const heading = japaneseHeading(unit);
+    return { source: nodes[0], sources: nodes, text: heading ? `${heading}\n${body}` : body };
+  }
+
+  function collectTtsUnits() {
+    const result = [];
+    const seen = new Set();
+    const add = node => {
+      if (!node || seen.has(node) || !extractJapanese(node)) return;
+      seen.add(node);
+      result.push(node);
+    };
+
+    // Preferred granularity: one control per subsection.
+    document.querySelectorAll('.subsection').forEach(add);
+
+    // Fallback for table-based and older lesson layouts without .subsection.
+    const fallback = [...document.querySelectorAll(
+      'section.study-section, section.topic, section.aggregate-section, main#lesson > section, main > section, section[id]'
+    )].filter(node => {
+      if (result.some(primary => node.contains(primary))) return false;
+      return !!extractJapanese(node);
+    });
+    // Prefer the deepest matching section so controls are not duplicated on nested sections.
+    fallback
+      .filter(node => !fallback.some(other => other !== node && node.contains(other)))
+      .forEach(add);
+
+    // Last resort for uncommon layouts: one unit per standalone original card.
+    if (!result.length) {
+      document.querySelectorAll('.study-card.original, .lang-card.original, .card.original, .card.orig').forEach(add);
+    }
+
+    result.forEach((unit, index) => {
+      unit.classList.add('gttts-unit');
+      if (!unit.id) unit.dataset.gtttsUnit = String(index + 1);
+    });
+    return result;
+  }
+
+  function controlHost(unit) {
+    const card = unit.querySelector(
+      '.study-card.original, .lang-card.original, .note-pane.original-cell, .card.original, .card.orig'
+    );
+    const host = card || unit;
+    host.classList.add('gttts-control-host');
+    return host;
+  }
+  function hardSplit(text, maxChars = MAX_CHARS) {
+    const s = text.trim();
+    if (!s) return [];
+    if (s.length <= maxChars) return [s];
+    const out = [];
+    let rest = s;
+    while (rest.length > maxChars) {
+      const windowText = rest.slice(0, maxChars + 1);
+      let cut = -1;
+      for (const mark of ['。', '！', '？', '!', '?', '；', ';', '：', ':', '、', '，', ',', '）', ')', ' ']) {
+        const p = windowText.lastIndexOf(mark);
+        if (p >= Math.floor(maxChars * 0.55)) {
+          cut = p + 1;
+          break;
+        }
+      }
+      if (cut < 1) cut = maxChars;
+      out.push(rest.slice(0, cut).trim());
+      rest = rest.slice(cut).trim();
+    }
+    if (rest) out.push(rest);
+    return out.filter(Boolean);
+  }
+
+  function splitForTts(text) {
+    const normalized = normalizeMultiline(text);
+    const logical = [];
+    for (const rawLine of normalized.split(/\n+/)) {
+      const line = rawLine.trim();
+      if (!line) continue;
+      const sentences = line.match(/[^。！？!?]+[。！？!?]?/g) || [line];
+      for (const sentence of sentences) {
+        const s = sentence.trim();
+        if (s) logical.push(s);
+      }
+    }
+    return logical.flatMap(part => hardSplit(part));
+  }
+
+  function showToast(message, isError = false, duration = 2800) {
+    let toast = document.getElementById('gttts-toast');
+    if (!toast) {
+      toast = document.createElement('div');
+      toast.id = 'gttts-toast';
+      toast.className = 'gttts-toast';
+      document.body.appendChild(toast);
+    }
+    toast.textContent = message;
+    toast.classList.toggle('is-error', !!isError);
+    toast.classList.add('is-visible');
+    clearTimeout(showToast.timer);
+    showToast.timer = setTimeout(() => toast.classList.remove('is-visible'), duration);
+  }
+
+  async function fetchAudioBlob(text, signal) {
+    const response = await fetch(TTS_PROXY_URL, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'text/plain;charset=UTF-8',
+        'Accept': 'audio/mpeg,audio/*;q=0.9,*/*;q=0.1'
+      },
+      body: text,
+      cache: 'no-store',
+      signal
+    });
+
+    const contentType = response.headers.get('content-type') || '';
+
+    if (!response.ok) {
+      let detail = `HTTP ${response.status}`;
+      try {
+        if (contentType.includes('application/json')) {
+          const body = await response.json();
+          detail = body?.message || body?.error || detail;
+        } else {
+          const body = (await response.text()).trim();
+          if (body) detail = body.slice(0, 220);
+        }
+      } catch (_) {}
+      throw new Error(detail);
+    }
+
+    if (!contentType.includes('audio/')) {
+      const body = (await response.text()).trim();
+      throw new Error(
+        `Cloudflare proxy không trả audio (${contentType || 'unknown'}): ${body.slice(0, 180)}`
+      );
+    }
+
+    return await response.blob();
+  }
+
+  function revokeCurrentObjectUrl() {
+    if (state.objectUrl) {
+      try { URL.revokeObjectURL(state.objectUrl); } catch (_) {}
+      state.objectUrl = '';
+    }
+  }
+
+  function clearPrefetch() {
+    if (state.prefetch?.controller) {
+      try { state.prefetch.controller.abort(); } catch (_) {}
+    }
+    if (state.prefetch?.url) {
+      try { URL.revokeObjectURL(state.prefetch.url); } catch (_) {}
+    }
+    state.prefetch = null;
+  }
+
+  function updateUi() {
+    document.querySelectorAll('.gttts-unit.gttts-active').forEach(el => {
+      if (el !== state.section || state.status === 'idle') el.classList.remove('gttts-active');
+    });
+    if (state.section && state.status !== 'idle') state.section.classList.add('gttts-active');
+
+    document.querySelectorAll('.gttts-section-controls').forEach(controls => {
+      const section = controls.closest('.gttts-unit');
+      const play = controls.querySelector('[data-role="play"]');
+      const stop = controls.querySelector('[data-role="stop"]');
+      const active = section === state.section && state.status !== 'idle';
+      if (play) {
+        play.textContent = active && state.status === 'playing' ? '⏸' : active && state.status === 'paused' ? '▶' : active && state.status === 'loading' ? '…' : '🔊';
+        play.disabled = active && state.status === 'loading';
+        play.title = active && state.status === 'playing' ? 'Pause' : active && state.status === 'paused' ? 'Resume' : 'Đọc tiếng Nhật bằng Google Translate TTS';
+        play.setAttribute('aria-label', play.title);
+      }
+      if (stop) stop.hidden = !active;
+    });
+
+    const mini = document.getElementById('gttts-mini');
+    if (mini) {
+      const active = state.status !== 'idle';
+      mini.hidden = !active;
+      const toggle = mini.querySelector('[data-role="toggle"]');
+      if (toggle) {
+        toggle.textContent = state.status === 'playing' ? '⏸' : state.status === 'paused' ? '▶' : '…';
+        toggle.disabled = state.status === 'loading';
+      }
+    }
+  }
+
+  async function ensureChunkUrl(index, serial) {
+    if (index < 0 || index >= state.chunks.length) throw new Error('Chunk index ngoài phạm vi.');
+
+    if (state.prefetch && state.prefetch.index === index && state.prefetch.url) {
+      const url = state.prefetch.url;
+      state.prefetch.url = '';
+      state.prefetch = null;
+      return url;
+    }
+
+    const controller = new AbortController();
+    const blob = await fetchAudioBlob(state.chunks[index], controller.signal);
+    if (serial !== state.requestSerial) throw new DOMException('Stale request', 'AbortError');
+    return URL.createObjectURL(blob);
+  }
+
+  function prefetchNext(serial) {
+    clearPrefetch();
+    const next = state.index + 1;
+    if (next >= state.chunks.length || serial !== state.requestSerial) return;
+    const controller = new AbortController();
+    state.prefetch = { index: next, controller, url: '' };
+    fetchAudioBlob(state.chunks[next], controller.signal)
+      .then(blob => {
+        if (!state.prefetch || state.prefetch.index !== next || serial !== state.requestSerial) return;
+        state.prefetch.url = URL.createObjectURL(blob);
+      })
+      .catch(err => {
+        if (err?.name !== 'AbortError') console.warn('[GT TTS Proxy] prefetch failed:', err);
+        if (state.prefetch?.index === next) state.prefetch = null;
+      });
+  }
+
+  async function playCurrentChunk(serial) {
+    if (serial !== state.requestSerial) return;
+    if (state.index >= state.chunks.length) {
+      stop(true);
+      return;
+    }
+
+    state.status = 'loading';
+    updateUi();
+    try {
+      const url = await ensureChunkUrl(state.index, serial);
+      if (serial !== state.requestSerial) {
+        URL.revokeObjectURL(url);
+        return;
+      }
+      revokeCurrentObjectUrl();
+      state.objectUrl = url;
+      audio.src = url;
+      audio.currentTime = 0;
+      await audio.play();
+      state.status = 'playing';
+      updateUi();
+      prefetchNext(serial);
+    } catch (err) {
+      if (err?.name === 'AbortError') return;
+      console.error('[GT TTS Proxy] playback failed:', err);
+      state.status = 'idle';
+      updateUi();
+      showToast(`Không phát được Google TTS: ${err?.message || err}`, true, 7000);
+    }
+  }
+
+  function stop(finished = false) {
+    state.requestSerial += 1;
+    try { audio.pause(); } catch (_) {}
+    try { audio.removeAttribute('src'); audio.load(); } catch (_) {}
+    revokeCurrentObjectUrl();
+    clearPrefetch();
+    state.status = 'idle';
+    state.index = 0;
+    if (!finished) showToast('Đã dừng. Lần sau sẽ đọc lại từ đầu.', false, 1700);
+    updateUi();
+  }
+
+  async function startSection(section) {
+    const data = extractJapanese(section);
+    if (!data?.text) {
+      showToast('Không tìm thấy phần tiếng Nhật của section này.', true, 4500);
+      return;
+    }
+    if (state.status !== 'idle') stop(true);
+
+    const chunks = splitForTts(data.text);
+    if (!chunks.length) {
+      showToast('Không có nội dung để đọc.', true, 4000);
+      return;
+    }
+    state.section = section;
+    state.chunks = chunks;
+    state.index = 0;
+    const serial = ++state.requestSerial;
+    await playCurrentChunk(serial);
+  }
+
+  async function toggleSection(section) {
+    const same = section === state.section && state.status !== 'idle';
+    if (!same) {
+      await startSection(section);
+      return;
+    }
+    if (state.status === 'playing') {
+      audio.pause();
+      state.status = 'paused';
+      updateUi();
+      return;
+    }
+    if (state.status === 'paused') {
+      try {
+        await audio.play();
+        state.status = 'playing';
+        updateUi();
+      } catch (err) {
+        showToast(`Không resume được audio: ${err?.message || err}`, true, 5000);
+      }
+    }
+  }
+
+  audio.addEventListener('ended', () => {
+    if (state.status === 'idle') return;
+    state.index += 1;
+    const serial = state.requestSerial;
+    void playCurrentChunk(serial);
+  });
+
+  audio.addEventListener('error', () => {
+    if (state.status === 'idle') return;
+    const code = audio.error?.code || 0;
+    console.error('[GT TTS Proxy] HTMLAudioElement error:', code, audio.error);
+    state.status = 'idle';
+    updateUi();
+    showToast(`Lỗi phát audio trên trình duyệt (code ${code}).`, true, 6000);
+  });
+
+  function makeButton(text, label, role) {
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'gttts-btn';
+    btn.textContent = text;
+    btn.dataset.role = role;
+    btn.setAttribute('aria-label', label);
+    btn.title = label;
+    return btn;
+  }
+
+  function installMiniPlayer() {
+    if (document.getElementById('gttts-mini')) return;
+    const mini = document.createElement('div');
+    mini.id = 'gttts-mini';
+    mini.className = 'gttts-mini';
+    mini.hidden = true;
+    const toggle = makeButton('⏸', 'Pause/Resume', 'toggle');
+    const stopBtn = makeButton('■', 'Stop và trở về đầu', 'stop');
+    toggle.addEventListener('click', async () => {
+      if (!state.section) return;
+      await toggleSection(state.section);
+    });
+    stopBtn.addEventListener('click', () => stop(false));
+    mini.append(toggle, stopBtn);
+    document.body.appendChild(mini);
+  }
+
+  function installControls() {
+    let installed = 0;
+    for (const section of collectTtsUnits()) {
+      const host = controlHost(section);
+      if (host.querySelector(':scope > .gttts-section-controls')) continue;
+
+      const controls = document.createElement('div');
+      controls.className = 'gttts-section-controls';
+      controls.dataset.engine = VERSION;
+
+      const play = makeButton('🔊', 'Đọc tiếng Nhật bằng Google Translate TTS', 'play');
+      const stopBtn = makeButton('■', 'Stop và trở về đầu', 'stop');
+      stopBtn.hidden = true;
+
+      play.addEventListener('click', async e => {
+        e.preventDefault();
+        e.stopPropagation();
+        await toggleSection(section);
+      });
+      stopBtn.addEventListener('click', e => {
+        e.preventDefault();
+        e.stopPropagation();
+        stop(false);
+      });
+
+      controls.append(play, stopBtn);
+      host.appendChild(controls);
+      installed += 1;
+    }
+    installMiniPlayer();
+    updateUi();
+    console.info(`[GT TTS Cloudflare] v${VERSION} installed on ${installed} Japanese unit(s)`);
+  }
+  function init() { installControls(); }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init, { once: true });
+  } else {
+    init();
+  }
+
+  window.addEventListener('pagehide', () => stop(true));
+
+  window.StudyGoogleTTS = Object.freeze({
+    version: VERSION,
+    start: startSection,
+    stop,
+    extract: extractJapanese,
+    split: splitForTts,
+    state: () => ({ status: state.status, index: state.index, total: state.chunks.length })
+  });
+})();
+</script>
+</body>
+</html>
