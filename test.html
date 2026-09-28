@@ -3436,7 +3436,7 @@ void startSync();
 (() => {
   'use strict';
 
-  const VERSION = '1.5-simple-ios-selection';
+  const VERSION = '1.6-ios-auto-dismiss';
   const TTS_PROXY_URL = 'https://kenchiku-google-tts.duysdoor.workers.dev/tts';
   const AUTH_CHECK_URL = 'https://kenchiku-google-tts.duysdoor.workers.dev/auth-check';
   const FURIGANA_PROXY_URL = 'https://kenchiku-google-tts.duysdoor.workers.dev/furigana';
@@ -3445,7 +3445,10 @@ void startSync();
 
   let currentSelectionText = '';
   let currentSelectionHost = null;
+  let currentSelectionRects = [];
   let lastValidSelectionAt = 0;
+  let outsideGestureId = 0;
+  let pendingOutsideGesture = null;
   let interactionLockUntil = 0;
   let selectionTimer = 0;
   let permissionUserId = '';
@@ -3505,8 +3508,15 @@ void startSync();
     if (focusEl?.closest?.('#seltools-toolbar, #seltools-reading-card, #seltools-debug')) return null;
 
     let host = null;
-    try { host = sel.getRangeAt(0).commonAncestorContainer; } catch (_) {}
-    return { text, host };
+    let rects = [];
+    try {
+      const range = sel.getRangeAt(0);
+      host = range.commonAncestorContainer;
+      rects = [...range.getClientRects()]
+        .filter(r => r && r.width >= 0 && r.height >= 0)
+        .map(r => ({ left: r.left, right: r.right, top: r.top, bottom: r.bottom }));
+    } catch (_) {}
+    return { text, host, rects };
   }
 
   async function getSessionContext() {
@@ -3661,6 +3671,7 @@ void startSync();
 
     currentSelectionText = selected.text;
     currentSelectionHost = selected.host;
+    currentSelectionRects = Array.isArray(selected.rects) ? selected.rects : [];
     lastValidSelectionAt = Date.now();
 
     // UI visibility is decided locally from the signed-in Supabase user ID.
@@ -3974,14 +3985,76 @@ void startSync();
     }
   }
 
-  function hideOnExplicitClear() {
-    if (Date.now() < interactionLockUntil) return;
-    const sel = window.getSelection?.();
-    if (!sel || sel.isCollapsed || !normalizeSelectionText(sel.toString())) {
-      currentSelectionText = '';
-      currentSelectionHost = null;
-      setToolbarVisible(false);
-    }
+  function clearSelectionTools(reason = 'explicit-dismiss') {
+    currentSelectionText = '';
+    currentSelectionHost = null;
+    currentSelectionRects = [];
+    lastValidSelectionAt = 0;
+    pendingOutsideGesture = null;
+    stopSelectionSpeech(true);
+    setToolbarVisible(false);
+    try {
+      const sel = window.getSelection?.();
+      if (sel && typeof sel.removeAllRanges === 'function') sel.removeAllRanges();
+    } catch (_) {}
+    console.info('[Selection Tools] dismissed:', reason);
+  }
+
+  function eventPoint(event) {
+    const touch = event?.touches?.[0] || event?.changedTouches?.[0];
+    const x = Number(touch?.clientX ?? event?.clientX);
+    const y = Number(touch?.clientY ?? event?.clientY);
+    return Number.isFinite(x) && Number.isFinite(y) ? { x, y } : null;
+  }
+
+  function pointInsideLatchedSelection(point, margin = 18) {
+    if (!point || !currentSelectionRects.length) return false;
+    return currentSelectionRects.some(r =>
+      point.x >= r.left - margin && point.x <= r.right + margin &&
+      point.y >= r.top - margin && point.y <= r.bottom + margin
+    );
+  }
+
+  function isSelectionToolTarget(target) {
+    const el = nodeElement(target);
+    return !!el?.closest?.('#seltools-toolbar, #seltools-reading-card, #seltools-debug, #seltools-toast');
+  }
+
+  function armOutsideDismiss(event) {
+    if (!currentSelectionText || !toolbar()?.classList.contains('is-visible')) return;
+    if (isSelectionToolTarget(event.target)) return;
+
+    // The original long-press/drag starts before a selection is latched, so it
+    // never reaches this branch. Later interactions are user intent. Keep taps
+    // on/near the selected glyphs available for handle adjustment.
+    const point = eventPoint(event);
+    if (pointInsideLatchedSelection(point)) return;
+
+    pendingOutsideGesture = {
+      id: ++outsideGestureId,
+      oldText: currentSelectionText,
+      startedAt: Date.now()
+    };
+  }
+
+  function finishOutsideDismiss() {
+    const pending = pendingOutsideGesture;
+    if (!pending) return;
+    pendingOutsideGesture = null;
+
+    // Give WebKit a moment to finish a possible new long-press selection.
+    setTimeout(() => {
+      const latest = readCurrentJapaneseSelection();
+      if (latest && latest.text && latest.text !== pending.oldText) {
+        currentSelectionText = latest.text;
+        currentSelectionHost = latest.host;
+        currentSelectionRects = Array.isArray(latest.rects) ? latest.rects : [];
+        lastValidSelectionAt = Date.now();
+        if (permissionAllowed) setToolbarVisible(true);
+        return;
+      }
+      clearSelectionTools('tap-outside');
+    }, 220);
   }
 
   function scheduleIosSelectionSweep() {
@@ -4026,6 +4099,7 @@ void startSync();
         `RAW: ${raw ? raw.slice(0,80) : '[none]'}`,
         `SEL: ranges=${window.getSelection?.()?.rangeCount || 0} collapsed=${window.getSelection?.()?.isCollapsed ?? 'n/a'}`,
         `LATCH: ${currentSelectionText ? currentSelectionText.slice(0,80) : '[none]'}`,
+        `PENDING DISMISS: ${pendingOutsideGesture ? 'YES' : 'NO'}`,
         `TOOLBAR: ${tb?.classList.contains('is-visible') ? 'VISIBLE' : 'HIDDEN'}`
       ].join('\n');
     }, 250);
@@ -4040,13 +4114,22 @@ void startSync();
     void preflightPermission();
 
     document.addEventListener('selectionchange', () => scheduleSelectionRefresh(70), { passive: true });
+
+    // Auto-dismiss rule for iOS:
+    // 1) first selection gesture does not dismiss because nothing is latched yet;
+    // 2) a later tap outside the selected text/tools dismisses the toolbar;
+    // 3) a later long-press that creates a different Japanese selection replaces it.
+    document.addEventListener('pointerdown', armOutsideDismiss, { passive: true, capture: true });
+    document.addEventListener('touchstart', armOutsideDismiss, { passive: true, capture: true });
+    document.addEventListener('pointerup', finishOutsideDismiss, { passive: true, capture: true });
+    document.addEventListener('touchend', finishOutsideDismiss, { passive: true, capture: true });
+
     document.addEventListener('pointerup', scheduleIosSelectionSweep, { passive: true });
     document.addEventListener('touchend', scheduleIosSelectionSweep, { passive: true });
     document.addEventListener('mouseup', scheduleIosSelectionSweep, { passive: true });
     document.addEventListener('keydown', event => {
       if (event.key === 'Escape') {
-        stopSelectionSpeech(true);
-        setToolbarVisible(false);
+        clearSelectionTools('escape');
       }
     });
     window.addEventListener('scroll', () => {
@@ -4057,7 +4140,7 @@ void startSync();
     window.addEventListener('pagehide', () => stopSelectionSpeech(true));
     // Do NOT hide on window blur. iOS may blur the page while presenting its
     // native Copy/Look Up menu, which was the cause of the disappearing toolbar.
-    console.info(`[Selection Tools] v${VERSION} ready; Worker auth preflight + iOS latched selection.`);
+    console.info(`[Selection Tools] v${VERSION} ready; Worker auth preflight + latched selection + explicit outside-tap auto-dismiss.`);
   }
 
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init, { once: true });
@@ -4066,7 +4149,7 @@ void startSync();
   window.StudySelectionTools = Object.freeze({
     version: VERSION,
     refresh: () => refreshSelectionUi(),
-    hide: () => setToolbarVisible(false),
+    hide: () => clearSelectionTools('api-hide'),
     stop: () => stopSelectionSpeech(true),
     state: () => ({
       text: currentSelectionText,
