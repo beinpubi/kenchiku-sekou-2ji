@@ -1,4 +1,3 @@
-```javascript
 (() => {
   'use strict';
   if (!document.getElementById('selection-tools-style')) {
@@ -850,5 +849,3 @@
     })
   });
 })();
-
-```
