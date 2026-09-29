@@ -163,7 +163,7 @@
 (() => {
   'use strict';
 
-  const VERSION = '1.8-production-3tools';
+  const VERSION = '1.9-production-ios-bing';
   const TTS_PROXY_URL = 'https://kenchiku-google-tts.duysdoor.workers.dev/tts';
   const AUTH_CHECK_URL = 'https://kenchiku-google-tts.duysdoor.workers.dev/auth-check';
   const FURIGANA_PROXY_URL = 'https://kenchiku-google-tts.duysdoor.workers.dev/furigana';
@@ -300,7 +300,7 @@
     toolbar.setAttribute('aria-label', '選択テキストの学習ツール');
     toolbar.innerHTML = `
       <button class="seltools-btn" type="button" data-action="reading" title="選択した日本語の読み方を表示">あ 読み</button>
-      <button class="seltools-btn" type="button" data-action="images" title="Google画像検索">🖼 画像</button>
+      <button class="seltools-btn" type="button" data-action="images" title="画像検索">🖼 画像</button>
       <button class="seltools-btn" type="button" data-action="speak" title="選択部分をGoogle Translate TTSで読む">🔊 選択部分を読む</button>
     `;
 
@@ -432,11 +432,33 @@
     a.remove();
   }
 
+  function isIOSDevice() {
+    // iPhone/iPad/iPod, plus modern iPadOS which may report itself as MacIntel.
+    const ua = navigator.userAgent || '';
+    const platform = navigator.platform || '';
+    return /iPad|iPhone|iPod/i.test(ua)
+      || (platform === 'MacIntel' && Number(navigator.maxTouchPoints || 0) > 1);
+  }
+
+  function buildImageSearchUrl(text) {
+    const q = encodeURIComponent(text);
+
+    // On iOS/iPadOS, google.com image-search URLs may be intercepted by the
+    // installed Google app through Universal Links. That can leave an Add-to-
+    // Home-Screen web app showing a temporary blank browser view on return.
+    // Use Bing Images on iOS/iPadOS to avoid that Google-app handoff.
+    if (isIOSDevice()) {
+      return `https://www.bing.com/images/search?q=${q}`;
+    }
+
+    // Desktop/other platforms keep Google Images.
+    return `https://www.google.com/search?udm=2&q=${q}`;
+  }
+
   function openImageSearch() {
     const text = selectedTextOrNull();
     if (!text) return;
-    const q = encodeURIComponent(text);
-    openBlank(`https://www.google.com/search?tbm=isch&q=${q}`);
+    openBlank(buildImageSearchUrl(text));
   }
 
   function buildGlossaryMap() {
